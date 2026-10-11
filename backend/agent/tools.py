@@ -61,15 +61,25 @@ def _compact_run(r: dict) -> dict:
     return out
 
 
+TRAJECTORY_POINTS = 80  # enough for every checkpoint of the dense formation runs
+
+
+def _subsample(items: list, n: int = TRAJECTORY_POINTS) -> list:
+    if len(items) <= n:
+        return items
+    return [items[i] for i in sorted({round(k * (len(items) - 1) / (n - 1)) for k in range(n)})]
+
+
 def probe_trajectory(run_id: str) -> dict:
-    """Per target: (step, best R2 - control at that step, layer) at up to 12 checkpoints, for formation timing."""
+    """Per target: (step, best R2 - control at that step, layer) at every checkpoint (subsampled only past
+    TRAJECTORY_POINTS, which is then stated), for formation timing."""
     rows = store.get_probe_results(run_id)
     out = {}
     for t in sorted({r["target"] for r in rows}):
-        steps = sorted({r["checkpoint_step"] for r in rows if r["target"] == t})
-        if len(steps) > 12:
-            idx = [round(i * (len(steps) - 1) / 11) for i in range(12)]
-            steps = [steps[i] for i in sorted(set(idx))]
+        all_steps = sorted({r["checkpoint_step"] for r in rows if r["target"] == t})
+        steps = _subsample(all_steps)
+        if len(steps) < len(all_steps):
+            out[f"{t}_note"] = f"subsampled: {len(steps)} of {len(all_steps)} checkpoints shown"
         traj = []
         for s in steps:
             best = max((r for r in rows if r["target"] == t and r["checkpoint_step"] == s),
@@ -84,9 +94,7 @@ def experiment_results(exp_id: str) -> dict:
     runs = store.runs_for(exp_id)
     ratio_traj = {}
     for r in runs:
-        ms = [m for m in store.get_metrics(r["id"], ["val_mse_ratio"])]
-        if len(ms) > 12:
-            ms = [ms[round(i * (len(ms) - 1) / 11)] for i in range(12)]
+        ms = _subsample(store.get_metrics(r["id"], ["val_mse_ratio"]))
         ratio_traj[r["id"]] = [[m["step"], round(m["value"], 4)] for m in ms]
     return {"experiment_id": exp_id, "family": e["family"], "state": e["state"], "hypothesis": e["hypothesis"],
             "expected_if_true": e["expected_if_true"], "expected_if_false": e["expected_if_false"],

@@ -272,14 +272,15 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--forever", action="store_true")
     ap.add_argument("--interval", type=float, default=60, help="minutes between cycle starts (with --forever)")
+    ap.add_argument("--first-delay", type=float, default=0, help="minutes before the first cycle (with --forever)")
     ap.add_argument("--max-minutes", type=float, default=45, help="worker time limit per cycle")
     ap.add_argument("--no-push", action="store_true", help="commit locally but do not push/pull")
     ap.add_argument("--no-paper", action="store_true")
     a = ap.parse_args(argv)
     if not a.forever:
         return run_cycle(a.max_minutes, push=not a.no_push, draft_paper=not a.no_paper)
-    last = 0.0
-    log(f"local loop: a cycle every {a.interval} min while lab/PAUSED is absent")
+    last = time.time() - (a.interval - a.first_delay) * 60  # first cycle after --first-delay minutes
+    log(f"local loop: a cycle every {a.interval} min while lab/PAUSED is absent (first in {a.first_delay} min)")
     while True:
         if not store.is_paused() and time.time() - last >= a.interval * 60:
             last = time.time()

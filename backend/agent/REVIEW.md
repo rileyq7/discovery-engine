@@ -25,6 +25,9 @@ Check, in order:
    they exceed the control margin. Flag claims that depend on them.
 4. **No drift.** The last 5 experiments should serve the open questions or replicate findings. Flag
    wandering into tangents, or repeating one experiment with cosmetic tweaks (`drift`).
+   Definitions: a target "forms" at the first checkpoint *after which* its best layer stays above the bar at
+   every later checkpoint (not the first crossing). Transient earlier crossings are worth an `info`, not a
+   mismatch, unless the finding claims there were none.
 5. **Bugs, not findings.** Look for result patterns that suggest a pipeline problem rather than science:
    early stops, empty or constant outputs, seeds that agree too perfectly, probes that beat their controls
    before training, numbers that are implausible for the setup (`bug`). The deterministic checks have
