@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 from typing import Optional
 
 from pydantic import ValidationError
@@ -26,8 +27,10 @@ def _format_errors(e: ValidationError) -> list[str]:
 
 
 def estimate(cfg: ExperimentConfig) -> float:
+    # DE_THROUGHPUT (env, e.g. the cloud routine on CPU) > lab/settings.json > the MPS-calibrated default
+    env = os.environ.get("DE_THROUGHPUT")
     s = store.get_settings()
-    return estimate_compute_hours(cfg, s.get("throughput") or DEFAULT_THROUGHPUT)
+    return estimate_compute_hours(cfg, float(env) if env else (s.get("throughput") or DEFAULT_THROUGHPUT))
 
 
 def check(raw: dict | str) -> tuple[Optional[ExperimentConfig], list[str], float]:

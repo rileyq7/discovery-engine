@@ -89,3 +89,7 @@ Where the spec left something open, these notes record what was picked (usually 
 - **API paths** are mounted both at the spec paths (`/experiments`, …) and under `/api` (used by the UI via the Vite proxy).
 - **Figures in papers** are references such as `![caption](figure:heatmap/<run_id>/force)`, rendered live in the
   preview. LaTeX export leaves them as plain text.
+- **Where the hourly loop runs.** On CPU the E1 model trains at about 1.4e13 units/h (benchmark: 3.8 s/step, about 30× slower
+  than MPS), so E1 would take about 5 h per seed. The hourly loop therefore runs on the laptop (`make loop` /
+  `make dev`), pushing to GitHub each cycle. A cloud routine would need `DE_DEVICE=cpu` and `DE_THROUGHPUT=1.4e13`
+  (env override for the compute estimate), and would only fit tiny experiments.

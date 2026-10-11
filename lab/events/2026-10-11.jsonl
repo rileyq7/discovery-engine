@@ -219,3 +219,5 @@
 {"uid": "c0b6ad0c0567d732", "timestamp": "2026-10-11T21:38:02", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261011-213802-62f9", "experiment_id": "exp-20261011-205921-c3e4", "seed": 15}}
 {"uid": "ae745b75efb6d8a5", "timestamp": "2026-10-11T21:38:02", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261011-205921-c3e4", "state": "running", "note": ""}}
 {"uid": "1e6a2b92537c2481", "timestamp": "2026-10-11T21:38:03", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261011-213802-00ed", "experiment_id": "exp-20261011-205921-c3e4", "status": "running"}}
+{"uid": "a396785dab702db9", "timestamp": "2026-10-11T21:45:41", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261011-213802-00ed", "experiment_id": "exp-20261011-205921-c3e4", "status": "completed"}}
+{"uid": "5f20132c9ef39db2", "timestamp": "2026-10-11T21:45:41", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261011-213802-62f9", "experiment_id": "exp-20261011-205921-c3e4", "status": "running"}}
