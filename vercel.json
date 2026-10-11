@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "cd frontend && npm ci",
+  "buildCommand": "cd frontend && VITE_STATIC=1 npm run build && cp -R ../snapshot dist/snapshot",
+  "outputDirectory": "frontend/dist",
+  "headers": [
+    { "source": "/snapshot/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
+  ]
+}

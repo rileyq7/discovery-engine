@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Activity, BookOpen, Database, FlaskConical, Lightbulb, LayoutDashboard, Menu, Moon, Sun } from "lucide-react";
-import { api } from "./lib/api";
+import { api, snapshotMeta, STATIC } from "./lib/api";
 import { useHashRoute, useLiveUpdates } from "./lib/live";
 import { cn } from "./lib/utils";
 import Dashboard from "./pages/Dashboard";
@@ -29,6 +29,7 @@ export default function App() {
   const [navOpen, setNavOpen] = useState(false);
   const loop = useQuery({ queryKey: ["loop"], queryFn: api.loop, refetchInterval: 15_000 });
   const pending = useQuery({ queryKey: ["experiments"], queryFn: api.experiments });
+  const meta = useQuery({ queryKey: ["snapshot-meta"], queryFn: snapshotMeta, enabled: STATIC, refetchInterval: 60_000 });
   const nProposed = pending.data?.filter((e) => e.state === "proposed").length ?? 0;
 
   useEffect(() => {
@@ -83,10 +84,16 @@ export default function App() {
             <span className={cn("h-2 w-2 rounded-full", loop.data?.worker.online ? "bg-good" : "bg-muted")} />
             Worker {loop.data?.worker.online ? "online" : "offline"}
           </div>
-          <div className="flex items-center gap-2 text-muted">
-            <span className={cn("h-2 w-2 rounded-full", connected ? "bg-good" : "bg-bad")} />
-            {connected ? "Live" : "Reconnecting…"}
-          </div>
+          {STATIC ? (
+            <div className="text-muted" title="Rebuilt from the repo after every agent cycle">
+              Snapshot {meta.data ? new Date(meta.data.generated_at).toLocaleString([], { dateStyle: "short", timeStyle: "short" }) : "…"}
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 text-muted">
+              <span className={cn("h-2 w-2 rounded-full", connected ? "bg-good" : "bg-bad")} />
+              {connected ? "Live" : "Reconnecting…"}
+            </div>
+          )}
           <button className="flex items-center gap-1.5 text-muted hover:text-fg cursor-pointer" onClick={() => setDark((d) => !d)}>
             {dark ? <Sun size={13} /> : <Moon size={13} />} {dark ? "Light mode" : "Dark mode"}
           </button>
@@ -98,6 +105,12 @@ export default function App() {
           <button onClick={() => setNavOpen(true)} aria-label="Open navigation" className="cursor-pointer"><Menu size={18} /></button>
           <span className="text-sm font-semibold">Discovery Engine</span>
         </div>
+        {STATIC && (
+          <div className="border-b border-border bg-panel-2 px-4 py-1.5 text-center text-xs text-muted md:px-6">
+            Read-only snapshot of the lab, updated after each hourly agent cycle. Approving, pausing and editing
+            happen in the local app.
+          </div>
+        )}
         <div className="mx-auto max-w-[1400px] px-4 py-5 md:px-6">{page}</div>
       </main>
     </div>

@@ -63,8 +63,9 @@ Write one finding per analyzed experiment to `/tmp/finding.json`, using the temp
 
 ## 7. Commit and push
 1. `T cycle-end --summary "<one line: what was proposed, run, found>"`
-2. `git add lab && git commit -m "cycle <date> #<n>: <summary>" && git push`
-   (on a push conflict: `git pull --rebase` and push again). **Exactly one commit per cycle**, touching only `lab/`.
+2. `PYTHONPATH=backend backend/.venv/bin/python -m app.snapshot` (refreshes `snapshot/`, which the hosted dashboard serves)
+3. `git add lab snapshot && git commit -m "cycle <date> #<n>: <summary>" && git push`
+   (on a push conflict: `git pull --rebase` and push again). **Exactly one commit per cycle**, touching only `lab/` and `snapshot/`.
 
 ## Never
 - Edit or delete anything under `lab/runs/` or `lab/findings/` by hand; the tools only append.

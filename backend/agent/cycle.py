@@ -47,11 +47,19 @@ def git_pull() -> None:
 
 
 def git_commit_push(message: str, push: bool = True) -> bool:
-    git("add", "-A", "--", "lab")
-    if not git("diff", "--cached", "--quiet", "--", "lab").returncode:
+    # snapshot/ is the read-only copy of the lab that the hosted dashboard (Vercel) serves
+    try:
+        from app.snapshot import export
+
+        export(REPO_ROOT / "snapshot")
+    except Exception as e:
+        log(f"snapshot export failed (committing lab/ anyway): {e}")
+    paths = ["lab", "snapshot"] if (REPO_ROOT / "snapshot").exists() else ["lab"]
+    git("add", "-A", "--", *paths)
+    if not git("diff", "--cached", "--quiet", "--", *paths).returncode:
         log("nothing to commit")
         return False
-    r = git("commit", "-m", message, "--", "lab")
+    r = git("commit", "-m", message, "--", *paths)
     if r.returncode:
         log(f"commit failed: {r.stderr.strip()}")
         return False

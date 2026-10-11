@@ -1,6 +1,7 @@
 /* shadcn/ui-style primitives (copied pattern: cva + tailwind-merge), kept in one file. */
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { STATIC } from "../../lib/api";
 import { cn } from "../../lib/utils";
 
 export const buttonVariants = cva(
@@ -21,10 +22,13 @@ export const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, ...props }, ref) => (
-  <button ref={ref} className={cn(buttonVariants({ variant, size }), className)} {...props} />
-));
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  /** Still shown in the read-only hosted snapshot (exports, view toggles). Every other button is hidden there. */
+  safe?: boolean;
+}
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, safe, ...props }, ref) =>
+  STATIC && !safe ? null : <button ref={ref} className={cn(buttonVariants({ variant, size }), className)} {...props} />,
+);
 Button.displayName = "Button";
 
 export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

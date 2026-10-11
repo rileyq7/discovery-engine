@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import type { Metric } from "./api";
+import { STATIC, type Metric } from "./api";
 
 /** Subscribe to the backend's Server-Sent Events stream and keep TanStack Query caches fresh. */
 export function useLiveUpdates(): boolean {
@@ -8,6 +8,7 @@ export function useLiveUpdates(): boolean {
   const [connected, setConnected] = useState(false);
 
   useEffect(() => {
+    if (STATIC) return; // the hosted snapshot has no backend to stream from
     let es: EventSource | null = null;
     let retry: ReturnType<typeof setTimeout> | undefined;
     let pending = new Set<string>();

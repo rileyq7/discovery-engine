@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import { Download, FileText, Plus, Sparkles } from "lucide-react";
-import { api, type Finding } from "../lib/api";
+import { api, exportUrl, type Finding } from "../lib/api";
 import { fmtTime, shortId } from "../lib/utils";
 import { PageHeader } from "../App";
 import { MarkdownEditor } from "../components/MarkdownEditor";
@@ -156,8 +156,8 @@ function Editor({ id }: { id: string }) {
         <span className="text-xs text-muted">{save.isPending ? "saving…" : dirty ? "unsaved" : `saved ${fmtTime(paper.data.updated_at)}`}</span>
         <div className="ml-auto flex flex-wrap gap-2">
           <Button size="sm" onClick={() => setDraftOpen(true)} disabled={drafting}><Sparkles size={13} /> {drafting ? `Drafting ${paper.data.drafting?.section}…` : "Ask agent to draft a section"}</Button>
-          <a href={`/api/papers/${id}/export?format=markdown`}><Button size="sm" variant="outline"><Download size={13} /> Markdown</Button></a>
-          <a href={`/api/papers/${id}/export?format=latex`}><Button size="sm" variant="outline"><Download size={13} /> LaTeX</Button></a>
+          <a href={exportUrl(id, "markdown")}><Button safe size="sm" variant="outline"><Download size={13} /> Markdown</Button></a>
+          <a href={exportUrl(id, "latex")}><Button safe size="sm" variant="outline"><Download size={13} /> LaTeX</Button></a>
         </div>
       </div>
       {paper.data.drafting?.status === "error" && <ErrorText error={`Drafting failed: ${paper.data.drafting.error}`} />}

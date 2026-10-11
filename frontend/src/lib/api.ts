@@ -125,7 +125,23 @@ function formatDetail(d: unknown): string {
   return JSON.stringify(d);
 }
 
+/** Hosted build (Vercel): GETs read the JSON snapshot that each agent cycle commits; nothing can be changed. */
+export const STATIC = import.meta.env.VITE_STATIC === "1";
+export const READ_ONLY_MSG = "This is a read-only snapshot. Run the lab locally (make dev) to make changes.";
+
+export const exportUrl = (id: string, format: "markdown" | "latex") =>
+  STATIC ? `/snapshot/api/papers/${id}/export.${format === "latex" ? "tex" : "md"}` : `/api/papers/${id}/export?format=${format}`;
+
+export type SnapshotMeta = { generated_at: string; experiments: number; runs: number };
+export const snapshotMeta = (): Promise<SnapshotMeta> => fetch("/snapshot/meta.json").then((r) => r.json());
+
 async function req<T>(method: string, path: string, body?: unknown): Promise<T> {
+  if (STATIC) {
+    if (method !== "GET") throw new ApiError(405, READ_ONLY_MSG);
+    const res = await fetch(`/snapshot/api${path.split("?")[0]}.json`);
+    if (!res.ok) throw new ApiError(res.status, "not in the snapshot");
+    return res.json() as Promise<T>;
+  }
   const res = await fetch(`/api${path}`, {
     method,
     headers: body !== undefined ? { "Content-Type": "application/json" } : undefined,

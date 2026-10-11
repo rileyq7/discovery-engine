@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type Finding } from "../lib/api";
+import { api, STATIC, type Finding } from "../lib/api";
 import { fmtTime, shortId } from "../lib/utils";
 import { VERDICT_COLOR, VerdictBadge } from "./badges";
 import { Badge, Button, ErrorText, Input, Select } from "./ui";
@@ -53,7 +53,7 @@ export function FindingCard({ f, actions = true, draggable = false }: { f: Findi
           {f.notes.map((n, i) => <li key={i}><span className="text-muted">{n.actor}:</span> {n.text}</li>)}
         </ul>
       )}
-      {actions && (
+      {actions && !STATIC && (
         <div className="mt-3 flex flex-wrap items-center gap-1.5">
           <Select className="h-7 text-xs" value="" onChange={(e) => e.target.value && promote.mutate(e.target.value)}>
             <option value="">Promote / set status…</option>
