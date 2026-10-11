@@ -1,0 +1,36 @@
+[23:05:28] experiment exp-20261011-225358-1c67 (E5) seed 27: When accel_step structure forms depends on how much the task needs it. At coarse sampling (N=16), per-step acceleration is 16x larger relative to orbit size than at N=64, so the accel_step probe crosses its control margin earlier than the step-100 crossing seen at N=64 (f-20261011-203659-4e2f), with the same architecture and schedule.
+[23:05:28] model: 209,094 params on mps; dataset d09ae7c88bfc; 9000 train / 1000 val systems
+[23:05:29] step 0: val_mse=2.949e-02 cv_baseline=6.080e-03 ratio=4.851
+[23:05:32] step 25: val_mse=3.573e-03 cv_baseline=6.080e-03 ratio=0.588
+[23:05:34] step 50: val_mse=1.413e-03 cv_baseline=6.080e-03 ratio=0.232
+[23:05:37] step 75: val_mse=6.298e-04 cv_baseline=6.080e-03 ratio=0.104
+[23:05:39] step 100: val_mse=3.684e-04 cv_baseline=6.080e-03 ratio=0.061
+[23:05:41] step 125: val_mse=3.398e-04 cv_baseline=6.080e-03 ratio=0.056
+[23:05:45] step 150: val_mse=2.139e-04 cv_baseline=6.080e-03 ratio=0.035
+[23:05:48] step 175: val_mse=2.018e-04 cv_baseline=6.080e-03 ratio=0.033
+[23:05:51] step 200: val_mse=1.631e-04 cv_baseline=6.080e-03 ratio=0.027
+[23:05:54] step 225: val_mse=1.334e-04 cv_baseline=6.080e-03 ratio=0.022
+[23:05:57] step 250: val_mse=1.125e-04 cv_baseline=6.080e-03 ratio=0.019
+[23:06:00] step 275: val_mse=1.092e-04 cv_baseline=6.080e-03 ratio=0.018
+[23:06:04] step 300: val_mse=1.179e-04 cv_baseline=6.080e-03 ratio=0.019
+[23:06:07] step 325: val_mse=9.513e-05 cv_baseline=6.080e-03 ratio=0.016
+[23:06:10] step 350: val_mse=8.896e-05 cv_baseline=6.080e-03 ratio=0.015
+[23:06:15] step 375: val_mse=8.298e-05 cv_baseline=6.080e-03 ratio=0.014
+[23:06:18] step 400: val_mse=6.638e-05 cv_baseline=6.080e-03 ratio=0.011
+[23:06:23] step 425: val_mse=6.101e-05 cv_baseline=6.080e-03 ratio=0.010
+[23:06:27] step 450: val_mse=5.778e-05 cv_baseline=6.080e-03 ratio=0.010
+[23:06:31] step 475: val_mse=5.282e-05 cv_baseline=6.080e-03 ratio=0.009
+[23:06:36] step 500: val_mse=5.405e-05 cv_baseline=6.080e-03 ratio=0.009
+[23:06:40] step 525: val_mse=4.644e-05 cv_baseline=6.080e-03 ratio=0.008
+[23:06:43] step 550: val_mse=4.654e-05 cv_baseline=6.080e-03 ratio=0.008
+[23:06:47] step 575: val_mse=4.542e-05 cv_baseline=6.080e-03 ratio=0.007
+[23:06:50] step 600: val_mse=4.464e-05 cv_baseline=6.080e-03 ratio=0.007
+[23:06:50] training done in 1.4 min; beats constant-velocity baseline: True
+[23:06:52] random-model control: force=0.14/0.41/0.42/0.40/0.40, accel_step=0.64/0.76/0.76/0.77/0.76, distance=-0.05/0.17/0.26/0.33/0.47, energy=-0.05/0.01/0.13/0.26/0.31
+[23:06:52] probes @ step 0: best force R2=0.402 (layer 1)
+[23:06:56] probes @ step 125: best force R2=0.468 (layer 4)
+[23:06:59] probes @ step 250: best force R2=0.500 (layer 1)
+[23:07:03] probes @ step 375: best force R2=0.518 (layer 1)
+[23:07:06] probes @ step 500: best force R2=0.535 (layer 1)
+[23:07:09] probes @ step 600: best force R2=0.546 (layer 1)
+[23:07:09] run complete in 1.7 min

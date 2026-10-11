@@ -1,0 +1,36 @@
+run-20261011-230710-af02: [23:08:58] experiment exp-20261011-225358-5530 (E5) seed 29: At fine sampling (N=256), per-step acceleration is 16x smaller relative to orbit size than at N=64, so next-step prediction needs less of it. The accel_step probe therefore crosses its control margin later than the step-100 crossing at N=64 (f-20261011-203659-4e2f), or not at all within 600 steps.
+run-20261011-230710-af02: [23:08:58] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+run-20261011-230710-af02: [23:09:00] step 0: val_mse=1.279e-04 cv_baseline=1.010e-07 ratio=1267.121
+run-20261011-230710-af02: [23:09:02] step 25: val_mse=2.468e-05 cv_baseline=1.010e-07 ratio=244.439
+run-20261011-230710-af02: [23:09:08] step 50: val_mse=1.550e-05 cv_baseline=1.010e-07 ratio=153.495
+run-20261011-230710-af02: [23:09:11] step 75: val_mse=1.189e-05 cv_baseline=1.010e-07 ratio=117.739
+run-20261011-230710-af02: [23:09:15] step 100: val_mse=8.770e-06 cv_baseline=1.010e-07 ratio=86.859
+run-20261011-230710-af02: [23:09:18] step 125: val_mse=5.447e-06 cv_baseline=1.010e-07 ratio=53.944
+run-20261011-230710-af02: [23:09:22] step 150: val_mse=3.592e-06 cv_baseline=1.010e-07 ratio=35.574
+run-20261011-230710-af02: [23:09:25] step 175: val_mse=2.386e-06 cv_baseline=1.010e-07 ratio=23.636
+run-20261011-230710-af02: [23:09:29] step 200: val_mse=1.931e-06 cv_baseline=1.010e-07 ratio=19.125
+run-20261011-230710-af02: [23:09:33] step 225: val_mse=1.630e-06 cv_baseline=1.010e-07 ratio=16.140
+run-20261011-230710-af02: [23:09:36] step 250: val_mse=1.258e-06 cv_baseline=1.010e-07 ratio=12.460
+run-20261011-230710-af02: [23:09:39] step 275: val_mse=1.005e-06 cv_baseline=1.010e-07 ratio=9.953
+run-20261011-230710-af02: [23:09:42] step 300: val_mse=1.009e-06 cv_baseline=1.010e-07 ratio=9.997
+run-20261011-230710-af02: [23:09:45] step 325: val_mse=9.693e-07 cv_baseline=1.010e-07 ratio=9.600
+run-20261011-230710-af02: [23:09:49] step 350: val_mse=8.270e-07 cv_baseline=1.010e-07 ratio=8.190
+run-20261011-230710-af02: [23:09:52] step 375: val_mse=6.805e-07 cv_baseline=1.010e-07 ratio=6.740
+run-20261011-230710-af02: [23:09:55] step 400: val_mse=5.285e-07 cv_baseline=1.010e-07 ratio=5.234
+run-20261011-230710-af02: [23:09:59] step 425: val_mse=5.507e-07 cv_baseline=1.010e-07 ratio=5.454
+run-20261011-230710-af02: [23:10:02] step 450: val_mse=4.708e-07 cv_baseline=1.010e-07 ratio=4.663
+run-20261011-230710-af02: [23:10:05] step 475: val_mse=4.059e-07 cv_baseline=1.010e-07 ratio=4.020
+run-20261011-230710-af02: [23:10:08] step 500: val_mse=3.778e-07 cv_baseline=1.010e-07 ratio=3.741
+run-20261011-230710-af02: [23:10:11] step 525: val_mse=3.821e-07 cv_baseline=1.010e-07 ratio=3.785
+run-20261011-230710-af02: [23:10:14] step 550: val_mse=3.330e-07 cv_baseline=1.010e-07 ratio=3.298
+run-20261011-230710-af02: [23:10:17] step 575: val_mse=3.236e-07 cv_baseline=1.010e-07 ratio=3.205
+run-20261011-230710-af02: [23:10:20] step 600: val_mse=3.230e-07 cv_baseline=1.010e-07 ratio=3.199
+run-20261011-230710-af02: [23:10:20] training done in 1.4 min; beats constant-velocity baseline: False
+run-20261011-230710-af02: [23:10:21] random-model control: force=0.18/0.54/0.55/0.55/0.56, accel_step=0.60/0.69/0.70/0.70/0.72, distance=0.06/0.23/0.37/0.44/0.64, energy=0.00/0.16/0.26/0.33/0.41
+run-20261011-230710-af02: [23:10:22] probes @ step 0: best force R2=0.560 (layer 4)
+run-20261011-230710-af02: [23:10:25] probes @ step 125: best force R2=0.567 (layer 2)
+run-20261011-230710-af02: [23:10:28] probes @ step 250: best force R2=0.566 (layer 1)
+run-20261011-230710-af02: [23:10:31] probes @ step 375: best force R2=0.562 (layer 1)
+run-20261011-230710-af02: [23:10:34] probes @ step 500: best force R2=0.558 (layer 1)
+run-20261011-230710-af02: [23:10:37] probes @ step 600: best force R2=0.555 (layer 1)
+run-20261011-230710-af02: [23:10:37] run complete in 1.7 min

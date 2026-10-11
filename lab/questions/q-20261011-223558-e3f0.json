@@ -1,7 +1,10 @@
 {
   "id": "q-20261011-223558-e3f0",
   "text": "Does the training step at which accel_step forms (step 100 at N=64) shift with steps_per_orbit? If structure forms earlier at N=16 and later or never at N=256, formation timing is set by task demand rather than by a fixed stage of optimization.",
-  "status": "open",
-  "linked_finding_ids": [],
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261011-231141-ab3a",
+    "f-20261011-231210-478d"
+  ],
   "created_at": "2026-10-11T22:35:58"
 }

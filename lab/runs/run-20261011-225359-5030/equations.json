@@ -1,0 +1,99 @@
+{
+  "force": {
+    "equation": "0.8129137/r",
+    "complexity": 3,
+    "loss": 0.07020286,
+    "fit_error_vs_probe": 0.26728194881291895,
+    "fit_error_vs_true_law": 0.43488777228141556,
+    "true_law_error_vs_probe": 0.600279664709645,
+    "law_recovered": false,
+    "true_law": "m2 / r**2",
+    "variables": [
+      "r",
+      "m2"
+    ],
+    "pareto": [
+      {
+        "complexity": 1,
+        "loss": 0.3274864,
+        "equation": "0.876903530000000"
+      },
+      {
+        "complexity": 3,
+        "loss": 0.07020286,
+        "equation": "0.8129137/r"
+      },
+      {
+        "complexity": 5,
+        "loss": 0.0666848,
+        "equation": "-0.13511223 + 0.89228714/r"
+      },
+      {
+        "complexity": 7,
+        "loss": 0.06630752,
+        "equation": "(6.631957 - r)/(7.1978397*r)"
+      },
+      {
+        "complexity": 11,
+        "loss": 0.06526154,
+        "equation": "-m2 + (r + 1.000965 - (-1)*8.775946/r)/8.671708"
+      }
+    ],
+    "layer": 1,
+    "probe_r2": 0.6918982191756756
+  },
+  "accel_step": {
+    "equation": "r*(0.27529943 - a/r)**2*0.013422127",
+    "complexity": 10,
+    "loss": 3.6708302e-06,
+    "fit_error_vs_probe": 0.20791555507075454,
+    "fit_error_vs_true_law": 0.2453614743914657,
+    "true_law_error_vs_probe": 0.3498396358680726,
+    "law_recovered": false,
+    "true_law": "0.00963829 * a**3 / ((1 + m2) * r**2)",
+    "variables": [
+      "r",
+      "m2",
+      "a"
+    ],
+    "pareto": [
+      {
+        "complexity": 1,
+        "loss": 4.4301345e-05,
+        "equation": "0.00761150700000000"
+      },
+      {
+        "complexity": 3,
+        "loss": 3.535813e-05,
+        "equation": "a*0.0073182364"
+      },
+      {
+        "complexity": 5,
+        "loss": 2.1263522e-05,
+        "equation": "a*0.008548557/r"
+      },
+      {
+        "complexity": 6,
+        "loss": 8.659425e-06,
+        "equation": "0.007976331*a**2/r"
+      },
+      {
+        "complexity": 9,
+        "loss": 6.428546e-06,
+        "equation": "(-0.31576842 - (0.27635616 - a)/r)*0.0193107"
+      },
+      {
+        "complexity": 10,
+        "loss": 3.6708302e-06,
+        "equation": "r*(0.27529943 - a/r)**2*0.013422127"
+      },
+      {
+        "complexity": 18,
+        "loss": 3.514377e-06,
+        "equation": "(0.35521382 - a/r)**2*0.017145997*(0.09667423 - (a*m2*0.23452404 - r))"
+      }
+    ],
+    "layer": 4,
+    "probe_r2": 0.831095476544653
+  }
+}

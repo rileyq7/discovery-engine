@@ -1,0 +1,10 @@
+{
+  "id": "q-20261011-225358-2acc",
+  "text": "At N=256 the constant-velocity baseline is much stronger, so val_mse_ratio is not comparable across steps_per_orbit. Should formation timing be compared against the step where val_mse_ratio falls to a fixed fraction of its step-0 value, rather than against the step where it falls below 1?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-231141-ab3a",
+    "f-20261011-231210-478d"
+  ],
+  "created_at": "2026-10-11T22:53:58"
+}

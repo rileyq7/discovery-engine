@@ -1,0 +1,7 @@
+{
+  "id": "q-20261011-231210-5ce0",
+  "text": "Is the N=256 failure to beat the baseline (val MSE about 3e-7, where the per-step displacement change is tiny) caused by target scale or normalization rather than capacity? If inputs and targets are normalized per step, do N=256 models beat the baseline within 600 steps, and does the accel_step formation step change?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-11T23:12:10"
+}

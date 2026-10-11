@@ -3,7 +3,8 @@
   "text": "With m2 fixed, force (0.5/r^2) and accel_step (proportional to a^3/r^2) differ only by the a^3 orbit-scale factor, yet accel_step is decoded at 0.92-0.95 versus 0.73-0.75 for force. Is accel_step's advantage just that a^3, which varies widely across systems and is visible in the inputs, dominates its variance? Probing a^3 alone, and probing accel_step after removing each system's mean, would show whether any per-snapshot 1/r^2 structure is left.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261011-223103-dc29"
+    "f-20261011-223103-dc29",
+    "f-20261011-225319-d380"
   ],
   "created_at": "2026-10-11T22:30:00"
 }

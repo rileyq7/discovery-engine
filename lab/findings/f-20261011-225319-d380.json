@@ -1,0 +1,24 @@
+{
+  "id": "f-20261011-225319-d380",
+  "claim": "Replication with seed 16 (m2 fixed at 0.5, e in [0, 0.5], 3000/3000 steps, val_mse_ratio 0.0098) again shows no lift in force decoding. Force probe R2 = 0.714 at layer 4 (control 0.541, margin 0.173), while accel_step R2 = 0.940 at layer 4 (control 0.775, margin 0.165). That gives accel_step a raw R2 lead of 0.226, with distance at 0.884 (layer 1, margin 0.506) and energy at 0.910 (layer 1, margin 0.567). The outcome matches the expected-if-false case: force stays <= 0.78 and accel_step leads by >= 0.12. So fixing m2 does not raise force R2 to >= 0.85, and the roughly 0.71-0.75 force ceiling seen in seeds 14 and 15 reproduces, even though the margins over control are similar for force and accel_step (0.17 each).",
+  "verdict": "refuted",
+  "status": "refuted",
+  "evidence_run_ids": [
+    "run-20261011-224618-d14c"
+  ],
+  "confidence_note": "This experiment has only one completed run, seed 16, at full completion. Together with seeds 14 and 15 from f-20261011-223000-b5f9 (force 0.750 and 0.732, accel_step 0.924 and 0.946), three seeds now give the same pattern: force R2 between 0.71 and 0.75 and an accel_step lead of 0.17-0.23. seeds_agree is false because only this run can be cited here. One difference: force peaks at layer 4 in seed 16 but at layers 1-2 in seeds 14 and 15, so the force layer profile may be flat or seed-dependent. The refutation covers only 'missing m2 information caps force'. It does not show the model lacks a 1/r^2 feature, because a linear probe on raw force could be limited by nonlinear readout. Any of these would change the verdict: force R2 >= 0.85 from a probe on log(force) or 1/r^2, an MLP probe reaching that level, or a further seed with force R2 >= 0.85.",
+  "created_at": "2026-10-11T22:53:19",
+  "experiment_id": "exp-20261011-224613-413c",
+  "created_by": "agent",
+  "replicates": "f-20261011-223000-b5f9",
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "refuted",
+      "at": "2026-10-11T22:53:19",
+      "actor": "agent"
+    }
+  ]
+}

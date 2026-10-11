@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-225358-5530",
+  "family": "E5",
+  "hypothesis": "At fine sampling (N=256), per-step acceleration is 16x smaller relative to orbit size than at N=64, so next-step prediction needs less of it. The accel_step probe therefore crosses its control margin later than the step-100 crossing at N=64 (f-20261011-203659-4e2f), or not at all within 600 steps.",
+  "expected_if_true": "In both seeds, the accel_step margin over control first reaches >= 0.1 at step >= 150, or never within 600 steps, while distance still forms by step 50 as it did at N=64.",
+  "expected_if_false": "In both seeds, the accel_step margin reaches >= 0.1 at step <= 100, the same as or earlier than at N=64. That would mean formation timing is a fixed stage of optimisation rather than set by how much the task needs acceleration.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At fine sampling (N=256), per-step acceleration is 16x smaller relative to orbit size than at N=64, so next-step prediction needs less of it. The accel_step probe therefore crosses its control margin later than the step-100 crossing at N=64 (f-20261011-203659-4e2f), or not at all within 600 steps.",
+    "expected_if_true": "In both seeds, the accel_step margin over control first reaches >= 0.1 at step >= 150, or never within 600 steps, while distance still forms by step 50 as it did at N=64.",
+    "expected_if_false": "In both seeds, the accel_step margin reaches >= 0.1 at step <= 100, the same as or earlier than at N=64. That would mean formation timing is a fixed stage of optimisation rather than set by how much the task needs acceleration.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 25
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      29,
+      30
+    ],
+    "budget": {
+      "max_compute_hours": 0.15
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T22:53:58",
+  "updated_at": "2026-10-11T23:12:10",
+  "verdict": "refuted",
+  "estimate_hours": 0.1047,
+  "compute_hours": 0.056,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T22:53:58",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T22:53:58",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T22:53:59",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T23:07:10",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T23:10:37",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T23:12:10",
+      "actor": "agent",
+      "note": "finding f-20261011-231210-478d"
+    }
+  ]
+}

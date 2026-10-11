@@ -2,6 +2,9 @@
   "id": "q-20261011-223558-0036",
   "text": "Is accel_step's high random-control R2 (0.71-0.76 at e <= 0.5) partly due to per-step acceleration being nearly a linear function of second differences of the input positions? If so, would a probe at a token position whose prior inputs are masked, or a control built from finite differences of the raw inputs, give a fairer baseline for 'learned' acceleration?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261011-231141-ab3a",
+    "f-20261011-231210-478d"
+  ],
   "created_at": "2026-10-11T22:35:58"
 }

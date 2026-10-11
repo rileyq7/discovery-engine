@@ -1,0 +1,9 @@
+{
+  "id": "q-20261011-231141-d4d5",
+  "text": "In both N=16 seeds, val_mse_ratio falls to about 0.23 by step 50, before accel_step forms and while force margin is still 0.004. Distance and energy margins are already 0.4-0.7 at that point. Is early next-step accuracy carried by distance and orbit-scale features, with accel_step and force forming only during the later refinement phase (val_mse_ratio 0.06 to 0.006)?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-231210-478d"
+  ],
+  "created_at": "2026-10-11T23:11:41"
+}

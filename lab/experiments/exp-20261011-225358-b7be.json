@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-225358-b7be",
+  "family": "E3",
+  "hypothesis": "Replication of f-20261011-224242-1e4d (seed 25 only). With m2 fixed in [0.49, 0.51] and e in [0, 0.7], the accel_step probe at layer 4 reaches R2 >= 0.8, but its symbolic fit has r exponent near -1 (a^2/r-like), not the -2 of the true per-snapshot law a^3/r^2. That would mean the model's linearly decodable gravity direction is not the inverse-square quantity.",
+  "expected_if_true": "In both seeds (24 and 26), accel_step best-layer R2 >= 0.8, beating control by >= 0.1, and the accel_step-direction symbolic fit has an effective r exponent in [-1.4, -0.6] with fit_error_vs_true_law >= 0.2. Together with seed 25 that gives three seeds with r^-1. Force R2 stays <= 0.78, with an r^-1 fit.",
+  "expected_if_false": "At least one seed with accel_step R2 >= 0.8 gives an accel_step fit with r exponent in [-2.5, -1.5] and fit_error < 0.2, which would make seed 25's r^-1 look seed-specific. If either seed's accel_step R2 falls below 0.8, its fit is uninterpretable and the result is inconclusive for that seed.",
+  "config": {
+    "family": "E3",
+    "hypothesis": "Replication of f-20261011-224242-1e4d (seed 25 only). With m2 fixed in [0.49, 0.51] and e in [0, 0.7], the accel_step probe at layer 4 reaches R2 >= 0.8, but its symbolic fit has r exponent near -1 (a^2/r-like), not the -2 of the true per-snapshot law a^3/r^2. That would mean the model's linearly decodable gravity direction is not the inverse-square quantity.",
+    "expected_if_true": "In both seeds (24 and 26), accel_step best-layer R2 >= 0.8, beating control by >= 0.1, and the accel_step-direction symbolic fit has an effective r exponent in [-1.4, -0.6] with fit_error_vs_true_law >= 0.2. Together with seed 25 that gives three seeds with r^-1. Force R2 stays <= 0.78, with an r^-1 fit.",
+    "expected_if_false": "At least one seed with accel_step R2 >= 0.8 gives an accel_step fit with r exponent in [-2.5, -1.5] and fit_error < 0.2, which would make seed 25's r^-1 look seed-specific. If either seed's accel_step R2 falls below 0.8, its fit is uninterpretable and the result is inconclusive for that seed.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.49,
+        0.51
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.7
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": true
+    },
+    "eval_sets": [],
+    "seeds": [
+      24,
+      26
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T22:53:58",
+  "updated_at": "2026-10-11T23:11:18",
+  "verdict": "supported",
+  "estimate_hours": 0.3814,
+  "compute_hours": 0.161,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T22:53:58",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T22:53:58",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T22:53:59",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T22:53:59",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T23:03:47",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T23:11:18",
+      "actor": "agent",
+      "note": "finding f-20261011-231118-7a37"
+    }
+  ]
+}

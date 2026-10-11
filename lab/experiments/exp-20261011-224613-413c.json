@@ -58,11 +58,11 @@
       "max_compute_hours": 0.185
     }
   },
-  "state": "analyzing",
+  "state": "complete",
   "proposed_by": "claude-code (for the user)",
   "created_at": "2026-10-11T22:46:13",
-  "updated_at": "2026-10-11T22:51:41",
-  "verdict": null,
+  "updated_at": "2026-10-11T22:53:19",
+  "verdict": "refuted",
   "estimate_hours": 0.1482,
   "compute_hours": 0.0887,
   "replicates_finding_id": "f-20261011-223000-b5f9",
@@ -103,6 +103,12 @@
       "at": "2026-10-11T22:51:41",
       "actor": "worker",
       "note": "1/1 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T22:53:19",
+      "actor": "agent",
+      "note": "finding f-20261011-225319-d380"
     }
   ]
 }
