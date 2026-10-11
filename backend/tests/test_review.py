@@ -146,7 +146,10 @@ def test_tool_less_flags_passed_to_claude(monkeypatch):
     seen = {}
 
     class P:
-        returncode, stdout, stderr = 0, json.dumps({"result": "{}"}), ""
+        returncode, stderr = 0, ""
+        stdout = "\n".join(json.dumps(e) for e in [
+            {"type": "assistant", "message": {"content": [{"type": "thinking", "thinking": "hmm"}]}},
+            {"type": "result", "result": "{}", "modelUsage": {"claude-opus-5-5": {}}}])
 
     def fake_run(cmd, **kw):
         seen["cmd"] = cmd
@@ -154,9 +157,13 @@ def test_tool_less_flags_passed_to_claude(monkeypatch):
 
     monkeypatch.setattr(claude_cli.subprocess, "run", fake_run)
     monkeypatch.setattr(claude_cli, "claude_bin", lambda: "claude")
-    claude_cli.run_claude("hi", no_tools=True)
+    assert claude_cli.run_claude("hi", no_tools=True, role="reviewer") == "{}"
     cmd = seen["cmd"]
     assert cmd[cmd.index("--tools") + 1] == "" and "--strict-mcp-config" in cmd
+    from engine.paths import lab_dir
+
+    rec = json.loads(sorted((lab_dir() / "transcripts").glob("*.jsonl"))[-1].read_text().splitlines()[-1])
+    assert rec["role"] == "reviewer" and rec["thinking"] == ["hmm"] and rec["model"] == "claude-opus-5-5"
 
 
 def test_probes_use_several_random_controls(fresh_lab):

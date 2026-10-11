@@ -7,13 +7,13 @@ import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from app import store
-from app.api import data, experiments, findings, loop, papers, runs
+from app.api import chat, data, experiments, findings, loop, papers, runs
 
 
 @asynccontextmanager
@@ -24,8 +24,17 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="Discovery Engine", lifespan=lifespan)
+@app.middleware("http")
+async def no_store_api(request: Request, call_next):
+    """Lab state changes constantly: API responses must never come from a browser cache."""
+    resp = await call_next(request)
+    if request.url.path.startswith("/api/"):
+        resp.headers.setdefault("Cache-Control", "no-store")
+    return resp
+
+
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-for r in (experiments.router, runs.router, findings.router, papers.router, loop.router, data.router):
+for r in (experiments.router, runs.router, findings.router, papers.router, loop.router, data.router, chat.router):
     app.include_router(r)
     app.include_router(r, prefix="/api")
 
@@ -88,5 +97,7 @@ if _dist.exists() and not os.environ.get("DE_NO_STATIC"):
 
     @app.get("/{path:path}", include_in_schema=False)
     def spa(path: str):
+        if path == "api" or path.startswith("api/"):  # never answer an unknown API path with the app's HTML
+            raise HTTPException(404, f"no API route /{path}")
         f = _dist / path
         return FileResponse(f if path and f.is_file() else _dist / "index.html")

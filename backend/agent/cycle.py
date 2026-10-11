@@ -95,8 +95,8 @@ def system_prompt() -> str:
     return (PROMPTS / "system.md").read_text()
 
 
-def ask_json(prompt: str):
-    text = run_claude(prompt, system=system_prompt())
+def ask_json(prompt: str, role: str = "research"):
+    text = run_claude(prompt, system=system_prompt(), role=role)
     return extract_json(text)
 
 
@@ -113,7 +113,7 @@ def propose() -> list[dict]:
     feedback = ""
     for attempt in range(MAX_RETRIES + 1):
         try:
-            out = ask_json(prompt + feedback)
+            out = ask_json(prompt + feedback, role="research.propose")
         except Exception as e:
             feedback = f"\n\nYour previous reply could not be parsed ({e}). Reply with ONLY the JSON object."
             log(f"proposal attempt {attempt + 1}: unparseable reply")
@@ -163,7 +163,7 @@ def analyze(exp_id: str) -> dict | None:
     feedback = ""
     for attempt in range(MAX_RETRIES + 1):
         try:
-            f = ask_json(prompt + feedback)
+            f = ask_json(prompt + feedback, role="research.analyze")
         except Exception as e:
             feedback = f"\n\nYour previous reply could not be parsed ({e}). Reply with ONLY the JSON object."
             continue
@@ -285,7 +285,26 @@ def main(argv=None):
         if not store.is_paused() and time.time() - last >= a.interval * 60:
             last = time.time()
             run_cycle(a.max_minutes, push=not a.no_push, draft_paper=not a.no_paper)
+        maybe_digest(push=not a.no_push)
         time.sleep(30)
+
+
+def maybe_digest(push: bool = True) -> None:
+    """The daily highlight reel, written once a day at settings.digest_hour, even while the lab is paused."""
+    from agent import digest
+
+    try:
+        if not digest.due():
+            return
+        log("writing the daily highlight reel")
+        d = digest.generate()
+        with git_lock():
+            git("add", "--", "lab/digests")
+            if git("commit", "-m", f"highlights {d['date']}", "--", "lab/digests").returncode == 0 and push \
+                    and has_remote():
+                git("push")
+    except Exception as e:  # noqa: BLE001 - never break the loop
+        log(f"digest failed: {e}")
 
 
 if __name__ == "__main__":

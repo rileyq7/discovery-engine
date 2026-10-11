@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Read-only window into the lab for the chat tutor (the only shell command it may run).
+#   scripts/lab status | context | results <experiment_id> | pending-analysis | schema
+#   scripts/lab run <run_id>      # raw run record: summary, final metrics, probe table at the last checkpoint
+#   scripts/lab transcripts [N]   # the last N research/reviewer agent replies (default 5)
+set -euo pipefail
+cd "$(dirname "$0")/../backend"
+PY=.venv/bin/python
+case "${1:-}" in
+  status|context|pending-analysis|schema) exec env PYTHONPATH=. "$PY" -m agent.tools "$1" ;;
+  results) exec env PYTHONPATH=. "$PY" -m agent.tools results "${2:?experiment id}" ;;
+  run) exec env PYTHONPATH=. "$PY" -m agent.labcli run "${2:?run id}" ;;
+  transcripts) exec env PYTHONPATH=. "$PY" -m agent.labcli transcripts "${2:-5}" ;;
+  *) echo "usage: scripts/lab status|context|results <exp>|pending-analysis|schema|run <run>|transcripts [N]" >&2; exit 2 ;;
+esac

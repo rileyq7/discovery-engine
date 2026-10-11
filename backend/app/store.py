@@ -61,7 +61,8 @@ DEFAULT_SETTINGS = {
     "auto_approve_families": ["E1", "E2", "E3", "E4", "E5"],
     "max_cycles_per_day": 12,
     "throughput": None,  # overrides DEFAULT_THROUGHPUT in compute estimates when set
-    "step_overhead_s": None,  # overrides DEFAULT_STEP_OVERHEAD_S (seconds per step per layer)
+    "step_overhead_s": None,
+    "digest_hour": 7,  # local hour for the daily highlight reel (None disables it)  # overrides DEFAULT_STEP_OVERHEAD_S (seconds per step per layer)
 }
 
 

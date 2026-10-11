@@ -107,6 +107,46 @@ export interface Review {
   responses: { issue: number; response: string; at: string; actor: string }[];
 }
 
+export interface ChatTool { id: string; name: string; summary: string; error?: boolean }
+export interface ChatMessage {
+  role: "user" | "assistant"; content: string; at: string; thinking?: string; tools?: ChatTool[];
+  error?: string | null; web?: boolean;
+}
+export interface ChatThread { id: string; title: string; created_at: string; updated_at: string; messages: ChatMessage[] }
+export interface ChatThreadBrief { id: string; title: string; created_at: string; updated_at: string; n_messages: number }
+export type ChatEvent =
+  | { type: "text"; delta: string } | { type: "thinking"; delta: string }
+  | ({ type: "tool" } & ChatTool) | { type: "tool_result"; id: string; error: boolean }
+  | { type: "done"; title: string } | { type: "error"; message: string };
+export interface Digest { date: string; since: string; until: string; generated_at: string; markdown: string;
+  counts: { findings: number; experiments: number; runs: number; reviews: number } }
+
+/** Link that opens the tutor with a question prefilled. */
+export const askHref = (question: string) => `#/chat?ask=${encodeURIComponent(question)}`;
+
+/** POST a chat message and feed the server-sent events to `onEvent` as they stream in. */
+export async function sendChat(tid: string, body: { text: string; web: boolean; page?: string }, onEvent: (e: ChatEvent) => void,
+                               signal?: AbortSignal): Promise<void> {
+  const res = await fetch(`/api/chat/threads/${tid}/messages`, {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal,
+  });
+  if (!res.ok || !res.body) throw new ApiError(res.status, res.statusText);
+  const reader = res.body.getReader();
+  const dec = new TextDecoder();
+  let buf = "";
+  for (;;) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i;
+    while ((i = buf.indexOf("\n\n")) >= 0) {
+      const chunk = buf.slice(0, i);
+      buf = buf.slice(i + 2);
+      if (chunk.startsWith("data: ")) onEvent(JSON.parse(chunk.slice(6)) as ChatEvent);
+    }
+  }
+}
+
 export interface LoopStatus {
   paused: boolean; paused_note?: string | null; settings: Settings; compute_used_today: number; cycles_today: number;
   last_cycle: { timestamp: string; type: string; payload: Record<string, unknown> } | null;
@@ -162,6 +202,7 @@ async function req<T>(method: string, path: string, body?: unknown): Promise<T> 
   }
   const res = await fetch(`/api${path}`, {
     method,
+    cache: "no-store", // lab state changes constantly; never reuse a browser-cached response
     headers: body !== undefined ? { "Content-Type": "application/json" } : undefined,
     body: body !== undefined ? JSON.stringify(body) : undefined,
   });
@@ -205,6 +246,11 @@ export const api = {
   replicate: (id: string) => req<Experiment>("POST", `/findings/${id}/replicate`, {}),
   questions: () => req<Question[]>("GET", "/questions"),
   reviews: () => req<Review[]>("GET", "/reviews"),
+  digests: () => req<Digest[]>("GET", "/digests"),
+  chatThreads: () => req<ChatThreadBrief[]>("GET", "/chat/threads"),
+  chatThread: (id: string) => req<ChatThread>("GET", `/chat/threads/${id}`),
+  newChat: (title = "") => req<ChatThread>("POST", "/chat/threads", { title }),
+  deleteChat: (id: string) => req<{ ok: boolean }>("DELETE", `/chat/threads/${id}`),
   addQuestion: (text: string) => req<Question>("POST", "/questions", { text }),
   updateQuestion: (id: string, status: string) => req<Question>("PUT", `/questions/${id}`, { status }),
 

@@ -93,6 +93,14 @@ def reviews(limit: int = 20):
     return list(reversed(review.list_reviews()))[:limit]
 
 
+@router.get("/digests")
+def digests():
+    """Daily highlight reels, newest first."""
+    from agent import digest
+
+    return digest.list_digests()
+
+
 @router.get("/questions")
 def list_questions(status: Optional[str] = None):
     return store.list_questions(status)

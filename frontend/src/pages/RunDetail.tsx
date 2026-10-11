@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { api, type RunDetail } from "../lib/api";
+import { api, type RunDetail, askHref, STATIC } from "../lib/api";
 import { fmtHours, fmtNum, fmtTime, shortId } from "../lib/utils";
 import { PageHeader } from "../App";
 import { FormationChart, LossChart } from "../components/charts";
@@ -108,6 +108,8 @@ function Detail({ runId }: { runId: string }) {
       >
         <StateBadge state={r.status} />
         {r.bad && <Badge tone="bad">marked bad</Badge>}
+        {!STATIC && <a href={askHref(`Walk me through run ${r.id}: what it was testing, how training went, what the probes show, and the physics behind it.`)}
+          className="text-sm text-accent hover:underline">Ask about this run</a>}
         <Button variant="secondary" size="sm" onClick={() => rerun.mutate()} disabled={rerun.isPending}>{rerun.isSuccess ? "Re-run queued" : "Re-run with new seed"}</Button>
         <Button variant="outline" size="sm" onClick={() => annotate.mutate({ bad: !r.bad })}>{r.bad ? "Unmark bad" : "Mark as bad"}</Button>
       </PageHeader>

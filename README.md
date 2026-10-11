@@ -37,6 +37,9 @@ lab/ (committed source of truth) ◄── findings ◄── agent analyzes ◄
   `/api`), and `GET /stream` for live updates over SSE.
 - **Agent** (`backend/agent/`): `CYCLE.md` for the hourly scheduled task, and `cycle.py` for local cycles through
   `claude -p`. Both use the same `agent/tools.py` CLI and validators. No API key and no `anthropic` SDK anywhere.
+- **Tutor and highlights:** "Ask the lab" is a read-only chat that sees the whole project, the live lab state and the
+  agents' reasoning (`lab/transcripts/`), and teaches the physics from an ML starting point. Every morning the loop
+  writes a highlight reel to `lab/digests/` (Highlights page).
 - **UI** (`frontend/`): Dashboard, Experiments, Run detail (probe heatmap with control overlay, formation chart,
   equations), Findings timeline, Papers (CodeMirror + KaTeX preview, drag-in findings and figures, LaTeX export)
   and Data.

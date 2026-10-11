@@ -124,11 +124,11 @@ def draft_section(pid: str, section: str, instructions: str = "", allow_unreplic
                            paper=paper["markdown"][-12000:], facts=json.dumps(facts(allowed), indent=2),
                            protocol=protocol())
     system = (PROMPTS / "system.md").read_text()
-    body = run_claude(prompt, system=system)
+    body = run_claude(prompt, system=system, role="paper")
     bad = sorted(set(FID.findall(body)) - set(allowed_ids))
     if bad:
         body = run_claude(prompt + f"\n\nYour previous draft cited findings that are not allowed: {bad}. "
-                                   "Rewrite it citing only the allowed IDs.", system=system)
+                                   "Rewrite it citing only the allowed IDs.", system=system, role="paper")
         bad = sorted(set(FID.findall(body)) - set(allowed_ids))
         for b in bad:  # last resort: mark rather than silently cite
             body = body.replace(b, f"{b} (NOT CITABLE)")

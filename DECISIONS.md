@@ -110,6 +110,27 @@ Where the spec left something open, these notes record what was picked (usually 
   The model may pause only for `evidence_mismatch` or `guardrail`; anything else is downgraded to FLAG. Flags left
   unanswered for 2 completed cycles escalate to PAUSE. Reviews live in `lab/reviews/` (JSON + Markdown), file-only
   (no index table). A shared `runs/.git.lock` serialises the reviewer's and the loop's git operations.
+- **Agent transcripts.** Every `claude -p` call (research propose/analyze, paper, reviewer, digest) uses
+  stream-json output, and its full reply, any thinking blocks, timing and model are appended to
+  `lab/transcripts/<date>.jsonl`. This is the record of *why* the lab did what it did. Prompts aren't stored, since
+  they are large and derivable from lab state.
+- **Lab tutor chat** ("Ask the lab"). Each thread is a `claude -p` session, resumed on follow-ups, streamed to the UI
+  over SSE. Tools: Read/Grep/Glob inside the repo plus `scripts/lab` (read-only status, context, results, raw runs,
+  transcripts). It cannot edit. `--setting-sources project` keeps user-level permission rules out, which was tested:
+  other Bash commands are denied. Web search is off unless enabled for a message, because queries leave the
+  machine. The system prompt (`agent/prompts/tutor.md`) is written for an ML-fluent, physics-new owner: it bridges
+  from ML, teaches with this lab's runs, and includes a physics primer and related work. Each message carries a live
+  `<lab_state>` snapshot. Threads live in `runs/chats/` (local, gitignored): conversations are personal, not lab
+  records. If a session can't be resumed, the thread is replayed into a fresh one.
+- **Daily highlight reel.** At `settings.digest_hour` (default 07:00) the research loop writes
+  `lab/digests/<date>.md`, even when paused. It covers everything since the previous digest (the first covers 12 h):
+  cycles, the agent's proposing reasoning (from transcripts), experiments, runs, findings, reviews and responses,
+  things needing a human, code changes from git (so fixed bugs aren't reported as open), and a physics concept of the
+  day tied to the night's numbers. It is written by a tool-less `claude -p` in the tutor's voice from facts gathered
+  in code, and shown on the Highlights page plus a dashboard banner.
+- **API caching.** `/api/*` responses carry `Cache-Control: no-store` and the UI fetches with `cache: "no-store"`.
+  Unknown `/api/...` paths return a JSON 404 rather than the SPA's `index.html`; once, a browser cached that HTML for
+  a new endpoint.
 - **Index schema changes.** `lab/index.sqlite` carries `PRAGMA user_version`. On a mismatch, the tables are dropped
   and recreated, and the startup `rebuild_index()` refills them from `lab/`. Non-finite metric values stay in
   `metrics.jsonl` but are skipped in the index, where SQLite would reject them.

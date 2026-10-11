@@ -9,6 +9,20 @@ import { FindingCard } from "../components/FindingCard";
 import { StateBadge } from "../components/badges";
 import { Badge, Button, Card, CardContent, CardHeader, CardTitle, ConfirmButton, Empty, ErrorText, Input, Label, Stat } from "../components/ui";
 
+function HighlightsBanner() {
+  const q = useQuery({ queryKey: ["digests"], queryFn: api.digests });
+  const d = q.data?.[0];
+  const today = new Date().toLocaleDateString("en-CA");
+  if (!d || d.date !== today) return null;
+  const tldr = d.markdown.split(/\n## /)[0].split("**TL;DR**")[1]?.trim();
+  return (
+    <a href="#/highlights" className="mt-4 block rounded-lg border border-accent/40 bg-accent/10 px-4 py-3 hover:border-accent">
+      <div className="text-sm font-semibold">This morning's highlights are ready →</div>
+      {tldr && <div className="mt-1 line-clamp-3 text-xs text-muted">{tldr.replace(/[*`$]/g, "").replace(/^[:\s-]+/, "")}</div>}
+    </a>
+  );
+}
+
 const REVIEW_TONE = { OK: "good", FLAG: "warn", PAUSE: "bad" } as const;
 const SEVERITY_TONE = { info: "neutral", flag: "warn", pause: "bad" } as const;
 
@@ -181,6 +195,7 @@ export default function Dashboard() {
         </Card>
       </div>
 
+      <HighlightsBanner />
       <ReviewerCard />
 
       <h2 className="mb-2 mt-6 text-sm font-semibold">Runs in progress</h2>

@@ -385,7 +385,8 @@ def llm_review(prompt: str) -> dict:
     last_err = None
     for _ in range(2):
         text = run_claude(prompt if last_err is None else prompt + f"\n\nYour last reply was not valid ({last_err}). "
-                          "Reply with ONLY the JSON object.", system=system, no_tools=True)
+                          "Reply with ONLY the JSON object.", system=system, no_tools=True,
+                          role="reviewer")
         try:
             out = extract_json(text)
             if out.get("verdict") in ("OK", "FLAG", "PAUSE") and isinstance(out.get("issues"), list):

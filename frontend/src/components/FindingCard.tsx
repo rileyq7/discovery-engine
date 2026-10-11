@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, STATIC, type Finding } from "../lib/api";
+import { api, askHref, STATIC, type Finding } from "../lib/api";
 import { fmtTime, shortId } from "../lib/utils";
 import { VERDICT_COLOR, VerdictBadge } from "./badges";
 import { Badge, Button, ErrorText, Input, Select } from "./ui";
@@ -46,6 +46,8 @@ export function FindingCard({ f, actions = true, draggable = false }: { f: Findi
         <span>evidence:</span>
         {f.evidence_run_ids.map((r) => <RunLink key={r} id={r} />)}
         {f.replicates && <span>· replicates <span className="font-mono">{shortId(f.replicates)}</span></span>}
+        {!STATIC && <a href={askHref(`Explain finding ${f.id} to me: what was tested and why, what the result means physically, and how solid it is.`)}
+          className="text-accent hover:underline">Ask about this</a>}
         <span className="ml-auto font-mono text-[10px]">{f.id}</span>
       </div>
       {f.notes.length > 0 && (

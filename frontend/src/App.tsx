@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Activity, BookOpen, Database, FlaskConical, Lightbulb, LayoutDashboard, Menu, Moon, Sun } from "lucide-react";
+import { Activity, BookOpen, Database, FlaskConical, Lightbulb, LayoutDashboard, Menu, MessageCircle, Moon, Sparkles, Sun } from "lucide-react";
 import { api, snapshotMeta, STATIC } from "./lib/api";
 import { useHashRoute, useLiveUpdates } from "./lib/live";
 import { cn } from "./lib/utils";
@@ -10,9 +10,13 @@ import RunDetailPage from "./pages/RunDetail";
 import Findings from "./pages/Findings";
 import Papers from "./pages/Papers";
 import Data from "./pages/Data";
+import Chat from "./pages/Chat";
+import Highlights from "./pages/Highlights";
 
 const NAV = [
   { path: "", label: "Dashboard", icon: LayoutDashboard },
+  { path: "highlights", label: "Highlights", icon: Sparkles },
+  { path: "chat", label: "Ask the lab", icon: MessageCircle },
   { path: "experiments", label: "Experiments", icon: FlaskConical },
   { path: "runs", label: "Run detail", icon: Activity },
   { path: "findings", label: "Findings", icon: Lightbulb },
@@ -46,6 +50,8 @@ export default function App() {
     case "findings": page = <Findings />; break;
     case "papers": page = <Papers paperId={route[1]} />; break;
     case "data": page = <Data />; break;
+    case "highlights": page = <Highlights />; break;
+    case "chat": page = <Chat threadId={route[1]} />; break;
     default: page = <Dashboard />;
   }
 
@@ -63,7 +69,7 @@ export default function App() {
           </div>
         </div>
         <nav className="flex-1 space-y-0.5 px-2">
-          {NAV.map(({ path, label, icon: Icon }) => (
+          {NAV.filter((n) => !(STATIC && n.path === "chat")).map(({ path, label, icon: Icon }) => (
             <a key={path} href={`#/${path}`}
               className={cn("flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm",
                 section === path ? "bg-panel-2 font-medium text-fg" : "text-muted hover:bg-panel-2 hover:text-fg")}>

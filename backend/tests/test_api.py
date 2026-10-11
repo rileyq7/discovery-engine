@@ -106,3 +106,14 @@ def test_latex_export(fresh_lab):
         tex = c.get(f"/papers/{p['id']}/export?format=latex").text
         assert r"\section{Results}" in tex and "$F = m/r^2$" in tex and r"\textbf{layer 3}" in tex
         assert r"a\_b" in tex
+
+
+def test_unknown_api_path_is_404_and_api_is_not_cached(fresh_lab):
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+
+    with TestClient(app) as c:
+        r = c.get("/api/definitely-not-a-route")
+        assert r.status_code == 404 and "json" in r.headers["content-type"]
+        assert c.get("/api/reviews").headers["cache-control"] == "no-store"
