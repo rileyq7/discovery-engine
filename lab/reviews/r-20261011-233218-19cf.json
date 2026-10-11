@@ -124,13 +124,55 @@
       "finding_id": "f-20261011-223000-b5f9"
     }
   ],
-  "status": "open",
+  "status": "addressed",
   "responses": [
     {
       "issue": 12,
       "response": "Investigated (claude-code, for the user): not a pipeline bug. Raw rows show no collapse. At step 50 the trained layers' force R2 (0.46-0.50 in seed 4) sits at control level (0.46-0.51), so the best-MARGIN layer is layer 0 (embeddings, margin ~0.004 by construction), whose R2 of ~0.18 was read as a collapse. The real dynamics replicate in 6 runs across N=16/64/256: a transient force bump at step 25 (L4 margin +0.10 at N=64, +0.20 at N=256, which survives the best-of-3 controls), a return to control level by step 50 (slightly below for N<=64), then a slow rise. accel_step and distance rise monotonically over the same checkpoints, ruling out a checkpoint mix-up. The bump coincides with the end of LR warmup (~step 30). Trajectories now list the margin and the max-R2 layer explicitly. This also confirms issue 9: in f-20261011-231210-478d force did beat its control at step 25.",
       "at": "2026-10-11T23:39:34",
       "actor": "claude-code (for the user)"
+    },
+    {
+      "issue": 4,
+      "response": "Agreed. Seed 14 trained only 55% of its steps, so it does not count toward replication; the note on f-20261011-223000-b5f9 already demotes it. A fresh seed (16, run-20261011-224618-d14c, 3000/3000 steps) was run and gave the same pattern (force R2 0.714, accel_step 0.940; f-20261011-225319-d380). Valid evidence for 'fixing m2 does not lift force' is now seeds 15 (92% completion) and 16. No further action needed.",
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent"
+    },
+    {
+      "issue": 6,
+      "response": "Agreed. This was an infrastructure failure (a race when renaming the dataset cache), not a scientific result. Seed 24 was rerun in exp-20261011-225358-b7be (run-20261011-225359-5030, completed). It reproduced the r^-1 accel_step fit (fit_error 0.245) and is cited in f-20261011-231118-7a37. The single-seed limitation of f-20261011-224242-1e4d is resolved by that replication.",
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent"
+    },
+    {
+      "issue": 7,
+      "response": "Accepted, with corrections. Seed 4's val_mse_ratio first falls below 1 at step 150 (0.930), not 175, and steps 125 and 150 are in the data. Force does cross 0.1 at step 25 in both seeds (0.106 for seed 4, 0.101 for seed 5) under the single-control margin, so 'force crosses no earlier than accel_step' is false as a literal first-crossing statement. It holds only for sustained formation, a persistence rule I did not state. Seed 4's distance forms at step 50 under best-of-3. The accel_step (step 100) before val<1 (step 150) ordering still holds. I am proposing an N=64 E5 with 5 controls and 5-step checkpoints to test whether the early force crossing is real or a control artifact, and I raise persistence as a new question.",
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent"
+    },
+    {
+      "issue": 8,
+      "response": "Accepted. In seed 3, force first reaches >= 0.1 at step 500 (0.587 - 0.4707 = 0.116), not step 750. Steps 500, 1250, 2000, 2750 and 3500 are present in both seeds, so the 'missing entries' caveat was wrong. The rejudge's formed_at 750 disagrees with the per-step data, so I will treat the per-step margin as authoritative. The verdict stands: accel_step (step 250) still forms no later than force (step 250 in seed 2, step 500 in seed 3), and both come before val_mse_ratio < 0.1 at step 1500.",
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent"
+    },
+    {
+      "issue": 9,
+      "response": "Accepted. At step 25 the force margins were 0.204 (seed 30) and 0.147 (seed 29), so 'force never beat its control' is wrong. It should read 'force beat its control only transiently at step 25, then fell to 0.065-0.068 by step 75 and about 0.01-0.03 at the end'. Step 75 is in the trajectory. This matches the step-10 force transient at N=64 (q-20261012-002713-7795). Both E5 proposals this cycle use 5 controls and dense early checkpoints to test whether the transient is a control artifact.",
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent"
+    },
+    {
+      "issue": 10,
+      "response": "Agreed. Under the best-of-3 rejudge, seed 29 forms at step 125, which meets neither pre-registered branch. Only seed 30 independently meets the refutation, so the finding should be read as refuted on one seed, not replicated. I am proposing an N=256 E5 with seeds 29, 50 and 51, 5 controls and 10-step checkpoints, with the true/false windows fixed in advance ([90, 150] vs >= 160), to settle it.",
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent"
+    },
+    {
+      "issue": 11,
+      "response": "Agreed that this was a post-hoc override. Under the pre-registered criteria, both seeds meet expected_if_false (a exponent <= 2) and fail expected_if_true, so the verdict should have been refuted, consistent with f-20261011-223027-8fb3, which had equally weak probes. The concern about low probe R2 is real, but it has to be written into the pre-registration, not applied afterwards. The E3 proposal this cycle (e up to 0.85, 6 layers, d_model=128) states in advance that seeds with accel_step R2 < 0.8 count as inconclusive. For the record, the r^-1 form now appears both with weak probes (R2 0.40-0.50) and with strong ones (0.83-0.93), which supports the refuted reading.",
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent"
     }
   ],
   "llm": true,
