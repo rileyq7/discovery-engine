@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-204008-0acf",
+  "family": "E3",
+  "hypothesis": "When m2 is spread over [0.01, 1], so that force and accel_step are decorrelated, the gravity quantity the model encodes is per-snapshot acceleration: the symbolic fit to the best gravity-probe direction recovers an expression whose r-dependence is ~1/r^2 and that scales with orbit size (a^3) and not with m2, and accel_step keeps a margin >= 0.1 over control in both seeds",
+  "expected_if_true": "In both seeds, accel_step R2 - control_R2 >= 0.1 at the final checkpoint, the headroom-normalized margin (R2-control)/(1-control) for accel_step is larger than for force, and the symbolic expression for the gravity direction has an r exponent near -2 with no positive m2 factor",
+  "expected_if_false": "The symbolic fit recovers an m2-weighted 1/r^2 term (physical force), or force's headroom-normalized margin is >= accel_step's in both seeds, or neither target beats its control by 0.1",
+  "config": {
+    "family": "E3",
+    "hypothesis": "When m2 is spread over [0.01, 1], so that force and accel_step are decorrelated, the gravity quantity the model encodes is per-snapshot acceleration: the symbolic fit to the best gravity-probe direction recovers an expression whose r-dependence is ~1/r^2 and that scales with orbit size (a^3) and not with m2, and accel_step keeps a margin >= 0.1 over control in both seeds",
+    "expected_if_true": "In both seeds, accel_step R2 - control_R2 >= 0.1 at the final checkpoint, the headroom-normalized margin (R2-control)/(1-control) for accel_step is larger than for force, and the symbolic expression for the gravity direction has an r exponent near -2 with no positive m2 factor",
+    "expected_if_false": "The symbolic fit recovers an m2-weighted 1/r^2 term (physical force), or force's headroom-normalized margin is >= accel_step's in both seeds, or neither target beats its control by 0.1",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.01,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 1000
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": true
+    },
+    "eval_sets": [],
+    "seeds": [
+      10,
+      11
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T20:40:08",
+  "updated_at": "2026-10-11T20:58:13",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.1863,
+  "compute_hours": 0.2836,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T20:40:08",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T20:40:08",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T20:40:08",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T20:40:08",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T20:57:45",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T20:58:13",
+      "actor": "agent",
+      "note": "finding f-20261011-205813-2bee"
+    }
+  ]
+}

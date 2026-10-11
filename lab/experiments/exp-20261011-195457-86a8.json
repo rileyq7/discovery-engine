@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-195457-86a8",
+  "family": "E5",
+  "hypothesis": "Gravity-related structure (accel_step and distance probes beating their random-model controls by >= 0.1) forms at or before the training step where val_mse_ratio first drops below 0.1, rather than appearing only after prediction is already good",
+  "expected_if_true": "In both seeds, the first checkpoint where the accel_step margin (R2 - control_R2) is >= 0.1 at some layer comes no later than the first checkpoint with val_mse_ratio < 0.1 (with checkpoints every 250 steps, at most one checkpoint after it). The force margin, if it forms, appears no earlier than accel_step. The final val_mse_ratio is < 0.1.",
+  "expected_if_false": "In both seeds, the accel_step margin stays below 0.1 at every layer until at least 2 checkpoints (500 steps) after val_mse_ratio first drops below 0.1, or never reaches 0.1. That would mean prediction improves before any linearly readable gravity structure exists. If the seeds disagree on the ordering, the result is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Gravity-related structure (accel_step and distance probes beating their random-model controls by >= 0.1) forms at or before the training step where val_mse_ratio first drops below 0.1, rather than appearing only after prediction is already good",
+    "expected_if_true": "In both seeds, the first checkpoint where the accel_step margin (R2 - control_R2) is >= 0.1 at some layer comes no later than the first checkpoint with val_mse_ratio < 0.1 (with checkpoints every 250 steps, at most one checkpoint after it). The force margin, if it forms, appears no earlier than accel_step. The final val_mse_ratio is < 0.1.",
+    "expected_if_false": "In both seeds, the accel_step margin stays below 0.1 at every layer until at least 2 checkpoints (500 steps) after val_mse_ratio first drops below 0.1, or never reaches 0.1. That would mean prediction improves before any linearly readable gravity structure exists. If the seeds disagree on the ordering, the result is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 4000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 250
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      2,
+      3
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T19:54:57",
+  "updated_at": "2026-10-11T20:15:33",
+  "verdict": "supported",
+  "estimate_hours": 0.1704,
+  "compute_hours": 0.2178,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T19:54:57",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T19:54:57",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T19:54:57",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T19:54:57",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T20:08:22",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T20:15:33",
+      "actor": "agent",
+      "note": "finding f-20261011-201533-0653"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+run-20261011-213802-00ed: [21:38:16] experiment exp-20261011-205921-c3e4 (custom) seed 14: The force probe's ceiling (R2 ~0.65-0.74 in every run so far) comes from the model not linearly encoding the m2 factor: its gravity signal is a 1/r^2-like quantity without m2. If m2 is held fixed, force becomes a pure function of r, and the force probe should rise to accel_step-like R2 levels.
+run-20261011-213802-00ed: [21:40:19] generated dataset 76b89a92207c: 10000 systems x 129 steps in 122.93s
+run-20261011-213802-00ed: [21:40:19] model: 209,094 params on mps; dataset 76b89a92207c; 9000 train / 1000 val systems
+run-20261011-213802-00ed: [21:40:22] step 0: val_mse=1.972e-03 cv_baseline=2.445e-05 ratio=80.682

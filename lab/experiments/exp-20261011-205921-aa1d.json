@@ -1,0 +1,108 @@
+{
+  "id": "exp-20261011-205921-aa1d",
+  "family": "E3",
+  "hypothesis": "Run to the full 3000 steps with m2 spread over [0.01, 1], the gravity direction the model encodes is per-snapshot acceleration. The symbolic fit to the best accel_step-probe direction recovers r-dependence ~1/r^2 with orbit-scale (a^3) dependence and no positive m2 factor in both seeds, while the force-direction fit does not recover m2/r^2.",
+  "expected_if_true": "In both seeds (12, 13) the accel_step-direction equation has an r exponent between -2.5 and -1.5 and a positive power of a (about a^3), with fit_error_vs_true_law < 0.2. accel_step beats its control by >= 0.1. The force-direction fit does not recover m2/r^2 (law_recovered false, or an r exponent near -1 as in seeds 10 and 11).",
+  "expected_if_false": "At least one seed's accel_step-direction fit keeps an r exponent near -1 (as seed 11 did at step 2000) or has fit error >= 0.3, or the force-direction fit recovers m2/r^2 (law_recovered true). Either would mean the gravity direction is not cleanly per-snapshot acceleration.",
+  "config": {
+    "family": "E3",
+    "hypothesis": "Run to the full 3000 steps with m2 spread over [0.01, 1], the gravity direction the model encodes is per-snapshot acceleration. The symbolic fit to the best accel_step-probe direction recovers r-dependence ~1/r^2 with orbit-scale (a^3) dependence and no positive m2 factor in both seeds, while the force-direction fit does not recover m2/r^2.",
+    "expected_if_true": "In both seeds (12, 13) the accel_step-direction equation has an r exponent between -2.5 and -1.5 and a positive power of a (about a^3), with fit_error_vs_true_law < 0.2. accel_step beats its control by >= 0.1. The force-direction fit does not recover m2/r^2 (law_recovered false, or an r exponent near -1 as in seeds 10 and 11).",
+    "expected_if_false": "At least one seed's accel_step-direction fit keeps an r exponent near -1 (as seed 11 did at step 2000) or has fit error >= 0.3, or the force-direction fit recovers m2/r^2 (law_recovered true). Either would mean the gravity direction is not cleanly per-snapshot acceleration.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.01,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 1000
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": true
+    },
+    "eval_sets": [],
+    "seeds": [
+      12,
+      13
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T20:59:21",
+  "updated_at": "2026-10-11T21:36:49",
+  "verdict": "refuted",
+  "estimate_hours": 0.1863,
+  "compute_hours": 0.2791,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T20:59:21",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T20:59:21",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T20:59:21",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T21:19:02",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T21:36:21",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T21:36:49",
+      "actor": "agent",
+      "note": "finding f-20261011-213649-7305"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-193739-558b",
+  "family": "E1",
+  "hypothesis": "A 4-layer transformer predicts the next position of a two-body orbit better than constant-velocity extrapolation",
+  "expected_if_true": "Held-out prediction MSE below the constant-velocity baseline (val_mse_ratio < 1)",
+  "expected_if_false": "Held-out MSE at or above the constant-velocity baseline",
+  "config": {
+    "family": "E1",
+    "hypothesis": "A 4-layer transformer predicts the next position of a two-body orbit better than constant-velocity extrapolation",
+    "expected_if_true": "Held-out prediction MSE below the constant-velocity baseline (val_mse_ratio < 1)",
+    "expected_if_false": "Held-out MSE at or above the constant-velocity baseline",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 5000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 250
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "velocity",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      1
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "complete",
+  "proposed_by": "human",
+  "created_at": "2026-10-11T19:37:39",
+  "updated_at": "2026-10-11T19:53:59",
+  "verdict": "supported",
+  "estimate_hours": 0.226,
+  "compute_hours": 0.2051,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T19:37:39",
+      "actor": "human",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T19:37:39",
+      "actor": "human",
+      "note": "approved at proposal"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T19:37:40",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T19:37:40",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T19:50:03",
+      "actor": "worker",
+      "note": "1/1 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T19:53:59",
+      "actor": "agent",
+      "note": "finding f-20261011-195359-e8cd"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "q-20261011-195359-5213",
+  "text": "Is the velocity probe a meaningful test? The random-init control already reaches R2 0.878, likely because relative velocity is almost a linear difference of consecutive input positions, which caps the possible margin. Would probing velocity at a later token position, or after removing the input-embedding contribution, separate learned structure from input leakage?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-11T19:53:59"
+}

@@ -1,0 +1,20 @@
+[19:50:06] experiment exp-20261011-194021-3217 (E6) seed 0: Scaling cell L=2, d_model=32, n_systems=1000: force probe R2 grows with model and data size
+[19:50:08] generated dataset 70fda1e11f19: 1000 systems x 129 steps in 1.84s
+[19:50:08] model: 29,990 params on mps; dataset 70fda1e11f19; 900 train / 100 val systems
+[19:50:10] step 0: val_mse=1.464e-03 cv_baseline=2.187e-05 ratio=66.939
+[19:50:17] step 250: val_mse=3.983e-05 cv_baseline=2.187e-05 ratio=1.822
+[19:50:26] step 500: val_mse=2.197e-05 cv_baseline=2.187e-05 ratio=1.005
+[19:50:39] step 750: val_mse=1.204e-05 cv_baseline=2.187e-05 ratio=0.551
+[19:50:47] step 1000: val_mse=1.154e-05 cv_baseline=2.187e-05 ratio=0.528
+[19:50:55] step 1250: val_mse=5.474e-06 cv_baseline=2.187e-05 ratio=0.250
+[19:51:04] step 1500: val_mse=4.586e-06 cv_baseline=2.187e-05 ratio=0.210
+[19:51:15] step 1750: val_mse=3.394e-06 cv_baseline=2.187e-05 ratio=0.155
+[19:51:27] step 2000: val_mse=2.818e-06 cv_baseline=2.187e-05 ratio=0.129
+[19:51:39] step 2250: val_mse=2.490e-06 cv_baseline=2.187e-05 ratio=0.114
+[19:51:51] step 2500: val_mse=1.934e-06 cv_baseline=2.187e-05 ratio=0.088
+[19:52:03] step 2750: val_mse=1.812e-06 cv_baseline=2.187e-05 ratio=0.083
+[19:52:15] step 3000: val_mse=1.659e-06 cv_baseline=2.187e-05 ratio=0.076
+[19:52:15] training done in 2.2 min; beats constant-velocity baseline: True
+[19:52:15] random-model control: force=0.23/0.39/0.42, distance=-0.01/0.01/0.02, accel_step=0.52/0.58/0.58
+[19:52:15] probes @ step 3000: best force R2=0.692 (layer 1)
+[19:52:15] run complete in 2.2 min

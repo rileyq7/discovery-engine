@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-211551-d718",
+  "claim": "Once training covers e in [0, 0.8], the high-eccentricity gap is gone in both seeds. On held-out high-e systems val_mse_ratio is 0.0187 (seed 9) and 0.0189 (seed 8), about 1.05x and 1.01x the in-distribution 0.0178 and 0.0187, and no worse than held-out low-e (0.0185, 0.0215). The probes still beat their random controls at the last checkpoint: force margin 0.208 (R2 0.452 vs control 0.244, layer 4) and 0.312 (0.528 vs 0.216, layer 1); accel_step margin 0.337 (0.715 vs 0.378) and 0.358 (0.707 vs 0.349), both at layer 4. accel_step has the larger margin over its control than force in both seeds.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261011-205921-4adc",
+    "run-20261011-205921-a849"
+  ],
+  "confidence_note": "Both seeds clearly meet the expected-if-true criteria: the high-e/in-distribution ratio is about 1.0x against a 3x threshold, and every probe margin is at least 0.2 against a 0.1 threshold. Three things limit confidence. (1) Both runs stopped at step 2500 of 3000 after using only 0.13 of the 0.2 h budget, and val_mse_ratio was still falling (0.034 to 0.018 over the last 500 steps). The 'final' checkpoint is therefore step 2500 and the models had not converged. Stopping early should not reverse a 1x vs 3x result, but it is unexplained. (2) This shows the earlier 16-18x gap was a coverage gap in prediction. It does not show the internal representation works equally well at high e: the best force probe R2 on held-out high-e is only 0.366-0.377, against 0.729-0.802 on held-out low-e, while prediction error is the same on both. That repeats the earlier drop to 0.34-0.40, and there is no random control on the eval sets, so this probe drop is not explained. (3) Two seeds, one data seed, one architecture (L=4, d=64, N=64). The verdict would weaken if training to 3000 steps or a further seed opened a high-e gap above 3x, or if an OOD random control showed the force probe does not beat chance on high-e systems.",
+  "created_at": "2026-10-11T21:15:51",
+  "experiment_id": "exp-20261011-204008-76de",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-11T21:15:51",
+      "actor": "agent"
+    }
+  ]
+}

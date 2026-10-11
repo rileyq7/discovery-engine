@@ -1,0 +1,107 @@
+{
+  "id": "exp-20261011-194021-3217",
+  "family": "E6",
+  "hypothesis": "Scaling cell L=2, d_model=32, n_systems=1000: force probe R2 grows with model and data size",
+  "expected_if_true": "Final force probe R2 (minus control) increases monotonically along both axes of the grid",
+  "expected_if_false": "Force probe R2 is flat or non-monotonic across model or data size",
+  "config": {
+    "family": "E6",
+    "hypothesis": "Scaling cell L=2, d_model=32, n_systems=1000: force probe R2 grows with model and data size",
+    "expected_if_true": "Final force probe R2 (minus control) increases monotonically along both axes of the grid",
+    "expected_if_false": "Force probe R2 is flat or non-monotonic across model or data size",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 1000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 2,
+      "d_model": 32,
+      "n_heads": 2,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 250
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      0
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "complete",
+  "proposed_by": "human",
+  "created_at": "2026-10-11T19:40:21",
+  "updated_at": "2026-10-11T19:54:16",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.0259,
+  "compute_hours": 0.036,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T19:40:21",
+      "actor": "human",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T19:40:29",
+      "actor": "human",
+      "note": ""
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T19:40:31",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T19:50:03",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T19:52:15",
+      "actor": "worker",
+      "note": "1/1 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T19:54:16",
+      "actor": "agent",
+      "note": "finding f-20261011-195416-7797"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-205813-2bee",
+  "claim": "With m2 spread over [0.01, 1], accel_step beat its control in both seeds: R2 0.915 vs control 0.712 (margin 0.203, seed 11) and 0.924 vs 0.760 (margin 0.164, seed 10), both at layer 4. Force did slightly better on raw margin at layer 1 (0.735 vs 0.519, margin 0.216; 0.648 vs 0.452, margin 0.196), but accel_step led on headroom-normalized margin (0.70 vs 0.45 and 0.68 vs 0.36). The symbolic fits only partly matched the prediction. The force direction fit to (m2 + c)/r in both seeds: it has a positive m2 factor but an r exponent of -1, not -2. The accel_step direction fit to roughly a^3/(r*(r + m2^3)) in seed 10 (close to a^3/r^2 with no positive m2 factor; error vs true law 0.128) but to about a^2/r in seed 11 (error 0.308). Neither run recovered the law.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261011-204008-63e5",
+    "run-20261011-204008-5d5f"
+  ],
+  "confidence_note": "Both seeds met the margin and headroom-normalized-margin parts of expected_if_true. However, both runs stopped at step 2000 of the 3000 configured, so the 'final checkpoint' is early, and the symbolic part is mixed. Only seed 10's accel_step fit has an r exponent near -2 with orbit-scale (a^3) dependence. Seed 11's fit is roughly r^-1, and both force fits are r^-1, so they match neither the force law nor the accel_step law. Neither fit counts as recovered (fit errors 0.13-0.41). The m2 factor in the force fit may just reflect the force target, which contains m2, rather than show that the model encodes m2. accel_step's control R2 is high (0.71-0.76), which caps its raw margin. This would become supported if full-length 3000-step runs gave accel_step fits with r^-2 and a^3 dependence and no positive m2 term in both seeds. It would become refuted if a fit recovered m2/r^2 for the gravity direction, or if force's normalized margin caught up with accel_step's.",
+  "created_at": "2026-10-11T20:58:13",
+  "experiment_id": "exp-20261011-204008-0acf",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-11T20:58:13",
+      "actor": "agent"
+    }
+  ]
+}

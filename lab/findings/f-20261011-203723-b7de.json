@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-203723-b7de",
+  "claim": "The predictor transferred to low mass ratios but not, by the pre-registered 10x criterion, to high eccentricities. In-distribution val_mse_ratio was 0.0151 (seed 7) and 0.0157 (seed 6). On low_mass_ratio (m2 in [0.01, 0.1]) it was 0.057 and 0.055, about 3.6x in-distribution, and the best force R2 held at 0.75-0.77. On high_eccentricity (e in [0.5, 0.8]) it was 0.270 and 0.249, about 16-18x in-distribution, and the best force R2 fell to 0.40 and 0.34, down from 0.74 and 0.69 in-distribution. Every two-body ratio stayed below 1. At the final checkpoint, in-distribution probes beat their random controls in both seeds: force 0.738 vs 0.529 and 0.689 vs 0.523 (margins 0.209 and 0.166, best at layer 1), and accel_step 0.934 vs 0.757 and 0.935 vs 0.727 (margins 0.178 and 0.208, best at layer 4). Three-body ratios of 72 and 70 are exploratory only.",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261011-202614-091d",
+    "run-20261011-202614-8650"
+  ],
+  "confidence_note": "The refutation rests on one pre-registered clause: high_eccentricity ratios are more than 10x the in-distribution ratio while in-distribution stays below 0.05. Both seeds meet it by a clear margin (15.8x and 17.9x). The failure is partial, though. The model still beats constant-velocity extrapolation about 4x on high-e systems, and mass-ratio transfer passed every criterion, so the result is 'depends on the training range of e', not 'no law-like structure'. The 10x threshold is arbitrary, and constant-velocity extrapolation may itself do much worse at high e, so the ratio is not directly comparable across sets. OOD probe R2 values come without random controls, so the drop in force R2 on high-e systems cannot be read as a margin. The verdict would move toward inconclusive if (a) the absolute MSE gap mostly comes from a few pericentre snapshots where r falls below the training range, which would be smooth extrapolation error rather than a shortcut, or (b) a model trained on e in [0, 0.8] showed the same degradation on held-out high-e systems.",
+  "created_at": "2026-10-11T20:37:23",
+  "experiment_id": "exp-20261011-201633-8442",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-11T20:37:23",
+      "actor": "agent"
+    }
+  ]
+}

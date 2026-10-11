@@ -1,0 +1,14 @@
+[21:19:16] experiment exp-20261011-205921-aa1d (E3) seed 12: Run to the full 3000 steps with m2 spread over [0.01, 1], the gravity direction the model encodes is per-snapshot acceleration. The symbolic fit to the best accel_step-probe direction recovers r-dependence ~1/r^2 with orbit-scale (a^3) dependence and no positive m2 factor in both seeds, while the force-direction fit does not recover m2/r^2.
+[21:19:17] model: 209,094 params on mps; dataset bcdd149ac94a; 9000 train / 1000 val systems
+[21:19:21] step 0: val_mse=1.991e-03 cv_baseline=2.683e-05 ratio=74.201
+[21:21:44] step 1000: val_mse=4.169e-06 cv_baseline=2.683e-05 ratio=0.155
+[21:24:02] step 2000: val_mse=1.279e-06 cv_baseline=2.683e-05 ratio=0.048
+[21:26:13] step 3000: val_mse=4.101e-07 cv_baseline=2.683e-05 ratio=0.015
+[21:26:13] training done in 6.9 min; beats constant-velocity baseline: True
+[21:26:18] random-model control: force=0.17/0.45/0.46/0.47/0.45, accel_step=0.64/0.72/0.73/0.74/0.74, distance=-0.01/0.18/0.23/0.30/0.39
+[21:26:22] probes @ step 3000: best force R2=0.707 (layer 1)
+[21:26:23] PySR on |force| probe outputs from layer 1 (5400 points)...
+[21:27:37] PySR: |force| = (m2 + 0.24080282)/r  (law recovered: False, error vs true law 0.414)
+[21:27:37] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+[21:27:42] PySR: |accel_step| = a*(-(-0.009616522)*a/r - 0.0055801235*m2)  (law recovered: False, error vs true law 0.202)
+[21:27:42] run complete in 8.4 min

@@ -1,0 +1,27 @@
+run-20261011-195457-38c3: [20:01:53] experiment exp-20261011-195457-86a8 (E5) seed 3: Gravity-related structure (accel_step and distance probes beating their random-model controls by >= 0.1) forms at or before the training step where val_mse_ratio first drops below 0.1, rather than appearing only after prediction is already good
+run-20261011-195457-38c3: [20:01:54] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+run-20261011-195457-38c3: [20:01:57] step 0: val_mse=2.045e-03 cv_baseline=2.554e-05 ratio=80.064
+run-20261011-195457-38c3: [20:02:17] step 250: val_mse=2.222e-05 cv_baseline=2.554e-05 ratio=0.870
+run-20261011-195457-38c3: [20:02:41] step 500: val_mse=7.628e-06 cv_baseline=2.554e-05 ratio=0.299
+run-20261011-195457-38c3: [20:03:06] step 750: val_mse=8.941e-06 cv_baseline=2.554e-05 ratio=0.350
+run-20261011-195457-38c3: [20:03:30] step 1000: val_mse=4.109e-06 cv_baseline=2.554e-05 ratio=0.161
+run-20261011-195457-38c3: [20:03:54] step 1250: val_mse=5.080e-06 cv_baseline=2.554e-05 ratio=0.199
+run-20261011-195457-38c3: [20:04:18] step 1500: val_mse=2.517e-06 cv_baseline=2.554e-05 ratio=0.099
+run-20261011-195457-38c3: [20:04:39] step 1750: val_mse=1.884e-06 cv_baseline=2.554e-05 ratio=0.074
+run-20261011-195457-38c3: [20:05:02] step 2000: val_mse=2.312e-06 cv_baseline=2.554e-05 ratio=0.090
+run-20261011-195457-38c3: [20:05:25] step 2250: val_mse=1.266e-06 cv_baseline=2.554e-05 ratio=0.050
+run-20261011-195457-38c3: [20:05:51] step 2500: val_mse=8.617e-07 cv_baseline=2.554e-05 ratio=0.034
+run-20261011-195457-38c3: [20:06:14] step 2750: val_mse=5.387e-07 cv_baseline=2.554e-05 ratio=0.021
+run-20261011-195457-38c3: [20:06:38] step 3000: val_mse=5.173e-07 cv_baseline=2.554e-05 ratio=0.020
+run-20261011-195457-38c3: [20:07:01] step 3250: val_mse=4.560e-07 cv_baseline=2.554e-05 ratio=0.018
+run-20261011-195457-38c3: [20:07:24] step 3500: val_mse=3.102e-07 cv_baseline=2.554e-05 ratio=0.012
+run-20261011-195457-38c3: [20:07:47] step 3750: val_mse=2.852e-07 cv_baseline=2.554e-05 ratio=0.011
+run-20261011-195457-38c3: [20:08:10] step 4000: val_mse=2.748e-07 cv_baseline=2.554e-05 ratio=0.011
+run-20261011-195457-38c3: [20:08:10] training done in 6.3 min; beats constant-velocity baseline: True
+run-20261011-195457-38c3: [20:08:11] random-model control: force=0.16/0.47/0.47/0.47/0.47, accel_step=0.64/0.72/0.73/0.75/0.75, distance=-0.02/0.17/0.33/0.40/0.57, energy=-0.01/0.25/0.23/0.28/0.39
+run-20261011-195457-38c3: [20:08:12] probes @ step 0: best force R2=0.478 (layer 3)
+run-20261011-195457-38c3: [20:08:15] probes @ step 1250: best force R2=0.618 (layer 4)
+run-20261011-195457-38c3: [20:08:17] probes @ step 2500: best force R2=0.671 (layer 1)
+run-20261011-195457-38c3: [20:08:20] probes @ step 3750: best force R2=0.693 (layer 1)
+run-20261011-195457-38c3: [20:08:21] probes @ step 4000: best force R2=0.696 (layer 1)
+run-20261011-195457-38c3: [20:08:21] run complete in 6.5 min

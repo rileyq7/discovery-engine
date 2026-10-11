@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-201533-0653",
+  "claim": "In both seeds, gravity-related probes beat their controls at the first trained checkpoint (step 250). The accel_step margin was 0.158 (seed 2) and 0.127 (seed 3) at layer 4, and the distance margin was 0.597 and 0.681 at layer 1. That is 1250 steps before val_mse_ratio first fell below 0.1, which happened at step 1500 in both seeds (0.0858 and 0.0985). Final val_mse_ratio was about 0.011. Force formed no earlier than accel_step: margin 0.107 at step 250 in seed 2 and 0.127 at step 750 in seed 3. By step 4000 the force margin (0.223, 0.230) had overtaken the accel_step margin (0.204, 0.172), even though accel_step had the higher raw R2 (0.914 and 0.925 vs control 0.710 and 0.752, compared with force 0.738 and 0.696 vs control 0.516 and 0.465).",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261011-195457-2ec2",
+    "run-20261011-195457-38c3"
+  ],
+  "confidence_note": "Both seeds agree on the ordering, and the gap is large: 5 checkpoints, against the 1-checkpoint tolerance. Five things limit confidence. (1) The first-checkpoint accel_step margins are only just over the threshold (0.127 and 0.158 against 0.1), and accel_step's random-control R2 is high (0.71-0.75), so a small change in the control could move the formation step. (2) Structure is already present at step 250, when val_mse_ratio is still 0.87. The 250-step checkpoint spacing cannot say whether it forms before or together with the first drop below the baseline. (3) The trajectories have no entries at steps 500, 1250, 2000, 2750 or 3500, so the logs are incomplete. (4) The large early distance margin may partly reflect geometry that is easy to read from the input, not learned dynamics. (5) Forming early shows only correlation in time; it does not show the model uses this structure to predict. The verdict would change if denser early checkpoints (every 25 steps) showed accel_step margins crossing 0.1 only after val_mse_ratio had already fallen far below 1, or if seeds 4 and 5, or a different width, showed accel_step forming after step 1500.",
+  "created_at": "2026-10-11T20:15:33",
+  "experiment_id": "exp-20261011-195457-86a8",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-11T20:15:33",
+      "actor": "agent"
+    }
+  ]
+}

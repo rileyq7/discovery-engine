@@ -1,0 +1,146 @@
+{
+  "id": "exp-20261011-204008-76de",
+  "family": "E4",
+  "hypothesis": "The 16-18x high-eccentricity transfer gap was a limit of the training range, not a non-physical shortcut: a model trained on e in [0, 0.8] predicts held-out high-e systems (e in [0.5, 0.8], different data seed) nearly as well as low-e systems",
+  "expected_if_true": "In both seeds, the held-out high_eccentricity val_mse_ratio is within 3x of the in-distribution val_mse_ratio, and the force and accel_step probes still beat their random controls by >= 0.1 at the final checkpoint",
+  "expected_if_false": "The held-out high_eccentricity val_mse_ratio stays > 10x the in-distribution ratio even when high e is covered in training, which points to a shortcut that degrades at high e rather than a coverage gap",
+  "config": {
+    "family": "E4",
+    "hypothesis": "The 16-18x high-eccentricity transfer gap was a limit of the training range, not a non-physical shortcut: a model trained on e in [0, 0.8] predicts held-out high-e systems (e in [0.5, 0.8], different data seed) nearly as well as low-e systems",
+    "expected_if_true": "In both seeds, the held-out high_eccentricity val_mse_ratio is within 3x of the in-distribution val_mse_ratio, and the force and accel_step probes still beat their random controls by >= 0.1 at the final checkpoint",
+    "expected_if_false": "The held-out high_eccentricity val_mse_ratio stays > 10x the in-distribution ratio even when high e is covered in training, which points to a shortcut that degrades at high e rather than a coverage gap",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.8
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [
+      {
+        "name": "heldout_high_eccentricity",
+        "data": {
+          "source": "rebound",
+          "n_bodies": 2,
+          "n_systems": 1000,
+          "steps_per_orbit": 64,
+          "mass_ratio_range": [
+            0.1,
+            1.0
+          ],
+          "eccentricity_range": [
+            0.5,
+            0.8
+          ],
+          "data_seed": 42
+        }
+      },
+      {
+        "name": "heldout_low_eccentricity",
+        "data": {
+          "source": "rebound",
+          "n_bodies": 2,
+          "n_systems": 1000,
+          "steps_per_orbit": 64,
+          "mass_ratio_range": [
+            0.1,
+            1.0
+          ],
+          "eccentricity_range": [
+            0.0,
+            0.5
+          ],
+          "data_seed": 43
+        }
+      }
+    ],
+    "seeds": [
+      8,
+      9
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T20:40:08",
+  "updated_at": "2026-10-11T21:15:51",
+  "verdict": "supported",
+  "estimate_hours": 0.1093,
+  "compute_hours": 0.2588,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T20:40:08",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T20:40:08",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T20:40:08",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T20:59:21",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T21:15:19",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T21:15:51",
+      "actor": "agent",
+      "note": "finding f-20261011-211551-d718"
+    }
+  ]
+}

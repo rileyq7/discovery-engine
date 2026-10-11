@@ -1,0 +1,10 @@
+/runs/
+backend/.venv
+**/__pycache__/
+*.pyc
+.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+lab/index.sqlite*
+.env
+.DS_Store

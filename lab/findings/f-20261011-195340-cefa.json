@@ -1,0 +1,24 @@
+{
+  "id": "f-20261011-195340-cefa",
+  "claim": "The 4-layer transformer beat constant-velocity extrapolation on held-out two-body systems by about 200x: val_mse_ratio = 0.0051 (MSE 1.31e-7 vs baseline 2.55e-5), and the ratio stayed below 1 from step 500 onward (0.354 at step 500). Secondary probe readout at the final checkpoint: force R2 = 0.728 at layer 2 vs control 0.526 (margin 0.20), distance R2 = 0.967 vs 0.655, energy R2 = 0.791 vs 0.538, and velocity R2 = 0.952 vs control 0.888, which falls short of the 0.1 margin; accel_step was not probed, so we can't tell whether the force signal reflects physical force or the per-snapshot version.",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261011-192513-e1e7"
+  ],
+  "confidence_note": "Only one seed (seed 0) on one dataset (data_seed 0), so this is weak evidence, although the effect is large: the ratio is about 200x below the threshold of 1. With N = 64 snapshots per orbit and e <= 0.5, the constant-velocity baseline is weak, so beating it shows good next-step prediction, not that the model learned the physical law. The validation curve was not monotonic (0.098 at step 1000, 0.142 at step 1250; 0.043 at 2250, 0.053 at 2750), but it never came near 1. Probes were run only at the final checkpoint, so formed_at_step = 5000 says nothing about when the structure formed. The verdict would change if replication with other seeds or data seeds gave val_mse_ratio >= 1, or if the result failed to hold on out-of-distribution eval sets (higher eccentricity, different mass ratios).",
+  "created_at": "2026-10-11T19:53:40",
+  "experiment_id": "exp-20261011-192513-70c8",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-11T19:53:40",
+      "actor": "agent"
+    }
+  ]
+}

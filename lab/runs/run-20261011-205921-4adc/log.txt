@@ -1,0 +1,18 @@
+[20:59:30] experiment exp-20261011-204008-76de (E4) seed 9: The 16-18x high-eccentricity transfer gap was a limit of the training range, not a non-physical shortcut: a model trained on e in [0, 0.8] predicts held-out high-e systems (e in [0.5, 0.8], different data seed) nearly as well as low-e systems
+[20:59:49] generated dataset ca3b9db10aa7: 10000 systems x 129 steps in 18.85s
+[20:59:49] model: 209,094 params on mps; dataset ca3b9db10aa7; 9000 train / 1000 val systems
+[20:59:54] step 0: val_mse=2.118e-03 cv_baseline=5.664e-05 ratio=37.389
+[21:00:58] step 500: val_mse=1.248e-05 cv_baseline=5.664e-05 ratio=0.220
+[21:02:56] step 1000: val_mse=5.482e-06 cv_baseline=5.664e-05 ratio=0.097
+[21:04:01] step 1500: val_mse=3.274e-06 cv_baseline=5.664e-05 ratio=0.058
+[21:05:12] step 2000: val_mse=1.908e-06 cv_baseline=5.664e-05 ratio=0.034
+[21:06:24] step 2500: val_mse=1.007e-06 cv_baseline=5.664e-05 ratio=0.018
+[21:06:42] stop requested at step 2640
+[21:06:42] training done in 7.2 min; beats constant-velocity baseline: True
+[21:06:47] random-model control: force=0.08/0.25/0.24/0.24/0.24, accel_step=0.25/0.37/0.38/0.38/0.38, distance=-0.01/0.13/0.28/0.38/0.29, energy=-0.03/0.10/0.21/0.25/0.25
+[21:06:52] probes @ step 2500: best force R2=0.452 (layer 4)
+[21:07:04] generated dataset 12ef5dbef846: 1000 systems x 129 steps in 11.61s
+[21:07:10] eval[heldout_high_eccentricity]: mse ratio vs CV baseline 0.019; force R2 best layer 0.377
+[21:07:22] generated dataset 8b293cfc2419: 1000 systems x 129 steps in 11.42s
+[21:07:28] eval[heldout_low_eccentricity]: mse ratio vs CV baseline 0.018; force R2 best layer 0.729
+[21:07:28] run complete in 8.0 min

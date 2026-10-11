@@ -1,0 +1,10 @@
+{
+  "id": "q-20261011-201633-2d7a",
+  "text": "If transfer fails specifically on high-eccentricity systems, is that because 1/r^2 is outside the training range at pericentre (an extrapolation failure of the learned function) or because the model uses a near-circular shortcut? Comparing the size of the error against r at each snapshot would tell these apart.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-203723-b7de",
+    "f-20261011-211551-d718"
+  ],
+  "created_at": "2026-10-11T20:16:33"
+}

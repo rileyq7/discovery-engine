@@ -1,0 +1,72 @@
+{
+  "id": "run-20261011-211902-5784",
+  "experiment_id": "exp-20261011-205921-aa1d",
+  "seed": 12,
+  "status": "completed",
+  "started_at": "2026-10-11T21:19:16",
+  "ended_at": "2026-10-11T21:27:42",
+  "compute_hours": 0.1406,
+  "artifact_dir": "/private/tmp/claude-501/-Users-rileycoleman-discovery/3448cbb7-32b8-45b6-930a-1df6066c1e35/scratchpad/clone/runs/run-20261011-211902-5784",
+  "git_commit": "4a43a31",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 4.100676508635048e-07,
+    "baseline_cv_mse": 2.6826432370764063e-05,
+    "val_mse_ratio": 0.015285955478388695,
+    "beats_baseline": true,
+    "train_hours": 0.11566970944404602,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "bcdd149ac94a",
+    "stopped": false,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.70747,
+          "control_r2": 0.45079,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.91743,
+          "control_r2": 0.73844,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.88441,
+          "control_r2": 0.18115,
+          "beats_control": true,
+          "formed_at_step": 3000
+        }
+      }
+    },
+    "equations": {
+      "force": {
+        "equation": "(m2 + 0.24080282)/r",
+        "law_recovered": false,
+        "fit_error_vs_true_law": 0.4141297255467121,
+        "layer": 1,
+        "error": null
+      },
+      "accel_step": {
+        "equation": "a*(-(-0.009616522)*a/r - 0.0055801235*m2)",
+        "law_recovered": false,
+        "fit_error_vs_true_law": 0.20232585785386137,
+        "layer": 4,
+        "error": null
+      }
+    }
+  },
+  "pid": 74986,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "bcdd149ac94a"
+}

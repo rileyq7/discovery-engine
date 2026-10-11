@@ -1,0 +1,70 @@
+{
+  "id": "run-20261011-193740-63f2",
+  "experiment_id": "exp-20261011-193739-558b",
+  "seed": 1,
+  "status": "completed",
+  "started_at": "2026-10-11T19:37:43",
+  "ended_at": "2026-10-11T19:50:01",
+  "compute_hours": 0.2051,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261011-193740-63f2",
+  "git_commit": null,
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.3084084851535288e-07,
+    "baseline_cv_mse": 2.5544271694393608e-05,
+    "val_mse_ratio": 0.005122120923262396,
+    "beats_baseline": true,
+    "train_hours": 0.20379834082391526,
+    "n_params": 811398,
+    "device": "mps",
+    "dataset_id": "b04e4026a398",
+    "stopped": false,
+    "probes": {
+      "final_checkpoint": 5000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.72909,
+          "control_r2": 0.50725,
+          "beats_control": true,
+          "formed_at_step": 5000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.9725,
+          "control_r2": 0.76858,
+          "beats_control": true,
+          "formed_at_step": 5000
+        },
+        "velocity": {
+          "best_layer": 1,
+          "r2": 0.95548,
+          "control_r2": 0.87753,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "energy": {
+          "best_layer": 2,
+          "r2": 0.8323,
+          "control_r2": 0.65972,
+          "beats_control": true,
+          "formed_at_step": 5000
+        },
+        "accel_step": {
+          "best_layer": 1,
+          "r2": 0.91716,
+          "control_r2": 0.74219,
+          "beats_control": true,
+          "formed_at_step": 5000
+        }
+      }
+    }
+  },
+  "pid": 43517,
+  "device": "mps",
+  "progress": null,
+  "n_params": 811398,
+  "dataset_id": "b04e4026a398"
+}

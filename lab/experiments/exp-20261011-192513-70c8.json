@@ -1,0 +1,108 @@
+{
+  "id": "exp-20261011-192513-70c8",
+  "family": "E1",
+  "hypothesis": "A 4-layer transformer predicts the next position of a two-body orbit better than constant-velocity extrapolation",
+  "expected_if_true": "Held-out prediction MSE below the constant-velocity baseline (val_mse_ratio < 1)",
+  "expected_if_false": "Held-out MSE at or above the constant-velocity baseline",
+  "config": {
+    "family": "E1",
+    "hypothesis": "A 4-layer transformer predicts the next position of a two-body orbit better than constant-velocity extrapolation",
+    "expected_if_true": "Held-out prediction MSE below the constant-velocity baseline (val_mse_ratio < 1)",
+    "expected_if_false": "Held-out MSE at or above the constant-velocity baseline",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 5000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 250
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "velocity",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      0
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "complete",
+  "proposed_by": "cli",
+  "created_at": "2026-10-11T19:25:13",
+  "updated_at": "2026-10-11T19:53:40",
+  "verdict": "supported",
+  "estimate_hours": 0.226,
+  "compute_hours": 0.1842,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T19:25:13",
+      "actor": "cli",
+      "note": "from ../configs/e1.json"
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T19:25:13",
+      "actor": "cli",
+      "note": "run from CLI"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T19:25:13",
+      "actor": "cli",
+      "note": ""
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T19:25:13",
+      "actor": "cli",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T19:36:16",
+      "actor": "cli",
+      "note": ""
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T19:53:40",
+      "actor": "agent",
+      "note": "finding f-20261011-195340-cefa"
+    }
+  ]
+}

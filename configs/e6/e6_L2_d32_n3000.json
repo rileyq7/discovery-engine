@@ -1,0 +1,44 @@
+{
+  "family": "E6",
+  "hypothesis": "Scaling cell L=2, d_model=32, n_systems=3000: force probe R2 grows with model and data size",
+  "expected_if_true": "Final force probe R2 (minus control) increases monotonically along both axes of the grid",
+  "expected_if_false": "Force probe R2 is flat or non-monotonic across model or data size",
+  "data": {
+    "source": "rebound",
+    "n_bodies": 2,
+    "n_systems": 3000,
+    "steps_per_orbit": 64,
+    "mass_ratio_range": [
+      0.1,
+      1.0
+    ]
+  },
+  "model": {
+    "n_layers": 2,
+    "d_model": 32,
+    "n_heads": 2,
+    "context_len": 128
+  },
+  "training": {
+    "steps": 3000,
+    "batch_size": 128,
+    "lr": 0.001,
+    "checkpoint_every": 250
+  },
+  "probes": {
+    "targets": [
+      "force",
+      "distance",
+      "accel_step"
+    ],
+    "layers": "all",
+    "checkpoints": "final",
+    "random_control": true
+  },
+  "seeds": [
+    0
+  ],
+  "budget": {
+    "max_compute_hours": 0.5
+  }
+}

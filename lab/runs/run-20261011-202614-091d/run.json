@@ -1,0 +1,83 @@
+{
+  "id": "run-20261011-202614-091d",
+  "experiment_id": "exp-20261011-201633-8442",
+  "seed": 7,
+  "status": "completed",
+  "started_at": "2026-10-11T20:26:20",
+  "ended_at": "2026-10-11T20:31:04",
+  "compute_hours": 0.079,
+  "artifact_dir": "/private/tmp/claude-501/-Users-rileycoleman-discovery/3448cbb7-32b8-45b6-930a-1df6066c1e35/scratchpad/clone/runs/run-20261011-202614-091d",
+  "git_commit": "869b905",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 3.849929125290217e-07,
+    "baseline_cv_mse": 2.5544271694393608e-05,
+    "val_mse_ratio": 0.015071594803523757,
+    "beats_baseline": true,
+    "train_hours": 0.07597547968228659,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b04e4026a398",
+    "stopped": false,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.73786,
+          "control_r2": 0.52881,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.93423,
+          "control_r2": 0.75653,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.85723,
+          "control_r2": 0.19227,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.53342,
+          "control_r2": 0.17626,
+          "beats_control": true,
+          "formed_at_step": 3000
+        }
+      }
+    },
+    "eval": [
+      {
+        "name": "low_mass_ratio",
+        "val_mse_ratio": 0.057160257630912516,
+        "n_bodies": 2,
+        "force_r2_best": 0.7476
+      },
+      {
+        "name": "high_eccentricity",
+        "val_mse_ratio": 0.269573257989237,
+        "n_bodies": 2,
+        "force_r2_best": 0.4037
+      },
+      {
+        "name": "three_body",
+        "val_mse_ratio": 71.9937759757314,
+        "n_bodies": 3,
+        "force_r2_best": 0.5568
+      }
+    ]
+  },
+  "pid": 59255,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b04e4026a398"
+}

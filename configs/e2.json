@@ -1,0 +1,47 @@
+{
+  "family": "E2",
+  "hypothesis": "The residual stream linearly encodes gravity by the end of training, either as physical force or as per-snapshot acceleration",
+  "expected_if_true": "Force or accel_step probe R2 > 0.8 at some layer at the final checkpoint and beats the random-model control by >= 0.1; comparing the two says which form the model uses",
+  "expected_if_false": "Both force and accel_step probe R2 stay within 0.1 of the random-model control at all layers",
+  "data": {
+    "source": "rebound",
+    "n_bodies": 2,
+    "n_systems": 10000,
+    "steps_per_orbit": 64,
+    "mass_ratio_range": [
+      0.1,
+      1.0
+    ]
+  },
+  "model": {
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "context_len": 128
+  },
+  "training": {
+    "steps": 5000,
+    "batch_size": 128,
+    "lr": 0.001,
+    "checkpoint_every": 250
+  },
+  "probes": {
+    "targets": [
+      "force",
+      "distance",
+      "velocity",
+      "energy",
+      "accel_step"
+    ],
+    "layers": "all",
+    "checkpoints": "all",
+    "random_control": true
+  },
+  "seeds": [
+    0,
+    1
+  ],
+  "budget": {
+    "max_compute_hours": 1.0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "q-20261011-201533-0729",
+  "text": "Why does the force margin keep growing through training (0.107 to 0.223 in seed 2, 0.092 to 0.230 in seed 3) while the accel_step margin levels off at about 0.17-0.20 after step 750? Does the late force gain survive regressing accel_step and distance out of the force target?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-203628-5cd9",
+    "f-20261011-203659-4e2f"
+  ],
+  "created_at": "2026-10-11T20:15:33"
+}

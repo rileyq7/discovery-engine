@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-213649-7305",
+  "claim": "The pre-registered refutation condition was met: in seed 12 the fitted accel_step direction scales as a^2/r (r exponent -1), not a^3/r^2. Neither seed met the success criteria, since both fits scale as a^2 rather than a^3 and both fit errors exceed 0.2 (seed 12: 0.202, seed 13: 0.233). Seed 13's fit, a^2*0.0113/(m2*r^2 + r), runs between r^-1 (small m2) and r^-2 (m2 near 1). Both runs finished all 3000 steps (val_mse_ratio 0.015 / 0.017). The accel_step probe clearly beats control (R2 0.917 / 0.883 vs control 0.738 / 0.674, margins 0.179 / 0.210, layer 4). The force probe has the larger margin (R2 0.707 / 0.712 vs control 0.451 / 0.468, margins 0.257 / 0.243, layers 1-2). As the hypothesis predicted, the force-direction fit does not recover m2/r^2: it gives (m2 + 0.24)/r and (m2 + 0.26)/r, with fit errors 0.41 / 0.39.",
+  "verdict": "refuted",
+  "status": "refuted",
+  "evidence_run_ids": [
+    "run-20261011-211902-5784",
+    "run-20261011-211902-b899"
+  ],
+  "confidence_note": "The verdict rests on the pre-registered clause 'at least one seed keeps an r exponent near -1', which seed 12 meets cleanly. Seed 13 is in between: its r exponent depends on m2 and its fit error of 0.233 is between the true (<0.2) and false (>=0.3) thresholds, so the two seeds do not independently agree. One major caveat: with eccentricity in [0, 0.5], r stays within a factor of about 1.5-3 of a. That makes a^3/r^2, a^2/r and a nearly collinear, so symbolic regression may not be able to tell these forms apart. 'a^2/r instead of a^3/r^2' may therefore reflect an identifiability limit of the data rather than a different learned law. Both probe margins clearly beat control in both seeds, so some gravity-like structure is there; what is in doubt is its exact form. The verdict would weaken toward inconclusive or flip to supported if fits on data where r and a are decorrelated (eccentricity up to 0.9, or per-snapshot fits at fixed a) recovered r^-2 with a^3 in both seeds. It would strengthen if r^-1 persisted under those conditions.",
+  "created_at": "2026-10-11T21:36:49",
+  "experiment_id": "exp-20261011-205921-aa1d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "refuted",
+      "at": "2026-10-11T21:36:49",
+      "actor": "agent"
+    }
+  ]
+}

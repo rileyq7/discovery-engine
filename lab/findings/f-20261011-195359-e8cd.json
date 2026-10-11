@@ -1,0 +1,24 @@
+{
+  "id": "f-20261011-195359-e8cd",
+  "claim": "The 4-layer transformer (seed 1) clearly beats constant-velocity extrapolation on held-out systems: final val_mse_ratio = 0.0051 (MSE 1.31e-7 vs baseline 2.55e-5). The ratio fell below 1 by step 500 (0.774) and below 0.1 by step 1250 (0.084). At the final checkpoint, the accel_step probe (R2 = 0.917 at layer 1, control 0.742, margin 0.175) is stronger in absolute terms than the force probe (R2 = 0.729 at layer 4, control 0.507, margin 0.222). Distance (0.973 vs 0.769) and energy (0.832 vs 0.660) also beat their controls. Velocity does not (0.955 vs 0.878, margin 0.078 < 0.1).",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261011-193740-63f2"
+  ],
+  "confidence_note": "The verdict covers only the stated hypothesis (val_mse_ratio < 1). The ratio of 0.005 sits about 200x below the threshold, so the result is not borderline, but it comes from one seed and one data seed. A second seed with val_mse_ratio >= 1 would be needed to overturn it, which is unlikely given the size of the gap. The probe results add context but are weak evidence on their own. The random-model controls are high (0.51-0.88), so much of each target is linearly readable from the input encoding. Force and accel_step both scale as 1/r^2 and are correlated across this dataset, so this run cannot say which one the model encodes. Force has the larger margin over control but the lower R2, and it peaks at a different layer (4 vs 1). Probes were run only at the final checkpoint, so formed_at_step = 5000 means 'present at the last checkpoint', not 'formed at step 5000'.",
+  "created_at": "2026-10-11T19:53:59",
+  "experiment_id": "exp-20261011-193739-558b",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-11T19:53:59",
+      "actor": "agent"
+    }
+  ]
+}

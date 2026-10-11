@@ -1,0 +1,28 @@
+run-20261011-193740-63f2: [19:37:43] experiment exp-20261011-193739-558b (E1) seed 1: A 4-layer transformer predicts the next position of a two-body orbit better than constant-velocity extrapolation
+run-20261011-193740-63f2: [19:38:01] generated dataset b04e4026a398: 10000 systems x 129 steps in 18.39s
+run-20261011-193740-63f2: [19:38:01] model: 811,398 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+run-20261011-193740-63f2: [19:38:03] step 0: val_mse=1.909e-03 cv_baseline=2.554e-05 ratio=74.747
+run-20261011-193740-63f2: [19:38:35] step 250: val_mse=2.833e-05 cv_baseline=2.554e-05 ratio=1.109
+run-20261011-193740-63f2: [19:39:06] step 500: val_mse=1.978e-05 cv_baseline=2.554e-05 ratio=0.774
+run-20261011-193740-63f2: [19:39:38] step 750: val_mse=7.690e-06 cv_baseline=2.554e-05 ratio=0.301
+run-20261011-193740-63f2: [19:40:09] step 1000: val_mse=4.193e-06 cv_baseline=2.554e-05 ratio=0.164
+run-20261011-193740-63f2: [19:40:41] step 1250: val_mse=2.156e-06 cv_baseline=2.554e-05 ratio=0.084
+run-20261011-193740-63f2: [19:41:13] step 1500: val_mse=2.456e-06 cv_baseline=2.554e-05 ratio=0.096
+run-20261011-193740-63f2: [19:41:46] step 1750: val_mse=1.837e-06 cv_baseline=2.554e-05 ratio=0.072
+run-20261011-193740-63f2: [19:42:24] step 2000: val_mse=1.975e-06 cv_baseline=2.554e-05 ratio=0.077
+run-20261011-193740-63f2: [19:42:59] step 2250: val_mse=9.890e-07 cv_baseline=2.554e-05 ratio=0.039
+run-20261011-193740-63f2: [19:43:33] step 2500: val_mse=7.522e-07 cv_baseline=2.554e-05 ratio=0.029
+run-20261011-193740-63f2: [19:44:08] step 2750: val_mse=8.631e-07 cv_baseline=2.554e-05 ratio=0.034
+run-20261011-193740-63f2: [19:44:41] step 3000: val_mse=4.846e-07 cv_baseline=2.554e-05 ratio=0.019
+run-20261011-193740-63f2: [19:45:18] step 3250: val_mse=4.442e-07 cv_baseline=2.554e-05 ratio=0.017
+run-20261011-193740-63f2: [19:45:54] step 3500: val_mse=3.909e-07 cv_baseline=2.554e-05 ratio=0.015
+run-20261011-193740-63f2: [19:46:28] step 3750: val_mse=2.619e-07 cv_baseline=2.554e-05 ratio=0.010
+run-20261011-193740-63f2: [19:47:02] step 4000: val_mse=2.456e-07 cv_baseline=2.554e-05 ratio=0.010
+run-20261011-193740-63f2: [19:47:36] step 4250: val_mse=1.810e-07 cv_baseline=2.554e-05 ratio=0.007
+run-20261011-193740-63f2: [19:48:12] step 4500: val_mse=1.698e-07 cv_baseline=2.554e-05 ratio=0.007
+run-20261011-193740-63f2: [19:49:00] step 4750: val_mse=1.262e-07 cv_baseline=2.554e-05 ratio=0.005
+run-20261011-193740-63f2: [19:49:56] step 5000: val_mse=1.308e-07 cv_baseline=2.554e-05 ratio=0.005
+run-20261011-193740-63f2: [19:49:56] training done in 12.2 min; beats constant-velocity baseline: True
+run-20261011-193740-63f2: [19:49:59] random-model control: force=0.17/0.51/0.52/0.52/0.51, distance=0.00/0.77/0.80/0.77/0.78, velocity=0.56/0.88/0.90/0.89/0.89, energy=-0.00/0.71/0.66/0.66/0.71, accel_step=0.63/0.74/0.78/0.78/0.79
+run-20261011-193740-63f2: [19:50:01] probes @ step 5000: best force R2=0.729 (layer 4)
+run-20261011-193740-63f2: [19:50:01] run complete in 12.3 min

@@ -1,0 +1,11 @@
+{
+  "id": "q-20261011-203659-e37f",
+  "text": "Why is the force margin only 0.068-0.103 in this 4-layer, d_model=64, N=64, 600-step setup, when it reached 0.22-0.24 in earlier runs? Is the difference driven by steps_per_orbit, model size, or training length? A one-factor sweep of steps_per_orbit (64 vs 1000) at fixed architecture would separate these.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-203723-b7de",
+    "f-20261011-205813-2bee",
+    "f-20261011-211551-d718"
+  ],
+  "created_at": "2026-10-11T20:36:59"
+}

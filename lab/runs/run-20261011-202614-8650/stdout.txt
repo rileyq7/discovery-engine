@@ -1,0 +1,16 @@
+run-20261011-202614-8650: [20:31:10] experiment exp-20261011-201633-8442 (E4) seed 6: The model's next-step predictor transfers to systems outside its training distribution (lower mass ratios, higher eccentricities). If so, it encodes something law-like rather than shortcuts fitted to the training range.
+run-20261011-202614-8650: [20:31:10] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+run-20261011-202614-8650: [20:31:13] step 0: val_mse=2.221e-03 cv_baseline=2.554e-05 ratio=86.958
+run-20261011-202614-8650: [20:31:54] step 500: val_mse=8.870e-06 cv_baseline=2.554e-05 ratio=0.347
+run-20261011-202614-8650: [20:32:46] step 1000: val_mse=3.392e-06 cv_baseline=2.554e-05 ratio=0.133
+run-20261011-202614-8650: [20:33:33] step 1500: val_mse=1.715e-06 cv_baseline=2.554e-05 ratio=0.067
+run-20261011-202614-8650: [20:34:21] step 2000: val_mse=8.524e-07 cv_baseline=2.554e-05 ratio=0.033
+run-20261011-202614-8650: [20:35:08] step 2500: val_mse=4.896e-07 cv_baseline=2.554e-05 ratio=0.019
+run-20261011-202614-8650: [20:35:55] step 3000: val_mse=4.015e-07 cv_baseline=2.554e-05 ratio=0.016
+run-20261011-202614-8650: [20:35:55] training done in 4.8 min; beats constant-velocity baseline: True
+run-20261011-202614-8650: [20:35:56] random-model control: force=0.23/0.52/0.52/0.53/0.53, accel_step=0.61/0.71/0.72/0.72/0.73, distance=0.01/0.19/0.34/0.54/0.46, energy=-0.01/0.17/0.26/0.32/0.24
+run-20261011-202614-8650: [20:35:57] probes @ step 3000: best force R2=0.689 (layer 1)
+run-20261011-202614-8650: [20:35:58] eval[low_mass_ratio]: mse ratio vs CV baseline 0.055; force R2 best layer 0.768
+run-20261011-202614-8650: [20:35:59] eval[high_eccentricity]: mse ratio vs CV baseline 0.249; force R2 best layer 0.339
+run-20261011-202614-8650: [20:36:00] eval[three_body]: mse ratio vs CV baseline 70.231; force R2 best layer 0.581
+run-20261011-202614-8650: [20:36:00] run complete in 4.8 min

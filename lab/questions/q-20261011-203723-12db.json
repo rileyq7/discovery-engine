@@ -1,0 +1,9 @@
+{
+  "id": "q-20261011-203723-12db",
+  "text": "On the high_eccentricity eval set, do force and accel_step probes still beat a random-init control evaluated on the same OOD data? Best force R2 drops from about 0.7 to 0.34-0.40, but without an OOD control we cannot tell whether the force representation broke or the R2 ceiling moved.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-211551-d718"
+  ],
+  "created_at": "2026-10-11T20:37:23"
+}

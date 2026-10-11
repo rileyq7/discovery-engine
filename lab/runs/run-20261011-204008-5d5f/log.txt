@@ -1,0 +1,15 @@
+[20:40:26] experiment exp-20261011-204008-0acf (E3) seed 11: When m2 is spread over [0.01, 1], so that force and accel_step are decorrelated, the gravity quantity the model encodes is per-snapshot acceleration: the symbolic fit to the best gravity-probe direction recovers an expression whose r-dependence is ~1/r^2 and that scales with orbit size (a^3) and not with m2, and accel_step keeps a margin >= 0.1 over control in both seeds
+[20:41:34] generated dataset 93317767eb72: 10000 systems x 129 steps in 68.43s
+[20:41:34] model: 209,094 params on mps; dataset 93317767eb72; 9000 train / 1000 val systems
+[20:41:42] step 0: val_mse=2.284e-03 cv_baseline=2.698e-05 ratio=84.659
+[20:43:53] step 1000: val_mse=4.005e-06 cv_baseline=2.698e-05 ratio=0.148
+[20:46:07] step 2000: val_mse=1.315e-06 cv_baseline=2.698e-05 ratio=0.049
+[20:47:37] stop requested at step 2646
+[20:47:37] training done in 7.2 min; beats constant-velocity baseline: True
+[20:47:42] random-model control: force=0.17/0.52/0.52/0.51/0.51, accel_step=0.58/0.68/0.69/0.70/0.71, distance=-0.01/0.23/0.41/0.38/0.44, energy=-0.02/0.18/0.31/0.34/0.33
+[20:47:48] probes @ step 2000: best force R2=0.735 (layer 1)
+[20:47:48] PySR on |force| probe outputs from layer 1 (5400 points)...
+[20:49:23] PySR: |force| = (m2 + 0.14505671)/r  (law recovered: False, error vs true law 0.409)
+[20:49:23] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+[20:49:28] PySR: |accel_step| = 0.00589063986371009/((r/((a*(a + 0.18060128/(m2 + 0.18060128))))))  (law recovered: False, error vs true law 0.308)
+[20:49:28] run complete in 9.0 min

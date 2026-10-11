@@ -1,0 +1,27 @@
+[19:25:13] experiment exp-20261011-192513-70c8 (E1) seed 0: A 4-layer transformer predicts the next position of a two-body orbit better than constant-velocity extrapolation
+[19:25:13] model: 811,398 params on mps; dataset 3941c9c59a99; 9000 train / 1000 val systems
+[19:25:15] step 0: val_mse=1.700e-03 cv_baseline=2.554e-05 ratio=66.560
+[19:25:47] step 250: val_mse=2.834e-05 cv_baseline=2.554e-05 ratio=1.109
+[19:26:19] step 500: val_mse=9.043e-06 cv_baseline=2.554e-05 ratio=0.354
+[19:26:51] step 750: val_mse=5.999e-06 cv_baseline=2.554e-05 ratio=0.235
+[19:27:23] step 1000: val_mse=2.506e-06 cv_baseline=2.554e-05 ratio=0.098
+[19:27:57] step 1250: val_mse=3.637e-06 cv_baseline=2.554e-05 ratio=0.142
+[19:28:31] step 1500: val_mse=2.005e-06 cv_baseline=2.554e-05 ratio=0.078
+[19:29:04] step 1750: val_mse=2.213e-06 cv_baseline=2.554e-05 ratio=0.087
+[19:29:38] step 2000: val_mse=1.633e-06 cv_baseline=2.554e-05 ratio=0.064
+[19:30:11] step 2250: val_mse=1.110e-06 cv_baseline=2.554e-05 ratio=0.043
+[19:30:46] step 2500: val_mse=9.664e-07 cv_baseline=2.554e-05 ratio=0.038
+[19:31:19] step 2750: val_mse=1.355e-06 cv_baseline=2.554e-05 ratio=0.053
+[19:31:51] step 3000: val_mse=5.075e-07 cv_baseline=2.554e-05 ratio=0.020
+[19:32:23] step 3250: val_mse=3.929e-07 cv_baseline=2.554e-05 ratio=0.015
+[19:32:55] step 3500: val_mse=3.321e-07 cv_baseline=2.554e-05 ratio=0.013
+[19:33:28] step 3750: val_mse=2.845e-07 cv_baseline=2.554e-05 ratio=0.011
+[19:34:01] step 4000: val_mse=1.952e-07 cv_baseline=2.554e-05 ratio=0.008
+[19:34:34] step 4250: val_mse=1.889e-07 cv_baseline=2.554e-05 ratio=0.007
+[19:35:07] step 4500: val_mse=1.276e-07 cv_baseline=2.554e-05 ratio=0.005
+[19:35:40] step 4750: val_mse=1.281e-07 cv_baseline=2.554e-05 ratio=0.005
+[19:36:13] step 5000: val_mse=1.309e-07 cv_baseline=2.554e-05 ratio=0.005
+[19:36:13] training done in 11.0 min; beats constant-velocity baseline: True
+[19:36:15] random-model control: force=0.17/0.53/0.53/0.52/0.53, distance=-0.02/0.65/0.80/0.83/0.81, velocity=0.57/0.89/0.90/0.90/0.90, energy=-0.05/0.54/0.66/0.70/0.71
+[19:36:16] probes @ step 5000: best force R2=0.728 (layer 2)
+[19:36:16] run complete in 11.1 min

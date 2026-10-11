@@ -1,0 +1,44 @@
+{
+  "family": "E5",
+  "hypothesis": "Force encoding appears after prediction accuracy has mostly formed, not before",
+  "expected_if_true": "The step where force probe R2 first stays above control + 0.1 comes after the step where val_mse_ratio drops below 0.1",
+  "expected_if_false": "Force encoding forms before or at the same time as prediction accuracy",
+  "data": {
+    "source": "rebound",
+    "n_bodies": 2,
+    "n_systems": 10000,
+    "steps_per_orbit": 64,
+    "mass_ratio_range": [
+      0.1,
+      1.0
+    ]
+  },
+  "model": {
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "context_len": 128
+  },
+  "training": {
+    "steps": 3000,
+    "batch_size": 128,
+    "lr": 0.001,
+    "checkpoint_every": 50
+  },
+  "probes": {
+    "targets": [
+      "force",
+      "distance",
+      "accel_step"
+    ],
+    "layers": "all",
+    "checkpoints": "all",
+    "random_control": true
+  },
+  "seeds": [
+    0
+  ],
+  "budget": {
+    "max_compute_hours": 0.6
+  }
+}

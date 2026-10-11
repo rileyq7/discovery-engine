@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-203628-5cd9",
+  "claim": "Refuted. Widening m2 to [0.01, 1] did not make the force probe fall behind accel_step. In both seeds the force margin over control was larger than the accel_step margin at the final checkpoint: seed 2 force R2 0.737 vs control 0.494 (margin 0.243, layer 4) against accel_step R2 0.914 vs control 0.709 (margin 0.205, layer 4); seed 3 force R2 0.681 vs control 0.446 (margin 0.235, layer 1) against accel_step R2 0.928 vs control 0.753 (margin 0.175, layer 4). accel_step still led on raw R2 by 0.18-0.25 and kept its margin above 0.1, so the probe was not broken. The force margins were also not >= 0.05 below the default-mass-range E5 margins (0.223-0.230); they were about the same or slightly higher. Both models beat the baseline (val_mse_ratio 0.0114 and 0.0119).",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261011-200822-a91a",
+    "run-20261011-200822-96e9"
+  ],
+  "confidence_note": "The pre-registered margin criterion is met in both seeds, but it is biased against accel_step. accel_step's random control is already 0.71-0.75, so its margin cannot exceed about 0.25-0.29, while force has about 0.51-0.55 of headroom. Measured as a fraction of headroom, (R2-control)/(1-control), accel_step leads: 0.70 vs 0.48 in seed 2 and 0.71 vs 0.42 in seed 3. So this result says the model keeps force-specific signal beyond the control; it does not show that force is the primary representation. Force and accel_step remain collinear through 1/r^2, and force's best layer differs between seeds (1 vs 4), so the force signal may partly be distance or 1/r^2 (distance margin is 0.64-0.70). The E5 comparison uses margins reported in an earlier question, not a run checked here for exactly matched settings. The verdict would change if a probe on force with accel_step and distance regressed out kept no margin over control, or if a headroom-normalized criterion were adopted.",
+  "created_at": "2026-10-11T20:36:28",
+  "experiment_id": "exp-20261011-195457-3068",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-11T20:36:28",
+      "actor": "agent"
+    }
+  ]
+}

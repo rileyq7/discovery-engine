@@ -1,0 +1,28 @@
+[19:55:10] experiment exp-20261011-195457-86a8 (E5) seed 2: Gravity-related structure (accel_step and distance probes beating their random-model controls by >= 0.1) forms at or before the training step where val_mse_ratio first drops below 0.1, rather than appearing only after prediction is already good
+[19:55:28] generated dataset b04e4026a398: 10000 systems x 129 steps in 18.37s
+[19:55:28] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+[19:55:32] step 0: val_mse=2.078e-03 cv_baseline=2.554e-05 ratio=81.339
+[19:55:53] step 250: val_mse=2.238e-05 cv_baseline=2.554e-05 ratio=0.876
+[19:56:13] step 500: val_mse=7.498e-06 cv_baseline=2.554e-05 ratio=0.294
+[19:56:33] step 750: val_mse=5.387e-06 cv_baseline=2.554e-05 ratio=0.211
+[19:56:53] step 1000: val_mse=5.557e-06 cv_baseline=2.554e-05 ratio=0.218
+[19:57:13] step 1250: val_mse=3.545e-06 cv_baseline=2.554e-05 ratio=0.139
+[19:57:34] step 1500: val_mse=2.191e-06 cv_baseline=2.554e-05 ratio=0.086
+[19:57:54] step 1750: val_mse=1.631e-06 cv_baseline=2.554e-05 ratio=0.064
+[19:58:17] step 2000: val_mse=1.373e-06 cv_baseline=2.554e-05 ratio=0.054
+[19:58:45] step 2250: val_mse=1.002e-06 cv_baseline=2.554e-05 ratio=0.039
+[19:59:13] step 2500: val_mse=7.489e-07 cv_baseline=2.554e-05 ratio=0.029
+[19:59:37] step 2750: val_mse=6.773e-07 cv_baseline=2.554e-05 ratio=0.027
+[20:00:04] step 3000: val_mse=5.332e-07 cv_baseline=2.554e-05 ratio=0.021
+[20:00:26] step 3250: val_mse=4.457e-07 cv_baseline=2.554e-05 ratio=0.017
+[20:00:48] step 3500: val_mse=3.824e-07 cv_baseline=2.554e-05 ratio=0.015
+[20:01:12] step 3750: val_mse=3.392e-07 cv_baseline=2.554e-05 ratio=0.013
+[20:01:35] step 4000: val_mse=2.824e-07 cv_baseline=2.554e-05 ratio=0.011
+[20:01:35] training done in 6.4 min; beats constant-velocity baseline: True
+[20:01:36] random-model control: force=0.19/0.53/0.53/0.51/0.52, accel_step=0.59/0.69/0.70/0.70/0.71, distance=0.01/0.26/0.45/0.38/0.48, energy=-0.02/0.13/0.26/0.23/0.29
+[20:01:37] probes @ step 0: best force R2=0.520 (layer 2)
+[20:01:40] probes @ step 1250: best force R2=0.699 (layer 1)
+[20:01:42] probes @ step 2500: best force R2=0.733 (layer 1)
+[20:01:45] probes @ step 3750: best force R2=0.743 (layer 1)
+[20:01:46] probes @ step 4000: best force R2=0.745 (layer 1)
+[20:01:46] run complete in 6.6 min

@@ -1,0 +1,11 @@
+{
+  "id": "q-20261011-195416-2d3a",
+  "text": "Why does the random-init control reach R2 0.584 on accel_step but only 0.014 on distance? Is accel_step's control R2 driven by the a^3 orbit-scale factor that is visible in the raw input coordinates, which would cap how much the accel_step margin can measure?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261011-201533-0653",
+    "f-20261011-203628-5cd9",
+    "f-20261011-205813-2bee"
+  ],
+  "created_at": "2026-10-11T19:54:16"
+}

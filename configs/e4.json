@@ -1,0 +1,76 @@
+{
+  "family": "E4",
+  "hypothesis": "Force encoding and prediction transfer to unseen mass ratios and to 3-body systems",
+  "expected_if_true": "OOD prediction still beats the constant-velocity baseline and force probe R2 on OOD data stays within 0.15 of in-distribution",
+  "expected_if_false": "OOD prediction error and force probe R2 degrade sharply (ratio > 1 or R2 drop > 0.3)",
+  "data": {
+    "source": "rebound",
+    "n_bodies": 2,
+    "n_systems": 10000,
+    "steps_per_orbit": 64,
+    "mass_ratio_range": [
+      0.1,
+      1.0
+    ]
+  },
+  "model": {
+    "n_layers": 4,
+    "d_model": 128,
+    "n_heads": 4,
+    "context_len": 128
+  },
+  "training": {
+    "steps": 5000,
+    "batch_size": 128,
+    "lr": 0.001,
+    "checkpoint_every": 250
+  },
+  "probes": {
+    "targets": [
+      "force",
+      "distance",
+      "velocity",
+      "energy",
+      "accel_step"
+    ],
+    "layers": "all",
+    "checkpoints": "final",
+    "random_control": true
+  },
+  "seeds": [
+    0
+  ],
+  "budget": {
+    "max_compute_hours": 0.6
+  },
+  "eval_sets": [
+    {
+      "name": "heavy_secondary",
+      "data": {
+        "source": "rebound",
+        "n_bodies": 2,
+        "n_systems": 500,
+        "steps_per_orbit": 64,
+        "mass_ratio_range": [
+          1.5,
+          3.0
+        ],
+        "data_seed": 7
+      }
+    },
+    {
+      "name": "three_body",
+      "data": {
+        "source": "rebound",
+        "n_bodies": 3,
+        "n_systems": 500,
+        "steps_per_orbit": 64,
+        "mass_ratio_range": [
+          0.1,
+          1.0
+        ],
+        "data_seed": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "exp-20261011-205921-c3e4",
+  "family": "custom",
+  "hypothesis": "The force probe's ceiling (R2 ~0.65-0.74 in every run so far) comes from the model not linearly encoding the m2 factor: its gravity signal is a 1/r^2-like quantity without m2. If m2 is held fixed, force becomes a pure function of r, and the force probe should rise to accel_step-like R2 levels.",
+  "expected_if_true": "With m2 fixed at 0.5, in both seeds the final-checkpoint force probe R2 is >= 0.85 (up from 0.65-0.74 with m2 spread over [0.1,1] or [0.01,1]) and its margin over the random control is >= 0.1, so force R2 comes within 0.08 of accel_step R2 at some layer.",
+  "expected_if_false": "In both seeds the force probe R2 stays <= 0.78 (within about 0.05 of the 0.65-0.74 seen with spread m2) and accel_step keeps a raw R2 lead >= 0.12. That would mean the force ceiling comes from the 1/r^2 nonlinearity or the layer encoding, not from missing m2 information.",
+  "config": {
+    "family": "custom",
+    "hypothesis": "The force probe's ceiling (R2 ~0.65-0.74 in every run so far) comes from the model not linearly encoding the m2 factor: its gravity signal is a 1/r^2-like quantity without m2. If m2 is held fixed, force becomes a pure function of r, and the force probe should rise to accel_step-like R2 levels.",
+    "expected_if_true": "With m2 fixed at 0.5, in both seeds the final-checkpoint force probe R2 is >= 0.85 (up from 0.65-0.74 with m2 spread over [0.1,1] or [0.01,1]) and its margin over the random control is >= 0.1, so force R2 comes within 0.08 of accel_step R2 at some layer.",
+    "expected_if_false": "In both seeds the force probe R2 stays <= 0.78 (within about 0.05 of the 0.65-0.74 seen with spread m2) and accel_step keeps a raw R2 lead >= 0.12. That would mean the force ceiling comes from the 1/r^2 nonlinearity or the layer encoding, not from missing m2 information.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      14,
+      15
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "running",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T20:59:21",
+  "updated_at": "2026-10-11T21:38:02",
+  "verdict": null,
+  "estimate_hours": 0.1013,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T20:59:21",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T20:59:21",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T20:59:21",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T21:38:02",
+      "actor": "worker",
+      "note": ""
+    }
+  ]
+}

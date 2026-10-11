@@ -1,0 +1,85 @@
+{
+  "id": "exp-20261011-204008-d989",
+  "family": "E6",
+  "hypothesis": "Replication of scaling cell L=2, d_model=32, n_systems=1000: in this small cell the force probe beats its random control by more than accel_step does (seed 0: 0.298 vs 0.204), while accel_step keeps the higher raw R2",
+  "expected_if_true": "In both new seeds, force R2 - control >= 0.1, the force margin exceeds the accel_step margin, accel_step raw R2 > force raw R2, and val_mse_ratio < 1",
+  "expected_if_false": "In at least one seed the accel_step margin is >= the force margin, or force fails to beat its control by 0.1, which would make the seed-0 ordering a seed effect",
+  "config": {
+    "family": "E6",
+    "hypothesis": "Replication of scaling cell L=2, d_model=32, n_systems=1000: in this small cell the force probe beats its random control by more than accel_step does (seed 0: 0.298 vs 0.204), while accel_step keeps the higher raw R2",
+    "expected_if_true": "In both new seeds, force R2 - control >= 0.1, the force margin exceeds the accel_step margin, accel_step raw R2 > force raw R2, and val_mse_ratio < 1",
+    "expected_if_false": "In at least one seed the accel_step margin is >= the force margin, or force fails to beat its control by 0.1, which would make the seed-0 ordering a seed effect",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 1000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 2,
+      "d_model": 32,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      1,
+      2
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "proposed",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T20:40:08",
+  "updated_at": "2026-10-11T20:40:08",
+  "verdict": null,
+  "estimate_hours": 0.0333,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [
+    {
+      "at": "2026-10-11T20:40:08",
+      "actor": "auto-approve",
+      "text": "waiting for human approval: family E6 needs human approval"
+    }
+  ],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T20:40:08",
+      "actor": "agent",
+      "note": ""
+    }
+  ]
+}

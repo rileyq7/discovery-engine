@@ -1,0 +1,10 @@
+{
+  "id": "q-20261011-205921-c74f",
+  "text": "Did the E3 runs stop at step 2000 because symbolic probing at every checkpoint used up the 0.2 h budget? If final-only symbolic probing finishes all 3000 steps, should symbolic experiments default to checkpoints = 'final'?",
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261011-211551-d718",
+    "f-20261011-213649-7305"
+  ],
+  "created_at": "2026-10-11T20:59:21"
+}

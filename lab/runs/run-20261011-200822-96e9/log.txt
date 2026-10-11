@@ -1,0 +1,16 @@
+[20:08:28] experiment exp-20261011-195457-3068 (custom) seed 3: The model's gravity representation is per-snapshot acceleration (accel_step), not physical force: when force and accel_step are decorrelated by widening the mass ratio range to [0.01, 1], the accel_step probe keeps its margin over control while the force probe falls behind it
+[20:08:46] generated dataset bcdd149ac94a: 10000 systems x 129 steps in 17.97s
+[20:08:46] model: 209,094 params on mps; dataset bcdd149ac94a; 9000 train / 1000 val systems
+[20:08:49] step 0: val_mse=2.136e-03 cv_baseline=2.683e-05 ratio=79.628
+[20:09:30] step 500: val_mse=8.329e-06 cv_baseline=2.683e-05 ratio=0.310
+[20:10:19] step 1000: val_mse=5.630e-06 cv_baseline=2.683e-05 ratio=0.210
+[20:11:10] step 1500: val_mse=2.776e-06 cv_baseline=2.683e-05 ratio=0.103
+[20:11:57] step 2000: val_mse=1.852e-06 cv_baseline=2.683e-05 ratio=0.069
+[20:12:43] step 2500: val_mse=1.066e-06 cv_baseline=2.683e-05 ratio=0.040
+[20:13:31] step 3000: val_mse=6.824e-07 cv_baseline=2.683e-05 ratio=0.025
+[20:14:18] step 3500: val_mse=3.601e-07 cv_baseline=2.683e-05 ratio=0.013
+[20:15:05] step 4000: val_mse=3.197e-07 cv_baseline=2.683e-05 ratio=0.012
+[20:15:05] training done in 6.6 min; beats constant-velocity baseline: True
+[20:15:06] random-model control: force=0.16/0.45/0.45/0.46/0.45, accel_step=0.64/0.72/0.73/0.75/0.75, distance=-0.02/0.16/0.32/0.39/0.56, energy=-0.02/0.27/0.23/0.29/0.38
+[20:15:07] probes @ step 4000: best force R2=0.681 (layer 1)
+[20:15:07] run complete in 6.6 min

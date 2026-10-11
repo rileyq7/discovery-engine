@@ -1,0 +1,16 @@
+run-20261011-211902-b899: [21:27:59] experiment exp-20261011-205921-aa1d (E3) seed 13: Run to the full 3000 steps with m2 spread over [0.01, 1], the gravity direction the model encodes is per-snapshot acceleration. The symbolic fit to the best accel_step-probe direction recovers r-dependence ~1/r^2 with orbit-scale (a^3) dependence and no positive m2 factor in both seeds, while the force-direction fit does not recover m2/r^2.
+run-20261011-211902-b899: [21:28:00] model: 209,094 params on mps; dataset bcdd149ac94a; 9000 train / 1000 val systems
+run-20261011-211902-b899: [21:28:06] step 0: val_mse=1.878e-03 cv_baseline=2.683e-05 ratio=69.992
+run-20261011-211902-b899: [21:30:14] step 1000: val_mse=3.660e-06 cv_baseline=2.683e-05 ratio=0.136
+run-20261011-211902-b899: [21:32:22] step 2000: val_mse=9.913e-07 cv_baseline=2.683e-05 ratio=0.037
+run-20261011-211902-b899: [21:34:51] step 3000: val_mse=4.433e-07 cv_baseline=2.683e-05 ratio=0.017
+run-20261011-211902-b899: [21:34:51] training done in 6.9 min; beats constant-velocity baseline: True
+run-20261011-211902-b899: [21:34:55] random-model control: force=0.21/0.45/0.47/0.47/0.46, accel_step=0.55/0.65/0.66/0.67/0.67, distance=-0.01/0.22/0.33/0.42/0.44
+run-20261011-211902-b899: [21:34:59] probes @ step 3000: best force R2=0.712 (layer 2)
+run-20261011-211902-b899: [21:34:59] PySR on |force| probe outputs from layer 2 (5400 points)...
+/private/tmp/claude-501/-Users-rileycoleman-discovery/3448cbb7-32b8-45b6-930a-1df6066c1e35/scratchpad/clone/backend/.venv/lib/python3.12/site-packages/juliacall/__init__.py:61: UserWarning: torch was imported before juliacall. This may cause a segfault. To avoid this, import juliacall before importing torch. For updates, see https://github.com/pytorch/pytorch/issues/78829.
+  warnings.warn(
+run-20261011-211902-b899: [21:36:13] PySR: |force| = (m2 + 0.25836694)/r  (law recovered: False, error vs true law 0.393)
+run-20261011-211902-b899: [21:36:13] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+run-20261011-211902-b899: [21:36:17] PySR: |accel_step| = a**2*0.011343218/(m2*r**2 + r)  (law recovered: False, error vs true law 0.233)
+run-20261011-211902-b899: [21:36:18] run complete in 8.3 min

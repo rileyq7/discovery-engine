@@ -1,0 +1,24 @@
+{
+  "id": "f-20261011-195416-7797",
+  "claim": "This is one cell of the scaling grid (L=2, d_model=32, n_systems=1000, seed 0), so it cannot test whether force R2 rises monotonically with model and data size. At the final step (val_mse_ratio = 0.076), the force probe has R2 = 0.692 at layer 1 vs control 0.394 (margin 0.298), and the accel_step probe has R2 = 0.788 at layer 2 vs control 0.584 (margin 0.204). Distance has R2 = 0.838 vs control 0.014 (margin 0.824).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261011-195003-47ea"
+  ],
+  "confidence_note": "This experiment alone cannot settle the hypothesis. A monotonic trend needs the other grid cells (other L, d_model and n_systems values) compared on the same margin metric, and that comparison is not available here. The result is one seed with final-checkpoint probes only, so formed_at_step = 3000 is just the only step that was probed, not when the structure appeared. In this cell, force (margin 0.298) beats its control by more than accel_step does (margin 0.204). That is the reverse of the earlier finding, where accel_step had the higher raw R2 (0.917 vs force's 0.728). It does not show a physical-force representation: accel_step's raw R2 is still higher (0.788 vs 0.692), its control is unusually high (0.584), and the two targets are collinear through 1/r^2. The verdict would become supported or refuted once the full grid is compared on force margin, ideally with 2 or more seeds per cell. The force-vs-accel_step reading would change if the force margin collapses after accel_step is regressed out.",
+  "created_at": "2026-10-11T19:54:16",
+  "experiment_id": "exp-20261011-194021-3217",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-11T19:54:16",
+      "actor": "agent"
+    }
+  ]
+}

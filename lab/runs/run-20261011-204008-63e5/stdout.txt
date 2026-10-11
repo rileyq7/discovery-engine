@@ -1,0 +1,16 @@
+run-20261011-204008-63e5: [20:49:45] experiment exp-20261011-204008-0acf (E3) seed 10: When m2 is spread over [0.01, 1], so that force and accel_step are decorrelated, the gravity quantity the model encodes is per-snapshot acceleration: the symbolic fit to the best gravity-probe direction recovers an expression whose r-dependence is ~1/r^2 and that scales with orbit size (a^3) and not with m2, and accel_step keeps a margin >= 0.1 over control in both seeds
+run-20261011-204008-63e5: [20:49:46] model: 209,094 params on mps; dataset 93317767eb72; 9000 train / 1000 val systems
+run-20261011-204008-63e5: [20:49:52] step 0: val_mse=2.273e-03 cv_baseline=2.698e-05 ratio=84.255
+run-20261011-204008-63e5: [20:52:06] step 1000: val_mse=4.299e-06 cv_baseline=2.698e-05 ratio=0.159
+run-20261011-204008-63e5: [20:54:34] step 2000: val_mse=1.331e-06 cv_baseline=2.698e-05 ratio=0.049
+run-20261011-204008-63e5: [20:56:57] stop requested at step 2930
+run-20261011-204008-63e5: [20:56:57] training done in 7.2 min; beats constant-velocity baseline: True
+run-20261011-204008-63e5: [20:57:05] random-model control: force=0.15/0.45/0.45/0.44/0.44, accel_step=0.66/0.74/0.76/0.76/0.76, distance=-0.01/0.31/0.26/0.40/0.47, energy=-0.03/0.24/0.26/0.30/0.39
+run-20261011-204008-63e5: [20:57:12] probes @ step 2000: best force R2=0.648 (layer 1)
+run-20261011-204008-63e5: [20:57:12] PySR on |force| probe outputs from layer 1 (5400 points)...
+/private/tmp/claude-501/-Users-rileycoleman-discovery/3448cbb7-32b8-45b6-930a-1df6066c1e35/scratchpad/clone/backend/.venv/lib/python3.12/site-packages/juliacall/__init__.py:61: UserWarning: torch was imported before juliacall. This may cause a segfault. To avoid this, import juliacall before importing torch. For updates, see https://github.com/pytorch/pytorch/issues/78829.
+  warnings.warn(
+run-20261011-204008-63e5: [20:57:43] PySR: |force| = (m2 + 0.21047091)/r  (law recovered: False, error vs true law 0.415)
+run-20261011-204008-63e5: [20:57:43] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+run-20261011-204008-63e5: [20:57:44] PySR: |accel_step| = (a + 0.098769136)**3*0.006137163/(r*(m2**3 + r))  (law recovered: False, error vs true law 0.128)
+run-20261011-204008-63e5: [20:57:44] run complete in 8.0 min
