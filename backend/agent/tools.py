@@ -71,7 +71,7 @@ def _subsample(items: list, n: int = TRAJECTORY_POINTS) -> list:
 
 
 def probe_trajectory(run_id: str) -> dict:
-    """Per target: (step, best R2 - control at that step, layer) at every checkpoint (subsampled only past
+    """Per target: (step, best R2 - control at that step, its layer, max raw R2 over layers) at every checkpoint (subsampled only past
     TRAJECTORY_POINTS, which is then stated), for formation timing."""
     rows = store.get_probe_results(run_id)
     out = {}
@@ -84,7 +84,8 @@ def probe_trajectory(run_id: str) -> dict:
         for s in steps:
             best = max((r for r in rows if r["target"] == t and r["checkpoint_step"] == s),
                        key=lambda r: r["r2"] - (r["control_r2"] or 0))
-            traj.append([s, round(best["r2"] - (best["control_r2"] or 0), 3), best["layer"]])
+            top = max((r for r in rows if r["target"] == t and r["checkpoint_step"] == s), key=lambda r: r["r2"])
+            traj.append([s, round(best["r2"] - (best["control_r2"] or 0), 3), best["layer"], round(top["r2"], 3)])
         out[t] = traj
     return out
 

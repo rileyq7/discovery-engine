@@ -126,9 +126,11 @@ def raw_run(run_id: str) -> dict:
                             None if p.get("control_spread") is None else round(p["control_spread"], 4)] for p in fin]
         traj = []
         for st in sorted({p["checkpoint_step"] for p in rows if p["target"] == t}):
-            b = max((p for p in rows if p["target"] == t and p["checkpoint_step"] == st),
-                    key=lambda p: p["r2"] - (p["control_r2"] or 0))
-            traj.append([st, b["layer"], round(b["r2"], 4), round(b["control_r2"] or 0, 4)])
+            at = [p for p in rows if p["target"] == t and p["checkpoint_step"] == st]
+            b = max(at, key=lambda p: p["r2"] - (p["control_r2"] or 0))
+            top = max(at, key=lambda p: p["r2"])
+            traj.append([st, b["layer"], round(b["r2"], 4), round(b["control_r2"] or 0, 4),
+                         round(b["r2"] - (b["control_r2"] or 0), 4), top["layer"], round(top["r2"], 4)])
         trajectory[t] = traj
     out = {"run_id": run_id, "experiment_id": r["experiment_id"], "seed": r["seed"], "status": r["status"],
            "bad": r.get("bad", False), "stopped": bool(s.get("stopped")),
@@ -138,7 +140,8 @@ def raw_run(run_id: str) -> dict:
                                      if "val_mse_ratio" in by_step[st]],
            "probe_final_checkpoint": final,
            "probes_final [layer, r2, best_control_r2, control_spread]": probes_final,
-           "probe_best_layer_by_step [step, layer, r2, control_r2]": trajectory}
+           "probe_by_step [step, best_margin_layer, its_r2, its_control_r2, margin, max_r2_layer, max_r2]":
+               trajectory}
     for k in ("equations", "eval", "patching"):
         if s.get(k):
             out[k] = s[k]

@@ -25,6 +25,10 @@ Check, in order:
    they exceed the control margin. Flag claims that depend on them.
 4. **No drift.** The last 5 experiments should serve the open questions or replicate findings. Flag
    wandering into tangents, or repeating one experiment with cosmetic tweaks (`drift`).
+   Trajectories list, per checkpoint, the layer with the largest margin over its control and, separately,
+   the layer with the highest raw R². When no layer beats its control, the best-margin layer is usually
+   layer 0 (the embeddings, whose probe matches the control by construction), so its low R² is not a
+   collapse. Read the margin and max_r2 columns.
    Definitions: a target "forms" at the first checkpoint *after which* its best layer stays above the bar at
    every later checkpoint (not the first crossing). Transient earlier crossings are worth an `info`, not a
    mismatch, unless the finding claims there were none.
