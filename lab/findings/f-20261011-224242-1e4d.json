@@ -1,0 +1,24 @@
+{
+  "id": "f-20261011-224242-1e4d",
+  "claim": "Only seed 25 completed; the seed 24 run failed. In seed 25, the accel_step probe was decoded well at layer 4 (R2 = 0.832 vs control 0.517, margin 0.314), but its symbolic fit was (a/r - 0.416)*0.0127*a \u2248 0.0127*a^2/r - 0.0053*a. That has an r exponent of -1, not -2, an a exponent of about 2, not 3, and a fit error of 0.254 against the true law. This meets the pre-registered falsification condition (probe R2 >= 0.8 with r exponent in [-1.4, -0.6]) even with m2 fixed and e in [0, 0.7]. By comparison, force had R2 = 0.630 vs control 0.391 (margin 0.239) and fit 0.723/r (error 0.488). Distance had R2 0.866 vs control 0.172 and energy 0.936 vs 0.179, both at layer 1, and val_mse_ratio = 0.014.",
+  "verdict": "refuted",
+  "status": "refuted",
+  "evidence_run_ids": [
+    "run-20261011-223558-e3d9"
+  ],
+  "confidence_note": "This rests on one seed. Seed 24 (run-20261011-223558-e03f) failed with an infrastructure error (FileNotFoundError when renaming the dataset cache file data.tmp.npz to data.npz), not for any scientific reason, so 'supported' was never reachable: it needed both seeds. The refutation clause only needed one seed, but several things limit confidence. Probe R2 of 0.832 is only just above the 0.8 threshold. The fit error of 0.254 falls in the gap between the pass (<0.2) and fail (>=0.3) thresholds. And free-form fits confound a with r because r lies in [a(1-e), a(1+e)], so the a^2/r form could be partly an artifact of the fit. Two results would move this toward inconclusive or supported: a rerun of seed 24 that gives an r exponent in [-2.5, -1.5], or a symbolic fit run on the true accel_step target with the same pipeline and data that also returns r^-1 (which would mean the fitting method, not the model, produces r^-1). Fitting a^p * g(r/a) with p and g fitted separately would also settle the exponent.",
+  "created_at": "2026-10-11T22:42:42",
+  "experiment_id": "exp-20261011-223558-0c5b",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "refuted",
+      "at": "2026-10-11T22:42:42",
+      "actor": "agent"
+    }
+  ]
+}

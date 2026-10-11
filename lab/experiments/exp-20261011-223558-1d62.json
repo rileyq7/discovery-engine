@@ -1,0 +1,85 @@
+{
+  "id": "exp-20261011-223558-1d62",
+  "family": "custom",
+  "hypothesis": "At fine sampling (N=256), per-step acceleration is 16x smaller relative to orbit size than at N=64. Next-step prediction can then be done almost entirely by finite-difference (curvature) extrapolation of recent inputs, a heuristic that needs no gravity representation, so accel_step and force margins over control shrink below the N=64 values (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).",
+  "expected_if_true": "In both seeds at the final checkpoint: accel_step margin <= 0.12 and force margin <= 0.12 (at or near the 0.1 threshold), while distance still beats control by >= 0.3 and val_mse_ratio < 1. Taken with the N=16 run, margins fall as N grows.",
+  "expected_if_false": "In both seeds, accel_step margin >= 0.15 and force margin >= 0.15, which is comparable to N=64. That would mean the gravity structure appears whatever its share of the prediction target, and argues against a pure task-demand account.",
+  "config": {
+    "family": "custom",
+    "hypothesis": "At fine sampling (N=256), per-step acceleration is 16x smaller relative to orbit size than at N=64. Next-step prediction can then be done almost entirely by finite-difference (curvature) extrapolation of recent inputs, a heuristic that needs no gravity representation, so accel_step and force margins over control shrink below the N=64 values (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).",
+    "expected_if_true": "In both seeds at the final checkpoint: accel_step margin <= 0.12 and force margin <= 0.12 (at or near the 0.1 threshold), while distance still beats control by >= 0.3 and val_mse_ratio < 1. Taken with the N=16 run, margins fall as N grows.",
+    "expected_if_false": "In both seeds, accel_step margin >= 0.15 and force margin >= 0.15, which is comparable to N=64. That would mean the gravity structure appears whatever its share of the prediction target, and argues against a pure task-demand account.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      22,
+      23
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "proposed",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T22:35:58",
+  "updated_at": "2026-10-11T22:35:58",
+  "verdict": null,
+  "estimate_hours": 0.1013,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [
+    {
+      "at": "2026-10-11T22:35:58",
+      "actor": "auto-approve",
+      "text": "waiting for human approval: family custom needs human approval"
+    }
+  ],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T22:35:58",
+      "actor": "agent",
+      "note": ""
+    }
+  ]
+}

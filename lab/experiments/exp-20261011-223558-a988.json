@@ -1,0 +1,85 @@
+{
+  "id": "exp-20261011-223558-a988",
+  "family": "custom",
+  "hypothesis": "Gravity structure in the residual stream is driven by how much next-step prediction needs it. At coarse sampling (N=16 snapshots per orbit), the per-step acceleration (2*pi/16)^2 * a^3/((1+m2) r^2) is 16x larger relative to orbit size than at N=64, so the model must represent it more explicitly, and accel_step and force margins over control rise above the N=64 values from the same architecture (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).",
+  "expected_if_true": "In both seeds at the final checkpoint: accel_step margin over control >= 0.25 and headroom-normalized margin (R2-control)/(1-control) >= 0.8 (vs about 0.70 at N=64); force margin >= 0.25; val_mse_ratio < 1. accel_step also forms (margin >= 0.1) no later than the first checkpoint at which val_mse_ratio < 1.",
+  "expected_if_false": "In both seeds, accel_step and force margins are within 0.05 of the N=64 values (accel_step 0.13-0.26, force 0.12-0.26) or below them, and accel_step headroom-normalized margin is <= 0.75. That would mean the strength of the gravity representation does not track how much the prediction task needs it.",
+  "config": {
+    "family": "custom",
+    "hypothesis": "Gravity structure in the residual stream is driven by how much next-step prediction needs it. At coarse sampling (N=16 snapshots per orbit), the per-step acceleration (2*pi/16)^2 * a^3/((1+m2) r^2) is 16x larger relative to orbit size than at N=64, so the model must represent it more explicitly, and accel_step and force margins over control rise above the N=64 values from the same architecture (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).",
+    "expected_if_true": "In both seeds at the final checkpoint: accel_step margin over control >= 0.25 and headroom-normalized margin (R2-control)/(1-control) >= 0.8 (vs about 0.70 at N=64); force margin >= 0.25; val_mse_ratio < 1. accel_step also forms (margin >= 0.1) no later than the first checkpoint at which val_mse_ratio < 1.",
+    "expected_if_false": "In both seeds, accel_step and force margins are within 0.05 of the N=64 values (accel_step 0.13-0.26, force 0.12-0.26) or below them, and accel_step headroom-normalized margin is <= 0.75. That would mean the strength of the gravity representation does not track how much the prediction task needs it.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 16,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "proposed",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T22:35:58",
+  "updated_at": "2026-10-11T22:35:58",
+  "verdict": null,
+  "estimate_hours": 0.1013,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [
+    {
+      "at": "2026-10-11T22:35:58",
+      "actor": "auto-approve",
+      "text": "waiting for human approval: family custom needs human approval"
+    }
+  ],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T22:35:58",
+      "actor": "agent",
+      "note": ""
+    }
+  ]
+}

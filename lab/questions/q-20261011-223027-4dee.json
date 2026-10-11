@@ -3,7 +3,8 @@
   "text": "With e in [0, 0.9], does an MLP probe or a linear probe on log(accel_step) reach R2 >= 0.8 at layer 4, and does a symbolic fit to that probe's output recover r^-2? If yes, the persistent r^-1 is a limit of linear readout. If the fit stays r^-1, the model really does encode a non-1/r^2 quantity.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261011-223103-dc29"
+    "f-20261011-223103-dc29",
+    "f-20261011-224242-1e4d"
   ],
   "created_at": "2026-10-11T22:30:27"
 }

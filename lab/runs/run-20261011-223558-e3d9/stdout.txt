@@ -1,0 +1,20 @@
+run-20261011-223558-e3d9: [22:36:01] experiment exp-20261011-223558-0c5b (E3) seed 25: The persistent r^-1 in accel_step symbolic fits comes from fitting either collinear data (e <= 0.5) or weak probes (R2 0.40-0.50 at e <= 0.9), not from the model encoding an r^-1 quantity. With m2 fixed (in [0.49, 0.51]) and e in [0, 0.7], r varies up to 5.7x within an orbit while the accel_step probe should keep R2 >= 0.8, and the accel_step-direction fit recovers a^3/r^2.
+run-20261011-223558-e3d9: [22:36:19] generated dataset 89fb5303c7c2: 10000 systems x 129 steps in 18.63s
+run-20261011-223558-e3d9: [22:36:19] model: 209,094 params on mps; dataset 89fb5303c7c2; 9000 train / 1000 val systems
+run-20261011-223558-e3d9: [22:36:21] step 0: val_mse=1.990e-03 cv_baseline=3.745e-05 ratio=53.143
+run-20261011-223558-e3d9: [22:37:03] step 500: val_mse=8.201e-06 cv_baseline=3.745e-05 ratio=0.219
+run-20261011-223558-e3d9: [22:37:44] step 1000: val_mse=2.404e-06 cv_baseline=3.745e-05 ratio=0.064
+run-20261011-223558-e3d9: [22:38:29] step 1500: val_mse=1.590e-06 cv_baseline=3.745e-05 ratio=0.042
+run-20261011-223558-e3d9: [22:39:49] step 2000: val_mse=1.062e-06 cv_baseline=3.745e-05 ratio=0.028
+run-20261011-223558-e3d9: [22:40:53] step 2500: val_mse=6.773e-07 cv_baseline=3.745e-05 ratio=0.018
+run-20261011-223558-e3d9: [22:41:51] step 3000: val_mse=5.265e-07 cv_baseline=3.745e-05 ratio=0.014
+run-20261011-223558-e3d9: [22:41:51] training done in 5.8 min; beats constant-velocity baseline: True
+run-20261011-223558-e3d9: [22:41:53] random-model control: force=0.10/0.38/0.40/0.39/0.39, accel_step=0.34/0.50/0.51/0.52/0.52, distance=-0.03/0.17/0.30/0.42/0.50, energy=-0.04/0.18/0.30/0.34/0.45
+run-20261011-223558-e3d9: [22:41:54] probes @ step 3000: best force R2=0.630 (layer 4)
+run-20261011-223558-e3d9: [22:41:54] PySR on |force| probe outputs from layer 4 (5400 points)...
+/Users/rileycoleman/discovery/backend/.venv/lib/python3.12/site-packages/juliacall/__init__.py:61: UserWarning: torch was imported before juliacall. This may cause a segfault. To avoid this, import juliacall before importing torch. For updates, see https://github.com/pytorch/pytorch/issues/78829.
+  warnings.warn(
+run-20261011-223558-e3d9: [22:42:09] PySR: |force| = 0.7234532/r  (law recovered: False, error vs true law 0.488)
+run-20261011-223558-e3d9: [22:42:09] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+run-20261011-223558-e3d9: [22:42:10] PySR: |accel_step| = (a/r - 1*0.41586733)*0.012745511*a  (law recovered: False, error vs true law 0.254)
+run-20261011-223558-e3d9: [22:42:10] run complete in 6.2 min
