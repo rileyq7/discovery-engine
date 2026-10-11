@@ -8,6 +8,7 @@ from typing import Optional
 
 from agent.claude_cli import run_claude
 from app import store
+from engine.paths import REPO_ROOT
 
 PROMPTS = Path(__file__).parent / "prompts"
 FID = re.compile(r"\bf-\d{8}-\d{6}-[0-9a-f]{4}\b")
@@ -24,9 +25,23 @@ Write the body of the section in Markdown (start with the heading `## {section}`
 - You may embed figures for evidence runs as ![caption](figure:heatmap/<run_id>/force),
   ![caption](figure:heatmap/<run_id>/accel_step) or ![caption](figure:formation/<run_id>).
 - Use LaTeX math with $...$ where helpful (e.g. $F = GMm/r^2$).
+- Counts (how many findings, how many supported/refuted, how many runs) must come from "Facts" below; do not
+  recount them yourself.
+- If an evidence run has `stopped: true`, it was cut short by the lab's budget hard stop at `completion` of its
+  planned steps. Say so where its numbers are used.
+- Describe methods only as documented in "Lab protocol" below and in the findings' evidence. Do not invent
+  details.
 - Extra instructions from the author: {instructions}
 
 Reply with ONLY the Markdown for this section.
+
+## Facts (computed from the lab records)
+```json
+{facts}
+```
+
+## Lab protocol (documented methods)
+{protocol}
 
 ## Citable findings (with their evidence)
 ```json
@@ -48,19 +63,52 @@ def _evidence(f: dict) -> dict:
         except KeyError:
             continue
         s = r.get("summary") or {}
-        runs.append({"run_id": rid, "seed": r["seed"], "val_mse_ratio": s.get("val_mse_ratio"),
-                     "probes_final": (s.get("probes") or {}).get("targets"), "equations": s.get("equations")})
+        run = {"run_id": rid, "seed": r["seed"], "val_mse_ratio": s.get("val_mse_ratio"),
+               "probes_final": (s.get("probes") or {}).get("targets"), "equations": s.get("equations")}
+        if s.get("stopped"):
+            run.update(stopped=True, completion=round(store.run_completion(r), 3))
+        runs.append(run)
     return {"id": f["id"], "claim": f["claim"], "verdict": f["verdict"], "status": f["status"],
             "confidence_note": f["confidence_note"], "evidence": runs}
 
 
+SECTION_ORDER = ["Abstract", "Introduction", "Methods", "Results", "Discussion", "Limitations", "Conclusion"]
+
+
+def facts(allowed: list[dict]) -> dict:
+    by_verdict: dict[str, int] = {}
+    runs = set()
+    for f in allowed:
+        by_verdict[f["verdict"]] = by_verdict.get(f["verdict"], 0) + 1
+        runs.update(f["evidence_run_ids"])
+    truncated = [r for r in runs if (store.get_run(r).get("summary") or {}).get("stopped")]
+    return {"citable_findings": len(allowed), "by_verdict": by_verdict,
+            "by_status": {st: sum(f["status"] == st for f in allowed) for st in {f["status"] for f in allowed}},
+            "evidence_runs": len(runs), "evidence_runs_cut_short_by_budget_stop": len(truncated)}
+
+
+def protocol() -> str:
+    """The documented science protocol (the 'Science and engine' part of DECISIONS.md)."""
+    try:
+        text = (REPO_ROOT / "DECISIONS.md").read_text()
+        return text.split("## Science and engine", 1)[1].split("\n## ", 1)[0].strip()
+    except (OSError, IndexError):
+        return "(not available)"
+
+
 def replace_or_append_section(md: str, section: str, body: str) -> str:
+    """Replace a `## section`, or insert it in conventional paper order (Abstract first, ...)."""
     body = body.strip()
     if not body.startswith("## "):
         body = f"## {section}\n\n{body}"
     pat = re.compile(rf"^## {re.escape(section)}\s*$.*?(?=^## |\Z)", re.M | re.S)
     if pat.search(md):
         return pat.sub(lambda _m: body + "\n\n", md, count=1).rstrip() + "\n"
+    if section in SECTION_ORDER:
+        for later in SECTION_ORDER[SECTION_ORDER.index(section) + 1:]:
+            m = re.search(rf"^## {re.escape(later)}\s*$", md, re.M)
+            if m:
+                return md[:m.start()] + body + "\n\n" + md[m.start():]
     return md.rstrip() + "\n\n" + body + "\n"
 
 
@@ -73,7 +121,8 @@ def draft_section(pid: str, section: str, instructions: str = "", allow_unreplic
     prompt = PROMPT.format(section=section, title=paper["title"], allowed_ids=json.dumps(allowed_ids),
                            instructions=instructions or "none", findings=json.dumps([_evidence(f) for f in allowed],
                                                                                     indent=2, default=str),
-                           paper=paper["markdown"][-12000:])
+                           paper=paper["markdown"][-12000:], facts=json.dumps(facts(allowed), indent=2),
+                           protocol=protocol())
     system = (PROMPTS / "system.md").read_text()
     body = run_claude(prompt, system=system)
     bad = sorted(set(FID.findall(body)) - set(allowed_ids))

@@ -134,6 +134,7 @@ def train(cfg: ExperimentConfig, seed: int, artifact_dir: Path, log: Callable[[s
     do_checkpoint(0)
     model.train()
     stopped = False
+    step = 0
     for step in range(1, cfg.training.steps + 1):
         idx = torch.randint(0, len(train_pos), (cfg.training.batch_size,), generator=gen).to(device)
         xb = train_pos[idx]
@@ -155,13 +156,13 @@ def train(cfg: ExperimentConfig, seed: int, artifact_dir: Path, log: Callable[[s
             stopped = True
             break
 
-    if not stopped and cfg.training.steps not in ck_steps:
-        do_checkpoint(cfg.training.steps)
+    if step not in ck_steps:  # always probe the final weights, including after a stop
+        do_checkpoint(step)
     hours = (time.time() - t0) / 3600
     summary = {"final_val_mse": last.get("val_mse"), "baseline_cv_mse": last.get("baseline_cv_mse"),
                "val_mse_ratio": last.get("val_mse_ratio"), "beats_baseline": last.get("val_mse_ratio", 9) < 1.0,
                "train_hours": hours, "n_params": model.n_params(), "device": device, "dataset_id": prep.dataset_id,
-               "stopped": stopped}
+               "stopped": stopped, "steps_completed": step, "steps_planned": cfg.training.steps}
     log(f"training done in {hours * 60:.1f} min; beats constant-velocity baseline: {summary['beats_baseline']}")
     return summary
 

@@ -127,4 +127,47 @@ def test_paper_section_replace_or_append():
     out = replace_or_append_section(md, "Results", "## Results\n\nnew results")
     assert "old" not in out and "new results" in out and out.index("Results") < out.index("Discussion")
     out2 = replace_or_append_section(md, "Methods", "We did things.")
-    assert out2.rstrip().endswith("## Methods\n\nWe did things.")
+    assert out2.index("## Methods\n\nWe did things.") < out2.index("## Results")  # paper order, not appended
+    out3 = replace_or_append_section(md, "Appendix", "extra")
+    assert out3.rstrip().endswith("## Appendix\n\nextra")  # unknown sections go at the end
+
+
+def test_truncated_runs_do_not_replicate(fresh_lab, monkeypatch):
+    """Runs cut short by the budget hard stop are probed at their stop step and don't count as agreeing seeds."""
+    from agent import tools
+    from app import lab, store
+    from engine import run_job
+    from engine.worker import Worker
+
+    monkeypatch.setattr(run_job, "HARD_STOP_FACTOR", 0.0)  # stop as soon as training starts
+    rec = lab.propose(tiny_config(seeds=[0, 1]), "agent")
+    w = Worker(inline=True)
+    for _ in range(20):
+        w.tick()
+        if not w.busy():
+            break
+    runs = store.runs_for(rec["id"])
+    for r in runs:
+        s = r["summary"]
+        assert r["status"] == "completed" and s["stopped"]
+        assert s["steps_planned"] == 60 and s["steps_completed"] <= 2
+        assert store.run_completion(r) < store.MIN_COMPLETION
+        assert max(p["checkpoint_step"] for p in store.get_probe_results(r["id"])) == s["steps_completed"]
+    res = tools.create_findings({"claim": "Truncated runs agree", "verdict": "refuted", "seeds_agree": True,
+                                 "evidence_run_ids": [r["id"] for r in runs], "confidence_note": "cut short"})
+    assert res["ok"], res
+    assert store.get_finding(res["created"][0]["id"])["status"] == "refuted"  # not replicated
+    assert tools._compact_run(runs[0])["completion"] < 0.1
+
+
+def test_paper_sections_insert_in_order():
+    from agent.papers import replace_or_append_section
+
+    md = "# T\n\n## Results\n\nr\n"
+    md = replace_or_append_section(md, "Abstract", "## Abstract\n\na")
+    md = replace_or_append_section(md, "Methods", "m")
+    md = replace_or_append_section(md, "Open questions", "## Open questions\n\nq")
+    md = replace_or_append_section(md, "Results", "## Results\n\nr2")
+    heads = [l for l in md.splitlines() if l.startswith("## ")]
+    assert heads == ["## Abstract", "## Methods", "## Results", "## Open questions"]
+    assert "r2" in md and "\nr\n" not in md

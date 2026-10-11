@@ -9,7 +9,13 @@
   "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261011-213802-00ed",
   "git_commit": null,
   "bad": false,
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-11T22:46:13",
+      "actor": "claude-code (for the user)",
+      "text": "Cut short by the budget hard stop at step 1657 of 3000 (55%); probes were taken at step 1500. Cause: the compute estimate was 2.4x too low (dataset generation counted against the training clock). Below the 80% completion rule, so it does not count toward replication."
+    }
+  ],
   "summary": {
     "final_val_mse": 1.5293213678157237e-06,
     "baseline_cv_mse": 2.444578155757874e-05,

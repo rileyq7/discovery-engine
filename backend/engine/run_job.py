@@ -15,6 +15,8 @@ from engine.paths import device_name, run_artifact_dir
 from engine.probes.suite import run_suite
 from engine.train import prepare, train
 
+HARD_STOP_FACTOR = 2.0
+
 
 def execute_run(run_id: str, echo: bool = True) -> dict:
     run = store.get_run(run_id)
@@ -33,14 +35,21 @@ def execute_run(run_id: str, echo: bool = True) -> dict:
             print(f"{run_id}: {line}", flush=True)
 
     t0 = time.time()
-    # Hard stop for training at 1.2x this seed's share of the experiment budget.
-    seed_budget_s = cfg.budget.max_compute_hours / len(cfg.seeds) * 3600 * 1.2
+    # Runaway guard: stop training at HARD_STOP_FACTOR x this seed's share of the experiment budget. The clock
+    # starts at the first training step, so dataset generation and loading don't count against it.
+    seed_budget_s = cfg.budget.max_compute_hours / len(cfg.seeds) * 3600 * HARD_STOP_FACTOR
+    train_t0: list[float] = []
+
+    def should_stop() -> bool:
+        if not train_t0:
+            train_t0.append(time.time())
+        return time.time() - train_t0[0] > seed_budget_s
     store.update_run(run_id, {"status": "running", "started_at": store.now(), "device": device_name(),
                               "pid": os.getpid()})
     try:
         log(f"experiment {exp['id']} ({cfg.family}) seed {run['seed']}: {cfg.hypothesis}")
         summary = train(cfg, run["seed"], art, log=log, on_metrics=lambda rows: store.append_metrics(run_id, rows),
-                        should_stop=lambda: time.time() - t0 > seed_budget_s)
+                        should_stop=should_stop)
         store.update_run(run_id, {"progress": "probing", "n_params": summary["n_params"],
                                   "dataset_id": summary["dataset_id"]})
         prep = prepare(cfg, log=lambda m: None)

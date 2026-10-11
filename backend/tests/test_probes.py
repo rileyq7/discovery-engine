@@ -109,3 +109,29 @@ def test_planted_accel_step_is_recovered():
     latent = np.concatenate([acc / acc.std(), rng.normal(size=(len(acc), 62))], axis=1)
     acts = latent @ np.linalg.qr(rng.normal(size=(64, 64)))[0]
     assert probe_r2(acts, acc, groups) > 0.95
+
+
+def test_concurrent_dataset_generation_is_safe(fresh_lab):
+    """Two processes asking for the same uncached dataset: one generates it, the other waits and loads it."""
+    import multiprocessing as mp
+
+    from engine.sim.rebound_gen import dataset_path
+    from tests.conftest import tiny_config
+    from app.schemas.config import ExperimentConfig, dataset_key
+
+    cfg = ExperimentConfig.model_validate(tiny_config())
+    ctx = mp.get_context("spawn")
+    procs = [ctx.Process(target=_gen_worker, args=(cfg.data.model_dump(mode="json"), 24)) for _ in range(3)]
+    for p in procs:
+        p.start()
+    for p in procs:
+        p.join(120)
+    assert all(p.exitcode == 0 for p in procs)
+    assert dataset_path(dataset_key(cfg.data, 24)).exists()
+
+
+def _gen_worker(data: dict, n_steps: int):
+    from app.schemas.config import DataConfig
+    from engine.sim.rebound_gen import load_or_generate
+
+    load_or_generate(DataConfig.model_validate(data), n_steps, log=lambda m: None)

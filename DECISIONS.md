@@ -39,10 +39,21 @@ Where the spec left something open, these notes record what was picked (usually 
   rejected.
 - **E6 sweep.** Each grid cell is its own experiment (12 configs in `configs/e6/`), so state, budget and findings
   stay per experiment. The schema has no sweep construct.
-- **Budget hard stop.** Training stops at 1.2× its share of `budget.max_compute_hours` (the run is still recorded,
-  with `summary.stopped = true`).
-- **Compute estimate.** steps × batch × context × layers × (12d² + 2·ctx·d) / throughput, calibrated on this
-  M-series laptop (MPS). It can be overridden with `throughput` in `lab/settings.json` for slower machines or cloud CPUs.
+- **Budget hard stop.** A runaway guard stops training at 2× its seed's share of `budget.max_compute_hours`. The clock
+  starts at the first training step, so dataset generation doesn't count. A stopped run gets a checkpoint and probes
+  at its stop step, and records `steps_completed` / `steps_planned`. *History:* the first version stopped at 1.2×,
+  counted data generation, and probed the last regular checkpoint. Combined with a low estimate, it cut 6 of 23
+  early runs short; one (seed 14) trained only 55% of its steps.
+- **Truncated runs and replication.** A run that completed less than 80% of its planned steps doesn't count as an
+  agreeing seed (`store.MIN_COMPLETION`). The agent sees `stopped` / `completion` for every run and must mention it.
+- **Compute estimate.** Per training step: n_layers × 0.03 s of fixed overhead, plus work/1.4e15 per hour, where
+  work = batch × context × layers × (12d² + 2·ctx·d). Probes, symbolic regression, eval sets and worst-case data
+  generation are added on top. Fitted on 23 runs on this laptop (MPS): at these sizes per-step overhead dominates, so
+  the old d²-only formula was 1.3–2.4× too low for d = 64. Every past run finishes within 0.94× of its new estimate.
+  `throughput` and `step_overhead_s` in `lab/settings.json`, or `DE_THROUGHPUT` / `DE_STEP_OVERHEAD`, override it
+  for other machines.
+- **Dataset cache under concurrency.** Generation takes a per-dataset file lock (`fcntl`). Concurrent runs that need
+  the same new dataset wait for one generator instead of racing on a shared temp file, which once failed a run.
 
 ## Lab state and workflow
 - **Repo root = this directory** (the spec's `discovery-engine/`). `lab/` sits at the repo root and is committed.
@@ -74,6 +85,11 @@ Where the spec left something open, these notes record what was picked (usually 
   replicated findings changes, it redrafts the Results section. If nothing is replicated yet, it writes a clearly
   labelled "Preliminary observations (unreplicated)" section using the citation override, so there is something
   to read after a night of running.
+- **Paper drafting.** The draft prompt includes computed counts (findings by verdict and status, evidence runs, runs
+  cut short), so the model doesn't count. It also includes the "Science and engine" section of this file as the
+  documented protocol for Methods. Sections are inserted in paper order (Abstract, Introduction, Methods, Results, …).
+  When the replicated set changes, the running draft redrafts Results, adds Methods if missing, and refreshes the
+  Abstract.
 - **Paper citations.** The draft-section prompt only offers replicated findings plus per-claim overrides. Disallowed
   IDs in the output trigger a rewrite, then get marked "(NOT CITABLE)". The editor shows citation warnings.
 

@@ -186,6 +186,13 @@ def maybe_draft_paper() -> None:
     try:
         draft_section(pid, section, "Summarise what the lab has established so far, including null results.",
                       allow, actor="agent", extra_meta={"last_drafted_with": citable})
+        if citable:
+            if "## Methods" not in store.get_paper(pid)["markdown"]:
+                draft_section(pid, "Methods", "Describe data generation, model, training, the probe protocol with "
+                              "random-model controls, and symbolic regression, as used by the cited findings. "
+                              "Keep it to what a reader needs to interpret the Results.", actor="agent")
+            draft_section(pid, "Abstract", "One paragraph of at most 200 words: question, approach, main results "
+                          "with key numbers, and the main negative result.", actor="agent")
     except Exception as e:
         log(f"paper drafting failed: {e}")
 

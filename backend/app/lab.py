@@ -9,7 +9,8 @@ from typing import Optional
 from pydantic import ValidationError
 
 from app import store
-from app.schemas.config import DEFAULT_THROUGHPUT, ExperimentConfig, estimate_compute_hours, validate_config
+from app.schemas.config import (DEFAULT_STEP_OVERHEAD_S, DEFAULT_THROUGHPUT, ExperimentConfig, estimate_compute_hours,
+                               validate_config)
 
 
 class ProposalError(ValueError):
@@ -27,10 +28,11 @@ def _format_errors(e: ValidationError) -> list[str]:
 
 
 def estimate(cfg: ExperimentConfig) -> float:
-    # DE_THROUGHPUT (env, e.g. the cloud routine on CPU) > lab/settings.json > the MPS-calibrated default
-    env = os.environ.get("DE_THROUGHPUT")
+    # env (e.g. a CPU-only machine) > lab/settings.json > the MPS-calibrated defaults
     s = store.get_settings()
-    return estimate_compute_hours(cfg, float(env) if env else (s.get("throughput") or DEFAULT_THROUGHPUT))
+    tp = os.environ.get("DE_THROUGHPUT") or s.get("throughput") or DEFAULT_THROUGHPUT
+    oh = os.environ.get("DE_STEP_OVERHEAD") or s.get("step_overhead_s") or DEFAULT_STEP_OVERHEAD_S
+    return estimate_compute_hours(cfg, float(tp), float(oh))
 
 
 def check(raw: dict | str) -> tuple[Optional[ExperimentConfig], list[str], float]:
@@ -110,5 +112,6 @@ def replicate(finding_id: str, actor: str) -> dict:
     cfg["seeds"] = [new_seed]
     cfg["hypothesis"] = f"Replication of {finding_id}: {f['claim']}"[:2000]
     n_old = max(1, len(exp["config"]["seeds"]))
-    cfg["budget"]["max_compute_hours"] = round(max(cfg["budget"]["max_compute_hours"] / n_old, 0.01) * 1.5, 3)
+    share = max(cfg["budget"]["max_compute_hours"] / n_old, 0.01) * 1.5
+    cfg["budget"]["max_compute_hours"] = round(max(share, estimate(ExperimentConfig.model_validate(cfg)) * 1.25), 3)
     return propose(cfg, actor, replicates_finding_id=finding_id, note=f"replication of {finding_id}")

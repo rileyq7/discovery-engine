@@ -17,8 +17,10 @@ Ground truth at each step (the probe targets):
 """
 from __future__ import annotations
 
+import fcntl
 import json
 import math
+import os
 import time
 from pathlib import Path
 
@@ -109,19 +111,28 @@ def load_or_generate(data: DataConfig, n_steps: int, log=print) -> tuple[str, di
     d = datasets_dir() / key
     f = d / "data.npz"
     if f.exists():
-        z = np.load(f)
-        return key, {k: z[k] for k in z.files}
-    t0 = time.time()
-    arrays = generate(data, n_steps)
+        return key, _load(f)
     d.mkdir(parents=True, exist_ok=True)
-    tmp = d / "data.tmp.npz"
-    np.savez_compressed(tmp, **arrays)
-    tmp.replace(f)
-    meta = {"id": key, "config": data.model_dump(mode="json"), "n_steps": n_steps,
-            "generated_seconds": round(time.time() - t0, 2), "created_at": time.strftime("%Y-%m-%dT%H:%M:%S")}
-    (d / "meta.json").write_text(json.dumps(meta, indent=2))
+    # Concurrent runs can need the same dataset: one process generates it under the lock, the others wait and load.
+    with open(d / ".lock", "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        if f.exists():
+            return key, _load(f)
+        t0 = time.time()
+        arrays = generate(data, n_steps)
+        tmp = d / f"data.tmp-{os.getpid()}.npz"
+        np.savez_compressed(tmp, **arrays)
+        tmp.replace(f)
+        meta = {"id": key, "config": data.model_dump(mode="json"), "n_steps": n_steps,
+                "generated_seconds": round(time.time() - t0, 2), "created_at": time.strftime("%Y-%m-%dT%H:%M:%S")}
+        (d / "meta.json").write_text(json.dumps(meta, indent=2))
     log(f"generated dataset {key}: {data.n_systems} systems x {n_steps} steps in {meta['generated_seconds']}s")
     return key, arrays
+
+
+def _load(f: Path) -> dict[str, np.ndarray]:
+    z = np.load(f)
+    return {k: z[k] for k in z.files}
 
 
 def list_datasets() -> list[dict]:

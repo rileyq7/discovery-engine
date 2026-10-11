@@ -118,21 +118,25 @@ def dataset_key(data: DataConfig, n_steps: int) -> str:
     return hashlib.sha1(payload.encode()).hexdigest()[:12]
 
 
-# Throughput constant for the compute estimate: token-layer-d_model^2 units per hour.
-# Calibrated on an M-series laptop (see DECISIONS.md); `lab/settings.json` can override it.
-DEFAULT_THROUGHPUT = 4.5e14
+# Compute-estimate constants, fitted on 23 runs on an M-series laptop (MPS); see DECISIONS.md. At these model sizes a
+# training step costs mostly fixed per-layer overhead (kernel launches, optimizer, periodic eval), plus a small term
+# proportional to the arithmetic. Values include about 25% headroom for a busy machine.
+DEFAULT_THROUGHPUT = 1.4e15  # batch-token-layer-d_model^2 work units per hour
+DEFAULT_STEP_OVERHEAD_S = 0.03  # seconds per training step per layer
 
 
-def estimate_compute_hours(cfg: ExperimentConfig, throughput: float = DEFAULT_THROUGHPUT) -> float:
-    """Rough a-priori estimate of compute hours across all seeds (train + probes + data)."""
+def estimate_compute_hours(cfg: ExperimentConfig, throughput: float = DEFAULT_THROUGHPUT,
+                           step_overhead_s: float = DEFAULT_STEP_OVERHEAD_S) -> float:
+    """A-priori estimate of compute hours across all seeds (train + probes + data generation)."""
     m, t = cfg.model, cfg.training
     work = t.steps * t.batch_size * m.context_len * m.n_layers * (12 * m.d_model**2 + 2 * m.context_len * m.d_model)
-    train_h = work / throughput
+    train_h = work / throughput + t.steps * m.n_layers * step_overhead_s / 3600
     n_ckpt = t.steps // t.checkpoint_every + 2
-    probe_h = 0.0005 * n_ckpt * (m.n_layers + 1) * (1.5 if cfg.probes.patching else 1.0)
+    probe_h = 0.0001 * n_ckpt * (m.n_layers + 1) * (1.5 if cfg.probes.patching else 1.0) + 0.01 * len(cfg.eval_sets)
     if cfg.probes.symbolic:
-        probe_h += 0.05
-    data_h = cfg.data.n_systems * 4e-7 * (1 + len(cfg.eval_sets))
+        probe_h += 0.06
+    # worst case observed: 10k high-eccentricity systems in about 2 min (cached afterwards)
+    data_h = cfg.data.n_systems * 3.5e-6 * (1 + len(cfg.eval_sets))
     return (train_h + probe_h) * len(cfg.seeds) + data_h
 
 

@@ -41,9 +41,12 @@ def _compact_run(r: dict) -> dict:
            "compute_hours": r.get("compute_hours")}
     if r.get("error"):
         out["error"] = r["error"]
-    for k in ("final_val_mse", "baseline_cv_mse", "val_mse_ratio", "beats_baseline", "n_params", "stopped"):
+    for k in ("final_val_mse", "baseline_cv_mse", "val_mse_ratio", "beats_baseline", "n_params", "stopped",
+              "steps_completed", "steps_planned"):
         if k in s:
             out[k] = s[k]
+    if s.get("stopped"):
+        out["completion"] = round(store.run_completion(r), 3)
     if s.get("probes"):
         out["probes_final"] = s["probes"]["targets"]
         out["control_margin"] = s["probes"]["control_margin"]

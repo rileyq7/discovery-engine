@@ -2,7 +2,7 @@
   "id": "f-20261011-223000-b5f9",
   "claim": "Fixing m2 at 0.5, so that force is exactly 0.5/r^2, did not lift the force probe. Final force R2 was 0.750 at layer 1 (seed 14, control 0.560, margin 0.19) and 0.732 at layer 2 (seed 15, control 0.508, margin 0.224). accel_step reached 0.924 and 0.946 at layer 4 (controls 0.743 and 0.762, margins 0.18), a raw R2 lead of 0.17-0.21 over force. Distance was decoded at 0.87-0.89, so the force ceiling of about 0.73-0.75 comes from the 1/r^2 nonlinearity or how the layers encode it, not from m2 information missing from the residual stream.",
   "verdict": "refuted",
-  "status": "replicated",
+  "status": "supported",
   "evidence_run_ids": [
     "run-20261011-213802-00ed",
     "run-20261011-213802-62f9"
@@ -13,13 +13,25 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-11T22:46:13",
+      "actor": "claude-code (for the user)",
+      "text": "Demoted from replicated: seed 14 (run-20261011-213802-00ed) trained only 55% of its planned steps because of a pipeline bug in the budget hard stop, so only seed 15 is valid evidence. A fresh-seed replication has been queued."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "replicated",
       "at": "2026-10-11T22:30:00",
       "actor": "agent"
+    },
+    {
+      "status": "supported",
+      "at": "2026-10-11T22:46:13",
+      "actor": "claude-code (for the user)",
+      "note": "truncated run no longer counts as an agreeing seed"
     }
   ]
 }

@@ -60,6 +60,7 @@ DEFAULT_SETTINGS = {
     "auto_approve_families": ["E1", "E2", "E3", "E4", "E5"],
     "max_cycles_per_day": 12,
     "throughput": None,  # overrides DEFAULT_THROUGHPUT in compute estimates when set
+    "step_overhead_s": None,  # overrides DEFAULT_STEP_OVERHEAD_S (seconds per step per layer)
 }
 
 
@@ -556,11 +557,27 @@ def _save_finding(rec: dict) -> None:
     _upsert(_finding_row(rec))
 
 
+# A run cut short by the budget hard stop before this fraction of its planned steps doesn't count toward replication.
+MIN_COMPLETION = 0.8
+
+
+def run_completion(r: dict) -> float:
+    """Fraction of planned training steps the run completed (1.0 unless the hard stop cut it short)."""
+    s = r.get("summary") or {}
+    if not s.get("stopped"):
+        return 1.0
+    planned = s.get("steps_planned") or get_experiment(r["experiment_id"])["config"]["training"]["steps"]
+    done = s.get("steps_completed")
+    if done is None:  # runs from before steps were recorded: last logged training step
+        done = max((m["step"] for m in get_metrics(r["id"], ["train_loss"])), default=0)
+    return min(1.0, done / max(planned, 1))
+
+
 def _distinct_completed_seeds(run_ids: list[str]) -> set[int]:
     seeds = set()
     for rid in run_ids:
         r = get_run(rid)
-        if r["status"] == "completed" and not r.get("bad"):
+        if r["status"] == "completed" and not r.get("bad") and run_completion(r) >= MIN_COMPLETION:
             seeds.add(r["seed"])
     return seeds
 

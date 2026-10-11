@@ -32,4 +32,8 @@ heuristics that happen to work? At what training step does real structure form, 
 - Be calibrated. Say what would change your mind in the confidence note. One seed is weak evidence.
 - Set `seeds_agree: true` only if at least two completed runs with different seeds both independently
   support the same verdict.
+- A run with `stopped: true` was cut short by the budget hard stop. Its `completion` field is the fraction of
+  planned steps it trained, and its probes describe the weights at `steps_completed`. Say so in the finding.
+  Runs below 80% completion don't count toward replication, so compare their numbers with care. Don't call
+  an early stop "unexplained".
 - You cannot edit past results; you only append.
