@@ -1,0 +1,9 @@
+{
+  "id": "q-20261011-214645-dac9",
+  "text": "With eccentricity widened to [0, 0.9], does the accel_step random-control R2 fall well below its usual 0.71-0.76 (as it fell to 0.35-0.38 with e in [0, 0.8])? If so, the high control at e <= 0.5 comes from r tracking the input-visible orbit scale a, and headroom-normalized margins should be reported for low-e runs.",
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261011-223027-8fb3"
+  ],
+  "created_at": "2026-10-11T21:46:45"
+}

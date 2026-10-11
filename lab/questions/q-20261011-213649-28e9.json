@@ -2,6 +2,9 @@
   "id": "q-20261011-213649-28e9",
   "text": "Seed 13's accel_step fit has denominator m2*r^2 + r, which runs from r^-1 at small m2 to r^-2 at m2 near 1. Is the effective r exponent of the encoded gravity direction actually m2-dependent? Fitting separately on m2 < 0.1 and m2 > 0.5 subsets would test this.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261011-223027-8fb3",
+    "f-20261011-223103-dc29"
+  ],
   "created_at": "2026-10-11T21:36:49"
 }

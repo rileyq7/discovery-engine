@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-223027-8fb3",
+  "claim": "Refuted. With eccentricity widened to [0, 0.9] (and m2 in [0.01, 1]), the symbolic fit to the best accel_step-probe direction still comes out as r^-1 rather than r^-2 in both seeds, even though the accel_step probe beats its random control. Seed 16: 0.0103*a^2/r, fit_error_vs_true_law 0.71, accel_step R2 0.395 vs control 0.175 (margin 0.220). Seed 17: 0.00277*((a+0.685)^3/r - r), which is roughly a^3 but still r^-1, fit_error 0.62, accel_step R2 0.503 vs control 0.182 (margin 0.321). Accel_step beats force in both seeds: force R2 0.154 vs control 0.057 (margin 0.097, fails the 0.1 threshold) and 0.237 vs control 0.131 (margin 0.106). The force fits were m2/r + 0.40 and (m2 + 0.60)/r, errors 0.90 and 0.64. Prediction stays strong: val_mse_ratio 0.0137 and 0.0128.",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261011-215312-4a66",
+    "run-20261011-215313-2e1f"
+  ],
+  "confidence_note": "Both seeds meet the expected-if-false criteria on their own: accel_step margin >= 0.1, r exponent about -1, fit error >= 0.3. Seed 16 also has an a exponent of 2. The main caveat is that the accel_step probe direction explains only 40-50% of accel_step variance at e <= 0.9, down from 0.92-0.95 at e <= 0.5. So the symbolic fit describes a weak linear approximation. The r^-1 result could come from a linear probe failing to follow the heavy-tailed 1/r^2 near pericentre, rather than from the model encoding an r^-1 quantity. Three things would flip this to inconclusive or supported: (1) an MLP probe or a log(accel_step) probe reaches R2 >= 0.8 and its fitted direction gives r^-2; (2) fits restricted to systems in a narrow band of a give r^-2; (3) further seeds recover r^-2. Data seed 0 is shared by both runs, and probing was final-only.",
+  "created_at": "2026-10-11T22:30:27",
+  "experiment_id": "exp-20261011-214645-3766",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-11T22:30:27",
+      "actor": "agent"
+    }
+  ]
+}

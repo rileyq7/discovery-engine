@@ -1,0 +1,159 @@
+{
+  "force": {
+    "equation": "0.97397006/r",
+    "complexity": 3,
+    "loss": 0.2287434,
+    "fit_error_vs_probe": 0.3531510374318351,
+    "fit_error_vs_true_law": 0.5700381736267094,
+    "true_law_error_vs_probe": 0.8234073879670408,
+    "law_recovered": false,
+    "true_law": "m2 / r**2",
+    "variables": [
+      "r",
+      "m2"
+    ],
+    "pareto": [
+      {
+        "complexity": 1,
+        "loss": 0.7205169,
+        "equation": "0.993526040000000"
+      },
+      {
+        "complexity": 3,
+        "loss": 0.2287434,
+        "equation": "0.97397006/r"
+      },
+      {
+        "complexity": 5,
+        "loss": 0.21903864,
+        "equation": "1.0767375/(r + 0.02875332)"
+      },
+      {
+        "complexity": 6,
+        "loss": 0.19085224,
+        "equation": "1.9430382/((r + 0.43428946)**2)"
+      },
+      {
+        "complexity": 9,
+        "loss": 0.19034804,
+        "equation": "1.6416767/(r*(r + 0.6122102) + 0.18764135)"
+      },
+      {
+        "complexity": 11,
+        "loss": 0.18773963,
+        "equation": "(1.7752966 - 1.3756387*r/(r + 0.74668425))**4"
+      },
+      {
+        "complexity": 12,
+        "loss": 0.1824784,
+        "equation": "(2.028945 - 1.9090161*2.4293466/(r + 3.2487304/r))**3"
+      },
+      {
+        "complexity": 14,
+        "loss": 0.1767489,
+        "equation": "(m2 + 1.2624224/(r*(r + r + 0.21899003) + 0.6652521))**2"
+      },
+      {
+        "complexity": 17,
+        "loss": 0.17670023,
+        "equation": "m2 + 0.79692173*m2/((m2 + r**3)*(m2*0.44868684 + r**3))"
+      },
+      {
+        "complexity": 18,
+        "loss": 0.1765802,
+        "equation": "m2 + m2/(((m2*(m2 + r**3)))*(m2 + r)*(m2 + r))"
+      },
+      {
+        "complexity": 19,
+        "loss": 0.17428589,
+        "equation": "m2 + m2/(((0.49171874454756*(m2 + r**3)))*(m2 + r)*(m2 + r))"
+      },
+      {
+        "complexity": 20,
+        "loss": 0.16984323,
+        "equation": "m2 + m2*1.11761/((m2 + r)*(m2*(m2 + r**3))*(m2 + r))"
+      }
+    ],
+    "layer": 1,
+    "probe_r2": 0.3612043230357682
+  },
+  "accel_step": {
+    "equation": "a*a*0.02660534/(r*(r + 1.6584685))",
+    "complexity": 11,
+    "loss": 2.1369453e-05,
+    "fit_error_vs_probe": 0.3230515937006851,
+    "fit_error_vs_true_law": 0.5522433271880461,
+    "true_law_error_vs_probe": 0.8140162579822885,
+    "law_recovered": false,
+    "true_law": "0.00963829 * a**3 / ((1 + m2) * r**2)",
+    "variables": [
+      "r",
+      "m2",
+      "a"
+    ],
+    "pareto": [
+      {
+        "complexity": 1,
+        "loss": 0.00010556776,
+        "equation": "0.0100657320000000"
+      },
+      {
+        "complexity": 3,
+        "loss": 9.9189245e-05,
+        "equation": "0.008895021/r"
+      },
+      {
+        "complexity": 5,
+        "loss": 4.540282e-05,
+        "equation": "0.011673505*a/r"
+      },
+      {
+        "complexity": 6,
+        "loss": 3.0848554e-05,
+        "equation": "a**2*0.010042702/r"
+      },
+      {
+        "complexity": 8,
+        "loss": 3.0527055e-05,
+        "equation": "(a**2*m2**2)*0.040324826/r"
+      },
+      {
+        "complexity": 9,
+        "loss": 3.005824e-05,
+        "equation": "(a*a + 0.07716728)*0.0099454485/r"
+      },
+      {
+        "complexity": 10,
+        "loss": 2.9940498e-05,
+        "equation": "0.035268694*(a**2*m2**2 + 0.035268694)/r"
+      },
+      {
+        "complexity": 11,
+        "loss": 2.1369453e-05,
+        "equation": "a*a*0.02660534/(r*(r + 1.6584685))"
+      },
+      {
+        "complexity": 12,
+        "loss": 2.079077e-05,
+        "equation": "0.107387*(a**2*m2**2)/(r*(r + 1.6199094))"
+      },
+      {
+        "complexity": 13,
+        "loss": 1.979636e-05,
+        "equation": "a*0.018615685*a/((r + 0.6731964)*(r + 0.11812783))"
+      },
+      {
+        "complexity": 15,
+        "loss": 1.9740666e-05,
+        "equation": "a*0.018615685*a*1.0045207/((r + 0.6731964)*(r + 0.11812783))"
+      },
+      {
+        "complexity": 17,
+        "loss": 1.9664385e-05,
+        "equation": "a*a*0.018615685/((r + 0.0705754*(-0.38865063) + 0.6731964)*(r + 0.11812783))"
+      }
+    ],
+    "layer": 4,
+    "probe_r2": 0.5025917839295091
+  }
+}

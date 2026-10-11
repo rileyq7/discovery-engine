@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-214645-3766",
+  "family": "E3",
+  "hypothesis": "The r^-1 / a^2 symbolic fits for the accel_step direction were an identifiability artifact of training on e <= 0.5. When eccentricity covers [0, 0.9], so that r varies by up to 19x within an orbit and is decorrelated from a, the symbolic fit to the best accel_step-probe direction recovers r^-2 with a^3 orbit-scale dependence and no positive m2 factor",
+  "expected_if_true": "In both seeds the accel_step probe beats its random control by >= 0.1. The accel_step-direction fit has an r exponent in [-2.4, -1.6] and an a exponent in [2.5, 3.5], fit_error_vs_true_law < 0.2, and no positive m2 factor. val_mse_ratio < 0.05.",
+  "expected_if_false": "At least one seed's accel_step-direction fit keeps an r exponent near -1 (in [-1.4, -0.6]) or an a exponent <= 2, with fit_error_vs_true_law >= 0.3, even though the accel_step probe beats control by >= 0.1. That would mean the encoded gravity-like quantity really is not a^3/r^2. If the accel_step margin itself drops below 0.1, the result is inconclusive.",
+  "config": {
+    "family": "E3",
+    "hypothesis": "The r^-1 / a^2 symbolic fits for the accel_step direction were an identifiability artifact of training on e <= 0.5. When eccentricity covers [0, 0.9], so that r varies by up to 19x within an orbit and is decorrelated from a, the symbolic fit to the best accel_step-probe direction recovers r^-2 with a^3 orbit-scale dependence and no positive m2 factor",
+    "expected_if_true": "In both seeds the accel_step probe beats its random control by >= 0.1. The accel_step-direction fit has an r exponent in [-2.4, -1.6] and an a exponent in [2.5, 3.5], fit_error_vs_true_law < 0.2, and no positive m2 factor. val_mse_ratio < 0.05.",
+    "expected_if_false": "At least one seed's accel_step-direction fit keeps an r exponent near -1 (in [-1.4, -0.6]) or an a exponent <= 2, with fit_error_vs_true_law >= 0.3, even though the accel_step probe beats control by >= 0.1. That would mean the encoded gravity-like quantity really is not a^3/r^2. If the accel_step margin itself drops below 0.1, the result is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.01,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.9
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": true
+    },
+    "eval_sets": [],
+    "seeds": [
+      16,
+      17
+    ],
+    "budget": {
+      "max_compute_hours": 0.45
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T21:46:45",
+  "updated_at": "2026-10-11T22:30:27",
+  "verdict": "refuted",
+  "estimate_hours": 0.2013,
+  "compute_hours": 0.292,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T21:46:45",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T21:46:45",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T21:46:47",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T21:53:13",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T22:11:09",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T22:30:27",
+      "actor": "agent",
+      "note": "finding f-20261011-223027-8fb3"
+    }
+  ]
+}

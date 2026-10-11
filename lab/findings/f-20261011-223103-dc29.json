@@ -1,0 +1,25 @@
+{
+  "id": "f-20261011-223103-dc29",
+  "claim": "With m2 fixed at about 0.5 and e in [0, 0.9], accel_step beats force on headroom-normalized margin in both seeds: 0.40 vs 0.22 for seed 19 (accel_step R2 0.503 at L4 vs control 0.169; force R2 0.351 at L2 vs control 0.163) and 0.34 vs 0.31 for seed 18 (accel_step 0.421 vs 0.125; force 0.433 vs 0.181). But neither accel_step symbolic fit recovers a^3/r^2: seed 19 gives a^2/(r(r+1.66)) with error 0.55, and seed 18 gives a rational function of a and r/a with overall a-degree 1 and error 0.65. The force fits come out as ~1/r again (0.97/r and 1.01/r, errors 0.57 and 0.62), not 1/r^2.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261011-221109-1b1e",
+    "run-20261011-221109-3f4b"
+  ],
+  "confidence_note": "Results are mixed against the pre-registered criteria. The margin prediction holds in both seeds, though narrowly in seed 18 (0.34 vs 0.31; raw margins 0.296 vs 0.252). The fit prediction fails in both seeds: no a exponent lands in [2.5, 3.5] and both errors are above 0.5. Seed 19's a^2 technically meets the expected-if-false condition (a exponent <= 2), but I do not treat that as a refutation, for three reasons. First, the fits are poor (error 0.55-0.65) and come from probe directions with R2 only 0.42-0.50. Second, a and r are strongly correlated because r lies in [a(1-e), a(1+e)], so separate a and r exponents are weakly identifiable. Third, both fitted expressions are roughly homogeneous of degree ~1 in length, which is the same overall scaling as a^3/r^2. The force fits also give r^-1 with m2 fixed, so the r^-1 seen in earlier runs is not an artefact of varying m2. Both runs completed 3000 steps and beat baseline (val_mse_ratio 0.009-0.010). Two things would change the verdict: a fit on a probe with R2 >= 0.8 (MLP or log target) that recovers a^~3 r^~-2 would support the hypothesis, and a fit that keeps r^-1 with an a exponent <= 2 would refute it.",
+  "created_at": "2026-10-11T22:31:03",
+  "experiment_id": "exp-20261011-214645-1971",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-11T22:31:03",
+      "actor": "agent"
+    }
+  ]
+}

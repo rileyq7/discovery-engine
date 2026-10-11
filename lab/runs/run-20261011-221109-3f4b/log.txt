@@ -1,0 +1,17 @@
+[22:22:27] experiment exp-20261011-214645-1971 (E3) seed 18: With m2 held nearly fixed (in [0.49, 0.51]) and eccentricity in [0, 0.9], force is a pure function of r and accel_step differs from it only by the a^3 orbit-scale factor. The model encodes per-snapshot acceleration, so the accel_step-direction symbolic fit recovers a^3/r^2, and the accel_step probe's headroom-normalized margin exceeds force's
+[22:22:28] model: 209,094 params on mps; dataset 59ee07ca2ace; 9000 train / 1000 val systems
+[22:22:33] step 0: val_mse=1.806e-03 cv_baseline=9.101e-05 ratio=19.839
+[22:23:40] step 500: val_mse=1.403e-05 cv_baseline=9.101e-05 ratio=0.154
+[22:24:46] step 1000: val_mse=8.153e-06 cv_baseline=9.101e-05 ratio=0.090
+[22:25:58] step 1500: val_mse=3.102e-06 cv_baseline=9.101e-05 ratio=0.034
+[22:27:20] step 2000: val_mse=2.060e-06 cv_baseline=9.101e-05 ratio=0.023
+[22:28:16] step 2500: val_mse=1.127e-06 cv_baseline=9.101e-05 ratio=0.012
+[22:29:11] step 3000: val_mse=9.454e-07 cv_baseline=9.101e-05 ratio=0.010
+[22:29:11] training done in 6.7 min; beats constant-velocity baseline: True
+[22:29:12] random-model control: force=0.04/0.18/0.18/0.18/0.17, accel_step=0.06/0.12/0.13/0.13/0.12, distance=0.00/0.27/0.35/0.40/0.52, energy=-0.01/0.27/0.29/0.40/0.50
+[22:29:13] probes @ step 3000: best force R2=0.434 (layer 1)
+[22:29:13] PySR on |force| probe outputs from layer 1 (5400 points)...
+[22:29:25] PySR: |force| = 1.0126995/r  (law recovered: False, error vs true law 0.623)
+[22:29:25] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+[22:29:25] PySR: |accel_step| = 0.009057155*a/(r/(a - (-a + r)) - 1*(-0.04729857))  (law recovered: False, error vs true law 0.647)
+[22:29:25] run complete in 7.0 min

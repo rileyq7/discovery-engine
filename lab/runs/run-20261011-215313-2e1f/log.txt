@@ -1,0 +1,17 @@
+[22:02:33] experiment exp-20261011-214645-3766 (E3) seed 17: The r^-1 / a^2 symbolic fits for the accel_step direction were an identifiability artifact of training on e <= 0.5. When eccentricity covers [0, 0.9], so that r varies by up to 19x within an orbit and is decorrelated from a, the symbolic fit to the best accel_step-probe direction recovers r^-2 with a^3 orbit-scale dependence and no positive m2 factor
+[22:02:34] model: 209,094 params on mps; dataset 494606716751; 9000 train / 1000 val systems
+[22:02:39] step 0: val_mse=2.220e-03 cv_baseline=9.983e-05 ratio=22.235
+[22:03:40] step 500: val_mse=2.390e-05 cv_baseline=9.983e-05 ratio=0.239
+[22:04:42] step 1000: val_mse=9.908e-06 cv_baseline=9.983e-05 ratio=0.099
+[22:05:45] step 1500: val_mse=7.562e-06 cv_baseline=9.983e-05 ratio=0.076
+[22:07:02] step 2000: val_mse=2.946e-06 cv_baseline=9.983e-05 ratio=0.030
+[22:08:20] step 2500: val_mse=1.705e-06 cv_baseline=9.983e-05 ratio=0.017
+[22:09:34] step 3000: val_mse=1.280e-06 cv_baseline=9.983e-05 ratio=0.013
+[22:09:34] training done in 7.0 min; beats constant-velocity baseline: True
+[22:09:41] random-model control: force=0.05/0.13/0.13/0.13/0.14, accel_step=0.09/0.17/0.18/0.18/0.18, distance=0.03/0.23/0.32/0.36/0.45, energy=-0.08/0.16/0.26/0.29/0.37
+[22:09:48] probes @ step 3000: best force R2=0.237 (layer 1)
+[22:09:48] PySR on |force| probe outputs from layer 1 (5400 points)...
+[22:11:02] PySR: |force| = (m2 + 0.5994211)/r  (law recovered: False, error vs true law 0.642)
+[22:11:02] PySR on |accel_step| probe outputs from layer 4 (5400 points)...
+[22:11:08] PySR: |accel_step| = (-r + (a - 1*(-0.68514824))**3/r)*0.0027660972  (law recovered: False, error vs true law 0.624)
+[22:11:08] run complete in 8.6 min

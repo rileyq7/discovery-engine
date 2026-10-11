@@ -2,14 +2,62 @@
   "id": "run-20261011-213802-62f9",
   "experiment_id": "exp-20261011-205921-c3e4",
   "seed": 15,
-  "status": "running",
-  "started_at": "2026-10-11T21:45:41",
-  "ended_at": null,
-  "compute_hours": 0.0,
+  "status": "completed",
+  "started_at": "2026-10-11T21:45:55",
+  "ended_at": "2026-10-11T21:53:10",
+  "compute_hours": 0.1211,
   "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261011-213802-62f9",
   "git_commit": null,
   "bad": false,
   "notes": [],
-  "summary": {},
-  "pid": 82646
+  "summary": {
+    "final_val_mse": 3.539510217942591e-07,
+    "baseline_cv_mse": 2.444578155757874e-05,
+    "val_mse_ratio": 0.014479022524216508,
+    "beats_baseline": true,
+    "train_hours": 0.11998668809731801,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "76b89a92207c",
+    "stopped": true,
+    "probes": {
+      "final_checkpoint": 2500,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.73186,
+          "control_r2": 0.508,
+          "beats_control": true,
+          "formed_at_step": 2500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.94639,
+          "control_r2": 0.7623,
+          "beats_control": true,
+          "formed_at_step": 2500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.88907,
+          "control_r2": 0.20787,
+          "beats_control": true,
+          "formed_at_step": 2500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.91138,
+          "control_r2": 0.20053,
+          "beats_control": true,
+          "formed_at_step": 2500
+        }
+      }
+    }
+  },
+  "pid": 82646,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "76b89a92207c"
 }

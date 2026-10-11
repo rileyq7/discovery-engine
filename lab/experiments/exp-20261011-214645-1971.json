@@ -1,0 +1,109 @@
+{
+  "id": "exp-20261011-214645-1971",
+  "family": "E3",
+  "hypothesis": "With m2 held nearly fixed (in [0.49, 0.51]) and eccentricity in [0, 0.9], force is a pure function of r and accel_step differs from it only by the a^3 orbit-scale factor. The model encodes per-snapshot acceleration, so the accel_step-direction symbolic fit recovers a^3/r^2, and the accel_step probe's headroom-normalized margin exceeds force's",
+  "expected_if_true": "In both seeds the accel_step-direction fit has an a exponent in [2.5, 3.5] and an r exponent in [-2.4, -1.6], with fit_error_vs_true_law < 0.2. The accel_step headroom-normalized margin (R2 - control)/(1 - control) exceeds force's, and both probes beat control by >= 0.1.",
+  "expected_if_false": "The accel_step-direction fit has no a dependence or an a exponent <= 2 (the model's gravity signal does not carry orbit scale), or the force-direction fit recovers ~1/r^2 with a higher headroom-normalized margin than accel_step in both seeds. Either would point to a physical-force-like 1/r^2 representation rather than per-snapshot acceleration.",
+  "config": {
+    "family": "E3",
+    "hypothesis": "With m2 held nearly fixed (in [0.49, 0.51]) and eccentricity in [0, 0.9], force is a pure function of r and accel_step differs from it only by the a^3 orbit-scale factor. The model encodes per-snapshot acceleration, so the accel_step-direction symbolic fit recovers a^3/r^2, and the accel_step probe's headroom-normalized margin exceeds force's",
+    "expected_if_true": "In both seeds the accel_step-direction fit has an a exponent in [2.5, 3.5] and an r exponent in [-2.4, -1.6], with fit_error_vs_true_law < 0.2. The accel_step headroom-normalized margin (R2 - control)/(1 - control) exceeds force's, and both probes beat control by >= 0.1.",
+    "expected_if_false": "The accel_step-direction fit has no a dependence or an a exponent <= 2 (the model's gravity signal does not carry orbit scale), or the force-direction fit recovers ~1/r^2 with a higher headroom-normalized margin than accel_step in both seeds. Either would point to a physical-force-like 1/r^2 representation rather than per-snapshot acceleration.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.49,
+        0.51
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.9
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": true
+    },
+    "eval_sets": [],
+    "seeds": [
+      18,
+      19
+    ],
+    "budget": {
+      "max_compute_hours": 0.45
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T21:46:45",
+  "updated_at": "2026-10-11T22:31:03",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.2013,
+  "compute_hours": 0.2973,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T21:46:45",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T21:46:45",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T21:46:47",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T22:11:09",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T22:29:27",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-11T22:31:03",
+      "actor": "agent",
+      "note": "finding f-20261011-223103-dc29"
+    }
+  ]
+}
