@@ -12,6 +12,7 @@ and agent/cycle.py (driving `claude -p`).
     python -m agent.tools results <experiment_id>
     python -m agent.tools finding <file|->           # one finding (or a list)
     python -m agent.tools question add "<text>" | question set <id> <open|answered|dropped> [--finding <fid>]
+    python -m agent.tools review-respond <file|->    # answers to open reviewer issues (see context)
     python -m agent.tools cycle-begin | cycle-end [--summary "..."] | cycle-fail --summary "..."
 """
 from __future__ import annotations
@@ -53,6 +54,10 @@ def _compact_run(r: dict) -> dict:
     for k in ("equations", "patching", "eval"):
         if k in s:
             out[k] = s[k]
+    if (store._run_dir(r["id"]) / "controls.json").exists():  # single-control run, re-judged with backfilled controls
+        from engine.probes.recontrol import rejudge
+
+        out["multi_control_rejudge"] = {t: v["new"] for t, v in rejudge(r["id"]).items()}
     return out
 
 
@@ -113,6 +118,7 @@ def context() -> dict:
                                         "experiment_id", "disputed")} | {"notes": [n["text"] for n in f["notes"]]}
                      for f in store.list_findings()],
         "open_questions": store.list_questions("open"),
+        "open_review_issues": _review_issues(),
         "recent_experiments": [
             {"id": e["id"], "family": e["family"], "state": e["state"], "verdict": e.get("verdict"),
              "hypothesis": e["hypothesis"], "proposed_by": e["proposed_by"],
@@ -122,6 +128,13 @@ def context() -> dict:
                       for e in exps if e["state"] in ("proposed", "approved", "queued", "running", "analyzing")],
         "seeded_templates": "configs/*.json (E1-E5) and configs/e6/*.json (E6 grid)",
     }
+
+
+def _review_issues() -> list[dict]:
+    from agent import review
+
+    return [{k: i[k] for k in ("review_id", "issue", "severity", "category", "message", "finding_id", "run_id")
+             if k in i} for i in review.open_issues()]
 
 
 def validate_many(raw) -> list[dict]:
@@ -194,7 +207,7 @@ def main(argv=None):
     sub.add_parser("status")
     sub.add_parser("context")
     sub.add_parser("schema")
-    for name in ("validate", "propose", "finding"):
+    for name in ("validate", "propose", "finding", "review-respond"):
         p = sub.add_parser(name)
         p.add_argument("file")
     p = sub.add_parser("run-queue")
@@ -250,6 +263,12 @@ def main(argv=None):
         res = create_findings(_load(a.file))
         _out(res)
         return 0 if res["ok"] else 2
+    elif a.cmd == "review-respond":
+        from agent import review
+
+        errors = review.record_responses(_load(a.file), actor="agent")
+        _out({"ok": not errors, "errors": errors, "still_open": len(review.open_issues())})
+        return 0 if not errors else 2
     elif a.cmd == "question":
         if a.action == "add":
             _out(store.create_question(" ".join(a.args), "agent"))

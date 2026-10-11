@@ -33,7 +33,7 @@ export interface DataConfig {
   mass_ratio_range: [number, number]; eccentricity_range?: [number, number]; data_seed?: number;
 }
 
-export interface TargetSummary { best_layer: number; r2: number; control_r2: number | null; beats_control: boolean; formed_at_step: number | null }
+export interface TargetSummary { best_layer: number; r2: number; control_r2: number | null; control_spread?: number | null; required_margin?: number; beats_control: boolean; formed_at_step: number | null }
 export interface RunSummary {
   final_val_mse?: number; baseline_cv_mse?: number; val_mse_ratio?: number; beats_baseline?: boolean;
   train_hours?: number; n_params?: number; device?: string; dataset_id?: string; stopped?: boolean;
@@ -70,7 +70,15 @@ export interface EvalResult {
 }
 
 export interface Metric { step: number; name: string; value: number }
-export interface ProbeRow { checkpoint_step: number; layer: number; target: string; r2: number; control_r2: number | null }
+export interface ProbeRow {
+  checkpoint_step: number; layer: number; target: string; r2: number;
+  control_r2: number | null; // best of the random-init controls
+  control_spread?: number | null; // max - min over the controls (null for single-control runs)
+}
+/** A probe counts if it beats the best random control by max(margin, control spread). Mirrors engine/probes/controls.py. */
+export const requiredMargin = (margin: number, spread?: number | null) => Math.max(margin, spread ?? 0);
+export const probeCounts = (r: Pick<ProbeRow, "r2" | "control_r2" | "control_spread">, margin: number) =>
+  r.control_r2 !== null && r.r2 - r.control_r2 >= requiredMargin(margin, r.control_spread);
 
 export interface Finding {
   id: string; claim: string; verdict: Verdict; status: FindingStatus; evidence_run_ids: string[];
@@ -89,8 +97,18 @@ export interface Settings {
   daily_budget_hours: number; max_concurrent_runs: number; per_experiment_cap_hours: number;
   auto_approve_families: string[]; max_cycles_per_day: number; throughput: number | null;
 }
+export interface ReviewIssue {
+  severity: "info" | "flag" | "pause"; category: string; message: string; source: "check" | "reviewer";
+  finding_id?: string; run_id?: string;
+}
+export interface Review {
+  id: string; created_at: string; since: string | null; verdict: "OK" | "FLAG" | "PAUSE"; summary: string;
+  issues: ReviewIssue[]; status: "ok" | "open" | "addressed"; llm: boolean;
+  responses: { issue: number; response: string; at: string; actor: string }[];
+}
+
 export interface LoopStatus {
-  paused: boolean; settings: Settings; compute_used_today: number; cycles_today: number;
+  paused: boolean; paused_note?: string | null; settings: Settings; compute_used_today: number; cycles_today: number;
   last_cycle: { timestamp: string; type: string; payload: Record<string, unknown> } | null;
   worker: { online: boolean; last_seen_s: number | null };
 }
@@ -186,6 +204,7 @@ export const api = {
   annotateFinding: (id: string, body: { note?: string; disputed?: boolean }) => req<Finding>("POST", `/findings/${id}/annotate`, body),
   replicate: (id: string) => req<Experiment>("POST", `/findings/${id}/replicate`, {}),
   questions: () => req<Question[]>("GET", "/questions"),
+  reviews: () => req<Review[]>("GET", "/reviews"),
   addQuestion: (text: string) => req<Question>("POST", "/questions", { text }),
   updateQuestion: (id: string, status: string) => req<Question>("PUT", `/questions/${id}`, { status }),
 

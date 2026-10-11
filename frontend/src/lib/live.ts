@@ -36,6 +36,7 @@ export function useLiveUpdates(): boolean {
         if (t === "run") keys.push("runs", "run", "experiments", "experiment");
         if (t === "finding") keys.push("findings", "experiments", "paper");
         if (t === "question") keys.push("questions");
+        if (t === "review" || t === "loop") keys.push("reviews", "loop");
         if (t === "paper") keys.push("paper", "papers");
         if (t === "dataset") keys.push("datasets");
         if (t === "cycle" || t === "settings") keys.push("loop");

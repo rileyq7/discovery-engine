@@ -85,6 +85,14 @@ def annotate(fid: str, body: StatusBody):
     return store.annotate_finding(fid, body.actor, body.note, body.disputed)
 
 
+@router.get("/reviews")
+def reviews(limit: int = 20):
+    """Independent reviewer reports, newest first."""
+    from agent import review
+
+    return list(reversed(review.list_reviews()))[:limit]
+
+
 @router.get("/questions")
 def list_questions(status: Optional[str] = None):
     return store.list_questions(status)

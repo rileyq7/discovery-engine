@@ -32,6 +32,12 @@ heuristics that happen to work? At what training step does real structure form, 
 - Be calibrated. Say what would change your mind in the confidence note. One seed is weak evidence.
 - Set `seeds_agree: true` only if at least two completed runs with different seeds both independently
   support the same verdict.
+- Probe controls: `control_r2` is the best of several randomly initialised models (`probes.n_controls`,
+  default 3), and `control_spread` is how much they disagree. A probe result counts only if
+  R² − control_r2 ≥ max(control_margin, control_spread) (`required_margin` in the summaries). Random models
+  differ by up to about 0.2 on `distance` and `energy` but by less than 0.05 on `force` and `accel_step`, so
+  the bar is higher for the former. Older runs used a single control; where `multi_control_rejudge` is
+  present, use it rather than the original margin, and don't build claims on margins it rejects.
 - A run with `stopped: true` was cut short by the budget hard stop. Its `completion` field is the fraction of
   planned steps it trained, and its probes describe the weights at `steps_completed`. Say so in the finding.
   Runs below 80% completion don't count toward replication, so compare their numbers with care. Don't call

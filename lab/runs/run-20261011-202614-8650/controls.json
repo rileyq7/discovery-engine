@@ -1,0 +1,186 @@
+{
+  "k": 3,
+  "rows": [
+    {
+      "layer": 0,
+      "target": "force",
+      "control_r2s": [
+        0.2284,
+        0.23218,
+        0.22862
+      ]
+    },
+    {
+      "layer": 0,
+      "target": "accel_step",
+      "control_r2s": [
+        0.6089,
+        0.60875,
+        0.60879
+      ]
+    },
+    {
+      "layer": 0,
+      "target": "distance",
+      "control_r2s": [
+        0.01431,
+        0.01302,
+        0.01315
+      ]
+    },
+    {
+      "layer": 0,
+      "target": "energy",
+      "control_r2s": [
+        -0.01139,
+        -0.01145,
+        -0.01173
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "force",
+      "control_r2s": [
+        0.52271,
+        0.54739,
+        0.54598
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "accel_step",
+      "control_r2s": [
+        0.70687,
+        0.70316,
+        0.70791
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "distance",
+      "control_r2s": [
+        0.18885,
+        0.17772,
+        0.11855
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "energy",
+      "control_r2s": [
+        0.16574,
+        0.10669,
+        0.09672
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "force",
+      "control_r2s": [
+        0.52189,
+        0.5574,
+        0.55228
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "accel_step",
+      "control_r2s": [
+        0.71898,
+        0.71736,
+        0.72032
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "distance",
+      "control_r2s": [
+        0.3427,
+        0.36602,
+        0.3698
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "energy",
+      "control_r2s": [
+        0.2588,
+        0.19645,
+        0.15944
+      ]
+    },
+    {
+      "layer": 3,
+      "target": "force",
+      "control_r2s": [
+        0.53306,
+        0.56682,
+        0.55543
+      ]
+    },
+    {
+      "layer": 3,
+      "target": "accel_step",
+      "control_r2s": [
+        0.72387,
+        0.7316,
+        0.72698
+      ]
+    },
+    {
+      "layer": 3,
+      "target": "distance",
+      "control_r2s": [
+        0.53745,
+        0.45464,
+        0.2716
+      ]
+    },
+    {
+      "layer": 3,
+      "target": "energy",
+      "control_r2s": [
+        0.31737,
+        0.31522,
+        0.1167
+      ]
+    },
+    {
+      "layer": 4,
+      "target": "force",
+      "control_r2s": [
+        0.53319,
+        0.55895,
+        0.55219
+      ]
+    },
+    {
+      "layer": 4,
+      "target": "accel_step",
+      "control_r2s": [
+        0.72718,
+        0.72829,
+        0.7313
+      ]
+    },
+    {
+      "layer": 4,
+      "target": "distance",
+      "control_r2s": [
+        0.45538,
+        0.53142,
+        0.37408
+      ]
+    },
+    {
+      "layer": 4,
+      "target": "energy",
+      "control_r2s": [
+        0.24111,
+        0.33477,
+        0.11784
+      ]
+    }
+  ],
+  "note": "backfilled random-init controls; control 0 is the original single control"
+}

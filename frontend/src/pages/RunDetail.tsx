@@ -120,7 +120,7 @@ function Detail({ runId }: { runId: string }) {
         {(["force", "accel_step"] as const).map((t) => {
           const ts = s.probes?.targets?.[t];
           return <Stat key={t} label={`${TARGET_LABEL[t]} R²`} value={ts ? fmtNum(ts.r2, 3) : "–"}
-            sub={ts ? `L${ts.best_layer} · ctrl ${fmtNum(ts.control_r2, 2)} · ${ts.beats_control ? "counts" : "below margin"}` : ""} />;
+            sub={ts ? `L${ts.best_layer} · ctrl ${fmtNum(ts.control_r2, 2)}${ts.control_spread != null ? ` ±${fmtNum(ts.control_spread, 2)}` : ""} · ${ts.beats_control ? "counts" : "below bar"}` : ""} />;
         })}
         <Stat label="Compute" value={fmtHours(r.compute_hours)} sub={`${r.device ?? s.device ?? ""} · ${s.n_params?.toLocaleString() ?? "?"} params`} />
         <Stat label="Commit" value={<span className="font-mono text-base">{r.git_commit ?? "–"}</span>} sub={fmtTime(r.started_at)} />

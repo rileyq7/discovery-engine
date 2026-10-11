@@ -14,8 +14,14 @@ def random_model(cfg: ModelConfig, seed: int) -> OrbitGPT:
     return OrbitGPT(cfg).eval()
 
 
-def counts(r2: float, control_r2: float | None, margin: float) -> bool:
-    """A probe result only counts if it beats the random-model control by `margin`."""
+def required_margin(margin: float, spread: float | None) -> float:
+    """The bar above the best random control: the configured margin, or the spread between the random controls
+    when that is larger (random models alone already differ that much on this target and layer)."""
+    return max(margin, spread or 0.0)
+
+
+def counts(r2: float, control_r2: float | None, margin: float, spread: float | None = None) -> bool:
+    """A probe result only counts if it beats the (best) random-model control by the required margin."""
     if control_r2 is None:
         return False
-    return r2 - control_r2 >= margin
+    return r2 - control_r2 >= required_margin(margin, spread)

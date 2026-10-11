@@ -36,10 +36,13 @@ def claude_bin() -> str:
     return b
 
 
-def run_claude(prompt: str, timeout: int = 900, system: str | None = None) -> str:
-    """Run `claude -p` with the prompt on stdin and return the text result."""
+def run_claude(prompt: str, timeout: int = 900, system: str | None = None, no_tools: bool = False) -> str:
+    """Run `claude -p` with the prompt on stdin and return the text result. `no_tools` gives a fresh,
+    tool-less session (no files, shell or MCP servers) that can only reason over the prompt."""
     check_billing()
     cmd = [claude_bin(), "-p", "--output-format", "json"]
+    if no_tools:
+        cmd += ["--tools", "", "--strict-mcp-config", "--no-session-persistence"]
     if system:
         cmd += ["--append-system-prompt", system]
     env = {k: v for k, v in os.environ.items() if k not in FORBIDDEN_ENV}

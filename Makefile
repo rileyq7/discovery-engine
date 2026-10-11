@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PY := backend/.venv/bin/python
 export PYTHONPATH := $(CURDIR)/backend
 
-.PHONY: setup dev api worker ui loop cycle check-billing test test-all build e1
+.PHONY: setup dev api worker ui loop cycle review review-loop check-billing test test-all build e1
 
 setup:
 	cd backend && uv venv -q --python 3.12 .venv && uv pip install -q --python .venv/bin/python -r requirements.txt
@@ -26,6 +26,13 @@ ui:
 
 loop: check-billing
 	cd backend && .venv/bin/python -m agent.cycle --forever
+
+review: check-billing
+	cd backend && .venv/bin/python -m agent.review
+
+# a review every hour, 30 min after the research loop starts
+review-loop: check-billing
+	cd backend && .venv/bin/python -m agent.review --forever --first-delay 30
 
 cycle: check-billing
 	cd backend && .venv/bin/python -m agent.cycle

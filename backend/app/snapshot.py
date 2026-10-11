@@ -41,7 +41,7 @@ def export(out: Path) -> dict:
             return r
 
         for path in ("/dashboard", "/loop", "/experiments", "/experiments/templates", "/runs", "/findings",
-                     "/questions", "/papers", "/data/datasets"):
+                     "/questions", "/papers", "/data/datasets", "/reviews"):
             _write(tmp, path, get(path).json())
         exps = get("/experiments").json()
         for e in exps:

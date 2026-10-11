@@ -17,7 +17,7 @@ import torch
 
 from app.schemas.config import ExperimentConfig
 from engine.models.gpt import collect_activations
-from engine.probes.controls import counts, random_model
+from engine.probes.controls import counts, random_model, required_margin
 from engine.probes.linear import fit_probe, target_array
 from engine.sim.rebound_gen import load_or_generate
 from engine.train import Prepared, evaluate, list_checkpoints, load_model, tokens
@@ -48,10 +48,24 @@ def _select_checkpoints(cfg: ExperimentConfig, available: list[int]) -> list[int
     return chosen or available[-1:]
 
 
-def run_suite(cfg: ExperimentConfig, seed: int, artifact_dir: Path, prep: Prepared,
-              log: Callable[[str], None] = print) -> dict:
-    artifact_dir = Path(artifact_dir)
-    layers = _layers(cfg)
+def fit_controls(cfg: ExperimentConfig, seed: int, acts_for, Y: dict, groups, layers: list[int],
+                 targets: list[str], k: int):
+    """The same probes on k randomly initialised models. Returns per (layer, target) the best control R2, the
+    spread (max - min, None when k == 1) and all k values. Control c=0 is the single control used before
+    multi-control probes, so old and new runs share their first control."""
+    vals: dict[tuple, list[float]] = {}
+    for c in range(k):
+        ra = acts_for(random_model(cfg.model, seed + 1000 * c))
+        for l in layers:
+            for t in targets:
+                vals.setdefault((l, t), []).append(fit_probe(ra[l], Y[t], groups, seed)["r2"])
+    best = {key: max(v) for key, v in vals.items()}
+    spread = {key: (max(v) - min(v)) if k > 1 else None for key, v in vals.items()}
+    return best, spread, vals
+
+
+def probe_data(cfg: ExperimentConfig, prep: Prepared, layers: list[int]):
+    """Probe inputs shared by every probe of a run: tokens, sampled steps, groups, targets, activation reader."""
     targets = list(cfg.probes.targets)
     probe_sys = prep.val_idx[:PROBE_SYSTEMS]
     pos = prep.arrays["pos"][probe_sys]
@@ -63,13 +77,20 @@ def run_suite(cfg: ExperimentConfig, seed: int, artifact_dir: Path, prep: Prepar
         a = collect_activations(model, x, layers)["resid"]
         return {l: a[l][:, steps].reshape(-1, a[l].shape[-1]) for l in layers}
 
-    control = {}
+    return targets, x, steps, groups, Y, acts_for, probe_sys, pos
+
+
+def run_suite(cfg: ExperimentConfig, seed: int, artifact_dir: Path, prep: Prepared,
+              log: Callable[[str], None] = print) -> dict:
+    artifact_dir = Path(artifact_dir)
+    layers = _layers(cfg)
+    targets, x, steps, groups, Y, acts_for, probe_sys, pos = probe_data(cfg, prep, layers)
+
+    control, spread = {}, {}
     if cfg.probes.random_control:
-        ra = acts_for(random_model(cfg.model, seed))
-        for l in layers:
-            for t in targets:
-                control[(l, t)] = fit_probe(ra[l], Y[t], groups, seed)["r2"]
-        log("random-model control: " + ", ".join(
+        k = cfg.probes.n_controls
+        control, spread, _ = fit_controls(cfg, seed, acts_for, Y, groups, layers, targets, k)
+        log(f"random-model controls (best of {k}): " + ", ".join(
             f"{t}=" + "/".join(f"{control[(l, t)]:.2f}" for l in layers) for t in targets))
 
     ckpts = _select_checkpoints(cfg, list_checkpoints(artifact_dir))
@@ -81,8 +102,10 @@ def run_suite(cfg: ExperimentConfig, seed: int, artifact_dir: Path, prep: Prepar
         for l in layers:
             for t in targets:
                 fit = fit_probe(a[l], Y[t], groups, seed)
+                sp = spread.get((l, t))
                 rows.append({"checkpoint_step": step, "layer": l, "target": t, "r2": round(fit["r2"], 5),
-                             "control_r2": None if not control else round(control[(l, t)], 5)})
+                             "control_r2": None if not control else round(control[(l, t)], 5),
+                             "control_spread": None if sp is None else round(sp, 5)})
                 if step == ckpts[-1]:
                     final_fits[(l, t)] = fit
         if step == ckpts[-1]:
@@ -172,16 +195,18 @@ def summarize(rows: list[dict], targets: list[str], margin: float, metrics: list
         fin = [r for r in rows if r["target"] == t and r["checkpoint_step"] == final_step]
         if not fin:
             continue
-        best = max(fin, key=lambda r: r["r2"] - (r["control_r2"] or 0))
+        best = max(fin, key=lambda r: r["r2"] - (r["control_r2"] or 0) - required_margin(margin, r.get("control_spread")))
         # Formation: first checkpoint after which the best layer stays above control + margin.
         series = sorted((r for r in rows if r["target"] == t and r["layer"] == best["layer"]),
                         key=lambda r: r["checkpoint_step"])
         formed_at = None
         for i, r in enumerate(series):
-            if all(counts(q["r2"], q["control_r2"], margin) for q in series[i:]):
+            if all(counts(q["r2"], q["control_r2"], margin, q.get("control_spread")) for q in series[i:]):
                 formed_at = r["checkpoint_step"]
                 break
         s["targets"][t] = {"best_layer": best["layer"], "r2": best["r2"], "control_r2": best["control_r2"],
-                           "beats_control": counts(best["r2"], best["control_r2"], margin),
+                           "control_spread": best.get("control_spread"),
+                           "required_margin": round(required_margin(margin, best.get("control_spread")), 4),
+                           "beats_control": counts(best["r2"], best["control_r2"], margin, best.get("control_spread")),
                            "formed_at_step": formed_at}
     return s

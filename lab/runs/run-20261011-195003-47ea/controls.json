@@ -1,0 +1,87 @@
+{
+  "k": 3,
+  "rows": [
+    {
+      "layer": 0,
+      "target": "force",
+      "control_r2s": [
+        0.23135,
+        0.23661,
+        0.23291
+      ]
+    },
+    {
+      "layer": 0,
+      "target": "distance",
+      "control_r2s": [
+        -0.01027,
+        -0.01365,
+        0.00613
+      ]
+    },
+    {
+      "layer": 0,
+      "target": "accel_step",
+      "control_r2s": [
+        0.51576,
+        0.52224,
+        0.52135
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "force",
+      "control_r2s": [
+        0.39402,
+        0.37984,
+        0.31744
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "distance",
+      "control_r2s": [
+        0.01384,
+        0.00072,
+        -0.00153
+      ]
+    },
+    {
+      "layer": 1,
+      "target": "accel_step",
+      "control_r2s": [
+        0.57824,
+        0.56738,
+        0.55567
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "force",
+      "control_r2s": [
+        0.42108,
+        0.42036,
+        0.34929
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "distance",
+      "control_r2s": [
+        0.01812,
+        0.00124,
+        0.03833
+      ]
+    },
+    {
+      "layer": 2,
+      "target": "accel_step",
+      "control_r2s": [
+        0.58411,
+        0.59301,
+        0.58344
+      ]
+    }
+  ],
+  "note": "backfilled random-init controls; control 0 is the original single control"
+}

@@ -1,13 +1,70 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Pause, Play, Power } from "lucide-react";
-import { api, type Run } from "../lib/api";
+import { api, type Review, type Run } from "../lib/api";
 import { fmtHours, fmtNum, fmtTime, shortId } from "../lib/utils";
 import { PageHeader } from "../App";
 import { LossChart } from "../components/charts";
 import { FindingCard } from "../components/FindingCard";
 import { StateBadge } from "../components/badges";
-import { Button, Card, CardContent, CardHeader, CardTitle, ConfirmButton, Empty, ErrorText, Input, Label, Stat } from "../components/ui";
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, ConfirmButton, Empty, ErrorText, Input, Label, Stat } from "../components/ui";
+
+const REVIEW_TONE = { OK: "good", FLAG: "warn", PAUSE: "bad" } as const;
+const SEVERITY_TONE = { info: "neutral", flag: "warn", pause: "bad" } as const;
+
+/** The independent reviewer's latest report, plus how many of its issues the research agent still owes answers to. */
+function ReviewerCard() {
+  const rv = useQuery({ queryKey: ["reviews"], queryFn: api.reviews, refetchInterval: 60_000 });
+  const reviews = rv.data ?? [];
+  const last: Review | undefined = reviews[0];
+  const open = reviews.reduce((n, r) => {
+    const answered = new Set(r.responses.map((x) => x.issue));
+    return n + r.issues.filter((iss, i) => iss.severity !== "info" && !answered.has(i)).length;
+  }, 0);
+  return (
+    <Card className="mt-4">
+      <CardHeader>
+        <CardTitle>Independent reviewer</CardTitle>
+        <span className="text-xs text-muted">
+          {last ? <>last review {fmtTime(last.created_at)} · {open} open issue{open === 1 ? "" : "s"}</> : "no reviews yet"}
+        </span>
+      </CardHeader>
+      <CardContent>
+        {!last ? (
+          <p className="text-sm text-muted">A separate claude -p session with no tools checks every new finding against the raw run files each hour. It can flag issues for the research agent or pause the loop.</p>
+        ) : (
+          <div className="space-y-2 text-sm">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge tone={REVIEW_TONE[last.verdict]}>{last.verdict}</Badge>
+              {last.status === "addressed" && <Badge tone="neutral">answered</Badge>}
+              <span className="text-xs text-muted">{last.llm ? "checks + independent session" : "deterministic checks only"}</span>
+            </div>
+            <p className="text-muted">{last.summary}</p>
+            {last.issues.length > 0 && (
+              <ol className="space-y-1.5">
+                {last.issues.map((iss, i) => {
+                  const resp = last.responses.find((x) => x.issue === i);
+                  return (
+                    <li key={i} className="rounded-md border border-border px-2.5 py-1.5">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <Badge tone={SEVERITY_TONE[iss.severity]}>{iss.severity}</Badge>
+                        <span className="text-xs text-muted">{iss.category}</span>
+                        {iss.finding_id && <span className="font-mono text-[11px] text-muted">{shortId(iss.finding_id)}</span>}
+                        {iss.run_id && <a href={`#/runs/${iss.run_id}`} className="font-mono text-[11px] text-accent hover:underline">{shortId(iss.run_id)}</a>}
+                      </div>
+                      <div className="mt-1">{iss.message}</div>
+                      {resp && <div className="mt-1 border-l-2 border-border pl-2 text-xs text-muted">research agent: {resp.response}</div>}
+                    </li>
+                  );
+                })}
+              </ol>
+            )}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
 
 function LiveRun({ run }: { run: Run & { experiment: { family: string; hypothesis: string } | null } }) {
   const m = useQuery({ queryKey: ["metrics", run.id], queryFn: () => api.metrics(run.id) });
@@ -87,7 +144,7 @@ export default function Dashboard() {
           <CardHeader><CardTitle>Loop</CardTitle></CardHeader>
           <CardContent className="grid grid-cols-2 gap-4">
             <Stat label="Status" value={<span className={loop.paused ? "text-warn" : "text-good"}>{loop.paused ? "Paused" : "Running"}</span>}
-              sub={`worker ${loop.worker.online ? "online" : "offline"}`} />
+              sub={loop.paused && loop.paused_note ? loop.paused_note.split("\n")[0] : `worker ${loop.worker.online ? "online" : "offline"}`} />
             <Stat label="Cycles today" value={`${loop.cycles_today} / ${loop.settings.max_cycles_per_day}`}
               sub={loop.last_cycle ? `${loop.last_cycle.type.replace("cycle.", "")} ${fmtTime(loop.last_cycle.timestamp)}` : "no cycles yet"} />
             <Stat label="Awaiting approval" value={<a href="#/experiments" className="hover:underline">{counts.proposed ?? 0}</a>} sub={`${counts.approved + counts.queued} approved/queued`} />
@@ -123,6 +180,8 @@ export default function Dashboard() {
           </CardContent>
         </Card>
       </div>
+
+      <ReviewerCard />
 
       <h2 className="mb-2 mt-6 text-sm font-semibold">Runs in progress</h2>
       {running_runs.length ? (

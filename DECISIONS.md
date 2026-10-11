@@ -28,6 +28,14 @@ Where the spec left something open, these notes record what was picked (usually 
   α ∈ 10⁻³…10⁴ on standardised inputs and outputs, and R² is averaged across output dimensions. The control is
   the same probe on a randomly initialised model of the same architecture (one per layer, since it does not change
   over checkpoints). The default margin is 0.1 (`probes.control_margin`).
+- **Several random controls per probe.** Every probe is also fitted on `probes.n_controls` (default 3) randomly
+  initialised models. `control_r2` is the best of them and `control_spread` is max − min. A result counts only if
+  R² − control_r2 ≥ max(`control_margin`, `control_spread`). Why: at step 0, where the model is itself a random
+  init, single-control margins reached 0.22 on `distance` and 0.18 on `energy` (but ≤ 0.014 on `force` /
+  `accel_step`). Random models genuinely differ on those targets, so a fixed 0.1 bar counted noise. The spread
+  raises the bar exactly where random models disagree. Runs recorded with one control got a backfilled
+  `controls.json` (k = 3, written once; `engine.probes.recontrol`). Its first control reproduces the stored one to
+  5e-6, and the agent and reviewer see the re-judged verdicts as `multi_control_rejudge`.
 - **Activations to disk.** Saving all layers × all checkpoints would be about 2–3 GB per run. Only the final
   checkpoint's probe activations are saved (float16, `activations_final.npz`). Earlier checkpoints are
   recomputed from the saved weights when needed.
@@ -85,6 +93,26 @@ Where the spec left something open, these notes record what was picked (usually 
   replicated findings changes, it redrafts the Results section. If nothing is replicated yet, it writes a clearly
   labelled "Preliminary observations (unreplicated)" section using the citation override, so there is something
   to read after a night of running.
+- **Independent reviewer** (`agent/review.py`, `agent/REVIEW.md`). It runs hourly as a separate process, 30 min
+  after the research loop starts. Deterministic checks cover: evidence exists and is completed; replicated
+  findings have ≥ 2 valid seeds; NaNs in raw `metrics.jsonl`; failed runs; early stops; identical seed curves;
+  force/`accel_step` beating their controls at step 0 (leak signature); result files or metrics lines modified in
+  git; findings' substance changed since first committed; billing; budget. For judgement it starts a fresh
+  `claude -p` session with all tools disabled (`--tools ""`, `--strict-mcp-config`, no session persistence). That
+  session sees each new finding next to raw run data read from files, the pre-registered expectations, the
+  random-init noise floor, the last 5 experiments and the open questions. It never sees the research agent's
+  reasoning. Verdicts:
+  - **OK:** nothing to act on.
+  - **FLAG:** the research agent must answer in `review_responses` next cycle. A response naming a finding becomes
+    a note on it.
+  - **PAUSE:** writes and commits `lab/PAUSED`.
+
+  The model may pause only for `evidence_mismatch` or `guardrail`; anything else is downgraded to FLAG. Flags left
+  unanswered for 2 completed cycles escalate to PAUSE. Reviews live in `lab/reviews/` (JSON + Markdown), file-only
+  (no index table). A shared `runs/.git.lock` serialises the reviewer's and the loop's git operations.
+- **Index schema changes.** `lab/index.sqlite` carries `PRAGMA user_version`. On a mismatch, the tables are dropped
+  and recreated, and the startup `rebuild_index()` refills them from `lab/`. Non-finite metric values stay in
+  `metrics.jsonl` but are skipped in the index, where SQLite would reject them.
 - **Paper drafting.** The draft prompt includes computed counts (findings by verdict and status, evidence runs, runs
   cut short), so the model doesn't count. It also includes the "Science and engine" section of this file as the
   documented protocol for Methods. Sections are inserted in paper order (Abstract, Introduction, Methods, Results, …).

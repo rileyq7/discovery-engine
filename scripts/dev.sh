@@ -13,6 +13,7 @@ sleep 2
 (cd frontend && exec npx vite --port 5173 --strictPort 2>&1 | prefix ui) & pids+=($!)
 if [ "${LOOP:-local}" != "off" ]; then
   (cd backend && exec .venv/bin/python -m agent.cycle --forever 2>&1 | prefix loop) & pids+=($!)
+  (cd backend && exec .venv/bin/python -m agent.review --forever --first-delay 30 2>&1 | prefix review) & pids+=($!)
 fi
 echo "Discovery Engine: UI http://localhost:5173  ·  API http://127.0.0.1:8000  ·  loop ${LOOP:-local}"
 wait

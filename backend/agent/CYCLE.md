@@ -23,7 +23,11 @@ All commands run from the repo root. `T` below means `PYTHONPATH=backend backend
 finding (step 5) before proposing anything new.
 
 ## 2. Propose (1 to 3 experiments)
-1. `T context` — findings, open questions, recent experiments with results, budget left today.
+1. `T context` — findings, open questions, recent experiments with results, budget left today, and
+   `open_review_issues` from the independent reviewer. Answer **every** open review issue: write
+   `[{"review_id": "r-...", "issue": 0, "response": "...", "finding_id": "<optional>"}]` to
+   `/tmp/responses.json` and run `T review-respond /tmp/responses.json`. Issues left unanswered for two cycles
+   pause the lab.
 2. `T schema` — the config JSON schema. Start from a seeded config in `configs/` when possible.
 3. Write your proposals to `/tmp/proposals.json` (a JSON list of configs). Each needs a falsifiable
    `hypothesis`, `expected_if_true`, `expected_if_false`, and a `budget.max_compute_hours` that

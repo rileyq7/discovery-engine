@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { ProbeRow } from "../lib/api";
+import { probeCounts, type ProbeRow } from "../lib/api";
 import { fmtNum } from "../lib/utils";
 import { Tabs } from "./ui";
 
@@ -54,7 +54,7 @@ export function ProbeHeatmap({ rows, target, margin = 0.1, height = 260, compact
           <div className="text-xs text-muted tabular-nums h-4">
             {hover
               ? `step ${hover.step} · layer ${hover.layer} · R² ${fmtNum(hover.r2)} · control ${fmtNum(hover.control)} · Δ ${fmtNum(hover.r2 - (hover.control ?? 0))}`
-              : `outlined cells beat the random-model control by ≥ ${margin}`}
+              : `outlined cells beat the best random-model control by ≥ max(${margin}, control spread)`}
           </div>
         </div>
       )}
@@ -69,7 +69,7 @@ export function ProbeHeatmap({ rows, target, margin = 0.1, height = 260, compact
             const r = cell.get(`${s}:${l}`);
             if (!r) return null;
             const v = value(r);
-            const ok = r.r2 - (r.control_r2 ?? 0) >= margin && r.control_r2 !== null;
+            const ok = probeCounts(r, margin);
             return (
               <rect
                 key={`${s}:${l}`}

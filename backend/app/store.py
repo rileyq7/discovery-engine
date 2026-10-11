@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import math
 import os
 import secrets
 import subprocess
@@ -116,6 +117,10 @@ _engines: dict[str, Any] = {}
 _lock = threading.Lock()
 
 
+# Bump when a table changes: the index is a cache of lab/ files, so it is dropped and rebuilt.
+INDEX_SCHEMA_VERSION = 2
+
+
 def engine():
     db = lab_dir() / "index.sqlite"
     key = str(db)
@@ -131,7 +136,14 @@ def engine():
                 cur.execute("PRAGMA busy_timeout=30000")
                 cur.close()
 
+            with eng.begin() as conn:
+                ver = conn.exec_driver_sql("PRAGMA user_version").scalar()
+            if ver != INDEX_SCHEMA_VERSION:
+                SQLModel.metadata.drop_all(eng)
             SQLModel.metadata.create_all(eng)
+            if ver != INDEX_SCHEMA_VERSION:  # emptied; every entry point rebuilds the index from lab/ at startup
+                with eng.begin() as conn:
+                    conn.exec_driver_sql(f"PRAGMA user_version = {INDEX_SCHEMA_VERSION}")
             _engines[key] = eng
         return _engines[key]
 
@@ -196,7 +208,8 @@ def rebuild_index() -> dict:
             s.add(_run_row(r))
             mf = d / "metrics.jsonl"
             if mf.exists():
-                s.add_all(Metric(run_id=r["id"], **json.loads(line)) for line in mf.read_text().splitlines() if line)
+                ms = (json.loads(line) for line in mf.read_text().splitlines() if line)
+                s.add_all(Metric(run_id=r["id"], **m) for m in ms if math.isfinite(m["value"]))
             for p in _read_json(d / "probes.json", []) or []:
                 s.add(ProbeResult(run_id=r["id"], **p))
         counts["runs"] = n_runs
@@ -462,9 +475,9 @@ def append_metrics(run_id: str, rows: list[dict]) -> None:
     rows = [{"step": int(r["step"]), "name": r["name"], "value": float(r["value"])} for r in rows]
     with open(_run_dir(run_id) / "metrics.jsonl", "a") as f:
         for r in rows:
-            f.write(json.dumps(r) + "\n")
+            f.write(json.dumps(r) + "\n")  # NaN/inf are kept in the file, where the reviewer looks for them
     with session() as s:
-        s.add_all(Metric(run_id=run_id, **r) for r in rows)
+        s.add_all(Metric(run_id=run_id, **r) for r in rows if math.isfinite(r["value"]))
         s.commit()
 
 
@@ -503,7 +516,7 @@ def get_probe_results(run_id: str) -> list[dict]:
     with session() as s:
         rows = s.exec(select(ProbeResult).where(ProbeResult.run_id == run_id)).all()
     return [{"checkpoint_step": r.checkpoint_step, "layer": r.layer, "target": r.target, "r2": r.r2,
-             "control_r2": r.control_r2} for r in rows]
+             "control_r2": r.control_r2, "control_spread": r.control_spread} for r in rows]
 
 
 def write_run_result(run_id: str, name: str, obj: Any) -> None:

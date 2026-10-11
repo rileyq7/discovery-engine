@@ -69,6 +69,9 @@ class ProbeConfig(Strict):
     layers: Union[Literal["all"], list[int]] = "all"
     checkpoints: Union[Literal["all", "final"], list[int]] = "all"
     random_control: bool = True
+    # Random-init controls per probe. A result counts only if it beats the best control by
+    # max(control_margin, spread between controls): targets that vary a lot between random models need more.
+    n_controls: int = Field(3, ge=1, le=8)
     control_margin: float = Field(0.1, ge=0, le=1)
     patching: bool = False
     symbolic: bool = False

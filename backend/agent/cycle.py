@@ -11,6 +11,7 @@ The deterministic parts are code; the model only writes JSON (configs, findings)
 from __future__ import annotations
 
 import argparse
+import contextlib
 import fcntl
 import json
 import subprocess
@@ -42,11 +43,26 @@ def has_remote() -> bool:
 
 def git_pull() -> None:
     if has_remote():
-        r = git("pull", "--rebase", "--autostash")
+        with git_lock():
+            r = git("pull", "--rebase", "--autostash")
         log(f"git pull: {(r.stdout or r.stderr).strip().splitlines()[-1:] or ['ok']}")
 
 
+@contextlib.contextmanager
+def git_lock():
+    """Serialise git operations between the research loop and the reviewer (same working tree)."""
+    runs_dir().mkdir(parents=True, exist_ok=True)
+    with open(runs_dir() / ".git.lock", "w") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        yield
+
+
 def git_commit_push(message: str, push: bool = True) -> bool:
+    with git_lock():
+        return _git_commit_push(message, push)
+
+
+def _git_commit_push(message: str, push: bool) -> bool:
     # snapshot/ is the read-only copy of the lab that the hosted dashboard (Vercel) serves
     try:
         from app.snapshot import export
@@ -102,6 +118,11 @@ def propose() -> list[dict]:
             feedback = f"\n\nYour previous reply could not be parsed ({e}). Reply with ONLY the JSON object."
             log(f"proposal attempt {attempt + 1}: unparseable reply")
             continue
+        if isinstance(out, dict) and out.get("review_responses"):
+            from agent import review
+
+            errs = review.record_responses(out["review_responses"], actor="agent")
+            log(f"answered {len(out['review_responses'])} review issue(s)" + (f"; errors: {errs}" if errs else ""))
         proposals = out.get("proposals") if isinstance(out, dict) else out
         if not isinstance(proposals, list) or not proposals:
             feedback = "\n\nYour previous reply had no `proposals` list. Reply with ONLY the JSON object."

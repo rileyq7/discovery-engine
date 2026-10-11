@@ -48,7 +48,9 @@ def status() -> dict:
     cyc = cycles_today()
     finished = [e for e in cyc if e["type"] == "cycle.finished"]
     last = cyc[-1] if cyc else None
-    return {"paused": store.is_paused(), "settings": s, "compute_used_today": round(store.compute_used_today(), 4),
+    pf = store.lab_dir() / "PAUSED"
+    note = pf.read_text().strip() if pf.exists() else None
+    return {"paused": store.is_paused(), "paused_note": note, "settings": s, "compute_used_today": round(store.compute_used_today(), 4),
             "cycles_today": len(finished), "last_cycle": last, "worker": worker_status()}
 
 

@@ -57,7 +57,8 @@ class ProbeResult(SQLModel, table=True):
     layer: int
     target: str
     r2: float
-    control_r2: Optional[float] = None
+    control_r2: Optional[float] = None  # best (max) R2 over the random-init controls
+    control_spread: Optional[float] = None  # max - min over the controls; None when there was one control
 
 
 class Finding(SQLModel, table=True):

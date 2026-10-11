@@ -14,7 +14,7 @@ LOOP=off make dev # same, without the local agent loop (use when the scheduled t
 ```
 
 Other targets: `make e1` (run E1 from the CLI), `make worker`, `make cycle` (one agent cycle),
-`make loop`, `make test` (fast), `make test-all` (includes PySR), `make check-billing`.
+`make loop`, `make review` (one independent review), `make review-loop`, `make test` (fast), `make test-all` (includes PySR), `make check-billing`.
 
 ## How it fits together
 
@@ -49,6 +49,10 @@ lab/ (committed source of truth) ◄── findings ◄── agent analyzes ◄
 - Raw run results are append-only. The agent cannot edit the past.
 - `lab/PAUSED` (committed) pauses everything, and the kill switch also cancels queued work.
 - Paper drafts cite only replicated findings unless you allow one per claim.
+- An independent reviewer (a separate, tool-less `claude -p` session) checks each new finding against the raw run
+  files every hour. It can flag issues the research agent must answer, or pause the lab. Reports are in
+  `lab/reviews/` and on the dashboard.
+- Probe results count only if they beat the best of 3 random-init controls by max(0.1, the controls' spread).
 - `make check-billing` fails if `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN` is set. It runs before every cycle.
 
 ## Turning on the hourly loop

@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import {
   CartesianGrid, ComposedChart, Legend, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
-import type { Metric, ProbeRow } from "../lib/api";
+import { probeCounts, type Metric, type ProbeRow } from "../lib/api";
 import { fmtNum } from "../lib/utils";
 
 const C = {
@@ -66,12 +66,13 @@ export function FormationChart({ metrics, probes, margin = 0.1, height = 300 }: 
       }
       return row;
     });
-    // formation: first step after which the best layer stays >= margin over control
+    // formation: first step after which the best layer keeps beating its controls (max(margin, control spread))
     const formed: Record<string, number | null> = {};
     for (const t of targets) {
       formed[t] = null;
-      for (let i = 0; i < rows.length; i++) {
-        if (rows.slice(i).every((r) => (r[t] ?? -1) >= margin)) { formed[t] = rows[i].step; break; }
+      const series = steps.map((s) => probes.find((q) => q.target === t && q.checkpoint_step === s && q.layer === bestLayer[t]));
+      for (let i = 0; i < series.length; i++) {
+        if (series.slice(i).every((p) => p && probeCounts(p, margin))) { formed[t] = steps[i]; break; }
       }
     }
     const acc = rows.find((r) => r.ratio !== undefined && r.ratio < 0.1);
