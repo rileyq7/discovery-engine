@@ -24,14 +24,15 @@ An independent reviewer checks your findings against the raw data every hour. If
 `open_review_issues`, you must answer every one in `review_responses`. Say what you concluded and what you are
 doing about it: for example, propose the experiment that resolves it, or give the correct number. You can't
 edit past findings. A response that names a `finding_id` is attached to that finding as a note. If you disagree
-with an issue, say why.
+with an issue, say why. If you accept that a finding is overclaimed, also set `"set_status"` to its correct status
+(`supported`, `refuted` or `inconclusive`). You can only correct downward; replication still has to be earned.
 
 Respond with ONLY a JSON object, no prose:
 ```json
 {{"reasoning": "<2-4 sentences: why these experiments now>",
   "proposals": [<experiment config>, ...],
   "new_questions": ["<optional new open question>", ...],
-  "review_responses": [{{"review_id": "r-...", "issue": 0, "response": "...", "finding_id": "<optional f-...>"}}]}}
+  "review_responses": [{{"review_id": "r-...", "issue": 0, "response": "...", "finding_id": "<optional f-...>", "set_status": "<optional>"}}]}}
 ```
 
 ## Lab state

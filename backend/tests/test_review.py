@@ -198,3 +198,20 @@ def test_patching_and_eval_run_with_multi_controls(fresh_lab):
     r = store.runs_for(rec["id"])[0]
     assert r["status"] == "completed", r.get("error")
     assert "patching" in r["summary"] and r["summary"]["eval"]
+
+
+def test_agent_can_correct_but_not_upgrade_status_when_answering(fresh_lab):
+    from agent import review
+    from app import store
+
+    _, runs = _completed_experiment()
+    fid = _finding(runs, verdict="supported")
+    assert store.get_finding(fid)["status"] == "replicated"
+    rec = review.run_review(llm=lambda p: {"verdict": "FLAG", "summary": "", "issues": [
+        {"severity": "flag", "category": "noise", "finding_id": fid, "message": "one seed is noise"}]}, commit=False)
+    assert review.record_responses([{"review_id": rec["id"], "issue": 0, "response": "Agreed.",
+                                     "set_status": "replicated"}])  # upgrading is refused
+    assert not review.record_responses([{"review_id": rec["id"], "issue": 0, "response": "Agreed; one seed.",
+                                         "set_status": "supported"}])
+    f = store.get_finding(fid)
+    assert f["status"] == "supported" and "after review" in f["history"][-1]["note"]

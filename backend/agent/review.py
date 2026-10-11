@@ -33,6 +33,7 @@ SEVERITY = {"info": 0, "flag": 1, "pause": 2}
 VERDICT = {0: "OK", 1: "FLAG", 2: "PAUSE"}
 GRAVITY_TARGETS = ("force", "accel_step")
 IGNORED_CYCLES_BEFORE_PAUSE = 2
+DOWNGRADES = {"supported", "refuted", "inconclusive"}  # statuses the research agent may set when answering a review
 PROTECTED_FINDING_FIELDS = ("claim", "verdict", "evidence_run_ids", "confidence_note", "created_at", "experiment_id")
 RESULT_FILES = ("probes.json", "patching.json", "equations.json", "eval.json", "controls.json")
 
@@ -89,8 +90,14 @@ def record_responses(responses: list[dict], actor: str = "agent") -> list[str]:
         if fid:
             try:
                 store.annotate_finding(fid, actor, note=f"Response to review {rec['id']} (issue {idx}): {text}")
+                new = resp.get("set_status")
+                if new:  # the agent may correct an overclaim it accepts, never upgrade
+                    if new not in DOWNGRADES:
+                        raise store.StoreError(f"set_status must be one of {sorted(DOWNGRADES)}")
+                    if store.get_finding(fid)["status"] != new:
+                        store.promote_finding(fid, new, actor, note=f"corrected after review {rec['id']} issue {idx}")
             except (KeyError, store.StoreError) as e:
-                errors.append(f"note on {fid}: {e}")
+                errors.append(f"{fid}: {e}")
         touched.add(rec["id"])
     for rid in touched:
         rec = by_id[rid]
