@@ -171,3 +171,18 @@ def test_paper_sections_insert_in_order():
     heads = [l for l in md.splitlines() if l.startswith("## ")]
     assert heads == ["## Abstract", "## Methods", "## Results", "## Open questions"]
     assert "r2" in md and "\nr\n" not in md
+
+
+def test_analysis_sees_other_arms_of_a_paired_design(fresh_lab):
+    from agent import tools
+    from app import lab
+
+    a, b = tools.propose_many([tiny_config(seeds=[0]), tiny_config(seeds=[1])])["created"]
+    if a["id"].rsplit("-", 1)[0] != b["id"].rsplit("-", 1)[0]:
+        pytest.skip("batch straddled a second boundary")
+    other = tiny_config(seeds=[2])
+    other["hypothesis"] = f"Same as {a['id']} but a different seed."
+    c = lab.propose(other, "human")
+    assert b["id"] in tools.related_experiments(a["id"])
+    assert tools.related_experiments(c["id"])[0] == a["id"]
+    assert tools.related_results(b["id"]) == {}  # no runs yet: nothing to show

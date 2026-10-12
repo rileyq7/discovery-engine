@@ -158,3 +158,11 @@ Where the spec left something open, these notes record what was picked (usually 
   than MPS), so E1 would take about 5 h per seed. The hourly loop therefore runs on the laptop (`make loop` /
   `make dev`), pushing to GitHub each cycle. A cloud routine would need `DE_DEVICE=cpu` and `DE_THROUGHPUT=1.4e13`
   (env override for the compute estimate), and would only fit tiny experiments.
+
+## Paired-arm analysis (2026-10-12)
+The analysis step used to see only the experiment being analysed, so the second arm of a paired design
+(e.g. N=64 vs N=256 on matched seeds, proposed together) could not read its sibling and fell back on numbers
+quoted in other findings. Analysis now also gets the per-checkpoint probe trajectories of related
+experiments: those proposed in the same batch, plus any `exp-` IDs named in the hypothesis or expectations
+(up to 4). Only this experiment's runs may be cited as evidence. The daily digest also gets precomputed
+counts, because the writer miscounted cycles, runs and reviews by hand in the first edition.

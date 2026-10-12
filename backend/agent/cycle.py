@@ -160,6 +160,11 @@ def analyze(exp_id: str) -> dict | None:
         replicates=results.get("replicates_finding_id") or "null", experiment_id=exp_id,
         questions=json.dumps(store.list_questions("open"), indent=2),
         results=json.dumps(results, indent=2, default=str))
+    related = tools.related_results(exp_id)
+    if related:
+        prompt += ("\n\n## Related experiments (other arms of this design)\nTheir per-checkpoint probe trajectories, "
+                   "same format as above. Use these for any paired comparison; cite only this experiment's runs as "
+                   "evidence.\n```json\n" + json.dumps(related, indent=1, default=str) + "\n```")
     feedback = ""
     for attempt in range(MAX_RETRIES + 1):
         try:

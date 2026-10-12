@@ -48,7 +48,7 @@ then tie it back to a specific number from the night. Use $...$ math sparingly.
 ## What's next
 1-3 bullets on what the lab plans or should try.
 
-Rules: use only the facts below; never invent numbers or IDs; cite IDs inline (`f-...`, `exp-...`, `run-...`)
+Rules: use only the facts below; never invent numbers or IDs; take every count from `counts_use_these_exactly` rather than counting yourself; cite IDs inline (`f-...`, `exp-...`, `run-...`)
 so they can be clicked. If little happened, keep it short and say so. Reply with only the Markdown.
 
 ## Facts (JSON)
@@ -124,8 +124,15 @@ def facts(since: str, until: str) -> dict:
         except Exception:  # noqa: BLE001
             continue
     st = store.get_settings()
+    cyc = [e for e in ev if e["type"] == "cycle.finished"]
     return {
         "window": {"since": since, "until": until},
+        "counts_use_these_exactly": {
+            "cycles_finished": len(cyc), "runs_finished": len(runs),
+            "runs_by_status": {s: sum(r["status"] == s for r in runs) for s in sorted({r["status"] for r in runs})},
+            "new_findings": sum(f["created_at"] > since for f in findings),
+            "reviews": len(reviews),
+            "reviews_by_verdict": {v: sum(r["verdict"] == v for r in reviews) for v in sorted({r["verdict"] for r in reviews})}},
         "pipeline_changes_since (code commits: bugs fixed, features added)": _code_commits(since),
         "cycles": [{"at": e["timestamp"], "type": e["type"], "summary": str(e["payload"].get("summary"))[:600]}
                    for e in ev if e["type"] in ("cycle.finished", "cycle.failed", "cycle.skipped")],

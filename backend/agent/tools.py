@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 
 from app import lab, store
@@ -103,6 +104,35 @@ def experiment_results(exp_id: str) -> dict:
             "runs": [_compact_run(r) for r in runs],
             "val_mse_ratio_trajectory": ratio_traj,
             "probe_trajectory": {r["id"]: probe_trajectory(r["id"]) for r in runs if r["status"] == "completed"}}
+
+
+def related_experiments(exp_id: str, limit: int = 4) -> list[str]:
+    """Other arms of a paired design: experiments proposed in the same batch, plus any exp IDs the
+    hypothesis or expectations name. Their finished runs are shown to the analyst so paired comparisons
+    are read from run records rather than from other findings' prose."""
+    e = store.get_experiment(exp_id)
+    batch = exp_id.rsplit("-", 1)[0]
+    text = " ".join(str(e.get(k) or "") for k in ("hypothesis", "expected_if_true", "expected_if_false"))
+    named = re.findall(r"exp-\d{8}-\d{6}-[0-9a-f]{4}", text)
+    out = []
+    for x in named + [x["id"] for x in store.list_experiments() if x["id"].startswith(batch + "-")]:
+        if x != exp_id and x not in out:
+            out.append(x)
+    return out[:limit]
+
+
+def related_results(exp_id: str) -> dict:
+    out = {}
+    for x in related_experiments(exp_id):
+        e = store.get_experiment(x)
+        runs = store.runs_for(x)
+        if not runs:
+            continue
+        out[x] = {"hypothesis": e["hypothesis"][:600], "state": e["state"],
+                  "runs": [{"run_id": r["id"], "seed": r["seed"], "status": r["status"],
+                            "completion": _compact_run(r).get("completion")} for r in runs],
+                  "probe_trajectory": {r["id"]: probe_trajectory(r["id"]) for r in runs if r["status"] == "completed"}}
+    return out
 
 
 def status() -> dict:
