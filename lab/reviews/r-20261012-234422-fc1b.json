@@ -1,0 +1,79 @@
+{
+  "id": "r-20261012-234422-fc1b",
+  "created_at": "2026-10-12T23:44:22",
+  "since": "2026-10-12T10:18:14",
+  "verdict": "FLAG",
+  "summary": "I recomputed the final R2, controls, margins, layers, formation steps and val_mse_ratio values for both findings from raw_evidence, and checked both verdicts against the pre-registered criteria. Nearly every number checks out, and both 'inconclusive' verdicts follow the pre-registration. f-20261012-231608-1978 misstates seed 72's force formation step: the raw trajectory shows force forming at step 100, not in the 200-370 range. A few minor ordering and rounding slips are noted as info.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "bug",
+      "message": "run failed: worker restarted while run was in progress",
+      "source": "check",
+      "run_id": "run-20261012-102821-56c8"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim gives force 'trajectory crossings at steps 200-370'. Seeds 70 (step 270, margin 0.1001) and 71 (step 370, margin 0.1012) match. Seed 72 does not. Its best-layer force margin is 0.0958 at step 90 and 0.1051 at step 100, and it stays >= 0.1 at every checkpoint from 100 to 600 (low point 0.1011 at step 140). Layer-2/4 control_spread is <= 0.022, so the bar is 0.1. Force therefore forms persistently at step 100 in seed 72, and the correct range is 100-370. Force still forms after accel_step (step 50 in that seed), so the 'force behind accel_step' reading holds, but the gap is much smaller than stated for this seed.",
+      "source": "reviewer",
+      "finding_id": "f-20261012-231608-1978"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The force margins are quoted as '0.077, 0.125 and 0.086' immediately after a seed 70/71/72 listing, but the raw order is seed 70 = 0.086 (layer 4, 0.6208-0.5346), seed 71 = 0.077 (layer 4, 0.5174-0.4404) and seed 72 = 0.125 (0.6254-0.5001). The conclusion that only seed 72 clears 0.1 is correct. The lower R2 bound should read 0.517 at layer 4 (layer 1 is 0.519).",
+      "source": "reviewer",
+      "finding_id": "f-20261012-102721-0c94"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says raw accel_step R2 rises 'about +0.02-0.03 over steps 400-600'. The raw rise is +0.016 (seed 70: 0.5415 to 0.5574), +0.019 (seed 71: 0.5226 to 0.5414) and +0.020 (seed 72: 0.5510 to 0.5705). The creep is smaller than stated, which slightly weakens the 'longer training could close the gap' caveat.",
+      "source": "reviewer",
+      "finding_id": "f-20261012-231608-1978"
+    },
+    {
+      "severity": "info",
+      "category": "bug",
+      "message": "The finding cites formed_at_step = 100 for seed 70, but formed_at_step is not in raw_evidence, so I cannot verify it. The trajectory-derived formation steps (70: step 90, 71: step 100, 72: step 80) and their val_mse_ratio values (2.26, 2.11, 2.24) are correct. The question about the one-checkpoint lag is already tracked as q-20261012-102721-e9db.",
+      "source": "reviewer",
+      "finding_id": "f-20261012-102721-0c94"
+    },
+    {
+      "severity": "info",
+      "category": "drift",
+      "message": "exp-20261012-102820-dded (agent, state 'analyzing') and exp-20261012-231417-a794 (human, queued) have the same hypothesis. The deterministic check shows run-20261012-102821-56c8 from that batch failed when the worker restarted. If that failed run belongs to dded, it should not be analyzed into a finding, and a794 should be treated as the re-run rather than as a second independent experiment. The other queued experiments (efa5, 79b2, be3e) address open questions and do not drift.",
+      "source": "reviewer"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261012-102721-0c94",
+      "f-20261012-231608-1978"
+    ],
+    "runs": [
+      "run-20261012-102139-0e35",
+      "run-20261012-102139-57ba",
+      "run-20261012-102139-c61e",
+      "run-20261012-102821-56c8",
+      "run-20261012-102821-d0f5",
+      "run-20261012-232455-12f7",
+      "run-20261012-232455-80dc",
+      "run-20261012-232853-6f63",
+      "run-20261012-232853-ff2e",
+      "run-20261012-233812-0aa2"
+    ],
+    "experiments": [
+      "exp-20261012-102820-84ce",
+      "exp-20261012-102820-dded",
+      "exp-20261012-102820-efa5",
+      "exp-20261012-231417-a794",
+      "exp-20261012-231650-79b2",
+      "exp-20261012-231650-be3e"
+    ]
+  }
+}
