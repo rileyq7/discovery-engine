@@ -1,0 +1,9 @@
+{
+  "id": "q-20261012-030203-2bef",
+  "text": "accel_step forms at a val_mse_ratio of 2.0-2.6 at N=64, about 2.6-3.1% of each run's step-0 value, compared with about 2% at N=16. In the paired N=256 arm, does formation also happen at about 2-3% of step-0 val MSE, even though N=256 never beats the baseline? That would tie formation to relative loss reduction rather than to a fixed training step.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261012-030313-4d1f"
+  ],
+  "created_at": "2026-10-12T03:02:03"
+}

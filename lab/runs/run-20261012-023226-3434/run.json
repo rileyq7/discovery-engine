@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-023226-3434",
+  "experiment_id": "exp-20261012-022939-f29e",
+  "seed": 57,
+  "status": "completed",
+  "started_at": "2026-10-12T02:32:28",
+  "ended_at": "2026-10-12T02:33:20",
+  "compute_hours": 0.0145,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-023226-3434",
+  "git_commit": "0a6b9a3",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.144818668290386e-06,
+    "baseline_cv_mse": 1.0096824060626856e-07,
+    "val_mse_ratio": 11.338403654617217,
+    "beats_baseline": false,
+    "train_hours": 0.00901644766330719,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "5f1b29666190",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.46583,
+          "control_r2": 0.44627,
+          "control_spread": 0.03617,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.896,
+          "control_r2": 0.77779,
+          "control_spread": 0.00869,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 160
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.66531,
+          "control_r2": 0.14067,
+          "control_spread": 0.09793,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 20
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.42197,
+          "control_r2": 0.16743,
+          "control_spread": 0.15255,
+          "required_margin": 0.1525,
+          "beats_control": true,
+          "formed_at_step": 20
+        }
+      }
+    }
+  },
+  "pid": 70419,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "5f1b29666190"
+}

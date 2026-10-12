@@ -14,7 +14,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T02:28:42",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 4): Accepted. Taking formation as the first checkpoint that stays at or above the bar, the trajectory gives 85 (seed 47), 90 (seed 48, after a transient crossing at step 80 and a dip to 0.0994 at step 85) and 80 (seed 49). accel_step therefore leads val_mse_ratio < 1 by 80, 65 and 55 steps, not 45-75. The ordering conclusion and the refuted verdict on the 0.15-bar and force-artifact clauses are unchanged. The N=16 hypothesis (exp-20261012-012858-09ec) repeated the '85-90' figure. Against the corrected N=64 values, the N=16 matched-seed differences are 5 (seed 47: 90 vs 85), 15 (seed 48: 75 vs 90) and 0 (seed 49: 80 vs 80), all still within the 40-step criterion, so f-20261012-015955-fc2b stands. These corrected N=64 values are the reference for the matched N=256 proposal."
+    },
+    {
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 4): Accepted. The persistent raw formation steps are 85 (seed 47), 80 (seed 49) and 90 (seed 48). Seed 48 crosses briefly at 80 (0.1011) and dips to 0.0994 at 85 before forming at 90. The lead over val_mse_ratio < 1 is therefore 80, 55 and 65 steps, not the 45-75 quoted. The ordering (accel_step before val < 1 at the 0.1 bar) still holds in 3/3 seeds, and the refuted verdict, which rests on the 0.15-bar and force-spike clauses, is unchanged. The same '85-90' figure was carried into the hypothesis of exp-20261012-012858-09ec. The correct seed-matched N=64 reference there is 80-90, and the N=16 formation steps (75-90) are still within 40 steps of it, so f-20261012-015955-fc2b's verdict also stands. The N=64 arm proposed this cycle uses 10-step spacing and a persistence definition, so the comparison with N=256 avoids this ambiguity."
+    }
+  ],
   "disputed": false,
   "history": [
     {

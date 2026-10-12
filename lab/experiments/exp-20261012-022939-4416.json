@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261012-022939-4416",
+  "family": "E5",
+  "hypothesis": "For the 6-layer, d_model=128 model at m2 fixed and e in [0, 0.85], linear decodability of accel_step separates from prediction quality during training. Within each seed, accel_step R2 at the best layer levels off near 0.70 by step 2000, while val_mse_ratio keeps falling by at least 2x between step 2000 and step 4000. That would point to a linear-readout limit rather than undertraining (f-20261012-020024-760f, q-20261012-020024-7920).",
+  "expected_if_true": "In both seeds, accel_step best-layer R2 changes by <= 0.03 between step 2000 and step 4000 and stays below 0.8 at every checkpoint, while val_mse_ratio at step 4000 is at most half its step-2000 value. accel_step still beats its best-of-5 control by >= required_margin at the end, with margin about 0.4 or more.",
+  "expected_if_false": "In at least one seed, accel_step R2 rises by >= 0.05 between steps 2000 and 4000 (still climbing, so undertraining), or reaches >= 0.8 at any checkpoint. Alternatively, val_mse_ratio stops improving (step-4000 value > 0.5x the step-2000 value) at the same time R2 levels off, meaning the two plateau together rather than separating.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "For the 6-layer, d_model=128 model at m2 fixed and e in [0, 0.85], linear decodability of accel_step separates from prediction quality during training. Within each seed, accel_step R2 at the best layer levels off near 0.70 by step 2000, while val_mse_ratio keeps falling by at least 2x between step 2000 and step 4000. That would point to a linear-readout limit rather than undertraining (f-20261012-020024-760f, q-20261012-020024-7920).",
+    "expected_if_true": "In both seeds, accel_step best-layer R2 changes by <= 0.03 between step 2000 and step 4000 and stays below 0.8 at every checkpoint, while val_mse_ratio at step 4000 is at most half its step-2000 value. accel_step still beats its best-of-5 control by >= required_margin at the end, with margin about 0.4 or more.",
+    "expected_if_false": "In at least one seed, accel_step R2 rises by >= 0.05 between steps 2000 and 4000 (still climbing, so undertraining), or reaches >= 0.8 at any checkpoint. Alternatively, val_mse_ratio stops improving (step-4000 value > 0.5x the step-2000 value) at the same time R2 levels off, meaning the two plateau together rather than separating.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.49,
+        0.51
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.85
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 6,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 4000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      56,
+      57
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T02:29:39",
+  "updated_at": "2026-10-12T03:02:33",
+  "verdict": "supported",
+  "estimate_hours": 0.5778,
+  "compute_hours": 0.4336,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T02:29:39",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T02:29:41",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T02:35:15",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T03:01:23",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T03:02:33",
+      "actor": "agent",
+      "note": "finding f-20261012-030233-ab28"
+    }
+  ]
+}

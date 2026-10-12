@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-030313-4d1f",
+  "claim": "At N=256 (seeds 56/57/58, 4 layers, d_model=64, best-of-5 controls, checkpoints every 10 steps), accel_step persistently formed at steps 100/160/120. Final layer-4 R2 was 0.849/0.896/0.887 against controls 0.680/0.778/0.719, giving margins of 0.169/0.118/0.168. On the threshold-free measure (first checkpoint at half of the run's final margin), formation came at steps 90/80/100, about where the N=64 runs this hypothesis cites formed (80/85/90). Force never beat its control (final margin 0.000-0.020, after a short rise to 0.16-0.19 at steps 10-30 that faded by step 80-110), and val_mse_ratio stayed at 11.3-12.8 (never below 1).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-023226-eb54",
+    "run-20261012-023226-3434",
+    "run-20261012-023226-44e9"
+  ],
+  "confidence_note": "This finding covers only the N=256 arm. The per-seed N=64 formation steps for seeds 56-58 are not in these results, so the paired per-seed differences the hypothesis needs could not be computed. The comparison above uses the earlier, unmatched N=64 values (80/85/90). Against those, the two measures disagree, which the hypothesis's own rules count as inconclusive. On the 0.1-margin bar, N=256 is 10-80 steps later. Seed 57's step-160 crossing is driven by its small final margin (0.118, only just above the bar), which comes from the highest control R2 (0.778). On the half-final-margin measure, N=256 is 80-100, which is within about 10-20 steps of N=64 and points to roughly fixed timing. A raw 0.1 threshold seems to measure each seed's ceiling (set by its control R2) more than when formation happens. Formation also does not occur at a fixed fraction of step-0 val MSE: it falls at 2.3-5.5% of step-0 on the 0.1 bar and 6-9% on the half-final measure, versus about 2-3% reported at N=64. What would change the verdict: joining these runs with the matched N=64 runs on seeds 56-58. If N=64 minus N=256 on the half-final measure is within 10 steps in 2 of 3 seeds, the result moves toward refuted (timing fixed across N, and the raw-threshold gap is a ceiling artifact). If N=256 is 20 or more steps later on both measures in all seeds, the result is supported. All runs completed 300 of 300 steps.",
+  "created_at": "2026-10-12T03:03:13",
+  "experiment_id": "exp-20261012-022939-f29e",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T03:03:13",
+      "actor": "agent"
+    }
+  ]
+}

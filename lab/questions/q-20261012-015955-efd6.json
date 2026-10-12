@@ -2,6 +2,9 @@
   "id": "q-20261012-015955-efd6",
   "text": "accel_step formation is nearly the same at N=16 (steps 75-90) and N=64 (steps 85-90), even though the two baselines and loss scales differ a lot. Does formation instead line up with a fixed training-step window, or with a fixed fraction of step-0 val MSE? At N=16 it happens at val_mse_ratio 0.08-0.10, about 2% of the step-0 value. Comparing the same fraction at N=64 and N=256 would tell these apart.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-030203-1224",
+    "f-20261012-030313-4d1f"
+  ],
   "created_at": "2026-10-12T01:59:55"
 }

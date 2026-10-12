@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-022939-4305",
+  "family": "E5",
+  "hypothesis": "Matched-seed reference arm (N=64) for testing whether accel_step formation timing depends on steps_per_orbit. With seeds 56-58, best-of-5 controls and 10-step checkpoints, accel_step at N=64 first reaches its required margin, and stays above it at every later checkpoint, within steps 70-100. That reproduces f-20261012-005950-42a7 (raw formation 80-90) on fresh seeds, at the same checkpoint spacing as the paired N=256 arm.",
+  "expected_if_true": "In all 3 seeds, accel_step's persistent formation step (the first checkpoint after which margin >= required_margin at every later checkpoint) falls in [70, 100]. Final accel_step R2 at the best layer is 0.88-0.91 against control 0.72-0.79. val_mse_ratio first falls below 1 between steps 130 and 170, after accel_step forms.",
+  "expected_if_false": "At least 2 of 3 seeds have a persistent formation step outside [70, 100], or accel_step never stays above required_margin. Either outcome means the N=64 reference itself is unstable, and the N=64 vs N=256 comparison has to account for that larger seed spread.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched-seed reference arm (N=64) for testing whether accel_step formation timing depends on steps_per_orbit. With seeds 56-58, best-of-5 controls and 10-step checkpoints, accel_step at N=64 first reaches its required margin, and stays above it at every later checkpoint, within steps 70-100. That reproduces f-20261012-005950-42a7 (raw formation 80-90) on fresh seeds, at the same checkpoint spacing as the paired N=256 arm.",
+    "expected_if_true": "In all 3 seeds, accel_step's persistent formation step (the first checkpoint after which margin >= required_margin at every later checkpoint) falls in [70, 100]. Final accel_step R2 at the best layer is 0.88-0.91 against control 0.72-0.79. val_mse_ratio first falls below 1 between steps 130 and 170, after accel_step forms.",
+    "expected_if_false": "At least 2 of 3 seeds have a persistent formation step outside [70, 100], or accel_step never stays above required_margin. Either outcome means the N=64 reference itself is unstable, and the N=64 vs N=256 comparison has to account for that larger seed spread.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      56,
+      57,
+      58
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T02:29:39",
+  "updated_at": "2026-10-12T03:02:03",
+  "verdict": "supported",
+  "estimate_hours": 0.1158,
+  "compute_hours": 0.0439,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T02:29:39",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T02:29:39",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T02:29:39",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T02:32:26",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T03:02:03",
+      "actor": "agent",
+      "note": "finding f-20261012-030203-1224"
+    }
+  ]
+}

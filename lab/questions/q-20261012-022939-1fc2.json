@@ -1,0 +1,10 @@
+{
+  "id": "q-20261012-022939-1fc2",
+  "text": "With matched seeds and identical 10-step checkpoint spacing, is the N=64 vs N=256 difference in accel_step formation step larger than the within-N seed spread of about 10 steps? If N=256 is consistently later, does the delay scale with log(N) or with the shrinking per-step acceleration (2*pi/N)^2?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261012-030203-1224",
+    "f-20261012-030313-4d1f"
+  ],
+  "created_at": "2026-10-12T02:29:39"
+}

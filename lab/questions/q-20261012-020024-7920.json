@@ -1,7 +1,9 @@
 {
   "id": "q-20261012-020024-7920",
   "text": "With probes at every 500-step checkpoint for the 6-layer d_model=128 model at e <= 0.85, does accel_step R2 at layer 6 level off near 0.70 by step 1500-2000 while val_mse_ratio keeps falling from 0.05 to 0.0035? A plateau in the same seed would show that linear decodability of accel_step has decoupled from prediction quality at high eccentricity.",
-  "status": "open",
-  "linked_finding_ids": [],
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261012-030233-ab28"
+  ],
   "created_at": "2026-10-12T02:00:24"
 }

@@ -3,7 +3,9 @@
   "text": "In all 3 N=64 seeds, the trained model's force R2 at layer 4 rises from about 0.37-0.47 to 0.61-0.64 by step 10, then falls back to about 0.43-0.46 by step 40-50, measured against fixed controls. Distance and energy first cross the bar at steps 10-15. Is the step-10 force direction just a nonlinear read of distance or 1/r that later gets overwritten? Does it survive regressing distance out of the force target, and what is its cosine similarity to the later accel_step probe direction?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-015955-fc2b"
+    "f-20261012-015955-fc2b",
+    "f-20261012-030203-1224",
+    "f-20261012-030313-4d1f"
   ],
   "created_at": "2026-10-12T00:59:50"
 }

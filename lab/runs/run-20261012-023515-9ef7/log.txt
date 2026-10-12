@@ -1,0 +1,17 @@
+[02:48:05] experiment exp-20261012-022939-4416 (E5) seed 57: For the 6-layer, d_model=128 model at m2 fixed and e in [0, 0.85], linear decodability of accel_step separates from prediction quality during training. Within each seed, accel_step R2 at the best layer levels off near 0.70 by step 2000, while val_mse_ratio keeps falling by at least 2x between step 2000 and step 4000. That would point to a linear-readout limit rather than undertraining (f-20261012-020024-760f, q-20261012-020024-7920).
+[02:48:05] model: 1,207,942 params on mps; dataset a02ec440b269; 9000 train / 1000 val systems
+[02:48:07] step 0: val_mse=1.699e-03 cv_baseline=6.914e-05 ratio=24.574
+[02:49:38] step 500: val_mse=1.584e-05 cv_baseline=6.914e-05 ratio=0.229
+[02:51:17] step 1000: val_mse=1.562e-05 cv_baseline=6.914e-05 ratio=0.226
+[02:52:53] step 1500: val_mse=2.975e-06 cv_baseline=6.914e-05 ratio=0.043
+[02:54:30] step 2000: val_mse=1.226e-06 cv_baseline=6.914e-05 ratio=0.018
+[02:56:06] step 2500: val_mse=8.550e-07 cv_baseline=6.914e-05 ratio=0.012
+[02:57:44] step 3000: val_mse=5.783e-07 cv_baseline=6.914e-05 ratio=0.008
+[02:59:21] step 3500: val_mse=3.848e-07 cv_baseline=6.914e-05 ratio=0.006
+[03:00:59] step 4000: val_mse=2.218e-07 cv_baseline=6.914e-05 ratio=0.003
+[03:00:59] training done in 12.9 min; beats constant-velocity baseline: True
+[03:01:07] random-model controls (best of 5): force=0.05/0.18/0.19/0.18/0.19/0.18/0.18, accel_step=0.13/0.20/0.23/0.23/0.24/0.24/0.24, distance=-0.01/0.77/0.82/0.82/0.86/0.83/0.84, energy=-0.03/0.79/0.84/0.84/0.86/0.87/0.87
+[03:01:09] probes @ step 0: best force R2=0.187 (layer 2)
+[03:01:17] probes @ step 2500: best force R2=0.494 (layer 5)
+[03:01:22] probes @ step 4000: best force R2=0.516 (layer 5)
+[03:01:22] run complete in 13.3 min

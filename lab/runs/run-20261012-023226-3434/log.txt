@@ -1,0 +1,43 @@
+[02:32:28] experiment exp-20261012-022939-f29e (E5) seed 57: accel_step forms later at N=256 than at N=64 when seeds, architecture, controls and checkpoint spacing are matched. Same-cycle unmatched runs suggest this: N=256 formed at steps 100/110/110 and N=64 at steps 80/85/90. Paired with the N=64 arm on seeds 56-58, the N=256 persistent formation step is at least 20 steps later than the N=64 step for the same seed.
+[02:32:28] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+[02:32:30] step 0: val_mse=1.263e-04 cv_baseline=1.010e-07 ratio=1250.987
+[02:32:31] step 10: val_mse=3.246e-05 cv_baseline=1.010e-07 ratio=321.447
+[02:32:32] step 20: val_mse=2.546e-05 cv_baseline=1.010e-07 ratio=252.141
+[02:32:33] step 30: val_mse=2.142e-05 cv_baseline=1.010e-07 ratio=212.178
+[02:32:34] step 40: val_mse=1.716e-05 cv_baseline=1.010e-07 ratio=169.949
+[02:32:35] step 50: val_mse=1.527e-05 cv_baseline=1.010e-07 ratio=151.234
+[02:32:36] step 60: val_mse=1.399e-05 cv_baseline=1.010e-07 ratio=138.593
+[02:32:37] step 70: val_mse=1.254e-05 cv_baseline=1.010e-07 ratio=124.245
+[02:32:38] step 80: val_mse=1.128e-05 cv_baseline=1.010e-07 ratio=111.679
+[02:32:39] step 90: val_mse=9.473e-06 cv_baseline=1.010e-07 ratio=93.820
+[02:32:40] step 100: val_mse=8.584e-06 cv_baseline=1.010e-07 ratio=85.018
+[02:32:41] step 110: val_mse=6.162e-06 cv_baseline=1.010e-07 ratio=61.027
+[02:32:42] step 120: val_mse=4.752e-06 cv_baseline=1.010e-07 ratio=47.069
+[02:32:43] step 130: val_mse=4.235e-06 cv_baseline=1.010e-07 ratio=41.941
+[02:32:44] step 140: val_mse=3.648e-06 cv_baseline=1.010e-07 ratio=36.131
+[02:32:45] step 150: val_mse=3.076e-06 cv_baseline=1.010e-07 ratio=30.460
+[02:32:46] step 160: val_mse=2.872e-06 cv_baseline=1.010e-07 ratio=28.441
+[02:32:47] step 170: val_mse=2.679e-06 cv_baseline=1.010e-07 ratio=26.537
+[02:32:48] step 180: val_mse=2.354e-06 cv_baseline=1.010e-07 ratio=23.317
+[02:32:49] step 190: val_mse=2.193e-06 cv_baseline=1.010e-07 ratio=21.720
+[02:32:50] step 200: val_mse=2.031e-06 cv_baseline=1.010e-07 ratio=20.115
+[02:32:51] step 210: val_mse=1.774e-06 cv_baseline=1.010e-07 ratio=17.568
+[02:32:52] step 220: val_mse=1.651e-06 cv_baseline=1.010e-07 ratio=16.356
+[02:32:53] step 230: val_mse=1.643e-06 cv_baseline=1.010e-07 ratio=16.273
+[02:32:54] step 240: val_mse=1.495e-06 cv_baseline=1.010e-07 ratio=14.807
+[02:32:55] step 250: val_mse=1.371e-06 cv_baseline=1.010e-07 ratio=13.578
+[02:32:56] step 260: val_mse=1.336e-06 cv_baseline=1.010e-07 ratio=13.230
+[02:32:58] step 270: val_mse=1.282e-06 cv_baseline=1.010e-07 ratio=12.699
+[02:32:59] step 280: val_mse=1.227e-06 cv_baseline=1.010e-07 ratio=12.147
+[02:33:00] step 290: val_mse=1.195e-06 cv_baseline=1.010e-07 ratio=11.836
+[02:33:01] step 300: val_mse=1.145e-06 cv_baseline=1.010e-07 ratio=11.338
+[02:33:01] training done in 0.5 min; beats constant-velocity baseline: False
+[02:33:04] random-model controls (best of 5): force=0.12/0.45/0.46/0.47/0.48, accel_step=0.72/0.76/0.77/0.78/0.78, distance=-0.13/0.14/0.32/0.37/0.47, energy=0.00/0.17/0.28/0.33/0.36
+[02:33:04] probes @ step 0: best force R2=0.458 (layer 2)
+[02:33:07] probes @ step 50: best force R2=0.558 (layer 2)
+[02:33:10] probes @ step 100: best force R2=0.491 (layer 3)
+[02:33:12] probes @ step 150: best force R2=0.465 (layer 3)
+[02:33:15] probes @ step 200: best force R2=0.465 (layer 3)
+[02:33:17] probes @ step 250: best force R2=0.464 (layer 1)
+[02:33:20] probes @ step 300: best force R2=0.466 (layer 1)
+[02:33:20] run complete in 0.9 min

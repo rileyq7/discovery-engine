@@ -3,7 +3,8 @@
   "text": "Linearly decodable accel_step falls from R2 0.92-0.95 (e <= 0.5) to 0.40-0.50 (e <= 0.9), yet val_mse_ratio stays at 0.013. Where does the model's next-step accuracy come from on high-e snapshots? Does probe R2 binned by r/a, or activation patching at layer 4, show it relying on distance (margin 0.51-0.61) plus a learned nonlinearity in later layers instead?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261011-223103-dc29"
+    "f-20261011-223103-dc29",
+    "f-20261012-030233-ab28"
   ],
   "created_at": "2026-10-11T22:30:27"
 }

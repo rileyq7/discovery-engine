@@ -1,0 +1,7 @@
+{
+  "id": "q-20261012-030233-1da1",
+  "text": "At e <= 0.85, accel_step's best layer stays fixed at layer 6 from step 500 on, while force's best layer drifts across layers 1-6 (seed 56: 1 to 2 to 6 to 3; seed 57: 2 to 5 to 6). Is the force per-layer profile flat within about 0.02 at these checkpoints, so that force is only a weaker shadow of the layer-6 accel_step direction? What is the cosine similarity between the force and accel_step probe directions at layer 6?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-12T03:02:33"
+}

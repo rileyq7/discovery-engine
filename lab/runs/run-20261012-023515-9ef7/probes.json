@@ -1,0 +1,2018 @@
+[
+  {
+    "checkpoint_step": 0,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05205,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12844,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01137,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02643,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.17977,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.20321,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.72603,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.74648,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.18702,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.23343,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.81662,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.81836,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.18548,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.2387,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.84028,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.81667,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.18155,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.24217,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.85213,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.83338,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.17653,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.24115,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.84618,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.85095,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.17998,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.24518,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.84015,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 0,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.86205,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05061,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.1286,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.0111,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02624,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.34017,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.35479,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.89684,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.9272,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.35142,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.40837,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.94122,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.93191,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.33705,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.46624,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.93098,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.9393,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.34431,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.48852,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.9425,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.93472,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.34656,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.54764,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.93973,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.92583,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.34176,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.60835,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.93383,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 500,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.92778,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05043,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12861,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01071,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02603,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.37248,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.40686,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.93052,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.94442,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.42241,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.49791,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.96792,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.94434,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.4102,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.53983,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.96058,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.95057,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.41883,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.55104,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.95526,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.93867,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.40827,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.59303,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.95331,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.93829,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.41119,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.63329,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.95168,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 1000,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.94002,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05039,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12853,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01058,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02593,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.3941,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.4309,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.9453,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.95087,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.46249,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.53066,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.97582,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.95192,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.45652,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.57141,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.97066,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.95588,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.46657,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.59919,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.96144,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.9473,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.46855,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.64554,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.96111,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.94982,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.45999,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.67664,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.96317,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 1500,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.94726,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05043,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12853,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01038,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02587,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.3862,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.43061,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.95301,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.95285,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.47456,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.54887,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.98006,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.95749,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.47206,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.58719,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.97876,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.95941,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.47206,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.6153,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.96974,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.9539,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.4735,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.65813,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.96745,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.9573,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.46525,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.68297,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.96873,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 2000,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.95291,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05044,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12853,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.0103,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02584,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.39334,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.43837,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.95531,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.95384,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.49336,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.55513,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.98194,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.96155,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.4892,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.59253,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.98199,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.96176,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.49296,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.61962,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.97368,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.95813,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.49421,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.67015,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.97097,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.96061,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.4891,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.69461,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.972,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 2500,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.95806,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.05043,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12855,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01165,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02581,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.39103,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.43973,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.95603,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.95499,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.49692,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.55545,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.98265,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.96419,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.49424,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.59248,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.98397,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.96308,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.49888,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.6238,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.97543,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.95942,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.50197,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.67199,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.97385,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.96161,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.49851,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.69825,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.97508,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 3000,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.95946,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.0504,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12854,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01164,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02577,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.39444,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.44151,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.95692,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.95656,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.50656,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.562,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.98341,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.96523,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.5071,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.59991,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.98457,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.96439,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.50738,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.62844,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.97698,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.96025,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.51454,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.67399,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.9753,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.96278,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.51402,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.703,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.97611,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 3500,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.96139,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 0,
+    "target": "force",
+    "r2": 0.0504,
+    "control_r2": 0.05168,
+    "control_spread": 0.00089
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 0,
+    "target": "accel_step",
+    "r2": 0.12852,
+    "control_r2": 0.12823,
+    "control_spread": 0.00105
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 0,
+    "target": "distance",
+    "r2": -0.01164,
+    "control_r2": -0.01066,
+    "control_spread": 0.00057
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 0,
+    "target": "energy",
+    "r2": -0.02576,
+    "control_r2": -0.02627,
+    "control_spread": 0.00014
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 1,
+    "target": "force",
+    "r2": 0.39769,
+    "control_r2": 0.18221,
+    "control_spread": 0.01438
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 1,
+    "target": "accel_step",
+    "r2": 0.44346,
+    "control_r2": 0.20226,
+    "control_spread": 0.00473
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 1,
+    "target": "distance",
+    "r2": 0.95753,
+    "control_r2": 0.77051,
+    "control_spread": 0.06345
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 1,
+    "target": "energy",
+    "r2": 0.95656,
+    "control_r2": 0.79399,
+    "control_spread": 0.09783
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 2,
+    "target": "force",
+    "r2": 0.51099,
+    "control_r2": 0.1878,
+    "control_spread": 0.01897
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 2,
+    "target": "accel_step",
+    "r2": 0.56271,
+    "control_r2": 0.23348,
+    "control_spread": 0.01371
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 2,
+    "target": "distance",
+    "r2": 0.98335,
+    "control_r2": 0.82373,
+    "control_spread": 0.06462
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 2,
+    "target": "energy",
+    "r2": 0.96616,
+    "control_r2": 0.84044,
+    "control_spread": 0.07911
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 3,
+    "target": "force",
+    "r2": 0.50885,
+    "control_r2": 0.18355,
+    "control_spread": 0.01615
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 3,
+    "target": "accel_step",
+    "r2": 0.59967,
+    "control_r2": 0.23474,
+    "control_spread": 0.0103
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 3,
+    "target": "distance",
+    "r2": 0.98546,
+    "control_r2": 0.8247,
+    "control_spread": 0.03504
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 3,
+    "target": "energy",
+    "r2": 0.965,
+    "control_r2": 0.83807,
+    "control_spread": 0.04044
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 4,
+    "target": "force",
+    "r2": 0.50798,
+    "control_r2": 0.18681,
+    "control_spread": 0.02065
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 4,
+    "target": "accel_step",
+    "r2": 0.63012,
+    "control_r2": 0.24034,
+    "control_spread": 0.01571
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 4,
+    "target": "distance",
+    "r2": 0.97795,
+    "control_r2": 0.85604,
+    "control_spread": 0.04118
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 4,
+    "target": "energy",
+    "r2": 0.96186,
+    "control_r2": 0.86242,
+    "control_spread": 0.03456
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 5,
+    "target": "force",
+    "r2": 0.51606,
+    "control_r2": 0.18491,
+    "control_spread": 0.01703
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 5,
+    "target": "accel_step",
+    "r2": 0.67389,
+    "control_r2": 0.23586,
+    "control_spread": 0.01667
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 5,
+    "target": "distance",
+    "r2": 0.97591,
+    "control_r2": 0.83266,
+    "control_spread": 0.0178
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 5,
+    "target": "energy",
+    "r2": 0.96373,
+    "control_r2": 0.86717,
+    "control_spread": 0.03082
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 6,
+    "target": "force",
+    "r2": 0.51573,
+    "control_r2": 0.18318,
+    "control_spread": 0.0149
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 6,
+    "target": "accel_step",
+    "r2": 0.70486,
+    "control_r2": 0.23943,
+    "control_spread": 0.01476
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 6,
+    "target": "distance",
+    "r2": 0.97688,
+    "control_r2": 0.84066,
+    "control_spread": 0.00798
+  },
+  {
+    "checkpoint_step": 4000,
+    "layer": 6,
+    "target": "energy",
+    "r2": 0.96277,
+    "control_r2": 0.87286,
+    "control_spread": 0.02913
+  }
+]

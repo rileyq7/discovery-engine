@@ -3,7 +3,8 @@
   "text": "If longer training lifts the e <= 0.85 accel_step probe R2 above 0.8, does probe R2 track val_mse_ratio across checkpoints? That would say whether linear decodability of accel_step at high eccentricity is a byproduct of convergence or a separate representational change.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-020024-760f"
+    "f-20261012-020024-760f",
+    "f-20261012-030233-ab28"
   ],
   "created_at": "2026-10-12T01:28:58"
 }

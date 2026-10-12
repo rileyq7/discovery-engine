@@ -1,0 +1,17 @@
+run-20261012-023515-4712: [02:35:17] experiment exp-20261012-022939-4416 (E5) seed 56: For the 6-layer, d_model=128 model at m2 fixed and e in [0, 0.85], linear decodability of accel_step separates from prediction quality during training. Within each seed, accel_step R2 at the best layer levels off near 0.70 by step 2000, while val_mse_ratio keeps falling by at least 2x between step 2000 and step 4000. That would point to a linear-readout limit rather than undertraining (f-20261012-020024-760f, q-20261012-020024-7920).
+run-20261012-023515-4712: [02:35:18] model: 1,207,942 params on mps; dataset a02ec440b269; 9000 train / 1000 val systems
+run-20261012-023515-4712: [02:35:19] step 0: val_mse=1.687e-03 cv_baseline=6.914e-05 ratio=24.397
+run-20261012-023515-4712: [02:36:51] step 500: val_mse=8.375e-06 cv_baseline=6.914e-05 ratio=0.121
+run-20261012-023515-4712: [02:38:22] step 1000: val_mse=6.089e-06 cv_baseline=6.914e-05 ratio=0.088
+run-20261012-023515-4712: [02:39:53] step 1500: val_mse=3.193e-06 cv_baseline=6.914e-05 ratio=0.046
+run-20261012-023515-4712: [02:41:25] step 2000: val_mse=1.748e-06 cv_baseline=6.914e-05 ratio=0.025
+run-20261012-023515-4712: [02:42:56] step 2500: val_mse=7.120e-07 cv_baseline=6.914e-05 ratio=0.010
+run-20261012-023515-4712: [02:44:30] step 3000: val_mse=5.040e-07 cv_baseline=6.914e-05 ratio=0.007
+run-20261012-023515-4712: [02:46:04] step 3500: val_mse=3.467e-07 cv_baseline=6.914e-05 ratio=0.005
+run-20261012-023515-4712: [02:47:39] step 4000: val_mse=2.559e-07 cv_baseline=6.914e-05 ratio=0.004
+run-20261012-023515-4712: [02:47:39] training done in 12.4 min; beats constant-velocity baseline: True
+run-20261012-023515-4712: [02:47:47] random-model controls (best of 5): force=0.05/0.25/0.27/0.27/0.26/0.26/0.25, accel_step=0.10/0.19/0.23/0.23/0.22/0.23/0.23, distance=0.04/0.76/0.85/0.86/0.87/0.86/0.85, energy=-0.02/0.78/0.86/0.85/0.85/0.86/0.86
+run-20261012-023515-4712: [02:47:49] probes @ step 0: best force R2=0.260 (layer 2)
+run-20261012-023515-4712: [02:47:56] probes @ step 2500: best force R2=0.558 (layer 2)
+run-20261012-023515-4712: [02:48:02] probes @ step 4000: best force R2=0.566 (layer 2)
+run-20261012-023515-4712: [02:48:02] run complete in 12.7 min

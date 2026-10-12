@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-023515-9ef7",
+  "experiment_id": "exp-20261012-022939-4416",
+  "seed": 57,
+  "status": "completed",
+  "started_at": "2026-10-12T02:48:05",
+  "ended_at": "2026-10-12T03:01:22",
+  "compute_hours": 0.2213,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-023515-9ef7",
+  "git_commit": "0a6b9a3",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 2.217837059357035e-07,
+    "baseline_cv_mse": 6.914087355606199e-05,
+    "val_mse_ratio": 0.0032077076051964114,
+    "beats_baseline": true,
+    "train_hours": 0.2149775356054306,
+    "n_params": 1207942,
+    "device": "mps",
+    "dataset_id": "a02ec440b269",
+    "stopped": false,
+    "steps_completed": 4000,
+    "steps_planned": 4000,
+    "probes": {
+      "final_checkpoint": 4000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 6,
+          "r2": 0.51573,
+          "control_r2": 0.18318,
+          "control_spread": 0.0149,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 6,
+          "r2": 0.70486,
+          "control_r2": 0.23943,
+          "control_spread": 0.01476,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.95753,
+          "control_r2": 0.77051,
+          "control_spread": 0.06345,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.95656,
+          "control_r2": 0.79399,
+          "control_spread": 0.09783,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 74868,
+  "device": "mps",
+  "progress": null,
+  "n_params": 1207942,
+  "dataset_id": "a02ec440b269"
+}

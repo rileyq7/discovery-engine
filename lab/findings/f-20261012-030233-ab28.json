@@ -1,0 +1,25 @@
+{
+  "id": "f-20261012-030233-ab28",
+  "claim": "In both seeds of the 6-layer, d_model=128 model at e in [0, 0.85], the best-layer (layer 6) accel_step R2 levelled off at about 0.70-0.74 and only crept up after step 2000. It went from 0.710 to 0.735 in seed 56 (+0.025) and from 0.683 to 0.705 in seed 57 (+0.022), and never reached 0.8. Over the same steps val_mse_ratio kept falling 6.8x (0.0253 to 0.0037) and 5.5x (0.0177 to 0.0032). At step 4000, accel_step beats its best-of-5 control (0.229/0.239, spread <= 0.015) with margins of 0.506 and 0.465. Force is weaker: R2 0.566/0.516, margins 0.300/0.333, and its best layer drifts across layers 1-6. Its headroom-normalized margin is 0.41 in both seeds, against 0.66/0.61 for accel_step.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-023515-4712",
+    "run-20261012-023515-9ef7"
+  ],
+  "confidence_note": "Both seeds ran to full completion and meet every expected-if-true criterion. Neither meets the >= 0.05 rise from the expected-if-false outcome. The accel_step margin is far above the required margin (0.1), so control noise is not an issue. Limits: (1) The plateau is not perfectly flat. R2 rises slowly and monotonically (about 0.011-0.012 per 1000 steps) and the change sits just inside the 0.03 bound, so a much longer run could still creep toward 0.8. (2) Checkpoints are 500 steps apart, so any short-lived change in between would be missed. (3) Both seeds share data_seed 0 and one architecture. (4) Separation shows that linear decodability of accel_step stops tracking prediction quality. It does not show that a nonlinear accel_step code exists. The extra accuracy could instead come from distance (R2 0.98 at layer 1) plus later nonlinear computation. I would revise the verdict if an MLP or log(accel_step) probe also plateaus near 0.7, which would point to a missing feature rather than a readout limit. I would also revise it if training to 8000+ steps pushed linear R2 past 0.8.",
+  "created_at": "2026-10-12T03:02:33",
+  "experiment_id": "exp-20261012-022939-4416",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T03:02:33",
+      "actor": "agent"
+    }
+  ]
+}

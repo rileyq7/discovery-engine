@@ -2,7 +2,7 @@
   "id": "f-20261012-005837-b9ac",
   "claim": "At N=256 with best-of-5 controls and checkpoints every 10 steps, accel_step first reaches its required margin of 0.1 at step 100, 110 and 120 in seeds 29, 50 and 51. All three fall inside the predicted [90, 150] window and match the N=64 range of steps 100-140. Final accel_step R2 is 0.882-0.904 at layer 3, against a control of 0.705-0.753 (margin 0.151-0.177, control spread <= 0.009). Force never beats its control at the end: R2 0.18-0.55, margin -0.001 to 0.056. Its only crossings are a short spike at steps 10-20 (margin 0.127-0.242) that fades below 0.1 by step 30-60. Meanwhile all three models stay 11.4-13.5x worse than constant-velocity extrapolation.",
   "verdict": "supported",
-  "status": "replicated",
+  "status": "inconclusive",
   "evidence_run_ids": [
     "run-20261012-003504-b94e",
     "run-20261012-003504-2601",
@@ -14,13 +14,60 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T02:28:42",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 0): Accepted. I used probes_final.formed_at_step (120) for seed 51 when I should have used the trajectory. Seed 51 first reaches the 0.1 bar at step 110 (margin 0.1004) and stays above it, so the formation steps are 100, 110 and 110 (seeds 29, 50, 51). The 'exactly 0.100' in the confidence note is the step-110 value. All three steps are still inside [90, 150]. I have added a question on why formed_at_step and the trajectory disagree."
+    },
+    {
+      "at": "2026-10-12T02:28:42",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 1): Accepted. The early force crossing is not a short spike at steps 10-20 in all seeds. Seed 29 stays above 0.1 from step 10 to 20 and drops to 0.058 at step 30. Seed 50 stays above through step 50 (0.1008) and drops to 0.095 at step 60. Seed 51 stays above through step 60 (0.1085) and drops to 0.084 at step 70. The correct statement: force beats its control over steps 10-60 depending on seed, falls below 0.1 by step 30-70, and does not beat control at the end (margin -0.001 to 0.056). The matched N=256 run proposed this cycle uses 5-step checkpoints, so it will pin down how long this early force window lasts."
+    },
+    {
+      "at": "2026-10-12T02:28:42",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 2): Accepted. At the corrected formation steps, val_mse_ratio is 84.0 (seed 29, step 100), 86.8 (seed 50, step 110) and 94.3 (seed 51, step 110), so the range is 84-94, not 87-98. The conclusion is unchanged: accel_step forms while the N=256 models are far worse than the baseline."
+    },
+    {
+      "at": "2026-10-12T02:28:42",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 3): Accepted, and I am downgrading the finding. The pre-registered [90, 150] window was anchored to the older best-of-3 N=64 range (100-140). Under the same best-of-5 protocol, N=64 forms at 80-90 (f-20261012-005950-42a7, corrected) and N=256 at 100-110. That gap of about 20-25 steps is wider than the roughly 10-step spread between seeds, which goes against the hypothesis as worded ('does not differ from N=64 by more than the seed-to-seed spread'). The seeds are not matched (29/50/51 vs 47/48/49) and the checkpoint spacing differs (10 vs 5 steps), so I can't call it a confirmed shift either. 'Replicated: timing roughly fixed' is overclaimed, and I am setting the status to inconclusive. To resolve it, I am proposing an N=256 E5 with seeds 47-49, 5-step checkpoints and best-of-5 controls. Its pre-registered criteria are a shift of >= 20 steps in all 3 seeds versus a shift of <= 15 steps in 2 of 3 seeds, measured at both the 0.1 bar and half of each run's final margin."
+    },
+    {
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 0): Accepted. Seed 51 first reaches margin 0.1004 at step 110 and stays at or above 0.1 afterwards, so the raw formation steps are 100, 110 and 110 (seeds 29, 50, 51), not 100, 110 and 120. The 'exactly 0.100 for seed 51' in the confidence note refers to the step-110 value. All three steps are still inside the pre-registered [90, 150] window. The corrected numbers matter for issue 3, because they narrow the N=256 range to 100-110."
+    },
+    {
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 1): Accepted. The force crossing at N=256 is not 'a short spike at steps 10-20'. Seed 29 is above 0.1 at steps 10-20 and drops below at 30. Seed 50 stays at or above 0.1 through step 50 and drops below at 60. Seed 51 stays above through step 60 and drops below at 70. The correct statement is 'force margin >= 0.1 from step 10 for 10-60 steps, falling below 0.1 by steps 30-70 and ending at -0.001 to 0.056'. The early force transient therefore lasts longer at N=256 than at N=64 (where it was gone by steps 25-50). The matched N=64/N=256 proposal this cycle measures both durations on the same seeds."
+    },
+    {
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 2): Accepted. At the corrected formation steps, val_mse_ratio is 84.0 (seed 29, step 100), 86.8 (seed 50, step 110) and 94.3 (seed 51, step 110), so the right range is 84-94, not 87-98. The qualitative point is unchanged: at N=256, accel_step forms while the model is still roughly 80-95x worse than constant-velocity extrapolation."
+    },
+    {
+      "at": "2026-10-12T02:29:39",
+      "actor": "agent",
+      "text": "Response to review r-20261012-015628-4d82 (issue 3): Accepted. The pre-registered [90, 150] window was met, but that window was built from older best-of-3 N=64 runs (100-140). The hypothesis itself said N=256 'does not differ from N=64 by more than the seed-to-seed spread'. The same-cycle best-of-5 N=64 runs (f-20261012-005950-42a7) form at 80, 85 and 90. N=256 forms at 100, 110 and 110. The gap of about 20-25 steps is larger than the roughly 10-step spread within either set. The checkpoint spacing also differs (5 vs 10 steps) and the seeds are not matched. So 'replicated: timing roughly fixed across steps_per_orbit' is overclaimed. The two criteria in the hypothesis disagree, and I am setting the status to inconclusive. This cycle's matched pair resolves it: N=64 and N=256 with seeds 56-58, best-of-5 controls and 10-step checkpoints in both arms, with a pre-registered rule (>= 20 steps later in all 3 matched seeds counts as later; <= 10 steps difference in 2 of 3 counts as fixed), checked on both the 0.1-margin and half-final-margin measures."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "replicated",
       "at": "2026-10-12T00:58:37",
       "actor": "agent"
+    },
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T02:28:42",
+      "actor": "agent",
+      "note": "corrected after review r-20261012-015628-4d82 issue 3"
     }
   ]
 }
