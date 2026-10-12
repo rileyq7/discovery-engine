@@ -1,0 +1,25 @@
+{
+  "id": "f-20261012-020024-760f",
+  "claim": "With 4000 training steps, neither seed reached the pre-registered accel_step gate of R2 >= 0.8, so the hypothesis cannot be tested and the result is inconclusive. Best accel_step was at layer 6: R2 0.715 vs best-of-5 control 0.266 (margin 0.450) in seed 54, and R2 0.732 vs control 0.240 (margin 0.492) in seed 55. That is about the same as the ~0.70 the 3000-step runs (other seeds) reached, even though val_mse_ratio fell about 2.6x, from roughly 0.009 at step 3000 to 0.0035-0.0036 at step 4000. Force was weaker than accel_step at layer 3: R2 0.581/0.546 vs control 0.255/0.220 (margin 0.326 in both seeds). Headroom-normalized margin also favours accel_step in both seeds (0.61 vs 0.44 and 0.65 vs 0.42). The ungated symbolic fits did not recover a^3/r^2. Seed 54 gave 0.0127*a^2/(r+0.17)^2 (fit error 0.41) and seed 55 gave the vis-viva form a*(0.0171*a/r - 0.0088), c \u2248 0.52 (fit error 0.45). Both force fits were ~0.9/r.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-012900-94c4",
+    "run-20261012-012900-e76e"
+  ],
+  "confidence_note": "Both runs completed all 4000 steps, and their controls are tight (accel_step spread 0.012-0.020), so the margins are robust. Under the pre-registration, both seeds staying below R2 0.8 makes this inconclusive. It points toward a linear-readout limit at e <= 0.85 rather than undertraining. The undertraining explanation is weakened: next-step error kept improving about 2.6x between steps 3000 and 4000 while accel_step R2 rose by at most ~0.02-0.03. That comparison has a caveat, though. Probing was final-only, so the ~0.70 baseline at 3000 steps comes from different seeds, and we have no within-seed R2 trajectory. The symbolic fits ran below the R2 0.8 gate, so they can't confirm or refute a^3/r^2. Even so, neither shows r^-2 together with a^3, and seed 55 again gives the vis-viva form with c near 0.5. Three things would change this verdict: (a) a within-seed checkpoint trajectory showing accel_step R2 still rising at step 4000, which would favour undertraining; (b) an MLP probe or a log(accel_step) linear probe reaching >= 0.8 on these same weights, which would confirm a linear-readout limit; (c) a longer run, e.g. 8000 steps, crossing 0.8.",
+  "created_at": "2026-10-12T02:00:24",
+  "experiment_id": "exp-20261012-012858-87a2",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T02:00:24",
+      "actor": "agent"
+    }
+  ]
+}

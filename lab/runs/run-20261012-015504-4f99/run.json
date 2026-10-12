@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-015504-4f99",
+  "experiment_id": "exp-20261012-012858-09ec",
+  "seed": 49,
+  "status": "completed",
+  "started_at": "2026-10-12T01:55:06",
+  "ended_at": "2026-10-12T01:56:25",
+  "compute_hours": 0.0218,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-015504-4f99",
+  "git_commit": "5553409",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 0.00010357429098895215,
+    "baseline_cv_mse": 0.006080180250753568,
+    "val_mse_ratio": 0.017034740207926453,
+    "beats_baseline": true,
+    "train_hours": 0.011807348794407315,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "d09ae7c88bfc",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.57811,
+          "control_r2": 0.4555,
+          "control_spread": 0.0308,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 125
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.90723,
+          "control_r2": 0.77024,
+          "control_spread": 0.01007,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 80
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.85128,
+          "control_r2": 0.19635,
+          "control_spread": 0.09431,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 5
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.60627,
+          "control_r2": 0.19876,
+          "control_spread": 0.09501,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 10
+        }
+      }
+    }
+  },
+  "pid": 59393,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "d09ae7c88bfc"
+}

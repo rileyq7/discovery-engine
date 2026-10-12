@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-015955-fc2b",
+  "claim": "At N=16, val_mse_ratio first drops below 1 at step 20 in all 3 seeds (0.80, 0.77, 0.76). That is well before accel_step reaches its required margin of 0.1 over the best-of-5 control, at step 90 for seed 47, 75 for seed 48 and 80 for seed 49. Those formation steps are 5, 15 and 5 steps from the seed-matched N=64 runs (85, 90, 85), so the 'forms before beating the baseline' ordering flips while the formation step barely moves. Final accel_step R2 at layer 4 is 0.896-0.909 against controls of 0.752-0.793 (margin 0.117-0.144, control spread under 0.011). Force is much weaker: final margins are 0.030, 0.055 and 0.123, and only seed 49 beats its control (formed at step 125). In all seeds a transient force margin of 0.106-0.127 appears at step 10 and collapses to about 0 by steps 20-30, as in the N=64 runs.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-015504-ae8c",
+    "run-20261012-015504-9d3a",
+    "run-20261012-015504-4f99"
+  ],
+  "confidence_note": "The prediction holds in 3 of 3 seeds, all trained to completion (300/300 steps), and the ordering gap is large: val_mse_ratio crosses 1 at step 20, about 55-70 steps before accel_step forms. What limits the verdict: (1) The ordering flip comes from the weaker constant-velocity baseline at N=16, not from any change in when accel_step forms. So the result mainly shows that 'val_mse_ratio < 1' is a baseline-dependent marker and should not be used to time formation across N. (2) The accel_step margin levels off just above the 0.1 bar (seed 47 reaches only 0.103 at step 90 and 0.117 at the end). At a raw 0.15 bar accel_step never forms in any seed (max 0.144), so the formation steps are sensitive to the threshold. (3) There is a small reporting inconsistency: in seed 48 the trajectory shows an accel_step margin of 0.102 at step 70, but formed_at_step is 75. Either value is inside the predicted window. (4) The N=64 comparison runs come from a separate experiment, so any difference in control sampling adds noise. The verdict would change if a headroom-normalized or fraction-of-final-margin timing measure moved N=16 formation outside [45, 130], or more than 40 steps from N=64.",
+  "created_at": "2026-10-12T01:59:55",
+  "experiment_id": "exp-20261012-012858-09ec",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T01:59:55",
+      "actor": "agent"
+    }
+  ]
+}

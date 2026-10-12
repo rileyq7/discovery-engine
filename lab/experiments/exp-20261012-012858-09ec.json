@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-012858-09ec",
+  "family": "E5",
+  "hypothesis": "The N=64 result that accel_step forms before the model beats constant-velocity extrapolation (f-20261012-005950-42a7, steps 85-90 vs 135-165) is specific to N=64. At N=16 the baseline is much weaker, so val_mse_ratio falls below 1 before accel_step reaches its required margin, while the accel_step formation step itself stays within 40 steps of the seed-matched N=64 runs (85-90).",
+  "expected_if_true": "In at least 2 of 3 seeds (47, 48, 49), the first checkpoint with val_mse_ratio < 1 comes strictly before the first checkpoint where the accel_step margin over the best-of-5 control is >= required_margin. Each seed's accel_step formation step lies in [45, 130], within 40 steps of its N=64 counterpart (85, 90, 85).",
+  "expected_if_false": "In at least 2 of 3 seeds, accel_step reaches required_margin at or before the first checkpoint with val_mse_ratio < 1 (so the ordering is the same as at N=64), or accel_step formation differs from the matched N=64 seed by more than 40 steps in at least 2 seeds.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The N=64 result that accel_step forms before the model beats constant-velocity extrapolation (f-20261012-005950-42a7, steps 85-90 vs 135-165) is specific to N=64. At N=16 the baseline is much weaker, so val_mse_ratio falls below 1 before accel_step reaches its required margin, while the accel_step formation step itself stays within 40 steps of the seed-matched N=64 runs (85-90).",
+    "expected_if_true": "In at least 2 of 3 seeds (47, 48, 49), the first checkpoint with val_mse_ratio < 1 comes strictly before the first checkpoint where the accel_step margin over the best-of-5 control is >= required_margin. Each seed's accel_step formation step lies in [45, 130], within 40 steps of its N=64 counterpart (85, 90, 85).",
+    "expected_if_false": "In at least 2 of 3 seeds, accel_step reaches required_margin at or before the first checkpoint with val_mse_ratio < 1 (so the ordering is the same as at N=64), or accel_step formation differs from the matched N=64 seed by more than 40 steps in at least 2 seeds.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 16,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 5
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      47,
+      48,
+      49
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T01:28:58",
+  "updated_at": "2026-10-12T01:59:55",
+  "verdict": "supported",
+  "estimate_hours": 0.1608,
+  "compute_hours": 0.0659,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T01:28:58",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T01:28:58",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T01:29:00",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T01:55:04",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T01:59:13",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T01:59:55",
+      "actor": "agent",
+      "note": "finding f-20261012-015955-fc2b"
+    }
+  ]
+}

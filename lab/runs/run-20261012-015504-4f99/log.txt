@@ -1,0 +1,79 @@
+[01:55:06] experiment exp-20261012-012858-09ec (E5) seed 49: The N=64 result that accel_step forms before the model beats constant-velocity extrapolation (f-20261012-005950-42a7, steps 85-90 vs 135-165) is specific to N=64. At N=16 the baseline is much weaker, so val_mse_ratio falls below 1 before accel_step reaches its required margin, while the accel_step formation step itself stays within 40 steps of the seed-matched N=64 runs (85-90).
+[01:55:07] model: 209,094 params on mps; dataset d09ae7c88bfc; 9000 train / 1000 val systems
+[01:55:08] step 0: val_mse=2.839e-02 cv_baseline=6.080e-03 ratio=4.670
+[01:55:09] step 5: val_mse=1.108e-02 cv_baseline=6.080e-03 ratio=1.822
+[01:55:10] step 10: val_mse=7.966e-03 cv_baseline=6.080e-03 ratio=1.310
+[01:55:10] step 15: val_mse=6.266e-03 cv_baseline=6.080e-03 ratio=1.031
+[01:55:11] step 20: val_mse=4.869e-03 cv_baseline=6.080e-03 ratio=0.801
+[01:55:12] step 25: val_mse=3.385e-03 cv_baseline=6.080e-03 ratio=0.557
+[01:55:12] step 30: val_mse=2.566e-03 cv_baseline=6.080e-03 ratio=0.422
+[01:55:13] step 35: val_mse=2.061e-03 cv_baseline=6.080e-03 ratio=0.339
+[01:55:14] step 40: val_mse=1.692e-03 cv_baseline=6.080e-03 ratio=0.278
+[01:55:14] step 45: val_mse=1.442e-03 cv_baseline=6.080e-03 ratio=0.237
+[01:55:15] step 50: val_mse=1.195e-03 cv_baseline=6.080e-03 ratio=0.197
+[01:55:16] step 55: val_mse=9.957e-04 cv_baseline=6.080e-03 ratio=0.164
+[01:55:16] step 60: val_mse=8.493e-04 cv_baseline=6.080e-03 ratio=0.140
+[01:55:17] step 65: val_mse=6.906e-04 cv_baseline=6.080e-03 ratio=0.114
+[01:55:18] step 70: val_mse=6.584e-04 cv_baseline=6.080e-03 ratio=0.108
+[01:55:19] step 75: val_mse=5.029e-04 cv_baseline=6.080e-03 ratio=0.083
+[01:55:20] step 80: val_mse=4.731e-04 cv_baseline=6.080e-03 ratio=0.078
+[01:55:20] step 85: val_mse=4.703e-04 cv_baseline=6.080e-03 ratio=0.077
+[01:55:21] step 90: val_mse=4.065e-04 cv_baseline=6.080e-03 ratio=0.067
+[01:55:22] step 95: val_mse=3.509e-04 cv_baseline=6.080e-03 ratio=0.058
+[01:55:22] step 100: val_mse=3.351e-04 cv_baseline=6.080e-03 ratio=0.055
+[01:55:23] step 105: val_mse=3.336e-04 cv_baseline=6.080e-03 ratio=0.055
+[01:55:24] step 110: val_mse=3.126e-04 cv_baseline=6.080e-03 ratio=0.051
+[01:55:24] step 115: val_mse=2.600e-04 cv_baseline=6.080e-03 ratio=0.043
+[01:55:25] step 120: val_mse=2.496e-04 cv_baseline=6.080e-03 ratio=0.041
+[01:55:26] step 125: val_mse=2.368e-04 cv_baseline=6.080e-03 ratio=0.039
+[01:55:26] step 130: val_mse=2.359e-04 cv_baseline=6.080e-03 ratio=0.039
+[01:55:27] step 135: val_mse=2.304e-04 cv_baseline=6.080e-03 ratio=0.038
+[01:55:28] step 140: val_mse=2.097e-04 cv_baseline=6.080e-03 ratio=0.034
+[01:55:28] step 145: val_mse=2.338e-04 cv_baseline=6.080e-03 ratio=0.038
+[01:55:29] step 150: val_mse=2.170e-04 cv_baseline=6.080e-03 ratio=0.036
+[01:55:30] step 155: val_mse=1.926e-04 cv_baseline=6.080e-03 ratio=0.032
+[01:55:30] step 160: val_mse=1.914e-04 cv_baseline=6.080e-03 ratio=0.031
+[01:55:31] step 165: val_mse=1.761e-04 cv_baseline=6.080e-03 ratio=0.029
+[01:55:32] step 170: val_mse=1.717e-04 cv_baseline=6.080e-03 ratio=0.028
+[01:55:32] step 175: val_mse=1.621e-04 cv_baseline=6.080e-03 ratio=0.027
+[01:55:33] step 180: val_mse=1.650e-04 cv_baseline=6.080e-03 ratio=0.027
+[01:55:34] step 185: val_mse=1.543e-04 cv_baseline=6.080e-03 ratio=0.025
+[01:55:34] step 190: val_mse=1.586e-04 cv_baseline=6.080e-03 ratio=0.026
+[01:55:35] step 195: val_mse=1.444e-04 cv_baseline=6.080e-03 ratio=0.024
+[01:55:36] step 200: val_mse=1.432e-04 cv_baseline=6.080e-03 ratio=0.024
+[01:55:36] step 205: val_mse=1.408e-04 cv_baseline=6.080e-03 ratio=0.023
+[01:55:37] step 210: val_mse=1.336e-04 cv_baseline=6.080e-03 ratio=0.022
+[01:55:38] step 215: val_mse=1.305e-04 cv_baseline=6.080e-03 ratio=0.021
+[01:55:38] step 220: val_mse=1.299e-04 cv_baseline=6.080e-03 ratio=0.021
+[01:55:39] step 225: val_mse=1.243e-04 cv_baseline=6.080e-03 ratio=0.020
+[01:55:40] step 230: val_mse=1.240e-04 cv_baseline=6.080e-03 ratio=0.020
+[01:55:40] step 235: val_mse=1.216e-04 cv_baseline=6.080e-03 ratio=0.020
+[01:55:41] step 240: val_mse=1.220e-04 cv_baseline=6.080e-03 ratio=0.020
+[01:55:42] step 245: val_mse=1.189e-04 cv_baseline=6.080e-03 ratio=0.020
+[01:55:42] step 250: val_mse=1.176e-04 cv_baseline=6.080e-03 ratio=0.019
+[01:55:43] step 255: val_mse=1.146e-04 cv_baseline=6.080e-03 ratio=0.019
+[01:55:44] step 260: val_mse=1.140e-04 cv_baseline=6.080e-03 ratio=0.019
+[01:55:44] step 265: val_mse=1.137e-04 cv_baseline=6.080e-03 ratio=0.019
+[01:55:45] step 270: val_mse=1.098e-04 cv_baseline=6.080e-03 ratio=0.018
+[01:55:46] step 275: val_mse=1.096e-04 cv_baseline=6.080e-03 ratio=0.018
+[01:55:46] step 280: val_mse=1.080e-04 cv_baseline=6.080e-03 ratio=0.018
+[01:55:47] step 285: val_mse=1.087e-04 cv_baseline=6.080e-03 ratio=0.018
+[01:55:48] step 290: val_mse=1.052e-04 cv_baseline=6.080e-03 ratio=0.017
+[01:55:48] step 295: val_mse=1.045e-04 cv_baseline=6.080e-03 ratio=0.017
+[01:55:49] step 300: val_mse=1.036e-04 cv_baseline=6.080e-03 ratio=0.017
+[01:55:49] training done in 0.7 min; beats constant-velocity baseline: True
+[01:55:52] random-model controls (best of 5): force=0.18/0.46/0.46/0.46/0.46, accel_step=0.63/0.76/0.76/0.77/0.77, distance=-0.05/0.20/0.44/0.49/0.64, energy=-0.01/0.20/0.35/0.37/0.45
+[01:55:52] probes @ step 0: best force R2=0.472 (layer 1)
+[01:55:55] probes @ step 25: best force R2=0.465 (layer 4)
+[01:55:58] probes @ step 50: best force R2=0.475 (layer 4)
+[01:56:01] probes @ step 75: best force R2=0.533 (layer 4)
+[01:56:03] probes @ step 100: best force R2=0.548 (layer 4)
+[01:56:06] probes @ step 125: best force R2=0.558 (layer 4)
+[01:56:08] probes @ step 150: best force R2=0.564 (layer 4)
+[01:56:11] probes @ step 175: best force R2=0.570 (layer 4)
+[01:56:14] probes @ step 200: best force R2=0.573 (layer 4)
+[01:56:16] probes @ step 225: best force R2=0.576 (layer 4)
+[01:56:19] probes @ step 250: best force R2=0.577 (layer 4)
+[01:56:22] probes @ step 275: best force R2=0.579 (layer 4)
+[01:56:25] probes @ step 300: best force R2=0.578 (layer 4)
+[01:56:25] run complete in 1.3 min

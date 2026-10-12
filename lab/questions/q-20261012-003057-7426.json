@@ -3,7 +3,8 @@
   "text": "If the 6-layer accel_step probe R2 drops below 0.8 at e <= 0.85 while val_mse_ratio stays near 0.01, is the gravity computation then spread nonlinearly across layers, so that linear probes stop being an adequate readout at high eccentricity?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-005907-5a40"
+    "f-20261012-005907-5a40",
+    "f-20261012-020024-760f"
   ],
   "created_at": "2026-10-12T00:30:57"
 }

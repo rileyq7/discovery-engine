@@ -1,0 +1,89 @@
+{
+  "id": "run-20261012-012900-94c4",
+  "experiment_id": "exp-20261012-012858-87a2",
+  "seed": 54,
+  "status": "completed",
+  "started_at": "2026-10-12T01:29:02",
+  "ended_at": "2026-10-12T01:41:44",
+  "compute_hours": 0.2118,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-012900-94c4",
+  "git_commit": "5553409",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 2.505385617571553e-07,
+    "baseline_cv_mse": 6.914087355606199e-05,
+    "val_mse_ratio": 0.003623595550235698,
+    "beats_baseline": true,
+    "train_hours": 0.2053336285882526,
+    "n_params": 1207942,
+    "device": "mps",
+    "dataset_id": "a02ec440b269",
+    "stopped": false,
+    "steps_completed": 4000,
+    "steps_planned": 4000,
+    "probes": {
+      "final_checkpoint": 4000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.58098,
+          "control_r2": 0.25538,
+          "control_spread": 0.01042,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 4000
+        },
+        "accel_step": {
+          "best_layer": 6,
+          "r2": 0.71514,
+          "control_r2": 0.26555,
+          "control_spread": 0.0201,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 4000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.95835,
+          "control_r2": 0.76123,
+          "control_spread": 0.04442,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 4000
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.95403,
+          "control_r2": 0.78022,
+          "control_spread": 0.10032,
+          "required_margin": 0.1003,
+          "beats_control": true,
+          "formed_at_step": 4000
+        }
+      }
+    },
+    "equations": {
+      "force": {
+        "equation": "0.9909068/r",
+        "law_recovered": false,
+        "fit_error_vs_true_law": 0.5837175725161812,
+        "layer": 3,
+        "error": null
+      },
+      "accel_step": {
+        "equation": "0.0126887473340356*a**2/(r + 0.17075235)**2",
+        "law_recovered": false,
+        "fit_error_vs_true_law": 0.41070374713519464,
+        "layer": 6,
+        "error": null
+      }
+    }
+  },
+  "pid": 51841,
+  "device": "mps",
+  "progress": null,
+  "n_params": 1207942,
+  "dataset_id": "a02ec440b269"
+}

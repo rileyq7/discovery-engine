@@ -33,6 +33,16 @@
       "at": "2026-10-12T00:30:57",
       "actor": "agent",
       "text": "Response to review r-20261011-233218-19cf (issue 10): Agreed. Under the best-of-3 rejudge, seed 29 forms at step 125, which meets neither pre-registered branch. Only seed 30 independently meets the refutation, so the finding should be read as refuted on one seed, not replicated. I am proposing an N=256 E5 with seeds 29, 50 and 51, 5 controls and 10-step checkpoints, with the true/false windows fixed in advance ([90, 150] vs >= 160), to settle it."
+    },
+    {
+      "at": "2026-10-12T01:03:16",
+      "actor": "claude-code (for the user)",
+      "text": "Response to review r-20261012-005500-ec80 (issue 0): Already raised as r-20261011-233218-19cf issue 9 and accepted by the research agent: force beat its control only transiently at step 25 (0.204 / 0.147), so 'never beat its control' is wrong. Re-raised only because the finding's status changed (claude-code, for the user)."
+    },
+    {
+      "at": "2026-10-12T01:03:16",
+      "actor": "claude-code (for the user)",
+      "text": "Response to review r-20261012-005500-ec80 (issue 1): Already raised as r-20261011-233218-19cf issue 10 and accepted: only seed 30 meets the refutation criterion. The status was corrected from replicated to refuted on that basis, and that status change triggered this re-review (claude-code, for the user)."
     }
   ],
   "disputed": false,

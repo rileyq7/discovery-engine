@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261012-012858-87a2",
+  "family": "E3",
+  "hypothesis": "At m2 fixed and e in [0, 0.85], the 6-layer d_model=128 accel_step probe stayed at R2 about 0.70 after 3000 steps because training was too short, not because of a readout limit. With 4000 steps it reaches R2 >= 0.8 at the best layer. With the weak-probe confound removed, the symbolic fit to the accel_step direction recovers a^3/r^2 (as seed 52 did at R2 0.70) rather than the a*(a/r - c) vis-viva form seen at e <= 0.7.",
+  "expected_if_true": "Pre-registered gate: a seed counts only if its best accel_step R2 is >= 0.8 and its margin over the best-of-5 control is >= required_margin. In both seeds that pass the gate, the accel_step fit has r exponent in [-2.5, -1.5], a exponent in [2.5, 3.5] and fit_error_vs_true_law < 0.2. accel_step headroom-normalized margin exceeds force's.",
+  "expected_if_false": "Refuted if at least one gated seed (R2 >= 0.8) fits to r exponent in [-1.4, -0.6] or the a*(a/r - c) form with fit_error >= 0.2. Inconclusive if both seeds stay below accel_step R2 0.8 even at 4000 steps; that would point to a linear-readout limit at high e (q-20261012-003057-7426), not undertraining.",
+  "config": {
+    "family": "E3",
+    "hypothesis": "At m2 fixed and e in [0, 0.85], the 6-layer d_model=128 accel_step probe stayed at R2 about 0.70 after 3000 steps because training was too short, not because of a readout limit. With 4000 steps it reaches R2 >= 0.8 at the best layer. With the weak-probe confound removed, the symbolic fit to the accel_step direction recovers a^3/r^2 (as seed 52 did at R2 0.70) rather than the a*(a/r - c) vis-viva form seen at e <= 0.7.",
+    "expected_if_true": "Pre-registered gate: a seed counts only if its best accel_step R2 is >= 0.8 and its margin over the best-of-5 control is >= required_margin. In both seeds that pass the gate, the accel_step fit has r exponent in [-2.5, -1.5], a exponent in [2.5, 3.5] and fit_error_vs_true_law < 0.2. accel_step headroom-normalized margin exceeds force's.",
+    "expected_if_false": "Refuted if at least one gated seed (R2 >= 0.8) fits to r exponent in [-1.4, -0.6] or the a*(a/r - c) form with fit_error >= 0.2. Inconclusive if both seeds stay below accel_step R2 0.8 even at 4000 steps; that would point to a linear-readout limit at high e (q-20261012-003057-7426), not undertraining.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.49,
+        0.51
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.85
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 6,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 4000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "final",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": true
+    },
+    "eval_sets": [],
+    "seeds": [
+      54,
+      55
+    ],
+    "budget": {
+      "max_compute_hours": 0.95
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T01:28:58",
+  "updated_at": "2026-10-12T02:00:24",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.6978,
+  "compute_hours": 0.4323,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T01:28:58",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T01:28:58",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T01:29:00",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T01:29:00",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T01:55:04",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T02:00:24",
+      "actor": "agent",
+      "note": "finding f-20261012-020024-760f"
+    }
+  ]
+}

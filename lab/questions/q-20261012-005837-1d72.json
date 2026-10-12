@@ -3,7 +3,8 @@
   "text": "The accel_step margin rises smoothly at N=256 and levels off at 0.15-0.18. At the 0.1 bar, formation falls at steps 100-120, but at 0.15 it spans steps 150-240. With matched seeds and best-of-5 controls at N=64 and N=256, does the ordering of formation steps across steps_per_orbit depend on the threshold? Would comparing the step where each run reaches half its own final margin give a threshold-free measure of timing?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-005950-42a7"
+    "f-20261012-005950-42a7",
+    "f-20261012-015955-fc2b"
   ],
   "created_at": "2026-10-12T00:58:37"
 }

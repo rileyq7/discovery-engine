@@ -2,6 +2,8 @@
   "id": "q-20261012-005950-c49e",
   "text": "At N=64 the accel_step margin levels off at 0.13-0.17 because the controls sit at 0.72-0.77. Should E5 formation timing use a headroom-normalized margin or a fraction of each run's own final margin, rather than fixed raw thresholds of 0.1 or 0.15? Those measures give formation steps 50-130, all before val_mse_ratio < 1, while the raw 0.15 bar is never reached in 2 of 3 seeds.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-015955-fc2b"
+  ],
   "created_at": "2026-10-12T00:59:50"
 }

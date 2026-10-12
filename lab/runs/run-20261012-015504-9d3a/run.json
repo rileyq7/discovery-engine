@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-015504-9d3a",
+  "experiment_id": "exp-20261012-012858-09ec",
+  "seed": 48,
+  "status": "completed",
+  "started_at": "2026-10-12T01:56:29",
+  "ended_at": "2026-10-12T01:57:47",
+  "compute_hours": 0.0218,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-015504-9d3a",
+  "git_commit": "5553409",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 0.00010532521450613428,
+    "baseline_cv_mse": 0.006080180250753568,
+    "val_mse_ratio": 0.01732271251219574,
+    "beats_baseline": true,
+    "train_hours": 0.01146055301030477,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "d09ae7c88bfc",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.54318,
+          "control_r2": 0.48795,
+          "control_spread": 0.0515,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.89678,
+          "control_r2": 0.75229,
+          "control_spread": 0.00738,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 75
+        },
+        "distance": {
+          "best_layer": 2,
+          "r2": 0.9075,
+          "control_r2": 0.37416,
+          "control_spread": 0.13158,
+          "required_margin": 0.1316,
+          "beats_control": true,
+          "formed_at_step": 15
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.57243,
+          "control_r2": 0.18212,
+          "control_spread": 0.10214,
+          "required_margin": 0.1021,
+          "beats_control": true,
+          "formed_at_step": 10
+        }
+      }
+    }
+  },
+  "pid": 59850,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "d09ae7c88bfc"
+}
