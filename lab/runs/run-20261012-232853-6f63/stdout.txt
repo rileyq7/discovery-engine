@@ -1,0 +1,15 @@
+run-20261012-232853-6f63: [23:28:55] experiment exp-20261011-223558-1d62 (custom) seed 22: At fine sampling (N=256), per-step acceleration is 16x smaller relative to orbit size than at N=64. Next-step prediction can then be done almost entirely by finite-difference (curvature) extrapolation of recent inputs, a heuristic that needs no gravity representation, so accel_step and force margins over control shrink below the N=64 values (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).
+run-20261012-232853-6f63: [23:28:55] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+run-20261012-232853-6f63: [23:28:56] step 0: val_mse=1.358e-04 cv_baseline=1.010e-07 ratio=1345.296
+run-20261012-232853-6f63: [23:29:38] step 500: val_mse=7.819e-07 cv_baseline=1.010e-07 ratio=7.744
+run-20261012-232853-6f63: [23:30:19] step 1000: val_mse=4.002e-07 cv_baseline=1.010e-07 ratio=3.964
+run-20261012-232853-6f63: [23:31:02] step 1500: val_mse=1.621e-07 cv_baseline=1.010e-07 ratio=1.605
+run-20261012-232853-6f63: [23:32:03] step 2000: val_mse=7.699e-08 cv_baseline=1.010e-07 ratio=0.762
+run-20261012-232853-6f63: [23:32:49] step 2500: val_mse=4.153e-08 cv_baseline=1.010e-07 ratio=0.411
+run-20261012-232853-6f63: [23:33:31] step 3000: val_mse=3.190e-08 cv_baseline=1.010e-07 ratio=0.316
+run-20261012-232853-6f63: [23:33:31] training done in 4.6 min; beats constant-velocity baseline: True
+run-20261012-232853-6f63: [23:33:33] random-model controls (best of 3): force=0.14/0.45/0.49/0.49/0.49, accel_step=0.56/0.64/0.64/0.66/0.65, distance=-0.14/0.21/0.32/0.46/0.51, energy=-0.05/0.15/0.27/0.35/0.35
+run-20261012-232853-6f63: [23:33:34] probes @ step 0: best force R2=0.514 (layer 4)
+run-20261012-232853-6f63: [23:33:36] probes @ step 2500: best force R2=0.521 (layer 4)
+run-20261012-232853-6f63: [23:33:37] probes @ step 3000: best force R2=0.526 (layer 4)
+run-20261012-232853-6f63: [23:33:37] run complete in 4.7 min

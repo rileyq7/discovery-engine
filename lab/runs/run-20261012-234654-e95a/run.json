@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-234654-e95a",
+  "experiment_id": "exp-20261012-102820-84ce",
+  "seed": 70,
+  "status": "completed",
+  "started_at": "2026-10-12T23:49:09",
+  "ended_at": "2026-10-12T23:50:13",
+  "compute_hours": 0.0177,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-234654-e95a",
+  "git_commit": "4d70434",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 8.0649547689543e-06,
+    "baseline_cv_mse": 5.664347475907934e-05,
+    "val_mse_ratio": 0.14238100334163512,
+    "beats_baseline": true,
+    "train_hours": 0.014892204403877259,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "ca3b9db10aa7",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.39749,
+          "control_r2": 0.27388,
+          "control_spread": 0.01386,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 350
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.66997,
+          "control_r2": 0.37158,
+          "control_spread": 0.0225,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.82883,
+          "control_r2": 0.34244,
+          "control_spread": 0.2162,
+          "required_margin": 0.2162,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.39219,
+          "control_r2": 0.0545,
+          "control_spread": 0.1606,
+          "required_margin": 0.1606,
+          "beats_control": true,
+          "formed_at_step": 50
+        }
+      }
+    }
+  },
+  "pid": 73910,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "ca3b9db10aa7"
+}

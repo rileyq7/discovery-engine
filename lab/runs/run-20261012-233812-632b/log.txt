@@ -1,0 +1,15 @@
+[23:42:34] experiment exp-20261011-223558-a988 (custom) seed 21: Gravity structure in the residual stream is driven by how much next-step prediction needs it. At coarse sampling (N=16 snapshots per orbit), the per-step acceleration (2*pi/16)^2 * a^3/((1+m2) r^2) is 16x larger relative to orbit size than at N=64, so the model must represent it more explicitly, and accel_step and force margins over control rise above the N=64 values from the same architecture (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).
+[23:42:34] model: 209,094 params on mps; dataset d09ae7c88bfc; 9000 train / 1000 val systems
+[23:42:35] step 0: val_mse=3.002e-02 cv_baseline=6.080e-03 ratio=4.937
+[23:43:15] step 500: val_mse=8.029e-05 cv_baseline=6.080e-03 ratio=0.013
+[23:44:01] step 1000: val_mse=4.298e-05 cv_baseline=6.080e-03 ratio=0.007
+[23:44:43] step 1500: val_mse=1.996e-05 cv_baseline=6.080e-03 ratio=0.003
+[23:45:24] step 2000: val_mse=7.989e-06 cv_baseline=6.080e-03 ratio=0.001
+[23:46:06] step 2500: val_mse=5.946e-06 cv_baseline=6.080e-03 ratio=0.001
+[23:46:48] step 3000: val_mse=4.143e-06 cv_baseline=6.080e-03 ratio=0.001
+[23:46:48] training done in 4.2 min; beats constant-velocity baseline: True
+[23:46:49] random-model controls (best of 3): force=0.16/0.49/0.51/0.49/0.49, accel_step=0.67/0.79/0.80/0.80/0.80, distance=-0.01/0.32/0.47/0.50/0.56, energy=-0.00/0.32/0.46/0.45/0.50
+[23:46:50] probes @ step 0: best force R2=0.491 (layer 4)
+[23:46:53] probes @ step 2500: best force R2=0.759 (layer 1)
+[23:46:54] probes @ step 3000: best force R2=0.767 (layer 1)
+[23:46:54] run complete in 4.3 min

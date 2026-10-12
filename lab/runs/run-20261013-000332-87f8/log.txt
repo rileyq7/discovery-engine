@@ -1,0 +1,5 @@
+[00:03:34] experiment exp-20261012-231417-a794 (E5) seed 75: Physical force forms late. In long-trained 4-layer d_model=128 models (5000 steps, e in [0, 0.5], m2 in [0.1, 1]), the force probe beats a best-of-5 random control at the end of training, and its persistent formation step comes well after accel_step's. Earlier single-control runs (f-20261011-201533-0653) showed the force margin growing from ~0.1 to ~0.22 over 4000 steps. Every best-of-5 run so far stopped at 300-600 steps and showed no lasting force margin (0.00-0.08).
+[00:03:34] model: 811,398 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+[00:03:35] step 0: val_mse=2.164e-03 cv_baseline=2.554e-05 ratio=84.717
+[00:04:45] step 500: val_mse=1.003e-05 cv_baseline=2.554e-05 ratio=0.393
+[00:05:56] step 1000: val_mse=4.561e-06 cv_baseline=2.554e-05 ratio=0.179

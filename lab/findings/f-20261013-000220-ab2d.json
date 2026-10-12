@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-000220-ab2d",
+  "claim": "In the L=2, d_model=32, n_systems=1000 cell, both new seeds reproduce the seed-0 ordering. Seed 1: force R2 0.603 vs control 0.382 (margin 0.221, layer 1), accel_step R2 0.827 vs control 0.681 (margin 0.146, layer 2). Seed 2: force 0.643 vs 0.388 (margin 0.255), accel_step 0.780 vs 0.652 (margin 0.128). So force has the larger raw margin while accel_step keeps the higher raw R2, and val_mse_ratio is 0.064 and 0.079. Through training the force margin keeps rising (0.112 to 0.221 and 0.136 to 0.255 from step 500 to 3000), while the accel_step margin levels off at 0.13-0.15 by step 1500.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-232455-12f7",
+    "run-20261012-232455-80dc"
+  ],
+  "confidence_note": "All four expected-if-true conditions hold in both seeds. Both runs completed 3000/3000 steps, and the force control_spread (0.049-0.064) is below the 0.1 bar, so required_margin is 0.1. Counting seed 0, three seeds now agree on the raw-margin ordering. The ordering depends on the metric, though. The accel_step control (0.65-0.68) is much higher than the force control (0.38-0.39), which leaves accel_step less headroom. On headroom-normalized margin, (R2 - control)/(1 - control), accel_step leads in seed 1 (0.46 vs 0.36) and force leads in seed 2 (0.42 vs 0.37). So 'force beats accel_step' holds only for raw margin. Force peaks at layer 1, the same layer where distance is decoded at R2 0.84-0.85. That means the force margin may be a nonlinear read of distance rather than an m2-weighted force; this run does not test that. All seeds share data_seed 0. Two things would change this verdict: a seed where the accel_step raw margin matches force, or a result showing the force margin disappears once distance is regressed out of the force target.",
+  "created_at": "2026-10-13T00:02:20",
+  "experiment_id": "exp-20261011-204008-d989",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T00:02:20",
+      "actor": "agent"
+    }
+  ]
+}

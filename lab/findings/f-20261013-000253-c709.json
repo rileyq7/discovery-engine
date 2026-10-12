@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-000253-c709",
+  "claim": "At N=256 (4 layers, d_model=64, 3000 steps, e <= 0.5, m2 in [0.1, 1]), the two gravity probes split. accel_step beats control by more than at N=64: margin 0.231 (R2 0.880 vs control 0.650, layer 4) and 0.245 (0.911 vs 0.666, layer 3). force does not beat control: margin 0.040 (0.526 vs 0.486) and 0.033 (0.541 vs 0.508). Distance margin is 0.67-0.69 and val_mse_ratio is 0.24-0.32. The paired N=16 arm runs the opposite way on both probes: accel_step margin 0.13-0.14, force margin 0.24-0.28.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-232853-6f63",
+    "run-20261012-232853-ff2e"
+  ],
+  "confidence_note": "The hypothesis predicted that accel_step and force would move together, and they did not. accel_step clears the expected-if-false bar (>= 0.15) in both seeds. That refutes the claim that fine sampling removes the per-snapshot acceleration code. force falls below the expected-if-true bar (<= 0.12) in both seeds. Both seeds show the same split, so the pattern is reproducible, but neither prediction holds as stated. Much of the accel_step margin trend across N comes from the controls. accel_step control R2 falls from about 0.80 at N=16 to 0.65-0.67 at N=256, and raw R2 actually drops slightly (0.94 to 0.88-0.91). The headroom-normalized margin, (R2 - control)/(1 - control), is flat: about 0.69 at N=16 and 0.66-0.73 at N=256. The force decline is not a control effect. Force controls are about 0.49-0.51 in both arms, while raw force R2 falls from 0.74-0.77 to 0.53-0.54. So at fine sampling the model keeps a per-snapshot acceleration code but loses the m2-weighted physical-force signal. The N=64 reference values come from older single-control runs, so the comparison with N=64 is approximate. Formation timing cannot be resolved: every probe crosses at the first checkpoint, step 500. Unlike the 600-step N=256 runs, these beat the constant-velocity baseline, but only after step 1500. The verdict would change with a matched N=64 arm under the same best-of-3 controls and 3000 steps. If that arm's force margin were also about 0.04, the force loss would not be specific to N=256. If it were about 0.2, steps_per_orbit would be shown to remove the force signal.",
+  "created_at": "2026-10-13T00:02:53",
+  "experiment_id": "exp-20261011-223558-1d62",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T00:02:53",
+      "actor": "agent"
+    }
+  ]
+}

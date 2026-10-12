@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-000329-a86b",
+  "claim": "At N=16 (L=4, d=64, 3000 steps, e<=0.5), the accel_step margin does not rise above the N=64 reference; it sits at the low end of that range. accel_step R2 is 0.941 vs control 0.810 (margin 0.131, layer 2) in seed 20 and 0.936 vs 0.795 (margin 0.140) in seed 21. Headroom-normalized margins are 0.69 and 0.68, below the predicted 0.8 and level with the ~0.70 at N=64. Force leads accel_step on raw margin: 0.733 vs 0.497 (margin 0.236) in seed 20 and 0.767 vs 0.492 (margin 0.275) in seed 21. Both seeds beat the baseline by a wide margin (val_mse_ratio 0.0007).",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-233812-0aa2",
+    "run-20261012-233812-632b"
+  ],
+  "confidence_note": "The accel_step part of the prediction is refuted in both seeds. Raw margins of 0.13-0.14 miss the >=0.25 target and fall inside the expected-if-false band. Normalized margins of 0.68-0.69 are below the 0.75 cutoff. The force part is mixed. Seed 21's force margin of 0.275 is 0.015 above the expected-if-false band (0.12-0.26). Seed 20's 0.236 is inside it. Only seed 21 meets the force >=0.25 target. So the verdict rests on accel_step, the quantity the hypothesis said next-step prediction needs. Force may still increase with coarser sampling: the sibling N=256 arm gives force margins of only 0.03-0.04, while its normalized accel_step margin is about 0.66-0.73, also flat. Two caveats limit the comparison. First, the N=64 reference runs (run-20261011-202614-*) used single controls and may differ in training length. A matched N=64 arm with the same seeds, 3000 steps and best-of-3 controls would be needed to call accel_step flat across N. Second, accel_step's control R2 at N=16 (0.80-0.81) is the highest we have seen, which caps the raw margin. In the trajectories, accel_step crosses 0.1 at step 500 (0.112 and 0.117), the first checkpoint where val_mse_ratio < 1, but formed_at_step reports 1000. That is the known one-checkpoint lag. The verdict would change if a matched-control N=64 arm showed normalized accel_step margins well below 0.68.",
+  "created_at": "2026-10-13T00:03:29",
+  "experiment_id": "exp-20261011-223558-a988",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T00:03:29",
+      "actor": "agent"
+    }
+  ]
+}

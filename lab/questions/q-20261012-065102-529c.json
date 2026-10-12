@@ -3,7 +3,8 @@
   "text": "Within the N=256 arm, the half-final step tracks final margin: seed 57 has margin 0.118 and half-final step 75, while the other seeds have 0.168-0.187 and steps 85-100. Would a threshold on the headroom-normalized margin, (R2 - control)/(1 - control), remove the plateau-height confound from both the half-final and the 0.1-bar measures?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-065147-f865"
+    "f-20261012-065147-f865",
+    "f-20261012-102721-0c94"
   ],
   "created_at": "2026-10-12T06:51:02"
 }

@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-232455-80dc",
+  "experiment_id": "exp-20261011-204008-d989",
+  "seed": 2,
+  "status": "completed",
+  "started_at": "2026-10-12T23:26:34",
+  "ended_at": "2026-10-12T23:28:52",
+  "compute_hours": 0.0385,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-232455-80dc",
+  "git_commit": "61862c7",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.7186836522864544e-06,
+    "baseline_cv_mse": 2.186550868777778e-05,
+    "val_mse_ratio": 0.07860250025864486,
+    "beats_baseline": true,
+    "train_hours": 0.03825746966732873,
+    "n_params": 29990,
+    "device": "mps",
+    "dataset_id": "70fda1e11f19",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.64281,
+          "control_r2": 0.38812,
+          "control_spread": 0.06404,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 2,
+          "r2": 0.7801,
+          "control_r2": 0.65243,
+          "control_spread": 0.02798,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.84616,
+          "control_r2": 0.06111,
+          "control_spread": 0.03942,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.18806,
+          "control_r2": -0.07611,
+          "control_spread": 0.02222,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 68452,
+  "device": "mps",
+  "progress": null,
+  "n_params": 29990,
+  "dataset_id": "70fda1e11f19"
+}

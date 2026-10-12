@@ -1,0 +1,93 @@
+{
+  "id": "exp-20261012-231650-be3e",
+  "family": "E5",
+  "hypothesis": "Seeds 70-72 (N=64, 4 layers, d_model=64, m2 in [0.1, 1], 600 steps) give raw layer-4 accel_step R2 of 0.799-0.813 at e<=0.7 and 0.541-0.570 at e<=0.85. The loss of linear decodability between those two ceilings is gradual, not concentrated in one interval. At e in [0, 0.75], raw accel_step R2 is about where linear interpolation puts it (~0.72), well below the e<=0.7 values and well above the e<=0.85 values.",
+  "expected_if_true": "Final best-layer accel_step R2 is in [0.66, 0.77] in all 3 seeds. Best-of-5 control R2 falls between the seed-matched e<=0.7 (0.54-0.56) and e<=0.85 (0.26-0.27) values. Accel_step margin is >= 0.1 in all seeds. Formation timing is reported but not part of the criterion.",
+  "expected_if_false": "Raw accel_step R2 >= 0.78 in at least 2 of 3 seeds, meaning decodability holds to e<=0.75 and the drop is concentrated above 0.75. Or raw R2 <= 0.65 in at least 2 of 3 seeds, meaning most of the drop is between 0.7 and 0.75. Any other mixed outcome is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Seeds 70-72 (N=64, 4 layers, d_model=64, m2 in [0.1, 1], 600 steps) give raw layer-4 accel_step R2 of 0.799-0.813 at e<=0.7 and 0.541-0.570 at e<=0.85. The loss of linear decodability between those two ceilings is gradual, not concentrated in one interval. At e in [0, 0.75], raw accel_step R2 is about where linear interpolation puts it (~0.72), well below the e<=0.7 values and well above the e<=0.85 values.",
+    "expected_if_true": "Final best-layer accel_step R2 is in [0.66, 0.77] in all 3 seeds. Best-of-5 control R2 falls between the seed-matched e<=0.7 (0.54-0.56) and e<=0.85 (0.26-0.27) values. Accel_step margin is >= 0.1 in all seeds. Formation timing is reported but not part of the criterion.",
+    "expected_if_false": "Raw accel_step R2 >= 0.78 in at least 2 of 3 seeds, meaning decodability holds to e<=0.75 and the drop is concentrated above 0.75. Or raw R2 <= 0.65 in at least 2 of 3 seeds, meaning most of the drop is between 0.7 and 0.75. Any other mixed outcome is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.75
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 50
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      70,
+      71,
+      72
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T23:16:50",
+  "updated_at": "2026-10-12T23:16:51",
+  "verdict": null,
+  "estimate_hours": 0.1215,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T23:16:50",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T23:16:50",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T23:16:51",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

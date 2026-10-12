@@ -2,6 +2,8 @@
   "id": "q-20261012-092812-3ad1",
   "text": "Formation steps should be computed from unrounded margins with a documented strict >= bar. The 'exactly 0.100' readings (seed 70 at e<=0.6 was really 0.0998) came from rounding in the summaries. Should the trajectory export report margins to 4 decimals so that analysis cannot misread threshold ties?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-102721-0c94"
+  ],
   "created_at": "2026-10-12T09:28:12"
 }

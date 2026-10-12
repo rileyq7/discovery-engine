@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261012-102820-dded",
+  "family": "E5",
+  "hypothesis": "Physical force forms late. In long-trained 4-layer d_model=128 models (5000 steps, e in [0, 0.5], m2 in [0.1, 1]), the force probe beats a best-of-5 random control at the end of training, and its persistent formation step comes well after accel_step's. Earlier single-control runs (f-20261011-201533-0653) showed the force margin growing from ~0.1 to ~0.22 over 4000 steps. Every best-of-5 run so far stopped at 300-600 steps and showed no lasting force margin (0.00-0.08).",
+  "expected_if_true": "In both seeds, the final force margin over the best-of-5 control is >= max(0.1, control_spread) at some layer, and the force margin read from the per-checkpoint trajectory first stays at or above the bar persistently at step >= 1000. accel_step is already persistently above its bar at the first checkpoint (step 500). The force margin at step 5000 exceeds the step-500 force margin by >= 0.08 in both seeds.",
+  "expected_if_false": "In at least one seed, the final force margin is < 0.1 against best-of-5 controls (the earlier 0.22 margins were single-control artifacts), or the force margin at step 5000 is within 0.03 of its step-500 value in both seeds (no late formation).",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Physical force forms late. In long-trained 4-layer d_model=128 models (5000 steps, e in [0, 0.5], m2 in [0.1, 1]), the force probe beats a best-of-5 random control at the end of training, and its persistent formation step comes well after accel_step's. Earlier single-control runs (f-20261011-201533-0653) showed the force margin growing from ~0.1 to ~0.22 over 4000 steps. Every best-of-5 run so far stopped at 300-600 steps and showed no lasting force margin (0.00-0.08).",
+    "expected_if_true": "In both seeds, the final force margin over the best-of-5 control is >= max(0.1, control_spread) at some layer, and the force margin read from the per-checkpoint trajectory first stays at or above the bar persistently at step >= 1000. accel_step is already persistently above its bar at the first checkpoint (step 500). The force margin at step 5000 exceeds the step-500 force margin by >= 0.08 in both seeds.",
+    "expected_if_false": "In at least one seed, the final force margin is < 0.1 against best-of-5 controls (the earlier 0.22 margins were single-control artifacts), or the force margin at step 5000 is within 0.03 of its step-500 value in both seeds (no late formation).",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 5000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      73,
+      74
+    ],
+    "budget": {
+      "max_compute_hours": 0.8
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T10:28:20",
+  "updated_at": "2026-10-13T00:04:24",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.4877,
+  "compute_hours": 0.1904,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T10:28:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T10:28:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T10:28:21",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T10:28:21",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T23:24:55",
+      "actor": "worker",
+      "note": "1/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T00:04:24",
+      "actor": "agent",
+      "note": "finding f-20261013-000424-5488"
+    }
+  ]
+}

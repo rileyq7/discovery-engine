@@ -1,0 +1,10 @@
+{
+  "id": "q-20261012-102721-fdcf",
+  "text": "The headroom-normalized accel_step margin, (R2 - control)/(1 - control), is about 0.59-0.62 at e<=0.5 here and roughly 0.60 at e<=0.6 (assuming controls near 0.675). In the e<=0.85 arm it is only about 0.38-0.41 (seeds 71-72). With seeds 70-72 at e ceilings of 0.5, 0.6, 0.7 and 0.85, does the normalized margin stay flat at about 0.6 up to 0.7 and drop only above that? That would place the real loss of linear decodability between e<=0.7 and e<=0.85, while raw margins just track the control.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261012-231608-1978",
+    "f-20261013-000359-37e2"
+  ],
+  "created_at": "2026-10-12T10:27:21"
+}

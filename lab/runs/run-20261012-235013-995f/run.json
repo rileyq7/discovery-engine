@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-235013-995f",
+  "experiment_id": "exp-20261012-102820-efa5",
+  "seed": 72,
+  "status": "completed",
+  "started_at": "2026-10-12T23:59:08",
+  "ended_at": "2026-10-13T00:03:32",
+  "compute_hours": 0.0733,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-235013-995f",
+  "git_commit": "4d70434",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.0020672453670052e-06,
+    "baseline_cv_mse": 7.222957310714121e-05,
+    "val_mse_ratio": 0.01387336519185287,
+    "beats_baseline": true,
+    "train_hours": 0.07024353663126627,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b6d31e2cb804",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.4808,
+          "control_r2": 0.21148,
+          "control_spread": 0.01518,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 250
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.5883,
+          "control_r2": 0.27243,
+          "control_spread": 0.01094,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 250
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.86116,
+          "control_r2": 0.30865,
+          "control_spread": 0.13274,
+          "required_margin": 0.1327,
+          "beats_control": true,
+          "formed_at_step": 250
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.71127,
+          "control_r2": 0.14536,
+          "control_spread": 0.06793,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 250
+        }
+      }
+    }
+  },
+  "pid": 76249,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b6d31e2cb804"
+}

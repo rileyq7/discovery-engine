@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-231608-1978",
+  "claim": "At e in [0, 0.85], every accel_step prediction held in all 3 seeds (70/71/72). Best-layer (layer 4) R2 was 0.557/0.541/0.570, which is 0.256/0.258/0.231 below the same seeds' e<=0.7 values (0.813/0.799/0.801). Controls were 0.271/0.260/0.272 and margins 0.287/0.282/0.298. One pre-registered clause failed: force margin reached 0.164 in seed 72 (R2 0.386 vs control 0.222, layer 2), against the predicted < 0.15; seeds 70 and 71 gave 0.131 and 0.121. Force stays well behind accel_step on both margin (0.12-0.16 vs 0.28-0.30) and formation step (trajectory crossings at steps 200-370 vs 50-70). Headroom-normalized accel_step margin is 0.38-0.41 here vs about 0.59-0.61 in the matched e<=0.5 arm.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-102139-c61e",
+    "run-20261012-102139-57ba",
+    "run-20261012-102139-0e35"
+  ],
+  "confidence_note": "All 3 runs completed 600/600 steps and beat the baseline (val_mse_ratio 0.129-0.135). The core claim is consistent across 3 seeds: raw linear decodability of accel_step drops sharply between e<=0.7 and e<=0.85, and the expected-if-false outcome (R2 >= 0.70) did not occur in any seed. The verdict is inconclusive only because the pre-registered expected_if_true also required force margin < 0.15 in every seed, and seed 72 reached 0.164. Force margin is still rising at step 600 in all seeds, so the force clause depends on training length. Limits: (1) the e<=0.7 values used for the drop are quoted from the hypothesis, not checked against this experiment's data, and the e<=0.7 controls are not available here, so the normalized-margin comparison at 0.7 is not computed. (2) With only 4 eccentricity ceilings, 'sharp above 0.7' cannot be told apart from a steep but smooth curve between 0.7 and 0.85. (3) Raw accel_step R2 is still creeping up (about +0.02-0.03 over steps 400-600), so a longer run could narrow the gap. What would change this: e ceilings of 0.75 and 0.8 showing a linear decline would make it 'gradual'. A longer run lifting R2 above 0.70 would undercut the 'loss of decodability' reading. If force-clause compliance is waived as ancillary, this would read as supported with seeds_agree true.",
+  "created_at": "2026-10-12T23:16:08",
+  "experiment_id": "exp-20261012-092812-eb27",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T23:16:08",
+      "actor": "agent"
+    }
+  ]
+}

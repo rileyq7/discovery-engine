@@ -1,0 +1,22 @@
+run-20261012-234654-c1d2: [23:48:03] experiment exp-20261012-102820-84ce (E5) seed 72: The loss of headroom-normalised accel_step decodability, (R2 - control)/(1 - control), sets in gradually above e = 0.7, not as a step near 0.85. Seed-matched values (seeds 70-72, N=64, 4L, d64, 600 steps) are ~0.60 at e<=0.5, ~0.60 at e<=0.6, ~0.55-0.58 at e<=0.7 and ~0.38-0.41 at e<=0.85 (seeds 71/72). At e in [0, 0.8], the normalised margin falls between the e<=0.7 and e<=0.85 values.
+run-20261012-234654-c1d2: [23:48:03] model: 209,094 params on mps; dataset ca3b9db10aa7; 9000 train / 1000 val systems
+run-20261012-234654-c1d2: [23:48:04] step 0: val_mse=1.781e-03 cv_baseline=5.664e-05 ratio=31.450
+run-20261012-234654-c1d2: [23:48:08] step 50: val_mse=2.175e-04 cv_baseline=5.664e-05 ratio=3.839
+run-20261012-234654-c1d2: [23:48:12] step 100: val_mse=8.640e-05 cv_baseline=5.664e-05 ratio=1.525
+run-20261012-234654-c1d2: [23:48:16] step 150: val_mse=6.709e-05 cv_baseline=5.664e-05 ratio=1.184
+run-20261012-234654-c1d2: [23:48:20] step 200: val_mse=3.948e-05 cv_baseline=5.664e-05 ratio=0.697
+run-20261012-234654-c1d2: [23:48:25] step 250: val_mse=2.458e-05 cv_baseline=5.664e-05 ratio=0.434
+run-20261012-234654-c1d2: [23:48:29] step 300: val_mse=1.909e-05 cv_baseline=5.664e-05 ratio=0.337
+run-20261012-234654-c1d2: [23:48:34] step 350: val_mse=1.547e-05 cv_baseline=5.664e-05 ratio=0.273
+run-20261012-234654-c1d2: [23:48:38] step 400: val_mse=1.264e-05 cv_baseline=5.664e-05 ratio=0.223
+run-20261012-234654-c1d2: [23:48:43] step 450: val_mse=1.077e-05 cv_baseline=5.664e-05 ratio=0.190
+run-20261012-234654-c1d2: [23:48:47] step 500: val_mse=9.588e-06 cv_baseline=5.664e-05 ratio=0.169
+run-20261012-234654-c1d2: [23:48:52] step 550: val_mse=8.812e-06 cv_baseline=5.664e-05 ratio=0.156
+run-20261012-234654-c1d2: [23:48:56] step 600: val_mse=7.948e-06 cv_baseline=5.664e-05 ratio=0.140
+run-20261012-234654-c1d2: [23:48:56] training done in 0.9 min; beats constant-velocity baseline: True
+run-20261012-234654-c1d2: [23:48:59] random-model controls (best of 5): force=0.08/0.27/0.27/0.27/0.27, accel_step=0.22/0.36/0.37/0.37/0.37, distance=0.05/0.31/0.40/0.47/0.57, energy=-0.00/0.15/0.32/0.40/0.46
+run-20261012-234654-c1d2: [23:49:00] probes @ step 0: best force R2=0.290 (layer 3)
+run-20261012-234654-c1d2: [23:49:02] probes @ step 250: best force R2=0.387 (layer 4)
+run-20261012-234654-c1d2: [23:49:05] probes @ step 500: best force R2=0.418 (layer 2)
+run-20261012-234654-c1d2: [23:49:06] probes @ step 600: best force R2=0.425 (layer 2)
+run-20261012-234654-c1d2: [23:49:06] run complete in 1.1 min

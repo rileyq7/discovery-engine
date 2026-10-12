@@ -1,0 +1,93 @@
+{
+  "id": "exp-20261012-231650-79b2",
+  "family": "E5",
+  "hypothesis": "The core N=64, e<=0.5 result does not depend on the particular simulated dataset. That result: a per-snapshot acceleration code beats best-of-5 controls, physical force does not, and accel_step forms persistently before the model beats constant-velocity extrapolation. Every finding so far used data_seed 0. With data_seed 1 and fresh seeds 75-77 (4 layers, d_model=64, m2 in [0.1, 1], lr 0.001, 600 steps), the same pattern appears. All formation steps are read from the per-checkpoint trajectory using unrounded margins and a strict >= bar: the first checkpoint after which the margin stays >= required_margin.",
+  "expected_if_true": "All 3 seeds: final accel_step margin >= 0.1 at its best layer, persistent accel_step formation in [60, 110], and that formation step earlier than the first checkpoint with val_mse_ratio < 1. At least 2 of 3 seeds: final force margin < 0.1.",
+  "expected_if_false": "At least 2 of 3 seeds meet any one of these: final accel_step margin < 0.1; final force margin >= 0.1; persistent accel_step formation outside [50, 130]; val_mse_ratio < 1 at or before accel_step formation. Any one of these would mean the data_seed 0 results do not carry over to a new dataset.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The core N=64, e<=0.5 result does not depend on the particular simulated dataset. That result: a per-snapshot acceleration code beats best-of-5 controls, physical force does not, and accel_step forms persistently before the model beats constant-velocity extrapolation. Every finding so far used data_seed 0. With data_seed 1 and fresh seeds 75-77 (4 layers, d_model=64, m2 in [0.1, 1], lr 0.001, 600 steps), the same pattern appears. All formation steps are read from the per-checkpoint trajectory using unrounded margins and a strict >= bar: the first checkpoint after which the margin stays >= required_margin.",
+    "expected_if_true": "All 3 seeds: final accel_step margin >= 0.1 at its best layer, persistent accel_step formation in [60, 110], and that formation step earlier than the first checkpoint with val_mse_ratio < 1. At least 2 of 3 seeds: final force margin < 0.1.",
+    "expected_if_false": "At least 2 of 3 seeds meet any one of these: final accel_step margin < 0.1; final force margin >= 0.1; persistent accel_step formation outside [50, 130]; val_mse_ratio < 1 at or before accel_step formation. Any one of these would mean the data_seed 0 results do not carry over to a new dataset.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      75,
+      76,
+      77
+    ],
+    "budget": {
+      "max_compute_hours": 0.25
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T23:16:50",
+  "updated_at": "2026-10-12T23:16:51",
+  "verdict": null,
+  "estimate_hours": 0.1935,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T23:16:50",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T23:16:50",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T23:16:51",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

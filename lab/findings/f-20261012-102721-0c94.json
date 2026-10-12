@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-102721-0c94",
+  "claim": "At e<=0.5 (N=64, 4 layers, d_model=64, m2 in [0.1, 1]), final layer-4 accel_step R2 is 0.911, 0.907 and 0.905 for seeds 70, 71 and 72. That is 0.041, 0.039 and 0.034 above the same seeds' e<=0.6 values (0.870, 0.868, 0.871), so raw decodability is not flat within 0.03. The best-of-5 control R2 is 0.769, 0.773 and 0.757, against 0.667-0.682 at e<=0.6. That gives margins of 0.142, 0.134 and 0.149 (all <= 0.18). Going from e<=0.5 to e<=0.6, the control falls by about 0.09 while raw R2 falls by about 0.04, so the margin gain of about 0.05 comes entirely from the falling control, and decoding actually gets slightly worse. Force does much worse than accel_step: R2 0.518-0.625 against controls 0.440-0.535, with margins of 0.077, 0.125 and 0.086, so only seed 72 clears the 0.1 bar. Distance and energy beat their controls at layer 1 in all seeds.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-092813-bb1c",
+    "run-20261012-092813-4de0",
+    "run-20261012-092813-6f7b"
+  ],
+  "confidence_note": "The pre-registered rules leave a gap, and this result falls in it. The supported condition failed in all 3 seeds: the R2 differences of 0.034-0.041 are larger than the 0.03 tolerance, although every control is >= 0.70 and every margin is <= 0.18. The refuted condition (R2 difference >= 0.04 in 2 of 3 seeds, or control < 0.69) is met only by seed 70 (+0.041); seed 71 (+0.039) misses by rounding. The e<=0.6 reference values are rounded to 3 decimals, so the 0.04 cutoff cannot be applied cleanly. All 3 seeds show the same pattern: R2 drops about 0.035-0.04 and the control drops about 0.08-0.10. So the substantive claim, that the margin gain is a control effect and not better decoding, has consistent support, but the specific prediction of flat raw R2 failed. All runs completed 600/600 steps. Formation from the trajectory (strict >= 0.1 bar): seed 72 at step 80 (val_mse_ratio 2.24), seed 71 at step 100 (2.11), seed 70 at step 90 (2.26). In seed 70 the trajectory margin is 0.101 at step 90, but formed_at_step is 100. Rounding cannot explain that, which points to a persistence window or a different rule. Per-seed e<=0.6 control values, and a headroom-normalized comparison across all four e ceilings, would settle whether anything other than the control changes.",
+  "created_at": "2026-10-12T10:27:21",
+  "experiment_id": "exp-20261012-092812-c341",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T10:27:21",
+      "actor": "agent"
+    }
+  ]
+}

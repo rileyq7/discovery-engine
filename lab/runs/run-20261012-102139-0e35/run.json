@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-102139-0e35",
+  "experiment_id": "exp-20261012-092812-eb27",
+  "seed": 72,
+  "status": "completed",
+  "started_at": "2026-10-12T10:21:41",
+  "ended_at": "2026-10-12T10:23:32",
+  "compute_hours": 0.031,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-102139-0e35",
+  "git_commit": "71abb58",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 9.786323299558144e-06,
+    "baseline_cv_mse": 7.222957310714121e-05,
+    "val_mse_ratio": 0.13548914770743103,
+    "beats_baseline": true,
+    "train_hours": 0.019852700034777324,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b6d31e2cb804",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.38599,
+          "control_r2": 0.22193,
+          "control_spread": 0.02114,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 200
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.57049,
+          "control_r2": 0.27243,
+          "control_spread": 0.01094,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.85568,
+          "control_r2": 0.30865,
+          "control_spread": 0.13274,
+          "required_margin": 0.1327,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.59506,
+          "control_r2": 0.14536,
+          "control_spread": 0.06793,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 20
+        }
+      }
+    }
+  },
+  "pid": 12124,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b6d31e2cb804"
+}

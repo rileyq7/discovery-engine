@@ -1,0 +1,22 @@
+run-20261012-235013-995f: [23:59:08] experiment exp-20261012-102820-efa5 (E5) seed 72: At e in [0, 0.85], the low raw accel_step R2 (0.54-0.57 at 600 steps for seeds 71/72) is a limit of linear readout, not undertraining. This matches the 6-layer d_model=128 plateau near 0.70-0.74 (f-20261012-030233-ab28). Training the 4-layer d_model=64 model 5x longer keeps improving prediction but barely moves raw linear decodability.
+run-20261012-235013-995f: [23:59:08] model: 209,094 params on mps; dataset b6d31e2cb804; 9000 train / 1000 val systems
+run-20261012-235013-995f: [23:59:09] step 0: val_mse=1.782e-03 cv_baseline=7.223e-05 ratio=24.669
+run-20261012-235013-995f: [23:59:28] step 250: val_mse=4.711e-05 cv_baseline=7.223e-05 ratio=0.652
+run-20261012-235013-995f: [23:59:48] step 500: val_mse=1.695e-05 cv_baseline=7.223e-05 ratio=0.235
+run-20261012-235013-995f: [00:00:10] step 750: val_mse=7.786e-06 cv_baseline=7.223e-05 ratio=0.108
+run-20261012-235013-995f: [00:00:32] step 1000: val_mse=1.018e-05 cv_baseline=7.223e-05 ratio=0.141
+run-20261012-235013-995f: [00:00:53] step 1250: val_mse=4.895e-06 cv_baseline=7.223e-05 ratio=0.068
+run-20261012-235013-995f: [00:01:14] step 1500: val_mse=3.640e-06 cv_baseline=7.223e-05 ratio=0.050
+run-20261012-235013-995f: [00:01:35] step 1750: val_mse=3.434e-06 cv_baseline=7.223e-05 ratio=0.048
+run-20261012-235013-995f: [00:01:55] step 2000: val_mse=2.118e-06 cv_baseline=7.223e-05 ratio=0.029
+run-20261012-235013-995f: [00:02:16] step 2250: val_mse=1.423e-06 cv_baseline=7.223e-05 ratio=0.020
+run-20261012-235013-995f: [00:02:38] step 2500: val_mse=1.269e-06 cv_baseline=7.223e-05 ratio=0.018
+run-20261012-235013-995f: [00:03:00] step 2750: val_mse=1.057e-06 cv_baseline=7.223e-05 ratio=0.015
+run-20261012-235013-995f: [00:03:21] step 3000: val_mse=1.002e-06 cv_baseline=7.223e-05 ratio=0.014
+run-20261012-235013-995f: [00:03:21] training done in 4.2 min; beats constant-velocity baseline: True
+run-20261012-235013-995f: [00:03:24] random-model controls (best of 5): force=0.06/0.21/0.22/0.22/0.22, accel_step=0.15/0.26/0.26/0.27/0.27, distance=0.05/0.31/0.40/0.46/0.57, energy=-0.00/0.15/0.32/0.39/0.46
+run-20261012-235013-995f: [00:03:24] probes @ step 0: best force R2=0.236 (layer 3)
+run-20261012-235013-995f: [00:03:27] probes @ step 1250: best force R2=0.457 (layer 1)
+run-20261012-235013-995f: [00:03:30] probes @ step 2500: best force R2=0.478 (layer 1)
+run-20261012-235013-995f: [00:03:32] probes @ step 3000: best force R2=0.481 (layer 1)
+run-20261012-235013-995f: [00:03:32] run complete in 4.4 min

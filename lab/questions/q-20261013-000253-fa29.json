@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-000253-fa29",
+  "text": "At fixed architecture and 3000 steps, force margin falls from 0.24-0.28 (N=16) to 0.03-0.04 (N=256) while the force control stays at about 0.5. Is m2 itself linearly decodable above control at N=256? If not, does the force signal at coarse sampling come from the model needing m2 through the (1+m2) factor in the per-step period, a dependence that fine sampling makes too small to matter?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-000329-a86b"
+  ],
+  "created_at": "2026-10-13T00:02:53"
+}

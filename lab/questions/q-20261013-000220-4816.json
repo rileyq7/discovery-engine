@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-000220-4816",
+  "text": "In the L=2, d=32 cell, force leads on raw margin in all 3 seeds, but the headroom-normalized ordering splits between seeds (seed 1: accel_step 0.46 vs force 0.36; seed 2: force 0.42 vs accel_step 0.37). Across every E6 scaling cell, does the 'force beats accel_step' ordering survive normalization, or does it come entirely from accel_step's higher random control (0.65-0.68 vs 0.38)?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T00:02:20"
+}

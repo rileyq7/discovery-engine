@@ -2,6 +2,8 @@
   "id": "q-20261012-034018-7d07",
   "text": "At e <= 0.85 the accel_step margin rises to 0.26-0.29 only because controls fall to 0.25-0.33, while raw R2 stays at 0.51-0.59. With m2 range and seeds held fixed, does raw accel_step R2 rise toward 0.8 with longer training (val_mse_ratio is still falling at 0.13), or is linear decodability of accel_step capped near 0.6 at high eccentricity?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-231608-1978"
+  ],
   "created_at": "2026-10-12T03:40:18"
 }

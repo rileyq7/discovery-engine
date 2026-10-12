@@ -1,0 +1,15 @@
+run-20261012-233812-0aa2: [23:38:14] experiment exp-20261011-223558-a988 (custom) seed 20: Gravity structure in the residual stream is driven by how much next-step prediction needs it. At coarse sampling (N=16 snapshots per orbit), the per-step acceleration (2*pi/16)^2 * a^3/((1+m2) r^2) is 16x larger relative to orbit size than at N=64, so the model must represent it more explicitly, and accel_step and force margins over control rise above the N=64 values from the same architecture (accel_step 0.18-0.21, force 0.17-0.21; runs run-20261011-202614-091d and run-20261011-202614-8650).
+run-20261012-233812-0aa2: [23:38:14] model: 209,094 params on mps; dataset d09ae7c88bfc; 9000 train / 1000 val systems
+run-20261012-233812-0aa2: [23:38:15] step 0: val_mse=3.077e-02 cv_baseline=6.080e-03 ratio=5.062
+run-20261012-233812-0aa2: [23:38:56] step 500: val_mse=7.121e-05 cv_baseline=6.080e-03 ratio=0.012
+run-20261012-233812-0aa2: [23:39:38] step 1000: val_mse=2.854e-05 cv_baseline=6.080e-03 ratio=0.005
+run-20261012-233812-0aa2: [23:40:20] step 1500: val_mse=1.527e-05 cv_baseline=6.080e-03 ratio=0.003
+run-20261012-233812-0aa2: [23:41:02] step 2000: val_mse=1.203e-05 cv_baseline=6.080e-03 ratio=0.002
+run-20261012-233812-0aa2: [23:41:43] step 2500: val_mse=5.030e-06 cv_baseline=6.080e-03 ratio=0.001
+run-20261012-233812-0aa2: [23:42:25] step 3000: val_mse=4.252e-06 cv_baseline=6.080e-03 ratio=0.001
+run-20261012-233812-0aa2: [23:42:25] training done in 4.2 min; beats constant-velocity baseline: True
+run-20261012-233812-0aa2: [23:42:27] random-model controls (best of 3): force=0.15/0.52/0.50/0.51/0.52, accel_step=0.69/0.80/0.81/0.81/0.81, distance=-0.01/0.22/0.45/0.54/0.63, energy=-0.02/0.24/0.31/0.34/0.41
+run-20261012-233812-0aa2: [23:42:27] probes @ step 0: best force R2=0.501 (layer 2)
+run-20261012-233812-0aa2: [23:42:30] probes @ step 2500: best force R2=0.732 (layer 1)
+run-20261012-233812-0aa2: [23:42:31] probes @ step 3000: best force R2=0.739 (layer 1)
+run-20261012-233812-0aa2: [23:42:31] run complete in 4.3 min

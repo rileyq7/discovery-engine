@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-233812-0aa2",
+  "experiment_id": "exp-20261011-223558-a988",
+  "seed": 20,
+  "status": "completed",
+  "started_at": "2026-10-12T23:38:14",
+  "ended_at": "2026-10-12T23:42:31",
+  "compute_hours": 0.0713,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-233812-0aa2",
+  "git_commit": "61862c7",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 4.25201208572688e-06,
+    "baseline_cv_mse": 0.006080180250753568,
+    "val_mse_ratio": 0.0006993233605533146,
+    "beats_baseline": true,
+    "train_hours": 0.06963215165668064,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "d09ae7c88bfc",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.73349,
+          "control_r2": 0.49717,
+          "control_spread": 0.00232,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 2,
+          "r2": 0.94147,
+          "control_r2": 0.81012,
+          "control_spread": 0.01025,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.89463,
+          "control_r2": 0.21679,
+          "control_spread": 0.05284,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.54274,
+          "control_r2": 0.23804,
+          "control_spread": 0.14422,
+          "required_margin": 0.1442,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 71211,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "d09ae7c88bfc"
+}

@@ -1,0 +1,15 @@
+[23:24:57] experiment exp-20261011-204008-d989 (E6) seed 1: Replication of scaling cell L=2, d_model=32, n_systems=1000: in this small cell the force probe beats its random control by more than accel_step does (seed 0: 0.298 vs 0.204), while accel_step keeps the higher raw R2
+[23:24:57] model: 29,990 params on mps; dataset 70fda1e11f19; 900 train / 100 val systems
+[23:24:59] step 0: val_mse=1.683e-03 cv_baseline=2.187e-05 ratio=76.950
+[23:25:15] step 500: val_mse=1.506e-05 cv_baseline=2.187e-05 ratio=0.689
+[23:25:30] step 1000: val_mse=6.389e-06 cv_baseline=2.187e-05 ratio=0.292
+[23:25:45] step 1500: val_mse=4.488e-06 cv_baseline=2.187e-05 ratio=0.205
+[23:26:00] step 2000: val_mse=2.632e-06 cv_baseline=2.187e-05 ratio=0.120
+[23:26:15] step 2500: val_mse=1.734e-06 cv_baseline=2.187e-05 ratio=0.079
+[23:26:30] step 3000: val_mse=1.403e-06 cv_baseline=2.187e-05 ratio=0.064
+[23:26:30] training done in 1.5 min; beats constant-velocity baseline: True
+[23:26:30] random-model controls (best of 3): force=0.24/0.38/0.43, accel_step=0.64/0.67/0.68, distance=-0.08/-0.05/-0.03, energy=-0.17/-0.13/-0.11
+[23:26:30] probes @ step 0: best force R2=0.468 (layer 2)
+[23:26:31] probes @ step 2500: best force R2=0.630 (layer 2)
+[23:26:31] probes @ step 3000: best force R2=0.636 (layer 2)
+[23:26:31] run complete in 1.6 min

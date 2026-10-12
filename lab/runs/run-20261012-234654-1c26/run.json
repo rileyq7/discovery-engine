@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-234654-1c26",
+  "experiment_id": "exp-20261012-102820-84ce",
+  "seed": 71,
+  "status": "completed",
+  "started_at": "2026-10-12T23:46:56",
+  "ended_at": "2026-10-12T23:47:59",
+  "compute_hours": 0.0176,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-234654-1c26",
+  "git_commit": "4d70434",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 7.6731933852819e-06,
+    "baseline_cv_mse": 5.664347475907934e-05,
+    "val_mse_ratio": 0.13546473654588023,
+    "beats_baseline": true,
+    "train_hours": 0.014904616408877903,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "ca3b9db10aa7",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.31358,
+          "control_r2": 0.18903,
+          "control_spread": 0.02968,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 400
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.67106,
+          "control_r2": 0.39604,
+          "control_spread": 0.0222,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.80659,
+          "control_r2": 0.25085,
+          "control_spread": 0.15395,
+          "required_margin": 0.154,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.53985,
+          "control_r2": 0.23168,
+          "control_spread": 0.14033,
+          "required_margin": 0.1403,
+          "beats_control": true,
+          "formed_at_step": 50
+        }
+      }
+    }
+  },
+  "pid": 73374,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "ca3b9db10aa7"
+}

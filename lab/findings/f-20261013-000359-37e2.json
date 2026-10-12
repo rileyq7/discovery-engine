@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-000359-37e2",
+  "claim": "At e in [0, 0.8] (N=64, 4L, d64, 600 steps), the headroom-normalised layer-4 accel_step margin, (R2 - control)/(1 - control), at step 600 is 0.475 for seed 70 (R2 0.670 vs best-of-5 control 0.372), 0.455 for seed 71 (0.671 vs 0.396) and 0.475 for seed 72 (0.672 vs 0.375). All three seeds fall inside the predicted [0.44, 0.53] band, and their controls and raw R2 values fall inside the predicted ranges. That puts e<=0.8 between the cited e<=0.7 value (~0.55-0.58) and the e<=0.85 value (~0.38-0.41). Force is much weaker by the same measure: raw margin 0.124-0.150 at layers 1-2 (R2 0.31-0.42 vs control 0.19-0.27), normalised 0.15-0.21, persistent formation late at steps 250-400 and still rising at step 600. accel_step formed at steps 50-100 and levels off at a raw margin of 0.275-0.298.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-234654-e95a",
+    "run-20261012-234654-1c26",
+    "run-20261012-234654-c1d2"
+  ],
+  "confidence_note": "All 3 seeds completed (none stopped) and land in the predicted band with little spread (0.455-0.475), and the controls are tight (spread 0.011-0.022, so required_margin is 0.1). Four things limit the claim that the decline is gradual. (1) The e<=0.7 and e<=0.85 reference values come from other experiments, and the e<=0.85 value rests on only 2 seeds. (2) With only three ceiling values (0.7, 0.8, 0.85), 'gradual' cannot be told apart from a decline that steepens: the normalised drop is ~0.09 over 0.7->0.8 but ~0.07 over 0.8->0.85, and raw R2 falls ~0.13 over 0.7->0.8 but ~0.11 over 0.8->0.85, which per unit of e looks like steepening. (3) The [0.44, 0.53] band is wide enough to hold several curve shapes. (4) Every arm shares data_seed 0. An e<=0.75 arm far from the interpolated value would change the picture. So would a different data_seed moving the e<=0.8 normalised margin out of the band, for example to >=0.54 or <=0.43. Either could show a step rather than a smooth decline.",
+  "created_at": "2026-10-13T00:03:59",
+  "experiment_id": "exp-20261012-102820-84ce",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T00:03:59",
+      "actor": "agent"
+    }
+  ]
+}

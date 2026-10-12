@@ -1,0 +1,24 @@
+{
+  "id": "f-20261013-000424-5488",
+  "claim": "In the one completed seed (74; 4L d128, e<=0.5, m2 in [0.1,1], 5000 steps), force does beat a best-of-5 control at the end: layer-4 R2 = 0.689 vs control 0.480, a margin of 0.210 against a required 0.1 (spread 0.041). But it does not form late. Its trajectory margin is already 0.124 at the first checkpoint (step 500) and stays above the bar at every later checkpoint (formed_at_step 500). It keeps rising (0.124 \u2192 0.210, +0.086) while accel_step levels off (layer-4 R2 0.960 vs control 0.780; margin 0.160 \u2192 0.180, +0.020). Force leads on raw margin (0.21 vs 0.18), but accel_step leads clearly once each margin is divided by its headroom (0.82 vs 0.40).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-102821-d0f5"
+  ],
+  "confidence_note": "Only one seed counts. Seed 73 (run-20261012-102821-56c8) failed when the worker restarted at about step 4000, so it has no probes, and the hypothesis needed both seeds. The seed-74 results are mixed. Three of the expected-if-true conditions hold: the final force margin is at least 0.1 against best-of-5 controls, accel_step is above its bar at step 500, and force gains 0.086 between steps 500 and 5000, just over the 0.08 threshold. The fourth fails: force formation at step >= 1000. Neither expected-if-false condition is met, so the earlier ~0.22 single-control force margins were not artifacts in this setup. With checkpoints every 500 steps, we cannot tell whether force forms at about step 100 alongside accel_step or somewhere in 100-500. What would change the verdict: (1) a second seed with the same config showing a final force margin >= 0.1 and a gain >= 0.08 would support 'force keeps strengthening late' as a replicated result, while still refuting 'forms late'; (2) finer early checkpoints (every 50 steps to 1000) showing force first persistently above the bar after step 300 would revive the late-formation claim; (3) the force margin collapsing once distance and accel_step are regressed out of the target would mean the late gain is a sharpening of those codes, not physical force.",
+  "created_at": "2026-10-13T00:04:24",
+  "experiment_id": "exp-20261012-102820-dded",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T00:04:24",
+      "actor": "agent"
+    }
+  ]
+}
