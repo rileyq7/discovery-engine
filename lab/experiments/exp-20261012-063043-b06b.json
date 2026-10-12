@@ -1,0 +1,113 @@
+{
+  "id": "exp-20261012-063043-b06b",
+  "family": "E5",
+  "hypothesis": "Matched N=64 reference arm at 5-step resolution for seeds previously read at 10-step spacing (56, 57, 58, 62, 63). The earlier N=64 window (persistent 0.1-bar formation at 80-100, half-final at 60-90) was partly an artifact of 10-step checkpoint spacing. At 5-step spacing these seeds form persistently at steps 60-95 and reach half of their own final accel_step margin at steps 35-75, matching seeds 65-69 (65-90 and 40-70). All steps are read from the per-checkpoint trajectory, not from formed_at_step.",
+  "expected_if_true": "In at least 4 of 5 seeds, the persistent accel_step 0.1-bar step (first checkpoint after which the margin stays >= required_margin at every later checkpoint) is in [60, 95] and the half-final-margin step is in [35, 75]. Final accel_step margin is >= 0.1 in all seeds, and val_mse_ratio is below 1 by step 200.",
+  "expected_if_false": "In at least 3 of 5 seeds, the persistent 0.1-bar step is >= 100 or the half-final step is >= 80. That would mean the earlier 80-100 window reflects these seeds and settings, not checkpoint resolution, and that seeds 65-69 formed unusually early.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched N=64 reference arm at 5-step resolution for seeds previously read at 10-step spacing (56, 57, 58, 62, 63). The earlier N=64 window (persistent 0.1-bar formation at 80-100, half-final at 60-90) was partly an artifact of 10-step checkpoint spacing. At 5-step spacing these seeds form persistently at steps 60-95 and reach half of their own final accel_step margin at steps 35-75, matching seeds 65-69 (65-90 and 40-70). All steps are read from the per-checkpoint trajectory, not from formed_at_step.",
+    "expected_if_true": "In at least 4 of 5 seeds, the persistent accel_step 0.1-bar step (first checkpoint after which the margin stays >= required_margin at every later checkpoint) is in [60, 95] and the half-final-margin step is in [35, 75]. Final accel_step margin is >= 0.1 in all seeds, and val_mse_ratio is below 1 by step 200.",
+    "expected_if_false": "In at least 3 of 5 seeds, the persistent 0.1-bar step is >= 100 or the half-final step is >= 80. That would mean the earlier 80-100 window reflects these seeds and settings, not checkpoint resolution, and that seeds 65-69 formed unusually early.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 5
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      56,
+      57,
+      58,
+      62,
+      63
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T06:30:43",
+  "updated_at": "2026-10-12T06:50:19",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.2446,
+  "compute_hours": 0.1069,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T06:30:43",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T06:30:45",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T06:30:45",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T06:37:28",
+      "actor": "worker",
+      "note": "5/5 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T06:50:19",
+      "actor": "agent",
+      "note": "finding f-20261012-065019-adb4"
+    }
+  ]
+}

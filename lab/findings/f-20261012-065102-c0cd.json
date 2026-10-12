@@ -1,0 +1,28 @@
+{
+  "id": "f-20261012-065102-c0cd",
+  "claim": "The paired delay this experiment was designed to test could not be computed. The N=64 per-seed trajectories for seeds 56, 57, 58, 62 and 63 were not in the provided results, and the lab files could not be opened. All 5 N=256 runs completed and meet the side conditions: final accel_step margin is 0.118 to 0.187 at layer 4 (R2 0.85 to 0.90, controls 0.67 to 0.78, so >= 0.1 in every seed), and val_mse_ratio ends at 11.3 to 13.3 (above 1). From the 5-step trajectories, the half-final step (seeds 56/57/58/62/63) is 85/75/100/90/95, a range of 25 steps, and the persistent 0.1-bar step is 95/155/115/95/100, a range of 60 steps. Only two N=64 values can be paired, both quoted in an open question: seed 56 at step 80 and seed 62 at step 100. That gives 0.1-bar delays of +15 and -5. Force has no lasting signal: an early transient margin of 0.16 to 0.21 at steps 10-15 falls to about 0 to 0.02 by steps 105-120, compared with accel_step's 0.12 to 0.19.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-063728-0d43",
+    "run-20261012-063728-1b41",
+    "run-20261012-063728-2622",
+    "run-20261012-063728-8c59",
+    "run-20261012-063728-e6c1"
+  ],
+  "confidence_note": "The primary criterion, a half-final delay of at least +15 in 4 of 5 seeds with a mean of at least +20, needs the per-seed N=64 half-final steps, and they were not available to this analysis. The verdict is inconclusive because data was missing, not because the effect is absent. Joining the N=64 arm trajectories from the 5-step N=64 runs of these seeds and recomputing the delays would decide supported or refuted. Three caveats from the N=256 arm itself. (1) The two pairable 0.1-bar delays (+15, -5) are smaller than the earlier 10-step comparison for seeds 56-58 (+20/+70/+30), so some of the earlier delay may have come from mixed checkpoint spacing. (2) The half-final measure is tighter than the 0.1 bar within N=256 (25 vs 60 steps), but it is confounded with plateau height. Seed 57 has the lowest final margin (0.118, control 0.778) and so the earliest half-final step (75), yet the latest 0.1-bar step (155). It dwells at 0.093-0.099 from step 125 to 150. (3) For seed 62, probes_final.formed_at_step = 100, but the trajectory first crosses persistently at 95, another case of the one-checkpoint lag. All 5 runs completed 300/300 steps with 5 controls each.",
+  "created_at": "2026-10-12T06:51:02",
+  "experiment_id": "exp-20261012-063043-29c0",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T06:51:02",
+      "actor": "agent"
+    }
+  ]
+}

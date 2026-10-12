@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-065147-f865",
+  "claim": "At e<=0.6 (N=64, seeds 70-72, 10-step checkpoints), the layer-4 accel_step best-of-5 control R2 is 0.667-0.682 in all 3 seeds, inside the predicted [0.58, 0.70] band. The other two predictions were met in only some seeds. Final accel_step margin is 0.187 (seed 71), 0.191 (seed 70) and 0.204 (seed 72), so only seed 72 reaches the 0.20 bar, though no seed falls to the <=0.18 'false' bar. Raw R2 is 0.868-0.871 in all 3 seeds. The persistent 0.1-bar formation step read from the trajectories is 80 (seed 71, margin 0.113), 70 or 80 (seed 70: exactly 0.100 at step 70, while formed_at_step says 80) and 60 (seed 72). Force is much weaker than accel_step: R2 0.46-0.58 at layer 4 with margins of 0.075 (fails), 0.105 and 0.140.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-064411-1575",
+    "run-20261012-064411-8478",
+    "run-20261012-064411-e7a3"
+  ],
+  "confidence_note": "Only the control R2 prediction held in all 3 seeds. The margin prediction (>=0.20) holds in 1 of 3 seeds. The timing prediction (<=75) holds in 1 seed, fails in seed 71 (step 80), and is undecidable in seed 70, where the margin is exactly 0.100 at step 70 and formed_at_step reports 80. So neither the 'all 3 seeds' true condition nor the '2 of 3 seeds' false condition is cleanly met. The e<=0.6 values lie between the e<=0.5 and e<=0.7 regimes as quoted in the open questions (margin about 0.13-0.17 / 0.19 / 0.24-0.26; formation about 65-100 / 60-80 / 60-70). That fits a gradual shift better than a switch at or below 0.6, but it is not a clean refutation. The control R2 fell only about 0.06 from e<=0.5 to e<=0.6 but about 0.12 from 0.6 to 0.7, which points to a non-linear control decline. Raw accel_step R2 (about 0.87) looks close to the e<=0.5 values, so most of the margin gain may come from the falling control rather than better decoding. Headroom-normalized margins are 0.59-0.61. Caveats: the e<=0.5 and e<=0.7 comparison numbers come from other experiments with different seeds, some with 5-step checkpoints, while this run uses 10-step spacing, so a difference of one checkpoint (10 steps) decides the timing criterion. What would change the verdict: rerunning e<=0.5, 0.6 and 0.7 on the same seeds 70-72 with 5-step checkpoints, plus a documented rule for whether a margin exactly at 0.100 counts as crossing the bar. Other observations: val_mse_ratio at formation is 2.9-3.5, between the reported e<=0.5 band (2.1-3.3) and the e<=0.7 band (2.9-4.1). Distance forms at steps 30-40, 20-50 steps before accel_step. The early force transient appears again (margin 0.08-0.125 at steps 10-20, falling to 0.001-0.033 by steps 40-50).",
+  "created_at": "2026-10-12T06:51:47",
+  "experiment_id": "exp-20261012-063043-266d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T06:51:47",
+      "actor": "agent"
+    }
+  ]
+}

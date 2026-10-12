@@ -3,7 +3,8 @@
   "text": "At N=64, distance forms 70-90 steps before accel_step at e <= 0.5 (steps 10-20 vs 90-100) but only 20-40 steps before it at e <= 0.85. Is the distance-to-accel_step lag set by how high the accel_step random control is (0.72-0.75 here vs 0.25-0.33 at high e), rather than by when the model actually starts computing acceleration?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-055051-b178"
+    "f-20261012-055051-b178",
+    "f-20261012-065147-f865"
   ],
   "created_at": "2026-10-12T04:41:42"
 }

@@ -1,0 +1,113 @@
+{
+  "id": "exp-20261012-063043-29c0",
+  "family": "E5",
+  "hypothesis": "Paired N=256 arm (seeds 56, 57, 58, 62, 63, otherwise identical to the 5-step N=64 arm). Across 11 matched seeds, the half-final-margin delay (N=256 minus N=64) was +10 or more in every seed, mean about +31. The 0.1-bar delay ranged from 0 to +70. At matched 5-step resolution in both arms, accel_step reaches half of its own final margin later at N=256 than at N=64 for the same seed. The half-final measure is the more stable timing statistic. All steps are read from the per-checkpoint trajectories of both arms.",
+  "expected_if_true": "The half-final delay is >= +15 in at least 4 of 5 matched seeds, and its mean over the 5 seeds is >= +20. The 0.1-bar persistent delay has a larger seed-to-seed spread (range wider than the half-final range). Final accel_step margin is >= 0.1 at N=256 in all seeds, and val_mse_ratio stays above 1.",
+  "expected_if_false": "The half-final delay is <= +10 in at least 3 of 5 matched seeds, or its 5-seed mean is < +10. That would mean the earlier delay came from mixed checkpoint spacing or seed selection and does not reflect a steps_per_orbit effect.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Paired N=256 arm (seeds 56, 57, 58, 62, 63, otherwise identical to the 5-step N=64 arm). Across 11 matched seeds, the half-final-margin delay (N=256 minus N=64) was +10 or more in every seed, mean about +31. The 0.1-bar delay ranged from 0 to +70. At matched 5-step resolution in both arms, accel_step reaches half of its own final margin later at N=256 than at N=64 for the same seed. The half-final measure is the more stable timing statistic. All steps are read from the per-checkpoint trajectories of both arms.",
+    "expected_if_true": "The half-final delay is >= +15 in at least 4 of 5 matched seeds, and its mean over the 5 seeds is >= +20. The 0.1-bar persistent delay has a larger seed-to-seed spread (range wider than the half-final range). Final accel_step margin is >= 0.1 at N=256 in all seeds, and val_mse_ratio stays above 1.",
+    "expected_if_false": "The half-final delay is <= +10 in at least 3 of 5 matched seeds, or its 5-seed mean is < +10. That would mean the earlier delay came from mixed checkpoint spacing or seed selection and does not reflect a steps_per_orbit effect.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 5
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      56,
+      57,
+      58,
+      62,
+      63
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T06:30:43",
+  "updated_at": "2026-10-12T06:51:02",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.2446,
+  "compute_hours": 0.1072,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T06:30:43",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T06:30:45",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T06:37:28",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T06:44:11",
+      "actor": "worker",
+      "note": "5/5 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T06:51:02",
+      "actor": "agent",
+      "note": "finding f-20261012-065102-c0cd"
+    }
+  ]
+}

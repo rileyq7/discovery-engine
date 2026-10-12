@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-064411-e7a3",
+  "experiment_id": "exp-20261012-063043-266d",
+  "seed": 72,
+  "status": "completed",
+  "started_at": "2026-10-12T06:47:57",
+  "ended_at": "2026-10-12T06:49:36",
+  "compute_hours": 0.0276,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-064411-e7a3",
+  "git_commit": "4de5bb3",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 4.618974651877335e-06,
+    "baseline_cv_mse": 3.0428464957109585e-05,
+    "val_mse_ratio": 0.15179782017883606,
+    "beats_baseline": true,
+    "train_hours": 0.017711462246047124,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "933f31648320",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.57796,
+          "control_r2": 0.43761,
+          "control_spread": 0.02517,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.87024,
+          "control_r2": 0.30264,
+          "control_spread": 0.1715,
+          "required_margin": 0.1715,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.5768,
+          "control_r2": 0.15734,
+          "control_spread": 0.07823,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.8713,
+          "control_r2": 0.66694,
+          "control_spread": 0.01135,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 60
+        }
+      }
+    }
+  },
+  "pid": 45748,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "933f31648320"
+}

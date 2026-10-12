@@ -16,7 +16,48 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T06:29:46",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 0): Accepted. Seed 65's N=256 final margin is 0.1621, so half is 0.0811. The margin is 0.0809 at step 75, 0.0770 at step 80 and 0.0816 at step 85, so the half-final step is 85, not 75, and it did not 'first cross at 75'. Against N=64 seed 65 (70), the half-final delay is +15. No seed is <= +10 on both measures, which rules out the refutation branch."
+    },
+    {
+      "at": "2026-10-12T06:29:46",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 1): Accepted. Joined per seed (65/66/67/68/69): the 0.1-bar persistent steps are N=64 90/90/65/65/90 and N=256 100/100/125/100/100, giving deltas of +10/+10/+60/+35/+10. Half-final steps are N=64 70/55/45/55/40 and N=256 85/95/120/85/95, giving deltas of +15/+40/+75/+30/+55. Only 2 of 5 seeds reach >= +15 on the 0.1 bar, so expected_if_true fails. 0 of 5 are <= +10 on both measures, so expected_if_false fails too. Inconclusive is correct. My statement that the join 'would most likely turn this into supported' was wrong: three N=64 seeds formed at 90, which is exactly the case I said would keep it inconclusive. Pooled over 11 matched seeds, the mean delay is about +24.1 on the 0.1 bar and about +31.4 on half-final (half-final never below +10). This answers q-20261012-055013-4ae4: the 4-of-5 per-seed test fails, while the pooled means are >= +20. Two caveats limit the pooled result. Seeds 56-58 and 62-64 used 10-step checkpoints. And the half-final threshold is higher at N=256 because its final margin is larger, which can delay crossings mechanically. This cycle's 5-step N=64 rerun of seeds 56/57/58/62/63 addresses the first caveat, and a new question covers the second. Status stays inconclusive."
+    },
+    {
+      "at": "2026-10-12T06:29:46",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 2): Accepted. About 12x is the final val_mse_ratio. At the persistent formation checkpoints the ratios are 61.6 (seed 65, step 100), 81.3 (seed 66, step 100), 76.2 (seed 67, step 125), 91.5 (seed 68, step 100) and 91.0 (seed 69, step 100). So at N=256, accel_step forms while the model is roughly 60-90x worse than constant-velocity extrapolation. That is consistent with seeds 29/50/51 (84-94), and the conclusion that formation is decoupled from task success at N=256 is strengthened."
+    },
+    {
+      "at": "2026-10-12T06:29:46",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 3): Accepted. This is the second occurrence of the read failure in q-20261012-052949-98cc. A sibling finding written in the same cycle could not be read, so the analysis fell back on ranges taken from open-question text. I can't change the pipeline from this role. I recommend that the maintainers make paired-arm analyses join per-checkpoint trajectories directly from run records or raw_evidence, never from other findings, and fail loudly instead of falling back to summaries. Until that is fixed, both proposals this cycle pair with arms that are already complete and in the lab state (exp-20261012-052949-2186 for N=64 at e<=0.7, and the earlier 10-step runs of seeds 56-58 and 62-63). Each pre-registers that formation steps for both arms are read from run-record trajectories, and that the analysis is reported as inconclusive if either arm's per-seed trajectory is unavailable."
+    },
+    {
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 0): Accepted. Seed 65's final N=256 margin is 0.1621, so half is 0.0811. The margin is 0.0809 at step 75 and 0.0770 at step 80, then first reaches the half value at step 85 (0.0816). The correct half-final step for seed 65 is 85, not 75, and the 'first crosses at 75' description is wrong. Seed 65's half-final delay is +15 (85 vs 70), so no seed meets the '<= +10 on both measures' refutation condition. The verdict stays inconclusive."
+    },
+    {
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 1): Accepted. The per-seed join was possible, and my prediction that it would turn the finding supported was wrong. Joined deltas for seeds 65/66/67/68/69: 0.1 bar +10/+10/+60/+35/+10, only 2 of 5 at +15 or more, so expected_if_true fails. Half-final +15/+40/+75/+30/+55, 0 of 5 at +10 or less on both measures, so expected_if_false also fails. Inconclusive is correct, and the status is unchanged. This answers q-20261012-055013-4ae4. Pooled over the 11 matched seeds, the 0.1-bar delay is about +24.1 (6 of 11 at +15 or more) and the half-final delay is about +31.4 (9 of 11 at +15 or more, none below +10). The delay is consistent on the half-final measure and noisy on the 0.1 bar. Seeds 56-58 and 62-64 were read at 10-step spacing, so this cycle reruns five of those seeds as a matched N=64/N=256 pair at 5-step spacing, with a pre-registered half-final criterion."
+    },
+    {
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 2): Accepted. 'About 12x worse' is the final val_mse_ratio. At the formation checkpoints the ratios are 61.6 (seed 65), 81.3 (seed 66), 76.2 (seed 67), 91.5 (seed 68) and 91.0 (seed 69). So at N=256, accel_step forms while the model is about 60-90x worse than constant-velocity extrapolation. The qualitative conclusion is unchanged."
+    },
+    {
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "text": "Response to review r-20261012-060131-21fa (issue 3): Accepted. This is the same unresolved read failure as q-20261012-052949-98cc, and it caused both the wrong bounds and the wrong expectation in this finding. I can't change the analysis pipeline from here, so this needs a maintainer: paired-arm analyses should load the per-checkpoint trajectories of both arms straight from the run records, not from sibling findings. Until that is fixed, the two paired proposals this cycle pre-register that every formation step is read from the run-record trajectories. If the analysis step cannot read the sibling arm, it should report the comparison as not computed rather than bound it with open-question summaries."
+    }
+  ],
   "disputed": false,
   "history": [
     {

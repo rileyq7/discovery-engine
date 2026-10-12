@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-064411-8478",
+  "experiment_id": "exp-20261012-063043-266d",
+  "seed": 70,
+  "status": "completed",
+  "started_at": "2026-10-12T06:46:14",
+  "ended_at": "2026-10-12T06:47:54",
+  "compute_hours": 0.0279,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-064411-8478",
+  "git_commit": "4de5bb3",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 4.341775976766752e-06,
+    "baseline_cv_mse": 3.0428464957109585e-05,
+    "val_mse_ratio": 0.1426879726889509,
+    "beats_baseline": true,
+    "train_hours": 0.01778740194108751,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "933f31648320",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.5421,
+          "control_r2": 0.46698,
+          "control_spread": 0.04883,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.86716,
+          "control_r2": 0.31286,
+          "control_spread": 0.21088,
+          "required_margin": 0.2109,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.38597,
+          "control_r2": 0.09187,
+          "control_spread": 0.19216,
+          "required_margin": 0.1922,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.86982,
+          "control_r2": 0.67881,
+          "control_spread": 0.02054,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 80
+        }
+      }
+    }
+  },
+  "pid": 45266,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "933f31648320"
+}

@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-063043-266d",
+  "family": "E5",
+  "hypothesis": "At e<=0.7 the accel_step control R2 was intermediate (0.54-0.56), but the final margin (0.24-0.26) and the persistent formation step (60-70) already matched the e<=0.85 regime. So margin and timing switch to their high-e values somewhere between e ceilings of 0.5 and 0.7, while the control R2 declines gradually. At e in [0, 0.6] (N=64, 4 layers, d_model=64, m2 in [0.1, 1], seeds 70-72, settings matched to the e<=0.7 run), the control R2 is intermediate, roughly 0.58-0.70. The final margin is >= 0.20 and the persistent 0.1-bar formation step is <= 75, read from the trajectory.",
+  "expected_if_true": "In all 3 seeds, the layer-4 accel_step best-of-5 control R2 is in [0.58, 0.70], the final accel_step margin is >= 0.20, and the persistent 0.1-bar formation step is <= 75. That would mean the margin and timing jump happens at an e ceiling of 0.6 or below, and the control R2 changes smoothly.",
+  "expected_if_false": "In at least 2 of 3 seeds, the final margin is <= 0.18 or the persistent formation step is >= 80, which is e<=0.5-like timing at an intermediate control R2. That would place the switch between 0.6 and 0.7, or show it to be gradual. A control R2 >= 0.71 would instead mean the control falls non-linearly between e ceilings of 0.6 and 0.7.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At e<=0.7 the accel_step control R2 was intermediate (0.54-0.56), but the final margin (0.24-0.26) and the persistent formation step (60-70) already matched the e<=0.85 regime. So margin and timing switch to their high-e values somewhere between e ceilings of 0.5 and 0.7, while the control R2 declines gradually. At e in [0, 0.6] (N=64, 4 layers, d_model=64, m2 in [0.1, 1], seeds 70-72, settings matched to the e<=0.7 run), the control R2 is intermediate, roughly 0.58-0.70. The final margin is >= 0.20 and the persistent 0.1-bar formation step is <= 75, read from the trajectory.",
+    "expected_if_true": "In all 3 seeds, the layer-4 accel_step best-of-5 control R2 is in [0.58, 0.70], the final accel_step margin is >= 0.20, and the persistent 0.1-bar formation step is <= 75. That would mean the margin and timing jump happens at an e ceiling of 0.6 or below, and the control R2 changes smoothly.",
+    "expected_if_false": "In at least 2 of 3 seeds, the final margin is <= 0.18 or the persistent formation step is >= 80, which is e<=0.5-like timing at an intermediate control R2. That would place the switch between 0.6 and 0.7, or show it to be gradual. A control R2 >= 0.71 would instead mean the control falls non-linearly between e ceilings of 0.6 and 0.7.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.6
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      70,
+      71,
+      72
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T06:30:43",
+  "updated_at": "2026-10-12T06:51:47",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.1935,
+  "compute_hours": 0.0882,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T06:30:43",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T06:30:43",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T06:30:45",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T06:44:11",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T06:49:37",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T06:51:47",
+      "actor": "agent",
+      "note": "finding f-20261012-065147-f865"
+    }
+  ]
+}
