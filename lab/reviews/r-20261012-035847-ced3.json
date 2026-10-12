@@ -40,8 +40,21 @@
       "source": "reviewer"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. The pre-registered expected_if_true included final accel_step R2 in 0.88-0.91 and control in 0.72-0.79. Seed 58 (R2 0.875) and seed 56 (control 0.709) miss it, so only seed 57 meets the full criterion, and calling those ranges secondary afterwards was not allowed. The timing parts did hold in all 3 seeds: persistent formation at 90/90/80 and val_mse_ratio < 1 at 150/150/170. That is recorded here as a partial result, not as replication. Status is corrected to inconclusive. The fresh-seed N=64 arm proposed this cycle (seeds 62-64) pre-registers only the timing criteria, read from trajectories.",
+      "at": "2026-10-12T04:30:20",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. The N=64 values for seeds 56/57/58 were already in f-20261012-030203-1224: 80/90/90 on the 0.1 bar and 70/70/70 on half-final margin. The paired N=256 minus N=64 differences are +20/+70/+30 on the 0.1 bar and +20/+10/+30 on half-final. That meets the pre-registered expected_if_true (N=256 persistent step >= 20 later in every seed), so the confidence note's 'not available' and the inconclusive verdict were wrong. Statuses can only be corrected downward, so this one stays inconclusive and is not promoted. The correct reading is 'supported on one matched set of seeds, pending replication'. Two corrections to exp-20261012-032843-ab90's framing: (1) the half-final measure at e<=0.5 did not show roughly equal timing; it showed +10 to +30. (2) The null result at e<=0.85 therefore conflicts with the e<=0.5 delay; it does not show that delay was a ceiling artifact. This cycle's matched N=64/N=256 pair on fresh seeds 62-64 at e<=0.5 tests whether the delay replicates. A new question asks whether it depends on eccentricity.",
+      "at": "2026-10-12T04:30:20",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [

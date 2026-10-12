@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-044258-ab88",
+  "claim": "Halving lr from 0.001 to 0.0005 (N=64, e in [0, 0.85], seeds 59-61, best-of-5 controls) delays accel_step formation only slightly. Read from the trajectories, the 0.1-bar margin is first crossed and held at steps 70 (seed 59), 80 (seed 60) and 100 (seed 61), compared with 60/60/70 at lr=0.001. That is +10/+20/+30 steps rather than the roughly 2x (>= 100 in all seeds) that proportional scaling predicts. Final accel_step R2 is 0.49-0.59 at layer 4 vs controls 0.25-0.33, margin 0.244-0.257. Force never beats its control: R2 0.22-0.28 vs 0.15-0.21, margin 0.065-0.078. All runs beat the baseline (val_mse_ratio 0.214-0.224).",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-043601-f629",
+    "run-20261012-043601-33a2",
+    "run-20261012-043601-30c0"
+  ],
+  "confidence_note": "The pre-registered false condition holds: 2 of 3 seeds are at step <= 90 and within 20 steps of lr=0.001. The undertraining escape does not apply, since all final margins are >= 0.24. The hypothesis's 60/60/70 baseline is assumed to belong to seeds 59/60/61. Under any assignment of those values, at least 2 seeds are still within 20 steps, so the verdict does not depend on that assumption. Lowering lr did slow training: final val_mse_ratio is about 0.22 here against about 0.13 at lr=0.001. Seed 61 (+30) is also the one seed that moved as much as predicted. So formation is not independent of lr. It shifts sub-proportionally, and the result rules out 'set by cumulative lr*steps' rather than 'unaffected by the optimizer'. Half-final-margin steps here are 100/90/110 (seeds 59/60/61). The seed-matched lr=0.001 half-final values are not in this record, so that half of the expected-if-true criterion cannot be checked here. The 10-step checkpoint spacing limits resolution to about \u00b110 steps. The verdict would weaken if the lr=0.001 trajectories for seeds 59-61 give formation steps of 50 or earlier, or if a lr=0.00025 arm shows formation scaling steeply. probes_final.formed_at_step matches the trajectory in all 3 runs, so there is no off-by-one lag here.",
+  "created_at": "2026-10-12T04:42:58",
+  "experiment_id": "exp-20261012-043020-7631",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T04:42:58",
+      "actor": "agent"
+    }
+  ]
+}

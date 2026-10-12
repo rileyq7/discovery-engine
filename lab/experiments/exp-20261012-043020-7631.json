@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-043020-7631",
+  "family": "E5",
+  "hypothesis": "The accel_step formation window (steps 60-70 at N=64, e in [0, 0.85], lr 0.001, seeds 59-61; f-20261012-034018-5526) is set by the optimizer trajectory, not by the data. Halving lr to 0.0005 with everything else matched (same seeds, data, architecture, best-of-5 controls, 10-step checkpoints) delays persistent formation roughly in proportion.",
+  "expected_if_true": "Read from trajectories, the persistent 0.1-bar formation step is >= 100 in all 3 seeds (>= 30 steps later than the seed-matched lr=0.001 steps of 60/60/70), and the half-final-margin step is >= 30 steps later than the lr=0.001 value in at least 2 of 3 seeds. Final accel_step margin stays >= 0.2.",
+  "expected_if_false": "The persistent 0.1-bar step is <= 90 (within 20 steps of the seed-matched lr=0.001 run) in at least 2 of 3 seeds. That would mean formation timing is not driven by learning rate. If the final margin is < 0.15 in 2 or more seeds, the run is undertrained and the result is recorded as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The accel_step formation window (steps 60-70 at N=64, e in [0, 0.85], lr 0.001, seeds 59-61; f-20261012-034018-5526) is set by the optimizer trajectory, not by the data. Halving lr to 0.0005 with everything else matched (same seeds, data, architecture, best-of-5 controls, 10-step checkpoints) delays persistent formation roughly in proportion.",
+    "expected_if_true": "Read from trajectories, the persistent 0.1-bar formation step is >= 100 in all 3 seeds (>= 30 steps later than the seed-matched lr=0.001 steps of 60/60/70), and the half-final-margin step is >= 30 steps later than the lr=0.001 value in at least 2 of 3 seeds. Final accel_step margin stays >= 0.2.",
+    "expected_if_false": "The persistent 0.1-bar step is <= 90 (within 20 steps of the seed-matched lr=0.001 run) in at least 2 of 3 seeds. That would mean formation timing is not driven by learning rate. If the final margin is < 0.15 in 2 or more seeds, the run is undertrained and the result is recorded as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.85
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.0005,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      59,
+      60,
+      61
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T04:30:20",
+  "updated_at": "2026-10-12T04:42:58",
+  "verdict": "refuted",
+  "estimate_hours": 0.1935,
+  "compute_hours": 0.0831,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T04:30:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T04:30:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T04:30:22",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T04:36:01",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T04:41:09",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T04:42:58",
+      "actor": "agent",
+      "note": "finding f-20261012-044258-ab88"
+    }
+  ]
+}

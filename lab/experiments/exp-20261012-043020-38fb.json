@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-043020-38fb",
+  "family": "E5",
+  "hypothesis": "Matched N=64 reference arm (fresh seeds 62-64, e in [0, 0.5], 4 layers, d_model=64, best-of-5 controls, 10-step checkpoints). It is paired with an N=256 arm on the same seeds to replicate the e<=0.5 delay seen on seeds 56-58. accel_step forms persistently (first checkpoint after which the margin stays >= required_margin at every later checkpoint, read from the per-checkpoint trajectory, not formed_at_step) within steps 70-100, and the half-final-margin step is within steps 50-90.",
+  "expected_if_true": "In all 3 seeds the persistent 0.1-bar formation step read from the trajectory is in [70, 100], and the first checkpoint reaching half the run's final accel_step margin is in [50, 90]. These per-seed values are the reference for the paired N=256 arm.",
+  "expected_if_false": "In at least 2 of 3 seeds the persistent 0.1-bar step falls outside [70, 100] or the half-final step falls outside [50, 90], meaning the N=64 reference itself is not stable across seeds.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched N=64 reference arm (fresh seeds 62-64, e in [0, 0.5], 4 layers, d_model=64, best-of-5 controls, 10-step checkpoints). It is paired with an N=256 arm on the same seeds to replicate the e<=0.5 delay seen on seeds 56-58. accel_step forms persistently (first checkpoint after which the margin stays >= required_margin at every later checkpoint, read from the per-checkpoint trajectory, not formed_at_step) within steps 70-100, and the half-final-margin step is within steps 50-90.",
+    "expected_if_true": "In all 3 seeds the persistent 0.1-bar formation step read from the trajectory is in [70, 100], and the first checkpoint reaching half the run's final accel_step margin is in [50, 90]. These per-seed values are the reference for the paired N=256 arm.",
+    "expected_if_false": "In at least 2 of 3 seeds the persistent 0.1-bar step falls outside [70, 100] or the half-final step falls outside [50, 90], meaning the N=64 reference itself is not stable across seeds.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      62,
+      63,
+      64
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T04:30:20",
+  "updated_at": "2026-10-12T04:41:42",
+  "verdict": "supported",
+  "estimate_hours": 0.1158,
+  "compute_hours": 0.044,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T04:30:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T04:30:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T04:30:22",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T04:30:22",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T04:33:12",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T04:41:42",
+      "actor": "agent",
+      "note": "finding f-20261012-044142-d490"
+    }
+  ]
+}

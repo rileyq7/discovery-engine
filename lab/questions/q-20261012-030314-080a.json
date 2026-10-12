@@ -3,7 +3,8 @@
   "text": "Across all completed E5 runs, does the step where accel_step first crosses the raw 0.1 margin correlate inversely with that run's final margin, or with its control R2? Here, seed 57 has control 0.778 and final margin 0.118 and forms at step 160, while seeds 56 and 58 have controls 0.68-0.72 and final margins of about 0.17 and form at steps 100-120. A strong correlation would mean raw-threshold formation steps mostly measure the ceiling, not timing.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-034018-5526"
+    "f-20261012-034018-5526",
+    "f-20261012-044142-d490"
   ],
   "created_at": "2026-10-12T03:03:14"
 }

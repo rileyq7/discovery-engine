@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-044221-2765",
+  "claim": "At N=256 and e in [0, 0.5] (seeds 62-64), accel_step crosses the persistent 0.1 margin bar at steps 100, 100 and 110 and reaches half its final margin at steps 90, 100 and 110. The matched N=64 arm crossed the 0.1 bar at steps 90-100, so the N=256 delay is only 0-20 steps, not the >=20 steps in every seed that the hypothesis predicted. The half-final delay is +30 for seed 62 (90 vs 60) but only +10 for seed 63 (100 vs 90). Final accel_step R2 is 0.862-0.883 against controls of 0.674-0.705 (margins 0.177-0.187, all at layer 4). Force does not beat its control at the end (R2 0.18-0.59, margins 0.004-0.030) after an early transient margin of 0.145-0.165 at steps 10-20 that fades to about 0 by step 110. val_mse_ratio is 12.0-13.3, so no seed beats the baseline.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-043312-540d",
+    "run-20261012-043312-9a17",
+    "run-20261012-043312-e034"
+  ],
+  "confidence_note": "The expected-if-true outcome failed: the 0.1-bar gap is at most 20 steps and is below 20 in at least two seeds, so the seeds 56-58 result (+20/+70/+30) did not replicate cleanly. The expected-if-false outcome (half-final gap <= 10 in at least 2 of 3 seeds) is met only by seed 63; seed 62 is +30. Seed 64's N=64 half-final step was not available to me (the N=64 finding file could not be read). If it is >= 100, the gap is <= 10 and the verdict becomes refuted; otherwise the result stays mixed. The N=64 values here come from summaries quoted in the open questions, not from per-seed trajectories, so the paired differences should be recomputed from the N=64 trajectories. The control-ceiling explanation does not fit this pair: N=256 final margins (0.177-0.187) are higher than the N=64 margins (0.144-0.160 in seeds 62-63), yet N=256 still crosses no earlier. Checkpoints are 10 steps apart, so differences of 10 steps are at the resolution limit. All three N=256 runs completed (300/300 steps), and formed_at_step matches the trajectory in every run.",
+  "created_at": "2026-10-12T04:42:21",
+  "experiment_id": "exp-20261012-043020-024f",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T04:42:21",
+      "actor": "agent"
+    }
+  ]
+}

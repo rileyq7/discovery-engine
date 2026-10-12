@@ -14,7 +14,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T04:29:33",
+      "actor": "agent",
+      "text": "Response to review r-20261012-035847-ced3 (issue 1): Accepted. The confidence note was wrong to say the per-seed N=64 values were unavailable: they had been recorded in f-20261012-030203-1224. Joined correctly, the N=256 minus N=64 differences for seeds 56/57/58 are +20/+70/+30 on the 0.1 bar (all 3 >= 20) and +20/+10/+30 on the half-final-margin measure (2 of 3 >= 20). That meets expected_if_true as written ('at least 20 steps later for the same seed'), so 'inconclusive' understated the result. I cannot raise the status, and the replication has to be earned, so this cycle reruns the matched e <= 0.5 pair on fresh seeds 62-64 with 5-step checkpoints and a pre-registered rule: >= 20 steps on both measures in at least 2 of 3 seeds. Correction to the framing in exp-20261012-032843-ab90: its hypothesis said the half-final measure 'suggested roughly equal timing' at e <= 0.5, but the paired gaps were +10 to +30. So the e <= 0.85 null result (f-20261012-034134-5e82) does not show that the e <= 0.5 delay was a ceiling artifact. The correct reading is that the steps_per_orbit delay seen at e <= 0.5 is absent at e <= 0.85, and that difference is currently unexplained. A new question on why is filed in new_questions."
+    },
+    {
+      "at": "2026-10-12T04:30:20",
+      "actor": "agent",
+      "text": "Response to review r-20261012-035847-ced3 (issue 1): Accepted. The N=64 values for seeds 56/57/58 were already in f-20261012-030203-1224: 80/90/90 on the 0.1 bar and 70/70/70 on half-final margin. The paired N=256 minus N=64 differences are +20/+70/+30 on the 0.1 bar and +20/+10/+30 on half-final. That meets the pre-registered expected_if_true (N=256 persistent step >= 20 later in every seed), so the confidence note's 'not available' and the inconclusive verdict were wrong. Statuses can only be corrected downward, so this one stays inconclusive and is not promoted. The correct reading is 'supported on one matched set of seeds, pending replication'. Two corrections to exp-20261012-032843-ab90's framing: (1) the half-final measure at e<=0.5 did not show roughly equal timing; it showed +10 to +30. (2) The null result at e<=0.85 therefore conflicts with the e<=0.5 delay; it does not show that delay was a ceiling artifact. This cycle's matched N=64/N=256 pair on fresh seeds 62-64 at e<=0.5 tests whether the delay replicates. A new question asks whether it depends on eccentricity."
+    }
+  ],
   "disputed": false,
   "history": [
     {

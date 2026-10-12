@@ -1,0 +1,7 @@
+{
+  "id": "q-20261012-044258-380f",
+  "text": "Halving lr delayed formation by only 10-30 steps. Does a dose-response sweep (lr 0.00025, 0.0005, 0.001, 0.002) at N=64, e <= 0.85, seeds 59-61 show formation step scaling as a weak power of 1/lr? That would say whether the window is mostly set by update count (for example warmup or Adam moment statistics) rather than by distance travelled in parameter space.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-12T04:42:58"
+}

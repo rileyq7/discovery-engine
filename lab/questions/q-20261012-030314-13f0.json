@@ -2,6 +2,8 @@
   "id": "q-20261012-030314-13f0",
   "text": "The early force transient (margin 0.12-0.19 at steps 10-30, fading to about 0 by step 80-110) looks the same at N=256 as the one reported at N=64, even though N=256 never beats the constant-velocity baseline. Is this transient independent of steps_per_orbit and of task success? Would it also appear in a model trained on shuffled-time sequences?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-044221-2765"
+  ],
   "created_at": "2026-10-12T03:03:14"
 }

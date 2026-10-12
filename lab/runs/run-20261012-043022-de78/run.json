@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-043022-de78",
+  "experiment_id": "exp-20261012-043020-38fb",
+  "seed": 63,
+  "status": "completed",
+  "started_at": "2026-10-12T04:32:18",
+  "ended_at": "2026-10-12T04:33:10",
+  "compute_hours": 0.0146,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-043022-de78",
+  "git_commit": "043e8a4",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.0992098042345422e-05,
+    "baseline_cv_mse": 2.5544271694393608e-05,
+    "val_mse_ratio": 0.4303155781402818,
+    "beats_baseline": true,
+    "train_hours": 0.008987341125806172,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b04e4026a398",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.5753,
+          "control_r2": 0.51418,
+          "control_spread": 0.05712,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.90231,
+          "control_r2": 0.74232,
+          "control_spread": 0.00746,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.90905,
+          "control_r2": 0.2943,
+          "control_spread": 0.16577,
+          "required_margin": 0.1658,
+          "beats_control": true,
+          "formed_at_step": 20
+        },
+        "energy": {
+          "best_layer": 2,
+          "r2": 0.57325,
+          "control_r2": 0.25444,
+          "control_spread": 0.1053,
+          "required_margin": 0.1053,
+          "beats_control": true,
+          "formed_at_step": 10
+        }
+      }
+    }
+  },
+  "pid": 6728,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b04e4026a398"
+}

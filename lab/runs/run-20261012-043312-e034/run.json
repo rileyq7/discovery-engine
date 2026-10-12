@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-043312-e034",
+  "experiment_id": "exp-20261012-043020-024f",
+  "seed": 64,
+  "status": "completed",
+  "started_at": "2026-10-12T04:35:07",
+  "ended_at": "2026-10-12T04:35:59",
+  "compute_hours": 0.0146,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-043312-e034",
+  "git_commit": "043e8a4",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.26695146006862e-06,
+    "baseline_cv_mse": 1.0096824060626856e-07,
+    "val_mse_ratio": 12.54801957983174,
+    "beats_baseline": false,
+    "train_hours": 0.009053403668933445,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "5f1b29666190",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.5571,
+          "control_r2": 0.52692,
+          "control_spread": 0.02909,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.88185,
+          "control_r2": 0.70494,
+          "control_spread": 0.0137,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 110
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.83225,
+          "control_r2": 0.3054,
+          "control_spread": 0.14477,
+          "required_margin": 0.1448,
+          "beats_control": true,
+          "formed_at_step": 20
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.5211,
+          "control_r2": 0.21099,
+          "control_spread": 0.08687,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 20
+        }
+      }
+    }
+  },
+  "pid": 7481,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "5f1b29666190"
+}

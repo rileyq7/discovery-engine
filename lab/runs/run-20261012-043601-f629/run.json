@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-043601-f629",
+  "experiment_id": "exp-20261012-043020-7631",
+  "seed": 59,
+  "status": "completed",
+  "started_at": "2026-10-12T04:39:29",
+  "ended_at": "2026-10-12T04:41:08",
+  "compute_hours": 0.0276,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-043601-f629",
+  "git_commit": "043e8a4",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.5777409546018587e-05,
+    "baseline_cv_mse": 7.222957310714121e-05,
+    "val_mse_ratio": 0.21843420731028385,
+    "beats_baseline": true,
+    "train_hours": 0.017703708344035677,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b6d31e2cb804",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.28409,
+          "control_r2": 0.2059,
+          "control_spread": 0.03741,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.53489,
+          "control_r2": 0.28229,
+          "control_spread": 0.01727,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 70
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.84235,
+          "control_r2": 0.33441,
+          "control_spread": 0.08772,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 20
+        },
+        "energy": {
+          "best_layer": 3,
+          "r2": 0.61286,
+          "control_r2": 0.27386,
+          "control_spread": 0.04887,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 30
+        }
+      }
+    }
+  },
+  "pid": 8679,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b6d31e2cb804"
+}

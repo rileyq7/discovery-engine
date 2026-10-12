@@ -1,0 +1,79 @@
+run-20261012-043601-30c0: [04:36:03] experiment exp-20261012-043020-7631 (E5) seed 61: The accel_step formation window (steps 60-70 at N=64, e in [0, 0.85], lr 0.001, seeds 59-61; f-20261012-034018-5526) is set by the optimizer trajectory, not by the data. Halving lr to 0.0005 with everything else matched (same seeds, data, architecture, best-of-5 controls, 10-step checkpoints) delays persistent formation roughly in proportion.
+run-20261012-043601-30c0: [04:36:03] model: 209,094 params on mps; dataset b6d31e2cb804; 9000 train / 1000 val systems
+run-20261012-043601-30c0: [04:36:04] step 0: val_mse=2.033e-03 cv_baseline=7.223e-05 ratio=28.153
+run-20261012-043601-30c0: [04:36:06] step 10: val_mse=9.527e-04 cv_baseline=7.223e-05 ratio=13.190
+run-20261012-043601-30c0: [04:36:07] step 20: val_mse=6.664e-04 cv_baseline=7.223e-05 ratio=9.226
+run-20261012-043601-30c0: [04:36:08] step 30: val_mse=5.422e-04 cv_baseline=7.223e-05 ratio=7.506
+run-20261012-043601-30c0: [04:36:09] step 40: val_mse=4.125e-04 cv_baseline=7.223e-05 ratio=5.711
+run-20261012-043601-30c0: [04:36:10] step 50: val_mse=3.221e-04 cv_baseline=7.223e-05 ratio=4.460
+run-20261012-043601-30c0: [04:36:11] step 60: val_mse=2.567e-04 cv_baseline=7.223e-05 ratio=3.554
+run-20261012-043601-30c0: [04:36:12] step 70: val_mse=2.150e-04 cv_baseline=7.223e-05 ratio=2.976
+run-20261012-043601-30c0: [04:36:13] step 80: val_mse=1.754e-04 cv_baseline=7.223e-05 ratio=2.429
+run-20261012-043601-30c0: [04:36:14] step 90: val_mse=1.545e-04 cv_baseline=7.223e-05 ratio=2.139
+run-20261012-043601-30c0: [04:36:15] step 100: val_mse=1.306e-04 cv_baseline=7.223e-05 ratio=1.809
+run-20261012-043601-30c0: [04:36:16] step 110: val_mse=1.158e-04 cv_baseline=7.223e-05 ratio=1.603
+run-20261012-043601-30c0: [04:36:17] step 120: val_mse=1.071e-04 cv_baseline=7.223e-05 ratio=1.482
+run-20261012-043601-30c0: [04:36:18] step 130: val_mse=1.070e-04 cv_baseline=7.223e-05 ratio=1.482
+run-20261012-043601-30c0: [04:36:19] step 140: val_mse=9.011e-05 cv_baseline=7.223e-05 ratio=1.248
+run-20261012-043601-30c0: [04:36:20] step 150: val_mse=8.343e-05 cv_baseline=7.223e-05 ratio=1.155
+run-20261012-043601-30c0: [04:36:21] step 160: val_mse=8.216e-05 cv_baseline=7.223e-05 ratio=1.137
+run-20261012-043601-30c0: [04:36:22] step 170: val_mse=8.032e-05 cv_baseline=7.223e-05 ratio=1.112
+run-20261012-043601-30c0: [04:36:23] step 180: val_mse=6.656e-05 cv_baseline=7.223e-05 ratio=0.922
+run-20261012-043601-30c0: [04:36:24] step 190: val_mse=6.359e-05 cv_baseline=7.223e-05 ratio=0.880
+run-20261012-043601-30c0: [04:36:25] step 200: val_mse=6.161e-05 cv_baseline=7.223e-05 ratio=0.853
+run-20261012-043601-30c0: [04:36:26] step 210: val_mse=5.870e-05 cv_baseline=7.223e-05 ratio=0.813
+run-20261012-043601-30c0: [04:36:27] step 220: val_mse=5.244e-05 cv_baseline=7.223e-05 ratio=0.726
+run-20261012-043601-30c0: [04:36:28] step 230: val_mse=4.654e-05 cv_baseline=7.223e-05 ratio=0.644
+run-20261012-043601-30c0: [04:36:29] step 240: val_mse=4.704e-05 cv_baseline=7.223e-05 ratio=0.651
+run-20261012-043601-30c0: [04:36:30] step 250: val_mse=4.358e-05 cv_baseline=7.223e-05 ratio=0.603
+run-20261012-043601-30c0: [04:36:31] step 260: val_mse=4.029e-05 cv_baseline=7.223e-05 ratio=0.558
+run-20261012-043601-30c0: [04:36:33] step 270: val_mse=3.818e-05 cv_baseline=7.223e-05 ratio=0.529
+run-20261012-043601-30c0: [04:36:34] step 280: val_mse=3.875e-05 cv_baseline=7.223e-05 ratio=0.537
+run-20261012-043601-30c0: [04:36:35] step 290: val_mse=3.531e-05 cv_baseline=7.223e-05 ratio=0.489
+run-20261012-043601-30c0: [04:36:36] step 300: val_mse=3.800e-05 cv_baseline=7.223e-05 ratio=0.526
+run-20261012-043601-30c0: [04:36:37] step 310: val_mse=3.600e-05 cv_baseline=7.223e-05 ratio=0.498
+run-20261012-043601-30c0: [04:36:38] step 320: val_mse=3.173e-05 cv_baseline=7.223e-05 ratio=0.439
+run-20261012-043601-30c0: [04:36:39] step 330: val_mse=3.052e-05 cv_baseline=7.223e-05 ratio=0.423
+run-20261012-043601-30c0: [04:36:40] step 340: val_mse=2.848e-05 cv_baseline=7.223e-05 ratio=0.394
+run-20261012-043601-30c0: [04:36:41] step 350: val_mse=2.653e-05 cv_baseline=7.223e-05 ratio=0.367
+run-20261012-043601-30c0: [04:36:42] step 360: val_mse=2.580e-05 cv_baseline=7.223e-05 ratio=0.357
+run-20261012-043601-30c0: [04:36:43] step 370: val_mse=2.522e-05 cv_baseline=7.223e-05 ratio=0.349
+run-20261012-043601-30c0: [04:36:44] step 380: val_mse=2.524e-05 cv_baseline=7.223e-05 ratio=0.349
+run-20261012-043601-30c0: [04:36:45] step 390: val_mse=2.373e-05 cv_baseline=7.223e-05 ratio=0.329
+run-20261012-043601-30c0: [04:36:46] step 400: val_mse=2.493e-05 cv_baseline=7.223e-05 ratio=0.345
+run-20261012-043601-30c0: [04:36:47] step 410: val_mse=2.317e-05 cv_baseline=7.223e-05 ratio=0.321
+run-20261012-043601-30c0: [04:36:48] step 420: val_mse=2.202e-05 cv_baseline=7.223e-05 ratio=0.305
+run-20261012-043601-30c0: [04:36:49] step 430: val_mse=2.251e-05 cv_baseline=7.223e-05 ratio=0.312
+run-20261012-043601-30c0: [04:36:50] step 440: val_mse=2.037e-05 cv_baseline=7.223e-05 ratio=0.282
+run-20261012-043601-30c0: [04:36:51] step 450: val_mse=2.008e-05 cv_baseline=7.223e-05 ratio=0.278
+run-20261012-043601-30c0: [04:36:52] step 460: val_mse=1.936e-05 cv_baseline=7.223e-05 ratio=0.268
+run-20261012-043601-30c0: [04:36:53] step 470: val_mse=1.934e-05 cv_baseline=7.223e-05 ratio=0.268
+run-20261012-043601-30c0: [04:36:54] step 480: val_mse=1.916e-05 cv_baseline=7.223e-05 ratio=0.265
+run-20261012-043601-30c0: [04:36:55] step 490: val_mse=1.845e-05 cv_baseline=7.223e-05 ratio=0.255
+run-20261012-043601-30c0: [04:36:56] step 500: val_mse=1.811e-05 cv_baseline=7.223e-05 ratio=0.251
+run-20261012-043601-30c0: [04:36:57] step 510: val_mse=1.788e-05 cv_baseline=7.223e-05 ratio=0.248
+run-20261012-043601-30c0: [04:36:58] step 520: val_mse=1.756e-05 cv_baseline=7.223e-05 ratio=0.243
+run-20261012-043601-30c0: [04:36:59] step 530: val_mse=1.719e-05 cv_baseline=7.223e-05 ratio=0.238
+run-20261012-043601-30c0: [04:37:01] step 540: val_mse=1.696e-05 cv_baseline=7.223e-05 ratio=0.235
+run-20261012-043601-30c0: [04:37:02] step 550: val_mse=1.688e-05 cv_baseline=7.223e-05 ratio=0.234
+run-20261012-043601-30c0: [04:37:03] step 560: val_mse=1.638e-05 cv_baseline=7.223e-05 ratio=0.227
+run-20261012-043601-30c0: [04:37:04] step 570: val_mse=1.640e-05 cv_baseline=7.223e-05 ratio=0.227
+run-20261012-043601-30c0: [04:37:05] step 580: val_mse=1.617e-05 cv_baseline=7.223e-05 ratio=0.224
+run-20261012-043601-30c0: [04:37:06] step 590: val_mse=1.628e-05 cv_baseline=7.223e-05 ratio=0.225
+run-20261012-043601-30c0: [04:37:07] step 600: val_mse=1.617e-05 cv_baseline=7.223e-05 ratio=0.224
+run-20261012-043601-30c0: [04:37:07] training done in 1.1 min; beats constant-velocity baseline: True
+run-20261012-043601-30c0: [04:37:10] random-model controls (best of 5): force=0.05/0.18/0.19/0.18/0.18, accel_step=0.13/0.23/0.24/0.25/0.25, distance=0.04/0.32/0.46/0.48/0.51, energy=0.00/0.21/0.27/0.36/0.40
+run-20261012-043601-30c0: [04:37:10] probes @ step 0: best force R2=0.164 (layer 3)
+run-20261012-043601-30c0: [04:37:13] probes @ step 50: best force R2=0.184 (layer 4)
+run-20261012-043601-30c0: [04:37:16] probes @ step 100: best force R2=0.212 (layer 4)
+run-20261012-043601-30c0: [04:37:19] probes @ step 150: best force R2=0.214 (layer 4)
+run-20261012-043601-30c0: [04:37:22] probes @ step 200: best force R2=0.221 (layer 1)
+run-20261012-043601-30c0: [04:37:24] probes @ step 250: best force R2=0.228 (layer 1)
+run-20261012-043601-30c0: [04:37:27] probes @ step 300: best force R2=0.234 (layer 1)
+run-20261012-043601-30c0: [04:37:29] probes @ step 350: best force R2=0.239 (layer 3)
+run-20261012-043601-30c0: [04:37:32] probes @ step 400: best force R2=0.244 (layer 3)
+run-20261012-043601-30c0: [04:37:35] probes @ step 450: best force R2=0.248 (layer 3)
+run-20261012-043601-30c0: [04:37:38] probes @ step 500: best force R2=0.251 (layer 2)
+run-20261012-043601-30c0: [04:37:40] probes @ step 550: best force R2=0.254 (layer 2)
+run-20261012-043601-30c0: [04:37:43] probes @ step 600: best force R2=0.256 (layer 2)
+run-20261012-043601-30c0: [04:37:43] run complete in 1.7 min

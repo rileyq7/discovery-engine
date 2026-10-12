@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-043020-024f",
+  "family": "E5",
+  "hypothesis": "Paired N=256 arm (seeds 62-64, otherwise identical to the N=64 arm). This replicates the e<=0.5 result from seeds 56-58, where N=256 formed later by +20/+70/+30 steps on the 0.1 bar and by +20/+10/+30 on the half-final-margin measure. At e in [0, 0.5], accel_step forms later at N=256 than at N=64 for the same seed.",
+  "expected_if_true": "Read from trajectories, the N=256 minus N=64 persistent 0.1-bar difference is >= 20 steps in all 3 matched seeds, and the half-final-margin difference is >= 20 steps in at least 2 of 3 seeds.",
+  "expected_if_false": "The half-final-margin difference is <= 10 steps in at least 2 of 3 matched seeds. Any remaining 0.1-bar gap would then be attributed to lower final margins (control ceiling), not later formation. A mixed result is recorded as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Paired N=256 arm (seeds 62-64, otherwise identical to the N=64 arm). This replicates the e<=0.5 result from seeds 56-58, where N=256 formed later by +20/+70/+30 steps on the 0.1 bar and by +20/+10/+30 on the half-final-margin measure. At e in [0, 0.5], accel_step forms later at N=256 than at N=64 for the same seed.",
+    "expected_if_true": "Read from trajectories, the N=256 minus N=64 persistent 0.1-bar difference is >= 20 steps in all 3 matched seeds, and the half-final-margin difference is >= 20 steps in at least 2 of 3 seeds.",
+    "expected_if_false": "The half-final-margin difference is <= 10 steps in at least 2 of 3 matched seeds. Any remaining 0.1-bar gap would then be attributed to lower final margins (control ceiling), not later formation. A mixed result is recorded as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      62,
+      63,
+      64
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T04:30:20",
+  "updated_at": "2026-10-12T04:42:21",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.1158,
+  "compute_hours": 0.0439,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T04:30:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T04:30:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T04:30:22",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T04:33:12",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T04:36:01",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T04:42:21",
+      "actor": "agent",
+      "note": "finding f-20261012-044221-2765"
+    }
+  ]
+}

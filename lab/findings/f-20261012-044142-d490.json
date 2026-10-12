@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-044142-d490",
+  "claim": "At N=64, e in [0, 0.5], seeds 62-64 all landed inside both predicted windows when read from the per-checkpoint trajectory. The accel_step margin first held at or above the 0.1 bar for good at step 90 (seed 64), 100 (seed 62) and 100 (seed 63), and first reached half its final margin at steps 80, 60 and 90. Final accel_step R2 was 0.890-0.902 at layer 4 against controls of 0.724-0.746 (margins 0.144-0.167). Force never beat its control: final margins were 0.033-0.080 against a 0.1 bar, after a brief step-10 rise to 0.148-0.159 that fell to about 0 by step 40. So per-snapshot acceleration is decodable, but physical force is not.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-043022-144a",
+    "run-20261012-043022-3319",
+    "run-20261012-043022-de78"
+  ],
+  "confidence_note": "All 3 completed seeds fall in both windows. This is a clean result, but 2 of the 6 values sit on a window edge: seed 62 and seed 63 both have persistent step 100, the upper bound, and seed 63's half-final step is 90, also the upper bound. With 10-step checkpoints, a one-checkpoint shift would have put seed 62 or 63 outside, so the windows only just hold. The half-final measure spreads more (60-90) than the persistent 0.1-bar measure (90-100). That is partly because seed 62 has the lowest final margin, 0.144, and so the lowest half-final threshold. Here formed_at_step equals the trajectory value in every run (90, 100, 100), so the earlier one-checkpoint lag did not recur. Formation comes while val_mse_ratio is still 1.7-2.1, about 2.0-2.9% of each run's step-0 value, and 40-60 steps before the model beats the baseline (steps 140-160). Distance forms at steps 10-20, which is 70-90 steps before accel_step. Raw accel_step controls are high (0.72-0.75), which caps the margin. A paired N=256 arm with persistent steps also at or below 100 would mean this reference cannot separate the arms. Persistent steps above 100 in a fresh seed at N=64 would mean the window is too narrow.",
+  "created_at": "2026-10-12T04:41:42",
+  "experiment_id": "exp-20261012-043020-38fb",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T04:41:42",
+      "actor": "agent"
+    }
+  ]
+}
