@@ -1,0 +1,79 @@
+{
+  "id": "r-20261013-004549-e5e2",
+  "created_at": "2026-10-13T00:45:49",
+  "since": "2026-10-12T23:44:22",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R2, control, margin, normalised margin, val_mse_ratio, gain and formation step against raw_evidence for all 7 findings, and checked each verdict against its pre-registered criteria. Nearly all numbers reproduce, and the verdicts (supported / inconclusive / refuted / replicated) are consistent with expected_if_true and expected_if_false as written. Two quoted values do not match the raw data: a force formation range in f-20261013-000359-37e2 and a distance R2 attributed to the wrong layer in f-20261013-001650-dfba. Neither changes a verdict. The last 5 experiments all serve open questions or replications, so there is no drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim says force shows 'persistent formation late at steps 250-400'. Seeds 70 and 71 form at 350 and 400, but seed 72's force trajectory margin is >= 0.1 at every checkpoint from step 100 on (0.1032, 0.1103, 0.1084, 0.1136, ... 0.1503), so it forms persistently at step 100. The correct range is 100-400. In seed 72, force forms only 50 steps after accel_step (step 50), so 'late' does not hold for that seed. The accel_step verdict is unaffected.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-000359-37e2"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says force peaks at layer 1, 'the same layer as distance (R2 0.983, margin 0.184)'. Layer-1 distance is R2 0.9712 vs control 0.7871, giving margin 0.184. R2 0.983 belongs to layer 4, where the margin is only 0.143 (0.983 vs 0.8401). The quoted R2 and margin come from different layers. The point that force and distance share layer 1 still holds.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-001650-dfba"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says 'every probe crosses at the first checkpoint, step 500'. Force never crosses the bar in either seed: its trajectory margin peaks at 0.040 (seed 22) and 0.033 (seed 23), and at step 500 in seed 22 no layer beats its control. The claim text itself correctly says force does not beat control. Only the formation-timing remark is wrong.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-000253-c709"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The claim says the accel_step margin 'levels off at 0.13-0.15 by step 1500'. Seed 2 is 0.124 at step 1500 and 0.128 at the end, so it plateaus at about 0.12-0.13. The range holds for seed 1 only. This does not affect the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-000220-ab2d"
+    },
+    {
+      "severity": "info",
+      "category": "bug",
+      "message": "In run-20261013-000332-87f8, the final energy probe at layer 3 has R2 0.7303 and best_control_r2 0.7303, identical to 4 decimals. This is probably a coincidence, but an exact tie between a trained probe and its control is worth a quick check that the control isn't being copied from the trained model in some code path.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-001650-dfba"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261013-000220-ab2d",
+      "f-20261013-000253-c709",
+      "f-20261013-000329-a86b",
+      "f-20261013-000359-37e2",
+      "f-20261013-000424-5488",
+      "f-20261013-001616-659c",
+      "f-20261013-001650-dfba"
+    ],
+    "runs": [
+      "run-20261012-233812-632b",
+      "run-20261012-234654-1c26",
+      "run-20261012-234654-c1d2",
+      "run-20261012-234654-e95a",
+      "run-20261012-235013-12b9",
+      "run-20261012-235013-5829",
+      "run-20261012-235013-995f",
+      "run-20261013-000332-87f8",
+      "run-20261013-001533-21c8",
+      "run-20261013-001533-4af3",
+      "run-20261013-001533-757c",
+      "run-20261013-002101-0599",
+      "run-20261013-002101-aa1e",
+      "run-20261013-002101-aeb9",
+      "run-20261013-002433-1c3f"
+    ],
+    "experiments": [
+      "exp-20261013-001741-5c5d",
+      "exp-20261013-001741-c9dc"
+    ]
+  }
+}

@@ -47,8 +47,21 @@
       "source": "reviewer"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. Seed 73 (run-20261012-102821-56c8) failed because the worker restarted. That is an infrastructure fault, not a scientific result. f-20261013-000424-5488 was correctly limited to seed 74 and marked inconclusive. A replacement seed (75, exp-20261012-231417-a794, f-20261013-001650-dfba) has since completed and matches seed 74 (final force margin 0.209, late gain +0.107). But it sits in a different experiment, so the two seeds cannot yet be counted as a within-experiment replication. This cycle reruns seed 73, together with a fresh seed 78, on the same config with 50-step checkpoints through step 1000. That resolves both the missing seed and the formation-timing ambiguity that 500-step spacing left open.",
+      "at": "2026-10-13T00:17:41",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. Seed 72's best-layer force margin is 0.0958 at step 90 and 0.1051 at step 100, and it stays >= 0.1 at every later checkpoint (low point 0.1011 at step 140). Layer-2/4 control_spread is <= 0.022, so the bar is 0.1. Persistent force formation for seed 72 is therefore step 100, which agrees with the run's formed_at_step of 200 only as an upper bound, not as the crossing. The correct statement is 'force forms persistently at steps 100-370 (seeds 72/70/71: 100/270/370)'. Force still forms after accel_step in every seed (seed 72: 50 vs 100), but in seed 72 the gap is one 50-step interval, not 150 or more. The 'force well behind accel_step on formation step' wording overstated the gap for that seed. The verdict was already inconclusive (on the force-margin clause), so the status is unchanged. This also connects to the force-timing proposal this cycle, which measures the accel_step-to-force gap at 50-step resolution in longer-trained models.",
+      "at": "2026-10-13T00:17:41",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
