@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-032843-c3f5",
+  "family": "E5",
+  "hypothesis": "Matched-seed N=64 reference arm at high eccentricity. At e in [0, 0.85] the accel_step random control is low, so the margin is not capped by the control. A 4-layer d_model=64 model at N=64 then forms accel_step persistently (first checkpoint after which the margin stays >= required_margin at every later checkpoint, read from the trajectory) within steps 60-200. Its final margin is well above the 0.12-0.17 seen at e <= 0.5, so the 0.1 bar and the half-final-margin measure give formation steps within 30 steps of each other in every seed.",
+  "expected_if_true": "In all 3 seeds: final best-of-5 accel_step control R2 <= 0.45; final accel_step margin >= 0.2; persistent 0.1-bar formation step in [60, 200]; and |0.1-bar step - half-final-margin step| <= 30. accel_step's headroom-normalized margin exceeds force's at the final checkpoint.",
+  "expected_if_false": "In at least 2 of 3 seeds, either the accel_step control R2 stays >= 0.6 or the final margin stays < 0.15 (so high e does not lift the ceiling), or the 0.1-bar and half-final-margin formation steps differ by > 30 steps (so the ceiling artifact persists even with low controls).",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched-seed N=64 reference arm at high eccentricity. At e in [0, 0.85] the accel_step random control is low, so the margin is not capped by the control. A 4-layer d_model=64 model at N=64 then forms accel_step persistently (first checkpoint after which the margin stays >= required_margin at every later checkpoint, read from the trajectory) within steps 60-200. Its final margin is well above the 0.12-0.17 seen at e <= 0.5, so the 0.1 bar and the half-final-margin measure give formation steps within 30 steps of each other in every seed.",
+    "expected_if_true": "In all 3 seeds: final best-of-5 accel_step control R2 <= 0.45; final accel_step margin >= 0.2; persistent 0.1-bar formation step in [60, 200]; and |0.1-bar step - half-final-margin step| <= 30. accel_step's headroom-normalized margin exceeds force's at the final checkpoint.",
+    "expected_if_false": "In at least 2 of 3 seeds, either the accel_step control R2 stays >= 0.6 or the final margin stays < 0.15 (so high e does not lift the ceiling), or the 0.1-bar and half-final-margin formation steps differ by > 30 steps (so the ceiling artifact persists even with low controls).",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.85
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      59,
+      60,
+      61
+    ],
+    "budget": {
+      "max_compute_hours": 0.25
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T03:28:43",
+  "updated_at": "2026-10-12T03:40:18",
+  "verdict": "supported",
+  "estimate_hours": 0.1935,
+  "compute_hours": 0.088,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T03:28:43",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T03:28:43",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T03:28:43",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T03:28:43",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T03:34:09",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T03:40:18",
+      "actor": "agent",
+      "note": "finding f-20261012-034018-5526"
+    }
+  ]
+}

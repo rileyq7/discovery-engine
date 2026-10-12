@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-033410-8d41",
+  "experiment_id": "exp-20261012-032843-ab90",
+  "seed": 61,
+  "status": "completed",
+  "started_at": "2026-10-12T03:37:55",
+  "ended_at": "2026-10-12T03:39:35",
+  "compute_hours": 0.0276,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-033410-8d41",
+  "git_commit": "9f8876b",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 7.147336686690023e-07,
+    "baseline_cv_mse": 3.2398500663089e-07,
+    "val_mse_ratio": 2.2060702009068116,
+    "beats_baseline": false,
+    "train_hours": 0.017715500526958042,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b76cc89de992",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.10822,
+          "control_r2": 0.0843,
+          "control_spread": 0.02521,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.46385,
+          "control_r2": 0.23819,
+          "control_spread": 0.01166,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 60
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.83998,
+          "control_r2": 0.36044,
+          "control_spread": 0.12468,
+          "required_margin": 0.1247,
+          "beats_control": true,
+          "formed_at_step": 20
+        },
+        "energy": {
+          "best_layer": 2,
+          "r2": 0.53357,
+          "control_r2": 0.22711,
+          "control_spread": 0.09907,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 40
+        }
+      }
+    }
+  },
+  "pid": 90295,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b76cc89de992"
+}

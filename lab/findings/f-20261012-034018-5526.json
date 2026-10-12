@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-034018-5526",
+  "claim": "At e in [0, 0.85] and N=64 (4 layers, d_model=64, m2 in [0.1, 1]), all 3 seeds match every expected-if-true condition. Final accel_step R2 at layer 4 is 0.594, 0.570 and 0.507 against best-of-5 controls of 0.333, 0.282 and 0.248, giving margins of 0.261, 0.287 and 0.258 (control_spread 0.017-0.022). Persistent 0.1-bar formation steps read from the trajectory are 60, 60 and 70, and half-final-margin steps are 70, 80 and 90, so the two measures differ by 10-20 steps. Force is far weaker: final R2 0.25-0.32 against controls 0.16-0.21, margin 0.094-0.112, clearing the bar only in seed 59 at step 400. Headroom-normalized margin is 0.34-0.40 for accel_step and 0.11-0.14 for force.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-032843-584b",
+    "run-20261012-032843-2319",
+    "run-20261012-032843-5c57"
+  ],
+  "confidence_note": "All 3 seeds (59, 60, 61) completed 600/600 steps and meet each criterion with room to spare. The tightest margins are a final margin of 0.258 against the 0.20 floor and a formation gap of 20 against the 30 limit. In these runs probes_final.formed_at_step (60/60/70) matches the trajectory, so the off-by-one in q-20261012-032843-df65 does not affect them. There are four limits. (1) The larger margin comes from lower controls, not better decoding. Raw accel_step R2 is only 0.51-0.59, well below the 0.85-0.95 seen at e <= 0.5, so 'not capped' means more headroom, not a stronger representation. Linear probes still miss much of the accel_step variance at high e. (2) The e <= 0.5 comparison (controls 0.71-0.77, margins 0.12-0.17) comes from earlier experiments. If those used a different m2 range or seeds, the drop in control R2 cannot be credited to eccentricity alone. (3) Formation at steps 60-70 happens at val_mse_ratio 2.2-2.7, about 8-10% of each run's step-0 value, not the 2-3% seen at e <= 0.5. So the 'fixed fraction of step-0 loss' account of formation does not carry over across eccentricity ranges. (4) Final val_mse_ratio is 0.13, still falling at step 600, so final margins and the half-final step could shift with longer training. Two things would change the verdict: a matched e <= 0.5 arm with the same m2 range and seeds showing similarly low controls, or longer training moving the half-final-margin step more than 30 steps from the 0.1-bar step.",
+  "created_at": "2026-10-12T03:40:18",
+  "experiment_id": "exp-20261012-032843-c3f5",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T03:40:18",
+      "actor": "agent"
+    }
+  ]
+}

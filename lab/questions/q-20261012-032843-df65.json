@@ -1,0 +1,10 @@
+{
+  "id": "q-20261012-032843-df65",
+  "text": "Why does probes_final.formed_at_step lag the per-checkpoint trajectory by one checkpoint in at least two runs (seed 51 at N=256: trajectory 110, formed_at_step 120; seed 48 at N=16: trajectory 70, formed_at_step 75)? Is it an off-by-one, or an undocumented persistence window? Until this is resolved, every E5 formation step should be read from the trajectory, and earlier findings that quote formed_at_step (including f-20261012-030203-1224 and f-20261012-030313-4d1f) should be re-checked against their trajectories.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261012-034018-5526",
+    "f-20261012-034134-5e82"
+  ],
+  "created_at": "2026-10-12T03:28:43"
+}

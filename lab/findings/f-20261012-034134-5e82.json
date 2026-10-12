@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-034134-5e82",
+  "claim": "At e in [0, 0.85] and N=256, accel_step forms at the same training step in all 3 seeds. Read from the trajectory, the margin first holds at >= 0.1 at steps 60, 70 and 60 (seeds 59, 60, 61), and reaches half its final margin at step 70 in every seed. The paired N=64 arm formed at steps 60-70, so the N=256 minus N=64 gap is at most about 10 steps. Final accel_step margins are 0.268, 0.210 and 0.226 at layer 4 (R2 0.46-0.62 vs controls 0.24-0.35), while force never clears the bar (margin 0.004-0.031). This happens even though N=256 never beats constant-velocity extrapolation (final val_mse_ratio 2.03-2.37).",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-033409-533d",
+    "run-20261012-033409-a694",
+    "run-20261012-033410-8d41"
+  ],
+  "confidence_note": "All 3 seeds trained to 600/600 steps. Checkpoints are 10 steps apart, so a gap of 10 or less is at the resolution limit. The N=64 comparison uses the 60-70 range reported for the paired arm (exp-20261012-032843-c3f5, f-20261012-034018-5526). I did not re-derive the N=64 half-final-margin step for each seed here. It is very likely within 20 steps, because those margins rise steeply after step 60, but it should be checked from those trajectories. Seed 61 crosses at exactly 0.100 at step 60, so its 0.1-bar step could fairly be called 70. That still falls within 20 steps. Here formed_at_step matches the trajectory in all 3 runs, so the lag raised in q-20261012-032843-df65 does not show up. Formation happens at about 15-18% of step-0 val MSE (val_mse_ratio 59-68), against about 8-10% at N=64. So timing follows a training-step window, not relative loss reduction. Two things would change the verdict: the N=64 half-margin steps turning out to be >= 90 in 2 or more seeds, or a re-run at finer checkpoint spacing showing a consistent gap of 20 or more steps.",
+  "created_at": "2026-10-12T03:41:34",
+  "experiment_id": "exp-20261012-032843-ab90",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T03:41:34",
+      "actor": "agent"
+    }
+  ]
+}

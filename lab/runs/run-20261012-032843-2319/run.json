@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-032843-2319",
+  "experiment_id": "exp-20261012-032843-c3f5",
+  "seed": 60,
+  "status": "completed",
+  "started_at": "2026-10-12T03:28:46",
+  "ended_at": "2026-10-12T03:30:43",
+  "compute_hours": 0.0327,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-032843-2319",
+  "git_commit": "9f8876b",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.001862841328298e-05,
+    "baseline_cv_mse": 7.222957310714121e-05,
+    "val_mse_ratio": 0.13870535270119788,
+    "beats_baseline": true,
+    "train_hours": 0.022772135072284275,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b6d31e2cb804",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.25004,
+          "control_r2": 0.1558,
+          "control_spread": 0.02389,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.59441,
+          "control_r2": 0.33319,
+          "control_spread": 0.02212,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 60
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.82349,
+          "control_r2": 0.27456,
+          "control_spread": 0.22481,
+          "required_margin": 0.2248,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.65769,
+          "control_r2": 0.264,
+          "control_spread": 0.19382,
+          "required_margin": 0.1938,
+          "beats_control": true,
+          "formed_at_step": 40
+        }
+      }
+    }
+  },
+  "pid": 87786,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b6d31e2cb804"
+}

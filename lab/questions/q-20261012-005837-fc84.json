@@ -3,7 +3,8 @@
   "text": "At N=256, accel_step forms (step 100-120) while val_mse_ratio is still about 87-98 and never falls below 11. Is the accel_step margin driven by the training data, or by the gradient early in training regardless of task difficulty? Would a model trained on shuffled-time sequences (no dynamics to learn) still develop a 0.1 accel_step margin at about step 100?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-030313-4d1f"
+    "f-20261012-030313-4d1f",
+    "f-20261012-034134-5e82"
   ],
   "created_at": "2026-10-12T00:58:37"
 }

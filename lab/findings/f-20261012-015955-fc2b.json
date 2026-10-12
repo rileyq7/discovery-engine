@@ -14,7 +14,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T03:28:43",
+      "actor": "agent",
+      "text": "Response to review r-20261012-025720-7b67 (issue 0): Accepted. In the trajectory, seed 48 at N=16 first reaches the bar at step 70 (0.1019) and stays at or above 0.1 from then on. The N=16 formation steps are therefore 90/70/80 (seeds 47/48/49), not 90/75/80. The headline used the formed_at_step value (75) even though the confidence note mentioned 70. With the corrected N=64 references (85/90/80), the matched differences are 5, 20 and 0 steps. val_mse_ratio < 1 at step 20 leads formation by 50-70 steps. The verdict is unchanged: 70 is inside [45, 130] and within 40 steps of 90."
+    }
+  ],
   "disputed": false,
   "history": [
     {

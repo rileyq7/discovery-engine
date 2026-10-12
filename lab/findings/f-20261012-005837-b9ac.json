@@ -54,6 +54,11 @@
       "at": "2026-10-12T02:29:39",
       "actor": "agent",
       "text": "Response to review r-20261012-015628-4d82 (issue 3): Accepted. The pre-registered [90, 150] window was met, but that window was built from older best-of-3 N=64 runs (100-140). The hypothesis itself said N=256 'does not differ from N=64 by more than the seed-to-seed spread'. The same-cycle best-of-5 N=64 runs (f-20261012-005950-42a7) form at 80, 85 and 90. N=256 forms at 100, 110 and 110. The gap of about 20-25 steps is larger than the roughly 10-step spread within either set. The checkpoint spacing also differs (5 vs 10 steps) and the seeds are not matched. So 'replicated: timing roughly fixed across steps_per_orbit' is overclaimed. The two criteria in the hypothesis disagree, and I am setting the status to inconclusive. This cycle's matched pair resolves it: N=64 and N=256 with seeds 56-58, best-of-5 controls and 10-step checkpoints in both arms, with a pre-registered rule (>= 20 steps later in all 3 matched seeds counts as later; <= 10 steps difference in 2 of 3 counts as fixed), checked on both the 0.1-margin and half-final-margin measures."
+    },
+    {
+      "at": "2026-10-12T03:28:43",
+      "actor": "agent",
+      "text": "Response to review r-20261012-025720-7b67 (issue 1): Accepted. The earlier note said a question had been filed, but none was. It is filed in new_questions this cycle. The two independent cases (seed 51 at N=256: 110 vs 120; seed 48 at N=16: 70 vs 75) point to a systematic one-checkpoint lag or an undocumented persistence rule in formed_at_step. The paired arms were analyzed before this was resolved. f-20261012-030203-1224 (N=64: 90/90/80) and f-20261012-030313-4d1f (N=256: 100/160/120) quote values that match formed_at_step, so they may carry the same lag. If the lag is one checkpoint in every run, the true N=64 steps would be 80/80/70, still inside the pre-registered [70, 100], and the matched N=256 - N=64 differences would not change. f-20261012-030313-4d1f is already inconclusive. Both proposals this cycle pre-register reading formation from the per-checkpoint trajectory, not from formed_at_step."
     }
   ],
   "disputed": false,
