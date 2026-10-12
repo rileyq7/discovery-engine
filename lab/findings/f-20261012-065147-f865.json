@@ -2,7 +2,7 @@
   "id": "f-20261012-065147-f865",
   "claim": "At e<=0.6 (N=64, seeds 70-72, 10-step checkpoints), the layer-4 accel_step best-of-5 control R2 is 0.667-0.682 in all 3 seeds, inside the predicted [0.58, 0.70] band. The other two predictions were met in only some seeds. Final accel_step margin is 0.187 (seed 71), 0.191 (seed 70) and 0.204 (seed 72), so only seed 72 reaches the 0.20 bar, though no seed falls to the <=0.18 'false' bar. Raw R2 is 0.868-0.871 in all 3 seeds. The persistent 0.1-bar formation step read from the trajectories is 80 (seed 71, margin 0.113), 70 or 80 (seed 70: exactly 0.100 at step 70, while formed_at_step says 80) and 60 (seed 72). Force is much weaker than accel_step: R2 0.46-0.58 at layer 4 with margins of 0.075 (fails), 0.105 and 0.140.",
   "verdict": "inconclusive",
-  "status": "inconclusive",
+  "status": "refuted",
   "evidence_run_ids": [
     "run-20261012-064411-1575",
     "run-20261012-064411-8478",
@@ -14,13 +14,30 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T09:27:22",
+      "actor": "agent",
+      "text": "Response to review r-20261012-070236-2512 (issue 0): Accepted. Seed 70's raw margin at step 70 is 0.0998 (R2 0.7786 vs control 0.6788), which is below the >= 0.1 bar, so its persistent formation step is 80 and agrees with formed_at_step. There is no lag in this run, and calling the step 'exactly 0.100' and 'undecidable' was a rounding misread. With seed 71 also at 80, 2 of 3 seeds form at step >= 80, which meets expected_if_false (formation <= 75 fails in 2 of 3 seeds). The correct verdict is refuted: at e<=0.6 the formation step has not shifted to the high-e value of 60-70. The control-R2 prediction (0.667-0.682, inside [0.58, 0.70]) did hold in all 3 seeds, and that part stands as an observation. Open question q-20261012-065147-5d5b starts from the same misreading. Seed 70 should be removed from the one-checkpoint-lag cases cited in q-20261012-032843-df65. This cycle's matched e<=0.5 arm on seeds 70-72 completes the sweep on the same seeds."
+    },
+    {
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent",
+      "text": "Response to review r-20261012-070236-2512 (issue 0): Accepted. Seed 70's unrounded margin at step 70 is 0.0998 (R2 0.7786 vs control 0.6788), which is below the >= 0.1 bar. Its persistent formation step is therefore 80, the same as formed_at_step, so there is no lag here. Seeds 70 and 71 both form at step 80, which is >= 80 in 2 of 3 seeds and meets expected_if_false as written. The margin criterion (>= 0.20) also fails in 2 of 3 seeds. The correct verdict is refuted: at e<=0.6, margin and timing have not yet switched to their high-e values. The control-R2 band prediction did hold in all 3 seeds, so control R2 is intermediate while timing still looks like the low-e regime. q-20261012-065147-5d5b rests on the same misreading and should be closed as answered (no lag, the margin was 0.0998). This cycle's seed-matched e<=0.5 and e<=0.85 arms complete the sweep."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "inconclusive",
       "at": "2026-10-12T06:51:47",
       "actor": "agent"
+    },
+    {
+      "status": "refuted",
+      "at": "2026-10-12T09:27:22",
+      "actor": "agent",
+      "note": "corrected after review r-20261012-070236-2512 issue 0"
     }
   ]
 }

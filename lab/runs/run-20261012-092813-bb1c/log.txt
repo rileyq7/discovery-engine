@@ -1,0 +1,79 @@
+[09:32:03] experiment exp-20261012-092812-c341 (E5) seed 70: Matched low-e arm of the seed 70-72 eccentricity sweep. From e<=0.5 to e<=0.6, the accel_step margin increase comes from the random control falling, not from better decoding. At e in [0, 0.5] (N=64, 4 layers, d_model=64, m2 in [0.1, 1], seeds 70-72), raw layer-4 accel_step R2 matches the seed-matched e<=0.6 values (0.868-0.871), while the best-of-5 control R2 is higher (>= 0.70 vs 0.667-0.682).
+[09:32:03] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+[09:32:05] step 0: val_mse=1.954e-03 cv_baseline=2.554e-05 ratio=76.511
+[09:32:06] step 10: val_mse=6.544e-04 cv_baseline=2.554e-05 ratio=25.619
+[09:32:08] step 20: val_mse=4.383e-04 cv_baseline=2.554e-05 ratio=17.159
+[09:32:09] step 30: val_mse=2.902e-04 cv_baseline=2.554e-05 ratio=11.362
+[09:32:11] step 40: val_mse=1.990e-04 cv_baseline=2.554e-05 ratio=7.789
+[09:32:12] step 50: val_mse=1.484e-04 cv_baseline=2.554e-05 ratio=5.808
+[09:32:13] step 60: val_mse=1.130e-04 cv_baseline=2.554e-05 ratio=4.423
+[09:32:15] step 70: val_mse=8.557e-05 cv_baseline=2.554e-05 ratio=3.350
+[09:32:16] step 80: val_mse=7.164e-05 cv_baseline=2.554e-05 ratio=2.805
+[09:32:18] step 90: val_mse=5.783e-05 cv_baseline=2.554e-05 ratio=2.264
+[09:32:19] step 100: val_mse=4.542e-05 cv_baseline=2.554e-05 ratio=1.778
+[09:32:20] step 110: val_mse=3.831e-05 cv_baseline=2.554e-05 ratio=1.500
+[09:32:22] step 120: val_mse=3.545e-05 cv_baseline=2.554e-05 ratio=1.388
+[09:32:24] step 130: val_mse=3.554e-05 cv_baseline=2.554e-05 ratio=1.391
+[09:32:25] step 140: val_mse=3.883e-05 cv_baseline=2.554e-05 ratio=1.520
+[09:32:26] step 150: val_mse=3.020e-05 cv_baseline=2.554e-05 ratio=1.182
+[09:32:28] step 160: val_mse=2.590e-05 cv_baseline=2.554e-05 ratio=1.014
+[09:32:29] step 170: val_mse=2.239e-05 cv_baseline=2.554e-05 ratio=0.876
+[09:32:30] step 180: val_mse=2.082e-05 cv_baseline=2.554e-05 ratio=0.815
+[09:32:31] step 190: val_mse=1.790e-05 cv_baseline=2.554e-05 ratio=0.701
+[09:32:32] step 200: val_mse=2.134e-05 cv_baseline=2.554e-05 ratio=0.835
+[09:32:33] step 210: val_mse=1.886e-05 cv_baseline=2.554e-05 ratio=0.738
+[09:32:34] step 220: val_mse=1.571e-05 cv_baseline=2.554e-05 ratio=0.615
+[09:32:36] step 230: val_mse=1.509e-05 cv_baseline=2.554e-05 ratio=0.591
+[09:32:37] step 240: val_mse=1.431e-05 cv_baseline=2.554e-05 ratio=0.560
+[09:32:38] step 250: val_mse=1.445e-05 cv_baseline=2.554e-05 ratio=0.566
+[09:32:39] step 260: val_mse=1.488e-05 cv_baseline=2.554e-05 ratio=0.583
+[09:32:40] step 270: val_mse=1.371e-05 cv_baseline=2.554e-05 ratio=0.537
+[09:32:42] step 280: val_mse=1.276e-05 cv_baseline=2.554e-05 ratio=0.499
+[09:32:43] step 290: val_mse=1.123e-05 cv_baseline=2.554e-05 ratio=0.440
+[09:32:46] step 300: val_mse=1.138e-05 cv_baseline=2.554e-05 ratio=0.446
+[09:32:47] step 310: val_mse=9.305e-06 cv_baseline=2.554e-05 ratio=0.364
+[09:32:48] step 320: val_mse=8.339e-06 cv_baseline=2.554e-05 ratio=0.326
+[09:32:49] step 330: val_mse=8.329e-06 cv_baseline=2.554e-05 ratio=0.326
+[09:32:51] step 340: val_mse=7.956e-06 cv_baseline=2.554e-05 ratio=0.311
+[09:32:52] step 350: val_mse=8.655e-06 cv_baseline=2.554e-05 ratio=0.339
+[09:32:53] step 360: val_mse=7.185e-06 cv_baseline=2.554e-05 ratio=0.281
+[09:32:54] step 370: val_mse=6.981e-06 cv_baseline=2.554e-05 ratio=0.273
+[09:32:55] step 380: val_mse=6.160e-06 cv_baseline=2.554e-05 ratio=0.241
+[09:32:56] step 390: val_mse=7.675e-06 cv_baseline=2.554e-05 ratio=0.300
+[09:32:57] step 400: val_mse=6.425e-06 cv_baseline=2.554e-05 ratio=0.252
+[09:32:59] step 410: val_mse=5.947e-06 cv_baseline=2.554e-05 ratio=0.233
+[09:33:00] step 420: val_mse=6.027e-06 cv_baseline=2.554e-05 ratio=0.236
+[09:33:01] step 430: val_mse=5.506e-06 cv_baseline=2.554e-05 ratio=0.216
+[09:33:02] step 440: val_mse=5.322e-06 cv_baseline=2.554e-05 ratio=0.208
+[09:33:03] step 450: val_mse=5.557e-06 cv_baseline=2.554e-05 ratio=0.218
+[09:33:04] step 460: val_mse=5.350e-06 cv_baseline=2.554e-05 ratio=0.209
+[09:33:06] step 470: val_mse=5.289e-06 cv_baseline=2.554e-05 ratio=0.207
+[09:33:07] step 480: val_mse=4.986e-06 cv_baseline=2.554e-05 ratio=0.195
+[09:33:08] step 490: val_mse=4.973e-06 cv_baseline=2.554e-05 ratio=0.195
+[09:33:09] step 500: val_mse=4.648e-06 cv_baseline=2.554e-05 ratio=0.182
+[09:33:10] step 510: val_mse=4.181e-06 cv_baseline=2.554e-05 ratio=0.164
+[09:33:11] step 520: val_mse=4.279e-06 cv_baseline=2.554e-05 ratio=0.168
+[09:33:13] step 530: val_mse=4.218e-06 cv_baseline=2.554e-05 ratio=0.165
+[09:33:14] step 540: val_mse=4.200e-06 cv_baseline=2.554e-05 ratio=0.164
+[09:33:15] step 550: val_mse=3.975e-06 cv_baseline=2.554e-05 ratio=0.156
+[09:33:16] step 560: val_mse=4.082e-06 cv_baseline=2.554e-05 ratio=0.160
+[09:33:17] step 570: val_mse=3.813e-06 cv_baseline=2.554e-05 ratio=0.149
+[09:33:19] step 580: val_mse=4.096e-06 cv_baseline=2.554e-05 ratio=0.160
+[09:33:20] step 590: val_mse=3.822e-06 cv_baseline=2.554e-05 ratio=0.150
+[09:33:21] step 600: val_mse=3.601e-06 cv_baseline=2.554e-05 ratio=0.141
+[09:33:21] training done in 1.3 min; beats constant-velocity baseline: True
+[09:33:26] random-model controls (best of 5): force=0.18/0.53/0.54/0.54/0.53, accel_step=0.64/0.74/0.76/0.77/0.77, distance=0.01/0.30/0.51/0.58/0.53, energy=-0.01/0.12/0.29/0.37/0.40
+[09:33:27] probes @ step 0: best force R2=0.506 (layer 2)
+[09:33:32] probes @ step 50: best force R2=0.580 (layer 4)
+[09:33:41] probes @ step 100: best force R2=0.593 (layer 4)
+[09:33:50] probes @ step 150: best force R2=0.582 (layer 4)
+[09:33:58] probes @ step 200: best force R2=0.588 (layer 4)
+[09:34:05] probes @ step 250: best force R2=0.598 (layer 4)
+[09:34:11] probes @ step 300: best force R2=0.603 (layer 4)
+[09:34:17] probes @ step 350: best force R2=0.605 (layer 4)
+[09:34:23] probes @ step 400: best force R2=0.611 (layer 4)
+[09:34:27] probes @ step 450: best force R2=0.615 (layer 4)
+[09:34:39] probes @ step 500: best force R2=0.617 (layer 4)
+[09:34:43] probes @ step 550: best force R2=0.619 (layer 4)
+[09:34:50] probes @ step 600: best force R2=0.621 (layer 4)
+[09:34:51] run complete in 2.8 min

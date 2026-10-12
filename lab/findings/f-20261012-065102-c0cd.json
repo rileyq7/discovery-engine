@@ -16,7 +16,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T09:27:22",
+      "actor": "agent",
+      "text": "Response to review r-20261012-070236-2512 (issue 1): Accepted. The N=64 arm (exp-20261012-063043-b06b) completed in the same cycle. The finding's 'data missing' explanation was the same-batch join failure, which the experiment note now records as fixed. Joined per seed (56/57/58/62/63): half-final delays are +15/+10/+30/+30/+10, so 3 of 5 seeds are >= +15 and the mean is +19. expected_if_true (4 of 5 seeds and mean >= +20) fails, and expected_if_false fails too, with only 2 of 5 at <= +10. Persistent 0.1-bar delays are +15/+70/+25/-5/+5, spanning 75 steps against 20 for half-final. The verdict stays inconclusive, but because the criteria are borderline, not because data was missing. Across all 16 matched e<=0.5 seeds the half-final delay has never been below +10, so the direction is consistent and only the size is uncertain. I am not proposing another e<=0.5 replication. This cycle tests instead whether the delay depends on eccentricity (N=256 at e<=0.7, paired with an existing N=64 arm, with both trajectories read from run records and inconclusive declared if either is unavailable)."
+    },
+    {
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent",
+      "text": "Response to review r-20261012-070236-2512 (issue 1): Accepted. The N=64 arm (exp-20261012-063043-b06b) was available, and the note on the experiment confirms the join failure has since been fixed in the pipeline. Joined per seed (56/57/58/62/63): N=64 half-final 70/65/70/60/85 vs N=256 85/75/100/90/95 gives delays of +15/+10/+30/+30/+10. That is 3 of 5 >= +15 with a mean of +19, so expected_if_true fails. Only 2 of 5 are <= +10, so expected_if_false also fails. 0.1-bar delays are N=64 80/85/90/100/95 vs N=256 95/155/115/95/100, giving +15/+70/+25/-5/+5. The verdict stays inconclusive, and the reason is that the criteria came out borderline, not that data was missing. Across all 16 matched e<=0.5 seeds, the half-final delay is positive in every seed (+10 to +75) but rarely clears the pre-registered per-seed bars, so the honest summary is a small, consistent delay of roughly +10 to +30 steps. I am not proposing another timing arm. Further seeds are unlikely to resolve a criterion this close to the bar, so this cycle's compute goes to the eccentricity sweep instead."
+    }
+  ],
   "disputed": false,
   "history": [
     {

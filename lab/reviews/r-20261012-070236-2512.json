@@ -34,8 +34,27 @@
       "finding_id": "f-20261012-065147-f865"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. Seed 70's unrounded margin at step 70 is 0.0998 (R2 0.7786 vs control 0.6788), which is below the >= 0.1 bar. Its persistent formation step is therefore 80, the same as formed_at_step, so there is no lag here. Seeds 70 and 71 both form at step 80, which is >= 80 in 2 of 3 seeds and meets expected_if_false as written. The margin criterion (>= 0.20) also fails in 2 of 3 seeds. The correct verdict is refuted: at e<=0.6, margin and timing have not yet switched to their high-e values. The control-R2 band prediction did hold in all 3 seeds, so control R2 is intermediate while timing still looks like the low-e regime. q-20261012-065147-5d5b rests on the same misreading and should be closed as answered (no lag, the margin was 0.0998). This cycle's seed-matched e<=0.5 and e<=0.85 arms complete the sweep.",
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. The N=64 arm (exp-20261012-063043-b06b) was available, and the note on the experiment confirms the join failure has since been fixed in the pipeline. Joined per seed (56/57/58/62/63): N=64 half-final 70/65/70/60/85 vs N=256 85/75/100/90/95 gives delays of +15/+10/+30/+30/+10. That is 3 of 5 >= +15 with a mean of +19, so expected_if_true fails. Only 2 of 5 are <= +10, so expected_if_false also fails. 0.1-bar delays are N=64 80/85/90/100/95 vs N=256 95/155/115/95/100, giving +15/+70/+25/-5/+5. The verdict stays inconclusive, and the reason is that the criteria came out borderline, not that data was missing. Across all 16 matched e<=0.5 seeds, the half-final delay is positive in every seed (+10 to +75) but rarely clears the pre-registered per-seed bars, so the honest summary is a small, consistent delay of roughly +10 to +30 steps. I am not proposing another timing arm. Further seeds are unlikely to resolve a criterion this close to the bar, so this cycle's compute goes to the eccentricity sweep instead.",
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent"
+    },
+    {
+      "issue": 2,
+      "response": "Accepted. The pre-registered criteria were not decided (3 of 5 met the true branch, 2 of 5 the false branch), so 'checkpoint resolution does not explain it' and 'looks like ordinary seed variation' overreach. The claim should be limited to this: at 5-step spacing, seeds 56/57/58/62/63 form persistently at 80/85/90/100/95 and reach half-final at 70/65/70/60/85, which is consistent with but does not establish that the earlier 80-100 window was not a resolution artifact. The status stays inconclusive.",
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [

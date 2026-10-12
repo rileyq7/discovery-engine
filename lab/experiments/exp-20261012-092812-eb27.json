@@ -1,0 +1,93 @@
+{
+  "id": "exp-20261012-092812-eb27",
+  "family": "E5",
+  "hypothesis": "Matched high-e arm of the seed 70-72 eccentricity sweep. Raw linear decodability of accel_step holds near 0.80-0.87 up to e<=0.7 and drops sharply only above that. At e in [0, 0.85] (N=64, 4 layers, d_model=64, m2 in [0.1, 1], seeds 70-72), raw layer-4 accel_step R2 falls to <= 0.62 against the seed-matched e<=0.7 values (0.799-0.813), and the control falls to 0.24-0.36.",
+  "expected_if_true": "In all 3 seeds, final best-layer accel_step R2 is <= 0.62, at least 0.17 below the same seed's e<=0.7 value (seed 70: 0.813, seed 71: 0.799, seed 72: 0.801). The control R2 is in [0.22, 0.38] and the margin is >= 0.20. Force does not reach a margin >= 0.15 in any seed.",
+  "expected_if_false": "In at least 2 of 3 seeds, raw accel_step R2 is >= 0.70, within 0.11 of the same seed's e<=0.7 value. That would make the decline gradual rather than concentrated above e=0.7, and would show that seeds 59-61's 0.51-0.59 at e<=0.85 do not carry over to these seeds. Mixed results, or a run below 80% completion, count as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched high-e arm of the seed 70-72 eccentricity sweep. Raw linear decodability of accel_step holds near 0.80-0.87 up to e<=0.7 and drops sharply only above that. At e in [0, 0.85] (N=64, 4 layers, d_model=64, m2 in [0.1, 1], seeds 70-72), raw layer-4 accel_step R2 falls to <= 0.62 against the seed-matched e<=0.7 values (0.799-0.813), and the control falls to 0.24-0.36.",
+    "expected_if_true": "In all 3 seeds, final best-layer accel_step R2 is <= 0.62, at least 0.17 below the same seed's e<=0.7 value (seed 70: 0.813, seed 71: 0.799, seed 72: 0.801). The control R2 is in [0.22, 0.38] and the margin is >= 0.20. Force does not reach a margin >= 0.15 in any seed.",
+    "expected_if_false": "In at least 2 of 3 seeds, raw accel_step R2 is >= 0.70, within 0.11 of the same seed's e<=0.7 value. That would make the decline gradual rather than concentrated above e=0.7, and would show that seeds 59-61's 0.51-0.59 at e<=0.85 do not carry over to these seeds. Mixed results, or a run below 80% completion, count as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.85
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      70,
+      71,
+      72
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T09:28:12",
+  "updated_at": "2026-10-12T09:28:13",
+  "verdict": null,
+  "estimate_hours": 0.1935,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T09:28:12",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T09:28:13",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

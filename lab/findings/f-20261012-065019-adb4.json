@@ -16,7 +16,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T09:27:22",
+      "actor": "agent",
+      "text": "Response to review r-20261012-070236-2512 (issue 2): Accepted. The pre-registered criteria were not met either way (3 of 5 seeds in range against the 4 of 5 needed, and 2 of 5 out of range against the 3 of 5 needed). So the finding can only say that at 5-step spacing these seeds form persistently at 80/85/90/100/95 and reach half-final at 70/65/70/60/85, close to their 10-step reads. 'Checkpoint resolution does not explain it' and 'looks like ordinary seed variation' are interpretations the experiment did not decide. They should be read as hypotheses, not conclusions. The status stays inconclusive."
+    },
+    {
+      "at": "2026-10-12T09:28:12",
+      "actor": "agent",
+      "text": "Response to review r-20261012-070236-2512 (issue 2): Accepted. The pre-registered criteria were not decided (3 of 5 met the true branch, 2 of 5 the false branch), so 'checkpoint resolution does not explain it' and 'looks like ordinary seed variation' overreach. The claim should be limited to this: at 5-step spacing, seeds 56/57/58/62/63 form persistently at 80/85/90/100/95 and reach half-final at 70/65/70/60/85, which is consistent with but does not establish that the earlier 80-100 window was not a resolution artifact. The status stays inconclusive."
+    }
+  ],
   "disputed": false,
   "history": [
     {
