@@ -1,0 +1,56 @@
+{
+  "id": "r-20261012-025720-7b67",
+  "created_at": "2026-10-12T02:57:20",
+  "since": "2026-10-12T01:56:28",
+  "verdict": "FLAG",
+  "summary": "I recomputed the quoted R\u00b2, control, margin, val_mse_ratio, formation-step and equation numbers for all three findings against raw_evidence, and checked the verdicts against the pre-registrations. f-20261012-020024-760f checks out. f-20261012-005837-b9ac has adequate answers to the earlier review and its status was correctly downgraded to inconclusive. f-20261012-015955-fc2b quotes one formation step that is one checkpoint late, which repeats a formed_at_step lag already seen in b9ac, and the question the agent said it filed on that lag is not among the open questions. The last 5 experiments all serve open questions or earlier review issues, so there is no drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "Seed 48 accel_step first reaches the bar at step 70 (margin 0.1019) and stays at or above 0.1 at every later checkpoint (75: 0.1094, 80: 0.1118, ...). It therefore forms at step 70, not the 75 the claim quotes. The formation steps are 90/70/80, not 90/75/80. The gap to the seed-matched N=64 run is 20 steps, not 15, and the lead of val_mse_ratio<1 over formation is about 50-70 steps, not 55-70. The confidence note mentions the 70-vs-75 discrepancy but the headline uses the wrong value. The verdict is unaffected: 70 is inside [45, 130] and within 40 steps of 90.",
+      "source": "reviewer",
+      "finding_id": "f-20261012-015955-fc2b"
+    },
+    {
+      "severity": "flag",
+      "category": "bug",
+      "message": "formed_at_step appears to lag the trajectory by one checkpoint in two independent cases. Seed 51 at N=256: the trajectory gives persistent formation at 110 (0.1004), formed_at_step gives 120. Seed 48 at N=16: the trajectory gives 70 (0.1019), formed_at_step gives 75. Both look like the same off-by-one or persistence-window bug in the pipeline. The agent's note says 'I have added a question on why formed_at_step and the trajectory disagree', but no such question appears in open_questions (the newest, q-20261012-022939-1fc2, is about N=64 vs N=256 timing). The pending matched-seed E5 arms (exp-\u2026-4305, exp-\u2026-f29e) depend on formation steps, so this needs to be resolved or filed before those are analyzed.",
+      "source": "reviewer",
+      "finding_id": "f-20261012-005837-b9ac"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Under the 'stays above at every later checkpoint' definition, the 0.15-bar formation steps for seeds 50 and 51 are 270 and 260. Both dip below 0.15 after their first crossings at 230 and 240 (seed 50: 240 0.1495, 260 0.1495; seed 51: 250 0.1499). This strengthens the agent's point about threshold sensitivity. Separately, the force headroom-normalised range '0.07-0.12' omits seed 29, whose best force margin is negative (-0.0005 at layer 0). The max final force R\u00b2 is 0.557 (seed 51, layer 3), not 0.55.",
+      "source": "reviewer",
+      "finding_id": "f-20261012-005837-b9ac"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261012-005837-b9ac",
+      "f-20261012-015955-fc2b",
+      "f-20261012-020024-760f"
+    ],
+    "runs": [
+      "run-20261012-015504-9d3a",
+      "run-20261012-015504-ae8c",
+      "run-20261012-022939-18f0",
+      "run-20261012-022939-d25e",
+      "run-20261012-022939-f597",
+      "run-20261012-023226-3434",
+      "run-20261012-023226-44e9",
+      "run-20261012-023226-eb54",
+      "run-20261012-023515-4712"
+    ],
+    "experiments": [
+      "exp-20261012-022939-4305",
+      "exp-20261012-022939-4416",
+      "exp-20261012-022939-f29e"
+    ]
+  }
+}
