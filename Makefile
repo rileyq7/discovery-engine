@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PY := backend/.venv/bin/python
 export PYTHONPATH := $(CURDIR)/backend
 
-.PHONY: setup dev api worker ui loop cycle review review-loop check-billing test test-all build e1
+.PHONY: setup dev up down status api worker ui loop cycle review review-loop check-billing test test-all build e1
 
 setup:
 	cd backend && uv venv -q --python 3.12 .venv && uv pip install -q --python .venv/bin/python -r requirements.txt
@@ -55,3 +55,10 @@ build:
 
 e1:
 	cd backend && .venv/bin/python -m engine.cli run ../configs/e1.json
+
+up:  ## start the lab in the background (scripts/lab-ctl)
+	@scripts/lab-ctl start
+down:
+	@scripts/lab-ctl stop
+status:
+	@scripts/lab-ctl status

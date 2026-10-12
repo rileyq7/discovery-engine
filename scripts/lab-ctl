@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# Run Discovery Engine in the background: API, worker, UI, research loop and reviewer.
+#   scripts/lab-ctl start [--no-loop]   start whatever isn't already running
+#   scripts/lab-ctl stop                stop everything (a run in progress is marked failed on next start)
+#   scripts/lab-ctl status              what's running, disk, loop state
+# Logs go to runs/{api,worker,ui,loop,review}.log.
+set -uo pipefail
+cd "$(dirname "$0")/.."
+ROOT=$(pwd)
+LOGS="$ROOT/runs"
+MIN_FREE_GB=5
+mkdir -p "$LOGS"
+
+# name | pgrep pattern
+SERVICES=(
+  "api|uvicorn app.main:app"
+  "worker|-m engine.worker"
+  "ui|vite --port 5173"
+  "loop|-m agent.cycle --forever"
+  "review|-m agent.review --forever"
+)
+
+pid_of() { pgrep -f -- "$1" | head -1; }
+free_gb() { df -g "$ROOT" | awk 'NR==2 {print $4}'; }
+
+start_one() {
+  local name=$1
+  case $name in
+    api)    (cd backend && nohup .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 >>"$LOGS/api.log" 2>&1 &) ;;
+    worker) (cd backend && nohup .venv/bin/python -m engine.worker >>"$LOGS/worker.log" 2>&1 &) ;;
+    ui)     (cd frontend && nohup npx vite --port 5173 --strictPort >>"$LOGS/ui.log" 2>&1 &) ;;
+    loop)   (cd backend && nohup caffeinate -i .venv/bin/python -m agent.cycle --forever --first-delay 2 >>"$LOGS/loop.log" 2>&1 &) ;;
+    review) (cd backend && nohup caffeinate -i .venv/bin/python -m agent.review --forever --first-delay 30 >>"$LOGS/review.log" 2>&1 &) ;;
+  esac
+}
+
+status() {
+  for s in "${SERVICES[@]}"; do
+    local name=${s%%|*} pat=${s#*|} pid
+    pid=$(pid_of "$pat")
+    if [ -n "$pid" ]; then printf "  %-7s running (pid %s)\n" "$name" "$pid"; else printf "  %-7s stopped\n" "$name"; fi
+  done
+  echo "  disk    $(free_gb) GB free"
+  [ -f lab/PAUSED ] && echo "  NOTE    lab is paused: $(head -1 lab/PAUSED)"
+  curl -s -m 2 -o /dev/null -w "  UI      http://localhost:5173 (HTTP %{http_code})\n" localhost:5173 || true
+}
+
+case "${1:-status}" in
+  start)
+    make -s check-billing || exit 1
+    [ "$(free_gb)" -lt "$MIN_FREE_GB" ] && { echo "Only $(free_gb) GB free; free some disk space first (need ${MIN_FREE_GB} GB)."; exit 1; }
+    for s in "${SERVICES[@]}"; do
+      name=${s%%|*}; pat=${s#*|}
+      if [ "${2:-}" = "--no-loop" ] && { [ "$name" = loop ] || [ "$name" = review ]; }; then continue; fi
+      if [ -n "$(pid_of "$pat")" ]; then echo "  $name already running"; continue; fi
+      start_one "$name"
+      [ "$name" = api ] && sleep 3
+    done
+    sleep 5
+    status ;;
+  stop)
+    for s in "${SERVICES[@]}"; do
+      pat=${s#*|}
+      pkill -f -- "$pat" 2>/dev/null
+    done
+    pkill -f -- "-m engine.run_job" 2>/dev/null
+    sleep 2
+    status ;;
+  status) status ;;
+  *) echo "usage: scripts/lab-ctl start [--no-loop] | stop | status"; exit 2 ;;
+esac

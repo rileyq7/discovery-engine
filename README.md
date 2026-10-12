@@ -11,6 +11,7 @@ spec was open in [DECISIONS.md](DECISIONS.md).
 make setup        # Python venv (uv), frontend deps, Julia for PySR (first run takes a few minutes)
 make dev          # API :8000 + worker + UI http://localhost:5173 + local agent loop
 LOOP=off make dev # same, without the local agent loop (use when the scheduled task runs cycles)
+make up / make down / make status   # same services in the background (scripts/lab-ctl); or /lab in Claude Code
 ```
 
 Other targets: `make e1` (run E1 from the CLI), `make worker`, `make cycle` (one agent cycle),
