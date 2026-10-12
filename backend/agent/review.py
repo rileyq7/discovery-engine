@@ -354,10 +354,14 @@ def _events(type_: str) -> list[dict]:
 
 def build_prompt(new_findings: list[dict], new_experiments: list[dict], check_issues: list[dict]) -> str:
     findings = []
+    history = _issue_history()
     for f in new_findings:
         e = store.get_experiment(f["experiment_id"])
         findings.append({
             "finding": {k: f[k] for k in ("id", "claim", "verdict", "status", "confidence_note", "evidence_run_ids")},
+            "notes_and_status_history": {"notes": [f"{n['actor']}: {n['text'][:600]}" for n in f.get("notes", [])],
+                                         "status_history": f.get("history", [])},
+            "earlier_review_issues_on_this_finding": history.get(f["id"], []),
             "experiment": {"id": e["id"], "family": e["family"], "hypothesis": e["hypothesis"],
                            "expected_if_true": e["expected_if_true"], "expected_if_false": e["expected_if_false"],
                            "control_margin": e["config"]["probes"].get("control_margin", 0.1)},
@@ -375,6 +379,20 @@ def build_prompt(new_findings: list[dict], new_experiments: list[dict], check_is
     }
     return ("Review the research agent's latest work. Everything you need is below; you have no tools.\n\n"
             "```json\n" + json.dumps(payload, indent=1, default=str) + "\n```\n")
+
+
+def _issue_history() -> dict[str, list[dict]]:
+    """Per finding: issues earlier reviews raised about it, with the answers given."""
+    out: dict[str, list[dict]] = {}
+    for r in list_reviews():
+        answers = {x["issue"]: x for x in r.get("responses", [])}
+        for i, iss in enumerate(r["issues"]):
+            if iss.get("finding_id") and iss["severity"] != "info":
+                a = answers.get(i)
+                out.setdefault(iss["finding_id"], []).append({
+                    "review": r["id"], "category": iss["category"], "message": iss["message"][:500],
+                    "answer": f"{a['actor']}: {a['response'][:600]}" if a else None})
+    return out
 
 
 def _exists(run_id: str) -> bool:

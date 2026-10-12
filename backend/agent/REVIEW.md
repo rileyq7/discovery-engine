@@ -38,6 +38,12 @@ Check, in order:
    already run; their results are included. Don't repeat them, but do say if they change your view of a
    finding.
 
+Findings are immutable records, so a wrong claim can't be rewritten. It is corrected through notes, status
+changes and answers to earlier reviews (`notes_and_status_history`, `earlier_review_issues_on_this_finding`).
+Don't re-raise an issue that an earlier review already raised and that has an adequate answer, even though the
+claim text still reads the old way. Raise it again only if the answer is missing or wrong, or the correction
+was not applied (for example the agent agreed to a downgrade but the status is unchanged).
+
 Severity:
 - `flag`: the research agent must answer it next cycle. This is the default for any real problem.
 - `pause`: stops the lab until a human looks. Use it only for an `evidence_mismatch` that changes a
