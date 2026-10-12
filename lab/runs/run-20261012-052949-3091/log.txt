@@ -1,0 +1,79 @@
+[05:31:12] experiment exp-20261012-052949-bbf7 (E5) seed 66: Matched N=64 reference arm (fresh seeds 65-69, e in [0, 0.5], 4 layers, d_model=64, best-of-5 controls, 5-step checkpoints), paired with an N=256 arm on the same seeds. Every formation step is read from the per-checkpoint trajectory, not from formed_at_step. accel_step forms persistently (the first checkpoint after which the margin stays >= required_margin at every later checkpoint) within steps 70-110, and reaches half of its own final margin within steps 50-100. This reproduces the N=64 timing seen in seeds 47-49, 56-58 and 62-64 (persistent 80-100).
+[05:31:12] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+[05:31:13] step 0: val_mse=1.965e-03 cv_baseline=2.554e-05 ratio=76.914
+[05:31:14] step 5: val_mse=7.332e-04 cv_baseline=2.554e-05 ratio=28.702
+[05:31:15] step 10: val_mse=5.122e-04 cv_baseline=2.554e-05 ratio=20.053
+[05:31:16] step 15: val_mse=4.101e-04 cv_baseline=2.554e-05 ratio=16.053
+[05:31:16] step 20: val_mse=3.503e-04 cv_baseline=2.554e-05 ratio=13.713
+[05:31:17] step 25: val_mse=2.758e-04 cv_baseline=2.554e-05 ratio=10.796
+[05:31:18] step 30: val_mse=2.192e-04 cv_baseline=2.554e-05 ratio=8.580
+[05:31:18] step 35: val_mse=1.840e-04 cv_baseline=2.554e-05 ratio=7.205
+[05:31:19] step 40: val_mse=1.598e-04 cv_baseline=2.554e-05 ratio=6.256
+[05:31:20] step 45: val_mse=1.352e-04 cv_baseline=2.554e-05 ratio=5.292
+[05:31:20] step 50: val_mse=1.148e-04 cv_baseline=2.554e-05 ratio=4.494
+[05:31:21] step 55: val_mse=9.889e-05 cv_baseline=2.554e-05 ratio=3.871
+[05:31:21] step 60: val_mse=9.130e-05 cv_baseline=2.554e-05 ratio=3.574
+[05:31:22] step 65: val_mse=7.997e-05 cv_baseline=2.554e-05 ratio=3.131
+[05:31:23] step 70: val_mse=7.190e-05 cv_baseline=2.554e-05 ratio=2.815
+[05:31:23] step 75: val_mse=6.998e-05 cv_baseline=2.554e-05 ratio=2.740
+[05:31:24] step 80: val_mse=6.486e-05 cv_baseline=2.554e-05 ratio=2.539
+[05:31:25] step 85: val_mse=5.476e-05 cv_baseline=2.554e-05 ratio=2.144
+[05:31:25] step 90: val_mse=5.811e-05 cv_baseline=2.554e-05 ratio=2.275
+[05:31:26] step 95: val_mse=5.501e-05 cv_baseline=2.554e-05 ratio=2.153
+[05:31:27] step 100: val_mse=4.725e-05 cv_baseline=2.554e-05 ratio=1.850
+[05:31:27] step 105: val_mse=3.885e-05 cv_baseline=2.554e-05 ratio=1.521
+[05:31:28] step 110: val_mse=3.822e-05 cv_baseline=2.554e-05 ratio=1.496
+[05:31:29] step 115: val_mse=3.861e-05 cv_baseline=2.554e-05 ratio=1.511
+[05:31:29] step 120: val_mse=3.197e-05 cv_baseline=2.554e-05 ratio=1.251
+[05:31:30] step 125: val_mse=3.545e-05 cv_baseline=2.554e-05 ratio=1.388
+[05:31:31] step 130: val_mse=2.694e-05 cv_baseline=2.554e-05 ratio=1.055
+[05:31:31] step 135: val_mse=2.765e-05 cv_baseline=2.554e-05 ratio=1.083
+[05:31:32] step 140: val_mse=2.770e-05 cv_baseline=2.554e-05 ratio=1.084
+[05:31:33] step 145: val_mse=2.450e-05 cv_baseline=2.554e-05 ratio=0.959
+[05:31:33] step 150: val_mse=2.268e-05 cv_baseline=2.554e-05 ratio=0.888
+[05:31:34] step 155: val_mse=2.154e-05 cv_baseline=2.554e-05 ratio=0.843
+[05:31:35] step 160: val_mse=2.004e-05 cv_baseline=2.554e-05 ratio=0.784
+[05:31:35] step 165: val_mse=1.821e-05 cv_baseline=2.554e-05 ratio=0.713
+[05:31:36] step 170: val_mse=2.066e-05 cv_baseline=2.554e-05 ratio=0.809
+[05:31:37] step 175: val_mse=2.124e-05 cv_baseline=2.554e-05 ratio=0.832
+[05:31:37] step 180: val_mse=1.937e-05 cv_baseline=2.554e-05 ratio=0.758
+[05:31:38] step 185: val_mse=1.766e-05 cv_baseline=2.554e-05 ratio=0.691
+[05:31:39] step 190: val_mse=1.777e-05 cv_baseline=2.554e-05 ratio=0.696
+[05:31:39] step 195: val_mse=2.049e-05 cv_baseline=2.554e-05 ratio=0.802
+[05:31:40] step 200: val_mse=1.547e-05 cv_baseline=2.554e-05 ratio=0.606
+[05:31:41] step 205: val_mse=1.654e-05 cv_baseline=2.554e-05 ratio=0.648
+[05:31:41] step 210: val_mse=1.756e-05 cv_baseline=2.554e-05 ratio=0.687
+[05:31:42] step 215: val_mse=1.630e-05 cv_baseline=2.554e-05 ratio=0.638
+[05:31:42] step 220: val_mse=1.498e-05 cv_baseline=2.554e-05 ratio=0.586
+[05:31:43] step 225: val_mse=1.433e-05 cv_baseline=2.554e-05 ratio=0.561
+[05:31:44] step 230: val_mse=1.381e-05 cv_baseline=2.554e-05 ratio=0.540
+[05:31:44] step 235: val_mse=1.358e-05 cv_baseline=2.554e-05 ratio=0.532
+[05:31:45] step 240: val_mse=1.298e-05 cv_baseline=2.554e-05 ratio=0.508
+[05:31:46] step 245: val_mse=1.273e-05 cv_baseline=2.554e-05 ratio=0.498
+[05:31:46] step 250: val_mse=1.281e-05 cv_baseline=2.554e-05 ratio=0.502
+[05:31:47] step 255: val_mse=1.286e-05 cv_baseline=2.554e-05 ratio=0.503
+[05:31:48] step 260: val_mse=1.239e-05 cv_baseline=2.554e-05 ratio=0.485
+[05:31:48] step 265: val_mse=1.257e-05 cv_baseline=2.554e-05 ratio=0.492
+[05:31:49] step 270: val_mse=1.256e-05 cv_baseline=2.554e-05 ratio=0.492
+[05:31:50] step 275: val_mse=1.200e-05 cv_baseline=2.554e-05 ratio=0.470
+[05:31:50] step 280: val_mse=1.159e-05 cv_baseline=2.554e-05 ratio=0.454
+[05:31:51] step 285: val_mse=1.123e-05 cv_baseline=2.554e-05 ratio=0.440
+[05:31:52] step 290: val_mse=1.134e-05 cv_baseline=2.554e-05 ratio=0.444
+[05:31:52] step 295: val_mse=1.105e-05 cv_baseline=2.554e-05 ratio=0.433
+[05:31:53] step 300: val_mse=1.093e-05 cv_baseline=2.554e-05 ratio=0.428
+[05:31:53] training done in 0.7 min; beats constant-velocity baseline: True
+[05:31:56] random-model controls (best of 5): force=0.16/0.48/0.50/0.51/0.51, distance=0.00/0.23/0.44/0.44/0.49, energy=-0.03/0.22/0.41/0.36/0.40, accel_step=0.65/0.75/0.76/0.77/0.77
+[05:31:56] probes @ step 0: best force R2=0.471 (layer 1)
+[05:31:59] probes @ step 25: best force R2=0.634 (layer 4)
+[05:32:02] probes @ step 50: best force R2=0.509 (layer 4)
+[05:32:05] probes @ step 75: best force R2=0.528 (layer 3)
+[05:32:07] probes @ step 100: best force R2=0.534 (layer 3)
+[05:32:10] probes @ step 125: best force R2=0.540 (layer 3)
+[05:32:13] probes @ step 150: best force R2=0.546 (layer 4)
+[05:32:15] probes @ step 175: best force R2=0.548 (layer 4)
+[05:32:18] probes @ step 200: best force R2=0.549 (layer 4)
+[05:32:21] probes @ step 225: best force R2=0.552 (layer 4)
+[05:32:23] probes @ step 250: best force R2=0.556 (layer 4)
+[05:32:26] probes @ step 275: best force R2=0.556 (layer 4)
+[05:32:29] probes @ step 300: best force R2=0.557 (layer 4)
+[05:32:29] run complete in 1.3 min

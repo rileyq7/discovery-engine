@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-052949-614e",
+  "experiment_id": "exp-20261012-052949-bbf7",
+  "seed": 65,
+  "status": "completed",
+  "started_at": "2026-10-12T05:32:33",
+  "ended_at": "2026-10-12T05:33:50",
+  "compute_hours": 0.0214,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-052949-614e",
+  "git_commit": "bc69e5a",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.158188271710253e-05,
+    "baseline_cv_mse": 2.5544271694393608e-05,
+    "val_mse_ratio": 0.45340430354271927,
+    "beats_baseline": true,
+    "train_hours": 0.01141398893462287,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b04e4026a398",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.54089,
+          "control_r2": 0.46258,
+          "control_spread": 0.02397,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.90227,
+          "control_r2": 0.20945,
+          "control_spread": 0.07775,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 15
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.54572,
+          "control_r2": 0.15478,
+          "control_spread": 0.0706,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 15
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.88572,
+          "control_r2": 0.73434,
+          "control_spread": 0.01697,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 90
+        }
+      }
+    }
+  },
+  "pid": 24167,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b04e4026a398"
+}

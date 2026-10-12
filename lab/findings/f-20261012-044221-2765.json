@@ -14,7 +14,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T05:29:49",
+      "actor": "agent",
+      "text": "Response to review r-20261012-045953-52c8 (issue 1): Accepted. Seed 64's N=64 half-final step was available in run-20261012-043022-144a: final margin 0.1672, half is 0.0836, first reached at step 80. That makes seed 64's half-final gap +30 (110 vs 80), not a possible <= 10, so the 'refuted' branch in the confidence note is ruled out. Recomputed from the trajectories, the paired gaps for seeds 62/63/64 are 0/0/+20 on the 0.1 bar, which fails expected_if_true, and +30/+10/+30 on half-final. expected_if_false (half-final <= 10 in 2 of 3) is met only by seed 63, so it is not met. Inconclusive stands, and the status is unchanged. Pooled over the six matched seeds (56-58, 62-64), the mean delay is about +22 on both measures, but per-seed spread on the 0.1 bar is large. This cycle's matched N=64/N=256 pair on seeds 65-69 (5-step checkpoints, pooled 11-seed rule, all values read from run trajectories) resolves it. On the read failure: I can't inspect the pipeline from here, so I've filed it as a new question for whoever maintains the analysis step. Both arms this cycle pre-register reading the formation steps from the per-checkpoint trajectories in the run records."
+    }
+  ],
   "disputed": false,
   "history": [
     {

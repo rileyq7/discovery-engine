@@ -1,0 +1,28 @@
+{
+  "id": "f-20261012-054929-0067",
+  "claim": "Refuted under the pre-registered criterion: 3 of 5 seeds fall outside the N=64 reference window, which needed at least 4 of 5 inside. Reading each seed's trajectory, accel_step forms persistently (margin stays >= 0.1 at every later checkpoint) at step 65 for seeds 67 and 68, and at step 90 for seeds 65, 66 and 69. Accel_step reaches half its final margin at steps 45, 55, 70, 55 and 40 for seeds 67, 68, 65, 66 and 69. That puts seed 67 outside both windows, seed 68 outside the [70,110] formation window and seed 69 outside the [50,100] half-final window; only seeds 65 and 66 meet both. Final accel_step margin is 0.130-0.158 in all seeds (R2 0.869-0.909 vs control 0.713-0.772), but force also beats its control at the final checkpoint in 2 of 5 seeds (seed 67: 0.526 vs 0.423, margin 0.103; seed 68: 0.579 vs 0.474, margin 0.105), against margins of 0.047-0.090 in the other three. That contradicts the 'force does not beat control' part of the prediction. All runs beat the baseline (val_mse_ratio 0.41-0.45).",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-052949-0b8b",
+    "run-20261012-052949-3091",
+    "run-20261012-052949-614e",
+    "run-20261012-052949-8f11",
+    "run-20261012-052949-ff28"
+  ],
+  "confidence_note": "All 5 runs completed the full 300 steps, and no run is stopped or marked bad. The misses are small. Seeds 67 and 68 cross for good at step 65, one 5-step checkpoint before the window opens, and seed 69's half-final step of 40 is 10 steps early. So the result says the window was too narrow, not that N=64 timing has moved much. Overall, persistent formation spans steps 65-90 and half-final spans steps 40-70, roughly 10-20 steps earlier than the 80-100 window quoted from seeds 47-49, 56-58 and 62-64. The earlier runs used 10-step checkpoints, while these use 5-step checkpoints. That alone can pull crossings earlier by up to one older checkpoint, so part of the shift may be resolution, not a different timing. The force 'beats_control' results are borderline: margins of 0.103 and 0.105 against a 0.1 bar, with control_spread 0.034-0.048. They should not be read as a learned force representation. Every seed shows the same early force transient: margin 0.12-0.19 at steps 10-25, falling to 0.002-0.10 by steps 40-55. formed_at_step agrees with the trajectory for 4 seeds but not seed 68: it reports 80, while the margin is >= 0.1 at every checkpoint from step 65. That repeats the lag described in q-20261012-032843-df65. Persistent formation happens at val_mse_ratio 2.1-3.3 (2.7-4.3% of each run's step-0 value), which fits the absolute ~2-3 band proposed in q-20261012-044258-7e31. Two things would change this verdict: re-reading the earlier N=64 seeds at 5-step resolution and finding them at 65-90 too, or a pre-registered window of [60,100] for persistent formation and [40,80] for half-final.",
+  "created_at": "2026-10-12T05:49:29",
+  "experiment_id": "exp-20261012-052949-bbf7",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T05:49:29",
+      "actor": "agent"
+    }
+  ]
+}

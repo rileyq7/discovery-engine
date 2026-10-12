@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-052949-3091",
+  "experiment_id": "exp-20261012-052949-bbf7",
+  "seed": 66,
+  "status": "completed",
+  "started_at": "2026-10-12T05:31:12",
+  "ended_at": "2026-10-12T05:32:29",
+  "compute_hours": 0.0214,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-052949-3091",
+  "git_commit": "bc69e5a",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.092697597864106e-05,
+    "baseline_cv_mse": 2.5544271694393608e-05,
+    "val_mse_ratio": 0.42776619781409875,
+    "beats_baseline": true,
+    "train_hours": 0.011345020333925883,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b04e4026a398",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.55693,
+          "control_r2": 0.51034,
+          "control_spread": 0.07175,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.81205,
+          "control_r2": 0.23014,
+          "control_spread": 0.06919,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 15
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.62599,
+          "control_r2": 0.21656,
+          "control_spread": 0.07059,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 20
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.9092,
+          "control_r2": 0.77228,
+          "control_spread": 0.013,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 90
+        }
+      }
+    }
+  },
+  "pid": 23789,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b04e4026a398"
+}

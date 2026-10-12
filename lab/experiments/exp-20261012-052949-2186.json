@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-052949-2186",
+  "family": "E5",
+  "hypothesis": "The high accel_step random-control R2 at low eccentricity comes from the orbit-scale a^3 factor dominating accel_step variance, and that dominance weakens steadily as the eccentricity ceiling rises. The N=64 references are e <= 0.5 (controls 0.71-0.77, final margins 0.13-0.17, persistent formation 80-100) and e <= 0.85 (controls 0.25-0.35, margins 0.26-0.29, formation 60-70). With N=64, 4 layers, d_model=64, m2 in [0.1, 1], lr 0.001 and 600 steps at e in [0, 0.7], the accel_step control R2 falls strictly between these two regimes. The final margin, and the persistent formation step read from the trajectory, are also intermediate.",
+  "expected_if_true": "In all 3 seeds, the layer-4 accel_step best-of-5 control R2 is in [0.38, 0.66] and the final accel_step margin is >= 0.17. In at least 2 of 3 seeds, the persistent 0.1-bar formation step (from the trajectory) is in [60, 100]. Force should still not reach a margin comparable to accel_step's (force margin < accel_step margin in all seeds).",
+  "expected_if_false": "The accel_step control R2 is >= 0.68 in at least 2 of 3 seeds, so the drop is a threshold effect near e = 0.85, or it is <= 0.36 in at least 2 of 3 seeds, so it drops sharply right after e = 0.5. Either result would mean control R2 does not scale smoothly with the eccentricity ceiling.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The high accel_step random-control R2 at low eccentricity comes from the orbit-scale a^3 factor dominating accel_step variance, and that dominance weakens steadily as the eccentricity ceiling rises. The N=64 references are e <= 0.5 (controls 0.71-0.77, final margins 0.13-0.17, persistent formation 80-100) and e <= 0.85 (controls 0.25-0.35, margins 0.26-0.29, formation 60-70). With N=64, 4 layers, d_model=64, m2 in [0.1, 1], lr 0.001 and 600 steps at e in [0, 0.7], the accel_step control R2 falls strictly between these two regimes. The final margin, and the persistent formation step read from the trajectory, are also intermediate.",
+    "expected_if_true": "In all 3 seeds, the layer-4 accel_step best-of-5 control R2 is in [0.38, 0.66] and the final accel_step margin is >= 0.17. In at least 2 of 3 seeds, the persistent 0.1-bar formation step (from the trajectory) is in [60, 100]. Force should still not reach a margin comparable to accel_step's (force margin < accel_step margin in all seeds).",
+    "expected_if_false": "The accel_step control R2 is >= 0.68 in at least 2 of 3 seeds, so the drop is a threshold effect near e = 0.85, or it is <= 0.36 in at least 2 of 3 seeds, so it drops sharply right after e = 0.5. Either result would mean control R2 does not scale smoothly with the eccentricity ceiling.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.7
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 600,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      70,
+      71,
+      72
+    ],
+    "budget": {
+      "max_compute_hours": 0.25
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T05:29:49",
+  "updated_at": "2026-10-12T05:50:51",
+  "verdict": "supported",
+  "estimate_hours": 0.1935,
+  "compute_hours": 0.088,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T05:29:49",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T05:29:49",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T05:29:49",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T05:43:15",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T05:48:41",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T05:50:51",
+      "actor": "agent",
+      "note": "finding f-20261012-055051-b178"
+    }
+  ]
+}

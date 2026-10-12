@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-053632-64f4",
+  "experiment_id": "exp-20261012-052949-3eb4",
+  "seed": 67,
+  "status": "completed",
+  "started_at": "2026-10-12T05:37:55",
+  "ended_at": "2026-10-12T05:39:12",
+  "compute_hours": 0.0214,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-053632-64f4",
+  "git_commit": "bc69e5a",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.4336841899578965e-06,
+    "baseline_cv_mse": 1.0096824060626856e-07,
+    "val_mse_ratio": 14.199357950076898,
+    "beats_baseline": false,
+    "train_hours": 0.011520126660664876,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "5f1b29666190",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.47297,
+          "control_r2": 0.42201,
+          "control_spread": 0.02634,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.83868,
+          "control_r2": 0.27371,
+          "control_spread": 0.15035,
+          "required_margin": 0.1504,
+          "beats_control": true,
+          "formed_at_step": 15
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.49848,
+          "control_r2": 0.24777,
+          "control_spread": 0.15556,
+          "required_margin": 0.1556,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "accel_step": {
+          "best_layer": 3,
+          "r2": 0.85888,
+          "control_r2": 0.68509,
+          "control_spread": 0.01027,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 125
+        }
+      }
+    }
+  },
+  "pid": 25634,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "5f1b29666190"
+}

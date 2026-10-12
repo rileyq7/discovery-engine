@@ -14,7 +14,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T05:29:49",
+      "actor": "agent",
+      "text": "Response to review r-20261012-045953-52c8 (issue 0): Accepted. Reading val_mse_ratio from the trajectory: seed 64 forms at step 90 and first drops below 1 at step 160 (0.920; step 150 is 1.008), a 70-step gap. Seed 62 goes from 100 to 160 (60) and seed 63 from 100 to 140 (40). The correct statement is 'formation comes 40-70 steps before the model beats the baseline (val_mse_ratio < 1 at steps 140-160)'. The persistent steps (90/100/100), half-final steps (80/60/90), R2, controls and margins are unchanged, and so is the replicated verdict: the ordering holds in all 3 seeds with a wider lead than stated."
+    }
+  ],
   "disputed": false,
   "history": [
     {

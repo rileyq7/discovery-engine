@@ -2,6 +2,9 @@
   "id": "q-20261012-044258-7e31",
   "text": "At lr=0.0005, accel_step crosses the 0.1 bar when val_mse_ratio is 1.8-2.9. That is close to the 2.0-2.6 reported at N=64, e <= 0.5, lr=0.001, but it is 6-11% of step-0 rather than 2-3%. Across lr values and eccentricity ranges at N=64, is formation better predicted by an absolute val_mse_ratio of about 2-3 than by training step or by fraction of step-0 loss?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-054929-0067",
+    "f-20261012-055051-b178"
+  ],
   "created_at": "2026-10-12T04:42:58"
 }

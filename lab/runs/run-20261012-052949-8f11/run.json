@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-052949-8f11",
+  "experiment_id": "exp-20261012-052949-bbf7",
+  "seed": 69,
+  "status": "completed",
+  "started_at": "2026-10-12T05:33:53",
+  "ended_at": "2026-10-12T05:35:10",
+  "compute_hours": 0.0213,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-052949-8f11",
+  "git_commit": "bc69e5a",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.1483998279871903e-05,
+    "baseline_cv_mse": 2.5544271694393608e-05,
+    "val_mse_ratio": 0.4495723509859309,
+    "beats_baseline": true,
+    "train_hours": 0.011398708621660869,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "b04e4026a398",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.57689,
+          "control_r2": 0.4864,
+          "control_spread": 0.02684,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.87482,
+          "control_r2": 0.30882,
+          "control_spread": 0.1384,
+          "required_margin": 0.1384,
+          "beats_control": true,
+          "formed_at_step": 10
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.59487,
+          "control_r2": 0.23857,
+          "control_spread": 0.08397,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 15
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.86882,
+          "control_r2": 0.73932,
+          "control_spread": 0.0168,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 90
+        }
+      }
+    }
+  },
+  "pid": 24524,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "b04e4026a398"
+}

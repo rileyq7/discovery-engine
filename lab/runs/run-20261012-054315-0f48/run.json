@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-054315-0f48",
+  "experiment_id": "exp-20261012-052949-2186",
+  "seed": 72,
+  "status": "completed",
+  "started_at": "2026-10-12T05:43:17",
+  "ended_at": "2026-10-12T05:45:14",
+  "compute_hours": 0.0325,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-054315-0f48",
+  "git_commit": "bc69e5a",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 5.980122511781106e-06,
+    "baseline_cv_mse": 3.913557247852716e-05,
+    "val_mse_ratio": 0.15280529025255143,
+    "beats_baseline": true,
+    "train_hours": 0.022656967441240947,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "96e708207b0c",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.50234,
+          "control_r2": 0.36226,
+          "control_spread": 0.02732,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 90
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.84471,
+          "control_r2": 0.30606,
+          "control_spread": 0.15481,
+          "required_margin": 0.1548,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.58525,
+          "control_r2": 0.15031,
+          "control_spread": 0.07239,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.80052,
+          "control_r2": 0.54343,
+          "control_spread": 0.01186,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 60
+        }
+      }
+    }
+  },
+  "pid": 27080,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "96e708207b0c"
+}

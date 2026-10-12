@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-055051-b178",
+  "claim": "At e in [0, 0.7] (N=64, 4 layers, d_model=64, m2 in [0.1, 1]), the layer-4 accel_step best-of-5 control R2 was 0.543, 0.553 and 0.559 (seeds 72, 70, 71). That sits between the e <= 0.5 controls (0.71-0.77) and the e <= 0.85 controls (0.25-0.35). The final accel_step margins were 0.257, 0.260 and 0.241 (R2 0.80-0.81), and accel_step first stayed above the 0.1 margin at steps 60, 60 and 70. Force was much weaker: margins 0.140 (layer 4), 0.101 (layer 3) and 0.121 (layer 1), against controls of 0.27-0.39. Measured against available headroom, accel_step reached about 0.55 and force about 0.16-0.22. All expected-if-true criteria were met.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-054315-0f48",
+    "run-20261012-054315-1d76",
+    "run-20261012-054315-7241"
+  ],
+  "confidence_note": "All 3 seeds met every pre-registered criterion, and the controls (0.54-0.56) sit well inside the [0.38, 0.66] window and well away from both falsification bands (>= 0.68 or <= 0.36). Six things limit the claim. (1) This adds only one intermediate eccentricity ceiling. Three points look monotonic and close to a straight line (linear interpolation predicts about 0.49, observed 0.55), but they cannot show that the decline is smooth rather than a gentle curve. (2) The e <= 0.5 and e <= 0.85 reference values come from earlier experiments that may have used different seeds, m2 ranges or other settings, so this is not a matched one-factor sweep. (3) Only the control-R2 part of the hypothesis is clearly intermediate. The final margin (0.24-0.26) is at the low end of the e <= 0.85 regime (0.26-0.29), and formation (steps 60-70) matches the e <= 0.85 window rather than falling between 80-100 and 60-70. Margin size and formation timing therefore do not move in step with control R2. (4) Seed 72 hits exactly 0.100 at step 50, so its formation step is 50 or 60 depending on whether the bar is inclusive. Checkpoints are 10 steps apart. (5) The proposed mechanism, a^3 dominating accel_step variance, was not tested directly. No a^3 or per-system-demeaned target was probed. (6) Seed 70's force margin only reaches 0.101 at step 590, so force beating its control is marginal there. A matched sweep (e ceilings of 0.5, 0.6, 0.7, 0.8 and 0.85 with the same m2 range and seeds) that showed a step in control R2 between neighbouring ceilings would weaken the smooth-scaling reading. So would a direct a^3 probe that fails to account for the control R2.",
+  "created_at": "2026-10-12T05:50:51",
+  "experiment_id": "exp-20261012-052949-2186",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T05:50:51",
+      "actor": "agent"
+    }
+  ]
+}

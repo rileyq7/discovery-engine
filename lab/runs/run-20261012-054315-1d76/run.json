@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-054315-1d76",
+  "experiment_id": "exp-20261012-052949-2186",
+  "seed": 70,
+  "status": "completed",
+  "started_at": "2026-10-12T05:45:18",
+  "ended_at": "2026-10-12T05:46:58",
+  "compute_hours": 0.0277,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-054315-1d76",
+  "git_commit": "bc69e5a",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 5.885235202594066e-06,
+    "baseline_cv_mse": 3.913557247852716e-05,
+    "val_mse_ratio": 0.15038071069033593,
+    "beats_baseline": true,
+    "train_hours": 0.01771830439567566,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "96e708207b0c",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.48632,
+          "control_r2": 0.38506,
+          "control_spread": 0.03518,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 590
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.84386,
+          "control_r2": 0.3273,
+          "control_spread": 0.21142,
+          "required_margin": 0.2114,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.39125,
+          "control_r2": 0.07079,
+          "control_spread": 0.17721,
+          "required_margin": 0.1772,
+          "beats_control": true,
+          "formed_at_step": 40
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.81293,
+          "control_r2": 0.55301,
+          "control_spread": 0.0225,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 60
+        }
+      }
+    }
+  },
+  "pid": 27603,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "96e708207b0c"
+}
