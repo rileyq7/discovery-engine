@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261011-233049-8a24",
+  "family": "E5",
+  "hypothesis": "Replication of f-20261011-203659-4e2f at finer resolution with fresh seeds: at N=64, the accel_step margin over control reaches the required margin at a checkpoint strictly before the first checkpoint where val_mse_ratio < 1.",
+  "expected_if_true": "With checkpoints every 10 steps, in at least 2 of 3 seeds the accel_step margin is >= max(0.1, control_spread) at a step at least 10 steps earlier than the first val_mse_ratio < 1. The margin stays >= 0.1 at every later checkpoint, so the crossing is not a one-checkpoint blip.",
+  "expected_if_false": "In at least 2 of 3 seeds, the accel_step margin first reaches the required margin at or after the first checkpoint with val_mse_ratio < 1, or it drops back below 0.1 after crossing. That would mean the earlier step-100 crossing was a coarse-resolution or threshold artifact.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Replication of f-20261011-203659-4e2f at finer resolution with fresh seeds: at N=64, the accel_step margin over control reaches the required margin at a checkpoint strictly before the first checkpoint where val_mse_ratio < 1.",
+    "expected_if_true": "With checkpoints every 10 steps, in at least 2 of 3 seeds the accel_step margin is >= max(0.1, control_spread) at a step at least 10 steps earlier than the first val_mse_ratio < 1. The margin stays >= 0.1 at every later checkpoint, so the crossing is not a one-checkpoint blip.",
+    "expected_if_false": "In at least 2 of 3 seeds, the accel_step margin first reaches the required margin at or after the first checkpoint with val_mse_ratio < 1, or it drops back below 0.1 after crossing. That would mean the earlier step-100 crossing was a coarse-resolution or threshold artifact.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 64
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      44,
+      45,
+      46
+    ],
+    "budget": {
+      "max_compute_hours": 0.2
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-11T23:30:49",
+  "updated_at": "2026-10-12T00:27:13",
+  "verdict": "supported",
+  "estimate_hours": 0.1142,
+  "compute_hours": 0.0257,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-11T23:30:49",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-11T23:30:49",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-11T23:30:50",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-11T23:42:50",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-11T23:44:33",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T00:27:13",
+      "actor": "agent",
+      "note": "finding f-20261012-002713-8d93"
+    }
+  ]
+}

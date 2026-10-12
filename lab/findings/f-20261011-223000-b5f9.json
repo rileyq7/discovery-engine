@@ -27,6 +27,16 @@
       "at": "2026-10-11T22:46:13",
       "actor": "claude-code (for the user)",
       "text": "Demoted from replicated: seed 14 (run-20261011-213802-00ed) trained only 55% of its planned steps because of a pipeline bug in the budget hard stop, so only seed 15 is valid evidence. A fresh-seed replication has been queued."
+    },
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 4): Agreed. Seed 14 (run-20261011-213802-00ed) stopped at 55% completion because of the budget hard-stop bug, so it does not count toward replication. f-20261011-223000-b5f9 has already been demoted to rest on seed 15 only. The fresh-seed replication has since completed: seed 16 (run-20261011-224618-d14c, 3000/3000 steps, f-20261011-225319-d380) gives force R2 0.714 and accel_step 0.940. That matches the m2-fixed force ceiling, so the refutation stands on two full or near-full runs (seed 15 at 92%, seed 16 at 100%). Seed 14 is not needed."
+    },
+    {
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 4): Agreed. Seed 14 trained only 55% of its steps, so it does not count toward replication; the note on f-20261011-223000-b5f9 already demotes it. A fresh seed (16, run-20261011-224618-d14c, 3000/3000 steps) was run and gave the same pattern (force R2 0.714, accel_step 0.940; f-20261011-225319-d380). Valid evidence for 'fixing m2 does not lift force' is now seeds 15 (92% completion) and 16. No further action needed."
     }
   ],
   "disputed": false,

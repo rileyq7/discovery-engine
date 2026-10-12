@@ -1,0 +1,82 @@
+{
+  "id": "run-20261011-234433-3ab1",
+  "experiment_id": "exp-20261011-233049-b1ea",
+  "seed": 43,
+  "status": "completed",
+  "started_at": "2026-10-11T23:44:35",
+  "ended_at": "2026-10-11T23:47:30",
+  "compute_hours": 0.0485,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261011-234433-3ab1",
+  "git_commit": "b997707",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 6.524196988533413e-07,
+    "baseline_cv_mse": 3.685511293865386e-05,
+    "val_mse_ratio": 0.01770228461758639,
+    "beats_baseline": true,
+    "train_hours": 0.04799446529812283,
+    "n_params": 204998,
+    "device": "mps",
+    "dataset_id": "6ffe6651e2d5",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.69909,
+          "control_r2": 0.46876,
+          "control_spread": 0.01246,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.85059,
+          "control_r2": 0.61295,
+          "control_spread": 0.03044,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.93083,
+          "control_r2": 0.70353,
+          "control_spread": 0.08839,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 3000
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.91942,
+          "control_r2": 0.65772,
+          "control_spread": 0.08931,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 3000
+        }
+      }
+    },
+    "patching": {
+      "top_head": {
+        "layer": 1,
+        "head": 0,
+        "force_r2": 0.3510591685771942,
+        "effect": 27.507792155102788
+      },
+      "control_head_effect": 16.56979387078978
+    }
+  },
+  "pid": 19437,
+  "device": "mps",
+  "progress": null,
+  "n_params": 204998,
+  "dataset_id": "6ffe6651e2d5"
+}

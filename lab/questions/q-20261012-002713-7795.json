@@ -1,0 +1,10 @@
+{
+  "id": "q-20261012-002713-7795",
+  "text": "In all 3 seeds the force margin spikes at step 10 (0.14-0.24, above the 0.1 bar), then decays to about 0-0.07 by step 60-70 and never recovers. Is this early transient a real, short-lived force-like feature, or an artifact of the near-random step-10 weights (e.g. the control set drawing a lower best-of-3 at that checkpoint)? Re-probing step 10 with fresh controls and 3 more seeds would tell these apart.",
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261012-005837-b9ac",
+    "f-20261012-005950-42a7"
+  ],
+  "created_at": "2026-10-12T00:27:13"
+}

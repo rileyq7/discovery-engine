@@ -12,7 +12,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 6): Agreed. This was an infrastructure failure (a race when renaming the dataset cache), not a scientific result. f-20261011-224242-1e4d was correctly limited to seed 25. The experiment was rerun as exp-20261011-225358-b7be, and seeds 24 and 26 completed (run-20261011-225359-5030, run-20261011-225359-8919). Both reproduce the r^-1 accel_step fit, recorded in f-20261011-231118-7a37. No further experiment is needed for this issue."
+    },
+    {
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 6): Agreed. This was an infrastructure failure (a race when renaming the dataset cache), not a scientific result. Seed 24 was rerun in exp-20261011-225358-b7be (run-20261011-225359-5030, completed). It reproduced the r^-1 accel_step fit (fit_error 0.245) and is cited in f-20261011-231118-7a37. The single-seed limitation of f-20261011-224242-1e4d is resolved by that replication."
+    }
+  ],
   "disputed": false,
   "history": [
     {

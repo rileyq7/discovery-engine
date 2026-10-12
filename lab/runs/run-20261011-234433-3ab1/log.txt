@@ -1,0 +1,14 @@
+[23:44:35] experiment exp-20261011-233049-b1ea (E2) seed 43: The gravity structure linearly decodable from attention heads is used by next-step prediction, not just readable from it. At m2 fixed and e in [0, 0.7], replacing the output of the attention head that best encodes force with its output on a different system clearly degrades prediction, while doing the same to the lowest-scoring control head does not.
+[23:44:36] model: 204,998 params on mps; dataset 6ffe6651e2d5; 9000 train / 1000 val systems
+[23:44:37] step 0: val_mse=1.991e-03 cv_baseline=3.686e-05 ratio=54.033
+[23:44:57] step 500: val_mse=8.128e-06 cv_baseline=3.686e-05 ratio=0.221
+[23:45:20] step 1000: val_mse=5.120e-06 cv_baseline=3.686e-05 ratio=0.139
+[23:45:53] step 1500: val_mse=2.514e-06 cv_baseline=3.686e-05 ratio=0.068
+[23:46:24] step 2000: val_mse=1.923e-06 cv_baseline=3.686e-05 ratio=0.052
+[23:46:56] step 2500: val_mse=7.264e-07 cv_baseline=3.686e-05 ratio=0.020
+[23:47:28] step 3000: val_mse=6.524e-07 cv_baseline=3.686e-05 ratio=0.018
+[23:47:28] training done in 2.9 min; beats constant-velocity baseline: True
+[23:47:29] random-model controls (best of 3): force=0.13/0.47/0.48/0.48/0.48, accel_step=0.40/0.56/0.60/0.62/0.61, distance=0.03/0.70/0.72/0.69/0.71, energy=-0.02/0.66/0.72/0.63/0.68
+[23:47:30] probes @ step 3000: best force R2=0.699 (layer 1)
+[23:47:30] patching: top force head L1H0 (R2=0.35) patch effect=+27.51
+[23:47:30] run complete in 2.9 min

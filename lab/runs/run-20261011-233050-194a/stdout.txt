@@ -1,0 +1,20 @@
+run-20261011-233050-194a: [23:30:52] experiment exp-20261011-233049-cd8c (E3) seed 41: The r^-1 (a^2/r - c*a) form of the accel_step-probe direction at m2 fixed, e in [0, 0.7] is a capacity limit of the 4-layer d_model=64 model. A 6-layer d_model=128 model trained on the same data encodes the true per-snapshot law, so its best accel_step direction fits to a^~3/r^~2.
+run-20261011-233050-194a: [23:31:02] generated dataset 6ffe6651e2d5: 10000 systems x 65 steps in 9.85s
+run-20261011-233050-194a: [23:31:02] model: 1,199,750 params on mps; dataset 6ffe6651e2d5; 9000 train / 1000 val systems
+run-20261011-233050-194a: [23:31:04] step 0: val_mse=2.069e-03 cv_baseline=3.686e-05 ratio=56.144
+run-20261011-233050-194a: [23:31:46] step 500: val_mse=1.071e-05 cv_baseline=3.686e-05 ratio=0.291
+run-20261011-233050-194a: [23:32:29] step 1000: val_mse=4.266e-06 cv_baseline=3.686e-05 ratio=0.116
+run-20261011-233050-194a: [23:33:14] step 1500: val_mse=1.724e-06 cv_baseline=3.686e-05 ratio=0.047
+run-20261011-233050-194a: [23:34:27] step 2000: val_mse=1.040e-06 cv_baseline=3.686e-05 ratio=0.028
+run-20261011-233050-194a: [23:35:29] step 2500: val_mse=5.840e-07 cv_baseline=3.686e-05 ratio=0.016
+run-20261011-233050-194a: [23:36:31] step 3000: val_mse=3.048e-07 cv_baseline=3.686e-05 ratio=0.008
+run-20261011-233050-194a: [23:36:31] training done in 5.7 min; beats constant-velocity baseline: True
+run-20261011-233050-194a: [23:36:35] random-model controls (best of 3): force=0.12/0.43/0.44/0.45/0.45/0.45/0.44, accel_step=0.41/0.55/0.62/0.63/0.63/0.63/0.63, distance=-0.02/0.89/0.94/0.93/0.92/0.92/0.92, energy=-0.01/0.91/0.91/0.90/0.90/0.90/0.89
+run-20261011-233050-194a: [23:36:36] probes @ step 3000: best force R2=0.680 (layer 1)
+run-20261011-233050-194a: [23:36:36] PySR on |force| probe outputs from layer 1 (2520 points)...
+/Users/rileycoleman/discovery/backend/.venv/lib/python3.12/site-packages/juliacall/__init__.py:61: UserWarning: torch was imported before juliacall. This may cause a segfault. To avoid this, import juliacall before importing torch. For updates, see https://github.com/pytorch/pytorch/issues/78829.
+  warnings.warn(
+run-20261011-233050-194a: [23:36:49] PySR: |force| = 0.74254024/r  (law recovered: False, error vs true law 0.467)
+run-20261011-233050-194a: [23:36:49] PySR on |accel_step| probe outputs from layer 6 (2520 points)...
+run-20261011-233050-194a: [23:36:50] PySR: |accel_step| = a*(a/r - 0.49892515)*0.014549373  (law recovered: False, error vs true law 0.178)
+run-20261011-233050-194a: [23:36:50] run complete in 6.0 min

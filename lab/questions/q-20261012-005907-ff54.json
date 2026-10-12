@@ -1,0 +1,7 @@
+{
+  "id": "q-20261012-005907-ff54",
+  "text": "Widening eccentricity from [0, 0.5] to [0, 0.85] cut the accel_step random-control R2 from 0.71-0.76 to 0.29-0.30, while the trained-model margin rose to about 0.41. Is high eccentricity a cleaner test of learned acceleration, because the orbit-scale a^3 factor no longer dominates accel_step variance? Does the control R2 fall steadily as the eccentricity ceiling rises?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-12T00:59:07"
+}

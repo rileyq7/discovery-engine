@@ -1,0 +1,73 @@
+{
+  "id": "run-20261011-234250-6e25",
+  "experiment_id": "exp-20261011-233049-8a24",
+  "seed": 44,
+  "status": "completed",
+  "started_at": "2026-10-11T23:43:35",
+  "ended_at": "2026-10-11T23:44:03",
+  "compute_hours": 0.0077,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261011-234250-6e25",
+  "git_commit": "b997707",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.3018998834821913e-05,
+    "baseline_cv_mse": 2.542583147684733e-05,
+    "val_mse_ratio": 0.5120382728359136,
+    "beats_baseline": true,
+    "train_hours": 0.004866505331463284,
+    "n_params": 204998,
+    "device": "mps",
+    "dataset_id": "02a9888f6852",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 0,
+          "r2": 0.18981,
+          "control_r2": 0.18984,
+          "control_spread": 0.00011,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.90469,
+          "control_r2": 0.78566,
+          "control_spread": 0.00799,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 140
+        },
+        "distance": {
+          "best_layer": 2,
+          "r2": 0.92911,
+          "control_r2": 0.61879,
+          "control_spread": 0.0257,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "energy": {
+          "best_layer": 2,
+          "r2": 0.50882,
+          "control_r2": 0.37025,
+          "control_spread": 0.05634,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 20
+        }
+      }
+    }
+  },
+  "pid": 19193,
+  "device": "mps",
+  "progress": null,
+  "n_params": 204998,
+  "dataset_id": "02a9888f6852"
+}

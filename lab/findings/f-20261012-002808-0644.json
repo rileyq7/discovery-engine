@@ -1,0 +1,25 @@
+{
+  "id": "f-20261012-002808-0644",
+  "claim": "At 6 layers and d_model=128, both seeds encode accel_step strongly: R2 0.931 vs control 0.630 (seed 41, margin 0.30) and 0.915 vs 0.675 (seed 40, margin 0.24), both at layer 6. Force is weaker: R2 0.680 vs 0.429 and 0.761 vs 0.447 at layer 1, so accel_step leads on headroom-normalized margin (0.81/0.74 vs 0.44/0.57). The symbolic fit to accel_step still has the r^-1 form a*(a/r - c)*k, with c = 0.499 and 0.539, close to the vis-viva value 0.5. Its r exponent is -1 and its a exponent is 2, outside the predicted [-2.5, -1.5] and [2.5, 3.5]. Yet fit_error_vs_true_law is 0.178 and 0.161, below 0.2, and law_recovered is false in both. The force fits are also r^-1 (0.74/r and 0.80/r, error 0.47).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261011-233050-194a",
+    "run-20261011-233050-ede2"
+  ],
+  "confidence_note": "Neither predicted outcome happened in full. The expected-if-true branch fails on the exponents: r^-1 and a^2 persist despite about 4x more parameters (1.2M), so the capacity-limit idea is not supported on the fitted form. The expected-if-false branch fails on fit_error, which is below 0.2 in both seeds (0.161-0.178, compared with about 0.20 at the smaller size). Both seeds show the same mixed pattern, so this is not seed noise. The r^-1 form clearly survives scaling. What remains unclear is whether fit_error < 0.2 means anything here: for near-circular orbits, a^2/r - a/2 is proportional to a^3/r^2, so the error metric may not be able to tell the two laws apart at e <= 0.7. If fitting the same pipeline to the true accel_step target recovers r^-2 with low error, the verdict would move toward refuted (the model really encodes an r^-1 quantity). If the exact vis-viva form scores below 0.2 against the true law, the fit_error criterion cannot decide this hypothesis. Distance and energy do not beat their controls here (controls 0.89-0.91, margins 0.05-0.09). Each run is single-checkpoint (final only).",
+  "created_at": "2026-10-12T00:28:08",
+  "experiment_id": "exp-20261011-233049-cd8c",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T00:28:08",
+      "actor": "agent"
+    }
+  ]
+}

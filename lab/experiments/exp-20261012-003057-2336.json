@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-003057-2336",
+  "family": "E5",
+  "hypothesis": "At N=256, with best-of-5 controls and checkpoints every 10 steps, the accel_step formation step does not differ from N=64 (steps 100-140) by more than the seed-to-seed spread. This tests the refutation in f-20261011-231210-478d, which the best-of-3 rejudge left resting on one seed.",
+  "expected_if_true": "All 3 seeds reach accel_step margin >= required_margin at some step in [90, 150], with no seed later than 150. This replicates 'timing roughly fixed across steps_per_orbit' and refutes the 'later at N=256' hypothesis on at least 2 independent seeds.",
+  "expected_if_false": "At least 2 of 3 seeds first reach required_margin at step >= 160 or never reach it within 300 steps. That would mean N=256 forms accel_step later than N=64, which supports the original task-demand hypothesis.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=256, with best-of-5 controls and checkpoints every 10 steps, the accel_step formation step does not differ from N=64 (steps 100-140) by more than the seed-to-seed spread. This tests the refutation in f-20261011-231210-478d, which the best-of-3 rejudge left resting on one seed.",
+    "expected_if_true": "All 3 seeds reach accel_step margin >= required_margin at some step in [90, 150], with no seed later than 150. This replicates 'timing roughly fixed across steps_per_orbit' and refutes the 'later at N=256' hypothesis on at least 2 independent seeds.",
+    "expected_if_false": "At least 2 of 3 seeds first reach required_margin at step >= 160 or never reach it within 300 steps. That would mean N=256 forms accel_step later than N=64, which supports the original task-demand hypothesis.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 10
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      29,
+      50,
+      51
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T00:30:57",
+  "updated_at": "2026-10-12T00:58:37",
+  "verdict": "supported",
+  "estimate_hours": 0.1158,
+  "compute_hours": 0.0442,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T00:30:57",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T00:30:58",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T00:35:04",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T00:37:53",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T00:58:37",
+      "actor": "agent",
+      "note": "finding f-20261012-005837-b9ac"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "id": "f-20261011-231210-478d",
   "claim": "At N=256, the accel_step margin over control first reached >= 0.1 at step 100 in both seeds (0.116 for seed 30, 0.104 for seed 29; both were 0.045-0.049 at step 50). That is the same step as the N=64 crossing, not later. Distance and energy formed by step 25. At step 600, accel_step R2 was 0.88-0.89 vs control 0.67-0.70 (margin 0.19-0.21, layer 3). Force never beat its control: R2 0.54-0.55 vs 0.51-0.54, margin 0.012-0.032, after a brief peak of 0.09 at step 50. Neither model beat the constant-velocity baseline (val_mse_ratio 3.12-3.20).",
   "verdict": "refuted",
-  "status": "replicated",
+  "status": "refuted",
   "evidence_run_ids": [
     "run-20261011-230710-37e6",
     "run-20261011-230710-af02"
@@ -13,13 +13,40 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 9): Accepted. Force margins at step 25 were 0.204 (seed 30) and 0.147 (seed 29), both above 0.1, so 'force never beat its control' is wrong. The correct statement: force beat its control only transiently at step 25, then fell to 0.065-0.068 by step 75 and 0.012-0.032 by step 600. Step 75 is present in the trajectory. This is the same early-transient pattern seen at N=64 (issue 7; f-20261012-002713-8d93). The matched N=256 dense-checkpoint proposal (5 controls, every 10 steps) will show whether it recurs."
+    },
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 10): Accepted. Under the best-of-3 rejudge, seed 29's accel_step forms at step 125, which falls in neither the true band (>= 150) nor the false band (<= 100). Only seed 30 meets the refutation criterion, so the status should be 'refuted (1 seed)', not 'replicated', and the conclusion that formation timing is fixed across steps_per_orbit is weaker than stated. To resolve it, I am proposing an N=256 E5 cell with seeds 47-49, matched to an N=64 cell with the same seeds, architecture, 5 controls and 10-step checkpoints, using a pre-registered criterion of matched-seed difference <= 40 steps."
+    },
+    {
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 9): Accepted. At step 25 the force margins were 0.204 (seed 30) and 0.147 (seed 29), so 'force never beat its control' is wrong. It should read 'force beat its control only transiently at step 25, then fell to 0.065-0.068 by step 75 and about 0.01-0.03 at the end'. Step 75 is in the trajectory. This matches the step-10 force transient at N=64 (q-20261012-002713-7795). Both E5 proposals this cycle use 5 controls and dense early checkpoints to test whether the transient is a control artifact."
+    },
+    {
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 10): Agreed. Under the best-of-3 rejudge, seed 29 forms at step 125, which meets neither pre-registered branch. Only seed 30 independently meets the refutation, so the finding should be read as refuted on one seed, not replicated. I am proposing an N=256 E5 with seeds 29, 50 and 51, 5 controls and 10-step checkpoints, with the true/false windows fixed in advance ([90, 150] vs >= 160), to settle it."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "replicated",
       "at": "2026-10-11T23:12:10",
       "actor": "agent"
+    },
+    {
+      "status": "refuted",
+      "at": "2026-10-12T00:31:29",
+      "actor": "claude-code (for the user)",
+      "note": "review r-20261011-233218-19cf issue 10: under best-of-3 controls only seed 30 meets the refutation criterion; the research agent accepted"
     }
   ]
 }

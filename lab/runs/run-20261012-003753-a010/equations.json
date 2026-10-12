@@ -1,0 +1,124 @@
+{
+  "force": {
+    "equation": "0.90674746/r",
+    "complexity": 3,
+    "loss": 0.16373098,
+    "fit_error_vs_probe": 0.33718173337425156,
+    "fit_error_vs_true_law": 0.6450655691539745,
+    "true_law_error_vs_probe": 0.9817597190646273,
+    "law_recovered": false,
+    "true_law": "m2 / r**2",
+    "variables": [
+      "r",
+      "m2"
+    ],
+    "pareto": [
+      {
+        "complexity": 1,
+        "loss": 0.5514205,
+        "equation": "0.917323650000000"
+      },
+      {
+        "complexity": 3,
+        "loss": 0.16373098,
+        "equation": "0.90674746/r"
+      },
+      {
+        "complexity": 5,
+        "loss": 0.15451589,
+        "equation": "-0.1811665 + 1.0379874/r"
+      },
+      {
+        "complexity": 6,
+        "loss": 0.14987627,
+        "equation": "1.50073868215296/(r + 0.35181826)**2"
+      },
+      {
+        "complexity": 8,
+        "loss": 0.14980814,
+        "equation": "1.328324/((m2*0.6216408 + r)**2)"
+      },
+      {
+        "complexity": 10,
+        "loss": 0.14568116,
+        "equation": "0.2897753 + 0.8827335/(r + (r - 0.12789321)**3)"
+      },
+      {
+        "complexity": 11,
+        "loss": 0.1432959,
+        "equation": "0.28656247 + 0.8827335/(r**3*r**3 + r)"
+      },
+      {
+        "complexity": 15,
+        "loss": 0.14030708,
+        "equation": "-1*(-0.25201827) + 2.1763625/(((m2*m2 + r*2.7951732*r)*1.3222127))"
+      }
+    ],
+    "layer": 6,
+    "probe_r2": 0.49786967672339694
+  },
+  "accel_step": {
+    "equation": "(a**2/r**2)*a*0.005994332",
+    "complexity": 8,
+    "loss": 1.4630676e-05,
+    "fit_error_vs_probe": 0.3991207982325191,
+    "fit_error_vs_true_law": 0.06776939085930717,
+    "true_law_error_vs_probe": 0.4287422810661656,
+    "law_recovered": false,
+    "true_law": "0.00963829 * a**3 / ((1 + m2) * r**2)",
+    "variables": [
+      "r",
+      "m2",
+      "a"
+    ],
+    "pareto": [
+      {
+        "complexity": 1,
+        "loss": 9.176823e-05,
+        "equation": "0.00828897100000000"
+      },
+      {
+        "complexity": 3,
+        "loss": 8.557449e-05,
+        "equation": "a*0.0076767677"
+      },
+      {
+        "complexity": 5,
+        "loss": 5.0401875e-05,
+        "equation": "a*0.010097784/r"
+      },
+      {
+        "complexity": 6,
+        "loss": 3.3120385e-05,
+        "equation": "(a**2/r**2)*0.006583516"
+      },
+      {
+        "complexity": 7,
+        "loss": 2.541569e-05,
+        "equation": "(a**4/r**2)*0.0036651664"
+      },
+      {
+        "complexity": 8,
+        "loss": 1.4630676e-05,
+        "equation": "(a**2/r**2)*a*0.005994332"
+      },
+      {
+        "complexity": 10,
+        "loss": 1.3583388e-05,
+        "equation": "(a**2/(r - 1*(-0.022758521))**2)*0.007337195*a"
+      },
+      {
+        "complexity": 12,
+        "loss": 1.1092025e-05,
+        "equation": "0.0071784398*a*(a**2/(r - 1*(-0.08024545))**2)/0.8452966"
+      },
+      {
+        "complexity": 20,
+        "loss": 1.0106533e-05,
+        "equation": "(0.0102813800001796*a**2/r**2)*(a*(-0.10139714) + r)*0.3994442*a/(r*m2)"
+      }
+    ],
+    "layer": 6,
+    "probe_r2": 0.7006957213224103
+  }
+}

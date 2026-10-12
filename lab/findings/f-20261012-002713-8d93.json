@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-002713-8d93",
+  "claim": "In all 3 seeds at N=64 (checkpoints every 10 steps), the accel_step margin first reaches the required 0.1 at step 140, 140 and 100 (seeds 45, 44, 46). That is 40, 40 and 90 steps before val_mse_ratio first drops below 1 (steps 180, 180, 190). The margin never falls back below 0.1 afterwards, and it ends at 0.109, 0.119 and 0.158 (R2 0.884-0.905 at layer 4 vs control 0.740-0.786). Force does not beat its control in any seed: final margins are 0.040, 0.000 and 0.062 (R2 0.19-0.54 vs control 0.19-0.50). So the model holds a per-snapshot acceleration code but no physical-force code.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261011-234250-2037",
+    "run-20261011-234250-6e25",
+    "run-20261011-234250-a7ca"
+  ],
+  "confidence_note": "The test criterion passes in 3/3 seeds, but the margins are thin. Seed 45 crosses at exactly 0.100, and seeds 44/45 never go above 0.12, so a slightly higher control_r2 would delay or remove those crossings. The controls are high (0.74-0.79), so the margins have little headroom (headroom-normalised 0.49-0.61). 'Before' is also a comparison between two arbitrary thresholds on two smoothly changing curves. The accel_step margin rises steadily from about step 20, while val_mse_ratio has already dropped from about 70-80 to about 6-8 by step 50. If formation were defined as a fixed fractional loss reduction (e.g. 90% of the step-0 value), accel_step would form after most of the loss drop, not before it. Distance margin (0.13-0.34 by step 30-40) and energy margin (about 0.2 by step 20) form much earlier, so the accel_step signal could still be a nonlinear read of distance. This was not tested here. The finding would change if regressing distance out of accel_step removed the margin, if new controls pushed the seed 44/45 crossings past step 180, or if a 0.15 threshold reversed the ordering in 2 of 3 seeds. Note: this was designed as a replication of f-20261011-203659-4e2f (step-100 crossing). It agrees, with crossings at steps 100-140.",
+  "created_at": "2026-10-12T00:27:13",
+  "experiment_id": "exp-20261011-233049-8a24",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T00:27:13",
+      "actor": "agent"
+    }
+  ]
+}

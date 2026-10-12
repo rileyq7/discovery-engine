@@ -1,0 +1,17 @@
+[00:48:02] experiment exp-20261012-003057-3f55 (E3) seed 52: The a*(a/r - c) form with c near 0.5 (the vis-viva form) seen in the 6-layer, d_model=128 accel_step fits at e <= 0.7 reflects that this eccentricity range cannot tell the two forms apart, not that the model encodes an r^-1 quantity. At m2 fixed and e in [0, 0.85], a^2/r - a/2 and a^3/r^2 differ substantially near pericentre. A 6-layer d_model=128 model there keeps accel_step probe R2 >= 0.8, and the fit to its accel_step direction recovers r^~-2.
+[00:48:02] model: 1,207,942 params on mps; dataset a02ec440b269; 9000 train / 1000 val systems
+[00:48:04] step 0: val_mse=2.122e-03 cv_baseline=6.914e-05 ratio=30.688
+[00:49:37] step 500: val_mse=1.597e-05 cv_baseline=6.914e-05 ratio=0.231
+[00:51:17] step 1000: val_mse=4.848e-06 cv_baseline=6.914e-05 ratio=0.070
+[00:52:54] step 1500: val_mse=3.088e-06 cv_baseline=6.914e-05 ratio=0.045
+[00:54:32] step 2000: val_mse=1.086e-06 cv_baseline=6.914e-05 ratio=0.016
+[00:56:09] step 2500: val_mse=6.387e-07 cv_baseline=6.914e-05 ratio=0.009
+[00:57:47] step 3000: val_mse=3.581e-07 cv_baseline=6.914e-05 ratio=0.005
+[00:57:47] training done in 9.7 min; beats constant-velocity baseline: True
+[00:57:52] random-model controls (best of 3): force=0.05/0.19/0.20/0.20/0.20/0.20/0.20, accel_step=0.16/0.26/0.29/0.29/0.28/0.29/0.29, distance=-0.05/0.72/0.80/0.83/0.83/0.85/0.83, energy=-0.04/0.74/0.83/0.84/0.85/0.85/0.86
+[00:57:54] probes @ step 3000: best force R2=0.498 (layer 6)
+[00:57:54] PySR on |force| probe outputs from layer 6 (5400 points)...
+[00:58:06] PySR: |force| = 0.90674746/r  (law recovered: False, error vs true law 0.645)
+[00:58:06] PySR on |accel_step| probe outputs from layer 6 (5400 points)...
+[00:58:07] PySR: |accel_step| = (a**2/r**2)*a*0.005994332  (law recovered: False, error vs true law 0.068)
+[00:58:07] run complete in 10.1 min

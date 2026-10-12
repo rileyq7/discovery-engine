@@ -1,0 +1,73 @@
+{
+  "id": "run-20261012-003504-2601",
+  "experiment_id": "exp-20261012-003057-2336",
+  "seed": 50,
+  "status": "completed",
+  "started_at": "2026-10-12T00:35:06",
+  "ended_at": "2026-10-12T00:35:59",
+  "compute_hours": 0.0147,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261012-003504-2601",
+  "git_commit": "76abd0c",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.362544638434733e-06,
+    "baseline_cv_mse": 1.0096824060626856e-07,
+    "val_mse_ratio": 13.494784402038396,
+    "beats_baseline": false,
+    "train_hours": 0.009221088356441922,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "5f1b29666190",
+    "stopped": false,
+    "steps_completed": 300,
+    "steps_planned": 300,
+    "probes": {
+      "final_checkpoint": 300,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.52901,
+          "control_r2": 0.47284,
+          "control_spread": 0.01954,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 3,
+          "r2": 0.90434,
+          "control_r2": 0.75292,
+          "control_spread": 0.00486,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 110
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.75798,
+          "control_r2": 0.25362,
+          "control_spread": 0.13797,
+          "required_margin": 0.138,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.42471,
+          "control_r2": 0.18787,
+          "control_spread": 0.13263,
+          "required_margin": 0.1326,
+          "beats_control": true,
+          "formed_at_step": 40
+        }
+      }
+    }
+  },
+  "pid": 35300,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "5f1b29666190"
+}

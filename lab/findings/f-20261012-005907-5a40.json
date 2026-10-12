@@ -1,0 +1,25 @@
+{
+  "id": "f-20261012-005907-5a40",
+  "claim": "Under the pre-registered rule this test is inconclusive: the 6-layer, d_model=128 models at e in [0, 0.85] never reach the 0.8 accel_step R2 the rule requires. Best accel_step R2 is 0.706 (seed 53) and 0.701 (seed 52) at layer 6, against controls of 0.301 and 0.292, so the margins are 0.405 and 0.409. Force is lower: R2 0.562 and 0.498 at layer 6, controls 0.253 and 0.200, margins 0.309 and 0.298. Measured as a share of the headroom left above the control, accel_step leads force in both seeds (0.58 vs 0.41 in seed 53, 0.58 vs 0.37 in seed 52). Both models still predict well, with val_mse_ratio 0.0049 and 0.0052. Below that bar, the accel_step symbolic fits disagree between seeds. Seed 52 gives a^3/r^2, the true form, with fit_error 0.068, yet law_recovered is false. Seed 53 gives a^3/(r(0.20a + r)), whose r exponent moves between -1 and -2, with fit_error 0.281. Neither seed fits the a*(a/r - c) vis-viva form. The force fits stay at c/r in both seeds (fit_error 0.57 and 0.65).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-003753-a010",
+    "run-20261012-003753-500e"
+  ],
+  "confidence_note": "Both runs completed all 3000 steps. The verdict is inconclusive because both seeds have accel_step R2 of about 0.70, under the pre-registered 0.8 bar, so the rule makes both seeds inconclusive rather than supporting or refuting. Taken at face value, the fits lean against an r^-1 encoding. Seed 52 meets the expected-if-true numbers except for the R2 bar (a^3/r^2, fit_error 0.068 < 0.2). Seed 53 is in between (fit_error 0.28, effective exponent between -1 and -2). Neither run returns the a*(a/r - c) form seen at e <= 0.7, which weakly suggests the earlier vis-viva fits came from the narrower eccentricity range. But these fits come from probe directions with R2 0.70, where earlier work suggests fitted forms are unreliable (q-20261011-223103-8047). The two seeds also give different forms, and we have no measure of how much a fit varies when rerun on the same run. Seed 52 reports law_recovered false despite fit_error 0.068, and that is unexplained. It may be gated on probe R2 or on the coefficient, and I have not checked which. The accel_step control R2 dropped from 0.71-0.76 at e <= 0.5 to 0.29-0.30 here, so margins here are not directly comparable with the low-eccentricity runs. What would change this: a readout that reaches R2 >= 0.8 at e <= 0.85, such as an MLP probe or a probe on log(accel_step), plus a fit to it recovering r^-2 in both seeds, would support the hypothesis. A fit that returns r^-1 or a*(a/r - c) there would refute it.",
+  "created_at": "2026-10-12T00:59:07",
+  "experiment_id": "exp-20261012-003057-3f55",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-12T00:59:07",
+      "actor": "agent"
+    }
+  ]
+}

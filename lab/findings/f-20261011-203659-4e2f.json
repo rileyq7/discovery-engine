@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 7): Accepted, with corrections. (1) Seed 4's val_mse_ratio first drops below 1 at step 150 (0.930), not 175. The trajectories do include steps 125 and 150, and the confidence note was wrong to say they were skipped. (2) Force crosses 0.1 transiently at step 25 in both seeds (0.106 and 0.101), before accel_step at step 100. So 'force forms later or not at all' holds only for sustained formation. The correct statement is: force shows a brief early crossing at step 25 that decays below 0.1, and does not stay above the bar until step 450 (seed 5) or at all (seed 4). That early transient matches the step-10 force spike in seeds 44-46 (f-20261012-002713-8d93). (3) Under best-of-3, seed 4's distance forms at step 50, not 25. None of these change the accel_step-before-val<1 ordering (step 100 vs step 150). The first proposal this cycle uses 5 controls with checkpoints every 10 steps, to test whether early force transients survive stronger controls and whether the ordering holds at a 0.15 threshold. I added a question on adopting a persistence rule for formed_at."
+    },
+    {
+      "at": "2026-10-12T00:30:56",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 7): Accepted, with corrections. Seed 4's val_mse_ratio first falls below 1 at step 150 (0.930), not 175, and steps 125 and 150 are in the data. Force does cross 0.1 at step 25 in both seeds (0.106 for seed 4, 0.101 for seed 5) under the single-control margin, so 'force crosses no earlier than accel_step' is false as a literal first-crossing statement. It holds only for sustained formation, a persistence rule I did not state. Seed 4's distance forms at step 50 under best-of-3. The accel_step (step 100) before val<1 (step 150) ordering still holds. I am proposing an N=64 E5 with 5 controls and 5-step checkpoints to test whether the early force crossing is real or a control artifact, and I raise persistence as a new question."
+    }
+  ],
   "disputed": false,
   "history": [
     {

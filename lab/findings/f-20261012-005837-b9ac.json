@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-005837-b9ac",
+  "claim": "At N=256 with best-of-5 controls and checkpoints every 10 steps, accel_step first reaches its required margin of 0.1 at step 100, 110 and 120 in seeds 29, 50 and 51. All three fall inside the predicted [90, 150] window and match the N=64 range of steps 100-140. Final accel_step R2 is 0.882-0.904 at layer 3, against a control of 0.705-0.753 (margin 0.151-0.177, control spread <= 0.009). Force never beats its control at the end: R2 0.18-0.55, margin -0.001 to 0.056. Its only crossings are a short spike at steps 10-20 (margin 0.127-0.242) that fades below 0.1 by step 30-60. Meanwhile all three models stay 11.4-13.5x worse than constant-velocity extrapolation.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-003504-b94e",
+    "run-20261012-003504-2601",
+    "run-20261012-003504-55a2"
+  ],
+  "confidence_note": "Three completed seeds (none stopped) agree, so this replicates 'accel_step timing roughly fixed across steps_per_orbit'. The 'later at N=256' hypothesis from f-20261011-231210-478d is refuted at the 0.1 threshold. Several things limit this. (1) The margins at the moment of formation are right at the bar: 0.103, 0.109, and exactly 0.100 for seed 51. The accel_step margin rises smoothly from about 0 at step 0 and levels off at 0.15-0.18, so the 'formation step' is where a smooth ramp crosses a threshold, not a sharp event. At a stricter 0.15 bar, seed 29 crosses at step 150 but seeds 50 and 51 only at steps 230-240. That would push N=256 outside the N=64 window and could flip the verdict. (2) The N=64 comparison window (100-140) comes from earlier runs with best-of-3 controls and different seeds, not from a matched sweep in this experiment. (3) accel_step forms while val_mse_ratio is still 87-98. These models never beat the baseline, so this result says the accel_step margin is not tied to prediction quality at N=256. It says nothing about how the margin is used. (4) The control R2 for accel_step is high (0.71-0.75), so absolute headroom is small. The headroom-normalised margin is about 0.56-0.61 for accel_step versus 0.07-0.12 for force. What would change the verdict: a matched N=64/N=256 sweep with the same seeds and best-of-5 controls showing N=256 later at a 0.15 or headroom-normalised threshold.",
+  "created_at": "2026-10-12T00:58:37",
+  "experiment_id": "exp-20261012-003057-2336",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T00:58:37",
+      "actor": "agent"
+    }
+  ]
+}

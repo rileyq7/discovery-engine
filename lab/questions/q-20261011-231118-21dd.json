@@ -2,6 +2,9 @@
   "id": "q-20261011-231118-21dd",
   "text": "Seed 26's accel_step fit_error (0.2008) sits right at the 0.2 law-recovery threshold. How much does fit_error vary when the symbolic fit is rerun on the same probe output with different subsamples or regressor seeds? If the run-to-run spread is about 0.05 or more, a single fit cannot reliably separate r^-1 from r^-2 near the threshold.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261012-002808-0644",
+    "f-20261012-005907-5a40"
+  ],
   "created_at": "2026-10-11T23:11:18"
 }

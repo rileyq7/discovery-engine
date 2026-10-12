@@ -1,0 +1,10 @@
+{
+  "id": "q-20261012-002713-03f9",
+  "text": "Does the accel_step-before-val_mse_ratio<1 ordering still hold when accel_step formation uses a stricter threshold (margin >= 0.15, or headroom-normalised margin >= 0.5)? Seeds 44 and 45 never reach 0.12, so at 0.15 they would show no formation at all within 300 steps.",
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261012-005837-b9ac",
+    "f-20261012-005950-42a7"
+  ],
+  "created_at": "2026-10-12T00:27:13"
+}

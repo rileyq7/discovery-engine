@@ -1,0 +1,9 @@
+{
+  "id": "q-20261012-002808-b68a",
+  "text": "The constant c in the accel_step fit a*(a/r - c) is 0.55-0.56 at 4 layers / d_model=64 and 0.50-0.54 at 6 layers / d_model=128. Does c converge to exactly 0.5 (vis-viva) as models grow or train longer? Does a linear probe for a^2*(2/r - 1/a) at layer 6 match or beat accel_step's R2 of 0.92-0.93?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261012-005907-5a40"
+  ],
+  "created_at": "2026-10-12T00:28:08"
+}

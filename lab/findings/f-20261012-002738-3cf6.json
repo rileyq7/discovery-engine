@@ -1,0 +1,25 @@
+{
+  "id": "f-20261012-002738-3cf6",
+  "claim": "Patching the top force-scoring head (force_r2 about 0.35) did not single out a gravity-specific pathway: its effect was 27.5 vs 16.6 for the control head in seed 43 (1.66x, inside the pre-registered 2x 'false' band) and 109.6 vs 46.5 in seed 42 (2.36x, short of the 3x bar), so the specificity prediction fails, though both heads cause very large MSE increases. Residual-stream probes replicate earlier m2-fixed runs: force R2 0.699/0.650 at layer 1 (margin 0.230/0.165 over control 0.469/0.485), accel_step R2 0.851/0.841 at layer 4 (margin 0.238/0.280); headroom-normalised margins favour accel_step (0.61/0.64 vs force 0.43/0.32); val_mse_ratio 0.018/0.014.",
+  "verdict": "refuted",
+  "status": "refuted",
+  "evidence_run_ids": [
+    "run-20261011-234433-3ab1",
+    "run-20261011-234433-51c8"
+  ],
+  "confidence_note": "This refutes the pre-registered criterion because seed 43 falls within 2x of its control. It does not support the expected-if-false reading that the force head 'carries little that prediction depends on'. Every patch is destructive: the top head raises MSE 28-110x and even the lowest-scoring head raises it 17-47x. Cross-system activation swapping probably injects wrong orbit-scale (a) information into any head, which swamps head-specific effects. That makes this a weak test of whether the head is specific. Seed 42's 2.36x ratio is in the gap between the true and false criteria, so the two seeds do not independently agree. Each run patches only one top head and one control head, and heads are ranked by force R2, which is low at about 0.35. The verdict would change if a gentler intervention, such as mean-ablation, or patching from a system with matched a, gave the top head an effect at least 3x the control in both seeds, or if heads ranked by accel_step showed clear specificity. Probe margins are well above required_margin (0.1; control_spread <= 0.09) in both seeds, and both runs completed 3000/3000 steps.",
+  "created_at": "2026-10-12T00:27:38",
+  "experiment_id": "exp-20261011-233049-b1ea",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "refuted",
+      "at": "2026-10-12T00:27:38",
+      "actor": "agent"
+    }
+  ]
+}

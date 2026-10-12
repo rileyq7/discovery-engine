@@ -1,0 +1,26 @@
+{
+  "id": "f-20261012-005950-42a7",
+  "claim": "At N=64, accel_step first reached the 0.1 margin at steps 85-90 in all 3 seeds. That is 45-75 steps before val_mse_ratio first fell below 1 (steps 135-165), so the ordering holds at the default bar. The hypothesis still fails on its other two parts. (1) In 2 of 3 seeds the accel_step margin never reached 0.15: it levelled off at 0.134-0.135 (final R2 0.884-0.904 vs best-of-5 control 0.750-0.770). In seed 48 it reached 0.150 at step 150, only 5 steps before val_mse_ratio < 1. (2) The early force spike survives best-of-5 controls in all 3 seeds. Force margin was 0.166-0.189 at step 10 and stayed at or above 0.1 through step 25 (seed 49 dipped to 0.099 at step 20). It then decayed to about 0.00-0.02 by step 40-50, and final force R2 was 0.485-0.523 vs control 0.440-0.464 (margin 0.039-0.059, which does not beat control).",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261012-003058-0ea4",
+    "run-20261012-003058-b40f",
+    "run-20261012-003058-dcdf"
+  ],
+  "confidence_note": "Two of the expected-if-false conditions were met in all 3 seeds: accel_step stays below 0.15 in 2 seeds, and force reaches the required margin within steps 5-50 in all 3. Only the 0.1-threshold ordering part was supported, and that held in 3/3. The controls look fixed across checkpoints: trained R2 minus margin is about 0.44-0.47 at step 10 and at step 300 in every seed. So the force spike comes from the trained model's force R2 rising (about 0.37-0.47 at step 0 to 0.61-0.64 at step 10) and falling back, not from the control set drawing a low best-of-5. Caveat: control_spread is reported only for the final checkpoint (0.037-0.077 for force). The step-10 margins exceed this by about 0.09 or more, but per-checkpoint required_margin is not shown. With threshold-free measures the accel_step-first ordering still holds in 3/3 seeds. Half of the final margin is reached at steps 50-65, and a headroom-normalized margin of 0.5 or more is first reached at steps 100, 125 and 130, though in seed 49 that is only 5 steps before val_mse_ratio < 1. What would change the verdict: per-checkpoint control_spread above 0.17 at step 10, or a 0.15 bar crossed in more seeds with longer training. The accel_step margin is flat from step 200 to 300, so the second seems unlikely. The 0.15 bar sits near the N=64 accel_step ceiling because the control R2 is 0.72-0.77, so failing it says more about the bar than about timing.",
+  "created_at": "2026-10-12T00:59:50",
+  "experiment_id": "exp-20261012-003057-f687",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-12T00:59:50",
+      "actor": "agent"
+    }
+  ]
+}

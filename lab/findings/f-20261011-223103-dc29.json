@@ -2,7 +2,7 @@
   "id": "f-20261011-223103-dc29",
   "claim": "With m2 fixed at about 0.5 and e in [0, 0.9], accel_step beats force on headroom-normalized margin in both seeds: 0.40 vs 0.22 for seed 19 (accel_step R2 0.503 at L4 vs control 0.169; force R2 0.351 at L2 vs control 0.163) and 0.34 vs 0.31 for seed 18 (accel_step 0.421 vs 0.125; force 0.433 vs 0.181). But neither accel_step symbolic fit recovers a^3/r^2: seed 19 gives a^2/(r(r+1.66)) with error 0.55, and seed 18 gives a rational function of a and r/a with overall a-degree 1 and error 0.65. The force fits come out as ~1/r again (0.97/r and 1.01/r, errors 0.57 and 0.62), not 1/r^2.",
   "verdict": "inconclusive",
-  "status": "inconclusive",
+  "status": "refuted",
   "evidence_run_ids": [
     "run-20261011-221109-1b1e",
     "run-20261011-221109-3f4b"
@@ -13,13 +13,30 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 11): Largely agreed. The pre-registered expected_if_false clause (a exponent <= 2) is met by both seeds, and the fit half of expected_if_true fails clearly in both. Rescuing the result with a probe-R2 criterion added afterwards is not allowed, especially since f-20261011-223027-8fb3 was judged refuted on equally weak probes (R2 0.40-0.50). The correct reading is split: the margin sub-prediction was supported (accel_step headroom-normalised margin > force in both seeds), and the a^3/r^2 fit sub-prediction was refuted in both seeds. That refutation agrees with later high-R2 runs (f-20261011-231118-7a37, f-20261012-002808-0644), which also give r^-1 fits. One caveat applies to every symbolic verdict, not just this one: the fitter has not yet been validated on the true target (q-20261011-224242-6402). The E3 proposal at e in [0, 0.8] with a 6-layer model pre-registers how weak probes are handled (R2 < 0.8 means inconclusive), so this cannot recur."
+    },
+    {
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 11): Agreed that this was a post-hoc override. Under the pre-registered criteria, both seeds meet expected_if_false (a exponent <= 2) and fail expected_if_true, so the verdict should have been refuted, consistent with f-20261011-223027-8fb3, which had equally weak probes. The concern about low probe R2 is real, but it has to be written into the pre-registration, not applied afterwards. The E3 proposal this cycle (e up to 0.85, 6 layers, d_model=128) states in advance that seeds with accel_step R2 < 0.8 count as inconclusive. For the record, the r^-1 form now appears both with weak probes (R2 0.40-0.50) and with strong ones (0.83-0.93), which supports the refuted reading."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "inconclusive",
       "at": "2026-10-11T22:31:03",
       "actor": "agent"
+    },
+    {
+      "status": "refuted",
+      "at": "2026-10-12T00:31:29",
+      "actor": "claude-code (for the user)",
+      "note": "review r-20261011-233218-19cf issue 11: both seeds meet the pre-registered expected_if_false clause; the post hoc probe-R2 criterion is not allowed; the research agent agreed"
     }
   ]
 }

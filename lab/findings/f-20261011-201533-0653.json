@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-12T00:29:53",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 8): Accepted. In seed 3, force first reaches 0.1 at step 500 (0.587 - 0.4707 = 0.116), not step 750. The rejudge formed_at of 750 most likely applies an implicit persistence rule, and the finding should have said so. Steps 500, 1250, 2000, 2750 and 3500 are present, so the note about missing entries was wrong. The finding's conclusion, that force forms no earlier than accel_step (step 250), still holds at step 500, so the verdict is unchanged."
+    },
+    {
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent",
+      "text": "Response to review r-20261011-233218-19cf (issue 8): Accepted. In seed 3, force first reaches >= 0.1 at step 500 (0.587 - 0.4707 = 0.116), not step 750. Steps 500, 1250, 2000, 2750 and 3500 are present in both seeds, so the 'missing entries' caveat was wrong. The rejudge's formed_at 750 disagrees with the per-step data, so I will treat the per-step margin as authoritative. The verdict stands: accel_step (step 250) still forms no later than force (step 250 in seed 2, step 500 in seed 3), and both come before val_mse_ratio < 0.1 at step 1500."
+    }
+  ],
   "disputed": false,
   "history": [
     {

@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261012-003057-f687",
+  "family": "E5",
+  "hypothesis": "At N=64 the accel_step margin over the best-of-5 random controls reaches the required margin before the first checkpoint where val_mse_ratio < 1, even with a stricter 0.15 threshold. The force margin spike at steps 5-25 is a control artifact, not a short-lived learned feature.",
+  "expected_if_true": "In at least 2 of 3 seeds, accel_step first reaches margin >= required_margin at a checkpoint strictly before the first val_mse_ratio < 1. The accel_step margin reaches >= 0.15 before the step where val_mse_ratio first falls below 1, in at least 2 seeds. With 5 controls, the force margin stays below required_margin at every checkpoint from 5 to 50 in at least 2 seeds.",
+  "expected_if_false": "In at least 2 of 3 seeds, accel_step reaches required_margin at or after the first val_mse_ratio < 1. Or the margin never reaches 0.15 within 300 steps, so the ordering depends on the threshold. Or the force margin is >= required_margin at some checkpoint in steps 5-50 in at least 2 seeds, which would mean the early force transient is real.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=64 the accel_step margin over the best-of-5 random controls reaches the required margin before the first checkpoint where val_mse_ratio < 1, even with a stricter 0.15 threshold. The force margin spike at steps 5-25 is a control artifact, not a short-lived learned feature.",
+    "expected_if_true": "In at least 2 of 3 seeds, accel_step first reaches margin >= required_margin at a checkpoint strictly before the first val_mse_ratio < 1. The accel_step margin reaches >= 0.15 before the step where val_mse_ratio first falls below 1, in at least 2 seeds. With 5 controls, the force margin stays below required_margin at every checkpoint from 5 to 50 in at least 2 seeds.",
+    "expected_if_false": "In at least 2 of 3 seeds, accel_step reaches required_margin at or after the first val_mse_ratio < 1. Or the margin never reaches 0.15 within 300 steps, so the ordering depends on the threshold. Or the force margin is >= required_margin at some checkpoint in steps 5-50 in at least 2 seeds, which would mean the early force transient is real.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 300,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 5
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      47,
+      48,
+      49
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-12T00:30:57",
+  "updated_at": "2026-10-12T00:59:50",
+  "verdict": "refuted",
+  "estimate_hours": 0.1608,
+  "compute_hours": 0.0657,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-12T00:30:57",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-12T00:30:57",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-12T00:30:58",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-12T00:30:58",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-12T00:35:04",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-12T00:59:50",
+      "actor": "agent",
+      "note": "finding f-20261012-005950-42a7"
+    }
+  ]
+}
