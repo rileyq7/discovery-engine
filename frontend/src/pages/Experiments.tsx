@@ -2,7 +2,7 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronDown, ChevronRight, Plus } from "lucide-react";
 import { api, type Experiment, type Validation } from "../lib/api";
-import { fmtHours, fmtTime, shortId } from "../lib/utils";
+import { cn, fmtHours, fmtTime, shortId } from "../lib/utils";
 import { PageHeader } from "../App";
 import { StateBadge, VerdictBadge } from "../components/badges";
 import { RunLink } from "../components/FindingCard";
@@ -122,13 +122,21 @@ export default function Experiments() {
   const [tpl, setTpl] = useState(0);
 
   const rows = useMemo(() => (exps.data ?? []).filter((e) =>
-    (!family || e.family === family) && (!state || e.state === state) && (!verdict || (e.verdict ?? "none") === verdict)), [exps.data, family, state, verdict]);
+    (!family || e.family === family) && (!state || e.state === state) && (!verdict || (e.verdict ?? "none") === verdict))
+    // anything waiting at the approval gate goes first, so it can't get lost below newer runs
+    .sort((a, b) => Number(b.state === "proposed") - Number(a.state === "proposed")), [exps.data, family, state, verdict]);
+  const waiting = (exps.data ?? []).filter((e) => e.state === "proposed").length;
 
   return (
     <div>
       <PageHeader title="Experiments" sub="Every proposal, its state, verdict and compute. Approve or edit anything waiting at the gate.">
         <Button onClick={() => setProposing(true)}><Plus size={14} /> Propose experiment</Button>
       </PageHeader>
+      {waiting > 0 && (
+        <div className="mb-3 rounded-md border border-warn/40 bg-warn/10 px-3 py-2 text-sm">
+          {waiting} proposal{waiting > 1 ? "s" : ""} waiting for your approval, shown at the top. Click one to approve or reject it.
+        </div>
+      )}
       <div className="mb-3 flex flex-wrap gap-2">
         <Select value={family} onChange={(e) => setFamily(e.target.value)}>
           <option value="">All families</option>
@@ -150,7 +158,7 @@ export default function Experiments() {
             <tbody>
               {rows.map((e) => (
                 <Fragment key={e.id}>
-                  <tr className="cursor-pointer hover:bg-panel-2/60" onClick={() => setOpen(open === e.id ? null : e.id)}>
+                  <tr className={cn("cursor-pointer hover:bg-panel-2/60", e.state === "proposed" && "bg-warn/5")} onClick={() => setOpen(open === e.id ? null : e.id)}>
                     <Td>{open === e.id ? <ChevronDown size={14} /> : <ChevronRight size={14} />}</Td>
                     <Td className="font-semibold">{e.family}</Td>
                     <Td className="max-w-[520px]"><div className="line-clamp-2">{e.hypothesis}</div><div className="font-mono text-[10px] text-muted">{shortId(e.id)}{e.replicates_finding_id ? ` · replicates ${shortId(e.replicates_finding_id)}` : ""}</div></Td>

@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -20,6 +21,15 @@ from engine.paths import runs_dir
 
 BACKEND = Path(__file__).resolve().parents[1]
 TERMINAL = ("completed", "failed", "cancelled")
+
+
+MIN_FREE_GB = 3.0  # don't start runs below this much free disk (a run writes ~50-90 MB of checkpoints)
+
+
+def disk_low() -> bool:
+    d = runs_dir()
+    d.mkdir(parents=True, exist_ok=True)
+    return shutil.disk_usage(d).free / 1e9 < MIN_FREE_GB
 
 
 def _alive(pid) -> bool:
@@ -116,6 +126,12 @@ class Worker:
 
     def tick(self):
         self.reap()
+        if disk_low():
+            if not getattr(self, "_warned_disk", False):
+                print(f"[worker] under {MIN_FREE_GB} GB free on disk: not starting new runs until space is freed", flush=True)
+                self._warned_disk = True
+            return
+        self._warned_disk = False
         self.admit()
         self.schedule()
 
@@ -166,8 +182,13 @@ def main(argv=None):
     hb = runs_dir() / ".worker_heartbeat"
     hb.parent.mkdir(parents=True, exist_ok=True)
     while True:
-        hb.write_text(str(time.time()))
-        w.tick()
+        try:
+            hb.write_text(str(time.time()))
+            w.tick()
+        except OSError as e:  # e.g. disk full: keep the worker alive and retry
+            print(f"[worker] {e}; retrying in 30 s", flush=True)
+            time.sleep(30)
+            continue
         if a.until_idle and not w.busy():
             # One more admission pass in case something became admissible.
             w.tick()
