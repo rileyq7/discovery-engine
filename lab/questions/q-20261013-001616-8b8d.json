@@ -2,6 +2,9 @@
   "id": "q-20261013-001616-8b8d",
   "text": "At e <= 0.85, raw layer-4 accel_step R2 is 0.50-0.52 at step 500 in 3000-step runs but 0.54-0.57 at step 600 in 600-step runs (same seeds and data). Does the lr schedule scale with total training steps (warmup or decay horizon)? If so, should comparisons of decodability across training lengths be matched at the same fraction of the schedule rather than the same step?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261013-025812-b9ee",
+    "f-20261013-025845-8725"
+  ],
   "created_at": "2026-10-13T00:16:16"
 }

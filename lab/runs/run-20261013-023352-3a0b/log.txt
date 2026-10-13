@@ -1,0 +1,22 @@
+[02:33:55] experiment exp-20261013-021753-c0b1 (E5) seed 21: At N=256 the force margin collapse at 3000 steps (0.033-0.040, f-20261013-000253-c709) is a ceiling, not a slow start. With matched seeds 20-21, architecture and data (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) and training doubled to 6000 steps, the force margin stays below the bar while accel_step keeps a flat headroom-normalized margin. Margins are read from the per-checkpoint trajectory with unrounded values and a strict >= required_margin bar.
+[02:33:55] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+[02:33:56] step 0: val_mse=1.319e-04 cv_baseline=1.010e-07 ratio=1306.758
+[02:34:34] step 500: val_mse=1.369e-06 cv_baseline=1.010e-07 ratio=13.555
+[02:35:13] step 1000: val_mse=3.003e-07 cv_baseline=1.010e-07 ratio=2.974
+[02:35:51] step 1500: val_mse=2.854e-07 cv_baseline=1.010e-07 ratio=2.826
+[02:36:30] step 2000: val_mse=1.870e-07 cv_baseline=1.010e-07 ratio=1.853
+[02:37:09] step 2500: val_mse=1.645e-07 cv_baseline=1.010e-07 ratio=1.630
+[02:37:48] step 3000: val_mse=6.906e-08 cv_baseline=1.010e-07 ratio=0.684
+[02:38:28] step 3500: val_mse=3.950e-08 cv_baseline=1.010e-07 ratio=0.391
+[02:39:08] step 4000: val_mse=3.504e-08 cv_baseline=1.010e-07 ratio=0.347
+[02:39:47] step 4500: val_mse=2.106e-08 cv_baseline=1.010e-07 ratio=0.209
+[02:40:27] step 5000: val_mse=1.705e-08 cv_baseline=1.010e-07 ratio=0.169
+[02:41:07] step 5500: val_mse=1.248e-08 cv_baseline=1.010e-07 ratio=0.124
+[02:41:46] step 6000: val_mse=1.043e-08 cv_baseline=1.010e-07 ratio=0.103
+[02:41:46] training done in 7.9 min; beats constant-velocity baseline: True
+[02:41:48] random-model controls (best of 3): force=0.17/0.58/0.59/0.58/0.60, distance=0.01/0.37/0.42/0.51/0.58, energy=-0.00/0.30/0.36/0.45/0.49, accel_step=0.65/0.69/0.70/0.71/0.71
+[02:41:49] probes @ step 0: best force R2=0.610 (layer 3)
+[02:41:52] probes @ step 2500: best force R2=0.577 (layer 2)
+[02:41:54] probes @ step 5000: best force R2=0.611 (layer 1)
+[02:41:55] probes @ step 6000: best force R2=0.624 (layer 1)
+[02:41:56] run complete in 8.0 min

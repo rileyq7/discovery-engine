@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-025916-27cc",
+  "claim": "At N=256 and 6000 steps, force did not stay flat, and it does not look like a ceiling either. Seed 20's force margin went from 0.102 at step 3000 to 0.139 at step 6000 (layer 1, R2 0.670 vs control 0.531; it first crossed the 0.1 bar at step 3000). Seed 21's went from 0.001 to 0.044 (R2 0.624 vs control 0.580), rising about +0.007 to +0.010 per 500 steps after it moved to layer 1 at step 3500. Both seeds were still rising at step 6000. accel_step behaved as predicted: its margin stayed flat (0.201 to 0.205 for seed 21, 0.158 to 0.163 for seed 20), giving headroom-normalized margins of 0.72 and 0.69, against 0.10 and 0.30 for force.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-023352-3a0b",
+    "run-20261013-023352-694f"
+  ],
+  "confidence_note": "Neither the if-true nor the if-false outcome happened. The ceiling prediction needed a final force margin < 0.10 and a gain of <= 0.03 in both seeds. Seed 20 ended at 0.139, and both gains were above 0.03 (0.037 and 0.043). The if-false outcome needed a final margin >= 0.12 in both seeds or a gain of >= 0.06 in both. Seed 21 ended at 0.044, and neither gain reached 0.06. The accel_step half of the hypothesis held in both seeds, with normalized margins of 0.69 and 0.72, inside [0.62, 0.77]. The trajectories argue against a hard ceiling. Force was still climbing at step 6000 in both seeds, and the 3000-to-6000 gains here (0.037-0.043) are larger than at N=128 in the paired arm (0.022-0.031). That points to a later or slower start rather than a lower limit, but two seeds that disagree by about 0.1 can't settle it. Two things complicate the comparison with earlier work. First, the step-3000 force margins here (0.102 and 0.001) both differ from the 0.033-0.040 reported for the earlier 3000-step N=256 runs, so nondeterminism or an lr-schedule-horizon effect is still possible. Second, seed 21's force control_spread (0.054) is larger than seed 20's (0.025). Both runs completed all 6000 steps, and val_mse_ratio fell to 0.10-0.12, below 1 from step 3000 on. The verdict would become refuted if 12000-step runs took both seeds' force margin to >= 0.12. It would become supported if both levelled off below 0.10, or if a rerun showed that seed 20's step-3000 value of 0.102 is a nondeterministic outlier.",
+  "created_at": "2026-10-13T02:59:16",
+  "experiment_id": "exp-20261013-021753-c0b1",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T02:59:16",
+      "actor": "agent"
+    }
+  ]
+}

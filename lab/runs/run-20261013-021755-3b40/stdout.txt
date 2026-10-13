@@ -1,0 +1,22 @@
+run-20261013-021755-3b40: [02:17:57] experiment exp-20261013-021753-b8bd (E5) seed 21: At N=128 the lower force margin seen at 3000 steps (0.150 for seed 20, 0.131 for seed 21) is mostly a slower growth rate, not a lower ceiling. With architecture, data and seeds matched to exp-20261013-011738-3167 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) and training doubled to 6000 steps, force keeps rising and reaches the N=64 band. Formation and margins are read from the per-checkpoint trajectory using unrounded margins and a strict >= required_margin bar. Force uses its best layer at each checkpoint.
+run-20261013-021755-3b40: [02:17:57] model: 209,094 params on mps; dataset 4886002b001a; 9000 train / 1000 val systems
+run-20261013-021755-3b40: [02:17:58] step 0: val_mse=5.060e-04 cv_baseline=1.603e-06 ratio=315.699
+run-20261013-021755-3b40: [02:18:37] step 500: val_mse=4.436e-06 cv_baseline=1.603e-06 ratio=2.767
+run-20261013-021755-3b40: [02:19:15] step 1000: val_mse=1.480e-06 cv_baseline=1.603e-06 ratio=0.923
+run-20261013-021755-3b40: [02:19:54] step 1500: val_mse=6.829e-07 cv_baseline=1.603e-06 ratio=0.426
+run-20261013-021755-3b40: [02:20:33] step 2000: val_mse=5.207e-07 cv_baseline=1.603e-06 ratio=0.325
+run-20261013-021755-3b40: [02:21:12] step 2500: val_mse=5.690e-07 cv_baseline=1.603e-06 ratio=0.355
+run-20261013-021755-3b40: [02:21:51] step 3000: val_mse=3.856e-07 cv_baseline=1.603e-06 ratio=0.241
+run-20261013-021755-3b40: [02:22:30] step 3500: val_mse=2.665e-07 cv_baseline=1.603e-06 ratio=0.166
+run-20261013-021755-3b40: [02:23:09] step 4000: val_mse=1.654e-07 cv_baseline=1.603e-06 ratio=0.103
+run-20261013-021755-3b40: [02:23:48] step 4500: val_mse=7.339e-08 cv_baseline=1.603e-06 ratio=0.046
+run-20261013-021755-3b40: [02:24:27] step 5000: val_mse=6.313e-08 cv_baseline=1.603e-06 ratio=0.039
+run-20261013-021755-3b40: [02:25:06] step 5500: val_mse=5.174e-08 cv_baseline=1.603e-06 ratio=0.032
+run-20261013-021755-3b40: [02:25:45] step 6000: val_mse=4.367e-08 cv_baseline=1.603e-06 ratio=0.027
+run-20261013-021755-3b40: [02:25:45] training done in 7.8 min; beats constant-velocity baseline: True
+run-20261013-021755-3b40: [02:25:47] random-model controls (best of 3): force=0.16/0.47/0.47/0.46/0.47, distance=-0.01/0.36/0.39/0.46/0.51, energy=-0.00/0.33/0.40/0.46/0.50, accel_step=0.67/0.72/0.75/0.75/0.76
+run-20261013-021755-3b40: [02:25:47] probes @ step 0: best force R2=0.476 (layer 2)
+run-20261013-021755-3b40: [02:25:50] probes @ step 2500: best force R2=0.613 (layer 1)
+run-20261013-021755-3b40: [02:25:52] probes @ step 5000: best force R2=0.630 (layer 2)
+run-20261013-021755-3b40: [02:25:54] probes @ step 6000: best force R2=0.637 (layer 2)
+run-20261013-021755-3b40: [02:25:54] run complete in 7.9 min

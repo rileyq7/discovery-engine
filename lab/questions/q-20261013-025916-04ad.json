@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-025916-04ad",
+  "text": "In seed 21 at N=256, force stayed at margin 0.001 (best layer 0) through step 3000 and started rising at step 3500, just after val_mse_ratio fell below 1 (0.684 at step 3000). Across the N=64, 128 and 256 runs, does force-margin growth start at a fixed val_mse_ratio (about 1) rather than at a fixed training step? Would that explain the earlier 'collapse' in N=256 runs that never beat the baseline?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T02:59:16"
+}

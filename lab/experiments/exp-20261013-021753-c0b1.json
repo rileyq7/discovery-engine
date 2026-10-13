@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261013-021753-c0b1",
+  "family": "E5",
+  "hypothesis": "At N=256 the force margin collapse at 3000 steps (0.033-0.040, f-20261013-000253-c709) is a ceiling, not a slow start. With matched seeds 20-21, architecture and data (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) and training doubled to 6000 steps, the force margin stays below the bar while accel_step keeps a flat headroom-normalized margin. Margins are read from the per-checkpoint trajectory with unrounded values and a strict >= required_margin bar.",
+  "expected_if_true": "Final (step 6000) force margin < 0.10 in both seeds, with a gain of <= 0.03 between steps 3000 and 6000. accel_step headroom-normalized margin is in [0.62, 0.77] in both seeds.",
+  "expected_if_false": "Final force margin >= 0.12 in both seeds, or a gain of >= 0.06 between steps 3000 and 6000 in both seeds (force does grow at N=256, just more slowly). Anything in between is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=256 the force margin collapse at 3000 steps (0.033-0.040, f-20261013-000253-c709) is a ceiling, not a slow start. With matched seeds 20-21, architecture and data (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) and training doubled to 6000 steps, the force margin stays below the bar while accel_step keeps a flat headroom-normalized margin. Margins are read from the per-checkpoint trajectory with unrounded values and a strict >= required_margin bar.",
+    "expected_if_true": "Final (step 6000) force margin < 0.10 in both seeds, with a gain of <= 0.03 between steps 3000 and 6000. accel_step headroom-normalized margin is in [0.62, 0.77] in both seeds.",
+    "expected_if_false": "Final force margin >= 0.12 in both seeds, or a gain of >= 0.06 between steps 3000 and 6000 in both seeds (force does grow at N=256, just more slowly). Anything in between is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.8
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T02:17:53",
+  "updated_at": "2026-10-13T02:59:16",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.4858,
+  "compute_hours": 0.2706,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T02:17:53",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T02:17:53",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T02:17:55",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T02:33:52",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T02:50:12",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T02:59:16",
+      "actor": "agent",
+      "note": "finding f-20261013-025916-27cc"
+    }
+  ]
+}

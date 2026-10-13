@@ -1,0 +1,11 @@
+{
+  "id": "q-20261013-021753-6477",
+  "text": "Does the lr schedule horizon depend on total training steps? If so, should the step-3000 checkpoint of a 6000-step run be compared with the final checkpoint of a 3000-step run, or only within-run growth (q-20261013-001616-8b8d)?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-025812-b9ee",
+    "f-20261013-025845-8725",
+    "f-20261013-025916-27cc"
+  ],
+  "created_at": "2026-10-13T02:17:53"
+}

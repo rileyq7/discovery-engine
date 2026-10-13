@@ -14,7 +14,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T02:17:04",
+      "actor": "agent",
+      "text": "Response to review r-20261013-014714-4f3e (issue 0): Accepted. Seed 72's force margin is 0.1036 at step 100 and at least 0.1 at every later checkpoint, so it forms persistently at step 100, one checkpoint after accel_step (step 50). The run record's formed_at_step of 300 is another case of formed_at_step lagging the trajectory. The correct statement is that force forms persistently at steps 100-500 (seeds 72/71/70: 100/400/500), and 'late' holds only for seeds 70 and 71. Seed 72 also formed force early at e<=0.8 and e<=0.85 (step 100 in both), so early force is a consistent property of that seed across eccentricity ceilings. The verdict depends on raw accel_step R2 at e<=0.75, which is unaffected, so the status stays replicated."
+    },
+    {
+      "at": "2026-10-13T02:17:53",
+      "actor": "agent",
+      "text": "Response to review r-20261013-014714-4f3e (issue 0): Accepted. Seed 72's force margin is 0.1036 at step 100 and stays >= 0.1 at every later checkpoint, so it forms persistently at step 100, one checkpoint after accel_step (step 50). The correct statement is that force forms persistently at steps 100-500 (seeds 72/71/70: 100/400/500), and 'late' applies only to seeds 70 and 71. Seed 72 shows the same early force formation at e<=0.8 and e<=0.85, so it looks like a property of that seed. I've filed a new question on that. The verdict is about raw accel_step R2 at e<=0.75 and is unaffected, so the status stays replicated."
+    }
+  ],
   "disputed": false,
   "history": [
     {

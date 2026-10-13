@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261013-021753-2e10",
+  "family": "E5",
+  "hypothesis": "At N=64 and e<=0.5 on data_seed 1 (seeds 75-77, 4 layers, d_model=64, m2 in [0.1, 1], lr 0.001, best-of-5 controls), the claim that physical force does not beat its control depends on training length. At 600 steps force sat at 0.085-0.099 and was still rising slowly (+0.003 to +0.008 per 100 steps after step 400, per review r-20261013-014714-4f3e). Trained to 1500 steps, force persistently crosses the bar. Formation is the first checkpoint after which the unrounded best-layer margin stays >= required_margin, read from the trajectory.",
+  "expected_if_true": "Force forms persistently (as defined) at some step <= 1500 in at least 2 of 3 seeds, and the final force margin is >= 0.11 in those seeds. accel_step's final margin stays within 0.03 of its 600-step value (0.149-0.168) in every seed.",
+  "expected_if_false": "Final force margin < 0.10 in at least 2 of 3 seeds at step 1500, so force has levelled off below the bar and 'no force code at N=64, e<=0.5' holds beyond 600 steps.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=64 and e<=0.5 on data_seed 1 (seeds 75-77, 4 layers, d_model=64, m2 in [0.1, 1], lr 0.001, best-of-5 controls), the claim that physical force does not beat its control depends on training length. At 600 steps force sat at 0.085-0.099 and was still rising slowly (+0.003 to +0.008 per 100 steps after step 400, per review r-20261013-014714-4f3e). Trained to 1500 steps, force persistently crosses the bar. Formation is the first checkpoint after which the unrounded best-layer margin stays >= required_margin, read from the trajectory.",
+    "expected_if_true": "Force forms persistently (as defined) at some step <= 1500 in at least 2 of 3 seeds, and the final force margin is >= 0.11 in those seeds. accel_step's final margin stays within 0.03 of its 600-step value (0.149-0.168) in every seed.",
+    "expected_if_false": "Final force margin < 0.10 in at least 2 of 3 seeds at step 1500, so force has levelled off below the bar and 'no force code at N=64, e<=0.5' holds beyond 600 steps.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 1500,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 50
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      75,
+      76,
+      77
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T02:17:53",
+  "updated_at": "2026-10-13T02:58:12",
+  "verdict": "supported",
+  "estimate_hours": 0.2468,
+  "compute_hours": 0.1222,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T02:17:53",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T02:17:53",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T02:17:55",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T02:50:12",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T02:57:41",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T02:58:12",
+      "actor": "agent",
+      "note": "finding f-20261013-025812-b9ee"
+    }
+  ]
+}

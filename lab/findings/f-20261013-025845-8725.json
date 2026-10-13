@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-025845-8725",
+  "claim": "At N=128 with training doubled to 6000 steps, the force margin was still rising slowly and did not reach the N=64 band (0.21-0.26). It ended at 0.178 for seed 20 (layer 1; R2 0.670 vs control 0.492) and 0.163 for seed 21 (best layer moving among 1, 2 and 4; R2 0.629 vs control 0.466). The gains from step 3000 to 6000 were +0.031 and +0.022, and neither curve has levelled off: the last 1000 steps added +0.009 and +0.007. accel_step was flat throughout, with margins 0.151 and 0.170 and headroom-normalised margins of about 0.70 in both seeds (R2 0.934 vs control 0.783; 0.927 vs 0.757). That fits the expected [0.62, 0.77] range. Normalised force margins were only 0.35 and 0.31, so on both raw and normalised margin accel_step leads force.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-021755-cb6a",
+    "run-20261013-021755-3b40"
+  ],
+  "confidence_note": "Neither pre-registered outcome happened. The supported case needed a final margin >= 0.20 and a gain >= 0.04 in both seeds; both seeds fall short on both. The refuted case needed a final margin <= 0.17 and a gain <= 0.02 in both seeds. Seed 20 ends at 0.178 with a +0.031 gain, and seed 21's gain of +0.022 is just over the 0.02 limit. The result is a third pattern the hypothesis did not set out: steady growth of about 0.004-0.005 per 500 steps, with no plateau and no catch-up. Over the same span val_mse_ratio fell 5-9x (0.24/0.14 at step 3000 to 0.027/0.030 at step 6000). The step-3000 checkpoints match the earlier 3000-step runs to within 0.003 (seed 20: 0.147 vs 0.150) and 0.010 (seed 21: 0.141 vs 0.131). That is under the 0.03 rule, so cross-run comparison is valid and the lr-schedule horizon has little visible effect at N=128. Both runs completed 6000/6000 steps, and checkpoints were every 500 steps. If growth stays linear, seed 20 would reach 0.20 at roughly 8000-9000 steps and seed 21 at roughly 10000-11000. A 12000-step run would separate 'slower growth' from 'lower ceiling'. The verdict would change to supported if force reached >= 0.20 in both seeds by then, and to refuted if both levelled off below 0.18. With only two seeds, and seed 21's best force layer changing between checkpoints (likely a flat per-layer profile), the per-seed numbers are noisy at the 0.01-0.02 level.",
+  "created_at": "2026-10-13T02:58:45",
+  "experiment_id": "exp-20261013-021753-b8bd",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T02:58:45",
+      "actor": "agent"
+    }
+  ]
+}

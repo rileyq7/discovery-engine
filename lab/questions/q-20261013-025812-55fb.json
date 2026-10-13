@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-025812-55fb",
+  "text": "With the same seeds 75-77 and data_seed 1, force margin at step 600 is 0.104-0.138 in 1500-step runs but 0.085-0.099 in 600-step runs. Is that gap caused by the lr schedule horizon (more lr left at step 600 in the longer run) or by non-determinism? A rerun of the 600-step config with an identical seed would tell these apart.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-025845-8725"
+  ],
+  "created_at": "2026-10-13T02:58:12"
+}

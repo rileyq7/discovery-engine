@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-025812-b9ee",
+  "claim": "On data_seed 1 (N=64, e<=0.5, 4 layers, d_model=64), training to 1500 steps makes force beat its best-of-5 control persistently in all 3 seeds. Read from the trajectories, force first holds >= 0.1 at step 400 (seed 75), 450 (seed 77) and 600 (seed 76), and ends at margins 0.196, 0.193 and 0.167 (R2 0.738/0.718/0.684 vs controls 0.542/0.525/0.517). accel_step stays roughly flat: it gains 0.006-0.018 after step 600 and ends at 0.156/0.160/0.177 (R2 0.92-0.93 vs controls 0.75-0.77). Headroom-normalised, accel_step still leads force in every seed (0.66-0.71 vs 0.35-0.43).",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-025012-5dee",
+    "run-20261013-025012-625b",
+    "run-20261013-025012-0dcf"
+  ],
+  "confidence_note": "All three predictions held: force formed persistently by step 1500 in 3 of 3 seeds, final force margin was >= 0.11 in each, and accel_step moved less than 0.03 from its step-600 value. All runs completed 1500 of 1500 steps, the force control_spread (0.030-0.061) is below the 0.1 bar, and the controls differ by under 0.03 across seeds, so the margins are not control noise. Three caveats limit what this means. (1) In these 1500-step runs, force margin at step 600 is already 0.104-0.138, but the 600-step runs with the same seeds and data were at 0.085-0.099. The original 'no force code' null was therefore partly an artefact of where training stopped or of the lr schedule horizon, not only of total step count. (2) Force only crosses the bar after its best layer moves from 4 to 1 (the distance layer, distance margin 0.47-0.66) at steps 250-400. Layer-4 force never exceeds about 0.085. So this force signal may be a nonlinear read of distance and orbit scale rather than an m2-weighted force. Regressing distance and accel_step out of the force target would change the interpretation, though not this verdict. (3) Force is still rising at step 1500 (+0.002-0.004 per 50 steps), so the final margin is not a ceiling. The verdict would flip only if a rerun of this exact config failed to cross the bar.",
+  "created_at": "2026-10-13T02:58:12",
+  "experiment_id": "exp-20261013-021753-2e10",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T02:58:12",
+      "actor": "agent"
+    }
+  ]
+}
