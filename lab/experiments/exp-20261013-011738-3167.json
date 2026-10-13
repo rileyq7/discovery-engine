@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261013-011738-3167",
+  "family": "E5",
+  "hypothesis": "At fixed architecture and training length (4 layers, d_model=64, 3000 steps, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), the final force margin falls with log(steps_per_orbit) between N=64 (0.21-0.26) and N=256 (0.03-0.04). At N=128 (seeds 20-21, matched to the existing N=16/64/256 arms) it is intermediate. The accel_step control R2 also falls between the N=64 (0.77-0.79) and N=256 (0.65-0.67) values.",
+  "expected_if_true": "Final force margin is in [0.08, 0.19] in both seeds, accel_step control R2 is in [0.66, 0.78] in both seeds, and headroom-normalized accel_step margin is in [0.62, 0.77].",
+  "expected_if_false": "Final force margin is >= 0.20 in both seeds (collapse happens between N=128 and N=256, a sharp threshold) or <= 0.07 in both seeds (collapse already complete by N=128). Seeds that split across bands count as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At fixed architecture and training length (4 layers, d_model=64, 3000 steps, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), the final force margin falls with log(steps_per_orbit) between N=64 (0.21-0.26) and N=256 (0.03-0.04). At N=128 (seeds 20-21, matched to the existing N=16/64/256 arms) it is intermediate. The accel_step control R2 also falls between the N=64 (0.77-0.79) and N=256 (0.65-0.67) values.",
+    "expected_if_true": "Final force margin is in [0.08, 0.19] in both seeds, accel_step control R2 is in [0.66, 0.78] in both seeds, and headroom-normalized accel_step margin is in [0.62, 0.77].",
+    "expected_if_false": "Final force margin is >= 0.20 in both seeds (collapse happens between N=128 and N=256, a sharp threshold) or <= 0.07 in both seeds (collapse already complete by N=128). Seeds that split across bands count as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T01:17:38",
+  "updated_at": "2026-10-13T01:59:51",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.2614,
+  "compute_hours": 0.1377,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T01:17:38",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T01:17:38",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T01:17:39",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T01:25:45",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T01:34:06",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T01:59:51",
+      "actor": "agent",
+      "note": "finding f-20261013-015951-62c7"
+    }
+  ]
+}

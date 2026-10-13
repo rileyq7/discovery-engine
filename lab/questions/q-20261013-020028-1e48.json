@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-020028-1e48",
+  "text": "With the same data and config, energy forms persistently at step 200 in seed 80 but at step 3000 in seed 79. Final trained R2 is similar (0.830 vs 0.843), but the energy controls differ (0.607 vs 0.710, with seed 79's control_spread at 0.083). Is the energy formation step mostly set by the per-seed control R2 rather than by when training produces the feature? Would a control pool shared across seeds remove this 2800-step spread?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T02:00:28"
+}

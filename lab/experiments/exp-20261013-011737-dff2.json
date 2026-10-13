@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261013-011737-dff2",
+  "family": "E5",
+  "hypothesis": "Matched N=64 seeds 22-23 (4 layers, d_model=64, 3000 steps, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls, same config as exp-20261013-001741-c9dc) decide whether the N=64 force margin sits between N=16 (0.236-0.275) and N=256 (0.033-0.040), which would mean force declines gradually with steps_per_orbit, or at N=16 level, which would mean a step between N=64 and N=256. Seeds 20/21 gave 0.215/0.261. Headroom-normalized accel_step margin stays flat across N.",
+  "expected_if_true": "Final best-layer force margin (R2 - control_r2, with control_spread < required_margin) is <= 0.22 in both seeds 22 and 23. Headroom-normalized accel_step margin (R2 - control)/(1 - control) at the final checkpoint is in [0.62, 0.77] in both seeds.",
+  "expected_if_false": "Final force margin is >= 0.23 in both seeds 22 and 23, which puts N=64 in N=16 territory and supports a step between N=64 and N=256. One seed on each side (or one seed in 0.22-0.23) counts as inconclusive. A normalized accel_step margin outside [0.62, 0.77] in both seeds would refute the flat-accel_step part.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched N=64 seeds 22-23 (4 layers, d_model=64, 3000 steps, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls, same config as exp-20261013-001741-c9dc) decide whether the N=64 force margin sits between N=16 (0.236-0.275) and N=256 (0.033-0.040), which would mean force declines gradually with steps_per_orbit, or at N=16 level, which would mean a step between N=64 and N=256. Seeds 20/21 gave 0.215/0.261. Headroom-normalized accel_step margin stays flat across N.",
+    "expected_if_true": "Final best-layer force margin (R2 - control_r2, with control_spread < required_margin) is <= 0.22 in both seeds 22 and 23. Headroom-normalized accel_step margin (R2 - control)/(1 - control) at the final checkpoint is in [0.62, 0.77] in both seeds.",
+    "expected_if_false": "Final force margin is >= 0.23 in both seeds 22 and 23, which puts N=64 in N=16 territory and supports a step between N=64 and N=256. One seed on each side (or one seed in 0.22-0.23) counts as inconclusive. A normalized accel_step margin outside [0.62, 0.77] in both seeds would refute the flat-accel_step part.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      22,
+      23
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T01:17:37",
+  "updated_at": "2026-10-13T01:59:14",
+  "verdict": "refuted",
+  "estimate_hours": 0.2614,
+  "compute_hours": 0.1327,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T01:17:37",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T01:17:37",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T01:17:39",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T01:17:39",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T01:25:44",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T01:59:14",
+      "actor": "agent",
+      "note": "finding f-20261013-015914-3f49"
+    }
+  ]
+}

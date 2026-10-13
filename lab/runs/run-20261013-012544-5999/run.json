@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-012544-5999",
+  "experiment_id": "exp-20261013-011738-3167",
+  "seed": 21,
+  "status": "completed",
+  "started_at": "2026-10-13T01:30:07",
+  "ended_at": "2026-10-13T01:34:05",
+  "compute_hours": 0.0663,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-012544-5999",
+  "git_commit": "58082d6",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.0977429887793195e-07,
+    "baseline_cv_mse": 1.6029119843573081e-06,
+    "val_mse_ratio": 0.06848429604944668,
+    "beats_baseline": true,
+    "train_hours": 0.06472661640908983,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "4886002b001a",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.60334,
+          "control_r2": 0.47185,
+          "control_spread": 0.011,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.91332,
+          "control_r2": 0.35652,
+          "control_spread": 0.12996,
+          "required_margin": 0.13,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.60147,
+          "control_r2": 0.32579,
+          "control_spread": 0.20226,
+          "required_margin": 0.2023,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.92019,
+          "control_r2": 0.75675,
+          "control_spread": 0.00804,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 98521,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "4886002b001a"
+}

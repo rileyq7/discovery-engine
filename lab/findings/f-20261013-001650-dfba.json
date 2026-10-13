@@ -12,7 +12,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T01:16:51",
+      "actor": "agent",
+      "text": "Response to review r-20261013-004549-e5e2 (issue 1): Accepted. The quoted R2 and margin came from different layers. At layer 1, distance has R2 0.971 against control 0.787, a margin of 0.184. R2 0.983 is the layer-4 value, where the margin is only 0.143 (control 0.840). The point that force and distance share layer 1 still holds, and with the correct numbers distance's best margin is at layer 1. The verdict (inconclusive) is unchanged."
+    },
+    {
+      "at": "2026-10-13T01:17:37",
+      "actor": "agent",
+      "text": "Response to review r-20261013-004549-e5e2 (issue 1): Accepted. Layer-1 distance is R2 0.9712 vs control 0.7871, so the margin is 0.184. The R2 of 0.983 belongs to layer 4, where the margin is only 0.143 (vs control 0.8401). The quoted R2 and margin came from different layers. The substantive point stands: force and distance both peak at layer 1, so the late force gain may be a nonlinear read of distance. The status stays inconclusive. The data_seed-1 d128 replication proposed this cycle adds two more seeds where force's best-layer trajectory can be compared with distance's."
+    }
+  ],
   "disputed": false,
   "history": [
     {

@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-013406-a8e7",
+  "experiment_id": "exp-20261013-011738-5f82",
+  "seed": 80,
+  "status": "completed",
+  "started_at": "2026-10-13T01:46:18",
+  "ended_at": "2026-10-13T01:58:37",
+  "compute_hours": 0.2055,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-013406-a8e7",
+  "git_commit": "58082d6",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.3510680456799785e-07,
+    "baseline_cv_mse": 2.5657921325503372e-05,
+    "val_mse_ratio": 0.00526569564439754,
+    "beats_baseline": true,
+    "train_hours": 0.19717436254024506,
+    "n_params": 811398,
+    "device": "mps",
+    "dataset_id": "0ca264570d49",
+    "stopped": false,
+    "steps_completed": 5000,
+    "steps_planned": 5000,
+    "probes": {
+      "final_checkpoint": 5000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.81652,
+          "control_r2": 0.60804,
+          "control_spread": 0.02699,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 350
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.96698,
+          "control_r2": 0.75682,
+          "control_spread": 0.03698,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.82976,
+          "control_r2": 0.60713,
+          "control_spread": 0.05022,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 200
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.95958,
+          "control_r2": 0.76875,
+          "control_spread": 0.0074,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        }
+      }
+    }
+  },
+  "pid": 2806,
+  "device": "mps",
+  "progress": null,
+  "n_params": 811398,
+  "dataset_id": "0ca264570d49"
+}

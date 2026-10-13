@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-015914-3073",
+  "text": "At N=64 the accel_step random-control R2 is 0.69-0.74 in seeds 22-23 (0.76-0.78 in seeds 20-21), between N=16 (0.80) and N=256 (0.65-0.68), yet force stays at N=16 level. Does the force random-control R2 (0.45 here, about 0.48-0.51 for seeds 20-21, about 0.5 at N=256) change across N? If the force control is flat while the force margin collapses only above N=64, does that rule out an input-visible explanation for the collapse?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-015951-62c7"
+  ],
+  "created_at": "2026-10-13T01:59:14"
+}

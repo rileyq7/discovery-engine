@@ -2,6 +2,8 @@
   "id": "q-20261013-010011-0576",
   "text": "probes_final.formed_at_step for force is 400 in both seeds, while the trajectory crosses persistently at 300-350 (seed 78: 0.108 at 350 and >= 0.108 at every later checkpoint). Yet accel_step's formed_at_step (100) matches its trajectory. Does the formation rule compare against a per-checkpoint control, or use a bar other than required_margin, for targets whose best layer changes between checkpoints?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261013-020028-8792"
+  ],
   "created_at": "2026-10-13T01:00:11"
 }

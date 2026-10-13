@@ -3,7 +3,8 @@
   "text": "Across checkpoints 500-5000 in seed 75, the force margin (0.102 to 0.209) rises roughly linearly in log(val_mse_ratio) (0.39 to 0.005), while accel_step levels off. Pooling all long-trained best-of-5 runs, is the final force margin better predicted by the final log val_mse_ratio than by training step? Would that make force decodability a byproduct of how well the model has converged rather than a separate representational stage?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-010011-b1f8"
+    "f-20261013-010011-b1f8",
+    "f-20261013-020028-8792"
   ],
   "created_at": "2026-10-13T00:16:50"
 }

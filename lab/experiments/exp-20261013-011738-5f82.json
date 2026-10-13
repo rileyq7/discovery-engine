@@ -1,0 +1,134 @@
+{
+  "id": "exp-20261013-011738-5f82",
+  "family": "E5",
+  "hypothesis": "The late-forming, late-strengthening force code seen in 4-layer d_model=128 models trained 5000 steps (seeds 73/74/75/78, all data_seed 0: final force margin 0.21-0.23, persistent formation 200-250 steps after accel_step, force gain after step 500 of +0.086 to +0.109 while accel_step gains <= 0.03) does not depend on the simulated dataset. With data_seed 1 and fresh seeds 79-80, the same pattern appears. Formation steps are read from the per-checkpoint trajectory with unrounded margins and a strict >= required_margin bar, taking the first checkpoint after which the margin stays at or above the bar. Force uses its best layer at each checkpoint.",
+  "expected_if_true": "In both seeds: final force margin >= 0.15 over best-of-5 control. Persistent force formation is >= 150 steps after persistent accel_step formation. Force margin gain from step 500 to step 5000 is >= 0.06, while accel_step margin gain over the same window is <= 0.04. Headroom-normalized accel_step margin exceeds force's at step 5000.",
+  "expected_if_false": "In at least one seed: final force margin < 0.1, or force forms persistently within 50 steps of accel_step, or force gains < 0.03 from step 500 to 5000. Any of these would make the data_seed-0 late-force result dataset-specific.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The late-forming, late-strengthening force code seen in 4-layer d_model=128 models trained 5000 steps (seeds 73/74/75/78, all data_seed 0: final force margin 0.21-0.23, persistent formation 200-250 steps after accel_step, force gain after step 500 of +0.086 to +0.109 while accel_step gains <= 0.03) does not depend on the simulated dataset. With data_seed 1 and fresh seeds 79-80, the same pattern appears. Formation steps are read from the per-checkpoint trajectory with unrounded margins and a strict >= required_margin bar, taking the first checkpoint after which the margin stays at or above the bar. Force uses its best layer at each checkpoint.",
+    "expected_if_true": "In both seeds: final force margin >= 0.15 over best-of-5 control. Persistent force formation is >= 150 steps after persistent accel_step formation. Force margin gain from step 500 to step 5000 is >= 0.06, while accel_step margin gain over the same window is <= 0.04. Headroom-normalized accel_step margin exceeds force's at step 5000.",
+    "expected_if_false": "In at least one seed: final force margin < 0.1, or force forms persistently within 50 steps of accel_step, or force gains < 0.03 from step 500 to 5000. Any of these would make the data_seed-0 late-force result dataset-specific.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 5000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 50
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": [
+        50,
+        100,
+        150,
+        200,
+        250,
+        300,
+        350,
+        400,
+        450,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1500,
+        2000,
+        2500,
+        3000,
+        3500,
+        4000,
+        4500,
+        5000
+      ],
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      79,
+      80
+    ],
+    "budget": {
+      "max_compute_hours": 0.75
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T01:17:38",
+  "updated_at": "2026-10-13T02:00:28",
+  "verdict": "supported",
+  "estimate_hours": 0.5777,
+  "compute_hours": 0.4072,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T01:17:38",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T01:17:38",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T01:17:39",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T01:34:07",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T01:58:38",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T02:00:28",
+      "actor": "agent",
+      "note": "finding f-20261013-020028-8792"
+    }
+  ]
+}

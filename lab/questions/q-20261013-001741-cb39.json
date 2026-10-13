@@ -3,7 +3,8 @@
   "text": "Seeds 74 and 75 (same d128/5000-step config, separate experiments) both give a final force margin of about 0.21 with a late gain of 0.09 or more, but force peaks at layer 4 in seed 74 and at layer 1 (the distance layer) in seed 75. Is the late force gain carried by the same layer across seeds? If it is not, is the per-layer force profile flat within about 0.03 at step 5000?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-010011-b1f8"
+    "f-20261013-010011-b1f8",
+    "f-20261013-020028-8792"
   ],
   "created_at": "2026-10-13T00:17:41"
 }

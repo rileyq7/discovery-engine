@@ -14,7 +14,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T01:16:51",
+      "actor": "agent",
+      "text": "Response to review r-20261013-004549-e5e2 (issue 0): Accepted. Seed 72's force margin is >= 0.1 at every checkpoint from step 100 onward (0.1032, 0.1103, ... 0.1503), so it forms persistently at step 100. The correct range is 100-400 (seeds 72/70/71: 100/350/400), and 'late' holds only for seeds 70 and 71. In seed 72, force forms 50 steps after accel_step (step 50). The finding's verdict concerns the headroom-normalised accel_step margin at e<=0.8, which is unaffected, so the status stays replicated. This matches seed 72 at e<=0.85, where force also formed early (step 100; f-20261012-231608-1978 note). Seed 72's early force formation looks like a stable property of that seed and not noise."
+    },
+    {
+      "at": "2026-10-13T01:17:37",
+      "actor": "agent",
+      "text": "Response to review r-20261013-004549-e5e2 (issue 0): Accepted. Seed 72's force margin is at or above 0.1 at every checkpoint from step 100 (0.1032) onward, so its persistent formation step is 100, not part of a 250-400 range. The correct statement is that force forms persistently at steps 100-400 (seeds 72/70/71: 100/350/400). In seed 72, force forms only 50 steps after accel_step (step 50), so 'forms late' holds for seeds 70 and 71 only. The accel_step result (normalised margin 0.455-0.475 in all 3 seeds, inside [0.44, 0.53]) is unaffected, and so is the replicated status. The force-timing claim at e<=0.8 should be read as seed-dependent."
+    }
+  ],
   "disputed": false,
   "history": [
     {

@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-015914-3f49",
+  "claim": "At N=64 (4 layers, d_model=64, 3000 steps, e<=0.5), the final layer-1 force margin is 0.247 for seed 22 (R2 0.697 vs control 0.450, spread 0.003) and 0.234 for seed 23 (R2 0.684 vs control 0.450, spread 0.041). Both are >= 0.23, which puts N=64 at the N=16 level (0.236-0.275) and far above N=256 (0.033-0.040). With seeds 20/21 (0.215/0.261), the four N=64 seeds average about 0.239, so the force collapse lies between N=64 and N=256 rather than declining gradually. The flat-accel_step part of the hypothesis held: the layer-4 accel_step margin is 0.207 for seed 22 (R2 0.902 vs control 0.694) and 0.186 for seed 23 (R2 0.922 vs control 0.736). Headroom-normalized, that is 0.68 and 0.70, inside the predicted [0.62, 0.77] band and matching N=16 (0.68-0.69). Force leads accel_step on raw margin but trails it on normalized margin (0.45/0.43).",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-011739-faad",
+    "run-20261013-011739-71fe"
+  ],
+  "confidence_note": "Both runs completed all 3000 steps, and both seeds meet the pre-registered expected-if-false force criterion, so seeds agree. Several things limit the result. (1) Seed 23 clears the 0.23 cut by only 0.004, and its force control spread (0.041) is the largest in this experiment. (2) Force is still rising at step 3000 in both seeds (about +0.009 to +0.012 per 500 steps), while accel_step has levelled off. The 'step vs gradual' reading therefore depends on comparing all N at a fixed 3000 steps, and growth rates could still differ by N. (3) Force peaks at layer 1, the same layer as distance (margin 0.70-0.71), so the force margin may be a nonlinear read of distance rather than an m2-weighted force code; no residualized probe exists yet. (4) Everything uses data_seed 0. (5) The 'refuted' verdict applies to the primary force prediction (gradual decline); the secondary flat-normalized-accel_step prediction was supported. The verdict would change if an N=128 arm landed midway (about 0.10-0.15), which would make the decline look gradual in log N, or if longer training let N=256 force catch up.",
+  "created_at": "2026-10-13T01:59:14",
+  "experiment_id": "exp-20261013-011737-dff2",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T01:59:14",
+      "actor": "agent"
+    }
+  ]
+}
