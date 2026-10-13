@@ -3,7 +3,8 @@
   "text": "If force growth at N=256 begins only after val_mse_ratio falls below about 1, does the N=16/64/128/256 force-margin ordering at any fixed step reduce to how long each run has spent below the baseline? Would aligning the force trajectories on the step where val_mse_ratio < 1 collapse them onto one curve?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-040404-281d"
+    "f-20261013-040404-281d",
+    "f-20261013-050436-1348"
   ],
   "created_at": "2026-10-13T03:18:20"
 }

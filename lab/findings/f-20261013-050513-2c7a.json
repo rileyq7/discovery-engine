@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-050513-2c7a",
+  "claim": "The exact rerun of the N=256, 3000-step config did not reproduce the original final margins. Seed 20: force 0.113 at layer 1 (R2 0.644 vs control 0.531), accel_step 0.162 (R2 0.926 vs control 0.765). Seed 21: force 0.003 (R2 0.586 vs control 0.583, below the bar), accel_step 0.198 (R2 0.912 vs control 0.714). Against the original {0.033, 0.040} force and {0.231, 0.245} accel_step margins, every accel_step margin is off by 0.033-0.083 and seed 20's force by more than 0.07. The schedule-horizon explanation is also refuted, because at step 3000 this 3000-step rerun matches the 6000-step runs (force 0.102 / 0.001) and the 12000-step runs (force 0.099 / 0.028, accel_step 0.162 / 0.202) to within about 0.025. The original 3000-step runs are the outlier, not the longer runs.",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-042340-5024",
+    "run-20261013-042340-4a86"
+  ],
+  "confidence_note": "Both runs completed all 3000 steps. Their step-0 trajectories (accel_step trained R2 0.764 / 0.705, force 0.571 / 0.610) are identical to the 12000-step arm, so initialisation is reproducible. The hypothesis's expected-if-true outcome (match within 0.02) clearly failed, so the verdict is refuted. However, the expected-if-false reading ('nondeterminism of 0.03 or more') is not cleanly supported either. Under the current pipeline, runs with 3000, 6000 and 12000 total steps agree at step 3000 to within about 0.004 on accel_step and about 0.025 on force. That points to the original runs (f-20261013-000253-c709) being produced differently, not to large run-to-run noise. A likely cause is the accel_step control: it was 0.65-0.68 in the originals and is 0.71-0.76 here, while raw R2 is similar, which would account for most of the accel_step margin gap. This is inferred from summary numbers and has not been checked against the original runs' per-layer R2. The verdict would change if the original runs' raw trained R2 differed by more than 0.03 from these runs, or if a second identical rerun differed from this one by more than 0.03. Either result would make training nondeterminism the explanation. Seed 21's force sits at 0.001-0.003 from step 500 to 3000, even though val_mse_ratio is 0.899 at step 2000 and 0.282 at step 3000. So force onset does not cleanly follow val_mse_ratio < 1 in this run.",
+  "created_at": "2026-10-13T05:05:13",
+  "experiment_id": "exp-20261013-031820-91ca",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T05:05:13",
+      "actor": "agent"
+    }
+  ]
+}

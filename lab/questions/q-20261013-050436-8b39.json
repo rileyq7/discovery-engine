@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-050436-8b39",
+  "text": "Seed 21 at N=256 starts gaining force margin at step 1500 in the 12000-step run but only at step 3500 in the 6000-step run, with the same config otherwise. Is the timing of force onset at N=256 set by the lr schedule horizon, or does it vary from run to run even at a fixed seed? Two identical reruns of the 12000-step seed-21 config would tell these apart.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-050513-2c7a"
+  ],
+  "created_at": "2026-10-13T05:04:36"
+}

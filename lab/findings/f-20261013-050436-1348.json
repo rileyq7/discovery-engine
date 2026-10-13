@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-050436-1348",
+  "claim": "At N=256 with 12000 training steps, force only just clears the bar in seed 20 and stays below it in seed 21. Seed 20 ends at force margin 0.105 at layer 1 (R2 0.636 vs control 0.531, required 0.100). Seed 21 ends at 0.087 at layer 2 (R2 0.673 vs control 0.585, required 0.100). From step 6000 to 12000 force gains +0.020 in seed 20 and +0.041 in seed 21, and seed 21's margin is still rising at 0.004 per 1000 steps at the end. accel_step stays stronger than force in both seeds: margin 0.181 at layer 3 (R2 0.946 vs control 0.765) and 0.218 at layer 4 (R2 0.932 vs control 0.714), with headroom-normalised margins of 0.769 and 0.762. val_mse_ratio is 0.062 and 0.045.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-035032-ebbd",
+    "run-20261013-035032-f917"
+  ],
+  "confidence_note": "Both runs finished all 12000 planned steps. Neither of the hypothesis's outcomes happened, so the result is inconclusive.\n\nThe 'true' outcome failed on three counts. Final force margins were 0.105 and 0.087, both below the 0.12 target. Seed 21 gained only 0.041 from step 6000 to 12000, against the 0.06 required. The onset test also failed. Seed 20's val_mse_ratio first fell below 1 at step 3500, went back above 1 at step 4000, and stayed below from step 4500. After that, its force margin never rose 0.03 above its value at that point (0.095 at step 3500, lowest 0.084 at step 5500). Seed 21's force margin was already climbing from step 1000 (0.001), before val_mse_ratio fell below 1 at step 3000 (0.822). Measured from step 3000, seed 21 only gained 0.03 at step 7500, 4500 steps later. The one prediction that held was accel_step's normalised margin, which landed inside [0.62, 0.77] in both seeds, though only just.\n\nThe 'false' outcome also failed. Seed 21 did end below 0.10, but its 6000-to-12000 gain of 0.041 is above the 0.03 limit, and neither seed has levelled off.\n\nThe training horizon is a strong confound. In the matched 6000-step run of exp-20261013-021753-c0b1, seed 20 had force margin 0.139 at step 6000. Here, at the same step, it is 0.085, and it ends lower (0.105) after twice the training. In that run seed 21 was flat at 0.001 through step 3000, while here it starts rising at step 1500. Either the lr schedule scales with total steps, or runs are not deterministic. Either way, cross-length comparisons of force are unreliable.\n\nSeed 20 clears the bar by only 0.005, and seed 21's force control spread is 0.046, so whether force beats control at N=256 sits inside noise. What would change the verdict: seed 21 crossing 0.10, or both seeds clearly levelling off, in a run to about 18000 steps on a schedule-matched design. For comparison, N=128 reached 0.193-0.197 at 12000 steps (exp-20261013-031820-c873), so at that training length N=256 force is still about half of N=128's.",
+  "created_at": "2026-10-13T05:04:36",
+  "experiment_id": "exp-20261013-031820-64d0",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T05:04:36",
+      "actor": "agent"
+    }
+  ]
+}

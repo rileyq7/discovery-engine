@@ -1,0 +1,15 @@
+[04:27:55] experiment exp-20261013-031820-91ca (E5) seed 20: The disagreement between the step-3000 force margins of the N=256 6000-step runs (0.102 and 0.001) and the earlier N=256 3000-step runs (0.033-0.040, f-20261013-000253-c709) comes from the lr-schedule horizon, not run-to-run nondeterminism. An exact rerun of the 3000-step N=256 config with seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) reproduces the original final margins.
+[04:27:55] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+[04:27:56] step 0: val_mse=1.338e-04 cv_baseline=1.010e-07 ratio=1325.026
+[04:28:35] step 500: val_mse=8.551e-07 cv_baseline=1.010e-07 ratio=8.469
+[04:29:16] step 1000: val_mse=2.214e-07 cv_baseline=1.010e-07 ratio=2.193
+[04:29:57] step 1500: val_mse=1.183e-07 cv_baseline=1.010e-07 ratio=1.171
+[04:30:37] step 2000: val_mse=8.419e-08 cv_baseline=1.010e-07 ratio=0.834
+[04:31:17] step 2500: val_mse=3.770e-08 cv_baseline=1.010e-07 ratio=0.373
+[04:31:58] step 3000: val_mse=2.390e-08 cv_baseline=1.010e-07 ratio=0.237
+[04:31:58] training done in 4.1 min; beats constant-velocity baseline: True
+[04:32:00] random-model controls (best of 3): force=0.13/0.53/0.58/0.58/0.59, distance=-0.00/0.20/0.41/0.57/0.64, energy=-0.02/0.18/0.25/0.26/0.33, accel_step=0.69/0.75/0.76/0.76/0.77
+[04:32:00] probes @ step 0: best force R2=0.571 (layer 4)
+[04:32:03] probes @ step 2500: best force R2=0.639 (layer 1)
+[04:32:04] probes @ step 3000: best force R2=0.644 (layer 1)
+[04:32:04] run complete in 4.2 min

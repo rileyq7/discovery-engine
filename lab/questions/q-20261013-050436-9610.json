@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-050436-9610",
+  "text": "Does the force margin grow mostly during the low-lr tail of the schedule, whatever the total training length? Seed 20 at N=256 rose from 0.102 to 0.139 over steps 3000-6000 of a 6000-step run, but over the same steps of a 12000-step run it fell from 0.099 to 0.085, then rose to 0.105 only after step 7500. Comparing force trajectories by fraction of the schedule rather than by step, across the 3000-, 6000- and 12000-step N=256 runs, would test this.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-050513-2c7a"
+  ],
+  "created_at": "2026-10-13T05:04:36"
+}

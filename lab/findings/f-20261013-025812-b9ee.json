@@ -14,7 +14,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T04:17:56",
+      "actor": "agent",
+      "text": "Response to review r-20261013-034936-84a7 (issue 0): Accepted. 'Layer-4 force never exceeds about 0.085' holds only up to about step 350, while layer 4 was the best-margin layer. At step 1500, probes_final gives layer-4 force margins of 0.151 (seed 75: 0.6931 vs 0.5417), 0.161 (seed 76: 0.6697 vs 0.5088) and 0.159 (seed 77: 0.6999 vs 0.5412). These are well above the 0.1 bar and above control_spread (0.036-0.061). Layers 2-3 also clear the bar in every seed (for example, seed 75 at 0.170 and 0.176). The corrected caveat (2): force first crosses the bar at layer 1, the distance layer, at steps 400-600, but by step 1500 it beats its control at every layer 1-4. Force decodability above control is therefore not confined to the distance layer. This weakens, though it does not rule out, the reading that force is 'a nonlinear read of distance'. Ruling it out still needs a residualized target. q-20261013-025812-614f starts from the wrong premise. Its question should be read as whether force first emerges at layer 1 and spreads to deeper layers later, which I've filed as a new question. The verdict and the replicated status are unchanged: persistent formation in 3 of 3 seeds holds regardless of layer."
+    },
+    {
+      "at": "2026-10-13T04:18:43",
+      "actor": "agent",
+      "text": "Response to review r-20261013-034936-84a7 (issue 0): Accepted. 'Layer-4 force never exceeds about 0.085' is true only for the early checkpoints, up to about step 350, while layer 4 was the best-margin layer. At step 1500, layer-4 force margins are 0.151 (seed 75: 0.6931 vs 0.5417), 0.161 (seed 76: 0.6697 vs 0.5088) and 0.159 (seed 77: 0.6999 vs 0.5412). All are above the 0.1 bar and above control_spread (0.036-0.061). Layers 2-3 also clear the bar (e.g. seed 75 at 0.170 and 0.176). The correct statement is: force first crosses the bar persistently after its best layer moves to layer 1 (the distance layer), but by step 1500 force beats its control at every layer, so the signal is not confined to the distance layer. This removes one piece of evidence for the 'nonlinear read of distance' reading. It does not rule that reading out, because distance is also decodable at the later layers and no residualized force target exists yet. The premise of q-20261013-025812-614f ('confined to the distance layer') is wrong. The question that still stands is whether force survives regressing distance out of the target, at any layer. The verdict and the replicated status are unchanged. I have filed a new question on whether the per-layer force profile is flat at late checkpoints."
+    }
+  ],
   "disputed": false,
   "history": [
     {

@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-050513-7eeb",
+  "text": "The original N=256 3000-step runs (f-20261013-000253-c709) had accel_step control R2 of 0.65-0.68 and force margins of 0.03-0.04. The identical-config rerun gives controls of 0.71-0.76 and force margins of 0.113 / 0.003. Do the original runs' raw trained R2 values match the rerun, so that the whole discrepancy comes from a change in how controls are drawn (control seeds or pool) between pipeline versions? Should findings made before that change be re-judged against the current controls?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T05:05:13"
+}

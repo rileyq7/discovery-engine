@@ -1,0 +1,36 @@
+run-20261013-035032-f917: [04:07:09] experiment exp-20261013-031820-64d0 (E5) seed 21: At N=256 the force collapse seen at 3000 steps is a late start, not a ceiling. Force growth begins only after val_mse_ratio falls below about 1, then continues. With seeds 20-21, architecture and data matched to exp-20261013-021753-c0b1 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), training to 12000 steps takes seed 21's force margin (0.044 at step 6000) well above the bar, and seed 20's (0.139) keeps rising. Margins are read from the per-checkpoint trajectory as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. For each seed, the analysis reports the first checkpoint where val_mse_ratio < 1 and the first checkpoint where the force margin has risen >= 0.03 above its pre-onset value.
+run-20261013-035032-f917: [04:07:09] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+run-20261013-035032-f917: [04:07:10] step 0: val_mse=1.319e-04 cv_baseline=1.010e-07 ratio=1306.758
+run-20261013-035032-f917: [04:07:48] step 500: val_mse=1.516e-06 cv_baseline=1.010e-07 ratio=15.011
+run-20261013-035032-f917: [04:08:27] step 1000: val_mse=4.929e-07 cv_baseline=1.010e-07 ratio=4.882
+run-20261013-035032-f917: [04:09:08] step 1500: val_mse=3.317e-07 cv_baseline=1.010e-07 ratio=3.286
+run-20261013-035032-f917: [04:09:49] step 2000: val_mse=2.242e-07 cv_baseline=1.010e-07 ratio=2.221
+run-20261013-035032-f917: [04:10:29] step 2500: val_mse=1.621e-07 cv_baseline=1.010e-07 ratio=1.605
+run-20261013-035032-f917: [04:11:09] step 3000: val_mse=8.300e-08 cv_baseline=1.010e-07 ratio=0.822
+run-20261013-035032-f917: [04:11:49] step 3500: val_mse=8.250e-08 cv_baseline=1.010e-07 ratio=0.817
+run-20261013-035032-f917: [04:12:30] step 4000: val_mse=8.418e-08 cv_baseline=1.010e-07 ratio=0.834
+run-20261013-035032-f917: [04:13:10] step 4500: val_mse=6.966e-08 cv_baseline=1.010e-07 ratio=0.690
+run-20261013-035032-f917: [04:13:51] step 5000: val_mse=5.154e-08 cv_baseline=1.010e-07 ratio=0.510
+run-20261013-035032-f917: [04:14:31] step 5500: val_mse=4.775e-08 cv_baseline=1.010e-07 ratio=0.473
+run-20261013-035032-f917: [04:15:11] step 6000: val_mse=5.626e-08 cv_baseline=1.010e-07 ratio=0.557
+run-20261013-035032-f917: [04:15:52] step 6500: val_mse=3.880e-08 cv_baseline=1.010e-07 ratio=0.384
+run-20261013-035032-f917: [04:16:33] step 7000: val_mse=2.895e-08 cv_baseline=1.010e-07 ratio=0.287
+run-20261013-035032-f917: [04:17:18] step 7500: val_mse=3.088e-08 cv_baseline=1.010e-07 ratio=0.306
+run-20261013-035032-f917: [04:17:59] step 8000: val_mse=1.664e-08 cv_baseline=1.010e-07 ratio=0.165
+run-20261013-035032-f917: [04:18:40] step 8500: val_mse=1.392e-08 cv_baseline=1.010e-07 ratio=0.138
+run-20261013-035032-f917: [04:19:20] step 9000: val_mse=1.025e-08 cv_baseline=1.010e-07 ratio=0.102
+run-20261013-035032-f917: [04:20:01] step 9500: val_mse=1.027e-08 cv_baseline=1.010e-07 ratio=0.102
+run-20261013-035032-f917: [04:20:42] step 10000: val_mse=8.357e-09 cv_baseline=1.010e-07 ratio=0.083
+run-20261013-035032-f917: [04:21:22] step 10500: val_mse=8.696e-09 cv_baseline=1.010e-07 ratio=0.086
+run-20261013-035032-f917: [04:22:03] step 11000: val_mse=5.767e-09 cv_baseline=1.010e-07 ratio=0.057
+run-20261013-035032-f917: [04:22:44] step 11500: val_mse=6.399e-09 cv_baseline=1.010e-07 ratio=0.063
+run-20261013-035032-f917: [04:23:24] step 12000: val_mse=4.527e-09 cv_baseline=1.010e-07 ratio=0.045
+run-20261013-035032-f917: [04:23:24] training done in 16.3 min; beats constant-velocity baseline: True
+run-20261013-035032-f917: [04:23:26] random-model controls (best of 3): force=0.17/0.58/0.59/0.58/0.60, distance=0.01/0.37/0.42/0.51/0.58, energy=-0.00/0.30/0.36/0.45/0.49, accel_step=0.65/0.69/0.70/0.71/0.71
+run-20261013-035032-f917: [04:23:27] probes @ step 0: best force R2=0.610 (layer 3)
+run-20261013-035032-f917: [04:23:29] probes @ step 2500: best force R2=0.604 (layer 2)
+run-20261013-035032-f917: [04:23:32] probes @ step 5000: best force R2=0.622 (layer 2)
+run-20261013-035032-f917: [04:23:35] probes @ step 7500: best force R2=0.646 (layer 2)
+run-20261013-035032-f917: [04:23:37] probes @ step 10000: best force R2=0.662 (layer 2)
+run-20261013-035032-f917: [04:23:40] probes @ step 12000: best force R2=0.673 (layer 2)
+run-20261013-035032-f917: [04:23:40] run complete in 16.5 min

@@ -1,0 +1,5 @@
+[05:05:21] experiment exp-20261013-041843-8486 (E5) seed 23: The intermediate N=128 force margin at 3000 steps (0.150 for seed 20, 0.131 for seed 21) replicates on fresh seeds. Seeds 22-23 at N=128, with architecture, data and 3000-step training matched to the N=64 seeds 22-23 arm (exp-20261013-011737-dff2: force 0.247 / 0.234), give a final best-layer force margin well below their N=64 values and well above N=256 (0.033-0.040). The headroom-normalised accel_step margin is the same as at N=64 (0.68-0.70). Margins are read from the per-checkpoint trajectory using unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint.
+[05:05:21] model: 209,094 params on mps; dataset 4886002b001a; 9000 train / 1000 val systems
+[05:05:22] step 0: val_mse=5.070e-04 cv_baseline=1.603e-06 ratio=316.276
+[05:06:01] step 500: val_mse=2.657e-06 cv_baseline=1.603e-06 ratio=1.658
+[05:06:49] step 1000: val_mse=1.608e-06 cv_baseline=1.603e-06 ratio=1.003

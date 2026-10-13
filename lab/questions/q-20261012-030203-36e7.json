@@ -3,7 +3,8 @@
   "text": "With the same data and best-of-5 controls, the accel_step control R2 differs across seeds by about 0.06 (0.709-0.769), while the within-run control_spread is only 0.010-0.019. Does the control seed or probe split differ by run seed? Would a control pool shared across all seeds, or a control_spread taken across run seeds, give a fairer required_margin for comparing formation steps across N?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261012-030313-4d1f"
+    "f-20261012-030313-4d1f",
+    "f-20261013-050513-2c7a"
   ],
   "created_at": "2026-10-12T03:02:03"
 }

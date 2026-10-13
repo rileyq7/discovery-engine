@@ -1,0 +1,104 @@
+{
+  "id": "exp-20261013-041843-02af",
+  "family": "E5",
+  "hypothesis": "At N=64, as at N=128, the best-layer force margin keeps creeping up over long training and approaches a ceiling, and that ceiling is higher than at N=128. With seeds 20-21, architecture and data matched to exp-20261013-001741-c9dc and exp-20261013-031820-c873 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) and training extended to 12000 steps, N=64 force ends clearly above the N=128 12000-step values (0.193 for seed 20, 0.197 for seed 21). So the N=64 vs N=128 gap persists at every training length. Margins are read from the per-checkpoint trajectory using unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. If either seed's step-3000 force margin differs by more than 0.03 from the 3000-step run of the same seed (0.215 for seed 20, 0.261 for seed 21), within-run growth is the primary measure and cross-run comparisons are reported as horizon-confounded.",
+  "expected_if_true": "In both seeds the final (step-12000) best-layer force margin is >= 0.23, at least 0.03 above the same seed's N=128 12000-step value (0.193 / 0.197). Force gain from step 6000 to 12000 is <= 0.04. accel_step's headroom-normalised margin stays in [0.62, 0.77].",
+  "expected_if_false": "In at least one seed the final force margin is <= 0.21, i.e. within 0.015 of that seed's N=128 12000-step value, so N=128 converges to the N=64 level and the gap is a growth-rate effect only. Alternatively, force keeps gaining >= 0.05 from step 6000 to 12000 in both seeds, which would mean neither N has reached its ceiling and the comparison is unresolved.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=64, as at N=128, the best-layer force margin keeps creeping up over long training and approaches a ceiling, and that ceiling is higher than at N=128. With seeds 20-21, architecture and data matched to exp-20261013-001741-c9dc and exp-20261013-031820-c873 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) and training extended to 12000 steps, N=64 force ends clearly above the N=128 12000-step values (0.193 for seed 20, 0.197 for seed 21). So the N=64 vs N=128 gap persists at every training length. Margins are read from the per-checkpoint trajectory using unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. If either seed's step-3000 force margin differs by more than 0.03 from the 3000-step run of the same seed (0.215 for seed 20, 0.261 for seed 21), within-run growth is the primary measure and cross-run comparisons are reported as horizon-confounded.",
+    "expected_if_true": "In both seeds the final (step-12000) best-layer force margin is >= 0.23, at least 0.03 above the same seed's N=128 12000-step value (0.193 / 0.197). Force gain from step 6000 to 12000 is <= 0.04. accel_step's headroom-normalised margin stays in [0.62, 0.77].",
+    "expected_if_false": "In at least one seed the final force margin is <= 0.21, i.e. within 0.015 of that seed's N=128 12000-step value, so N=128 converges to the N=64 level and the gap is a growth-rate effect only. Alternatively, force keeps gaining >= 0.05 from step 6000 to 12000 in both seeds, which would mean neither N has reached its ceiling and the comparison is unresolved.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 12000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "analyzing",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T04:18:43",
+  "updated_at": "2026-10-13T05:05:19",
+  "verdict": null,
+  "estimate_hours": 0.9346,
+  "compute_hours": 0.5522,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T04:18:43",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T04:18:43",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T04:18:44",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T04:32:05",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T05:05:19",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    }
+  ]
+}
