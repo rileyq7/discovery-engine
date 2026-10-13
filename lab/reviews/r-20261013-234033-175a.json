@@ -1,0 +1,61 @@
+{
+  "id": "r-20261013-234033-175a",
+  "created_at": "2026-10-13T23:40:33",
+  "since": "2026-10-13T22:39:21",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R2, control, margin, normalised margin, val_mse_ratio and matched-loss number in the three findings, using raw probes_final and trajectories. I also cross-paired the N=64, N=128 and N=256 seed 22-23 runs, since all three arms are present in raw_evidence. f-8b46's core decomposition and f-9faa's core numbers check out, but each misquotes one secondary value. f-a78c's 'inconclusive' verdict is wrong: the N=128 probes_final the agent says it could not read is available, and it puts seed 22's trained-R2 drop past the pre-registered refutation bar. No drift and no pipeline anomalies were found.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "verdict_mismatch",
+      "message": "expected_if_false is 'in at least one seed, trained force R2 falls by >= 0.04 from N=128'. The paired N=128 run run-20261013-222413-753a (seed 22) is in the record. Its best-margin layer is 1, with force R2 0.6960 in probes_final, against N=256 layer-1 (also best-margin) R2 0.6532. That is a drop of 0.0428, which meets the refutation criterion. The confidence note's claim that N=128 probes_final was 'not available' and that the drop 'lies somewhere in about 0.026-0.043' is contradicted by the raw data. The sibling finding f-8b46 quotes 0.696 from this same run, and the agent's own question q-20261013-231210-e1f0 states -0.043. The status should move to refuted, or the agent should justify keeping it, noting that the margin over the bar (0.003) is small relative to model-seed noise.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-225026-a78c"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim gives N=64 layer-1 distance R2 as '0.896/0.932'. Raw N=64 seed 23 (run-20261013-221215-3857) layer-1 distance R2 is 0.8898. The 0.8965 figure is the layer-4 max-over-layers value. The conclusion that distance holds or rises still stands: 0.933 vs 0.890.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-224908-8b46"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The headroom-normalised force margin is quoted as '0.59-0.58'. Raw values: seed 23 is 0.2749/(1-0.534) = 0.590, and seed 22 is 0.2684/(1-0.5246) = 0.565 (\u22480.56, not 0.58). This does not affect the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-224946-9faa"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says the N=64 side came from the rounded trajectory rather than probes_final. The N=64 probes_final values (run-...-3857 and run-...-9771: force layer 1, R2 0.8089 and 0.7930, control 0.5340 and 0.5246) are available. They reproduce the quoted drops (0.094 and 0.097) and control changes (+0.017 and -0.002), so caveat (1) can be dropped. The supported/replicated status holds: both seeds meet every expected_if_true criterion, and the margins (0.163, 0.173) exceed both max(0.1, control_spread) and the force noise floor of 0.082.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-224908-8b46"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261013-224908-8b46",
+      "f-20261013-224946-9faa",
+      "f-20261013-225026-a78c"
+    ],
+    "runs": [
+      "run-20261013-223646-5ee2",
+      "run-20261013-223646-70b9",
+      "run-20261013-231211-6833",
+      "run-20261013-231211-9f25",
+      "run-20261013-232235-640e",
+      "run-20261013-232235-a8cb",
+      "run-20261013-233313-73e1"
+    ],
+    "experiments": [
+      "exp-20261013-231210-12e0",
+      "exp-20261013-231210-6891",
+      "exp-20261013-231210-ae2c"
+    ]
+  }
+}
