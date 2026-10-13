@@ -1,0 +1,49 @@
+{
+  "id": "r-20261013-085404-74ef",
+  "created_at": "2026-10-13T08:54:04",
+  "since": "2026-10-13T07:52:56",
+  "verdict": "FLAG",
+  "summary": "I recomputed every R2, control, margin, normalised margin, paired difference and val_mse_ratio in the four new findings (N=64/128/256 seeds 24-26, and the 4000-step N=256 extension) from probes_final and the trajectories. All four verdicts hold against their pre-registered criteria. The core numbers check out: N=64 force 0.737/0.727/0.711; N=128 0.639/0.621/0.583; N=256 0.563/0.559/0.555; 4000-step 0.557/0.569 with gains of 0.011/0.014. The problems are secondary decomposition numbers. These were taken from the max_r2-over-layers column instead of the best-margin-layer R2, and they overstate the control share of the N=128-to-N=256 decline.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The 'context from the paired N=256 arm' says trained force R2 falls 0.060/0.054/0.023 and controls rise about 0.042/0.044/0.027, so the N=128-to-N=256 step is 'split roughly evenly'. The raw best-margin-layer values give something different. Trained R2: 0.6389\u21920.5628 (-0.076), 0.6212\u21920.5591 (-0.062), 0.5827\u21920.5553 (-0.027). Controls: 0.5107\u21920.5366 (+0.026), 0.4781\u21920.5136 (+0.036), 0.5036\u21920.5266 (+0.023). So trained R2 accounts for about 75%/64%/54% of the margin loss, which is not an even split. The 0.060/0.054 values match the max_r2 column (0.579, 0.567), not the best-margin layer. This also contradicts f-20261013-075749-3d2c, and it propagated into the premise of q-20261013-075824-39e7.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-075824-35f0"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim gives force control rises of '+0.026-0.042 / +0.036-0.044 / +0.023-0.027' and says controls 'account for roughly 35-50% of the margin loss'. The unrounded run records give +0.026 / +0.036 / +0.023 (N=128 layer-1 controls 0.5107/0.4781/0.5036 vs N=256 best-margin controls 0.5366/0.5136/0.5266). The control share of the margin loss is therefore 25% / 36% / 46%, not 35-50%; seed 24 is mostly trained-R2 loss (0.076 of 0.102). The verdict (refuted, seeds 24 and 25 drop \u22650.04) is unaffected.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-075749-3d2c"
+    },
+    {
+      "severity": "info",
+      "category": "bug",
+      "message": "The uncertainty in the confidence notes of 3d2c, f75f and 2efd, and the premise of q-20261013-075749-57bb, rest on a misreading of the trajectory. The trajectory carries the R2 at the best-margin layer (its_r2) and the max-over-layers R2 (max_r2) as separate fields. its_r2 equals probes_final exactly; for example, force seed 24 at N=256 is 0.5628 in both, and 0.579 is max_r2 at layer 3. The N=128 and N=64 arms were available as unrounded run records in this cycle, so the hedged ranges and the 'cannot be used as trained R2' caveat in 2efd are unnecessary. The point ranges are the raw values above.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-075749-3d2c"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261013-075749-3d2c",
+      "f-20261013-075824-35f0",
+      "f-20261013-075855-f75f",
+      "f-20261013-083108-2efd"
+    ],
+    "runs": [
+      "run-20261013-074422-d66a",
+      "run-20261013-081947-9acf",
+      "run-20261013-081947-a102"
+    ],
+    "experiments": [
+      "exp-20261013-081946-3be6"
+    ]
+  }
+}
