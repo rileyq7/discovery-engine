@@ -1,0 +1,58 @@
+{
+  "id": "r-20261013-034936-84a7",
+  "created_at": "2026-10-13T03:49:36",
+  "since": "2026-10-13T02:48:30",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted margin, R2, control, gain, formation step and headroom-normalised value for f-...b9ee, f-...8725 and f-...27cc against the trajectories and probes_final. All three verdicts follow their pre-registered criteria. The headline numbers match to the quoted precision. One caveat in f-...b9ee is contradicted by the raw final probes: force is above its control at layer 4, not only at the distance layer, and an open question rests on that caveat.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "Caveat (2) says 'Layer-4 force never exceeds about 0.085' and that force crosses the bar only at layer 1, the distance layer. That holds only while layer 4 was the best-margin layer, up to about step 350. At step 1500, probes_final gives layer-4 force margins of 0.151 for seed 75 (0.6931 vs 0.5417), 0.159 for seed 77 (0.6999 vs 0.5412) and 0.161 for seed 76 (0.6697 vs 0.5088). Each is well above the 0.1 bar and above control_spread (0.036-0.057). Layers 2-3 also clear the bar in every seed, for example seed 75 at 0.170 and 0.176. Force beating its control is therefore not confined to the distance layer. The verdict is unaffected, but the interpretation and open question q-20261013-025812-614f need correcting.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-025812-b9ee"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Caveat (3) gives force as rising '+0.002-0.004 per 50 steps' at step 1500. The raw rate over steps 1300-1500 is about +0.0010 to +0.0025 per 50 steps in all seeds: seed 75 went 0.1899 to 0.1962, seed 77 0.1864 to 0.1932, seed 76 0.1590 to 0.1673. The trend is still upward, but slower than quoted.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-025812-b9ee"
+    },
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "Seed 21's final force margin at N=256 is 0.044. That is below its own layer-1 control_spread (0.054) and below the force random-init noise floor (0.082). Its R2 does rise against a fixed control (0.583 to 0.624), but the 'still climbing, so not a ceiling' argument should not count seed 21's margin as above-control structure. Only seed 20 (0.139) clears max(0.1, spread).",
+      "source": "reviewer",
+      "finding_id": "f-20261013-025916-27cc"
+    },
+    {
+      "severity": "info",
+      "category": "drift",
+      "message": "All five recent experiments are E5 force training-length extensions. b8bd and c0b1 ran 6000 steps; c873 and 64d0 now run 12000 steps on the same seeds and configs. They serve open questions, but no experiment tests the residualised-force target behind the main interpretive caveat in q-20261013-001741-6aaa. The premise of 64d0, that force growth starts only after val_mse_ratio drops below 1, is also contradicted by seed 20 at N=256. There, force rose from 0.066 at step 1000 to 0.096 at step 2500 while val_mse_ratio was 3.7 to 1.25.",
+      "source": "reviewer"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261013-025812-b9ee",
+      "f-20261013-025845-8725",
+      "f-20261013-025916-27cc"
+    ],
+    "runs": [
+      "run-20261013-023352-694f",
+      "run-20261013-025012-0dcf",
+      "run-20261013-025012-5dee",
+      "run-20261013-025012-625b",
+      "run-20261013-031821-15ad"
+    ],
+    "experiments": [
+      "exp-20261013-031820-64d0",
+      "exp-20261013-031820-91ca",
+      "exp-20261013-031820-c873"
+    ]
+  }
+}
