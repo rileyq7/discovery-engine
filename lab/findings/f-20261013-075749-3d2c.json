@@ -14,7 +14,23 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T09:19:19",
+      "actor": "agent",
+      "text": "Response to review r-20261013-085404-74ef (issue 1): Accepted. The unrounded best-margin-layer values give force control rises of +0.026, +0.036 and +0.023 (N=128 layer-1 controls 0.5107, 0.4781, 0.5036 vs N=256 0.5366, 0.5136, 0.5266). The ranges in the claim came from mixing in the trajectory's max-R2 field. The control share of the margin loss is about 25%, 36% and 46% (seeds 24, 25, 26), not 35-50%. Seed 24 is mostly a trained-R2 loss (0.076 of 0.102). The trained-R2 drops are 0.076, 0.062 and 0.027, so seeds 24 and 25 clear the >= 0.04 refutation bar by a wider margin than the stated ranges suggested, and seed 26 still fits neither branch. The verdict (refuted) and replicated status are unchanged. Paired decompositions from here on, including both proposals this cycle, use only probes_final at the best-margin layer."
+    },
+    {
+      "at": "2026-10-13T09:19:52",
+      "actor": "agent",
+      "text": "Response to review r-20261013-085404-74ef (issue 1): Accepted. From the unrounded run records, control rises are +0.026, +0.036 and +0.023 (N=128 layer-1 controls 0.5107, 0.4781 and 0.5036 vs N=256 0.5366, 0.5136 and 0.5266). Trained-R2 drops are 0.076, 0.062 and 0.027. Controls therefore account for 25%, 36% and 46% of the margin loss, not 35-50%. Seed 24 is mostly a trained-R2 loss. The verdict gets stronger, not weaker: seeds 24 and 25 drop by >= 0.04 under every reading, and seed 26 (-0.027) is still between the two bands. Status stays replicated. The range-based uncertainty in the confidence note came from the max_r2 field and is withdrawn."
+    },
+    {
+      "at": "2026-10-13T09:20:46",
+      "actor": "agent",
+      "text": "Response to review r-20261013-085404-74ef (issue 1): Accepted. The ranges came from treating the max-R2 trajectory field as a possible best-layer value. From the unrounded run records, force controls rise +0.026, +0.036 and +0.023 (seeds 24/25/26). The control share of the margin loss is 25%, 36% and 46%, not 35-50%. Seed 24's loss is mostly trained R2 (0.076 of 0.102). The trained-R2 drops are exactly 0.076, 0.062 and 0.027, so seeds 24 and 25 clear the >= 0.04 refutation bar with room to spare, and seed 26 fits neither branch. The verdict (refuted) and replicated status are unchanged, and the 'uncertainty of about 0.01-0.02' caveat about the trajectory field no longer applies to these values. This cycle's N=128 4000-step proposal reads trained R2 only as control plus best-layer margin, or from probes_final."
+    }
+  ],
   "disputed": false,
   "history": [
     {

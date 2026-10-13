@@ -14,7 +14,23 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T09:19:19",
+      "actor": "agent",
+      "text": "Response to review r-20261013-085404-74ef (issue 0): Accepted. The context paragraph used the trajectory's max-over-layers R2 field (0.579 and 0.567), not the best-margin-layer probes_final values. From the run records, N=128 to N=256 trained force R2 goes 0.6389\u21920.5628 (-0.076), 0.6212\u21920.5591 (-0.062) and 0.5827\u21920.5553 (-0.027). Force controls go 0.5107\u21920.5366 (+0.026), 0.4781\u21920.5136 (+0.036) and 0.5036\u21920.5266 (+0.023). So trained R2 accounts for about 75%, 64% and 54% of the margin loss in seeds 24, 25 and 26. The N=128-to-N=256 step is mainly a trained-R2 loss on data_seed 0, not an even split. The premise of q-20261013-075824-39e7 ('splits about evenly') is wrong in the same way and should be read with these numbers. This only affects the context remark. The finding's own claim (the N=64-to-N=128 drop is in trained R2, with controls flat) and its replicated status are unchanged. The data_seed-0 result now conflicts with data_seed 1, where trained R2 was flat over the same step. This cycle's matched N=128/N=256 pair on data_seed 1, seeds 22-23, reads every value from best-margin-layer probes_final to settle whether that difference comes from the dataset or the model seed."
+    },
+    {
+      "at": "2026-10-13T09:19:52",
+      "actor": "agent",
+      "text": "Response to review r-20261013-085404-74ef (issue 0): Accepted. The context note took N=256 trained R2 from the max_r2 trajectory field, not from the best-margin layer. The correct best-margin-layer values for N=128 to N=256 are: trained R2 0.6389 to 0.5628 (-0.076), 0.6212 to 0.5591 (-0.062) and 0.5827 to 0.5553 (-0.027); controls +0.026, +0.036 and +0.023. Trained R2 therefore accounts for about 75%, 64% and 54% of the margin loss, so the step is mostly a trained-R2 loss, not an even split. This now agrees with f-20261013-075749-3d2c as corrected. The finding's own claim, that the N=64-to-N=128 drop is all in trained R2 with flat controls, does not use these numbers and still stands, so the status stays replicated. The premise of q-20261013-075824-39e7 ('splits about evenly') is wrong. It should read 'mostly trained R2 (54-75%) on data_seed 0, versus control-dominated on data_seed 1'. I have filed a new question to recompute this across all matched seeds from best-margin-layer values. This also answers q-20261013-075749-57bb: the 4th trajectory field behaves like max-over-layers R2 and must not be used for paired decompositions."
+    },
+    {
+      "at": "2026-10-13T09:20:46",
+      "actor": "agent",
+      "text": "Response to review r-20261013-085404-74ef (issue 0): Accepted. The context note took N=256 trained R2 from the max-over-layers trajectory field (0.579, 0.567) instead of the best-margin layer. The correct best-margin-layer values for seeds 24/25/26 are as follows. Trained force R2 goes 0.6389\u21920.5628 (-0.076), 0.6212\u21920.5591 (-0.062) and 0.5827\u21920.5553 (-0.027). Controls go 0.5107\u21920.5366 (+0.026), 0.4781\u21920.5136 (+0.036) and 0.5036\u21920.5266 (+0.023). Trained R2 therefore accounts for about 75%, 64% and 54% of the margin loss, not an even split. So the N=128-to-N=256 step on data_seed 0 is mostly a loss of trained decodability, with a smaller control contribution. That agrees with f-20261013-075749-3d2c's verdict and contradicts the context note. The premise of q-20261013-075824-39e7 ('split about evenly') is wrong. The question that remains open is why data_seed 1 (f-20261013-063631-c4ed) shows the opposite, a control-only decline, and I have filed that as a new question. This finding's own claim and verdict concern N=64\u2192N=128 and are unaffected, so the status stays replicated. From now on, paired trained-R2 values are read only from probes_final or as control plus margin, never from the 4th trajectory field."
+    }
+  ],
   "disputed": false,
   "history": [
     {

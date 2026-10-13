@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-093210-2e03",
+  "claim": "On data_seed 0, N=128 still decodes force better than N=256 when the two are matched on val_mse_ratio, so the N=256 shortfall is not just slower convergence. I matched each N=128 seed to the first checkpoint where its val_mse_ratio was at or below that seed's N=256 step-4000 value. Seed 24 matches at step 3000 (val_mse_ratio 0.099 vs 0.185), where N=128 trained force R2 is 0.511 + 0.130 = 0.641 against 0.557 at N=256 (+0.084). Seed 25 matches at step 2500 (0.149 vs 0.178), where it is 0.478 + 0.152 = 0.630 against 0.569 (+0.061). At the same step 4000, N=128 force R2 is 0.656 vs 0.557 (+0.099) and 0.647 vs 0.569 (+0.078). In both seeds force beats its control at N=128 (margins 0.145 and 0.169 vs 0.10 required). accel_step is higher at R2 0.914 and 0.912 (margins 0.218 and 0.168), and its normalised margin is 0.72 and 0.66, inside the predicted [0.60, 0.78].",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-092046-2617",
+    "run-20261013-092046-1023"
+  ],
+  "confidence_note": "Both seeds clear the 0.04 bar by a wide margin, at the matched checkpoint and at step 4000. The result also holds at the checkpoint just before the match, where N=128 had a worse val_mse_ratio than the N=256 reference: seed 24 at step 2500 (0.192) gives 0.636, and seed 25 at step 2000 (0.230) gives 0.624. So the 500-step checkpoint spacing and overshooting the match (seed 24: 0.099 vs 0.185) do not drive the verdict. Main limits: (1) Only two model seeds, both on data_seed 0. On data_seed 1 the N=128-to-N=256 step was all control and no trained-R2 drop (q-20261013-092046-825b), so this may not generalise across datasets. (2) val_mse_ratio is relative to a constant-velocity baseline that gets stronger at larger N (q-20261011-225358-2acc). Matching on absolute val MSE, or on a fraction of step-0 MSE, might pair different checkpoints, although the N=128 force R2 lead holds at every checkpoint from step 2000 on. (3) The N=256 reference values (0.557 and 0.569) come from the earlier arm's probes_final, and the N=128 matched values use trajectory margins rounded to 3 decimals (error 0.0005 or less). (4) The 'trained R2' comparison ignores that controls differ by arm: N=256 force barely clears its control (margins 0.02 and 0.055). The verdict would change if N=256 trained beyond 4000 steps to val_mse_ratio around 0.05 reached force R2 of 0.64 or more, or if data_seed 1 or seeds 20-23 showed a matched-loss gap under 0.02.",
+  "created_at": "2026-10-13T09:32:10",
+  "experiment_id": "exp-20261013-092046-6947",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T09:32:10",
+      "actor": "agent"
+    }
+  ]
+}

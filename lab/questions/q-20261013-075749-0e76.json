@@ -3,7 +3,8 @@
   "text": "At N=256 seeds 24-26, force margin is still rising at step 3000 (about +0.006-0.008 per 500 steps), and val_mse_ratio fell below 1 at about step 2000. Trained to 6000 steps, does trained force R2 recover to within 0.02 of N=128, leaving only the control term, or does the trained-R2 gap of about 0.05 persist?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-083108-2efd"
+    "f-20261013-083108-2efd",
+    "f-20261013-093210-2e03"
   ],
   "created_at": "2026-10-13T07:57:49"
 }

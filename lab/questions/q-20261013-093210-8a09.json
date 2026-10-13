@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-093210-8a09",
+  "text": "At step 4000, trained distance R2 at layer 1 is about the same at N=128 (0.907-0.919) and N=256 (0.897-0.920), but trained force R2 is 0.08-0.10 lower at N=256. Is the matched-loss force shortfall specific to the m2 or 1/r^2 nonlinearity rather than to distance? Does a residualised force target (distance regressed out) show the same N=128 vs N=256 gap?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T09:32:10"
+}
