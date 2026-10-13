@@ -1,0 +1,32 @@
+{
+  "id": "r-20261013-223921-4280",
+  "created_at": "2026-10-13T22:39:21",
+  "since": "2026-10-13T10:54:53",
+  "verdict": "OK",
+  "summary": "No new or changed findings this cycle, so there were no quoted numbers or verdicts to recompute, and no deterministic check results were supplied. The three new E5 experiments (seeds 22-23 on data_seed 1 at N=64, 128 and 256) directly address open questions q-20261013-092046-825b, q-20261013-054512-160d and q-20261013-054542-f173. They replicate the data_seed 1 decomposition on fresh model seeds rather than wandering, so there is no drift. Two of the hypotheses state their success criteria loosely, which matters for the findings still to come.",
+  "issues": [
+    {
+      "severity": "info",
+      "category": "verdict_mismatch",
+      "message": "Two of the new hypotheses lack quantitative pass/fail bars. exp-20261013-221215-8995 says the N=64-to-N=128 decline 'comes from lower trained R2, not from a control effect' but gives no split threshold. exp-20261013-221215-a7c8 says seeds 22-23 should 'reproduce' a margin of 'about 0.209', trained R2 'about 0.74' and control 'about 0.53' with no tolerance. exp-20261013-221215-b74d, by contrast, fixes its bars at <=0.02 trained change and >=0.03 control rise. When these runs are analysed, verdicts must follow each experiment's pre-registered expected_if_true / expected_if_false. A tolerance or decomposition threshold chosen after seeing the data will be treated as goalpost-moving. For a7c8, the bar must also respect max(control_margin, control_spread) given best-of-3 controls.",
+      "source": "reviewer"
+    }
+  ],
+  "status": "ok",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [],
+    "runs": [
+      "run-20261013-221215-3857",
+      "run-20261013-221215-9771",
+      "run-20261013-222413-2f41",
+      "run-20261013-222413-753a"
+    ],
+    "experiments": [
+      "exp-20261013-221215-8995",
+      "exp-20261013-221215-a7c8",
+      "exp-20261013-221215-b74d"
+    ]
+  }
+}
