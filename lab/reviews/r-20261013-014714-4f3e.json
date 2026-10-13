@@ -1,0 +1,69 @@
+{
+  "id": "r-20261013-014714-4f3e",
+  "created_at": "2026-10-13T01:47:14",
+  "since": "2026-10-13T00:45:49",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R\u00b2, control, margin, normalised margin, formation step and val_mse_ratio crossing for the four new findings, and checked each verdict against its pre-registered criteria. All four verdicts and statuses are consistent with their criteria, and the headline numbers match the raw data. Several secondary claims misstate the trajectories, though. The biggest is f-20261013-005923-526c's statement that force forms late, which fails in seed 72. f-20261013-005851-2ba8 also floats a relaxed formation window as a route to 'supported'. The last 5 experiments all follow open questions or replicate findings, so there is no drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim says force 'forms late, at steps 300-500'. Seed 72's force margin is 0.1036 at step 100 and stays at or above the bar at every later checkpoint (0.1086, 0.1138, ... 0.1463), so it persistently forms at step 100, only one checkpoint after accel_step (step 50). Late formation holds only for seed 70 (step 500, 0.1007) and seed 71 (step 400, 0.1049). Formation was not part of the criterion, so the verdict is unaffected, but the 'late force' description does not replicate across all 3 seeds.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-005923-526c"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says force is still rising 'by about +0.01 per 100 steps after step 400'. The raw rates from step 400 to 600 are smaller: seed 75 goes 0.0835\u21920.0988 (+0.008/100), seed 76 goes 0.0910\u21920.0969 (+0.003/100), and seed 77 goes 0.0800\u21920.0852 (+0.003/100). The basis for 'longer runs would likely push force past 0.1' (also in q-20261013-005851-c42c) is therefore overstated for 2 of 3 seeds. The early-transient summary is also loose. At step 30 the margins in seeds 75 and 76 are 0.089 and 0.081, not inside the quoted 0.11-0.19. Seed 76 stays at 0.038-0.062 over steps 40-70 and never reaches the 0-0.04 range.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-005851-2ba8"
+    },
+    {
+      "severity": "flag",
+      "category": "verdict_mismatch",
+      "message": "The confidence note says a pooled look showing formation 'in [60, 130] would turn this into supported'. The pre-registered expected_if_true window is [60, 110]. [50, 130] is only the falsification tolerance in expected_if_false and is not a support criterion. Re-scoring with a widened window would move the goalposts. Seed 77 (step 120: margin 0.0945 at 110, 0.1015 at 120) fails the window as written.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-005851-2ba8"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Under the pre-registered rule (unrounded margins, strict >=), seed 73's force margin is 0.0998 at step 300, so persistent formation is at 350, not '300-350'. The lag behind accel_step (100) is therefore 250 steps in both seeds, not 200-250. Separately, the remark that a window starting at step 500 'would make this supported' cannot be applied retroactively. The pre-registered window was 1000\u21925000, and force misses it at +0.0785 and +0.0632.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-010011-b1f8"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The normalised accel_step margin for seed 71 is 0.2587/(1-0.4871)=0.504, below the quoted range of 0.51-0.54. This is minor and does not affect the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-005923-526c"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261013-005851-2ba8",
+      "f-20261013-005923-526c",
+      "f-20261013-010011-b1f8",
+      "f-20261013-010043-349e"
+    ],
+    "runs": [
+      "run-20261013-002433-7960",
+      "run-20261013-004944-0dfb",
+      "run-20261013-004944-b802",
+      "run-20261013-011739-71fe",
+      "run-20261013-011739-faad",
+      "run-20261013-012544-0ae6",
+      "run-20261013-012544-5999"
+    ],
+    "experiments": [
+      "exp-20261013-011737-dff2",
+      "exp-20261013-011738-3167",
+      "exp-20261013-011738-5f82"
+    ]
+  }
+}

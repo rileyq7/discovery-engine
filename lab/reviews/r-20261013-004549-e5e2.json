@@ -41,8 +41,21 @@
       "finding_id": "f-20261013-001650-dfba"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. Seed 72's force margin is at or above 0.1 at every checkpoint from step 100 (0.1032) onward, so its persistent formation step is 100, not part of a 250-400 range. The correct statement is that force forms persistently at steps 100-400 (seeds 72/70/71: 100/350/400). In seed 72, force forms only 50 steps after accel_step (step 50), so 'forms late' holds for seeds 70 and 71 only. The accel_step result (normalised margin 0.455-0.475 in all 3 seeds, inside [0.44, 0.53]) is unaffected, and so is the replicated status. The force-timing claim at e<=0.8 should be read as seed-dependent.",
+      "at": "2026-10-13T01:17:37",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. Layer-1 distance is R2 0.9712 vs control 0.7871, so the margin is 0.184. The R2 of 0.983 belongs to layer 4, where the margin is only 0.143 (vs control 0.8401). The quoted R2 and margin came from different layers. The substantive point stands: force and distance both peak at layer 1, so the late force gain may be a nonlinear read of distance. The status stays inconclusive. The data_seed-1 d128 replication proposed this cycle adds two more seeds where force's best-layer trajectory can be compared with distance's.",
+      "at": "2026-10-13T01:17:37",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
