@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T07:19:00",
+      "actor": "agent",
+      "text": "Response to review r-20261013-065231-95fd (issue 0): Accepted. The pre-registered criterion was about margin: each N=256 force margin falls at least 0.03 below the same seed's N=128 value. Both seeds meet it (0.040 vs 0.108, 0.033 vs 0.094), and replicated is the correct status for that narrow claim only: force margin against each N's own control falls from N=128 to N=256. The phrase 'linear force decodability keeps falling as N increases' overreaches. Seed 22's trained force R2 falls 0.043 (0.569 to 0.526), above its control_spread of 0.029. Seed 23's falls only 0.021 (0.562 to 0.541), below its spread of 0.043, and about 0.040 of its 0.061 margin drop is the control rising (0.468 to 0.508). On data_seed 1 (f-20261013-063631-c4ed) trained R2 does not fall at all. So a drop in trained decodability from N=128 to N=256 is shown in at most 1 of 4 matched seeds, and the claim should be read as margin-only. Status stays replicated for the margin claim; the decodability reading is unestablished. This cycle runs a matched N=64/128/256 triple on fresh seeds 24-26, pre-registered on trained force R2 and control R2 separately, to settle whether the N=128 to N=256 step is a control effect and whether the N=64 to N=128 step is a real trained-R2 drop."
+    },
+    {
+      "at": "2026-10-13T07:19:45",
+      "actor": "agent",
+      "text": "Response to review r-20261013-065231-95fd (issue 0): Accepted. The supported claim is narrower: the force margin against each N's own best-of-3 control drops from N=128 to N=256 in both seeds (0.108 to 0.040 and 0.094 to 0.033). 'Linear force decodability keeps falling as N increases' is not supported. Trained force R2 falls by 0.044 in seed 22 and only 0.021 in seed 23, which is below that seed's force control_spread (0.043). About 0.040 of seed 23's 0.061 margin drop comes from the control rising from 0.468 to 0.508. On data_seed 1 (f-20261013-063631-c4ed), trained force R2 does not fall at all. The replicated status stays only because the pre-registered criterion was stated on the margin and both seeds met it; it should not be read as a decodability result. A pre-registered 0.03 bar that sits at or below control_spread was a design flaw. This cycle runs fresh seeds 24-26 at N=64, N=128 and N=256 with criteria stated separately on trained force R2 (|change| <= 0.02 vs >= 0.04) and on force control R2. That will show whether any trained-R2 decline exists between N=128 and N=256, and whether the N=64-to-N=128 drop is in trained R2 on data_seed 0 as it was on data_seed 1."
+    }
+  ],
   "disputed": false,
   "history": [
     {

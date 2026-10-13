@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-075824-35f0",
+  "claim": "At N=128 (data_seed 0, seeds 24-26), the trained layer-1 force R2 is 0.639 / 0.621 / 0.583 for seeds 24 / 25 / 26. That is 0.098 / 0.106 / 0.128 below each seed's N=64 value (0.737 / 0.727 / 0.711). The best-of-3 force controls barely move: 0.511 / 0.478 / 0.504 at N=128 vs about 0.509 / 0.472 / 0.495 at N=64 (+0.002 / +0.006 / +0.009). So the force-margin drop from about 0.22-0.26 to 0.128 / 0.143 / 0.079 is essentially all a loss of trained decodability, not a control effect. accel_step behaves differently: R2 is 0.907-0.924 at layer 4 against controls of 0.695-0.758, giving headroom-normalised margins of 0.70 / 0.64 / 0.69, while distance R2 (0.896-0.928) does not fall from N=64.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-073201-7611",
+    "run-20261013-073201-b75c",
+    "run-20261013-073201-1f04"
+  ],
+  "confidence_note": "All 3 seeds meet every expected-if-true criterion by a wide margin. Trained-R2 drops are 0.098-0.128, against a threshold of 0.04. Control changes are at most 0.009, against a limit of 0.03. Final force margins are 0.079-0.143, inside [0.06, 0.20], and normalised accel_step is 0.64-0.70, inside [0.60, 0.78]. Caveats: (1) The N=64 values come from the paired arm's 3-decimal trajectory (control = R2 minus margin, about \u00b10.001), not unrounded run records, because that arm is still being analyzed. Rounding cannot change any criterion here. (2) If the trajectory's 4th field is the max R2 over layers rather than the R2 at the best-margin layer (q-20261013-075749-57bb), the N=64 trained R2 could be slightly overstated. Force's best layer is layer 1 at step 3000 in all N=64 seeds, and probes_final matches the trajectory at N=128 (e.g. 0.58267 vs 0.583), so this is unlikely to matter. (3) Seed 26's force margin of 0.079 does not clear the 0.1 bar. Force is above control at N=128 in only 2 of 3 seeds, though the hypothesis is about the decline, not about clearing the bar. (4) Only one data_seed was tested here, but it agrees with the data_seed 1 result (0.74 to 0.66 with flat controls). A shared-control-pool recomputation that put a control rise of 0.05 or more between N=64 and N=128 would change the verdict. Context from the paired N=256 arm (not used as evidence): from N=128 to N=256, trained force R2 falls a further 0.060 / 0.054 / 0.023 while controls rise about 0.042 / 0.044 / 0.027. So the second step is split roughly evenly between trained R2 and controls, unlike the first.",
+  "created_at": "2026-10-13T07:58:24",
+  "experiment_id": "exp-20261013-071945-9388",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T07:58:24",
+      "actor": "agent"
+    }
+  ]
+}

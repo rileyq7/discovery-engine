@@ -1,0 +1,15 @@
+[07:19:48] experiment exp-20261013-071945-1e9d (E5) seed 24: At N=256 (data_seed 0, fresh seeds 24-26, 4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls), the force-margin decline relative to N=128 comes from the random controls rather than from the trained model. Trained best-layer force R2 stays within 0.02 of the same seed's N=128 value (paired arm proposed this cycle), while the force control R2 rises by >= 0.03. All values are read from run-record probes_final and trajectories (unrounded). Paired differences are computed per seed against the N=128 seeds 24-26 arm; if that arm is unavailable, the comparison is reported as not computed.
+[07:19:48] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+[07:19:50] step 0: val_mse=1.305e-04 cv_baseline=1.010e-07 ratio=1292.369
+[07:20:28] step 500: val_mse=6.865e-07 cv_baseline=1.010e-07 ratio=6.799
+[07:21:07] step 1000: val_mse=3.542e-07 cv_baseline=1.010e-07 ratio=3.508
+[07:21:46] step 1500: val_mse=1.536e-07 cv_baseline=1.010e-07 ratio=1.522
+[07:22:25] step 2000: val_mse=6.603e-08 cv_baseline=1.010e-07 ratio=0.654
+[07:23:03] step 2500: val_mse=3.272e-08 cv_baseline=1.010e-07 ratio=0.324
+[07:23:43] step 3000: val_mse=2.437e-08 cv_baseline=1.010e-07 ratio=0.241
+[07:23:43] training done in 3.9 min; beats constant-velocity baseline: True
+[07:23:45] random-model controls (best of 3): force=0.15/0.54/0.56/0.57/0.58, distance=0.01/0.23/0.34/0.54/0.57, energy=-0.01/0.13/0.26/0.34/0.36, accel_step=0.57/0.66/0.67/0.68/0.68
+[07:23:45] probes @ step 0: best force R2=0.546 (layer 3)
+[07:23:48] probes @ step 2500: best force R2=0.570 (layer 3)
+[07:23:49] probes @ step 3000: best force R2=0.579 (layer 3)
+[07:23:49] run complete in 4.0 min

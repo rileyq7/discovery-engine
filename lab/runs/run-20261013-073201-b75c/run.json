@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-073201-b75c",
+  "experiment_id": "exp-20261013-071945-9388",
+  "seed": 25,
+  "status": "completed",
+  "started_at": "2026-10-13T07:40:16",
+  "ended_at": "2026-10-13T07:44:21",
+  "compute_hours": 0.0681,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-073201-b75c",
+  "git_commit": "a2025ef",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.0314416580312833e-07,
+    "baseline_cv_mse": 1.6029119843573081e-06,
+    "val_mse_ratio": 0.06434799091260414,
+    "beats_baseline": true,
+    "train_hours": 0.06634344273143344,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "4886002b001a",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.62117,
+          "control_r2": 0.47808,
+          "control_spread": 0.03389,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.9193,
+          "control_r2": 0.1803,
+          "control_spread": 0.05692,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.47984,
+          "control_r2": 0.27309,
+          "control_spread": 0.12178,
+          "required_margin": 0.1218,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.90704,
+          "control_r2": 0.74381,
+          "control_spread": 0.02332,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 89704,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "4886002b001a"
+}

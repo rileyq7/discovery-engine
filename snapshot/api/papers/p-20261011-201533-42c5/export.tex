@@ -8,7 +8,7 @@
 
 \section{Abstract}
 
-We ask whether small transformers trained to predict simulated orbits (REBOUND, $G = M = 1$) encode the gravitational law, and when that structure forms. We fit linear probes on the residual stream and judge each against several randomly initialised controls. We probe two targets: the physical force $m_2/r^2$, and the per-snapshot acceleration $(F/m_2)\,dt^2$ that next-step prediction actually needs. The lab has 33 replicated findings: 23 supported and 10 refuted, from 80 runs, 4 of which were cut short by the budget stop. The per-snapshot code is robust. At $N = 64$ snapshots per orbit it clears its control at steps 85–140, before the model beats constant-velocity extrapolation [\texttt{f-20261012-002713-8d93}, \texttt{f-20261012-005950-42a7}]. Its headroom-normalised margin stays at 0.63–0.75 from $N = 16$ to $N = 256$ [\texttt{f-20261013-000329-a86b}, \texttt{f-20261013-051807-f3f1}, \texttt{f-20261013-063603-95b5}, \texttt{f-20261013-063631-c4ed}]. Force forms later, at steps 350–600 [\texttt{f-20261013-020028-8792}, \texttt{f-20261013-025812-b9ee}]. Its margin falls from 0.247/0.234 at $N = 64$ to 0.108/0.094 at $N = 128$ [\texttt{f-20261013-015914-3f49}, \texttt{f-20261013-051807-f3f1}]; beyond $N = 128$ the drop comes largely from rising controls [\texttt{f-20261013-063631-c4ed}]. The main negative result is that symbolic regression on the probe directions gives $r^{-1}$, not $r^{-2}$, in every seed tested [\texttt{f-20261011-231118-7a37}, \texttt{f-20261011-223027-8fb3}]. Models trained on $e \le 0.5$ also failed to transfer to high eccentricity, with errors 16–18× the in-distribution error [\texttt{f-20261011-203723-b7de}].
+Do small transformers trained on simulated two-body orbits ($G = M = 1$) learn the physical law, or a heuristic that is enough for next-step prediction? We train transformers on REBOUND orbits sampled at $N$ snapshots per orbit. We then fit linear probes on the residual stream for four targets: force ($m_2/r^2$), per-snapshot acceleration (\texttt{accel\_step}, $\propto a^3/r^2$), distance and energy. Each probe is judged against several randomly initialised controls. The lab has 36 replicated findings (25 supported, 11 refuted) from 89 evidence runs, 4 of which were cut short by the budget stop. \texttt{accel\_step} forms early, at steps 100–140 at $N = 64$, before the model beats constant-velocity extrapolation [\texttt{f-20261011-203659-4e2f}, \texttt{f-20261012-002713-8d93}]. Force forms later and is weaker. On seeds 24–26 its margin falls from 0.216–0.255 at $N = 64$ to 0.079–0.143 at $N = 128$ and 0.026–0.045 at $N = 256$ [\texttt{f-20261013-075855-f75f}, \texttt{f-20261013-075824-35f0}, \texttt{f-20261013-075749-3d2c}]. Over the same range the headroom-normalised \texttt{accel\_step} margin stays flat at 0.63–0.75 [\texttt{f-20261013-051807-f3f1}, \texttt{f-20261013-063631-c4ed}]. The main negative result is that symbolic regression on probe directions returns $r^{-1}$, not $r^{-2}$, in every seed tested [\texttt{f-20261011-231118-7a37}, \texttt{f-20261011-223027-8fb3}]. Models trained on $e \le 0.5$ also had 16–18× their in-distribution error on high-eccentricity systems [\texttt{f-20261011-203723-b7de}]. No causal tests have been run yet.
 
 \section{Methods}
 
@@ -136,143 +136,136 @@ The pipeline also supports activation patching. Heads are ranked by a force prob
 
 \section{Results}
 
-The lab has 33 citable findings, and all 33 have replicated. Of these, 23 support their pre-registered hypothesis and 10 refute it. They rest on 80 evidence runs. The budget hard stop cut 4 of those runs short, and we mark this wherever their numbers appear.
+The lab has recorded 36 citable findings. All 36 are replicated across seeds: 25 support their hypothesis and 11 refute it. They rest on 89 evidence runs. The budget hard stop cut 4 of those runs short, and this section flags them wherever their numbers are used.
 
-Every probe is linear. A probe result counts only if it beats the best of several random-initialisation controls by $\max(0.1, \text{control spread})$. When we say "margin", we mean $R^2$ minus the control $R^2$.
+A probe result counts only if $R^2 - c \ge \max(0.1, \text{spread})$, where $c$ is the best random-control $R^2$ and spread is how much the controls disagree. Where two codes are compared, the comparison uses both the raw margin and the headroom-normalised margin, $(R^2 - c)/(1 - c)$.
 
 \subsection{Prediction quality}
 
-The models beat constant-velocity extrapolation by a wide margin across most configurations:
+Every model trained to completion at $N \le 128$ beats constant-velocity extrapolation:
 
 \begin{itemize}
-\item final \texttt{val\_mse\_ratio} was about 0.011 after 4000 steps [\texttt{f-20261011-201533-0653}];
-\item 0.0007 at $N = 16$ [\texttt{f-20261013-000329-a86b}];
-\item 0.003 after 12000 steps at $N = 64$ [\texttt{f-20261013-051738-2a37}];
-\item 0.005–0.006 with $d_{\text{model}} = 128$ [\texttt{f-20261013-020028-8792}].
+\item \textbf{Default 4-layer, $d_{\text{model}} = 64$ model.} \texttt{val\_mse\_ratio} ends near 0.011 [\texttt{f-20261011-201533-0653}].
+\item \textbf{$N = 16$.} It ends at 0.0007 [\texttt{f-20261013-000329-a86b}].
+\item \textbf{$d_{\text{model}} = 128$, 5000 steps.} It ends at 0.0059 and 0.0053 [\texttt{f-20261013-020028-8792}].
+\item \textbf{6 layers, $d_{\text{model}} = 128$.} It ends at 0.0037 and 0.0032 [\texttt{f-20261012-030233-ab28}].
 \end{itemize}
 
-One exception: at $N = 256$ with $e \le 0.85$, 600 steps were not enough to beat the baseline (final \texttt{val\_mse\_ratio} 2.03–2.37) [\texttt{f-20261012-034134-5e82}].
+At $N = 256$ the baseline is much harder to beat. After 600 steps the models never got below it (\texttt{val\_mse\_ratio} 2.03–2.37) [\texttt{f-20261012-034134-5e82}]. After 3000 steps they ended at 0.24–0.32 [\texttt{f-20261013-063603-95b5}, \texttt{f-20261013-075749-3d2c}].
 
-\subsection{A per-snapshot acceleration code forms early and at a stable training step}
+\subsection{A per-snapshot acceleration code forms early and stays}
 
-\textbf{\texttt{accel\_step} beats its control early, often before the model beats the baseline.}
+In every finding, \texttt{accel\_step} beats its random controls at the final checkpoint, usually at layer 4. It forms early in training, and the ordering against the first drop below the baseline is stable at $N = 64$.
+
+| Finding | Checkpoints | \texttt{accel\_step} first holds margin ≥ 0.1 | \texttt{val\_mse\_ratio} first < 1 |
+|---|---|---|---|
+| [\texttt{f-20261011-203659-4e2f}] | every 25 steps | step 100 (margins 0.115, 0.108) | step 175 (still 1.96 and 1.84 at step 100) |
+| [\texttt{f-20261012-002713-8d93}] | every 10 steps | steps 140, 140, 100 | steps 180, 180, 190 |
+| [\texttt{f-20261012-005950-42a7}] | every 10 steps | steps 85–90 | steps 135–165 |
+| [\texttt{f-20261012-044142-d490}] | every 10 steps | steps 90–100 | steps 140–160 |
+
+\texttt{distance} and \texttt{energy} become decodable even earlier, at steps 10–50 [\texttt{f-20261012-002713-8d93}, \texttt{f-20261012-044142-d490}]. In the earliest runs, gravity-related probes already beat their controls at the first trained checkpoint (step 250), 1250 steps before \texttt{val\_mse\_ratio} fell below 0.1 [\texttt{f-20261011-201533-0653}].
+
+!\href{figure:formation/run-20261011-234250-2037}{Probe formation, N = 64, 10-step checkpoints, seed 45}
+
+The formation step depends on training steps, not on the baseline crossing:
 
 \begin{itemize}
-\item \textbf{First runs (250-step checkpoints).} The \texttt{accel\_step} margin already exceeded the bar at step 250, at 0.158 and 0.127. That is 1250 steps before \texttt{val\_mse\_ratio} first fell below 0.1 [\texttt{f-20261011-201533-0653}].
-\item \textbf{25-step checkpoints.} \texttt{accel\_step} formed at step 100 in both seeds. \texttt{val\_mse\_ratio} was still 1.96 and 1.84 at that point, and it first fell below 1 at step 175 [\texttt{f-20261011-203659-4e2f}].
-\item \textbf{10-step checkpoints.} \texttt{accel\_step} formed at steps 140, 140 and 100, against \texttt{val\_mse\_ratio} < 1 at steps 180, 180 and 190 [\texttt{f-20261012-002713-8d93}].
-\item \textbf{Best-of-5 controls.} \texttt{accel\_step} formed at steps 85–90 [\texttt{f-20261012-005950-42a7}] and 90–100 [\texttt{f-20261012-044142-d490}].
-\item \textbf{5-step checkpoints.} \texttt{accel\_step} formed at steps 65–90 [\texttt{f-20261012-054929-0067}].
+\item \textbf{$N = 16$.} The model beats the baseline at step 20, well \emph{before} \texttt{accel\_step} forms at steps 75–90. Those formation steps are within 15 steps of the seed-matched $N = 64$ runs. The ordering flips because constant-velocity extrapolation is a weaker baseline at coarse sampling, not because formation moves [\texttt{f-20261012-015955-fc2b}].
+\item \textbf{$N = 256$, $e \le 0.85$.} \texttt{accel\_step} forms at steps 60–70, the same window as $N = 64$, even though these models never beat the baseline [\texttt{f-20261012-034134-5e82}, \texttt{f-20261012-034018-5526}].
+\item \textbf{Halving the learning rate.} Formation was delayed by only 10–30 steps [\texttt{f-20261012-044258-ab88}].
 \end{itemize}
 
-!\href{figure:formation/run-20261011-234250-a7ca}{Formation timeline at N = 64, seed 46: accel\_step forms at step 100, before val\_mse\_ratio < 1}
-
-\textbf{\texttt{distance} and \texttt{energy} form even earlier.} They cross at steps 10–25, while the model is still far worse than the baseline [\texttt{f-20261011-203659-4e2f}, \texttt{f-20261012-005950-42a7}]. This suggests geometry that a probe can read early but that does not yet help prediction.
-
-\textbf{The formation step barely depends on sampling density or eccentricity.}
+Two caveats apply to the timing:
 
 \begin{itemize}
-\item \textbf{$N = 16$.} \texttt{accel\_step} formed at steps 75–90, within 5–15 steps of the seed-matched $N = 64$ runs. The coarser sampling makes the baseline weaker, so \texttt{val\_mse\_ratio} drops below 1 at step 20 and the "forms before beating the baseline" ordering flips [\texttt{f-20261012-015955-fc2b}]. A \texttt{val\_mse\_ratio} threshold therefore cannot time formation across different $N$.
-\item \textbf{$e \le 0.85$.} \texttt{accel\_step} formed at steps 60, 60 and 70 at $N = 64$ [\texttt{f-20261012-034018-5526}], and at 60, 70 and 60 at $N = 256$ [\texttt{f-20261012-034134-5e82}]. The $N = 256$ models never beat the baseline at all.
-\item \textbf{Learning rate.} Halving the learning rate delayed formation by only +10, +20 and +30 steps, not the roughly 2× a proportional model would predict [\texttt{f-20261012-044258-ab88}].
+\item \textbf{Thin margins.} At $e \le 0.5$ the \texttt{accel\_step} controls are high (about 0.71–0.79), so margins sit only just above 0.1. A stricter bar would move or remove several crossings [\texttt{f-20261012-002713-8d93}, \texttt{f-20261012-005950-42a7}].
+\item \textbf{Window too narrow.} A pre-registered $N = 64$ formation window was met by only 2 of 5 seeds at 5-step resolution. The misses were one checkpoint early [\texttt{f-20261012-054929-0067}].
 \end{itemize}
 
-\textbf{Margins near the threshold.} At $e \le 0.5$ the \texttt{accel\_step} control is high (0.72–0.79), which caps the raw margin. In 2 of 3 seeds the margin never reached 0.15 [\texttt{f-20261012-005950-42a7}], and at $N = 16$ none of them did [\texttt{f-20261012-015955-fc2b}].
+\subsection{Physical force: a transient, then a late and weaker code}
 
-\subsection{Force: a late, weaker, layer-unstable code}
+\textbf{Early transient.} Force shows a short-lived spike early in training. Its margin is 0.166–0.189 at step 10 and decays to about 0 by steps 40–50; this survives best-of-5 controls [\texttt{f-20261012-005950-42a7}]. The same spike appears in the other short-run experiments [\texttt{f-20261012-044142-d490}, \texttt{f-20261012-015955-fc2b}, \texttt{f-20261012-054929-0067}].
 
-\textbf{In short runs, force does not beat its control.} In 300-step runs at $N = 64$, the final force margins were 0.000–0.080 [\texttt{f-20261012-002713-8d93}, \texttt{f-20261012-044142-d490}]. A transient early spike survives best-of-5 controls: the force margin reached 0.166–0.189 at step 10, then decayed to about 0.00–0.02 by steps 40–50 [\texttt{f-20261012-005950-42a7}].
+\textbf{Short runs.} In 300-step runs at $N = 64$, force does not beat its control at the end [\texttt{f-20261012-002713-8d93}, \texttt{f-20261012-044142-d490}]. In 2 of 5 seeds it scraped past the bar by margins of 0.103 and 0.105 [\texttt{f-20261012-054929-0067}].
 
-\textbf{With longer training, force does form, late.}
+\textbf{Longer runs.} With more training, a force code forms late and keeps strengthening:
 
 \begin{itemize}
-\item \textbf{1500 steps, data seed 1.} Force formed persistently at steps 400, 450 and 600, with final margins of 0.196, 0.193 and 0.167. The "no force code" null in short runs is therefore partly an artefact of where training stopped [\texttt{f-20261013-025812-b9ee}].
+\item \textbf{1500 steps.} Force formed at steps 400–600. The earlier "no force code" null was therefore partly an artefact of where training stopped [\texttt{f-20261013-025812-b9ee}].
 \item \textbf{$d_{\text{model}} = 128$.} Force formed at steps 400 and 350, against step 100 for \texttt{accel\_step} [\texttt{f-20261013-020028-8792}].
-\item \textbf{Wider eccentricity ranges.} At $e \le 0.8$ and $e \le 0.75$, force formed at steps 250–500 and was still rising at step 600 [\texttt{f-20261013-000359-37e2}, \texttt{f-20261013-005923-526c}].
-\item \textbf{3000 steps at $N = 64$.} Force margins reached 0.247 and 0.234 [\texttt{f-20261013-015914-3f49}].
-\item \textbf{12000 steps.} Force margins reached 0.255 and 0.266 [\texttt{f-20261013-051738-2a37}].
-\item \textbf{Early 4000-step runs.} By step 4000 the force margin (0.223, 0.230) had overtaken the \texttt{accel\_step} margin (0.204, 0.172), although \texttt{accel\_step} kept the higher raw $R^2$ [\texttt{f-20261011-201533-0653}].
+\item \textbf{3000 steps at $N = 64$.} Final margins were 0.247 and 0.234 [\texttt{f-20261013-015914-3f49}]. On fresh seeds 24–26 they were 0.228, 0.255 and 0.216 [\texttt{f-20261013-075855-f75f}].
+\item \textbf{12000 steps.} Final margins were 0.255 and 0.266 [\texttt{f-20261013-051738-2a37}].
 \end{itemize}
 
-!\href{figure:heatmap/run-20261013-043205-0031/force}{Force probe heatmap, N = 64, 12000 steps, seed 20}
+!\href{figure:heatmap/run-20261013-074422-d66a/force}{Force probe heatmap, N = 64, seed 24}
 
-\textbf{Which code leads depends on the metric.} Force often has the larger raw margin, because the \texttt{accel\_step} control is high. Measured as a fraction of the available headroom, $(R^2 - c)/(1 - c)$, \texttt{accel\_step} leads in every multi-seed comparison in the table below:
+\textbf{Which code leads depends on the metric.} Force often has the larger raw margin because the \texttt{accel\_step} control is high. On headroom-normalised margin, \texttt{accel\_step} leads in every multi-seed comparison below:
 
 | Setting | \texttt{accel\_step} | force |
 |---|---|---|
 | Wide $m_2$ range [\texttt{f-20261011-203628-5cd9}] | 0.70, 0.71 | 0.48, 0.42 |
 | 6-layer model [\texttt{f-20261012-030233-ab28}] | 0.66, 0.61 | 0.41 |
-| $N = 64$, 3000 steps [\texttt{f-20261013-015914-3f49}] | 0.68, 0.70 | 0.45, 0.43 |
+| $N = 64$, seeds 22/23 [\texttt{f-20261013-015914-3f49}] | 0.68, 0.70 | 0.45, 0.43 |
+| $N = 64$, seeds 24–26 [\texttt{f-20261013-075855-f75f}] | 0.71, 0.69, 0.68 | ≈0.43–0.48 |
 | $N = 64$, data seed 1 [\texttt{f-20261013-054512-1b08}] | 0.725, 0.740 | 0.44, 0.45 |
-| $N = 128$, data seed 0 [\texttt{f-20261013-051807-f3f1}] | 0.67, 0.63 | ≈0.20, 0.18 |
-| $N = 128$, data seed 1 [\texttt{f-20261013-054542-23e1}] | 0.70, 0.72 | 0.29, 0.30 |
 | $d_{\text{model}} = 128$, data seed 1 [\texttt{f-20261013-020028-8792}] | 0.86, 0.83 | 0.49, 0.53 |
-| 1500 steps, data seed 1 [\texttt{f-20261013-025812-b9ee}] | 0.66–0.71 | 0.35–0.43 |
 
-The 2-layer, $d_{\text{model}} = 32$ model is the exception. In 2 of 2 seeds, force has the larger raw margin (0.221 and 0.255, against 0.146 and 0.128). On normalised margin the comparison splits, one seed each way [\texttt{f-20261013-000220-ab2d}].
+The 2-layer, $d_{\text{model}} = 32$ model is the exception: on normalised margin, one seed favours each code [\texttt{f-20261013-000220-ab2d}].
 
-\textbf{Confound: force may partly be a read of distance.} The layer where force decodes best is unstable:
-
-\begin{itemize}
-\item it ranges from layer 0 to layer 4 [\texttt{f-20261012-002713-8d93}];
-\item it drifts across layers 1–6 in the 6-layer model [\texttt{f-20261012-030233-ab28}];
-\item it moved 4 → 1 → 4 during training in one seed [\texttt{f-20261013-020028-8792}].
-\end{itemize}
-
-In the 1500-step runs, force cleared the bar only after its best layer moved to layer 1, the \texttt{distance} layer. Layer-4 force never exceeded about 0.085 there [\texttt{f-20261013-025812-b9ee}]. In most long runs at $N \le 128$, force also peaks at layer 1 [\texttt{f-20261013-015914-3f49}, \texttt{f-20261013-051738-2a37}, \texttt{f-20261013-051807-f3f1}]. Until a residualised probe is run, the force margin should be read as force decodability, not as evidence of a separate $m_2$-weighted force representation.
+\textbf{Confound: force may partly be a read of distance.} At $N \le 128$, force usually peaks at layer 1, the \texttt{distance} layer [\texttt{f-20261013-015914-3f49}, \texttt{f-20261013-051738-2a37}, \texttt{f-20261013-075855-f75f}]. In the 1500-step runs, layer-4 force never exceeded about 0.085 [\texttt{f-20261013-025812-b9ee}]. No residualised probe has been run yet, so the force margin should be read as force \emph{decodability}, not as a separate $m_2$-weighted representation.
 
 \textbf{Fixing the mass ratio did not lift force.} With $m_2 = 0.5$, so that $|F| = 0.5/r^2$ exactly, force $R^2$ stayed at 0.750 and 0.732, while \texttt{distance} decoded at 0.87–0.89 [\texttt{f-20261011-223000-b5f9}]. The budget stop cut both runs short. Seed 14 reached only 0.55 completion, below the 80\% replication bar, so the result rests mainly on seed 15 (0.917 completion).
 
-\subsection{Sampling density}
+\subsection{Sampling density: force decodability falls with $N$, \texttt{accel\_step} does not}
 
-\textbf{Force margin across $N$, at 3000 steps:}
+Final force margins at 3000 steps:
 
 | | $N = 16$ | $N = 64$ | $N = 128$ | $N = 256$ |
 |---|---|---|---|---|
+| Data seed 0, seeds 24/25/26 | — | 0.228 / 0.255 / 0.216 [\texttt{f-20261013-075855-f75f}] | 0.128 / 0.143 / 0.079 [\texttt{f-20261013-075824-35f0}] | 0.026 / 0.045 / 0.029 [\texttt{f-20261013-075749-3d2c}] |
 | Data seed 0, seeds 22/23 | — | 0.247 / 0.234 [\texttt{f-20261013-015914-3f49}] | 0.108 / 0.094 [\texttt{f-20261013-051807-f3f1}] | 0.040 / 0.033 [\texttt{f-20261013-063603-95b5}] |
 | Data seed 1, seeds 20/21 | — | 0.209 / 0.209 [\texttt{f-20261013-054512-1b08}] | 0.137 / 0.145 [\texttt{f-20261013-054542-23e1}] | 0.072 / 0.039 [\texttt{f-20261013-063631-c4ed}] |
 | Data seed 0, seeds 20/21 | 0.236 / 0.275 [\texttt{f-20261013-000329-a86b}] | — | — | 0.113 / 0.003 (rerun) [\texttt{f-20261013-050513-2c7a}] |
 
 \textbf{$N = 16$ and $N = 64$ give the same force level} [\texttt{f-20261013-000329-a86b}, \texttt{f-20261013-015914-3f49}].
 
-\textbf{From $N = 64$ to $N = 128$, the drop is real.} It comes from lower trained $R^2$, not from higher controls: 0.56–0.57 against 0.68–0.70 on data seed 0 [\texttt{f-20261013-051807-f3f1}], and 0.661–0.662 against 0.736–0.742 on data seed 1 [\texttt{f-20261013-054542-23e1}]. The size of the drop depends on the dataset: about 0.14 on data seed 0, against 0.064–0.072 on data seed 1. After 12000 steps the $N = 64$ margin still sits 0.062 and 0.069 above $N = 128$, but in one seed the gap was narrowing [\texttt{f-20261013-051738-2a37}].
-
-\textbf{From $N = 128$ to $N = 256$, the drop is partly or wholly a control effect.}
+\textbf{From $N = 64$ to $N = 128$, the drop comes from the trained model.}
 
 \begin{itemize}
-\item \textbf{Data seed 0.} Force never beat its control at any checkpoint. However, trained force $R^2$ fell by only 0.044 and 0.021, while the controls rose. In seed 23, about two thirds of the drop comes from the control [\texttt{f-20261013-063603-95b5}].
-\item \textbf{Data seed 1.} Trained force $R^2$ did not fall at all (about 0.66 at $N = 128$, 0.671–0.672 at $N = 256$). The force controls rose from 0.52 to 0.60–0.63, so the entire drop is in the control [\texttt{f-20261013-063631-c4ed}].
-\item \textbf{Timing caveat.} These $N = 256$ runs first fell below the baseline only around step 2000, so the result may reflect timing rather than a ceiling [\texttt{f-20261013-063603-95b5}].
+\item \textbf{Seeds 24–26.} Trained force $R^2$ fell by 0.098, 0.106 and 0.128, while the controls moved by only +0.002 to +0.009. \texttt{distance} $R^2$ did not fall [\texttt{f-20261013-075824-35f0}].
+\item \textbf{Seeds 22/23.} The same pattern holds [\texttt{f-20261013-051807-f3f1}].
+\item \textbf{Data seed 1.} The same pattern holds, but the drop is smaller (0.064–0.072) [\texttt{f-20261013-054542-23e1}].
+\item \textbf{12000 steps.} The $N = 64$ margin still sat 0.062 and 0.069 above $N = 128$ [\texttt{f-20261013-051738-2a37}].
 \end{itemize}
 
-!\href{figure:heatmap/run-20261013-062708-a077/force}{Force probe heatmap, N = 256, data seed 1, seed 21: trained R² is level with N = 128, but the control is higher}
-
-\textbf{The original $N = 256$ reference did not reproduce, but the reruns are deterministic.} An exact rerun of the original $N = 256$ config (seeds 20/21) gave force margins of 0.113 and 0.003, and \texttt{accel\_step} margins of 0.162 and 0.198. The original runs had 0.033–0.040 for force and 0.231–0.245 for \texttt{accel\_step}.
+\textbf{From $N = 128$ to $N = 256$, the cause of the drop depends on the dataset.}
 
 \begin{itemize}
-\item \textbf{Schedule horizon ruled out.} At step 3000 the rerun matches 6000- and 12000-step runs to within about 0.025 [\texttt{f-20261013-050513-2c7a}].
-\item \textbf{Second rerun identical.} It matched the first to 3 decimals at all 7 checkpoints for all four probes [\texttt{f-20261013-054603-d6cc}].
-\item \textbf{What follows.} The 0.11 force gap between seeds 20 and 21 at $N = 256$ is real seed-to-seed variance [\texttt{f-20261013-054603-d6cc}].
-\item \textbf{Open question.} Why the original runs differ is unresolved [\texttt{f-20261013-050513-2c7a}].
+\item \textbf{Data seed 1.} Trained force $R^2$ did not fall (about 0.66 at $N = 128$, 0.671–0.672 at $N = 256$). The controls rose from 0.52 to 0.60–0.63, so the whole drop is a control effect [\texttt{f-20261013-063631-c4ed}].
+\item \textbf{Data seed 0, seeds 24–26.} Trained force $R^2$ fell by 0.054–0.076, 0.054–0.062 and 0.023–0.028. The controls account for roughly 35–50\% of the margin loss. This refuted the hypothesis that the drop is driven by the controls alone [\texttt{f-20261013-075749-3d2c}].
+\item \textbf{Data seed 0, seeds 22/23.} The split is intermediate: trained $R^2$ fell 0.044 and 0.021 [\texttt{f-20261013-063603-95b5}].
+\item \textbf{Caveats.} The paired $N = 128$ values for seeds 24–26 come from 3-decimal trajectories, whose $R^2$ field may be a maximum over layers. Force was also still rising at step 3000 [\texttt{f-20261013-075749-3d2c}, \texttt{f-20261013-075855-f75f}].
 \end{itemize}
 
-\textbf{Normalised \texttt{accel\_step} margin is flat across $N$:}
+!\href{figure:heatmap/run-20261013-071946-8084/force}{Force probe heatmap, N = 256, seed 24: force fails its control while accel\_step does not}
+
+\textbf{The normalised \texttt{accel\_step} margin is flat across $N$:}
 
 \begin{itemize}
 \item 0.68–0.69 at $N = 16$ [\texttt{f-20261013-000329-a86b}];
-\item 0.68–0.70 at $N = 64$ [\texttt{f-20261013-015914-3f49}];
-\item 0.725–0.740 at $N = 64$, data seed 1 [\texttt{f-20261013-054512-1b08}];
-\item 0.63–0.67 at $N = 128$, data seed 0 [\texttt{f-20261013-051807-f3f1}];
-\item 0.70–0.72 at $N = 128$, data seed 1 [\texttt{f-20261013-054542-23e1}];
-\item 0.66 and 0.73 at $N = 256$, data seed 0 [\texttt{f-20261013-063603-95b5}];
-\item 0.75 and 0.69 at $N = 256$, data seed 1 [\texttt{f-20261013-063631-c4ed}].
+\item 0.68–0.71 at $N = 64$ [\texttt{f-20261013-015914-3f49}, \texttt{f-20261013-075855-f75f}], and 0.725–0.740 on data seed 1 [\texttt{f-20261013-054512-1b08}];
+\item 0.63–0.70 at $N = 128$ [\texttt{f-20261013-051807-f3f1}, \texttt{f-20261013-075824-35f0}], and 0.70–0.72 on data seed 1 [\texttt{f-20261013-054542-23e1}];
+\item 0.66–0.75 at $N = 256$ [\texttt{f-20261013-063603-95b5}, \texttt{f-20261013-063631-c4ed}, \texttt{f-20261013-075749-3d2c}].
 \end{itemize}
 
-So the per-snapshot acceleration code stays equally readable from $N = 16$ to $N = 256$. Linear force decodability falls from $N = 64$ to $N = 128$. Beyond $N = 128$, the apparent decline cannot be separated from rising random-control $R^2$. A control pool shared across $N$ would be needed to settle it.
+So the per-snapshot acceleration code stays equally readable from $N = 16$ to $N = 256$, while linear force decodability falls steadily with $N$ in every paired seed.
+
+\textbf{The original $N = 256$ reference did not reproduce, but reruns are deterministic.} An exact rerun of the original config gave force margins of 0.113 and 0.003, against 0.033–0.040 originally. At step 3000 it matched the 6000- and 12000-step runs, which rules out the learning-rate schedule horizon as the cause [\texttt{f-20261013-050513-2c7a}]. A second rerun matched the first to 3 decimals at every checkpoint [\texttt{f-20261013-054603-d6cc}]. Why the original runs differ is still unexplained.
 
 \subsection{Eccentricity sets the control level}
 
-As the training eccentricity range widens, both the control $R^2$ and the trained $R^2$ for \texttt{accel\_step} fall:
+Widening the training eccentricity range lowers both the control and the trained \texttt{accel\_step} $R^2$:
 
 | $e$ range | control $R^2$ | trained $R^2$ | normalised margin |
 |---|---|---|---|
@@ -284,51 +277,51 @@ As the training eccentricity range widens, both the control $R^2$ and the traine
 
 Sources: [\texttt{f-20261012-044142-d490}, \texttt{f-20261012-055051-b178}, \texttt{f-20261013-005923-526c}, \texttt{f-20261013-000359-37e2}, \texttt{f-20261012-034018-5526}].
 
-The decline is uneven. About 0.05 of $R^2$ is lost from $e \le 0.7$ to $e \le 0.75$, then about 0.19 from $e \le 0.75$ to $e \le 0.85$ [\texttt{f-20261013-005923-526c}]. Force stays much weaker at every eccentricity ceiling, with normalised margins of 0.16–0.22 at $e \le 0.7$–$0.8$ [\texttt{f-20261012-055051-b178}, \texttt{f-20261013-000359-37e2}, \texttt{f-20261013-005923-526c}].
+The decline steepens above $e \le 0.75$ [\texttt{f-20261013-005923-526c}]. Force stays much weaker at every ceiling, with normalised margins of 0.16–0.22 [\texttt{f-20261012-055051-b178}, \texttt{f-20261013-000359-37e2}, \texttt{f-20261013-005923-526c}].
 
-\subsection{Linear decodability stops tracking prediction quality}
-
-In the 6-layer, $d_{\text{model}} = 128$ model at $e \le 0.85$, layer-6 \texttt{accel\_step} $R^2$ rose only from 0.710 to 0.735 and from 0.683 to 0.705 after step 2000. Over the same steps, \texttt{val\_mse\_ratio} fell 6.8× and 5.5× [\texttt{f-20261012-030233-ab28}].
+In a 6-layer, $d_{\text{model}} = 128$ model at $e \le 0.85$, linear \texttt{accel\_step} $R^2$ levelled off at about 0.70–0.74. Over the same training, \texttt{val\_mse\_ratio} fell a further 5.5–6.8×. Linear decodability therefore stops tracking prediction quality [\texttt{f-20261012-030233-ab28}].
 
 \subsection{Out-of-distribution transfer}
 
-\textbf{Trained on $e \le 0.5$} [\texttt{f-20261011-203723-b7de}]:
+\textbf{Trained on $e \le 0.5$:}
 
 \begin{itemize}
 \item Error on high-$e$ systems was 16–18× the in-distribution error. This fails the pre-registered 10× criterion, although the model still beats the baseline.
-\item Transfer to low mass ratios held at about 3.6×.
+\item Transfer to low mass ratios held at about 3.6× [\texttt{f-20261011-203723-b7de}].
 \end{itemize}
 
-\textbf{Trained on $e \in [0, 0.8]$,} the high-$e$ gap closed to about 1.05× and 1.01× [\texttt{f-20261011-211551-d718}]:
+\textbf{Trained on $e \in [0, 0.8]$:}
 
 \begin{itemize}
+\item The high-$e$ gap closed to about 1.0×.
 \item The budget stop cut both runs short at step 2500 (completion 0.867 and 0.9).
-\item Force probe $R^2$ on held-out high-$e$ systems stayed at 0.366–0.377, against 0.729–0.802 on low-$e$ systems. These out-of-distribution probes have no random controls.
+\item Force probe $R^2$ on held-out high-$e$ systems stayed at 0.366–0.377, against 0.729–0.802 on low-$e$ systems. These out-of-distribution probes have no random controls [\texttt{f-20261011-211551-d718}].
 \end{itemize}
 
 \subsection{Symbolic regression has not recovered $r^{-2}$}
 
 \begin{itemize}
-\item \textbf{With strong probes} ($R^2$ 0.831 and 0.881), the \texttt{accel\_step} direction fits as $a^2/r - c\,a$ with $c \approx 0.55$ (fit errors 0.245 and 0.201). The force fits were $0.81/r$ and $0.80/r$ [\texttt{f-20261011-231118-7a37}].
-\item \textbf{At $e \le 0.9$, with weak probes} ($R^2$ 0.395 and 0.503), the fits were also $r^{-1}$ [\texttt{f-20261011-223027-8fb3}].
-\item \textbf{Open check:} the fitter has not been run on the true \texttt{accel\_step} target, so a fitting artefact cannot be ruled out [\texttt{f-20261011-231118-7a37}].
+\item \textbf{Strong probes} ($R^2$ 0.831 and 0.881). The \texttt{accel\_step} direction fits as $a^2/r - c\,a$ with $c \approx 0.55$, and force fits as about $0.8/r$ [\texttt{f-20261011-231118-7a37}].
+\item \textbf{Weak probes at $e \le 0.9$.} The fits were also $r^{-1}$ [\texttt{f-20261011-223027-8fb3}].
+\item \textbf{Open check.} The fitter has not been run on the true \texttt{accel\_step} target, so a fitting artefact cannot be ruled out.
 \end{itemize}
 
 \subsection{Null and negative results}
 
-Ten hypotheses were refuted:
+Eleven hypotheses were refuted:
 
 \begin{enumerate}
 \item \textbf{A wider $m_2$ range would make force fall behind \texttt{accel\_step} on margin.} Force kept the larger raw margin [\texttt{f-20261011-203628-5cd9}].
 \item \textbf{A model trained on $e \le 0.5$ would transfer to high $e$ within 10×.} The gap was 16–18× [\texttt{f-20261011-203723-b7de}].
-\item \textbf{Fixing $m_2 = 0.5$ would lift force $R^2$ to 0.85.} It reached 0.750 and 0.732, and the budget stop cut both runs short [\texttt{f-20261011-223000-b5f9}].
+\item \textbf{Fixing $m_2 = 0.5$ would lift force $R^2$ to 0.85.} It reached 0.750 and 0.732, and both runs were cut short [\texttt{f-20261011-223000-b5f9}].
 \item \textbf{Wide-$e$ training would give an $r^{-2}$ symbolic fit.} The fits were $r^{-1}$ [\texttt{f-20261011-223027-8fb3}].
 \item \textbf{\texttt{accel\_step} would clear a 0.15 bar and the early force spike would vanish under best-of-5 controls.} Neither held [\texttt{f-20261012-005950-42a7}].
 \item \textbf{Formation would scale in proportion to the learning rate.} The shift was sub-proportional [\texttt{f-20261012-044258-ab88}].
 \item \textbf{$N = 64$ formation would fall in a narrow pre-registered window.} Only 2 of 5 seeds did [\texttt{f-20261012-054929-0067}].
-\item \textbf{$N = 16$ would raise the normalised \texttt{accel\_step} margin.} It was 0.69 and 0.68, level with $N = 64$ [\texttt{f-20261013-000329-a86b}].
-\item \textbf{Force would decline gradually from $N = 16$ to $N = 256$.} It was refuted because $N = 64$ matched $N = 16$ [\texttt{f-20261013-015914-3f49}]. That verdict relied on the original $N = 256$ runs, which did not reproduce. The later $N = 128$ and $N = 256$ arms show a decline, but beyond $N = 128$ it is partly control-driven [\texttt{f-20261013-051807-f3f1}, \texttt{f-20261013-063603-95b5}, \texttt{f-20261013-063631-c4ed}].
-\item \textbf{An exact $N = 256$ rerun would reproduce the original margins within 0.02.} It did not [\texttt{f-20261013-050513-2c7a}]. A second rerun then reproduced the first exactly [\texttt{f-20261013-054603-d6cc}].
+\item \textbf{$N = 16$ would raise the normalised \texttt{accel\_step} margin.} It stayed level with $N = 64$ [\texttt{f-20261013-000329-a86b}].
+\item \textbf{Force would decline gradually from $N = 16$ to $N = 256$.} This was refuted because $N = 64$ matched $N = 16$ [\texttt{f-20261013-015914-3f49}]. Later paired arms show a steady decline from $N = 64$ upward [\texttt{f-20261013-075824-35f0}, \texttt{f-20261013-075749-3d2c}].
+\item \textbf{An exact $N = 256$ rerun would reproduce the original margins within 0.02.} It did not [\texttt{f-20261013-050513-2c7a}].
+\item \textbf{The $N = 128$ → $N = 256$ force drop is driven by the controls alone.} On data seed 0, trained $R^2$ also fell [\texttt{f-20261013-075749-3d2c}].
 \end{enumerate}
 
 \subsection{Not yet tested, and limits}
@@ -338,19 +331,18 @@ Ten hypotheses were refuted:
 \begin{itemize}
 \item \texttt{velocity} probe results;
 \item activation patching, or any other causal test of whether the codes are used;
-\item any force probe with \texttt{distance} and \texttt{accel\_step} regressed out;
-\item a random-control pool shared across $N$ [\texttt{f-20261013-063631-c4ed}];
-\item an explanation of why the original $N = 256$ runs differ [\texttt{f-20261013-050513-2c7a}].
+\item a force probe with \texttt{distance} and \texttt{accel\_step} regressed out;
+\item a random-control pool shared across $N$;
+\item an explanation of why the original $N = 256$ runs differ.
 \end{itemize}
 
 \textbf{Limits throughout:}
 
 \begin{itemize}
 \item All probes are linear.
-\item \texttt{formed\_at\_step} sometimes lags the trajectory by one checkpoint, and the findings use the trajectory value [\texttt{f-20261012-054929-0067}, \texttt{f-20261013-054512-1b08}].
+\item \texttt{formed\_at\_step} sometimes lags the trajectory by one checkpoint [\texttt{f-20261012-054929-0067}, \texttt{f-20261013-054512-1b08}].
+\item Most results come from one 4-layer, $d_{\text{model}} = 64$ architecture.
 \item Five findings use data seed 1 [\texttt{f-20261013-020028-8792}, \texttt{f-20261013-025812-b9ee}, \texttt{f-20261013-054512-1b08}, \texttt{f-20261013-054542-23e1}, \texttt{f-20261013-063631-c4ed}]. All others use data seed 0.
-\item Determinism has been shown for one config on one machine [\texttt{f-20261013-054603-d6cc}].
-\item Most results come from a single 4-layer, $d_{\text{model}} = 64$ architecture.
 \end{itemize}
 
 \end{document}

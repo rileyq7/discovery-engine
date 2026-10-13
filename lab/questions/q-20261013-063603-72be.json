@@ -3,7 +3,9 @@
   "text": "Going from N=128 to N=256 on matched seeds 22-23, the force random-control R2 rises by 0.024-0.040 while trained force R2 falls by only 0.021-0.044. Over every matched seed at N=64/128/256 under the current pipeline, how much of the force-margin decline comes from rising force controls and how much from falling trained R2? Would a control pool shared across N remove most of the N=128-to-N=256 drop?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-063631-c4ed"
+    "f-20261013-063631-c4ed",
+    "f-20261013-075749-3d2c",
+    "f-20261013-075824-35f0"
   ],
   "created_at": "2026-10-13T06:36:03"
 }

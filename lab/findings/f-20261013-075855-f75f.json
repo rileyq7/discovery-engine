@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-075855-f75f",
+  "claim": "On fresh seeds 24-26 at N=64 (data_seed 0, 3000 steps, best-of-3 controls), the force reference level replicates. In all 3 seeds force beats its control at layer 1. Seeds 24/25/26 give final force margins of 0.228/0.255/0.216, trained force R2 of 0.737/0.727/0.711 and force control R2 of 0.509/0.472/0.495. That matches seeds 20-23 (margins 0.215-0.261). accel_step peaks at layer 4 with R2 0.914/0.920/0.927 against controls 0.708/0.742/0.771. That is a raw margin of 0.207/0.178/0.156 and a headroom-normalised margin of 0.71/0.69/0.68, inside the predicted [0.60, 0.78]. Force leads accel_step on raw margin in all 3 seeds. On normalised margin accel_step leads (force about 0.43-0.48), the same split seen in earlier runs.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-074422-d66a",
+    "run-20261013-074422-48ee",
+    "run-20261013-074422-8838"
+  ],
+  "confidence_note": "All 3 runs finished all 3000 steps (not stopped), beat the baseline (val_mse_ratio 0.014-0.016), and cleared every expected-if-true threshold with room to spare. The smallest force margin is 0.216 against a bar of 0.18, and force control_spread is 0.037-0.049, well under the 0.1 required margin. The paired arms give a clean per-seed ordering N=64 > N=128 > N=256 for force in all 3 seeds. Final margins are 0.228/0.128/0.026 (seed 24), 0.255/0.143/0.045 (seed 25) and 0.216/0.079/0.029 (seed 26). Force control R2 is roughly flat from N=64 to N=128 (implied N=128 controls about 0.48-0.51), so the N=64-to-N=128 drop sits in trained R2 (about 0.10-0.13). Limits: (1) the N=128/256 trained R2 comes from the 4th trajectory field, which may be the max over layers rather than the R2 at the best-margin layer (q-20261013-075749-57bb); (2) all runs share data_seed 0; (3) force is still rising at step 3000 (+0.005-0.010 per 500 steps), so 3000 steps is a snapshot, not a plateau; (4) in seed 24 force's best layer moved from layer 3 to layer 1 at step 2000. The verdict would change if a different data_seed put N=64 force margins below 0.15, or if recomputing from per-layer probes_final changed the paired trained-R2 values by more than about 0.03.",
+  "created_at": "2026-10-13T07:58:55",
+  "experiment_id": "exp-20261013-071945-d387",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T07:58:55",
+      "actor": "agent"
+    }
+  ]
+}

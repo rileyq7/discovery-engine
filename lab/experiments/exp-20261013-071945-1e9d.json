@@ -1,0 +1,111 @@
+{
+  "id": "exp-20261013-071945-1e9d",
+  "family": "E5",
+  "hypothesis": "At N=256 (data_seed 0, fresh seeds 24-26, 4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls), the force-margin decline relative to N=128 comes from the random controls rather than from the trained model. Trained best-layer force R2 stays within 0.02 of the same seed's N=128 value (paired arm proposed this cycle), while the force control R2 rises by >= 0.03. All values are read from run-record probes_final and trajectories (unrounded). Paired differences are computed per seed against the N=128 seeds 24-26 arm; if that arm is unavailable, the comparison is reported as not computed.",
+  "expected_if_true": "In >= 2 of 3 seeds: |trained force R2(N=256) - trained force R2(N=128)| <= 0.02 AND force control R2(N=256) - force control R2(N=128) >= 0.03. Headroom-normalised accel_step margin in [0.60, 0.78] in all 3 seeds.",
+  "expected_if_false": "In >= 2 of 3 seeds, trained force R2 at N=256 is >= 0.04 below the same seed's N=128 value (a real decodability drop), whatever the controls do. If neither branch holds in 2 of 3 seeds, the result is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=256 (data_seed 0, fresh seeds 24-26, 4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls), the force-margin decline relative to N=128 comes from the random controls rather than from the trained model. Trained best-layer force R2 stays within 0.02 of the same seed's N=128 value (paired arm proposed this cycle), while the force control R2 rises by >= 0.03. All values are read from run-record probes_final and trajectories (unrounded). Paired differences are computed per seed against the N=128 seeds 24-26 arm; if that arm is unavailable, the comparison is reported as not computed.",
+    "expected_if_true": "In >= 2 of 3 seeds: |trained force R2(N=256) - trained force R2(N=128)| <= 0.02 AND force control R2(N=256) - force control R2(N=128) >= 0.03. Headroom-normalised accel_step margin in [0.60, 0.78] in all 3 seeds.",
+    "expected_if_false": "In >= 2 of 3 seeds, trained force R2 at N=256 is >= 0.04 below the same seed's N=128 value (a real decodability drop), whatever the controls do. If neither branch holds in 2 of 3 seeds, the result is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      24,
+      25,
+      26
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T07:19:45",
+  "updated_at": "2026-10-13T07:57:49",
+  "verdict": "refuted",
+  "estimate_hours": 0.3746,
+  "compute_hours": 0.2015,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T07:19:45",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T07:19:45",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T07:19:46",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T07:19:46",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T07:32:01",
+      "actor": "worker",
+      "note": "3/3 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T07:57:49",
+      "actor": "agent",
+      "note": "finding f-20261013-075749-3d2c"
+    }
+  ]
+}

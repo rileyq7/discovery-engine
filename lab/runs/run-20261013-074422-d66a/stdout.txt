@@ -1,0 +1,15 @@
+run-20261013-074422-d66a: [07:52:54] experiment exp-20261013-071945-d387 (E5) seed 24: The N=64 reference level for force replicates on fresh seeds 24-26 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls). Earlier seeds 20-23 gave a final best-layer force margin of 0.215-0.261, trained force R2 of about 0.68-0.74 and force control R2 of about 0.45-0.51. This arm anchors the paired N=128 and N=256 seeds 24-26 decomposition into trained-R2 and control components.
+run-20261013-074422-d66a: [07:52:54] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+run-20261013-074422-d66a: [07:52:56] step 0: val_mse=2.215e-03 cv_baseline=2.554e-05 ratio=86.703
+run-20261013-074422-d66a: [07:53:35] step 500: val_mse=7.512e-06 cv_baseline=2.554e-05 ratio=0.294
+run-20261013-074422-d66a: [07:54:15] step 1000: val_mse=2.937e-06 cv_baseline=2.554e-05 ratio=0.115
+run-20261013-074422-d66a: [07:54:59] step 1500: val_mse=2.568e-06 cv_baseline=2.554e-05 ratio=0.101
+run-20261013-074422-d66a: [07:55:40] step 2000: val_mse=8.074e-07 cv_baseline=2.554e-05 ratio=0.032
+run-20261013-074422-d66a: [07:56:20] step 2500: val_mse=5.998e-07 cv_baseline=2.554e-05 ratio=0.023
+run-20261013-074422-d66a: [07:57:01] step 3000: val_mse=4.128e-07 cv_baseline=2.554e-05 ratio=0.016
+run-20261013-074422-d66a: [07:57:01] training done in 4.1 min; beats constant-velocity baseline: True
+run-20261013-074422-d66a: [07:57:03] random-model controls (best of 3): force=0.18/0.51/0.52/0.50/0.50, distance=-0.00/0.18/0.36/0.53/0.52, energy=-0.01/0.13/0.28/0.38/0.43, accel_step=0.58/0.68/0.70/0.71/0.71
+run-20261013-074422-d66a: [07:57:04] probes @ step 0: best force R2=0.528 (layer 3)
+run-20261013-074422-d66a: [07:57:06] probes @ step 2500: best force R2=0.727 (layer 1)
+run-20261013-074422-d66a: [07:57:07] probes @ step 3000: best force R2=0.737 (layer 1)
+run-20261013-074422-d66a: [07:57:07] run complete in 4.2 min

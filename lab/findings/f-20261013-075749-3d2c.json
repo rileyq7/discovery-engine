@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-075749-3d2c",
+  "claim": "Refuted: at N=256 (seeds 24-26, data_seed 0, 3000 steps), most of the force-margin drop from N=128 comes from the trained model getting worse, not only from the controls rising. Trained force R2 is 0.563/0.559/0.555 (seeds 24/25/26) against N=128 trajectory values of 0.639/0.621/0.583, drops of 0.054-0.076 / 0.054-0.062 / 0.023-0.028. Seeds 24 and 25 meet the expected-if-false bar (drop >= 0.04); none of the 3 seeds stays within 0.02. Force controls also rose, by about +0.026-0.042 / +0.036-0.044 / +0.023-0.027, so the controls account for roughly 35-50% of the margin loss (0.128->0.026, 0.143->0.045, 0.079->0.029). At N=256, force fails its control in all 3 seeds (margins 0.026-0.045 vs required 0.1). accel_step beats its control in all 3: R2 0.897-0.935, margin 0.200-0.213, headroom-normalised margin 0.67/0.72/0.75, which falls inside the predicted [0.60, 0.78]. So the model keeps a per-snapshot acceleration code at fine sampling while force decodability fades.",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-071946-8084",
+    "run-20261013-071946-f61f",
+    "run-20261013-071946-a041"
+  ],
+  "confidence_note": "The paired N=128 values come only from the 3-decimal probe trajectories, not from unrounded probes_final, so the N=128 controls are inferred as r2 minus margin. The trajectory's 4th column may be the max-over-layers R2 rather than the R2 at the best-margin layer: at N=256 it gives 0.579 vs probes_final 0.563 for force, and 0.546 vs 0.437 for energy in seed 24. That puts about 0.01-0.02 of uncertainty on each paired difference, which is why ranges are given. Seeds 24 and 25 clear the -0.04 bar by 0.014 or more under either reading. Seed 26 (-0.023 to -0.028) fits neither branch. All 3 N=256 runs completed (no early stop), all beat the baseline (val_mse_ratio 0.24-0.29), and all use one data_seed. The N=256 force margin was still rising at step 3000 (about +0.006-0.008 per 500 steps), so a longer run could narrow the gap. The verdict would change if unrounded N=128 probes_final values showed trained-R2 drops under 0.04 in seed 24 or 25, or if data_seed 1 seeds showed a control-dominated decline.",
+  "created_at": "2026-10-13T07:57:49",
+  "experiment_id": "exp-20261013-071945-1e9d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T07:57:49",
+      "actor": "agent"
+    }
+  ]
+}
