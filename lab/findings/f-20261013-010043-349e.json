@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-010043-349e",
+  "claim": "At N=64 (4 layers, d_model=64, 3000 steps, e<=0.5, seeds 20-21), the final layer-1 force margin is 0.215 in seed 20 (R2 0.726 vs control 0.511), inside the predicted [0.07, 0.22] band, but 0.261 in seed 21 (R2 0.737 vs control 0.476). Seed 21's value is above the 0.23 cutoff and inside the N=16 range of 0.236-0.275, so the predicted monotonic drop in force with N is not shown. The accel_step half of the hypothesis holds in both seeds: layer-4 R2 is 0.935-0.938 against controls of 0.770-0.791 (raw margin 0.147-0.165), which gives a headroom-normalized margin of 0.70-0.72. That is inside [0.62, 0.77] and matches the N=16 and N=256 arms, while normalized force is lower at 0.44-0.50.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-004944-b802",
+    "run-20261013-004944-0dfb"
+  ],
+  "confidence_note": "Both runs completed all 3000 steps (val_mse_ratio 0.0148-0.0149) and every margin clears its required_margin. Spreads are small for force (0.009-0.041) and accel_step (0.009-0.014). The verdict is inconclusive because the force prediction splits across seeds: one seed is just inside the band and the other is in N=16 territory. Taken together, the data look more like a step than a gradient: force at N=64 (0.21-0.26) is close to N=16 (0.24-0.28), and most of the drop to 0.03-0.04 happens between N=64 and N=256. The 0.047 seed-to-seed gap here is as large as the N=16 vs N=64 difference, so two seeds cannot fix where N=64 sits. Force is also still rising at step 3000 in both seeds (+0.006 to +0.008 per 500 steps), so the comparison depends on training length. The flat normalized accel_step result is consistent across seeds and with the other arms. Seeds 22-23 at N=64, plus an N=128 arm, would settle the shape of the force curve. If both new N=64 seeds land at 0.23 or above, the result would change to 'refuted (step)'. If both land at 0.22 or below, it would change to 'supported'.",
+  "created_at": "2026-10-13T01:00:43",
+  "experiment_id": "exp-20261013-001741-c9dc",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T01:00:43",
+      "actor": "agent"
+    }
+  ]
+}

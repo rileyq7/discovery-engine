@@ -3,7 +3,8 @@
   "text": "For the same seeds, the final force margin is larger at e<=0.85 (0.121-0.164) than at e<=0.5 (0.077-0.125), and it is still rising at step 600 after forming late (steps 200-370), while the accel_step margin levels off. Is the high-e force gain a separate m2-weighted signal, or a read of the accel_step/distance code made easier by the lower force control (0.15-0.22 vs 0.43-0.54)? Does it survive regressing accel_step and distance out of the force target?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-000359-37e2"
+    "f-20261013-000359-37e2",
+    "f-20261013-001616-659c"
   ],
   "created_at": "2026-10-12T23:16:08"
 }

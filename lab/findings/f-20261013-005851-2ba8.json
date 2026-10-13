@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-005851-2ba8",
+  "claim": "With data_seed 1 (seeds 75-77, N=64, e<=0.5, 600 steps), the core pattern from data_seed 0 holds in all 3 seeds, but one pre-registered timing criterion fails. The best-layer (layer 4) accel_step margin is 0.149-0.168: R2 0.914-0.918 against controls of 0.750-0.766, about 0.64-0.67 of the possible headroom. The force margin stays below 0.1 at 0.085-0.099: R2 0.606-0.643 against controls of 0.509-0.545, about 0.19-0.22 of headroom. accel_step forms persistently at steps 80, 90 and 120, and every one of these is before val_mse_ratio first drops below 1 (step 180 in all 3 seeds). Seed 77's formation at step 120 is outside the predicted [60, 110] window but inside the [50, 130] tolerance in the falsification criteria.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-001533-21c8",
+    "run-20261013-001533-4af3",
+    "run-20261013-001533-757c"
+  ],
+  "confidence_note": "This is not a refutation: none of the expected-if-false conditions holds in 2 or more seeds. It is also not fully supported, because the expected-if-true outcome required all 3 formation steps to fall in [60, 110], and seed 77 missed by one checkpoint (margin 0.094 at step 110, 0.102 at step 120). Formation steps were read from the trajectory as the first checkpoint after which the margin stays at or above 0.1 (strict >=). For all 3 seeds they match probes_final.formed_at_step (80, 90, 120). The accel_step control R2 (0.750-0.766) falls inside the range seen with data_seed 0 (0.709-0.778). The early force transient also replicates: margin 0.11-0.19 at steps 10-30, then 0-0.04 by steps 40-70. Two things limit the 'force does not beat control' half of the claim. First, the force margin is close to the bar (seed 75: 0.0988 unrounded). Second, it is still rising at step 600, by about +0.01 per 100 steps after step 400, while accel_step has levelled off. That part of the claim is therefore specific to 600 steps of training; longer runs would likely push force past 0.1. This experiment covers only one new dataset. A second data_seed, or a pooled look at all N=64, e<=0.5 seeds, showing formation in [60, 130] would turn this into 'supported'. A force margin above 0.1 at 600 steps on another data_seed would weaken the force half of the claim.",
+  "created_at": "2026-10-13T00:58:51",
+  "experiment_id": "exp-20261012-231650-79b2",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T00:58:51",
+      "actor": "agent"
+    }
+  ]
+}

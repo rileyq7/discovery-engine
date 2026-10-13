@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-002101-aa1e",
+  "experiment_id": "exp-20261012-231650-be3e",
+  "seed": 71,
+  "status": "completed",
+  "started_at": "2026-10-13T00:22:24",
+  "ended_at": "2026-10-13T00:23:24",
+  "compute_hours": 0.0167,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-002101-aa1e",
+  "git_commit": "85c6f95",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 6.7974744349952755e-06,
+    "baseline_cv_mse": 4.6244544307077966e-05,
+    "val_mse_ratio": 0.14698975926452987,
+    "beats_baseline": true,
+    "train_hours": 0.014061117238468594,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "29d50ae8129a",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.36004,
+          "control_r2": 0.2341,
+          "control_spread": 0.03635,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 400
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.74576,
+          "control_r2": 0.48706,
+          "control_spread": 0.02468,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.83122,
+          "control_r2": 0.25146,
+          "control_spread": 0.15683,
+          "required_margin": 0.1568,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.56358,
+          "control_r2": 0.23678,
+          "control_spread": 0.14261,
+          "required_margin": 0.1426,
+          "beats_control": true,
+          "formed_at_step": 50
+        }
+      }
+    }
+  },
+  "pid": 82213,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "29d50ae8129a"
+}

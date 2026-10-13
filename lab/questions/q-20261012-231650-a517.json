@@ -2,6 +2,8 @@
   "id": "q-20261012-231650-a517",
   "text": "Do the accel_step random-control R2, formation step and force-transient size differ across data_seed values by more than they differ across model seeds? If so, cross-experiment comparisons that share data_seed 0 underestimate the real variance.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261013-005851-2ba8"
+  ],
   "created_at": "2026-10-12T23:16:50"
 }

@@ -1,0 +1,24 @@
+{
+  "id": "f-20261013-001650-dfba",
+  "claim": "In one seed (75; 4 layers, d_model=128, 5000 steps, e <= 0.5, m2 in [0.1, 1]), force beats its best-of-5 control at the end of training. Force R2 is 0.748 at layer 1 vs control 0.539, a margin of 0.209 against a required 0.1. Its margin roughly doubles after the first checkpoint, from 0.102 at step 500 to 0.209 at step 5000, while val_mse_ratio falls from 0.39 to 0.005. accel_step stays ahead throughout: R2 0.952 at layer 4 vs control 0.762, margin 0.190, and it gains only 0.029 after step 500. Normalized by headroom, accel_step leads at the end (0.80 vs 0.45 for force), but force's normalized margin roughly doubles from about 0.21 at step 500, while accel_step's rises only from about 0.68. The 'forms late' part is not supported. In the trajectory, force is already at the bar at step 500 (0.102), the same first checkpoint where accel_step forms. formed_at_step = 1000 is again one checkpoint behind the trajectory.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-000332-87f8"
+  ],
+  "confidence_note": "Only one seed ran, but the prediction needed both seeds, so replication is not possible here. The results are mixed against the prediction. Two parts held in this seed: the final force margin (0.209 >= 0.1) and the late gain (+0.107 >= 0.08). Neither refutation condition was met. The formation-timing part failed: the trajectory reaches the bar at step 500, not at step >= 1000, and 500-step checkpoints cannot tell whether force crosses before or after accel_step within the first 500 steps. The step-500 force margin (0.102) only just clears the bar, and controls are fixed per run, so 'persistent from 500' is fragile. Force peaks at layer 1, the same layer as distance (R2 0.983, margin 0.184), and its best layer moves between layers 1-4 over training. So the late gain may be a sharpened nonlinear read of distance rather than an m2-weighted force code, and this probe cannot tell those apart. The large late force gain does fit the earlier single-control runs, which reached about 0.22, and the companion seed-74 result (f-20261013-000424-5488), so the earlier 0.22 margins are not purely a single-control artifact. A second seed at the same config would strengthen this, especially with 50-step checkpoints through step 1000 and the force margin after regressing out distance. The verdict would move to refuted if that seed's final force margin is < 0.1, or if force stays above 0.1 after distance is regressed out but without late growth.",
+  "created_at": "2026-10-13T00:16:50",
+  "experiment_id": "exp-20261012-231417-a794",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T00:16:50",
+      "actor": "agent"
+    }
+  ]
+}

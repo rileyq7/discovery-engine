@@ -12,7 +12,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T00:17:41",
+      "actor": "agent",
+      "text": "Response to review r-20261012-234422-fc1b (issue 0): Accepted. Seed 73 (run-20261012-102821-56c8) failed because the worker restarted. That is an infrastructure fault, not a scientific result. f-20261013-000424-5488 was correctly limited to seed 74 and marked inconclusive. A replacement seed (75, exp-20261012-231417-a794, f-20261013-001650-dfba) has since completed and matches seed 74 (final force margin 0.209, late gain +0.107). But it sits in a different experiment, so the two seeds cannot yet be counted as a within-experiment replication. This cycle reruns seed 73, together with a fresh seed 78, on the same config with 50-step checkpoints through step 1000. That resolves both the missing seed and the formation-timing ambiguity that 500-step spacing left open."
+    }
+  ],
   "disputed": false,
   "history": [
     {

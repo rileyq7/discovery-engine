@@ -1,0 +1,22 @@
+run-20261013-002101-aeb9: [00:23:26] experiment exp-20261012-231650-be3e (E5) seed 72: Seeds 70-72 (N=64, 4 layers, d_model=64, m2 in [0.1, 1], 600 steps) give raw layer-4 accel_step R2 of 0.799-0.813 at e<=0.7 and 0.541-0.570 at e<=0.85. The loss of linear decodability between those two ceilings is gradual, not concentrated in one interval. At e in [0, 0.75], raw accel_step R2 is about where linear interpolation puts it (~0.72), well below the e<=0.7 values and well above the e<=0.85 values.
+run-20261013-002101-aeb9: [00:23:27] model: 209,094 params on mps; dataset 29d50ae8129a; 9000 train / 1000 val systems
+run-20261013-002101-aeb9: [00:23:28] step 0: val_mse=1.780e-03 cv_baseline=4.624e-05 ratio=38.489
+run-20261013-002101-aeb9: [00:23:32] step 50: val_mse=2.057e-04 cv_baseline=4.624e-05 ratio=4.448
+run-20261013-002101-aeb9: [00:23:36] step 100: val_mse=7.868e-05 cv_baseline=4.624e-05 ratio=1.701
+run-20261013-002101-aeb9: [00:23:40] step 150: val_mse=5.054e-05 cv_baseline=4.624e-05 ratio=1.093
+run-20261013-002101-aeb9: [00:23:44] step 200: val_mse=2.987e-05 cv_baseline=4.624e-05 ratio=0.646
+run-20261013-002101-aeb9: [00:23:48] step 250: val_mse=2.112e-05 cv_baseline=4.624e-05 ratio=0.457
+run-20261013-002101-aeb9: [00:23:53] step 300: val_mse=1.610e-05 cv_baseline=4.624e-05 ratio=0.348
+run-20261013-002101-aeb9: [00:23:57] step 350: val_mse=1.235e-05 cv_baseline=4.624e-05 ratio=0.267
+run-20261013-002101-aeb9: [00:24:02] step 400: val_mse=1.058e-05 cv_baseline=4.624e-05 ratio=0.229
+run-20261013-002101-aeb9: [00:24:07] step 450: val_mse=9.234e-06 cv_baseline=4.624e-05 ratio=0.200
+run-20261013-002101-aeb9: [00:24:11] step 500: val_mse=7.992e-06 cv_baseline=4.624e-05 ratio=0.173
+run-20261013-002101-aeb9: [00:24:16] step 550: val_mse=7.411e-06 cv_baseline=4.624e-05 ratio=0.160
+run-20261013-002101-aeb9: [00:24:21] step 600: val_mse=6.636e-06 cv_baseline=4.624e-05 ratio=0.143
+run-20261013-002101-aeb9: [00:24:21] training done in 0.9 min; beats constant-velocity baseline: True
+run-20261013-002101-aeb9: [00:24:24] random-model controls (best of 5): force=0.10/0.31/0.32/0.32/0.32, accel_step=0.29/0.44/0.46/0.46/0.46, distance=0.04/0.31/0.40/0.48/0.58, energy=-0.00/0.15/0.32/0.40/0.46
+run-20261013-002101-aeb9: [00:24:24] probes @ step 0: best force R2=0.341 (layer 3)
+run-20261013-002101-aeb9: [00:24:27] probes @ step 250: best force R2=0.437 (layer 4)
+run-20261013-002101-aeb9: [00:24:29] probes @ step 500: best force R2=0.463 (layer 2)
+run-20261013-002101-aeb9: [00:24:31] probes @ step 600: best force R2=0.470 (layer 2)
+run-20261013-002101-aeb9: [00:24:31] run complete in 1.1 min

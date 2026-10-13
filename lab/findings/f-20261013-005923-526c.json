@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-005923-526c",
+  "claim": "At e in [0, 0.75], seeds 70-72 reach a final raw layer-4 accel_step R2 of 0.753, 0.746 and 0.752. All three fall in the predicted [0.66, 0.77] window. Their best-of-5 controls (0.471, 0.487, 0.463) lie between the seed-matched e<=0.7 values (0.54-0.56) and e<=0.85 values (0.26-0.27). The margins are 0.283, 0.259 and 0.290, which normalise to 0.51-0.54 of headroom. The pre-registered criterion is met, but R2 is not where linear interpolation put it: it sits about 0.03 above the predicted ~0.72. The drop is therefore uneven: about 0.05 of R2 is lost from e<=0.7 (~0.80) to e<=0.75, then about 0.19 from e<=0.75 to e<=0.85 (~0.56), roughly 0.095 per 0.05 of e. Force also beats its control in all 3 seeds, but more weakly: R2 0.443, 0.360 and 0.470 against controls 0.333, 0.234 and 0.324, giving margins of 0.110-0.146 and normalised margins of 0.16-0.22. Force forms late, at steps 300-500, and is still rising at step 600. accel_step forms at steps 50-100 and has levelled off. accel_step leads force on both raw and normalised margin in every seed. val_mse_ratio is 0.143-0.147.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-002101-0599",
+    "run-20261013-002101-aa1e",
+    "run-20261013-002101-aeb9"
+  ],
+  "confidence_note": "All 3 seeds completed 600 of 600 steps and satisfy every expected-if-true condition independently. The criteria were pre-registered, and the result passes them. Even so, the substantive claim that the drop is gradual is only weakly supported. R2 of about 0.75 sits near the upper edge of the window and 0.03 below the 0.78 refutation bar. The loss per 0.05 of e is about 0.05 between 0.7 and 0.75 but averages about 0.095 between 0.75 and 0.85. That pattern suggests the drop steepens above 0.75 rather than being uniform. The e<=0.7 and e<=0.85 comparison values come from other experiments, which used the same seeds, data_seed 0, N=64 and 600 steps. I quote them from the hypothesis and did not recompute them here. All runs share data_seed 0. Training stopped at 600 steps, and accel_step R2 was still creeping up (+0.002 to +0.005 over the last 100 steps). Three things would change the reading: an e<=0.8 arm landing near 0.70 (which would make the curve smooth), or one landing near 0.60 (which would put most of the loss between 0.75 and 0.8); or a second data_seed giving R2 >= 0.78 at e<=0.75, which would push this result toward refuted.",
+  "created_at": "2026-10-13T00:59:23",
+  "experiment_id": "exp-20261012-231650-be3e",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T00:59:23",
+      "actor": "agent"
+    }
+  ]
+}

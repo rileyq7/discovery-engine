@@ -3,7 +3,8 @@
   "text": "Seeds 70-72 give raw accel_step R2 of ~0.91 at e<=0.5, ~0.87 at 0.6, ~0.80 at 0.7 and ~0.56 at 0.85, with 0.75 and 0.8 pending. Does the fraction of validation snapshots with r/a below some cutoff (e.g. r/a < 0.3, which only appears at higher e) predict raw R2 across these ceilings better than the e ceiling itself? That would show whether the loss of decodability is a pericentre-tail effect.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-000359-37e2"
+    "f-20261013-000359-37e2",
+    "f-20261013-005923-526c"
   ],
   "created_at": "2026-10-12T23:16:50"
 }

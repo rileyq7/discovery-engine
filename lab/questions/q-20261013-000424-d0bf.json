@@ -1,7 +1,10 @@
 {
   "id": "q-20261013-000424-d0bf",
   "text": "With the seed-74 config and checkpoints every 50 steps through step 1000 (seeds 73, 75), when does the force margin first stay persistently at or above 0.1, and how many steps after accel_step does that happen? Seed 74 already shows 0.124 at step 500.",
-  "status": "open",
-  "linked_finding_ids": [],
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261013-001650-dfba",
+    "f-20261013-010011-b1f8"
+  ],
   "created_at": "2026-10-13T00:04:24"
 }

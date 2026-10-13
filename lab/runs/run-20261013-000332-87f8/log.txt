@@ -3,3 +3,17 @@
 [00:03:35] step 0: val_mse=2.164e-03 cv_baseline=2.554e-05 ratio=84.717
 [00:04:45] step 500: val_mse=1.003e-05 cv_baseline=2.554e-05 ratio=0.393
 [00:05:56] step 1000: val_mse=4.561e-06 cv_baseline=2.554e-05 ratio=0.179
+[00:07:08] step 1500: val_mse=2.520e-06 cv_baseline=2.554e-05 ratio=0.099
+[00:08:17] step 2000: val_mse=1.859e-06 cv_baseline=2.554e-05 ratio=0.073
+[00:09:26] step 2500: val_mse=7.477e-07 cv_baseline=2.554e-05 ratio=0.029
+[00:10:35] step 3000: val_mse=7.589e-07 cv_baseline=2.554e-05 ratio=0.030
+[00:11:44] step 3500: val_mse=3.281e-07 cv_baseline=2.554e-05 ratio=0.013
+[00:12:54] step 4000: val_mse=1.934e-07 cv_baseline=2.554e-05 ratio=0.008
+[00:14:04] step 4500: val_mse=1.217e-07 cv_baseline=2.554e-05 ratio=0.005
+[00:15:13] step 5000: val_mse=1.283e-07 cv_baseline=2.554e-05 ratio=0.005
+[00:15:13] training done in 11.7 min; beats constant-velocity baseline: True
+[00:15:19] random-model controls (best of 5): force=0.18/0.54/0.53/0.52/0.52, accel_step=0.60/0.71/0.75/0.76/0.76, distance=0.00/0.79/0.81/0.83/0.84, energy=-0.01/0.68/0.67/0.73/0.75
+[00:15:20] probes @ step 0: best force R2=0.541 (layer 1)
+[00:15:26] probes @ step 2500: best force R2=0.717 (layer 1)
+[00:15:32] probes @ step 5000: best force R2=0.748 (layer 1)
+[00:15:32] run complete in 12.0 min

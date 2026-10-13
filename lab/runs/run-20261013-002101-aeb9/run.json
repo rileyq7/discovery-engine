@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-002101-aeb9",
+  "experiment_id": "exp-20261012-231650-be3e",
+  "seed": 72,
+  "status": "completed",
+  "started_at": "2026-10-13T00:23:26",
+  "ended_at": "2026-10-13T00:24:31",
+  "compute_hours": 0.0179,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-002101-aeb9",
+  "git_commit": "85c6f95",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 6.63559408638421e-06,
+    "baseline_cv_mse": 4.6244544307077966e-05,
+    "val_mse_ratio": 0.1434892306932863,
+    "beats_baseline": true,
+    "train_hours": 0.015132884118292066,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "29d50ae8129a",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.47028,
+          "control_r2": 0.32399,
+          "control_spread": 0.02904,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 300
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.75225,
+          "control_r2": 0.46254,
+          "control_spread": 0.01262,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.83639,
+          "control_r2": 0.307,
+          "control_spread": 0.14629,
+          "required_margin": 0.1463,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.59309,
+          "control_r2": 0.14794,
+          "control_spread": 0.07037,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 50
+        }
+      }
+    }
+  },
+  "pid": 82456,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "29d50ae8129a"
+}

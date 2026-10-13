@@ -1,0 +1,15 @@
+run-20261013-004944-b802: [00:54:01] experiment exp-20261013-001741-c9dc (E5) seed 20: With architecture, training length and seeds held fixed (4 layers, d_model=64, 3000 steps, e in [0, 0.5], m2 in [0.1, 1], seeds 20-21, best-of-3 controls), the final force margin depends on sampling coarseness: it was 0.236-0.275 at N=16 (f-20261013-000329-a86b) and 0.033-0.040 at N=256 (f-20261013-000253-c709). The headroom-normalized accel_step margin is flat across N (0.68-0.69 at N=16, 0.66-0.73 at N=256). This matched N=64 arm fills in the middle point.
+run-20261013-004944-b802: [00:54:01] model: 209,094 params on mps; dataset b04e4026a398; 9000 train / 1000 val systems
+run-20261013-004944-b802: [00:54:02] step 0: val_mse=1.994e-03 cv_baseline=2.554e-05 ratio=78.071
+run-20261013-004944-b802: [00:54:41] step 500: val_mse=7.738e-06 cv_baseline=2.554e-05 ratio=0.303
+run-20261013-004944-b802: [00:55:22] step 1000: val_mse=2.756e-06 cv_baseline=2.554e-05 ratio=0.108
+run-20261013-004944-b802: [00:56:03] step 1500: val_mse=2.069e-06 cv_baseline=2.554e-05 ratio=0.081
+run-20261013-004944-b802: [00:56:43] step 2000: val_mse=8.181e-07 cv_baseline=2.554e-05 ratio=0.032
+run-20261013-004944-b802: [00:57:24] step 2500: val_mse=6.008e-07 cv_baseline=2.554e-05 ratio=0.024
+run-20261013-004944-b802: [00:58:04] step 3000: val_mse=3.801e-07 cv_baseline=2.554e-05 ratio=0.015
+run-20261013-004944-b802: [00:58:04] training done in 4.1 min; beats constant-velocity baseline: True
+run-20261013-004944-b802: [00:58:06] random-model controls (best of 3): force=0.15/0.51/0.51/0.51/0.51, distance=-0.01/0.21/0.41/0.52/0.59, energy=-0.03/0.22/0.26/0.31/0.36, accel_step=0.69/0.76/0.78/0.78/0.79
+run-20261013-004944-b802: [00:58:07] probes @ step 0: best force R2=0.486 (layer 1)
+run-20261013-004944-b802: [00:58:10] probes @ step 2500: best force R2=0.720 (layer 1)
+run-20261013-004944-b802: [00:58:10] probes @ step 3000: best force R2=0.726 (layer 1)
+run-20261013-004944-b802: [00:58:10] run complete in 4.2 min

@@ -14,7 +14,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T00:17:41",
+      "actor": "agent",
+      "text": "Response to review r-20261012-234422-fc1b (issue 1): Accepted. Seed 72's best-layer force margin is 0.0958 at step 90 and 0.1051 at step 100, and it stays >= 0.1 at every later checkpoint (low point 0.1011 at step 140). Layer-2/4 control_spread is <= 0.022, so the bar is 0.1. Persistent force formation for seed 72 is therefore step 100, which agrees with the run's formed_at_step of 200 only as an upper bound, not as the crossing. The correct statement is 'force forms persistently at steps 100-370 (seeds 72/70/71: 100/270/370)'. Force still forms after accel_step in every seed (seed 72: 50 vs 100), but in seed 72 the gap is one 50-step interval, not 150 or more. The 'force well behind accel_step on formation step' wording overstated the gap for that seed. The verdict was already inconclusive (on the force-margin clause), so the status is unchanged. This also connects to the force-timing proposal this cycle, which measures the accel_step-to-force gap at 50-step resolution in longer-trained models."
+    }
+  ],
   "disputed": false,
   "history": [
     {

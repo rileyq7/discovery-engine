@@ -1,7 +1,9 @@
 {
   "id": "q-20261013-000329-1437",
   "text": "With seeds 20-23, 3000 steps and best-of-3 controls held fixed, does an N=64 arm give a normalized accel_step margin in the same 0.66-0.73 band as N=16 and N=256, while the force margin falls monotonically from 0.24-0.28 (N=16) to 0.03-0.04 (N=256)? If so, it is force, not accel_step, that tracks sampling coarseness.",
-  "status": "open",
-  "linked_finding_ids": [],
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261013-010043-349e"
+  ],
   "created_at": "2026-10-13T00:03:29"
 }

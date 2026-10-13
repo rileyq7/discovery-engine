@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-005851-c42c",
+  "text": "With data_seed 1, the force margin is 0.085-0.099 at step 600 and still rising (about +0.01 per 100 steps after step 400), while accel_step has levelled off at 0.15-0.17. If the same config (seeds 75-77) runs to 1500 steps, does force cross the 0.1 bar persistently in at least 2 of 3 seeds? If so, the claim that force does not beat control at N=64 and e<=0.5 depends on training length.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T00:58:51"
+}

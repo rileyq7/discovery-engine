@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-001650-5f09",
+  "text": "With m2 in [0.1, 1], energy = -m2/(2a) never beats its best-of-5 control in 5000 steps (margin 0.088 vs required 0.1, control 0.666), even though distance and accel_step margins are 0.18-0.19. Is m2 itself linearly decodable above control in this model? If it is not, does that limit both energy and any m2-weighted part of the force signal?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-010011-b1f8"
+  ],
+  "created_at": "2026-10-13T00:16:50"
+}

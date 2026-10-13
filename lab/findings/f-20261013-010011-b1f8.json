@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-010011-b1f8",
+  "claim": "In both seeds, force beats its best-of-5 control at the end of training, forms well after accel_step, and keeps strengthening while accel_step levels off. Its gain from step 1000 to step 5000 falls short of the pre-registered >= 0.08 bar. (a) Final force margin is 0.232 (seed 73, R2 0.776 vs control 0.544) and 0.218 (seed 78, R2 0.709 vs 0.490), against a required 0.1. Final accel_step margin is 0.177 / 0.175 (R2 0.964 / 0.967 vs control 0.787 / 0.792). (b) Read from the trajectory, accel_step persistently forms at step 100 in both seeds. Force persistently forms at step 300-350 in seed 73 (the 300 checkpoint rounds to exactly 0.100) and step 350 in seed 78, a lag of 200-250 steps. (c) From step 1000 to 5000, force gains +0.078 (seed 73, 0.154 to 0.232) and +0.063 (seed 78, 0.155 to 0.218), both under the 0.08 bar. accel_step gains only +0.019 / +0.015 (<= 0.04, as predicted). Measured from step 500 instead, the force gains are +0.109 / +0.086, which reproduces seeds 74/75. Headroom-normalized, accel_step still leads force in both seeds (0.83 vs 0.51, 0.84 vs 0.43).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-002433-1c3f",
+    "run-20261013-002433-7960"
+  ],
+  "confidence_note": "Both runs finished all 5000 steps (no early stop). Neither branch fits. Both seeds meet (a) and (b) and the accel_step half of (c), but the force gain from step 1000 to 5000 misses 0.08: narrowly in seed 73 (0.078, which rounding cannot lift above 0.08), and clearly in seed 78 (0.063). This is the reverse of the pre-registered 'late strengthening without late formation' case: here force forms late, and its strengthening after step 1000 is real but smaller than predicted. Most of the late force gain happens between steps 500 and 1500 and then slows (about +0.004 to +0.012 per 500 steps after step 2000). The two seeds agree on every sub-criterion. The verdict is inconclusive because the outcome falls between the pre-registered branches, not because the seeds disagree. Three things limit interpretation. First, probes_final.formed_at_step for force is 400 in both seeds, while the trajectory shows persistent crossing at 300-350. This is another formed_at_step-vs-trajectory lag (cf. q-20261012-032843-df65), so formation is quoted from the trajectory. Second, from steps 700-750 onward, force's best layer moves from layer 4 to layer 1, the layer where distance peaks (distance margin 0.22-0.26, also still rising). So the late force gain may be a sharper 1/r^2 read of the distance code rather than an m2-weighted force. Without a residualized force target, these cannot be told apart. Third, data_seed is fixed at 0. What would change the verdict: a pre-registered window starting at step 500 would make this 'supported'. A residualized force target (distance and accel_step regressed out) that drops below 0.1 would reclassify the late gain as a distance proxy.",
+  "created_at": "2026-10-13T01:00:11",
+  "experiment_id": "exp-20261013-001741-5c5d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T01:00:11",
+      "actor": "agent"
+    }
+  ]
+}

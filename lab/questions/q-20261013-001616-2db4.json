@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-001616-2db4",
+  "text": "Between steps 750 and 3000 at e <= 0.85, val_mse_ratio falls about 10x while raw accel_step R2 gains only about 0.05. On the same checkpoints, does a linear probe on log(accel_step), or a small MLP probe, gain substantially more R2 over training? That would show whether the extra next-step accuracy goes into a nonlinear (pericentre-tail) part of the acceleration code that a linear probe cannot read.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T00:16:16"
+}

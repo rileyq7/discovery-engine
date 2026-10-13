@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-001533-21c8",
+  "experiment_id": "exp-20261012-231650-79b2",
+  "seed": 76,
+  "status": "completed",
+  "started_at": "2026-10-13T00:15:35",
+  "ended_at": "2026-10-13T00:17:33",
+  "compute_hours": 0.0327,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-001533-21c8",
+  "git_commit": "85c6f95",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 4.795629443146113e-06,
+    "baseline_cv_mse": 2.5657921325503372e-05,
+    "val_mse_ratio": 0.18690638973857052,
+    "beats_baseline": true,
+    "train_hours": 0.022939492464065552,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "0ca264570d49",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.60562,
+          "control_r2": 0.50876,
+          "control_spread": 0.03613,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.91834,
+          "control_r2": 0.75018,
+          "control_spread": 0.01171,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 80
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.89103,
+          "control_r2": 0.40458,
+          "control_spread": 0.19628,
+          "required_margin": 0.1963,
+          "beats_control": true,
+          "formed_at_step": 30
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.55029,
+          "control_r2": 0.30672,
+          "control_spread": 0.16562,
+          "required_margin": 0.1656,
+          "beats_control": true,
+          "formed_at_step": 30
+        }
+      }
+    }
+  },
+  "pid": 80466,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "0ca264570d49"
+}

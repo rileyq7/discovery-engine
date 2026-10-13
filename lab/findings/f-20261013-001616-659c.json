@@ -1,0 +1,26 @@
+{
+  "id": "f-20261013-001616-659c",
+  "claim": "At e in [0, 0.85], training the 4-layer d_model=64 model 5x longer improved prediction far more than linear decodability. From step 750 to step 3000, val_mse_ratio fell 7.8-10.8x (to 0.014 in all 3 seeds), while raw layer-4 accel_step R2 rose only from 0.528/0.510/0.529 to 0.573/0.558/0.588 (seeds 70/71/72), a gain of +0.045/+0.048/+0.059. Seed 72 misses the pre-registered 0.05 band by 0.009, so the expected-if-true outcome is not met in all 3 seeds. The expected-if-false outcome (a gain of 0.08 or more, or R2 of 0.70 or more, in 2 of 3 seeds) also did not happen. The accel_step margin over its best-of-5 control is 0.30-0.32 (controls 0.26-0.27, normalised 0.40-0.43). It beats force, whose margin is 0.19-0.27 (R2 0.35-0.48 vs controls 0.15-0.22, normalised 0.24-0.34), and both are still creeping up at step 3000.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261012-235013-12b9",
+    "run-20261012-235013-5829",
+    "run-20261012-235013-995f"
+  ],
+  "confidence_note": "All 3 runs completed 3000/3000 steps, and the seeds agree on the pattern: R2 stays capped near 0.56-0.59 while MSE improves about 10x. The verdict is inconclusive only because seed 72's gain (+0.059) exceeds the 0.05 band and seed 71 (+0.048) barely fits inside it. Raw accel_step R2 is not flat. It rises steadily by about 0.01 per 250-500 steps late in training (for example seed 72: 0.571 at step 2000, 0.588 at step 3000), so a slow undertraining component cannot be ruled out, although reaching 0.8 would take far more training at this rate. The data also do not fit the hypothesis's premise neatly: at step 500, the 3000-step runs read 0.50-0.52, below the 0.54-0.57 that the 600-step runs reached at step 600, which suggests the lr schedule depends on run length. Checkpoints are every 250 steps, so formed_at_step=250 is only an upper bound. A single data_seed (0) was used. The verdict would move to refuted if a 10000-step run took raw R2 to 0.70 or more. It would move to supported if R2 levelled off below 0.62 there, or if an MLP or log(accel_step) probe reached 0.8 or more on these same checkpoints, which would show the cap comes from linear readout.",
+  "created_at": "2026-10-13T00:16:16",
+  "experiment_id": "exp-20261012-102820-efa5",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T00:16:16",
+      "actor": "agent"
+    }
+  ]
+}
