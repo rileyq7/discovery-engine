@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-063603-95b5",
+  "claim": "At N=256 (data_seed 0, 3000 steps), the final best-layer force margin is 0.040 in seed 22 (layer 4, R2 0.526 vs control 0.486) and 0.033 in seed 23 (layer 4, R2 0.541 vs control 0.508). That is 0.068 and 0.061 below the same seeds' N=128 values (0.108, 0.094) and far below N=64 (0.247, 0.234). Force never beats its control at any checkpoint. accel_step does beat its control: R2 0.880 vs 0.650 and 0.911 vs 0.666, so the raw margin is 0.231 and 0.245 and the headroom-normalised margin is 0.66 and 0.73, roughly level with N=128 (0.67, 0.63) and N=64 (0.68, 0.70). The model still encodes a per-snapshot acceleration it can read out, while linear force decodability keeps falling as N increases.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-061904-9009",
+    "run-20261013-061904-c513"
+  ],
+  "confidence_note": "Both seeds meet the expected-if-true thresholds (force <= 0.078 and <= 0.064; normalised accel_step in [0.60, 0.78]). Both runs completed 3000 of 3000 steps. Paired differences come from the unrounded probes_final values and the trajectories of the N=128 arm (exp-20261013-041843-8486). Four things limit confidence. (1) Part of the N=128-to-N=256 force drop is a higher control, not lower trained R2. Force controls rise from about 0.462/0.468 at N=128 to 0.486/0.508, while trained force R2 falls by only 0.044 (seed 22) and 0.021 (seed 23). For seed 23, roughly two thirds of the margin drop comes from the control, and the force control_spread here is 0.029-0.043, about the size of the remaining effect. (2) These N=256 runs only fall below val_mse_ratio 1 at step 2000 (0.76, 0.69) and end at 0.32/0.24, so they spend about 1000 steps below the baseline. Earlier N=256 runs gained force only after crossing the baseline (q-20261013-025916-04ad), so with longer training the ordering could reflect timing rather than a ceiling. (3) There are only two model seeds on one data_seed. The data_seed-1 arm (exp-20261013-061903-f029) points the same way (seed 20: 0.072, seed 21: 0.039, against N=128 values of 0.137/0.145), but that arm is analysed separately. N=256 seed 20 on data_seed 0 reached 0.113, so N=256 force above control does happen. (4) At N=256, force peaks at layer 4, while at N=64 and N=128 it peaks at layer 1 (the distance layer). What would change the verdict: 6000-12000-step N=256 runs on these seeds reaching margins at least as high as their N=128 values, or a shared control pool that removes the control rise and leaves the trained-R2 drop within the seed spread.",
+  "created_at": "2026-10-13T06:36:03",
+  "experiment_id": "exp-20261013-061903-87ea",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T06:36:03",
+      "actor": "agent"
+    }
+  ]
+}

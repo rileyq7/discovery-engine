@@ -1,0 +1,15 @@
+[06:31:29] experiment exp-20261013-061903-f029 (E5) seed 21: On data_seed 1, the N=64 to N=128 force drop (0.209/0.209 to 0.137/0.145, f-20261013-054512-1b08 and f-20261013-054542-23e1) continues to N=256. With seeds 20-21 and all other settings matched to those arms (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls), the final best-layer force margin at N=256 is below the same seed's N=128 value. The headroom-normalised accel_step margin stays near 0.7. Margins are read from run-record trajectories as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. Paired differences are computed per seed from run records. If either arm is unavailable, the comparison is reported as not computed.
+[06:31:29] model: 209,094 params on mps; dataset 9cec4bbdd4e3; 9000 train / 1000 val systems
+[06:31:30] step 0: val_mse=1.367e-04 cv_baseline=1.054e-07 ratio=1297.059
+[06:32:08] step 500: val_mse=8.513e-07 cv_baseline=1.054e-07 ratio=8.075
+[06:32:47] step 1000: val_mse=3.644e-07 cv_baseline=1.054e-07 ratio=3.457
+[06:33:26] step 1500: val_mse=1.790e-07 cv_baseline=1.054e-07 ratio=1.698
+[06:34:04] step 2000: val_mse=9.287e-08 cv_baseline=1.054e-07 ratio=0.881
+[06:34:43] step 2500: val_mse=5.741e-08 cv_baseline=1.054e-07 ratio=0.545
+[06:35:21] step 3000: val_mse=4.153e-08 cv_baseline=1.054e-07 ratio=0.394
+[06:35:21] training done in 3.9 min; beats constant-velocity baseline: True
+[06:35:23] random-model controls (best of 3): force=0.21/0.63/0.64/0.63/0.65, distance=-0.11/0.32/0.35/0.46/0.53, energy=-0.01/0.26/0.36/0.43/0.45, accel_step=0.68/0.73/0.74/0.75/0.75
+[06:35:24] probes @ step 0: best force R2=0.655 (layer 3)
+[06:35:26] probes @ step 2500: best force R2=0.669 (layer 2)
+[06:35:27] probes @ step 3000: best force R2=0.672 (layer 3)
+[06:35:27] run complete in 4.0 min

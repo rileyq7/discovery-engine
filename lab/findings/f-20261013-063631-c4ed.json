@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-063631-c4ed",
+  "claim": "On data_seed 1 the force margin keeps falling from N=128 to N=256, but the fall comes from the random controls, not from the trained model. Final best-layer force margins at N=256 are 0.072 for seed 20 (layer 1, R2 0.671 vs control 0.598) and 0.039 for seed 21 (layer 3, R2 0.672 vs control 0.634). Those are 0.065 and 0.106 below the same seeds' N=128 values (0.137 and 0.145), and neither N=256 run beats its control. Trained force R2 hardly moved (about 0.66 at N=128 vs 0.67 at N=256), while the force controls rose from 0.52 to 0.60-0.63. accel_step beats its control in both seeds (R2 0.933 vs 0.736 and 0.922 vs 0.746; raw margins 0.198 and 0.176), with headroom-normalised margins of 0.75 and 0.69.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-062708-72bd",
+    "run-20261013-062708-a077"
+  ],
+  "confidence_note": "Both pre-registered conditions held in both seeds. Each N=256 force margin is at least 0.03 below its N=128 value (0.072 <= 0.107 and 0.039 <= 0.115), and normalised accel_step falls in [0.60, 0.78] (0.747 and 0.692). Both runs finished all 3000 steps. Limits: (1) The N=128 comparison values come from earlier findings (f-20261013-054512-1b08, f-20261013-054542-23e1), not from trajectories re-read here. (2) Trained force R2 did not fall from N=128 (about 0.66) to N=256 (0.671-0.672), while force control R2 rose from 0.517-0.524 to 0.598-0.634. So the 'drop' is entirely a control effect. It should not be read as the model losing force structure at fine sampling, and a control pool shared across N could erase it. (3) Two model seeds on one data_seed, checkpoints only every 500 steps. (4) Force was still rising slowly at step 3000 in both seeds, by about +0.005 to +0.009 per 500 steps once val_mse_ratio fell below 1 around step 2000. Longer training could move the margins. The verdict would change if a shared control pool showed matched force margins at N=128 and N=256.",
+  "created_at": "2026-10-13T06:36:31",
+  "experiment_id": "exp-20261013-061903-f029",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T06:36:31",
+      "actor": "agent"
+    }
+  ]
+}

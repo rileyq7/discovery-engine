@@ -1,0 +1,16 @@
+run-20261013-062708-72bd: [06:27:11] experiment exp-20261013-061903-f029 (E5) seed 20: On data_seed 1, the N=64 to N=128 force drop (0.209/0.209 to 0.137/0.145, f-20261013-054512-1b08 and f-20261013-054542-23e1) continues to N=256. With seeds 20-21 and all other settings matched to those arms (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls), the final best-layer force margin at N=256 is below the same seed's N=128 value. The headroom-normalised accel_step margin stays near 0.7. Margins are read from run-record trajectories as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. Paired differences are computed per seed from run records. If either arm is unavailable, the comparison is reported as not computed.
+run-20261013-062708-72bd: [06:27:28] generated dataset 9cec4bbdd4e3: 10000 systems x 129 steps in 17.56s
+run-20261013-062708-72bd: [06:27:28] model: 209,094 params on mps; dataset 9cec4bbdd4e3; 9000 train / 1000 val systems
+run-20261013-062708-72bd: [06:27:29] step 0: val_mse=1.388e-04 cv_baseline=1.054e-07 ratio=1316.625
+run-20261013-062708-72bd: [06:28:07] step 500: val_mse=7.695e-07 cv_baseline=1.054e-07 ratio=7.300
+run-20261013-062708-72bd: [06:28:46] step 1000: val_mse=3.647e-07 cv_baseline=1.054e-07 ratio=3.459
+run-20261013-062708-72bd: [06:29:25] step 1500: val_mse=1.561e-07 cv_baseline=1.054e-07 ratio=1.481
+run-20261013-062708-72bd: [06:30:03] step 2000: val_mse=8.806e-08 cv_baseline=1.054e-07 ratio=0.835
+run-20261013-062708-72bd: [06:30:41] step 2500: val_mse=4.384e-08 cv_baseline=1.054e-07 ratio=0.416
+run-20261013-062708-72bd: [06:31:20] step 3000: val_mse=3.773e-08 cv_baseline=1.054e-07 ratio=0.358
+run-20261013-062708-72bd: [06:31:20] training done in 4.2 min; beats constant-velocity baseline: True
+run-20261013-062708-72bd: [06:31:22] random-model controls (best of 3): force=0.20/0.60/0.65/0.65/0.64, distance=-0.02/0.13/0.33/0.52/0.58, energy=0.00/0.19/0.37/0.43/0.45, accel_step=0.67/0.72/0.73/0.73/0.74
+run-20261013-062708-72bd: [06:31:22] probes @ step 0: best force R2=0.630 (layer 4)
+run-20261013-062708-72bd: [06:31:25] probes @ step 2500: best force R2=0.665 (layer 1)
+run-20261013-062708-72bd: [06:31:26] probes @ step 3000: best force R2=0.671 (layer 1)
+run-20261013-062708-72bd: [06:31:26] run complete in 4.3 min
