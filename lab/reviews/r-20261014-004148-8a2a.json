@@ -1,0 +1,54 @@
+{
+  "id": "r-20261014-004148-8a2a",
+  "created_at": "2026-10-14T00:41:48",
+  "since": "2026-10-13T23:40:33",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R2, control, margin, layer and normalised margin against probes_final and the trajectories for all four findings, and checked each verdict against its pre-registered criteria. f-a78c's correction to refuted has been applied, and its numbers check out. f-d851 is accurate, and its replicated status is justified. f-f8e8's force numbers and verdict hold, but its layer-1 distance values are really the layer-4 values. f-1240's 'not computed' comparison can now be computed from records in this batch; the verdict stays inconclusive, but the finding should record the result. The last 5 experiments are replications and paired arms for the m2-fixed decomposition, so there is no drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim says layer-1 distance R2 goes from '0.950/0.926 to 0.915/0.908'. 0.950/0.926 are the N=64 layer-4 distance R2s (seed 20 0.9502, seed 21 0.9265). The N=64 layer-1 values are 0.8834/0.8969. Against N=128 layer-1 values of 0.9145/0.9082, layer-1 distance rises from N=64 to N=128 rather than 'falling only a little'. This does not weaken the conclusion (force loss not driven by distance), but the quoted numbers are at the wrong layer.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-234552-f8e8"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The paired N=128 m2-fixed probes_final (exp ae2c, run-20261013-232235-a8cb/640e) is in the record. The force controls at the best-margin layer (layer 4 in both) are 0.6304 (seed 20) and 0.5825 (seed 21). Against N=256 controls of 0.6197 (layer 1) and 0.6521 (layer 3), the changes are -0.0107 and +0.0696. Seed 20 meets the false branch (below N=128) and seed 21 meets the true branch (>= +0.03). The seeds disagree, so the pre-registered verdict is inconclusive, as the finding already states. The finding still says the comparison was 'not computed' and the paired arm 'unavailable', and gives trajectory-derived bounds. It needs a note recording the actual paired values and the layer mismatch (1/3 vs 4).",
+      "source": "reviewer",
+      "finding_id": "f-20261013-234519-1240"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The confidence note's caveat that a probes_final N=64 value below 0.753 would make seed 20 inconclusive is now settled. The N=64 m2-fixed probes_final (run-20261013-231211-9f25) gives 0.7629 at the best-margin layer 4, so the drop is 0.0695. The drop also holds at matched layers: seed 20 is 0.0695 at layer 4 and 0.0695 at layer 1; seed 21 is 0.078 at layer 4 and 0.127 at layer 1. The best-layer change in seed 21 does not drive the result.",
+      "source": "reviewer",
+      "finding_id": "f-20261013-234552-f8e8"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261013-225026-a78c",
+      "f-20261013-234439-d851",
+      "f-20261013-234519-1240",
+      "f-20261013-234552-f8e8"
+    ],
+    "runs": [
+      "run-20261013-233314-453c",
+      "run-20261014-001211-41b4",
+      "run-20261014-001211-4848",
+      "run-20261014-002233-049b",
+      "run-20261014-002233-2901",
+      "run-20261014-003241-5f04"
+    ],
+    "experiments": [
+      "exp-20261014-001210-2f2c",
+      "exp-20261014-001210-53d8",
+      "exp-20261014-001210-9838"
+    ]
+  }
+}
