@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-222413-753a",
+  "experiment_id": "exp-20261013-221215-8995",
+  "seed": 22,
+  "status": "completed",
+  "started_at": "2026-10-13T22:30:38",
+  "ended_at": "2026-10-13T22:36:45",
+  "compute_hours": 0.1018,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-222413-753a",
+  "git_commit": "c488f9c",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.3031810522079468e-07,
+    "baseline_cv_mse": 1.6096865567635364e-06,
+    "val_mse_ratio": 0.08095868395820768,
+    "beats_baseline": true,
+    "train_hours": 0.09836294280158149,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "0788f12fa569",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.69603,
+          "control_r2": 0.5231,
+          "control_spread": 0.01331,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.93482,
+          "control_r2": 0.23791,
+          "control_spread": 0.04036,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.6097,
+          "control_r2": 0.21047,
+          "control_spread": 0.03011,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.93246,
+          "control_r2": 0.76129,
+          "control_spread": 0.01034,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 52703,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "0788f12fa569"
+}

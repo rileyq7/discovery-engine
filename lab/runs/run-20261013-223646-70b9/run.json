@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-223646-70b9",
+  "experiment_id": "exp-20261013-221215-b74d",
+  "seed": 22,
+  "status": "completed",
+  "started_at": "2026-10-13T22:42:35",
+  "ended_at": "2026-10-13T22:48:29",
+  "compute_hours": 0.0984,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-223646-70b9",
+  "git_commit": "c488f9c",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 3.554674202766944e-08,
+    "baseline_cv_mse": 1.0542249615032842e-07,
+    "val_mse_ratio": 0.3371836498443478,
+    "beats_baseline": true,
+    "train_hours": 0.09363104773892297,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "9cec4bbdd4e3",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.65324,
+          "control_r2": 0.58385,
+          "control_spread": 0.02264,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.94067,
+          "control_r2": 0.27681,
+          "control_spread": 0.09834,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.58293,
+          "control_r2": 0.22341,
+          "control_spread": 0.01629,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.91723,
+          "control_r2": 0.75642,
+          "control_spread": 0.01074,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 58012,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "9cec4bbdd4e3"
+}

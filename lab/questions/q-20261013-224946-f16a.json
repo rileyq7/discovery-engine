@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-224946-f16a",
+  "text": "On data_seed 1 at N=64, final force margin is 0.209 in both seeds 20-21 but 0.268-0.275 in seeds 22-23, with identical controls (about 0.53). The whole gap is trained R2 (about 0.74 vs 0.79-0.81). Were seeds 20-21 data_seed 1 run under the same pipeline version and lr schedule? If so, do seeds 24-25 on data_seed 1 split into the same two clusters, or fill the 0.21-0.28 range continuously?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T22:49:46"
+}

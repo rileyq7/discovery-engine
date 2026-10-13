@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-225026-a78c",
+  "claim": "On data_seed 1, both fresh N=256 seeds lose their force margin to rising random controls. Force control R2 is 0.6531 (seed 23) and 0.5839 (seed 22), against N=128 controls of at most about 0.55 and 0.52 (rises of >= ~0.10 and >= ~0.06). The final force margins are 0.096 and 0.069, so neither beats its control, while accel_step clears its control easily (R2 0.926/0.917 vs control 0.715/0.756; headroom-normalised 0.74/0.66). Trained force R2 does not stay flat as predicted: it rises in seed 23 (0.7486 at N=256 vs at most ~0.714 at N=128, about +0.035) and falls in seed 22 (0.6532 vs at most ~0.696, a drop of up to about 0.043). So the control-rise half of the hypothesis holds in both seeds, but the |delta trained R2| <= 0.02 condition fails in both, in opposite directions.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-223646-5ee2",
+    "run-20261013-223646-70b9"
+  ],
+  "confidence_note": "Both runs completed 3000/3000 steps and beat the baseline (val_mse_ratio 0.337-0.346). The paired N=128 values were not computed as pre-registered: the N=128 arm's probes_final was not available to me, so N=128 trained R2 comes from the trajectory's 4th field and control R2 from that field minus margin. In these N=256 runs that field overstates the probes_final best-layer R2 by 0.004-0.017 (0.753 vs 0.7486; 0.670 vs 0.6532). The N=128 values are therefore upper bounds. As a result, seed 22's trained drop lies somewhere in about 0.026-0.043, which straddles the 0.04 refutation bar. Seed 23's trained rise could be larger than +0.035. Every control rise is a lower bound. Seed 23's force control_spread is 0.049, so control noise is a large part of the effect. Reading N=128 probes_final directly would settle seed 22 against the 0.04 bar. A drop >= 0.04 there would make this refuted. A drop <= 0.02 in both seeds would make it supported. With two seeds whose trained-R2 changes have opposite signs, the trained-vs-control decomposition of the N=128-to-N=256 step looks noisy at the +/-0.04 level. The one robust result is the control rise.",
+  "created_at": "2026-10-13T22:50:26",
+  "experiment_id": "exp-20261013-221215-b74d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T22:50:26",
+      "actor": "agent"
+    }
+  ]
+}

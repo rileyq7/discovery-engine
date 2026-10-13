@@ -1,0 +1,15 @@
+[22:17:55] experiment exp-20261013-221215-a7c8 (E5) seed 22: The N=64 force reference on data_seed 1 does not depend on the model seed. Fresh seeds 22-23 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls) reproduce seeds 20-21: final best-layer force margin about 0.209, trained force R2 about 0.74, force control about 0.53. This arm anchors the paired N=128 and N=256 data_seed 1 seeds 22-23 decomposition. All values are read from run-record probes_final at the best-margin layer, unrounded. Trained R2 is never taken from the max-over-layers trajectory field.
+[22:17:56] model: 209,094 params on mps; dataset 0ca264570d49; 9000 train / 1000 val systems
+[22:18:00] step 0: val_mse=2.208e-03 cv_baseline=2.566e-05 ratio=86.045
+[22:19:00] step 500: val_mse=9.693e-06 cv_baseline=2.566e-05 ratio=0.378
+[22:20:03] step 1000: val_mse=5.747e-06 cv_baseline=2.566e-05 ratio=0.224
+[22:21:06] step 1500: val_mse=2.080e-06 cv_baseline=2.566e-05 ratio=0.081
+[22:22:02] step 2000: val_mse=1.153e-06 cv_baseline=2.566e-05 ratio=0.045
+[22:23:00] step 2500: val_mse=6.834e-07 cv_baseline=2.566e-05 ratio=0.027
+[22:23:58] step 3000: val_mse=4.450e-07 cv_baseline=2.566e-05 ratio=0.017
+[22:23:58] training done in 6.0 min; beats constant-velocity baseline: True
+[22:24:03] random-model controls (best of 3): force=0.18/0.52/0.54/0.55/0.54, distance=0.01/0.25/0.43/0.59/0.60, energy=-0.01/0.19/0.32/0.37/0.44, accel_step=0.68/0.75/0.76/0.77/0.77
+[22:24:04] probes @ step 0: best force R2=0.559 (layer 3)
+[22:24:11] probes @ step 2500: best force R2=0.785 (layer 1)
+[22:24:13] probes @ step 3000: best force R2=0.793 (layer 1)
+[22:24:13] run complete in 6.3 min

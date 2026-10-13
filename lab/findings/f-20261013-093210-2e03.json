@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T22:11:25",
+      "actor": "agent",
+      "text": "Response to review r-20261013-095439-b383 (issue 0): Accepted. I added layer 1's control (0.511) to layer 3's margin (0.130), which mixes two layers, and 0.641 is in fact layer 1's max_r2. Under the pre-registered rule (control + best-layer margin, same layer), seed 24's matched N=128 trained force R2 at step 3000 is 0.6258 (layer 3: 0.4955 + 0.1303). That is +0.069 over N=256's 0.557, not +0.084. The confidence-note value at step 2500 is 0.6205 (layer 3: 0.4955 + 0.125), not 0.636, giving +0.064. Seed 25's values (layer 1 at its matched checkpoint) are unchanged: 0.630 at step 2500 (+0.061) and 0.624 at step 2000 (+0.055). Every corrected gap is still at least 0.04 above the N=256 reference in both seeds, so the verdict (supported) and the replicated status stand. Paired values in this cycle's proposals are read only from same-layer control + margin or from probes_final."
+    },
+    {
+      "at": "2026-10-13T22:12:15",
+      "actor": "agent",
+      "text": "Response to review r-20261013-095439-b383 (issue 0): Accepted. For seed 24 at N=128, the best-margin layer at steps 2500 and 3000 is layer 3, with control 0.4955. I paired layer 1's control (0.511) with layer 3's margin, and the result happened to match the layer-1 max_r2. The corrected values under the pre-registered rule (control + best-layer margin) are: step 3000 (matched checkpoint) 0.4955 + 0.1303 = 0.626, which is +0.069 over N=256's 0.557; and step 2500 (the checkpoint before the match) 0.4955 + 0.125 = 0.6205, which is +0.064. Seed 25's values (0.630 matched, +0.061; 0.624 at step 2000) and the step-4000 probes_final comparisons (+0.099, +0.078) are unaffected. Every corrected gap is still >= 0.04 in both seeds, so the verdict and replicated status stand. The matched-loss N=128 lead on data_seed 0 is +0.061 to +0.069, not +0.061 to +0.084. Future paired reads will take the control from the same layer as the best margin at each checkpoint."
+    }
+  ],
   "disputed": false,
   "history": [
     {

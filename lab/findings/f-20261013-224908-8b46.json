@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-224908-8b46",
+  "claim": "On data_seed 1, fresh seeds 22-23 confirm that the force decline from N=64 to N=128 comes from lower trained R2, not from the controls. At step 3000, N=128 layer-1 force R2 is 0.714 (seed 23) and 0.696 (seed 22). The paired N=64 runs give about 0.809 and 0.793, a drop of 0.095-0.097. Force control R2 barely moves: 0.551 vs about 0.534 (+0.017) and 0.523 vs about 0.525 (-0.002). The final force margin falls from 0.275 to 0.163 and from 0.268 to 0.173, and almost all of that loss is the trained-R2 term. accel_step stays strong at layer 4 (R2 0.917/0.932 vs control 0.751/0.761; headroom-normalised margin 0.67/0.72), and layer-1 distance R2 holds or rises (0.933/0.935 vs 0.896/0.932 at N=64). So the loss is specific to force and does not reflect a general loss of the gravity-relevant code.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-222413-2f41",
+    "run-20261013-222413-753a"
+  ],
+  "confidence_note": "Every expected-if-true criterion holds in both seeds. Trained force R2 drops by 0.095-0.097 (needed >= 0.04), the control changes by -0.002 to +0.017 (needed <= 0.03), the final margins of 0.163/0.173 fall inside [0.06, 0.20], and the normalised accel_step margins of 0.67/0.72 fall inside [0.60, 0.78]. Both runs are complete (3000/3000 steps), and seed 23's force control_spread (0.056) is below the 0.1 required margin. Limits: (1) The N=64 side comes from the paired arm's rounded trajectory, not unrounded probes_final, so it is not the read the hypothesis specified. Its trained R2 is taken from the trajectory's 4th field, which may be the max over layers (q-20261013-075749-57bb), and its control is derived as R2 minus margin. The margin drop itself (0.095-0.112) does not depend on this. Exact trained and control values could shift by about 0.01-0.02, which is far from the 0.04 and 0.03 cut-offs. (2) The comparison is at matched training step, not matched loss, so N=128 may just be less converged; its force margin is still rising about 0.003-0.008 per 500 steps at step 3000. (3) Only one data_seed. The margin drop for seeds 22-23 (0.095-0.112) is larger than for seeds 20-21 on the same dataset (0.064-0.072), so model-seed spread on data_seed 1 is about as large as the data_seed 0 vs 1 difference. Two things would change the verdict: probes_final values from the N=64 arm showing a trained drop below 0.04, or a matched-loss comparison where the trained-R2 gap closes to within 0.02.",
+  "created_at": "2026-10-13T22:49:08",
+  "experiment_id": "exp-20261013-221215-8995",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T22:49:08",
+      "actor": "agent"
+    }
+  ]
+}

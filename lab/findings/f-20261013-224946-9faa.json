@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-224946-9faa",
+  "claim": "Fresh seeds 22-23 at N=64 on data_seed 1 have higher force than the seeds 20-21 reference: both final force margins (0.275 and 0.268) and both trained R2 values (0.809 and 0.793) are above the predicted ranges ([0.18, 0.26] and [0.68, 0.78]), while force controls (0.534 and 0.525) match the reference. accel_step stays the stronger readout: R2 0.926-0.937 at layer 4 against controls of 0.761-0.774, a raw margin of only 0.163-0.165 but a headroom-normalised margin of 0.69-0.72, versus 0.59-0.58 normalised for force. val_mse_ratio is 0.017-0.019.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-221215-3857",
+    "run-20261013-221215-9771"
+  ],
+  "confidence_note": "Neither the expected-if-true nor the expected-if-false outcome occurred. Force is above control in both seeds, well clear of the 0.15 / 0.65 failure bars, but both seeds overshoot the upper bounds for margin and trained R2. The two fresh seeds agree with each other to within 0.007 in margin and 0.016 in trained R2. They sit about 0.06 above seeds 20-21 (0.209). The controls are the same, so the gap is entirely in trained R2 (0.79-0.81 vs about 0.74). The data_seed 1 N=64 force level therefore does depend on the model seed, by about 0.06, which the hypothesis did not anticipate. seeds_agree is false because the verdict is inconclusive, not because the seeds disagree. Force was still rising at step 3000 (+0.010 per 500 steps in seed 23, +0.007 in seed 22), so the final value also depends on training length. Paired context, computed from the sibling arm's trajectories (4th field, which may be max over layers rather than the best-margin layer; force best layer is 1 at every checkpoint in all four runs) and not cited as evidence: the per-seed N=64-to-N=128 trained force R2 drop is 0.095 (seed 23) and 0.097 (seed 22). The margin drop is 0.112 and 0.095. Implied N=128 controls are 0.55 and 0.52, so this step is almost entirely in trained R2, as in seeds 20-21. A matched-loss reading uses the N=64 step-1500 checkpoint (val_mse_ratio 0.073 and 0.081, close to N=128's step-3000 values). There, N=64 trained force R2 is 0.761 and 0.750 against N=128's 0.714 and 0.696, a gap of 0.047-0.054, so the N=64-to-N=128 shortfall is not explained by convergence alone. This reading uses the trajectory field and should be rechecked from per-layer probes. Two or more further seeds at about 0.21 would make seeds 22-23 look like the outliers. Two or more at about 0.27 would make seeds 20-21 the outliers.",
+  "created_at": "2026-10-13T22:49:46",
+  "experiment_id": "exp-20261013-221215-a7c8",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T22:49:46",
+      "actor": "agent"
+    }
+  ]
+}

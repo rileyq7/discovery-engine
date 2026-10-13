@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261013-221215-8995",
+  "family": "E5",
+  "hypothesis": "On data_seed 1, the N=64-to-N=128 force decline comes from lower trained R2, not from a control effect, for fresh seeds as well as seeds 20-21 (where trained R2 went 0.74 to 0.66 with flat controls). Setup: seeds 22-23 at N=128, otherwise identical to the paired N=64 data_seed 1 seeds 22-23 arm. Trained force R2 and force control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.",
+  "expected_if_true": "In both seeds: trained force R2 is >= 0.04 below the same seed's N=64 value; force control R2 changes by <= 0.03; final force margin in [0.06, 0.20]; headroom-normalised accel_step margin in [0.60, 0.78].",
+  "expected_if_false": "In at least one seed, trained force R2 is within 0.02 of N=64, or the force control rises by >= 0.04 and accounts for most of the margin drop.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "On data_seed 1, the N=64-to-N=128 force decline comes from lower trained R2, not from a control effect, for fresh seeds as well as seeds 20-21 (where trained R2 went 0.74 to 0.66 with flat controls). Setup: seeds 22-23 at N=128, otherwise identical to the paired N=64 data_seed 1 seeds 22-23 arm. Trained force R2 and force control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.",
+    "expected_if_true": "In both seeds: trained force R2 is >= 0.04 below the same seed's N=64 value; force control R2 changes by <= 0.03; final force margin in [0.06, 0.20]; headroom-normalised accel_step margin in [0.60, 0.78].",
+    "expected_if_false": "In at least one seed, trained force R2 is within 0.02 of N=64, or the force control rises by >= 0.04 and accounts for most of the margin drop.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      22,
+      23
+    ],
+    "budget": {
+      "max_compute_hours": 0.4
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T22:12:15",
+  "updated_at": "2026-10-13T22:49:08",
+  "verdict": "supported",
+  "estimate_hours": 0.2614,
+  "compute_hours": 0.2046,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T22:12:15",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T22:12:15",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T22:12:15",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T22:24:14",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T22:36:46",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T22:49:08",
+      "actor": "agent",
+      "note": "finding f-20261013-224908-8b46"
+    }
+  ]
+}

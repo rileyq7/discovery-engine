@@ -3,7 +3,8 @@
   "text": "At N=128 on data_seed 1 the force controls (0.517-0.524) match N=64's (about 0.53), so the whole force drop is in trained R2 (0.74 to 0.66). Does trained force R2 at N=128 continue to approach the N=64 level with longer training (6000-12000 steps on data_seed 1), and is the size of the gap at each checkpoint predicted by the difference in val_mse_ratio between the two arms?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-063631-c4ed"
+    "f-20261013-063631-c4ed",
+    "f-20261013-224908-8b46"
   ],
   "created_at": "2026-10-13T05:45:42"
 }

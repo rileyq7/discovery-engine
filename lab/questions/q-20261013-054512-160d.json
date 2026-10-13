@@ -1,7 +1,9 @@
 {
   "id": "q-20261013-054512-160d",
   "text": "On data_seed 1 both N=64 seeds end at the same force margin (0.209), while data_seed 0 seeds 20-21 differ by about 0.05. Is the seed-to-seed force spread at N=64 smaller on data_seed 1? Would seeds 22-23 on data_seed 1 also land within 0.02 of 0.209?",
-  "status": "open",
-  "linked_finding_ids": [],
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261013-224946-9faa"
+  ],
   "created_at": "2026-10-13T05:45:12"
 }

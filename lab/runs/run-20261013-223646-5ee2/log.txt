@@ -1,0 +1,15 @@
+[22:36:50] experiment exp-20261013-221215-b74d (E5) seed 23: The control-dominated N=128-to-N=256 force decline on data_seed 1 (seeds 20-21: trained R2 flat at about 0.66-0.67, controls rising from 0.52 to 0.60-0.63) is a property of the dataset, not of those two model seeds. Setup: seeds 22-23 at N=256 on data_seed 1, otherwise identical to the paired N=128 data_seed 1 seeds 22-23 arm. Trained force R2 changes by <= 0.02 from the same seed's N=128 value, while force control R2 rises by >= 0.03. All values are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.
+[22:36:50] model: 209,094 params on mps; dataset 9cec4bbdd4e3; 9000 train / 1000 val systems
+[22:36:52] step 0: val_mse=1.309e-04 cv_baseline=1.054e-07 ratio=1242.084
+[22:37:42] step 500: val_mse=1.130e-06 cv_baseline=1.054e-07 ratio=10.716
+[22:38:33] step 1000: val_mse=5.061e-07 cv_baseline=1.054e-07 ratio=4.800
+[22:39:36] step 1500: val_mse=1.544e-07 cv_baseline=1.054e-07 ratio=1.464
+[22:40:31] step 2000: val_mse=8.955e-08 cv_baseline=1.054e-07 ratio=0.849
+[22:41:22] step 2500: val_mse=6.201e-08 cv_baseline=1.054e-07 ratio=0.588
+[22:42:16] step 3000: val_mse=3.653e-08 cv_baseline=1.054e-07 ratio=0.346
+[22:42:16] training done in 5.4 min; beats constant-velocity baseline: True
+[22:42:20] random-model controls (best of 3): force=0.20/0.65/0.67/0.69/0.70, distance=-0.10/0.15/0.38/0.50/0.60, energy=-0.01/0.20/0.43/0.46/0.57, accel_step=0.63/0.69/0.70/0.71/0.72
+[22:42:22] probes @ step 0: best force R2=0.670 (layer 3)
+[22:42:28] probes @ step 2500: best force R2=0.748 (layer 3)
+[22:42:30] probes @ step 3000: best force R2=0.753 (layer 3)
+[22:42:30] run complete in 5.7 min

@@ -1,0 +1,15 @@
+run-20261013-222413-753a: [22:30:38] experiment exp-20261013-221215-8995 (E5) seed 22: On data_seed 1, the N=64-to-N=128 force decline comes from lower trained R2, not from a control effect, for fresh seeds as well as seeds 20-21 (where trained R2 went 0.74 to 0.66 with flat controls). Setup: seeds 22-23 at N=128, otherwise identical to the paired N=64 data_seed 1 seeds 22-23 arm. Trained force R2 and force control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.
+run-20261013-222413-753a: [22:30:39] model: 209,094 params on mps; dataset 0788f12fa569; 9000 train / 1000 val systems
+run-20261013-222413-753a: [22:30:42] step 0: val_mse=5.582e-04 cv_baseline=1.610e-06 ratio=346.803
+run-20261013-222413-753a: [22:31:42] step 500: val_mse=3.340e-06 cv_baseline=1.610e-06 ratio=2.075
+run-20261013-222413-753a: [22:32:38] step 1000: val_mse=1.677e-06 cv_baseline=1.610e-06 ratio=1.042
+run-20261013-222413-753a: [22:33:36] step 1500: val_mse=8.713e-07 cv_baseline=1.610e-06 ratio=0.541
+run-20261013-222413-753a: [22:34:31] step 2000: val_mse=3.603e-07 cv_baseline=1.610e-06 ratio=0.224
+run-20261013-222413-753a: [22:35:29] step 2500: val_mse=2.121e-07 cv_baseline=1.610e-06 ratio=0.132
+run-20261013-222413-753a: [22:36:32] step 3000: val_mse=1.303e-07 cv_baseline=1.610e-06 ratio=0.081
+run-20261013-222413-753a: [22:36:32] training done in 5.9 min; beats constant-velocity baseline: True
+run-20261013-222413-753a: [22:36:37] random-model controls (best of 3): force=0.18/0.52/0.55/0.56/0.55, distance=0.01/0.24/0.41/0.55/0.59, energy=-0.01/0.21/0.32/0.38/0.46, accel_step=0.68/0.73/0.75/0.76/0.76
+run-20261013-222413-753a: [22:36:38] probes @ step 0: best force R2=0.550 (layer 2)
+run-20261013-222413-753a: [22:36:43] probes @ step 2500: best force R2=0.690 (layer 1)
+run-20261013-222413-753a: [22:36:45] probes @ step 3000: best force R2=0.696 (layer 1)
+run-20261013-222413-753a: [22:36:45] run complete in 6.1 min
