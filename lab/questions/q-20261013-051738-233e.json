@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-051738-233e",
+  "text": "From step 6000 to 12000, val_mse_ratio fell about 6-8x in both N=64 seeds, but force gained only 0.019 (seed 20, about 0.024 per decade of val_mse_ratio) and 0.007 (seed 21, about 0.008 per decade). Over the same steps N=128 gained 0.019-0.029. Has force decodability decoupled from further loss reduction at N=64 once val_mse_ratio is below about 0.02, while N=128 is still coupled?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T05:17:38"
+}

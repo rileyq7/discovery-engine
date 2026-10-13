@@ -2,6 +2,8 @@
   "id": "q-20261013-040404-759d",
   "text": "From step 6000 to 12000 at N=128, force gains only about 0.02-0.03 per decade of val_mse_ratio decline, against about 0.05 per decade in the d128/5000-step seed-75 run. Is force gain per decade of log val_mse_ratio set by steps_per_orbit or by model width, and does it fall to zero once val_mse_ratio is below about 0.02?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261013-051738-2a37"
+  ],
   "created_at": "2026-10-13T04:04:04"
 }

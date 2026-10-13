@@ -1,7 +1,9 @@
 {
   "id": "q-20261013-050513-63f5",
   "text": "Under the current pipeline, the 3000-, 6000- and 12000-step N=256 runs agree at step 3000 to within about 0.025 on force and 0.004 on accel_step. Would a second identical 3000-step rerun of seeds 20-21 also agree within 0.01, which would establish that within-pipeline nondeterminism is negligible and that cross-length differences up to step 3000 can be read directly?",
-  "status": "open",
-  "linked_finding_ids": [],
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261013-054603-d6cc"
+  ],
   "created_at": "2026-10-13T05:05:13"
 }

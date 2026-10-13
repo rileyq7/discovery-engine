@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-051807-f3f1",
+  "claim": "On fresh seeds 22-23 at N=128 (4 layers, d_model=64, 3000 steps, e<=0.5), the final best-layer force margin is 0.108 (seed 22, layer 1, R2 0.569 vs control 0.461) and 0.094 (seed 23, layer 1, R2 0.562 vs control 0.468). That is 0.139-0.140 below the matched N=64 seeds (0.247/0.234) and well above N=256 (0.033-0.040). Seed 23 never reaches the 0.1 bar, and seed 22 crosses it only at step 2500. accel_step is decoded much better: layer-4 R2 0.894/0.898 vs controls 0.677/0.725, giving raw margins 0.217/0.174 and headroom-normalised margins 0.67/0.63, against about 0.68/0.71 at N=64. Force's normalised margin is only about 0.20/0.18.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-050519-4041",
+    "run-20261013-050519-2b49"
+  ],
+  "confidence_note": "Both completed seeds meet every expected-if-true condition. Force is in [0.08, 0.20] and at least 0.04 below the same seed's N=64 value, and normalised accel_step is in [0.62, 0.77], so the gradual decline of force with steps_per_orbit replicates on new seeds. Caveats: (1) Both values sit near the low end of the predicted band and below seeds 20-21 at N=128 (0.150/0.131). With 4 seeds the N=128 range is 0.094-0.150, and seed 23 would not count as a beats-control force result on its own. A seed below 0.08 or above 0.20 in further N=128 runs would weaken the 'intermediate' claim. (2) The force drop comes from lower trained R2 (0.56-0.57 vs 0.68-0.70 at N=64), not from higher controls (0.46-0.47 vs about 0.45). This makes it a real decodability difference, but the force signal still sits at layer 1, the distance layer, and has not been tested with distance regressed out. (3) Force is still rising at step 3000 (about +0.004-0.006 per 500 steps, val_mse_ratio 0.067-0.079), so the N=64 vs N=128 gap holds only at matched training length. (4) Normalised accel_step is a little lower at N=128 (0.63-0.67) than at N=64 (0.68-0.71). That fits the predicted range, but 'flat across N' would be in doubt if more seeds widen this gap.",
+  "created_at": "2026-10-13T05:18:07",
+  "experiment_id": "exp-20261013-041843-8486",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T05:18:07",
+      "actor": "agent"
+    }
+  ]
+}

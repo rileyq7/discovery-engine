@@ -60,11 +60,11 @@
       "max_compute_hours": 1.0
     }
   },
-  "state": "analyzing",
+  "state": "complete",
   "proposed_by": "agent",
   "created_at": "2026-10-13T04:18:43",
-  "updated_at": "2026-10-13T05:05:19",
-  "verdict": null,
+  "updated_at": "2026-10-13T05:17:38",
+  "verdict": "supported",
   "estimate_hours": 0.9346,
   "compute_hours": 0.5522,
   "replicates_finding_id": null,
@@ -99,6 +99,12 @@
       "at": "2026-10-13T05:05:19",
       "actor": "worker",
       "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T05:17:38",
+      "actor": "agent",
+      "note": "finding f-20261013-051738-2a37"
     }
   ]
 }

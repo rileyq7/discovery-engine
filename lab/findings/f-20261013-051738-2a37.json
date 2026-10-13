@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-051738-2a37",
+  "claim": "At N=64, 12000 steps of training end with best-layer force margins of 0.255 (seed 20) and 0.266 (seed 21), both at layer 1, the distance layer. That is 0.062 and 0.069 above the same seeds' N=128 12000-step values (0.193 / 0.197). Force gained only 0.019 and 0.007 between steps 6000 and 12000. accel_step plateaued at margins of 0.159 / 0.154, with headroom-normalised margins of 0.76 and 0.65, inside the predicted [0.62, 0.77]. So the N=64 force ceiling sits above N=128, and accel_step stays flat whatever the training length or N.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-043205-0031",
+    "run-20261013-043205-3cde"
+  ],
+  "confidence_note": "Both seeds meet every expected-if-true criterion: final force >= 0.23, at least 0.03 above N=128, 6000->12000 gain <= 0.04, and normalised accel_step inside [0.62, 0.77]. The step-3000 force margins (0.200 / 0.236) differ from the 3000-step runs (0.215 / 0.261) by 0.015 / 0.025. Both are inside the 0.03 tolerance, but seed 21 is close to it, so cross-length comparisons still carry some horizon risk. Neither N has fully levelled off: N=64 still gains about 0.001-0.003 per 1000 steps and N=128 about 0.003-0.005. In seed 21 the N=64 minus N=128 gap shrank from 0.091 at step 6000 to 0.069 at step 12000 (seed 20 held steady at 0.062). A much longer run could therefore narrow the gap further. Training to 24000 steps with N=128 reaching within 0.015 of N=64 would turn this into a growth-rate effect. The force signal sits at layer 1 (distance margin 0.72 / 0.57) and has not been tested against distance regressed out, so this is a 'force-decodability ceiling' and not evidence of a separate force representation. Only two seeds and one data_seed were used.",
+  "created_at": "2026-10-13T05:17:38",
+  "experiment_id": "exp-20261013-041843-02af",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T05:17:38",
+      "actor": "agent"
+    }
+  ]
+}

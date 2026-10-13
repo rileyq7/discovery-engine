@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-054512-1b08",
+  "claim": "On data_seed 1 at N=64 (4 layers, d_model=64, 3000 steps, best-of-3 controls), both seeds match the data_seed 0 N=64 pattern. Final best-layer force margin is 0.209 in both seeds (layer 1; R2 0.736/0.742 vs control 0.527/0.534), and the accel_step margin is 0.157/0.162 (layer 4; R2 0.940/0.943 vs control 0.783/0.780). Headroom-normalised, accel_step is 0.725/0.740 and force 0.44/0.45, so force leads on raw margin while accel_step leads on normalised margin. val_mse_ratio is 0.0184/0.0176.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-051931-6eef",
+    "run-20261013-051931-984b"
+  ],
+  "confidence_note": "Every expected-if-true criterion is met in both seeds. Force is >= 0.18 with beats_control true, normalised accel_step is inside [0.60, 0.78], and val_mse_ratio is < 0.05. Force control spread is small (0.020/0.004), so the force margin clears the bar well. Caveats: (1) The force margin of 0.209 sits just below data_seed 0's 0.215-0.261 range. That gap is smaller than the data_seed 0 seed-to-seed spread, but with only 2 seeds here we cannot say whether data_seed 1 runs slightly lower. (2) Force is still rising at step 3000, by about +0.004 to +0.008 per 500 steps, so the comparison depends on training length. (3) The final force best layer is layer 1, which is also the distance layer (distance margin 0.685/0.574). Earlier, seed 21 beat control at layer 4 (margin 0.152 at step 1000), so force is not obviously confined to the distance layer, but no residualised force target was run. (4) formed_at_step for force is 1000 in both runs, but the trajectory margins are already >= 0.1 from step 500 (0.106 at layer 3 and 0.118 at layer 4). This repeats the earlier formed_at_step lag and only affects timing, not the verdict. A third seed below 0.15, or a data_seed 2 arm below 0.15, would turn this into dataset dependence. In the paired N=128 data_seed 1 arm (exp-20261013-051930-fcbc), force is 0.137/0.145 and normalised accel_step about 0.70/0.72. That puts the per-seed N=64 to N=128 force drop at about 0.064-0.072, against about 0.10-0.14 on data_seed 0. This finding is context only; the N=128 runs are not cited as evidence here.",
+  "created_at": "2026-10-13T05:45:12",
+  "experiment_id": "exp-20261013-051930-c5a3",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T05:45:12",
+      "actor": "agent"
+    }
+  ]
+}

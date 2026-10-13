@@ -1,0 +1,15 @@
+run-20261013-052737-130c: [05:32:01] experiment exp-20261013-051930-fcbc (E5) seed 21: Force decodability declines gradually with steps_per_orbit from N=64 to N=128 on any dataset, not just data_seed 0 (where N=128 gave 0.094-0.150 against N=64's 0.215-0.261). On data_seed 1, with seeds 20-21 and every other setting matched to the paired N=64 data_seed 1 arm (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], 3000 steps, best-of-3 controls), the N=128 force margin is clearly below the same seed's N=64 value, and the normalised accel_step margin is unchanged. Paired differences are computed per seed from both arms' run-record trajectories. If either arm's per-seed trajectory is unavailable, the comparison is reported as not computed.
+run-20261013-052737-130c: [05:32:01] model: 209,094 params on mps; dataset 0788f12fa569; 9000 train / 1000 val systems
+run-20261013-052737-130c: [05:32:02] step 0: val_mse=5.163e-04 cv_baseline=1.610e-06 ratio=320.715
+run-20261013-052737-130c: [05:32:42] step 500: val_mse=4.490e-06 cv_baseline=1.610e-06 ratio=2.789
+run-20261013-052737-130c: [05:33:24] step 1000: val_mse=2.174e-06 cv_baseline=1.610e-06 ratio=1.351
+run-20261013-052737-130c: [05:34:05] step 1500: val_mse=5.495e-07 cv_baseline=1.610e-06 ratio=0.341
+run-20261013-052737-130c: [05:34:45] step 2000: val_mse=3.500e-07 cv_baseline=1.610e-06 ratio=0.217
+run-20261013-052737-130c: [05:35:26] step 2500: val_mse=1.928e-07 cv_baseline=1.610e-06 ratio=0.120
+run-20261013-052737-130c: [05:36:06] step 3000: val_mse=1.412e-07 cv_baseline=1.610e-06 ratio=0.088
+run-20261013-052737-130c: [05:36:06] training done in 4.1 min; beats constant-velocity baseline: True
+run-20261013-052737-130c: [05:36:08] random-model controls (best of 3): force=0.19/0.53/0.53/0.52/0.52, distance=-0.04/0.35/0.34/0.43/0.47, energy=-0.00/0.25/0.36/0.38/0.43, accel_step=0.68/0.74/0.76/0.76/0.76
+run-20261013-052737-130c: [05:36:09] probes @ step 0: best force R2=0.527 (layer 2)
+run-20261013-052737-130c: [05:36:11] probes @ step 2500: best force R2=0.664 (layer 4)
+run-20261013-052737-130c: [05:36:12] probes @ step 3000: best force R2=0.666 (layer 4)
+run-20261013-052737-130c: [05:36:12] run complete in 4.2 min

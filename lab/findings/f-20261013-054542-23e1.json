@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-054542-23e1",
+  "claim": "On data_seed 1, the force margin falls from N=64 to N=128 in both seeds, as predicted. At N=128 the final best-layer force margin is 0.137 for seed 20 (layer 1, R2 0.661 vs control 0.524) and 0.145 for seed 21 (layer 3, R2 0.662 vs control 0.517). The paired N=64 data_seed 1 runs both end at 0.209, so the drops are 0.072 and 0.064. The force controls are about the same in both arms (N=64 about 0.53, N=128 0.52), so the drop is in the trained force R2 (0.736-0.742 down to 0.661-0.662), not in the control. accel_step is essentially unchanged: R2 0.932/0.935 vs control 0.774/0.765, a raw margin of 0.158/0.170 and a headroom-normalised margin of 0.70/0.72, against 0.72/0.74 at N=64. Normalised force is only 0.29/0.30. Both N=128 runs beat the baseline (val_mse_ratio 0.099/0.088).",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-052736-ceca",
+    "run-20261013-052737-130c"
+  ],
+  "confidence_note": "Both seeds meet every expected-if-true criterion: force margin in [0.06, 0.20], at least 0.04 below the same seed's N=64 value, and normalised accel_step in [0.60, 0.78]. Both runs completed 3000/3000 steps. Three things limit confidence. (1) The drop on data_seed 1 (0.064-0.072) is smaller than on data_seed 0 (about 0.10-0.14), so the effect replicates in direction but its size depends on the dataset. Only two seeds and two datasets have been tested. (2) The N=128 force margin is still rising at step 3000 (seed 20: +0.007 per 500 steps; seed 21: +0.002). Earlier long runs showed the N=64-to-N=128 gap narrowing slowly, so this result describes the gap at a fixed 3000 steps, not at convergence. (3) Force is best at layer 1 in seed 20 but layer 3 in seed 21, so the best layer is not stable. The verdict would change if a third seed on data_seed 1, or another data_seed, gave an N=128 force margin within 0.02 of its paired N=64 value, or if longer training closed the gap.",
+  "created_at": "2026-10-13T05:45:42",
+  "experiment_id": "exp-20261013-051930-fcbc",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T05:45:42",
+      "actor": "agent"
+    }
+  ]
+}

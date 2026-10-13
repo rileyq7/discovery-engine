@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-054603-d6cc",
+  "claim": "The second identical rerun of the N=256, 3000-step config reproduces the earlier rerun (exp-20261013-031820-91ca) exactly. Every probe trajectory value matches at all 7 checkpoints for force, accel_step, distance and energy: margin, best layer and R2 are identical to 3 decimals. Final best-layer margins match: force 0.113 (layer 1, R2 0.644 vs control 0.531) in seed 20 and 0.003 (layer 3, R2 0.586 vs control 0.583) in seed 21. accel_step is 0.162 (R2 0.926 vs control 0.765) in seed 20 and 0.198 (R2 0.912 vs control 0.714) in seed 21. So training and probing are deterministic for a fixed seed under the current pipeline, and accel_step clearly beats its control in both seeds while force beats it only in seed 20.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-053613-9b39",
+    "run-20261013-053613-8f35"
+  ],
+  "confidence_note": "Both seeds match the earlier rerun with zero difference to the 3 decimals reported, which is far inside the 0.01 tolerance. The step-3000 val_mse_ratio values (0.237 and 0.282) could not be checked against the earlier rerun's, because that run's val_mse_ratio trajectory is not in the related-experiment data. The probe agreement makes a mismatch unlikely, but this part of the expected-if-true criterion is unverified here. Determinism is shown only within the current pipeline version, on one machine and one config. It says nothing about why the original pre-change N=256 runs (f-20261013-000253-c709) differ, which still points to a change in pipeline or controls. Two consequences follow. First, the step-3000 differences between the 3000-, 6000- and 12000-step N=256 runs (up to about 0.025 on force) must come from the lr-schedule horizon, not from noise. Second, the 0.11 force gap between seeds 20 and 21 is real seed-to-seed variance, not rerun noise. Any nonzero difference in a further identical rerun, or on different hardware, would weaken this.",
+  "created_at": "2026-10-13T05:46:03",
+  "experiment_id": "exp-20261013-051930-d71c",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T05:46:03",
+      "actor": "agent"
+    }
+  ]
+}
