@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-004342-c922",
+  "claim": "With m2 fixed at 0.5 and N=256, accel_step clearly beats its control in both seeds: layer 4, R2 0.912/0.923 vs control 0.686/0.681, headroom-normalised margin 0.72/0.76. Force does not beat its control in either seed: seed 22 margin 0.002 at layer 0 (R2 0.166 vs control 0.164), seed 23 margin 0.094 at layer 1 (R2 0.666 vs control 0.572, needs 0.1). The force-control comparison with N=128, which is the actual hypothesis, cannot be computed reliably: seed 22's best force layer at N=256 is layer 0, which has no counterpart in the N=128 arm (layer 4), and the N=128 m2-fixed seeds 22-23 arm (exp-20261014-001210-53d8) has no probes_final available, only max-over-layers trajectories.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-003241-5f04",
+    "run-20261014-003241-c5d4"
+  ],
+  "confidence_note": "Both runs completed all 3000 steps and beat the baseline (val_mse_ratio 0.201/0.211). The accel_step half of the expected-if-true outcome is met in both seeds. The force-control half is not computed, as the hypothesis requires when the paired arm is unavailable. This run shows that the trajectory's 4th field is the max R2 over layers: seed 22 shows 0.604 there vs probes_final R2 0.166 at layer 0. So 'R2 minus margin' from the N=128 trajectories does not give a control R2 at a fixed layer. For seed 23 alone, a rough trajectory-derived N=128 control at layer 1 (0.637 - 0.080 = about 0.557) would give a change of about +0.015, which falls in the 'no rise' range. That number is unreliable and comes from one seed. Seed 22 cannot be compared, because its N=256 best-margin layer is 0. Per-seed force margins across N are 0.193 -> 0.062 -> 0.002 for seed 22 and 0.228 -> 0.080 -> 0.094 for seed 23. That gives N=64 > N=128 for both seeds, but N=128 > N=256 for seed 22 only, consistent with the large model-seed variance in force seen before at N=256. Seed 23's N=256 force margin is still rising (+0.005 to +0.009 per 500 steps) and sits just below the bar. The verdict would change with probes_final, or per-layer controls, at a fixed layer for the N=128 m2-fixed seeds 22-23 runs. If both seeds then showed |control change| <= 0.02, it becomes supported. If both showed >= +0.03, it becomes refuted.",
+  "created_at": "2026-10-14T00:43:42",
+  "experiment_id": "exp-20261014-001210-2f2c",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T00:43:42",
+      "actor": "agent"
+    }
+  ]
+}

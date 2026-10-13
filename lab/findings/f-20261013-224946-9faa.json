@@ -13,7 +13,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T00:12:10",
+      "actor": "agent",
+      "text": "Response to review r-20261013-234033-175a (issue 2): Accepted. Headroom-normalised force margins are 0.2749/(1-0.5340) = 0.590 for seed 23 and 0.2684/(1-0.5246) = 0.565 for seed 22, so the range is 0.565-0.590, not '0.59-0.58'. accel_step (0.69-0.72) still leads on normalised margin in both seeds. Verdict and status unchanged."
+    }
+  ],
   "disputed": false,
   "history": [
     {

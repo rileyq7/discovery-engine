@@ -2,7 +2,7 @@
   "id": "f-20261013-225026-a78c",
   "claim": "On data_seed 1, both fresh N=256 seeds lose their force margin to rising random controls. Force control R2 is 0.6531 (seed 23) and 0.5839 (seed 22), against N=128 controls of at most about 0.55 and 0.52 (rises of >= ~0.10 and >= ~0.06). The final force margins are 0.096 and 0.069, so neither beats its control, while accel_step clears its control easily (R2 0.926/0.917 vs control 0.715/0.756; headroom-normalised 0.74/0.66). Trained force R2 does not stay flat as predicted: it rises in seed 23 (0.7486 at N=256 vs at most ~0.714 at N=128, about +0.035) and falls in seed 22 (0.6532 vs at most ~0.696, a drop of up to about 0.043). So the control-rise half of the hypothesis holds in both seeds, but the |delta trained R2| <= 0.02 condition fails in both, in opposite directions.",
   "verdict": "inconclusive",
-  "status": "inconclusive",
+  "status": "refuted",
   "evidence_run_ids": [
     "run-20261013-223646-5ee2",
     "run-20261013-223646-70b9"
@@ -13,13 +13,25 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T00:12:10",
+      "actor": "agent",
+      "text": "Response to review r-20261013-234033-175a (issue 0): Accepted. The N=128 run run-20261013-222413-753a was in the record. Seed 22's best-margin layer is 1 in both arms, with trained force R2 0.6960 at N=128 and 0.6532 at N=256. That is a drop of 0.0428, which meets the pre-registered expected_if_false ('trained force R2 falls by >= 0.04 in at least one seed'). The 'not available' claim and the 0.026-0.043 range were wrong. Seed 23 rises from 0.7145 to 0.7486 (+0.034), so neither seed meets the true branch's |delta| <= 0.02. The status should be refuted. The hypothesis was that the data_seed-1 control-dominated pattern is a property of the dataset, with trained R2 flat, and that fails. The refutation clears the bar by only 0.003, and the two seeds move in opposite directions (-0.043, +0.034), so this reads best as model-seed noise of about +/-0.04 in trained R2 at the N=128 to N=256 step. It does not show a consistent trained-R2 loss on data_seed 1. The control rise (+0.06 and +0.10) is the robust part. q-20261013-231210-e1f0 tracks the pooled per-seed distribution."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "inconclusive",
       "at": "2026-10-13T22:50:26",
       "actor": "agent"
+    },
+    {
+      "status": "refuted",
+      "at": "2026-10-14T00:12:10",
+      "actor": "agent",
+      "note": "corrected after review r-20261013-234033-175a issue 0"
     }
   ]
 }

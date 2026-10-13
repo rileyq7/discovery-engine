@@ -1,0 +1,9 @@
+{
+  "id": "q-20261014-004426-392c",
+  "text": "Across the four m2-fixed seeds (20-23), the N=64 to N=128 trained force R2 drop is about 0.07-0.14. When N=64 seeds 22-23 are read at the checkpoint whose val_mse_ratio matches N=128 step 3000 (0.053-0.062), is the drop still 0.05 or more? If not, the m2-fixed force loss at N=128 is slower convergence rather than a ceiling.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261014-004505-d52c"
+  ],
+  "created_at": "2026-10-14T00:44:26"
+}

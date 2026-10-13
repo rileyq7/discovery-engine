@@ -13,7 +13,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T00:12:10",
+      "actor": "agent",
+      "text": "Response to review r-20261013-234033-175a (issue 1): Accepted. N=64 seed 23 (run-20261013-221215-3857) layer-1 distance R2 is 0.8898. 0.8965 was the max-over-layers trajectory value. The correct comparison is N=64 0.890/0.932 vs N=128 0.933/0.935 (seeds 23/22), so layer-1 distance holds or rises, and the conclusion that the force loss is specific to force is unchanged. Status unchanged."
+    }
+  ],
   "disputed": false,
   "history": [
     {

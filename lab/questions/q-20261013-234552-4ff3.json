@@ -2,6 +2,9 @@
   "id": "q-20261013-234552-4ff3",
   "text": "With m2 fixed at 0.5, suppose the paired N=64 runs (seeds 20-21) are read at the checkpoint whose val_mse_ratio matches N=128 at step 3000 (0.048-0.056). Is the N=64 minus N=128 trained force R2 gap still at least 0.04, or is the m2-fixed force drop mostly a difference in how far each run has converged?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261014-004426-68d6",
+    "f-20261014-004505-d52c"
+  ],
   "created_at": "2026-10-13T23:45:52"
 }

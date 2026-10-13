@@ -1,0 +1,15 @@
+[00:22:36] experiment exp-20261014-001210-53d8 (E5) seed 22: With m2 fixed at 0.5, the N=64 to N=128 drop in trained force R2 is a real loss of decodability of 1/r^2, not a control effect, and it replicates on fresh seeds 22-23 (data_seed 0, otherwise identical to the paired N=64 m2-fixed seeds 22-23 arm). Seeds 20-21 dropped 0.070/0.105 with controls changing by 0.012 or less. Trained and control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired N=64 arm's probes_final is unavailable, the comparison is reported as not computed.
+[00:22:36] model: 209,094 params on mps; dataset 4d4d982c4792; 9000 train / 1000 val systems
+[00:22:38] step 0: val_mse=5.237e-04 cv_baseline=1.534e-06 ratio=341.426
+[00:23:27] step 500: val_mse=3.141e-06 cv_baseline=1.534e-06 ratio=2.048
+[00:24:16] step 1000: val_mse=8.331e-07 cv_baseline=1.534e-06 ratio=0.543
+[00:25:04] step 1500: val_mse=6.324e-07 cv_baseline=1.534e-06 ratio=0.412
+[00:25:53] step 2000: val_mse=2.378e-07 cv_baseline=1.534e-06 ratio=0.155
+[00:26:41] step 2500: val_mse=1.147e-07 cv_baseline=1.534e-06 ratio=0.075
+[00:27:29] step 3000: val_mse=9.556e-08 cv_baseline=1.534e-06 ratio=0.062
+[00:27:29] training done in 4.9 min; beats constant-velocity baseline: True
+[00:27:32] random-model controls (best of 3): force=0.19/0.59/0.60/0.60/0.59, accel_step=0.61/0.67/0.71/0.71/0.71, distance=-0.02/0.27/0.40/0.55/0.59, energy=-0.04/0.25/0.40/0.57/0.64
+[00:27:33] probes @ step 0: best force R2=0.609 (layer 3)
+[00:27:36] probes @ step 2500: best force R2=0.648 (layer 3)
+[00:27:38] probes @ step 3000: best force R2=0.657 (layer 3)
+[00:27:38] run complete in 5.0 min

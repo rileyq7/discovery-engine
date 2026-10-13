@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-004505-84e3",
+  "text": "For m2-fixed seeds 22-23, the N=64 checkpoints with val_mse_ratio closest to N=128 at step 3000 are steps 1500-2000 (seed 22, ratio 0.070-0.040) and steps 1000-1500 (seed 23, ratio 0.143-0.040). There the N=64 force margin is already 0.141-0.173, against 0.062/0.080 at N=128. If per-checkpoint probes_final (same-layer control plus best-layer margin) are exported, is the matched-loss N=64 minus N=128 trained force R2 gap still >= 0.05 in both seeds?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T00:45:05"
+}

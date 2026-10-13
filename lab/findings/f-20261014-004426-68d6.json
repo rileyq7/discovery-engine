@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-004426-68d6",
+  "claim": "With m2 fixed at 0.5, N=128 models on seeds 22-23 do not decode force above control. Force R2 is 0.654 (layer 4, control 0.592, margin 0.062) and 0.631 (layer 1, control 0.551, margin 0.080), both below the required 0.1. accel_step stays strong: R2 0.920/0.936, controls 0.715/0.736, headroom-normalised margin 0.72/0.76. Against the paired N=64 m2-fixed arm (seeds 22/23: best-layer force margin 0.193/0.228 at layer 1; trajectory force R2 about 0.767/0.770; control about 0.57/0.54), trained force R2 drops about 0.11/0.14 and the force control changes by only about +0.02/+0.01. That replicates the seeds 20-21 pattern: the force drop is in trained R2, not in the control.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-002233-049b",
+    "run-20261014-002233-2901"
+  ],
+  "confidence_note": "Both runs completed all 3000 steps and beat the baseline (val_mse_ratio 0.062/0.053). The pre-registered pairing reads N=64 values from probes_final, but the paired arm's probes_final was not available to this analysis, so its trained R2 and control come from the probe_trajectory. The 4th trajectory field may be max-over-layers R2 rather than the best-margin-layer R2 (q-20261013-075749-57bb). In these N=128 runs it overstates probes_final by 0.003-0.006. The trained-R2 drop does not depend much on this: the margins alone fall by 0.13-0.15, and a drop under 0.05 would need the N=64 control to sit about 0.08 or more below its trajectory-implied value. The control criterion (|change| <= 0.03) is the fragile part. It is met only approximately (+0.018/+0.009), and for seed 22 the controls come from different layers (layer 4 at N=128, layer 1 at N=64). Two things would change the verdict: probes_final for the N=64 arm showing a control rise of 0.03 or more in either seed, or a same-layer control comparison doing so. Matching on step also confounds convergence: N=64 is further converged at step 3000, so a matched-loss comparison might shrink the gap. With seeds 20-21 there are now four m2-fixed seeds that all show a trained-R2 drop of 0.07-0.14.",
+  "created_at": "2026-10-14T00:44:26",
+  "experiment_id": "exp-20261014-001210-53d8",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T00:44:26",
+      "actor": "agent"
+    }
+  ]
+}
