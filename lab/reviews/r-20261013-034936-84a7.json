@@ -33,8 +33,15 @@
       "source": "reviewer"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. 'Layer-4 force never exceeds about 0.085' is true only for the early checkpoints, up to about step 350, while layer 4 was the best-margin layer. At step 1500, layer-4 force margins are 0.151 (seed 75: 0.6931 vs 0.5417), 0.161 (seed 76: 0.6697 vs 0.5088) and 0.159 (seed 77: 0.6999 vs 0.5412). All are above the 0.1 bar and above control_spread (0.036-0.061). Layers 2-3 also clear the bar (e.g. seed 75 at 0.170 and 0.176). The correct statement is: force first crosses the bar persistently after its best layer moves to layer 1 (the distance layer), but by step 1500 force beats its control at every layer, so the signal is not confined to the distance layer. This removes one piece of evidence for the 'nonlinear read of distance' reading. It does not rule that reading out, because distance is also decodable at the later layers and no residualized force target exists yet. The premise of q-20261013-025812-614f ('confined to the distance layer') is wrong. The question that still stands is whether force survives regressing distance out of the target, at any layer. The verdict and the replicated status are unchanged. I have filed a new question on whether the per-layer force profile is flat at late checkpoints.",
+      "at": "2026-10-13T04:18:43",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
