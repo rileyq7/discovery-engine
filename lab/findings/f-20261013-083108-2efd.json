@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-083108-2efd",
+  "claim": "At N=256, training seeds 24-25 for 4000 steps did not close the trained force R2 gap to N=128, and in both seeds the result meets the expected-if-false criteria. Final best-layer (layer 1) trained force R2 is 0.557 (seed 24) and 0.569 (seed 25), which is 0.082 and 0.053 below the same seeds' N=128 values (0.639 / 0.621). Between steps 3000 and 4000, trained force R2 rose only about 0.011 and 0.014 (force margin 0.009\u21920.020 and 0.041\u21920.055 against controls fixed at 0.537 / 0.514), and force still does not beat its control in either run. accel_step, by contrast, holds R2 0.906-0.915 against controls 0.684-0.716 (margin 0.199-0.223), with headroom-normalised margin about 0.70 in both seeds.",
+  "verdict": "refuted",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-081947-a102",
+    "run-20261013-081947-9acf"
+  ],
+  "confidence_note": "Both seeds completed all 4000 steps and meet every expected-if-false bar: gap >= 0.04 and gain <= 0.015. The step-3000 trained force R2 (control + margin: about 0.546 / 0.555) is within 0.017 / 0.004 of the 3000-step runs (0.563 / 0.559), so the cross-run comparison is not horizon-confounded under the pre-stated 0.03 rule. Four things limit confidence. (1) Seed 25's gain of 0.014 is only just under the 0.015 bar, and it is computed from trajectory margins rounded to 3 decimals. (2) Within-run growth comes from the trajectory margin, because the trajectory's 4th field does not equal the probes_final R2 (0.576 vs 0.557 and 0.590 vs 0.569 at step 4000), so that field cannot be used as best-margin-layer trained R2. (3) The result refutes 'closes the gap within 1000 extra steps'. It does not show a fixed ceiling: force is still gaining about +0.005-0.007 margin per 500 steps, and val_mse_ratio is still falling (0.30-0.44 to 0.18). At that rate the 0.053-0.082 gap would need roughly 4000-8000 more steps, so 'slower growth' remains possible over longer horizons. (4) There are only two seeds, on data_seed 0. The verdict would change if 6000-8000-step runs brought trained force R2 within 0.02 of N=128, or if a comparison at matched val_mse_ratio rather than matched step closed the gap.",
+  "created_at": "2026-10-13T08:31:08",
+  "experiment_id": "exp-20261013-081946-3be6",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T08:31:08",
+      "actor": "agent"
+    }
+  ]
+}

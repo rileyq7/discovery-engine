@@ -1,0 +1,17 @@
+run-20261013-081947-a102: [08:25:14] experiment exp-20261013-081946-3be6 (E5) seed 24: At N=256 the trained-force-R2 shortfall relative to N=128 is slower growth, not a lower ceiling. Seeds 24-25 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) were 0.054-0.076 below their N=128 3000-step trained force R2 (0.639 / 0.621) at 3000 steps. Trained to 4000 steps, they close most of that gap. All values come from run-record probes_final (best-margin layer, unrounded). Within-run growth is measured from the step-3000 checkpoint to step 4000, also from the run records. Because the lr schedule may depend on total steps, cross-run comparisons are reported as horizon-confounded if the step-3000 trained force R2 differs by more than 0.03 from the 3000-step runs of the same seeds (0.563 / 0.559).
+run-20261013-081947-a102: [08:25:14] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+run-20261013-081947-a102: [08:25:16] step 0: val_mse=1.305e-04 cv_baseline=1.010e-07 ratio=1292.369
+run-20261013-081947-a102: [08:25:55] step 500: val_mse=1.728e-06 cv_baseline=1.010e-07 ratio=17.111
+run-20261013-081947-a102: [08:26:34] step 1000: val_mse=3.722e-07 cv_baseline=1.010e-07 ratio=3.687
+run-20261013-081947-a102: [08:27:13] step 1500: val_mse=2.066e-07 cv_baseline=1.010e-07 ratio=2.046
+run-20261013-081947-a102: [08:27:52] step 2000: val_mse=1.019e-07 cv_baseline=1.010e-07 ratio=1.009
+run-20261013-081947-a102: [08:28:31] step 2500: val_mse=4.021e-08 cv_baseline=1.010e-07 ratio=0.398
+run-20261013-081947-a102: [08:29:10] step 3000: val_mse=3.036e-08 cv_baseline=1.010e-07 ratio=0.301
+run-20261013-081947-a102: [08:29:50] step 3500: val_mse=2.327e-08 cv_baseline=1.010e-07 ratio=0.231
+run-20261013-081947-a102: [08:30:29] step 4000: val_mse=1.863e-08 cv_baseline=1.010e-07 ratio=0.185
+run-20261013-081947-a102: [08:30:29] training done in 5.2 min; beats constant-velocity baseline: True
+run-20261013-081947-a102: [08:30:31] random-model controls (best of 3): force=0.15/0.54/0.56/0.57/0.58, distance=0.01/0.23/0.34/0.54/0.57, energy=-0.01/0.13/0.26/0.34/0.36, accel_step=0.57/0.66/0.67/0.68/0.68
+run-20261013-081947-a102: [08:30:31] probes @ step 0: best force R2=0.546 (layer 3)
+run-20261013-081947-a102: [08:30:34] probes @ step 2500: best force R2=0.560 (layer 4)
+run-20261013-081947-a102: [08:30:36] probes @ step 4000: best force R2=0.576 (layer 3)
+run-20261013-081947-a102: [08:30:36] run complete in 5.4 min

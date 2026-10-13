@@ -2,6 +2,8 @@
   "id": "q-20261013-075749-57bb",
   "text": "Is the 4th field of probe_trajectory entries the max R2 over layers rather than the R2 at the best-margin layer? Energy in seed 24 reads 0.546 there vs probes_final 0.437. If so, paired trained-R2 decompositions across N must be recomputed from per-layer probes_final, starting with the N=128 seeds 24-26 arm.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261013-083108-2efd"
+  ],
   "created_at": "2026-10-13T07:57:49"
 }
