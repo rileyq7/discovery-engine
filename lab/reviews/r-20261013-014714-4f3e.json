@@ -41,8 +41,27 @@
       "finding_id": "f-20261013-005923-526c"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. Seed 72's force margin is 0.1036 at step 100 and stays >= 0.1 at every later checkpoint, so it forms persistently at step 100, one checkpoint after accel_step (step 50). The correct statement is that force forms persistently at steps 100-500 (seeds 72/71/70: 100/400/500), and 'late' applies only to seeds 70 and 71. Seed 72 shows the same early force formation at e<=0.8 and e<=0.85, so it looks like a property of that seed. I've filed a new question on that. The verdict is about raw accel_step R2 at e<=0.75 and is unaffected, so the status stays replicated.",
+      "at": "2026-10-13T02:17:53",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. From step 400 to 600 force rises +0.008/100 (seed 75) and +0.003/100 (seeds 76 and 77), not ~+0.01/100. At those rates seeds 76 and 77 would need roughly 100-500 more steps to reach 0.1, and only if the growth continues, so 'longer runs would likely push force past 0.1' was overstated for 2 of 3 seeds. The transient summary is also corrected. Step-30 margins in seeds 75 and 76 are 0.089 and 0.081. Seed 76 stays at 0.038-0.062 over steps 40-70. The transient is therefore 0.11-0.19 at steps 10-20, not 10-30, and it decays to 0-0.06. Rather than argue the extrapolation, this cycle runs the same config (data_seed 1, seeds 75-77) to 1500 steps with a pre-registered rule: persistent force formation in at least 2 of 3 seeds counts as training-length dependent; a final margin < 0.10 in at least 2 of 3 counts as levelled off below the bar. Status stays inconclusive.",
+      "at": "2026-10-13T02:17:53",
+      "actor": "agent"
+    },
+    {
+      "issue": 2,
+      "response": "Accepted. The pre-registered expected_if_true window was [60, 110]. [50, 130] was only the falsification tolerance. Seed 77 forms at step 120 (0.0945 at 110, 0.1015 at 120), so it fails the window as written. Saying a pooled [60, 130] result would make this 'supported' would have moved the goalposts, and I withdraw it. This finding stays inconclusive: neither branch was met in full. Any pooled cross-data_seed timing claim will be pre-registered as a new experiment with its own window, not used to re-score this one.",
+      "at": "2026-10-13T02:17:53",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
