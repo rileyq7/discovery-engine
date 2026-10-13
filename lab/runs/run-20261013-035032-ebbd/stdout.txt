@@ -1,0 +1,23 @@
+run-20261013-035032-ebbd: [03:50:35] experiment exp-20261013-031820-64d0 (E5) seed 20: At N=256 the force collapse seen at 3000 steps is a late start, not a ceiling. Force growth begins only after val_mse_ratio falls below about 1, then continues. With seeds 20-21, architecture and data matched to exp-20261013-021753-c0b1 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), training to 12000 steps takes seed 21's force margin (0.044 at step 6000) well above the bar, and seed 20's (0.139) keeps rising. Margins are read from the per-checkpoint trajectory as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. For each seed, the analysis reports the first checkpoint where val_mse_ratio < 1 and the first checkpoint where the force margin has risen >= 0.03 above its pre-onset value.
+run-20261013-035032-ebbd: [03:50:35] model: 209,094 params on mps; dataset 5f1b29666190; 9000 train / 1000 val systems
+run-20261013-035032-ebbd: [03:50:36] step 0: val_mse=1.338e-04 cv_baseline=1.010e-07 ratio=1325.026
+run-20261013-035032-ebbd: [03:51:14] step 500: val_mse=1.933e-06 cv_baseline=1.010e-07 ratio=19.141
+run-20261013-035032-ebbd: [03:51:53] step 1000: val_mse=4.875e-07 cv_baseline=1.010e-07 ratio=4.829
+run-20261013-035032-ebbd: [03:52:31] step 1500: val_mse=2.483e-07 cv_baseline=1.010e-07 ratio=2.459
+run-20261013-035032-ebbd: [03:53:16] step 2000: val_mse=3.048e-07 cv_baseline=1.010e-07 ratio=3.019
+run-20261013-035032-ebbd: [03:53:57] step 2500: val_mse=1.530e-07 cv_baseline=1.010e-07 ratio=1.515
+run-20261013-035032-ebbd: [03:54:36] step 3000: val_mse=1.417e-07 cv_baseline=1.010e-07 ratio=1.403
+run-20261013-035032-ebbd: [03:55:17] step 3500: val_mse=6.529e-08 cv_baseline=1.010e-07 ratio=0.647
+run-20261013-035032-ebbd: [03:55:59] step 4000: val_mse=1.261e-07 cv_baseline=1.010e-07 ratio=1.249
+run-20261013-035032-ebbd: [03:56:39] step 4500: val_mse=5.031e-08 cv_baseline=1.010e-07 ratio=0.498
+run-20261013-035032-ebbd: [03:57:19] step 5000: val_mse=8.458e-08 cv_baseline=1.010e-07 ratio=0.838
+run-20261013-035032-ebbd: [03:57:59] step 5500: val_mse=4.796e-08 cv_baseline=1.010e-07 ratio=0.475
+run-20261013-035032-ebbd: [03:58:40] step 6000: val_mse=2.631e-08 cv_baseline=1.010e-07 ratio=0.261
+run-20261013-035032-ebbd: [03:59:20] step 6500: val_mse=3.825e-08 cv_baseline=1.010e-07 ratio=0.379
+run-20261013-035032-ebbd: [04:00:00] step 7000: val_mse=3.334e-08 cv_baseline=1.010e-07 ratio=0.330
+run-20261013-035032-ebbd: [04:00:41] step 7500: val_mse=2.631e-08 cv_baseline=1.010e-07 ratio=0.261
+run-20261013-035032-ebbd: [04:01:21] step 8000: val_mse=2.168e-08 cv_baseline=1.010e-07 ratio=0.215
+run-20261013-035032-ebbd: [04:02:01] step 8500: val_mse=1.222e-08 cv_baseline=1.010e-07 ratio=0.121
+run-20261013-035032-ebbd: [04:02:42] step 9000: val_mse=1.425e-08 cv_baseline=1.010e-07 ratio=0.141
+run-20261013-035032-ebbd: [04:03:22] step 9500: val_mse=1.032e-08 cv_baseline=1.010e-07 ratio=0.102
+run-20261013-035032-ebbd: [04:04:03] step 10000: val_mse=8.502e-09 cv_baseline=1.010e-07 ratio=0.084

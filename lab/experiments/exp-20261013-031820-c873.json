@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261013-031820-c873",
+  "family": "E5",
+  "hypothesis": "At N=128 the lower force margin is a slower growth rate, not a lower ceiling. With seeds 20-21, architecture and data matched to exp-20261013-021753-b8bd (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), training to 12000 steps lets the best-layer force margin keep rising from 0.178 and 0.163 at step 6000 until it reaches the N=64 band (>= 0.20). The headroom-normalised accel_step margin stays flat. Margins are read from the per-checkpoint trajectory as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. If either seed's step-6000 force margin differs by more than 0.03 from the 6000-step run of the same seed, within-run growth is the primary measure and cross-run comparisons are reported as horizon-confounded.",
+  "expected_if_true": "Final (step 12000) force margin >= 0.20 in both seeds, with a step-6000-to-12000 gain >= 0.03 in both. accel_step headroom-normalised margin in [0.62, 0.77] in both seeds.",
+  "expected_if_false": "Final force margin <= 0.18 in both seeds and a step-6000-to-12000 gain <= 0.02 in both seeds, meaning force levels off below the N=64 band (lower ceiling). Any other pattern is reported as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=128 the lower force margin is a slower growth rate, not a lower ceiling. With seeds 20-21, architecture and data matched to exp-20261013-021753-b8bd (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), training to 12000 steps lets the best-layer force margin keep rising from 0.178 and 0.163 at step 6000 until it reaches the N=64 band (>= 0.20). The headroom-normalised accel_step margin stays flat. Margins are read from the per-checkpoint trajectory as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. If either seed's step-6000 force margin differs by more than 0.03 from the 6000-step run of the same seed, within-run growth is the primary measure and cross-run comparisons are reported as horizon-confounded.",
+    "expected_if_true": "Final (step 12000) force margin >= 0.20 in both seeds, with a step-6000-to-12000 gain >= 0.03 in both. accel_step headroom-normalised margin in [0.62, 0.77] in both seeds.",
+    "expected_if_false": "Final force margin <= 0.18 in both seeds and a step-6000-to-12000 gain <= 0.02 in both seeds, meaning force levels off below the N=64 band (lower ceiling). Any other pattern is reported as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 12000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T03:18:20",
+  "updated_at": "2026-10-13T04:04:04",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.9346,
+  "compute_hours": 0.5345,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T03:18:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T03:18:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T03:18:21",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T03:18:21",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T03:50:32",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T04:04:04",
+      "actor": "agent",
+      "note": "finding f-20261013-040404-281d"
+    }
+  ]
+}

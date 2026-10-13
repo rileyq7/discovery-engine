@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-040404-281d",
+  "claim": "With 12000 training steps at N=128, the best-layer force margin (layer 1, the distance layer) ends at 0.197 for seed 21 and 0.193 for seed 20. Both are just under the 0.20 N=64 band and above the 0.18 lower-ceiling cutoff. The gains from step 6000 to step 12000 were +0.029 and +0.019, and growth slowed over the run (6000-9000: +0.019/+0.011; 9000-12000: +0.010/+0.008). Over the same steps val_mse_ratio fell 7-11x (0.158->0.0137 and 0.102->0.0141). accel_step stays flat at layer 4 (raw margin 0.173->0.175 and 0.145->0.150; R2 0.932-0.933 against controls 0.757-0.783). Its headroom-normalised margin is 0.72 and 0.69, so force is still the weaker margin by headroom even though it is the only target that kept rising.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-031821-15ad",
+    "run-20261013-031821-cf5f"
+  ],
+  "confidence_note": "Neither pre-registered outcome happened in either seed. Supported needed a final margin >= 0.20 and a gain >= 0.03 in both seeds: both finals (0.19734 and 0.19309, unrounded) miss, and seed 20's gain of 0.019 misses. Refuted needed a final <= 0.18 and a gain <= 0.02: both finals miss. Seed 21's gain (~0.029, measured from a step-6000 value rounded to 0.168) is right at the 0.03 cutoff, but its final is below 0.20 either way. The horizon check passed: step-6000 force margins in these runs (0.168, 0.174) are within 0.005 of the 6000-step runs of the same seeds (0.163, 0.178), so the cross-run comparison is not horizon-confounded. The trajectories favour a slow approach to a ceiling near 0.20-0.21, below the N=64 seeds-20-21 values of 0.21-0.26 already reached by step 3000. That suggests a lower ceiling rather than just slower growth, but force was still gaining about 0.002-0.003 per 1000 steps at the end, so the asymptote is not pinned down. Other limits: two seeds, one data_seed, and best-of-3 controls. Force peaks at layer 1, the distance layer, where the distance margin is also creeping up (0.556->0.569 and 0.698->0.720), so this late gain may be a sharper distance read rather than an m2-weighted force code. Three results would change the verdict: a 24000-step run that clears 0.21 (slower growth), a run that levels off at <= 0.20 (lower ceiling), or N=64 seeds 20-21 trained to 12000 steps that rise well above 0.26 (confirms a gap between N=64 and N=128).",
+  "created_at": "2026-10-13T04:04:04",
+  "experiment_id": "exp-20261013-031820-c873",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T04:04:04",
+      "actor": "agent"
+    }
+  ]
+}

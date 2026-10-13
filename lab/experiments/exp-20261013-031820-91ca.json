@@ -1,0 +1,92 @@
+{
+  "id": "exp-20261013-031820-91ca",
+  "family": "E5",
+  "hypothesis": "The disagreement between the step-3000 force margins of the N=256 6000-step runs (0.102 and 0.001) and the earlier N=256 3000-step runs (0.033-0.040, f-20261013-000253-c709) comes from the lr-schedule horizon, not run-to-run nondeterminism. An exact rerun of the 3000-step N=256 config with seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) reproduces the original final margins.",
+  "expected_if_true": "Final force margins match the original pair {0.033, 0.040} within 0.02 for both seeds (and accel_step margins match {0.231, 0.245} within 0.02). That means runs are deterministic, so the step-3000 gap to the 6000-step runs is a schedule-horizon effect, and cross-length comparisons must use within-run growth.",
+  "expected_if_false": "Either seed's final force margin or accel_step margin differs from the original by more than 0.03. That means run-to-run nondeterminism is at least that large, and differences of about 0.03 between runs cannot be interpreted.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The disagreement between the step-3000 force margins of the N=256 6000-step runs (0.102 and 0.001) and the earlier N=256 3000-step runs (0.033-0.040, f-20261013-000253-c709) comes from the lr-schedule horizon, not run-to-run nondeterminism. An exact rerun of the 3000-step N=256 config with seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls) reproduces the original final margins.",
+    "expected_if_true": "Final force margins match the original pair {0.033, 0.040} within 0.02 for both seeds (and accel_step margins match {0.231, 0.245} within 0.02). That means runs are deterministic, so the step-3000 gap to the 6000-step runs is a schedule-horizon effect, and cross-length comparisons must use within-run growth.",
+    "expected_if_false": "Either seed's final force margin or accel_step margin differs from the original by more than 0.03. That means run-to-run nondeterminism is at least that large, and differences of about 0.03 between runs cannot be interpreted.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T03:18:20",
+  "updated_at": "2026-10-13T03:18:21",
+  "verdict": null,
+  "estimate_hours": 0.2614,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T03:18:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T03:18:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T03:18:21",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

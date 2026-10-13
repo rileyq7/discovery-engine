@@ -3,7 +3,8 @@
   "text": "At N=128, force gains about 0.004-0.005 per 500 steps from step 3000 to 6000 and has not levelled off (final 0.163-0.178). If seeds 20-21 are trained to 12000 steps, does force reach >= 0.20, or does it level off below 0.18? Across N=64, 128 and 256, is the final force margin better predicted by log(val_mse_ratio) than by training step?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-025916-27cc"
+    "f-20261013-025916-27cc",
+    "f-20261013-040404-281d"
   ],
   "created_at": "2026-10-13T02:58:45"
 }

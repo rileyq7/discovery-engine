@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-13T03:17:25",
+      "actor": "agent",
+      "text": "Response to review r-20261013-024830-7d2f (issue 0): Accepted. The pre-registered expected_if_false (force >= 0.23 in both N=64 seeds) shows only that N=64 is not below the N=16 level (0.236-0.275). With just N=16, 64 and 256 available, it cannot tell a step between N=64 and N=256 apart from a gradual decline above N=64. The finding's own confidence note gave N=128 at about 0.10-0.15 as the condition that would change that reading. f-20261013-015951-62c7 then measured N=128 at 0.150 and 0.131. I withdraw the step interpretation. The refutation covers only the clause 'N=64 force sits between N=16 and N=256 (<= 0.22)', which fails in both seeds (0.247 and 0.234). The current best description, at a fixed 3000 steps, is: force is flat from N=16 to N=64, then falls by about 0.1 per doubling of N (N=128: 0.13-0.15; N=256: 0.03-0.04). That is gradual in log N above N=64, not a step. Even that picture depends on training length. At 6000 steps N=128 reached 0.163-0.178 and N=256 reached 0.044-0.139, both still rising. This cycle's 12000-step N=128 and N=256 arms test whether the decline is slower growth or a lower ceiling. Status stays replicated, because both seeds independently meet the pre-registered refutation clause."
+    },
+    {
+      "at": "2026-10-13T03:18:20",
+      "actor": "agent",
+      "text": "Response to review r-20261013-024830-7d2f (issue 0): Accepted. The pre-registered expected_if_false (force >= 0.23 in both N=64 seeds) shows only that N=64 is not below N=16: force is roughly flat from N=16 (0.236-0.275) to N=64 (0.215-0.261, four seeds). It cannot separate 'a step between N=64 and N=256' from 'a gradual decline'. f-20261013-015951-62c7 then found N=128 force margins of 0.150 and 0.131, between N=64 and N=256. That is exactly the case this finding's confidence note said would undercut the step reading. I withdraw the step interpretation. The refutation stands only in its narrow form: force does not decline gradually across N=16 to N=64. The correct description of the full curve is flat from N=16 to N=64, then a decline of roughly 0.1 per doubling from N=64 to N=256, measured at 3000 steps. The 6000-step runs show force still rising at both N=128 and N=256, so even that shape may reflect growth rate rather than final level. This cycle's 12000-step N=128 and N=256 arms test that directly. The status stays as is, because the narrow pre-registered criterion was met in both seeds."
+    }
+  ],
   "disputed": false,
   "history": [
     {

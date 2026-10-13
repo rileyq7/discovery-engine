@@ -1,0 +1,98 @@
+{
+  "id": "exp-20261013-031820-64d0",
+  "family": "E5",
+  "hypothesis": "At N=256 the force collapse seen at 3000 steps is a late start, not a ceiling. Force growth begins only after val_mse_ratio falls below about 1, then continues. With seeds 20-21, architecture and data matched to exp-20261013-021753-c0b1 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), training to 12000 steps takes seed 21's force margin (0.044 at step 6000) well above the bar, and seed 20's (0.139) keeps rising. Margins are read from the per-checkpoint trajectory as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. For each seed, the analysis reports the first checkpoint where val_mse_ratio < 1 and the first checkpoint where the force margin has risen >= 0.03 above its pre-onset value.",
+  "expected_if_true": "Final force margin >= 0.12 in both seeds, a seed-21 gain from step 6000 to 12000 of >= 0.06, and force-growth onset within 1000 steps after val_mse_ratio first falls below 1 in both seeds. accel_step headroom-normalised margin in [0.62, 0.77] in both seeds.",
+  "expected_if_false": "Seed 21's final force margin is < 0.10, and both seeds gain <= 0.03 from step 6000 to 12000 (force levels off, a ceiling well below N=64). Any other pattern is reported as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At N=256 the force collapse seen at 3000 steps is a late start, not a ceiling. Force growth begins only after val_mse_ratio falls below about 1, then continues. With seeds 20-21, architecture and data matched to exp-20261013-021753-c0b1 (4 layers, d_model=64, e in [0, 0.5], m2 in [0.1, 1], best-of-3 controls), training to 12000 steps takes seed 21's force margin (0.044 at step 6000) well above the bar, and seed 20's (0.139) keeps rising. Margins are read from the per-checkpoint trajectory as unrounded values against a strict >= required_margin bar, with force taken at its best layer at each checkpoint. For each seed, the analysis reports the first checkpoint where val_mse_ratio < 1 and the first checkpoint where the force margin has risen >= 0.03 above its pre-onset value.",
+    "expected_if_true": "Final force margin >= 0.12 in both seeds, a seed-21 gain from step 6000 to 12000 of >= 0.06, and force-growth onset within 1000 steps after val_mse_ratio first falls below 1 in both seeds. accel_step headroom-normalised margin in [0.62, 0.77] in both seeds.",
+    "expected_if_false": "Seed 21's final force margin is < 0.10, and both seeds gain <= 0.03 from step 6000 to 12000 (force levels off, a ceiling well below N=64). Any other pattern is reported as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 256,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 12000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "running",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T03:18:20",
+  "updated_at": "2026-10-13T03:50:32",
+  "verdict": null,
+  "estimate_hours": 0.9346,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T03:18:20",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T03:18:20",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T03:18:21",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T03:50:32",
+      "actor": "worker",
+      "note": ""
+    }
+  ]
+}
