@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261013-231210-ae2c",
+  "family": "E5",
+  "hypothesis": "The N=64 to N=128 drop in trained force R2 (0.08-0.13 per seed with m2 in [0.1, 1]) comes from losing the m2 factor of force, not from the 1/r^2 part. Layer-1 distance R2 does not fall with N. So with m2 fixed at 0.5 (force = 0.5/r^2), N=128 trained force R2 for seeds 20-21 (data_seed 0, otherwise identical to the paired N=64 m2-fixed arm) stays within 0.03 of the same seed's N=64 m2-fixed value. Trained R2 and control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.",
+  "expected_if_true": "In both seeds, |N=128 trained force R2 - same-seed N=64 m2-fixed trained force R2| <= 0.03 and the force control changes by <= 0.03. Headroom-normalised accel_step is in [0.55, 0.85].",
+  "expected_if_false": "In both seeds, N=128 trained force R2 is >= 0.06 below the same seed's N=64 m2-fixed value, similar to the wide-m2 drop. That would put the loss in reading out 1/r^2, not in m2. A drop between 0.03 and 0.06, or seeds that disagree, is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The N=64 to N=128 drop in trained force R2 (0.08-0.13 per seed with m2 in [0.1, 1]) comes from losing the m2 factor of force, not from the 1/r^2 part. Layer-1 distance R2 does not fall with N. So with m2 fixed at 0.5 (force = 0.5/r^2), N=128 trained force R2 for seeds 20-21 (data_seed 0, otherwise identical to the paired N=64 m2-fixed arm) stays within 0.03 of the same seed's N=64 m2-fixed value. Trained R2 and control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.",
+    "expected_if_true": "In both seeds, |N=128 trained force R2 - same-seed N=64 m2-fixed trained force R2| <= 0.03 and the force control changes by <= 0.03. Headroom-normalised accel_step is in [0.55, 0.85].",
+    "expected_if_false": "In both seeds, N=128 trained force R2 is >= 0.06 below the same seed's N=64 m2-fixed value, similar to the wide-m2 drop. That would put the loss in reading out 1/r^2, not in m2. A drop between 0.03 and 0.06, or seeds that disagree, is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-13T23:12:10",
+  "updated_at": "2026-10-13T23:45:52",
+  "verdict": "refuted",
+  "estimate_hours": 0.2614,
+  "compute_hours": 0.1755,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-13T23:12:10",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-13T23:12:10",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-13T23:12:11",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-13T23:22:35",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-13T23:33:13",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-13T23:45:52",
+      "actor": "agent",
+      "note": "finding f-20261013-234552-f8e8"
+    }
+  ]
+}

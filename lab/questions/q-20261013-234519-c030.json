@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-234519-c030",
+  "text": "With m2 fixed at 0.5, the trajectory-derived force controls at N=64/128/256 are about 0.635/0.633/0.620 for seed 20 and about 0.594/0.583/0.652 for seed 21. With m2 in [0.1, 1] the control rises from about 0.50 (N=64) to 0.58-0.65 (N=256). Is the N-driven rise in the force control mostly an m2-variation effect that disappears once m2 is fixed? Pooling probes_final controls at the same layer across seeds 20-23 for both m2 settings would test this.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-234552-f8e8"
+  ],
+  "created_at": "2026-10-13T23:45:19"
+}

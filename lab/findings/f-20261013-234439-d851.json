@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-234439-d851",
+  "claim": "With m2 fixed at 0.5 (N=64, e<=0.5, 3000 steps), force is still decoded above its best-of-3 control in both seeds: seed 21 has R2 0.789 vs control 0.594 (margin 0.195, layer 1) and seed 20 has R2 0.763 vs control 0.630 (margin 0.133, layer 4). accel_step does better in both seeds, with R2 0.940/0.957 vs control 0.771/0.799 at layer 4, a headroom-normalised margin of 0.74/0.79 against force's 0.48/0.36. Trained force R2 is higher than in the wide-m2 runs of the same seeds (0.726/0.737), but the margins are smaller (wide-m2 0.215/0.261) because fixing m2 raises the force control from about 0.48-0.51 to 0.59-0.63.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261013-231211-6833",
+    "run-20261013-231211-9f25"
+  ],
+  "confidence_note": "Both seeds meet every expected-if-true criterion: force margin >= 0.12, trained force R2 in [0.62, 0.85], and normalised accel_step margin in [0.55, 0.85]. Both runs completed 3000/3000 steps and beat the baseline (val_mse_ratio 0.011-0.012). Values are read from probes_final, unrounded. Seed 20's force margin (0.133) is only 0.013 above the 0.12 bar and peaks at layer 4, not at the distance layer as in seed 21, so the best force layer is not stable across seeds. There are only two seeds and one data_seed (0). The comparison with wide-m2 runs mixes a change in the trained R2 with a change in the control, so the smaller margin here does not mean m2 adds decodable structure. Fixing m2 removes the m2 part of the force target, which makes it easier for random models to read. The verdict would change if a third seed or data_seed 1 gave a force margin below 0.10. In both seeds the force margin was still rising at step 3000 (+0.006 to +0.011 per 500 steps), so 3000 steps is not a plateau.",
+  "created_at": "2026-10-13T23:44:39",
+  "experiment_id": "exp-20261013-231210-12e0",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-13T23:44:39",
+      "actor": "agent"
+    }
+  ]
+}

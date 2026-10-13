@@ -2,6 +2,8 @@
   "id": "q-20261013-225026-e58c",
   "text": "The N=256 force random-control R2 differs by 0.07 between seeds 22 and 23 on the same data (0.584 vs 0.653, spread up to 0.049). Is the N=256 force control unusually sensitive to which random inits are drawn? Would a larger control pool (n_controls 5-10) shared across seeds stabilise it?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261013-234519-1240"
+  ],
   "created_at": "2026-10-13T22:50:26"
 }

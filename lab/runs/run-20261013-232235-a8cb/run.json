@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-232235-a8cb",
+  "experiment_id": "exp-20261013-231210-ae2c",
+  "seed": 20,
+  "status": "completed",
+  "started_at": "2026-10-13T23:28:09",
+  "ended_at": "2026-10-13T23:33:13",
+  "compute_hours": 0.0846,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-232235-a8cb",
+  "git_commit": "e064718",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 8.626384880599075e-08,
+    "baseline_cv_mse": 1.5339796233364916e-06,
+    "val_mse_ratio": 0.056235329005454485,
+    "beats_baseline": true,
+    "train_hours": 0.08221029864417181,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "4d4d982c4792",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.69341,
+          "control_r2": 0.63044,
+          "control_spread": 0.01775,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.94539,
+          "control_r2": 0.7933,
+          "control_spread": 0.01034,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.91455,
+          "control_r2": 0.26709,
+          "control_spread": 0.08427,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.89159,
+          "control_r2": 0.2911,
+          "control_spread": 0.12259,
+          "required_margin": 0.1226,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 73258,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "4d4d982c4792"
+}

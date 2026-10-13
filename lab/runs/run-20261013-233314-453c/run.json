@@ -1,0 +1,73 @@
+{
+  "id": "run-20261013-233314-453c",
+  "experiment_id": "exp-20261013-231210-6891",
+  "seed": 21,
+  "status": "completed",
+  "started_at": "2026-10-13T23:38:47",
+  "ended_at": "2026-10-13T23:44:03",
+  "compute_hours": 0.0878,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261013-233314-453c",
+  "git_commit": "e064718",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 2.3535755279613293e-08,
+    "baseline_cv_mse": 9.669551229852391e-08,
+    "val_mse_ratio": 0.2434006989585242,
+    "beats_baseline": true,
+    "train_hours": 0.0852766411834293,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "58eac1aa2faf",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.65514,
+          "control_r2": 0.65208,
+          "control_spread": 0.02967,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.92966,
+          "control_r2": 0.71619,
+          "control_spread": 0.00902,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.94859,
+          "control_r2": 0.39614,
+          "control_spread": 0.13112,
+          "required_margin": 0.1311,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.86656,
+          "control_r2": 0.38265,
+          "control_spread": 0.17859,
+          "required_margin": 0.1786,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 75832,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "58eac1aa2faf"
+}

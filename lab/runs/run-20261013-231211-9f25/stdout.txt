@@ -1,0 +1,15 @@
+run-20261013-231211-9f25: [23:17:24] experiment exp-20261013-231210-12e0 (E5) seed 20: Reference arm for the m2-fixed decomposition. With m2 fixed at 0.5 (force = 0.5/r^2), N=64 models (seeds 20-21, data_seed 0, 4 layers, d_model=64, e in [0, 0.5], 3000 steps, best-of-3 controls) still decode force above control, at a level comparable to the wide-m2 N=64 runs of the same seeds (trained force R2 0.726/0.737, margin 0.215/0.261). This arm anchors the paired N=128 and N=256 m2-fixed arms proposed this cycle. All values are read from run-record probes_final at the best-margin layer, unrounded. The max-over-layers trajectory field is never used.
+run-20261013-231211-9f25: [23:17:25] model: 209,094 params on mps; dataset 76b89a92207c; 9000 train / 1000 val systems
+run-20261013-231211-9f25: [23:17:26] step 0: val_mse=1.915e-03 cv_baseline=2.445e-05 ratio=78.333
+run-20261013-231211-9f25: [23:18:15] step 500: val_mse=4.353e-06 cv_baseline=2.445e-05 ratio=0.178
+run-20261013-231211-9f25: [23:19:05] step 1000: val_mse=2.254e-06 cv_baseline=2.445e-05 ratio=0.092
+run-20261013-231211-9f25: [23:19:59] step 1500: val_mse=1.529e-06 cv_baseline=2.445e-05 ratio=0.063
+run-20261013-231211-9f25: [23:20:48] step 2000: val_mse=6.119e-07 cv_baseline=2.445e-05 ratio=0.025
+run-20261013-231211-9f25: [23:21:36] step 2500: val_mse=4.100e-07 cv_baseline=2.445e-05 ratio=0.017
+run-20261013-231211-9f25: [23:22:25] step 3000: val_mse=2.786e-07 cv_baseline=2.445e-05 ratio=0.011
+run-20261013-231211-9f25: [23:22:25] training done in 5.0 min; beats constant-velocity baseline: True
+run-20261013-231211-9f25: [23:22:28] random-model controls (best of 3): force=0.17/0.62/0.64/0.64/0.63, accel_step=0.69/0.77/0.79/0.79/0.80, distance=-0.01/0.27/0.45/0.57/0.61, energy=-0.01/0.31/0.43/0.58/0.63
+run-20261013-231211-9f25: [23:22:29] probes @ step 0: best force R2=0.611 (layer 3)
+run-20261013-231211-9f25: [23:22:32] probes @ step 2500: best force R2=0.763 (layer 3)
+run-20261013-231211-9f25: [23:22:33] probes @ step 3000: best force R2=0.768 (layer 3)
+run-20261013-231211-9f25: [23:22:33] run complete in 5.2 min

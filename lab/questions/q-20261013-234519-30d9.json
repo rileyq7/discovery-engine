@@ -1,0 +1,9 @@
+{
+  "id": "q-20261013-234519-30d9",
+  "text": "Trained force margin falls with N in both seeds even with m2 fixed (N=64 0.133/0.195, N=128 0.063/0.101, N=256 0.028/0.003), while layer-1 distance R2 stays at 0.92-0.95. Is the force loss at fine sampling a loss of the 1/r^2 nonlinearity read from distance? Does a probe on 1/r^2 itself, or force with distance regressed out, show the same N=64 > N=128 > N=256 ordering?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261013-234552-f8e8"
+  ],
+  "created_at": "2026-10-13T23:45:19"
+}

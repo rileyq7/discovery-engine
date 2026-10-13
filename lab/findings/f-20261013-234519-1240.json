@@ -1,0 +1,25 @@
+{
+  "id": "f-20261013-234519-1240",
+  "claim": "With m2 fixed at 0.5, the N=256 force random-control R2 is 0.6197 (seed 20, layer 1) and 0.6521 (seed 21, layer 3). The paired N=128 m2-fixed arm has no probes_final yet, so the planned comparison was not computed. Its trajectory gives controls of at most about 0.633 (seed 20) and 0.583 (seed 21), which suggests the seeds disagree: about -0.013 or more for seed 20 and about +0.069 or more for seed 21. Separately, trained force fails to beat control at N=256 in both seeds (R2 0.648 vs control 0.620, margin 0.028; R2 0.655 vs control 0.652, margin 0.003), while accel_step clears the bar easily (R2 0.935 vs control 0.770, margin 0.165, normalised 0.72; R2 0.930 vs control 0.716, margin 0.213, normalised 0.75). Force margin falls with N in both seeds even with m2 fixed (N=64 0.133/0.195, N=128 0.063/0.101, N=256 0.028/0.003, from trajectories).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261013-233313-73e1",
+    "run-20261013-233314-453c"
+  ],
+  "confidence_note": "The hypothesis said to read the N=128 control from probes_final and to report the comparison as not computed if that was unavailable. It is unavailable because exp-20261013-231210-ae2c is still analyzing. The N=128 controls above were worked out as trajectory R2 minus margin. That trajectory R2 is a max over layers, not the R2 at the best-margin layer: for this experiment's own runs it reads 0.657/0.665 against probes_final 0.648/0.655. So the derived N=128 controls are upper bounds that may be about 0.01 too high, and the per-seed rises are lower bounds. Seed 21 clears the +0.03 bar even under that bias. Seed 20 could fall anywhere from below the N=128 value up into the 0.01-0.03 inconclusive band. The best-margin layer also differs between arms (N=256 layers 1/3 vs N=128 layer 4), so the controls are not compared at the same layer. Control spread is 0.022-0.030, close to the size of the effect being tested. Only 2 seeds and 1 data_seed. Both runs completed 3000/3000 steps and beat the baseline (val_mse_ratio 0.196/0.243). The accel_step part of the true-prediction is met in both seeds (margin >= 0.1, normalised 0.72/0.75 inside [0.55, 0.85]). What would change the verdict: once the N=128 m2-fixed probes_final exist, a supported verdict needs seed 20's control to be <= 0.590, and a refuted verdict needs seed 21's to be >= 0.642. The trajectory bound already makes the second unlikely.",
+  "created_at": "2026-10-13T23:45:19",
+  "experiment_id": "exp-20261013-231210-6891",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-13T23:45:19",
+      "actor": "agent"
+    }
+  ]
+}

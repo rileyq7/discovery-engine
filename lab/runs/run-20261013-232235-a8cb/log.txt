@@ -1,0 +1,15 @@
+[23:28:09] experiment exp-20261013-231210-ae2c (E5) seed 20: The N=64 to N=128 drop in trained force R2 (0.08-0.13 per seed with m2 in [0.1, 1]) comes from losing the m2 factor of force, not from the 1/r^2 part. Layer-1 distance R2 does not fall with N. So with m2 fixed at 0.5 (force = 0.5/r^2), N=128 trained force R2 for seeds 20-21 (data_seed 0, otherwise identical to the paired N=64 m2-fixed arm) stays within 0.03 of the same seed's N=64 m2-fixed value. Trained R2 and control R2 are read from probes_final at the best-margin layer, unrounded, and paired per seed. If the paired arm is unavailable, the comparison is reported as not computed.
+[23:28:09] model: 209,094 params on mps; dataset 4d4d982c4792; 9000 train / 1000 val systems
+[23:28:11] step 0: val_mse=4.937e-04 cv_baseline=1.534e-06 ratio=321.858
+[23:29:00] step 500: val_mse=2.166e-06 cv_baseline=1.534e-06 ratio=1.412
+[23:29:50] step 1000: val_mse=9.010e-07 cv_baseline=1.534e-06 ratio=0.587
+[23:30:38] step 1500: val_mse=6.013e-07 cv_baseline=1.534e-06 ratio=0.392
+[23:31:27] step 2000: val_mse=2.554e-07 cv_baseline=1.534e-06 ratio=0.166
+[23:32:16] step 2500: val_mse=1.389e-07 cv_baseline=1.534e-06 ratio=0.091
+[23:33:05] step 3000: val_mse=8.626e-08 cv_baseline=1.534e-06 ratio=0.056
+[23:33:05] training done in 4.9 min; beats constant-velocity baseline: True
+[23:33:08] random-model controls (best of 3): force=0.17/0.62/0.63/0.63/0.63, accel_step=0.69/0.75/0.78/0.79/0.79, distance=-0.02/0.27/0.45/0.58/0.61, energy=-0.01/0.29/0.43/0.60/0.65
+[23:33:09] probes @ step 0: best force R2=0.608 (layer 2)
+[23:33:12] probes @ step 2500: best force R2=0.689 (layer 3)
+[23:33:13] probes @ step 3000: best force R2=0.696 (layer 3)
+[23:33:13] run complete in 5.1 min

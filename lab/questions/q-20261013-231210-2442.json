@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-231210-2442",
+  "text": "On data_seed 1, the N=64 step-1500 checkpoint (val_mse_ratio about 0.07-0.08) matches the N=128 step-3000 loss. If trained force R2 is read there as same-layer control plus best-layer margin, is the N=64 minus N=128 gap still >= 0.04 in seeds 22-23, so that the N=64 to N=128 force drop holds at matched loss as it does on data_seed 0?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T23:12:10"
+}

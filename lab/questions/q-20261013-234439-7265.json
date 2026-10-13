@@ -1,0 +1,10 @@
+{
+  "id": "q-20261013-234439-7265",
+  "text": "In the paired m2-fixed N=128 arm (exp-20261013-231210-ae2c), the trajectory gives force R2 of about 0.68-0.70 at step 3000, against 0.763/0.789 here. That would be a drop of about 0.07-0.10, well past the 0.03 bound. If probes_final for those runs confirms a per-seed trained force R2 drop of at least 0.05, is the N=64 to N=128 force decline caused by losing the 1/r^2 part rather than the m2 factor, given that it persists with m2 fixed?",
+  "status": "answered",
+  "linked_finding_ids": [
+    "f-20261013-234519-1240",
+    "f-20261013-234552-f8e8"
+  ],
+  "created_at": "2026-10-13T23:44:39"
+}

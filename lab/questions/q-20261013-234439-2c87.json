@@ -1,0 +1,7 @@
+{
+  "id": "q-20261013-234439-2c87",
+  "text": "Fixing m2 at 0.5 raises the N=64 force random-control R2 from about 0.48-0.51 (wide m2) to 0.59-0.63 for the same seeds and data_seed. Trained force R2 also rises, by about 0.03-0.05. Is the force margin under wide m2 (0.215-0.261) inflated relative to m2-fixed because m2 variation makes force harder for random models than for trained ones? Does a linear probe for m2 beat its control at N=64?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-13T23:44:39"
+}
