@@ -2,13 +2,72 @@
   "id": "run-20261014-025316-d15c",
   "experiment_id": "exp-20261014-021334-500d",
   "seed": 20,
-  "status": "pending",
-  "started_at": null,
-  "ended_at": null,
-  "compute_hours": 0.0,
+  "status": "completed",
+  "started_at": "2026-10-14T03:03:20",
+  "ended_at": "2026-10-14T03:13:14",
+  "compute_hours": 0.165,
   "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261014-025316-d15c",
   "git_commit": "d2b82d1",
   "bad": false,
   "notes": [],
-  "summary": {}
+  "summary": {
+    "final_val_mse": 3.408975935885756e-08,
+    "baseline_cv_mse": 1.536471930545146e-06,
+    "val_mse_ratio": 0.02218703686097434,
+    "beats_baseline": true,
+    "train_hours": 0.16137548055913714,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "207d7a485db8",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.75864,
+          "control_r2": 0.63737,
+          "control_spread": 0.01455,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 3500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.94577,
+          "control_r2": 0.77724,
+          "control_spread": 0.01579,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.90336,
+          "control_r2": 0.24739,
+          "control_spread": 0.0616,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.90493,
+          "control_r2": 0.28326,
+          "control_spread": 0.06043,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 27999,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "207d7a485db8"
 }

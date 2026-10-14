@@ -3,7 +3,9 @@
   "text": "With m2 fixed on data_seed 1, read the N=64 seeds 20-21 at the checkpoint whose val_mse_ratio matches N=128 at step 3000 (0.049-0.054), using the same-layer (layer 4) probes_final control plus margin. Is the N=64 minus N=128 trained force R2 gap still at least 0.05, or does it shrink the way seed 20 did on data_seed 0 at 6000 steps?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261014-015644-a80b"
+    "f-20261014-015644-a80b",
+    "f-20261014-035918-83b7",
+    "f-20261014-040001-4892"
   ],
   "created_at": "2026-10-14T01:56:07"
 }

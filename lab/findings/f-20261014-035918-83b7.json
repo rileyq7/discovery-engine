@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-035918-83b7",
+  "claim": "With m2 fixed on data_seed 1, the two N=128 seeds disagree at 6000 steps. Seed 20's final trained force R2 is 0.759 at layer 3 (control 0.637, margin 0.121), which misses the expected-if-true bound (<= 0.755) by 0.004 and falls short of the expected-if-false bound (>= 0.775). It sits 0.036 below its N=64 3000-step layer-4 reference (0.795). Seed 21 is 0.733 at layer 2 (control 0.625, margin 0.108, formed at step 5500), which meets the expected-if-true bound (<= 0.750) and sits 0.057 below its reference (0.790). Both gaps compare different layers. In both seeds the gap is smaller than at 3000 steps (about 0.065 / 0.088). accel_step is stronger than force in both seeds: R2 0.946-0.949 at layer 4, margin 0.169-0.179, headroom-normalised 0.757-0.779 (inside the predicted [0.60, 0.80]), against force headroom-normalised 0.29-0.33.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-025316-d15c",
+    "run-20261014-025316-91bb"
+  ],
+  "confidence_note": "The seeds split. Seed 20 lands in the band between the true and false thresholds, and seed 21 meets the true threshold. By the hypothesis's own rule this is inconclusive. The horizon check passes: step-3000 trajectory force R2 is 0.736 / 0.713 against 0.730 / 0.715. However, the trajectory field may be the max over layers, not the best-margin layer's control plus margin. Three things limit the comparison. (1) The N=64 references come from 3000-step runs. On data_seed 0, N=64 seed 21 kept rising from 0.765 to 0.798 between steps 3000 and 6000, so a matched 6000-step N=64 reference would probably widen both gaps. (2) The comparisons are across layers: the N=64 reference is layer 4, the N=128 best layers are 3 and 2. (3) N=128 force is still rising at step 6000 in seed 21 (+0.004 margin per 500 steps) but has nearly levelled off in seed 20 (+0.001). The verdict would move to supported if 6000-step N=64 data_seed 1 runs put both same-layer gaps at >= 0.04. It would move to refuted if the same-layer gaps fall below 0.02.",
+  "created_at": "2026-10-14T03:59:18",
+  "experiment_id": "exp-20261014-021334-500d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T03:59:18",
+      "actor": "agent"
+    }
+  ]
+}

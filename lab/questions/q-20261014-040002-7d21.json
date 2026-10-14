@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-040002-7d21",
+  "text": "In both N=64 data_seed 1 runs, force's best-margin layer moves to layer 1 late in training (seed 20 at step 2500, seed 21 at step 5000). In seed 20, the probes_final R2 at layer 1 (0.779) is below the max-over-layers value (0.793). At step 6000, what is the layer-4 force R2 in each N=64 seed? Does a same-layer layer-4 comparison with N=128 bring seed 20's gap up to the 0.04 bar, or seed 21's gap down to it?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T04:00:02"
+}

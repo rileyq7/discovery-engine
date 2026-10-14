@@ -1,0 +1,22 @@
+run-20261014-025316-d15c: [03:03:20] experiment exp-20261014-021334-500d (E5) seed 20: On data_seed 1 with m2 fixed at 0.5, the N=64 to N=128 trained force R2 drop (about 0.065 / 0.088 at 3000 steps) persists at 6000 steps. N=128 seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) stay at least 0.04 below the same seed's N=64 layer-4 probes_final trained force R2 (0.795 seed 20, 0.790 seed 21). Values come from probes_final at the best-margin layer, unrounded, and the layer is reported; a cross-layer comparison is flagged. Horizon check: step-3000 trained force R2 must be within 0.03 of the 3000-step N=128 data_seed 1 runs (0.730 / 0.715).
+run-20261014-025316-d15c: [03:03:21] model: 209,094 params on mps; dataset 207d7a485db8; 9000 train / 1000 val systems
+run-20261014-025316-d15c: [03:03:22] step 0: val_mse=5.039e-04 cv_baseline=1.536e-06 ratio=327.987
+run-20261014-025316-d15c: [03:04:10] step 500: val_mse=3.203e-06 cv_baseline=1.536e-06 ratio=2.085
+run-20261014-025316-d15c: [03:04:57] step 1000: val_mse=1.158e-06 cv_baseline=1.536e-06 ratio=0.754
+run-20261014-025316-d15c: [03:05:44] step 1500: val_mse=7.944e-07 cv_baseline=1.536e-06 ratio=0.517
+run-20261014-025316-d15c: [03:06:31] step 2000: val_mse=4.775e-07 cv_baseline=1.536e-06 ratio=0.311
+run-20261014-025316-d15c: [03:07:18] step 2500: val_mse=2.977e-07 cv_baseline=1.536e-06 ratio=0.194
+run-20261014-025316-d15c: [03:08:05] step 3000: val_mse=1.601e-07 cv_baseline=1.536e-06 ratio=0.104
+run-20261014-025316-d15c: [03:08:53] step 3500: val_mse=1.535e-07 cv_baseline=1.536e-06 ratio=0.100
+run-20261014-025316-d15c: [03:09:41] step 4000: val_mse=1.619e-07 cv_baseline=1.536e-06 ratio=0.105
+run-20261014-025316-d15c: [03:10:28] step 4500: val_mse=8.700e-08 cv_baseline=1.536e-06 ratio=0.057
+run-20261014-025316-d15c: [03:11:15] step 5000: val_mse=4.296e-08 cv_baseline=1.536e-06 ratio=0.028
+run-20261014-025316-d15c: [03:12:12] step 5500: val_mse=4.140e-08 cv_baseline=1.536e-06 ratio=0.027
+run-20261014-025316-d15c: [03:13:01] step 6000: val_mse=3.409e-08 cv_baseline=1.536e-06 ratio=0.022
+run-20261014-025316-d15c: [03:13:01] training done in 9.7 min; beats constant-velocity baseline: True
+run-20261014-025316-d15c: [03:13:04] random-model controls (best of 3): force=0.20/0.63/0.64/0.64/0.64, accel_step=0.67/0.73/0.77/0.77/0.78, distance=-0.01/0.25/0.43/0.57/0.61, energy=-0.01/0.28/0.44/0.62/0.65
+run-20261014-025316-d15c: [03:13:05] probes @ step 0: best force R2=0.615 (layer 2)
+run-20261014-025316-d15c: [03:13:09] probes @ step 2500: best force R2=0.731 (layer 4)
+run-20261014-025316-d15c: [03:13:12] probes @ step 5000: best force R2=0.753 (layer 3)
+run-20261014-025316-d15c: [03:13:14] probes @ step 6000: best force R2=0.759 (layer 4)
+run-20261014-025316-d15c: [03:13:14] run complete in 9.9 min

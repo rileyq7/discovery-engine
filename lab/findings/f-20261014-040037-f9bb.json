@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-040037-f9bb",
+  "claim": "With m2 fixed at 0.5 (data_seed 0) and both arms trained for 6000 steps, N=64 trained force R2 is 0.8235 for seed 22 (layer 1) and 0.7684 for seed 23 (layer 1). Those are 0.143 and 0.072 above the same seeds' N=128 6000-step references (0.681 at layer 4 and 0.696 at layer 1), so both clear the hypothesis bars of >= 0.721 and >= 0.736. The step-3000 horizon check passes (0.786 vs 0.767 and 0.753 vs 0.770, both within 0.03). accel_step's normalised margin is 0.765 and 0.727, inside [0.60, 0.85], and it beats force's normalised margin (0.586 and 0.494), although force has the larger raw margin (0.249/0.226 vs 0.207/0.186).",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-031344-3f3d",
+    "run-20261014-031344-6b2c"
+  ],
+  "confidence_note": "Both runs completed all 6000 steps and each seed clears its bar independently. Seed 23 is a same-layer comparison (layer 1 vs layer 1). Seed 22 is cross-layer: N=64 is layer 1 (the distance layer) and N=128 is layer 4, so part of its 0.143 gap may come from which layer is chosen rather than from N. The N=128 references come from separate experiments, so their controls cannot be compared here at a fixed layer. Read at the checkpoint whose loss matches N=128 step 6000 (val_mse_ratio about 0.022), the gap is still about 0.10-0.12 for seed 22 (steps 3000-4000) and about 0.06 for seed 23 (steps 3000-3500). That argues against slower convergence as the whole explanation. N=64 force is still rising at step 6000 (+0.004 and +0.002 per 500 steps), so the 6000-step gap is not an asymptote. With seed 20's 0.011 gap on data_seed 0, the per-seed gaps span 0.011-0.143, which is wide. Two things would weaken the verdict: a same-layer (layer 4) comparison that pulls seed 22's gap below 0.04, or the pending 12000-step N=128 arm (exp-20261014-031344-0296) coming within 0.02 of these N=64 values.",
+  "created_at": "2026-10-14T04:00:37",
+  "experiment_id": "exp-20261014-031344-f97b",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T04:00:37",
+      "actor": "agent"
+    }
+  ]
+}

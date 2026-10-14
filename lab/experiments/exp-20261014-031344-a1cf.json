@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261014-031344-a1cf",
+  "family": "E5",
+  "hypothesis": "On data_seed 1 with m2 fixed at 0.5, the N=64 minus N=128 gap in trained force R2 persists when both arms train for 6000 steps. N=64 seeds 20-21 here pair with the in-flight N=128 6000-step arm exp-20261014-021334-500d (seed 21: 0.733 at layer 2; seed 20 pending). Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Cross-layer comparisons are flagged. If the paired N=128 run is unavailable, that seed's comparison is reported as not computed. Horizon check: step-3000 trained force R2 must be within 0.03 of the 3000-step N=64 data_seed 1 runs (0.795 / 0.790).",
+  "expected_if_true": "In both seeds, final N=64 trained force R2 is at least 0.04 above the same seed's N=128 6000-step value (seed 21: >= 0.773). accel_step normalised margin in [0.60, 0.85].",
+  "expected_if_false": "In both seeds, final N=64 trained force R2 is within 0.02 of the same seed's N=128 6000-step value (seed 21: <= 0.753). A split between seeds counts as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "On data_seed 1 with m2 fixed at 0.5, the N=64 minus N=128 gap in trained force R2 persists when both arms train for 6000 steps. N=64 seeds 20-21 here pair with the in-flight N=128 6000-step arm exp-20261014-021334-500d (seed 21: 0.733 at layer 2; seed 20 pending). Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Cross-layer comparisons are flagged. If the paired N=128 run is unavailable, that seed's comparison is reported as not computed. Horizon check: step-3000 trained force R2 must be within 0.03 of the 3000-step N=64 data_seed 1 runs (0.795 / 0.790).",
+    "expected_if_true": "In both seeds, final N=64 trained force R2 is at least 0.04 above the same seed's N=128 6000-step value (seed 21: >= 0.773). accel_step normalised margin in [0.60, 0.85].",
+    "expected_if_false": "In both seeds, final N=64 trained force R2 is within 0.02 of the same seed's N=128 6000-step value (seed 21: <= 0.753). A split between seeds counts as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-14T03:13:44",
+  "updated_at": "2026-10-14T04:00:02",
+  "verdict": "inconclusive",
+  "estimate_hours": 0.4858,
+  "compute_hours": 0.3274,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-14T03:13:44",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-14T03:13:44",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-14T03:13:44",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-14T03:33:24",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-14T03:53:10",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-14T04:00:02",
+      "actor": "agent",
+      "note": "finding f-20261014-040001-4892"
+    }
+  ]
+}

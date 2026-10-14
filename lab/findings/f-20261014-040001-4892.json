@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-040001-4892",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, the N=64 minus N=128 force gap at 6000 steps splits by seed, so the hypothesis gets no clear verdict. Seed 21: N=64 force R2 is 0.8376 at layer 1 (control 0.631) against N=128's 0.733 at layer 2, a gap of 0.105 that meets the >= 0.04 bar, though layer 1 is compared with layer 2. Seed 20: N=64 is 0.7792 at layer 1 (control 0.629) against N=128's 0.759 (trajectory max over layers, best-margin layer 3), a gap of about 0.020, or 0.034 if both sides use max over layers. That misses the 0.04 bar and sits at the edge of the 'within 0.02' refutation band. accel_step behaves as predicted in both seeds: R2 0.961/0.954 at layer 4 against controls of 0.785/0.786, normalised margins 0.82/0.79, which are in [0.60, 0.85] and well ahead of force's normalised margins of 0.40/0.56.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-033324-438a",
+    "run-20261014-033324-68c8"
+  ],
+  "confidence_note": "The pre-registered rule says a seed split is inconclusive, and that is what happened: seed 21 clears the gap bar by a wide margin, while seed 20's gap falls between the 'true' and 'false' bands. Both comparisons are cross-layer: N=64 peaks at layer 1 in both seeds, while N=128 peaks at layer 2 (seed 21) and layer 3 (seed 20). The N=128 seed-20 value comes from the trajectory max-over-layers field rather than probes_final, so the true best-margin-layer value could be lower and the gap larger. The horizon check is borderline for seed 20. At step 3000 its layer-1 control plus margin is about 0.764 (max over layers 0.775), against a 3000-step reference of 0.795 that was read at layer 4, so it is off by about 0.03 and the reference layer differs. Seed 21 passes (max over layers 0.804 against 0.790). Both runs completed all 6000 steps with val_mse_ratio about 0.005. The step-matched result also holds at roughly matched loss. Reading the N=64 checkpoint whose val_mse_ratio is closest to N=128 step 3000 (seed 20 at step 2000, 0.056; seed 21 at step 2500, 0.051), the max-over-layers force R2 is 0.764/0.794, against N=128 step-3000 values of 0.736/0.713. That gives gaps of 0.028/0.081, the same split as at 6000 steps, so the seed-20 vs seed-21 difference is not a convergence artefact. Two things would change the verdict: a same-layer (e.g. layer-4) probes_final export for both arms, or N=128 seed 20's best-margin-layer R2 falling below about 0.739.",
+  "created_at": "2026-10-14T04:00:02",
+  "experiment_id": "exp-20261014-031344-a1cf",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T04:00:02",
+      "actor": "agent"
+    }
+  ]
+}

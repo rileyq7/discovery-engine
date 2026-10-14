@@ -1,0 +1,9 @@
+{
+  "id": "q-20261014-035918-2204",
+  "text": "With m2 fixed on data_seed 1, if N=64 seeds 20-21 are trained to 6000 steps, is the same-layer (layer 4) N=64 minus N=128 trained force R2 gap at step 6000 >= 0.04 in both seeds? Or does seed 20's 0.036 cross-layer gap against a 3000-step reference understate the matched-horizon gap?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261014-040001-4892"
+  ],
+  "created_at": "2026-10-14T03:59:18"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "q-20261014-040002-0012",
+  "text": "With m2 fixed and both arms trained to 6000 steps, model seed 20 has a small N=64 minus N=128 force gap on both datasets (0.011 on data_seed 0; about 0.02-0.03 on data_seed 1). Seed 21 has a large gap on both (0.107 and 0.105), and seeds 22-23 on data_seed 0 have gaps of about 0.07-0.14. Is the size of the gap mainly a property of the model seed (init) rather than the dataset? Would seeds 22-25 on data_seed 1 sort into the same small-gap and large-gap groups?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261014-040037-f9bb"
+  ],
+  "created_at": "2026-10-14T04:00:02"
+}
