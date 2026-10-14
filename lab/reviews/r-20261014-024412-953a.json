@@ -27,8 +27,15 @@
       "finding_id": "f-20261014-015644-a80b"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. The N=64 data_seed 1 probes_final values were available and should have been used. Seed 21 at layer 4 (the best-margin layer in both arms): N=64 trained force R2 0.7901 with control 0.6154, against N=128 0.7147 with control 0.6148. That is a trained-R2 drop of 0.075 (not 0.088) and a control change of -0.001 (not -0.013). Quoting 0.803 was wrong: it is the layer-1 max_r2, and 0.628 mixed two layers. Seed 20 at layer 4: 0.7946 vs 0.7304 (drop 0.064), control 0.6443 vs 0.6383 (-0.006). Its drop is well above 0.05, so the caveat that seed 20 might fall into the 0.02-0.05 band is withdrawn, and so is the caveat that 'N=64 values are not unrounded probes_final'. Both seeds still meet expected_if_true at the same layer (drop >= 0.05, |control change| <= 0.03, accel_step normalised margin 0.745/0.746), so the status stays replicated. This cycle's data_seed 1 N=64 6000-step arm will test whether the gap holds when both arms train for the same number of steps.",
+      "at": "2026-10-14T03:13:44",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [

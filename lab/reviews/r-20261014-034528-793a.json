@@ -1,0 +1,51 @@
+{
+  "id": "r-20261014-034528-793a",
+  "created_at": "2026-10-14T03:45:28",
+  "since": "2026-10-14T02:44:12",
+  "verdict": "FLAG",
+  "summary": "I recomputed every R2, control, margin, best layer, headroom-normalised margin, horizon-check value and gap in both findings from probes_final and probe_by_step. All quoted numbers match the raw data at the stated precision, and both verdicts follow their pre-registered criteria as written. The issues are: f-c84b keeps 'replicated' even though seed 22's force never clears the bar; f-8cf5 has two small misreadings that do not change its verdict; and one queued experiment repeats a comparison already known to be confounded.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "noise",
+      "message": "In seed 22, force at its best-margin layer (layer 4) has R2 0.6808 against control 0.5925, a margin of 0.0883. That is below the 0.1 bar and only just above the 0.082 random-init noise floor for force. No layer clears the bar: the largest margin is 0.088 and the others are 0.078-0.084. The 'replicated' status for a lower force ceiling therefore rests on one seed whose N=128 force is not decodable above control. The confidence note says so, but the status was not changed. Either qualify 'replicated' to state that only seed 23 (margin 0.1452 against control_spread 0.0141) shows above-control force, or justify why a sub-bar R2 counts toward replication.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-025914-c84b"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Three small misreadings, none of which changes the verdict. (1) The confidence note says seed 21's layer-1 control is 'not exported'. It is: probes_final shows layer 1 control 0.5943, and the step-3000 best-margin layer is layer 1 with R2 0.765, so the same-layer value was available and agrees. (2) '+0.039 margin from step 3000 to 6000' for seed 21 compares layer 1 (0.1706) with layer 4 (0.2101). At a fixed layer 1 the gain is +0.033. (3) Seed 20's layer-1 and layer-4 final force margins (0.1434 vs 0.1414) differ by far less than its control_spread (0.007-0.028), so its 'best layer' is not determined. That weakens any reading of the cross-layer comparison to its N=128 reference. Separately, the claim that accel_step margins 'stayed flat from step 500 to 1000' is not accurate: they rose 0.1437 to 0.1512 in seed 20 and 0.1529 to 0.1645 in seed 21.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-025957-8cf5"
+    },
+    {
+      "severity": "flag",
+      "category": "drift",
+      "message": "exp-20261014-031344-0296 reruns 613c's design with more steps: N=128 seeds 22-23 at 12000 steps, still compared with N=64 3000-step references (0.767 / 0.770). f-8cf5 already showed N=64 force keeps rising after step 3000 (seed 21 reached 0.793), and exp-f97b is producing matched 6000-step N=64 references for these same seeds. A comparison against stale 3000-step references is horizon-confounded by design. Justify it next cycle, or re-anchor the comparison on f97b's matched-horizon values.",
+      "source": "reviewer"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261014-025914-c84b",
+      "f-20261014-025957-8cf5"
+    ],
+    "runs": [
+      "run-20261014-023328-afdf",
+      "run-20261014-025316-91bb",
+      "run-20261014-025316-d15c",
+      "run-20261014-031344-3f3d",
+      "run-20261014-031344-6b2c",
+      "run-20261014-033324-438a"
+    ],
+    "experiments": [
+      "exp-20261014-031344-0296",
+      "exp-20261014-031344-a1cf",
+      "exp-20261014-031344-f97b"
+    ]
+  }
+}
