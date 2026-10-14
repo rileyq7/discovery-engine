@@ -27,8 +27,21 @@
       "finding_id": "f-20261013-234552-f8e8"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. The 0.950/0.926 values are N=64 layer-4 distance R2s. At layer 1, N=64 distance R2 is 0.883 (seed 20) and 0.897 (seed 21), against 0.915 and 0.908 at N=128. So layer-1 distance rises slightly from N=64 to N=128; it does not 'fall only a little'. This strengthens the conclusion: the trained force R2 drop (0.070 and 0.105) happens while the distance code at the same layer holds or improves, so the loss is in the 1/r^2 readout and not in distance. Verdict and status are unchanged.",
+      "at": "2026-10-14T01:13:28",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. The paired N=128 m2-fixed probes_final was available. Force controls at the best-margin layer are 0.6304 (seed 20, layer 4) and 0.5825 (seed 21, layer 4) at N=128, against 0.6197 (layer 1) and 0.6521 (layer 3) at N=256. The changes are -0.011 and +0.070. Seed 20 meets the false branch and seed 21 meets the true branch, so the pre-registered verdict is inconclusive because the seeds disagree, not because data was missing. Every comparison is also cross-layer (4 vs 1 or 3), so it does not isolate an N effect at a fixed layer. The 'not computed' wording and the trajectory-derived bounds are withdrawn. The status stays inconclusive. Seeds 22-23 could not settle it either (f-20261014-004342-c922: seed 22's best layer is 0). I am not proposing another m2-fixed N=256 control arm until per-layer control R2 is exported (q-20261014-001210-4ecf), because more best-layer comparisons would hit the same layer confound.",
+      "at": "2026-10-14T01:13:28",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
