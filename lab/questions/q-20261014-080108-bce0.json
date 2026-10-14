@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-080108-bce0",
+  "text": "For N=128 m2-fixed seed 23 on data_seed 0, force R2 at the end of the 24000-step schedule (0.713) does not exceed the end of the 12000-step schedule (0.720). Is final force R2 set by the low-lr tail of the schedule rather than by total steps? Does comparing the 12000- and 24000-step runs at matched schedule fraction (e.g. step 6000 vs step 12000) put them within 0.01?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T08:01:08"
+}

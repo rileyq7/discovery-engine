@@ -478,3 +478,48 @@
 {"uid": "2d375ea11d50a07e", "timestamp": "2026-10-14T06:59:46", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-065946-bef1"}}
 {"uid": "5cc620b0f6f9550e", "timestamp": "2026-10-14T06:59:46", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-065946-8a2b"}}
 {"uid": "a0df591dc17589fc", "timestamp": "2026-10-14T06:59:46", "actor": "agent", "type": "cycle.finished", "payload": {"summary": ["proposed ['exp-20261014-061412-7439:approved', 'exp-20261014-061412-b4b4:approved']", "analyzed exp-20261014-051510-2e58 -> {'id': 'f-20261014-065946-0c56', 'status': 'inconclusive'}"]}}
+{"uid": "1e58e398882bfcc6", "timestamp": "2026-10-14T07:01:39", "actor": "agent", "type": "digest.created", "payload": {"date": "2026-10-14", "findings": 28, "experiments": 31, "runs": 58, "reviews": 14}}
+{"uid": "dbc757755a17f1c9", "timestamp": "2026-10-14T07:07:46", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-062820-bb67", "experiment_id": "exp-20261014-051510-52f4", "status": "completed"}}
+{"uid": "4092a9d095a82d32", "timestamp": "2026-10-14T07:07:46", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-051510-52f4", "state": "analyzing", "note": "2/2 runs completed"}}
+{"uid": "ba89f715efe8f359", "timestamp": "2026-10-14T07:07:46", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261014-070746-d284", "experiment_id": "exp-20261014-051510-bdb9", "seed": 23}}
+{"uid": "2a84ff535cdbe0ff", "timestamp": "2026-10-14T07:07:46", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-051510-bdb9", "state": "running", "note": ""}}
+{"uid": "839fbbb31050a13f", "timestamp": "2026-10-14T07:07:46", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-070746-d284", "experiment_id": "exp-20261014-051510-bdb9", "status": "running"}}
+{"uid": "d91ae416d976e23b", "timestamp": "2026-10-14T07:12:55", "actor": "agent", "type": "cycle.started", "payload": {"cycle_today": 8}}
+{"uid": "26c44e6af1b9ad1b", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "finding.created", "payload": {"id": "f-20261014-071331-ab1a", "verdict": "inconclusive", "status": "inconclusive", "evidence": ["run-20261014-062820-b9db", "run-20261014-062820-bb67"]}}
+{"uid": "819498832d9938dd", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "experiment.state", "payload": {"id": "exp-20261014-051510-52f4", "state": "complete", "note": "finding f-20261014-071331-ab1a"}}
+{"uid": "edb40adb770d7fca", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-065946-8a2b", "status": "open"}}
+{"uid": "d3fcdf89e6c24d1c", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-051311-4da4", "status": "open"}}
+{"uid": "67e479dbd3a1f432", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-061412-7f7e", "status": "open"}}
+{"uid": "eddea1de1ba63784", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-040002-0012", "status": "open"}}
+{"uid": "3c87c62058f81bd2", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-060043-3cf8", "status": "open"}}
+{"uid": "d750492435332d47", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-031344-52ab", "status": "open"}}
+{"uid": "3480295220c0be3b", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-021334-0b68", "status": "open"}}
+{"uid": "dab9cb9d3453634a", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261013-234519-30d9", "status": "open"}}
+{"uid": "65bc8fd54a49f825", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-004426-392c", "status": "open"}}
+{"uid": "77329f05913e8e2f", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-011328-13e6", "status": "open"}}
+{"uid": "166ead877d9559c7", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-051510-ed57", "status": "open"}}
+{"uid": "ed700497c21d8297", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-071331-9b8d"}}
+{"uid": "dd72c724fa749c31", "timestamp": "2026-10-14T07:13:31", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-071331-dcfc"}}
+{"uid": "f3dc1d19a80cb9ab", "timestamp": "2026-10-14T07:15:31", "actor": "agent", "type": "cycle.proposal_failed", "payload": {"retries": 2}}
+{"uid": "0584de2ff67953b1", "timestamp": "2026-10-14T07:46:32", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-070746-d284", "experiment_id": "exp-20261014-051510-bdb9", "status": "completed"}}
+{"uid": "3017f868dc178234", "timestamp": "2026-10-14T07:46:34", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-051510-bdb9", "state": "analyzing", "note": "1/1 runs completed"}}
+{"uid": "f27396bbd5e98e25", "timestamp": "2026-10-14T07:46:34", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261014-074634-81be", "experiment_id": "exp-20261014-061412-7439", "seed": 22}}
+{"uid": "7109f97e2879ae03", "timestamp": "2026-10-14T07:46:34", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261014-074634-b5ab", "experiment_id": "exp-20261014-061412-7439", "seed": 23}}
+{"uid": "05db4a9086311afa", "timestamp": "2026-10-14T07:46:34", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-061412-7439", "state": "running", "note": ""}}
+{"uid": "99bdd51431c0623a", "timestamp": "2026-10-14T07:46:34", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-074634-81be", "experiment_id": "exp-20261014-061412-7439", "status": "running"}}
+{"uid": "978da543d36171a1", "timestamp": "2026-10-14T07:50:23", "actor": "reviewer", "type": "review.flag", "payload": {"id": "r-20261014-075023-7725", "issues": 3}}
+{"uid": "f44865e27c17b632", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "finding.created", "payload": {"id": "f-20261014-080108-12be", "verdict": "supported", "status": "supported", "evidence": ["run-20261014-070746-d284"]}}
+{"uid": "31b0a47928f49fae", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "experiment.state", "payload": {"id": "exp-20261014-051510-bdb9", "state": "complete", "note": "finding f-20261014-080108-12be"}}
+{"uid": "b09ac28e8db243ad", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-051311-09db", "status": "answered"}}
+{"uid": "3239a2ce891f51f6", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-004426-392c", "status": "open"}}
+{"uid": "f14e6ae86a01ca1c", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-011328-13e6", "status": "open"}}
+{"uid": "187967222f1aed4d", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261013-081946-cd22", "status": "open"}}
+{"uid": "87420c611bed168c", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-021334-0b68", "status": "open"}}
+{"uid": "14a480c661680e7e", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-031344-52ab", "status": "open"}}
+{"uid": "12a3510df47201bd", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261013-234519-30d9", "status": "open"}}
+{"uid": "b6836ee92853a81f", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-051510-ed57", "status": "open"}}
+{"uid": "643bd9cbf02b01d5", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-061412-7f7e", "status": "open"}}
+{"uid": "dc3584a63cd4da0f", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.updated", "payload": {"id": "q-20261014-071331-dcfc", "status": "open"}}
+{"uid": "86db6e29852fa98b", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-080108-bce0"}}
+{"uid": "e363733ef72fc7fa", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-080108-8570"}}
+{"uid": "780afb4455ce39bc", "timestamp": "2026-10-14T08:01:08", "actor": "agent", "type": "cycle.finished", "payload": {"summary": ["analyzed exp-20261014-051510-52f4 -> {'id': 'f-20261014-071331-ab1a', 'status': 'inconclusive'}", "proposed []", "analyzed exp-20261014-051510-bdb9 -> {'id': 'f-20261014-080108-12be', 'status': 'supported'}"]}}

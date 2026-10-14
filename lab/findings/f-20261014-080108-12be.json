@@ -1,0 +1,24 @@
+{
+  "id": "f-20261014-080108-12be",
+  "claim": "With m2 fixed at 0.5 on data_seed 0, N=128 seed 23 trained to 24000 steps reaches a final trained force R2 of 0.71286 at layer 1 (control 0.55058, margin 0.162). That is 0.081 below the same-layer N=64 12000-step value of 0.7935, so this is not a cross-layer comparison. Force gained only about 0.014 from step 12000 (\u22480.699, control plus margin) to step 24000, while val_mse_ratio fell from 0.025 to 0.0052. accel_step is decoded much better: R2 0.94313 at layer 4 against control 0.73629, a headroom-normalised margin of 0.78. The model keeps a strong per-snapshot acceleration code, but its physical-force readout stays at a lower ceiling than at N=64.",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261014-070746-d284"
+  ],
+  "confidence_note": "All three expected-if-true criteria are met: final force R2 is 0.713 (bar \u22640.753), the step 12000 to 24000 gain is about 0.014 (bar \u22640.03), and the normalised accel_step margin is 0.78 (bar in [0.60, 0.85]). The horizon check also passes: step-12000 force R2 here is about 0.699, 0.021 below the 12000-step run's 0.7197, inside the 0.03 tolerance. The run finished all 24000 steps (not stopped). Confidence is limited in four ways. (1) This is one model seed on one dataset, so it does not count as replication. (2) Force is still rising slowly, about +0.0012 per 1000 steps over steps 20000-24000. That points to a very slow approach, not a hard ceiling. Reaching 0.753 at this rate would take roughly 30k more steps, which a 48k-step run could test. (3) The comparison is at matched steps for N=64 and longer training for N=128, not at matched loss. The N=64 12000-step run's val_mse_ratio is not in this context, so the gap at matched loss is unverified. (4) Because of the lr-schedule horizon, this run's step-24000 force (0.713) sits below the 12000-step run's endpoint (0.720). Doubling the training length did not raise the end-of-schedule force R2 at all. That supports a ceiling, but it also means force values depend on the schedule. The verdict would change to refuted if a longer run or a matched-loss reading closed the same-layer gap to \u22640.02, or to inconclusive if another seed (e.g. seed 22 at layer 1, or data_seed 1 seeds 20-21) showed the gap still shrinking at 24000 steps.",
+  "created_at": "2026-10-14T08:01:08",
+  "experiment_id": "exp-20261014-051510-bdb9",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-14T08:01:08",
+      "actor": "agent"
+    }
+  ]
+}

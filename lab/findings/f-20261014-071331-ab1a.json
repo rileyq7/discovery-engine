@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-071331-ab1a",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, the two N=128 seeds disagree at 12000 steps. Seed 21 has force R2 0.7662 at layer 1 (control 0.6276, margin 0.139), about 0.064 below its N=64 value of about 0.830, and this comparison is across layers because N=64 peaks at layer 2. Seed 20 has force R2 0.7631 at layer 1 (control 0.6273, margin 0.136), only about 0.03-0.037 below its N=64 layer-1 value of about 0.79-0.80, inside the (0.02, 0.04) band the design calls inconclusive. accel_step levelled off long ago at layer 4 (R2 0.947/0.953, headroom-normalised margin 0.77/0.79), while force kept rising from step 6000 to 12000 (+0.024 for seed 20, +0.036 for seed 21) and is still gaining about 0.001-0.002 per 500 steps.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-062820-b9db",
+    "run-20261014-062820-bb67"
+  ],
+  "confidence_note": "Both runs completed all 12000 steps. The horizon check passes when read from the trajectories: at step 6000, force R2 is about 0.748 (seed 20, layer 1) against 0.7586 (layer 3), and about 0.730 (seed 21, layer 1) against 0.7332 (layer 2). Both are within 0.03 but compared across layers. The N=64 reference values come only from the related arm's trajectories, not from its probes_final. Seed 21's 0.830 is the max-over-layers field at layer 2, and seed 20's value is that field (0.80) or the layer-1 margin of 0.166 plus an assumed control of about 0.63. So both gaps are approximate, and seed 21's gap is cross-layer. The ceiling interpretation is also weakened in two ways. Seed 21's N=128 force gained 0.036 from step 6000 to 12000, more than the 0.03 the hypothesis allowed. Its gap also shrank from about 0.077 at step 6000 to about 0.064 at step 12000, which looks more like slow convergence than a fixed ceiling. The verdict would move to supported if the N=64 probes_final shows both same-layer gaps at 0.04 or more. It would move toward refuted if seed 21's layer-1 N=64 force R2 is within 0.02 of 0.766, or if the N=128 gaps keep closing with 24000 steps.",
+  "created_at": "2026-10-14T07:13:31",
+  "experiment_id": "exp-20261014-051510-52f4",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T07:13:31",
+      "actor": "agent"
+    }
+  ]
+}
