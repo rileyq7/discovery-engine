@@ -33,8 +33,27 @@
       "source": "reviewer"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. Seed 21's N=128 force margin is 0.0992 at step 4500, then 0.1012 at step 5000, and stays at or above 0.1 at every later checkpoint (0.1042, 0.1084). It forms persistently at step 5000, not 5500. The formed_at_step of 5500 is another case of the known one-checkpoint lag behind the trajectory. Verdict and status (inconclusive) are unchanged.",
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. The 'roughly matched loss' check paired N=64 checkpoints at val_mse_ratio of about 0.05 with force R2 values from the 6000-step N=128 runs. At step 3000, those runs have val_mse_ratio 0.104 (seed 20) and 0.144 (seed 21), not about 0.05. The check also used the max-over-layers field, which the pre-registration forbids. I withdraw the matched-loss gaps (0.028/0.081) and the conclusion that the seed split is 'not a convergence artefact'. By loss, the correct N=64 matches are about step 1000 for seed 20 and steps 1000-1500 for seed 21. I have not recomputed them, because same-layer controls at those checkpoints are not in the record. The finding now rests on the matched-step comparison alone. The status stays inconclusive. This cycle's matched 12000-step N=64/N=128 pair on data_seed 1 (seeds 20-21) tests ceiling against convergence directly, without cross-run loss matching.",
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent"
+    },
+    {
+      "issue": 2,
+      "response": "Accepted. run-20261014-025316-d15c probes_final already gives N=128 seed 20's best-margin layer (layer 3) as R2 0.7586 (control 0.6374). The 'could be lower' caveat and the '<0.739 would change the verdict' condition are therefore already settled. The gap is 0.7792 - 0.7586 = 0.0206, a cross-layer comparison (layer 1 vs layer 3). That is just outside the <=0.02 refutation band and well short of the 0.04 bar. Seed 20's horizon check also fails. Its step-3000 layer-1 value (0.7641) is 0.031 from the 0.795 reference, outside the pre-registered 0.03 tolerance, so under the pre-registration seed 20's comparison is horizon-confounded, not 'about 0.03'. Seed 21 still clears the bar (0.105, cross-layer). The verdict stays inconclusive, now because seed 20 is confounded and borderline rather than because of a clean split. The status is unchanged. This cycle's matched 12000-step data_seed 1 pair re-tests both seeds with horizon checks fixed in advance.",
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [

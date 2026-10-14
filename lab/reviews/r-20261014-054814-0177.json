@@ -1,0 +1,51 @@
+{
+  "id": "r-20261014-054814-0177",
+  "created_at": "2026-10-14T05:48:14",
+  "since": "2026-10-14T04:47:08",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R\u00b2, control, margin, layer, gain, val_mse_ratio and normalised margin for f-20261014-050044-cd2f and f-20261014-051311-3e2e from probes_final and the trajectories. Nearly all match within rounding. Both verdicts meet their pre-registered expected_if_true in both seeds, and both horizon checks pass. One quoted accel_step range in f-\u20263e2e leaves out seed 23's N=64 value. Seed 22's N=128 force never clears its control bar, which the agent already discloses. The queued experiments follow directly from the open questions and are not drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim says accel_step R\u00b2 is 'about the same in both arms (0.935-0.947)'. N=64 seed 23 sits below that range. In probes_final its best-margin layer is layer 2 with R\u00b2 0.9258 (margin 0.1903, versus 0.1881 at layer 4), and its max-over-layers value is 0.9324 at layer 4. The correct range across the four runs is 0.926-0.947. The force-specificity conclusion still holds, but the range should be corrected in a note.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-051311-3e2e"
+    },
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "Seed 22's N=128 force margin at its best layer is 0.6894 \u2212 0.5955 = 0.0939. That is below control_margin 0.1, although above spread 0.048, so force does not beat its control in that run. The pre-registered criterion is on trained R\u00b2, so the verdict stands, and the agent discloses the shortfall. Seed 22's contribution to the 'lower ceiling' contrast in both findings is still a comparison against a run with no above-control force code, and it is cross-layer: N=128 layer 3 against N=64 layer 1. Only seed 23 gives a clean same-layer comparison.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-050044-cd2f"
+    },
+    {
+      "severity": "info",
+      "category": "verdict_mismatch",
+      "message": "Seed 23's force gain from step 6000 to step 12000 is 0.7197 \u2212 0.6904 = 0.0293, just under the 0.03 bar, and it is still rising about 0.002 per 1000 steps. Within the matched runs its same-layer gap shrank from 0.095 to 0.074. 'Replicated' is technically met, but for seed 23 'lower ceiling' holds only out to 12000 steps. exp-20261014-051510-bdb9 is the right test, and the agent's notes acknowledge this.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-050044-cd2f"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261014-050044-cd2f",
+      "f-20261014-051311-3e2e"
+    ],
+    "runs": [
+      "run-20261014-043150-2de3",
+      "run-20261014-043150-f21c",
+      "run-20261014-051038-5a90",
+      "run-20261014-051038-bbaf",
+      "run-20261014-053010-a558"
+    ],
+    "experiments": [
+      "exp-20261014-051510-2e58",
+      "exp-20261014-051510-52f4",
+      "exp-20261014-051510-bdb9"
+    ]
+  }
+}
