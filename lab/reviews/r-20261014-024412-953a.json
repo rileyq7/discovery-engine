@@ -1,0 +1,53 @@
+{
+  "id": "r-20261014-024412-953a",
+  "created_at": "2026-10-14T02:44:12",
+  "since": "2026-10-14T01:43:05",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R\u00b2, control, margin, normalised margin, layer, gain and val_mse_ratio against probes_final and the per-step trajectories for all four findings, and checked each verdict against its pre-registered criteria. f-d52c (correction applied, status now supported), f-a922 and f-a80b check out. f-930a quotes N=64 seed-21 reference values that do not appear in that arm's probes_final, which is included in this context. The verdict still holds with the correct values. The last five experiments stay on the m2-fixed convergence-vs-ceiling question, and I found no bug patterns.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The paired N=64 data_seed 1 arm's probes_final is available (runs run-20261014-013337-aa9d/b80e). The pre-registration requires those values, but the claim uses trajectory-derived ones instead. Seed 21: quoted N=64 force R2 0.803 and control 0.628, while raw layer 4 (the best-margin layer) is 0.7901 with control 0.6154. 0.803 is the layer-1 max_r2 (0.8026), and 0.628 mixes layers (0.803 \u2212 layer-4 margin 0.175). Corrected seed-21 values: trained-R2 drop 0.7901 \u2212 0.7147 = 0.075 (quoted 0.088), control change 0.6148 \u2212 0.6154 = \u22120.001 (quoted \u22120.013). Seed 20 checks out: 0.7946 vs 0.7304 gives a drop of 0.064, and control change is \u22120.006. Both seeds still meet expected_if_true (drop \u2265 0.05, |\u0394control| \u2264 0.03, accel_step norm 0.745/0.746), so 'replicated' stands. The quoted numbers and the confidence note's caveat that 'N=64 values are not unrounded probes_final' need a correction note. The caveat that seed 20 could fall into the 0.02\u20130.05 band does not apply: its drop is 0.064.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-015607-930a"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says seed 21's step-3000 layer-1 force control is not exported and the value is approximate. The trajectory does give it: at step 3000, layer 1 has R2 0.6617 and control 0.5884. So the horizon-check value of 0.662 is exact, and the horizon check passes cleanly (|0.662 \u2212 0.684| = 0.022 < 0.03). Seed 21's final margin at layer 2 (0.1004) clears max(0.1, spread 0.0168) by only 0.0004.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-015524-a922"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Point (3) of the confidence note describes the trajectory R2 field as max-over-layers. The current trajectory export has separate best-margin-layer R2 and max_r2 fields: N=128 seed 21 best-margin layer 4 has R2 0.7147, and max_r2 is 0.7179 at layer 1. The claim itself uses the correct probes_final values, so this does not affect the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-015644-a80b"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261014-004505-d52c",
+      "f-20261014-015524-a922",
+      "f-20261014-015607-930a",
+      "f-20261014-015644-a80b"
+    ],
+    "runs": [
+      "run-20261014-013337-b80e",
+      "run-20261014-014420-364f",
+      "run-20261014-014420-ef76",
+      "run-20261014-021335-4030",
+      "run-20261014-021335-eb64"
+    ],
+    "experiments": [
+      "exp-20261014-021334-500d",
+      "exp-20261014-021334-613c",
+      "exp-20261014-021334-cc3c"
+    ]
+  }
+}
