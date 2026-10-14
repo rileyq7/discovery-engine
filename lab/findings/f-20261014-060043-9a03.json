@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-060043-9a03",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, N=64 force beats its control in both fresh seeds at 6000 steps, both at layer 1 (the distance layer). Seed 22: R2 0.866 vs control 0.620, margin 0.246. Seed 23: R2 0.847 vs control 0.632, margin 0.214. Both runs also meet the accel_step condition: layer-4 accel_step R2 is 0.951 and 0.947 against controls of 0.773 and 0.776, giving raw margins of 0.179 and 0.172 and headroom-normalised margins of 0.786 and 0.765. So force has the larger raw margin, and accel_step has the larger normalised margin.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-051038-bbaf",
+    "run-20261014-051038-5a90"
+  ],
+  "confidence_note": "Every condition in expected_if_true is met in both completed, unstopped seeds (6000/6000 steps, val_mse_ratio 0.0047-0.0048). Force margins clear the required 0.1 bar by 0.11-0.15; the control_spread is 0.028. Trained force R2 for seeds 22-23 (0.847-0.866) is at the top of the [0.74, 0.87] band and above data_seed 1 seeds 20-21 (0.779/0.838), so the reference is stable across model seeds but spans about 0.09 in R2. Seed 22 is still gaining about 0.003-0.004 margin per 500 steps at step 6000, while seed 23 has levelled off (+0.001), so the 6000-step values are not ceilings. For context only, from the paired N=128 arm (exp-20261014-041454-3072, trajectory field read at layer 1 in both arms): the same-layer N=64 minus N=128 force R2 gap on data_seed 1 is about 0.086 for seed 22 and 0.053 for seed 23. Both are at least 0.04. Their order matches the data_seed 0 gaps (0.143 and 0.072), but both are smaller. Those values are approximate until they are read from that arm's probes_final. A force R2 below 0.74 or a margin below 0.1 in a further data_seed 1 seed, for example seed 24 or 25, would weaken the claim that this reference is stable.",
+  "created_at": "2026-10-14T06:00:43",
+  "experiment_id": "exp-20261014-041454-2aea",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T06:00:43",
+      "actor": "agent"
+    }
+  ]
+}

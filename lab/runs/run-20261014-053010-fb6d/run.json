@@ -1,0 +1,73 @@
+{
+  "id": "run-20261014-053010-fb6d",
+  "experiment_id": "exp-20261014-041454-3072",
+  "seed": 23,
+  "status": "completed",
+  "started_at": "2026-10-14T05:39:52",
+  "ended_at": "2026-10-14T05:49:40",
+  "compute_hours": 0.1632,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261014-053010-fb6d",
+  "git_commit": "00bab41",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 3.015572080520664e-08,
+    "baseline_cv_mse": 1.536471930545146e-06,
+    "val_mse_ratio": 0.019626600529244472,
+    "beats_baseline": true,
+    "train_hours": 0.15972720715734695,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "207d7a485db8",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.7937,
+          "control_r2": 0.63336,
+          "control_spread": 0.0313,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.94508,
+          "control_r2": 0.76656,
+          "control_spread": 0.00893,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.9631,
+          "control_r2": 0.23752,
+          "control_spread": 0.06842,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.88719,
+          "control_r2": 0.2314,
+          "control_spread": 0.07424,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 67469,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "207d7a485db8"
+}

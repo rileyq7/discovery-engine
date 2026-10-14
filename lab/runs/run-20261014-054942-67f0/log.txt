@@ -1,0 +1,20 @@
+[05:49:45] experiment exp-20261014-051510-2e58 (E5) seed 21: This is the reference arm for the matched 12000-step data_seed 1 test. m2 is fixed at 0.5 and data_seed is 1. N=64 seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) are trained to 12000 steps and keep force above control. Their final trained force R2 is at least 0.04 above the same seed's 12000-step N=128 value from the paired arm proposed in this cycle. Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Cross-layer comparisons are flagged. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. If the paired N=128 run is unavailable, the comparison is reported as not computed. Horizon check: step-6000 trained force R2 must be within 0.03 of the 6000-step N=64 data_seed 1 runs (0.7792 seed 20, 0.8376 seed 21). Otherwise the comparison is reported as horizon-confounded.
+[05:49:45] model: 209,094 params on mps; dataset 810a0af8f62a; 9000 train / 1000 val systems
+[05:49:46] step 0: val_mse=1.934e-03 cv_baseline=2.449e-05 ratio=78.974
+[05:50:33] step 500: val_mse=1.292e-05 cv_baseline=2.449e-05 ratio=0.527
+[05:51:20] step 1000: val_mse=7.642e-06 cv_baseline=2.449e-05 ratio=0.312
+[05:52:06] step 1500: val_mse=3.004e-06 cv_baseline=2.449e-05 ratio=0.123
+[05:52:53] step 2000: val_mse=1.313e-06 cv_baseline=2.449e-05 ratio=0.054
+[05:53:40] step 2500: val_mse=1.158e-06 cv_baseline=2.449e-05 ratio=0.047
+[05:54:26] step 3000: val_mse=9.461e-07 cv_baseline=2.449e-05 ratio=0.039
+[05:55:13] step 3500: val_mse=9.120e-07 cv_baseline=2.449e-05 ratio=0.037
+[05:56:01] step 4000: val_mse=8.985e-07 cv_baseline=2.449e-05 ratio=0.037
+[05:56:48] step 4500: val_mse=6.906e-07 cv_baseline=2.449e-05 ratio=0.028
+[05:57:35] step 5000: val_mse=4.418e-07 cv_baseline=2.449e-05 ratio=0.018
+[05:58:22] step 5500: val_mse=3.445e-07 cv_baseline=2.449e-05 ratio=0.014
+[05:59:09] step 6000: val_mse=3.450e-07 cv_baseline=2.449e-05 ratio=0.014
+[05:59:55] step 6500: val_mse=3.382e-07 cv_baseline=2.449e-05 ratio=0.014
+[06:00:43] step 7000: val_mse=2.900e-07 cv_baseline=2.449e-05 ratio=0.012
+[06:01:32] step 7500: val_mse=1.751e-07 cv_baseline=2.449e-05 ratio=0.007
+[06:02:19] step 8000: val_mse=1.462e-07 cv_baseline=2.449e-05 ratio=0.006
+[06:03:07] step 8500: val_mse=1.376e-07 cv_baseline=2.449e-05 ratio=0.006

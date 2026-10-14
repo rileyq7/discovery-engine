@@ -16,3 +16,21 @@ run-20261014-043150-f21c: [05:00:44] step 6000: val_mse=2.964e-07 cv_baseline=2.
 run-20261014-043150-f21c: [05:01:32] step 6500: val_mse=3.186e-07 cv_baseline=2.445e-05 ratio=0.013
 run-20261014-043150-f21c: [05:02:19] step 7000: val_mse=1.541e-07 cv_baseline=2.445e-05 ratio=0.006
 run-20261014-043150-f21c: [05:03:07] step 7500: val_mse=1.605e-07 cv_baseline=2.445e-05 ratio=0.007
+run-20261014-043150-f21c: [05:04:01] step 8000: val_mse=1.747e-07 cv_baseline=2.445e-05 ratio=0.007
+run-20261014-043150-f21c: [05:04:48] step 8500: val_mse=1.418e-07 cv_baseline=2.445e-05 ratio=0.006
+run-20261014-043150-f21c: [05:05:34] step 9000: val_mse=1.090e-07 cv_baseline=2.445e-05 ratio=0.004
+run-20261014-043150-f21c: [05:06:21] step 9500: val_mse=7.850e-08 cv_baseline=2.445e-05 ratio=0.003
+run-20261014-043150-f21c: [05:07:08] step 10000: val_mse=8.500e-08 cv_baseline=2.445e-05 ratio=0.003
+run-20261014-043150-f21c: [05:07:54] step 10500: val_mse=5.372e-08 cv_baseline=2.445e-05 ratio=0.002
+run-20261014-043150-f21c: [05:08:41] step 11000: val_mse=5.722e-08 cv_baseline=2.445e-05 ratio=0.002
+run-20261014-043150-f21c: [05:09:27] step 11500: val_mse=5.665e-08 cv_baseline=2.445e-05 ratio=0.002
+run-20261014-043150-f21c: [05:10:14] step 12000: val_mse=5.907e-08 cv_baseline=2.445e-05 ratio=0.002
+run-20261014-043150-f21c: [05:10:14] training done in 19.0 min; beats constant-velocity baseline: True
+run-20261014-043150-f21c: [05:10:17] random-model controls (best of 3): force=0.19/0.57/0.60/0.60/0.59, accel_step=0.60/0.70/0.72/0.73/0.73, distance=-0.02/0.26/0.40/0.56/0.57, energy=-0.04/0.26/0.42/0.59/0.64
+run-20261014-043150-f21c: [05:10:18] probes @ step 0: best force R2=0.605 (layer 3)
+run-20261014-043150-f21c: [05:10:22] probes @ step 2500: best force R2=0.765 (layer 1)
+run-20261014-043150-f21c: [05:10:25] probes @ step 5000: best force R2=0.812 (layer 1)
+run-20261014-043150-f21c: [05:10:29] probes @ step 7500: best force R2=0.825 (layer 1)
+run-20261014-043150-f21c: [05:10:32] probes @ step 10000: best force R2=0.834 (layer 1)
+run-20261014-043150-f21c: [05:10:36] probes @ step 12000: best force R2=0.840 (layer 1)
+run-20261014-043150-f21c: [05:10:36] run complete in 19.3 min

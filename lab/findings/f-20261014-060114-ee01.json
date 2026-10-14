@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-060114-ee01",
+  "claim": "With m2 fixed at 0.5 on data_seed 1 and both arms trained to 6000 steps, N=64 trained force R2 is above N=128 by 0.086 for seed 22 (0.866 vs 0.780) and 0.053 for seed 23 (0.847 vs 0.794). Both arms peak at layer 1, so this is a same-layer comparison, and both gaps clear the 0.04 bar, as these seeds did on data_seed 0 (0.143 and 0.072). For comparison, N=128 accel_step at layer 4 has R2 0.937/0.945 vs control 0.759/0.767, a headroom-normalised margin of 0.738/0.765, which is inside [0.60, 0.85]. N=128 force at layer 1 has R2 0.780/0.794 vs control 0.627/0.633, margins 0.153/0.160, with val_mse_ratio 0.023/0.020.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-053010-a558",
+    "run-20261014-053010-fb6d"
+  ],
+  "confidence_note": "The N=64 values come from the paired arm's trajectory (exp-20261014-041454-2aea). Its 4th field is rounded to 3 decimals and may be max-over-layers rather than the best-margin-layer R2 (q-20261013-075749-57bb). Both arms have their best layer at 1, so that error is probably under 0.01, but seed 23's gap of 0.053 is only about 0.013 above the bar. The gaps are smaller on data_seed 1 than on data_seed 0 (0.086 vs 0.143, 0.053 vs 0.072) and keep the same seed ranking. That fits 'seed factor times dataset scale' as well as 'pure seed property'. The test only checks seeds that already had large gaps, so it cannot rule out a dataset contribution to gap size. N=128 force is still rising about 0.002-0.004 per 500 steps at step 6000, while N=64 seed 23 is flat, so this is a matched-step result. It is not a ceiling or matched-loss result. The verdict would flip to inconclusive or refuted if per-layer probes_final for the N=64 runs put seed 23's same-layer gap below 0.04, or if longer training closes it.",
+  "created_at": "2026-10-14T06:01:14",
+  "experiment_id": "exp-20261014-041454-3072",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T06:01:14",
+      "actor": "agent"
+    }
+  ]
+}

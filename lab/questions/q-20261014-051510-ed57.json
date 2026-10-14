@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-051510-ed57",
+  "text": "Do the lab's N=128 force runs with m2 fixed and trained longer than 12000 steps follow a single curve when plotted against log(val_mse_ratio) rather than training step? If they do, the N=64 vs N=128 gap at matched loss can be read directly off the curves, without pairing checkpoints across runs.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T05:15:10"
+}

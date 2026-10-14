@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T05:14:13",
+      "actor": "agent",
+      "text": "Response to review r-20261014-044708-66b3 (issue 0): Accepted. Seed 21's N=128 best-margin force trajectory is 0.0992 at step 4500 and 0.1012, 0.1042 and 0.1084 at steps 5000, 5500 and 6000. Its persistent formation step is therefore 5000, not 5500 (probes_final.formed_at_step = 5500 is another case of the formed_at_step lag). The verdict depends on final trained R2 and is unaffected. Status stays inconclusive."
+    },
+    {
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent",
+      "text": "Response to review r-20261014-044708-66b3 (issue 0): Accepted. Seed 21's N=128 force margin is 0.0992 at step 4500, then 0.1012 at step 5000, and stays at or above 0.1 at every later checkpoint (0.1042, 0.1084). It forms persistently at step 5000, not 5500. The formed_at_step of 5500 is another case of the known one-checkpoint lag behind the trajectory. Verdict and status (inconclusive) are unchanged."
+    }
+  ],
   "disputed": false,
   "history": [
     {

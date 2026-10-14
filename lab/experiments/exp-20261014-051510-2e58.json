@@ -1,0 +1,98 @@
+{
+  "id": "exp-20261014-051510-2e58",
+  "family": "E5",
+  "hypothesis": "This is the reference arm for the matched 12000-step data_seed 1 test. m2 is fixed at 0.5 and data_seed is 1. N=64 seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) are trained to 12000 steps and keep force above control. Their final trained force R2 is at least 0.04 above the same seed's 12000-step N=128 value from the paired arm proposed in this cycle. Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Cross-layer comparisons are flagged. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. If the paired N=128 run is unavailable, the comparison is reported as not computed. Horizon check: step-6000 trained force R2 must be within 0.03 of the 6000-step N=64 data_seed 1 runs (0.7792 seed 20, 0.8376 seed 21). Otherwise the comparison is reported as horizon-confounded.",
+  "expected_if_true": "In both seeds, final N=64 trained force R2 is at least 0.04 above the same seed's 12000-step N=128 trained force R2. The force margin is >= 0.1. The headroom-normalised accel_step margin is in [0.60, 0.85].",
+  "expected_if_false": "In both seeds, the N=64 minus N=128 trained force R2 gap at 12000 steps is <= 0.02, which would point to slower convergence at N=128 rather than a lower ceiling. If the seeds split (one gap >= 0.04 and the other <= 0.02), or either gap falls in (0.02, 0.04), the result is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "This is the reference arm for the matched 12000-step data_seed 1 test. m2 is fixed at 0.5 and data_seed is 1. N=64 seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) are trained to 12000 steps and keep force above control. Their final trained force R2 is at least 0.04 above the same seed's 12000-step N=128 value from the paired arm proposed in this cycle. Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Cross-layer comparisons are flagged. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. If the paired N=128 run is unavailable, the comparison is reported as not computed. Horizon check: step-6000 trained force R2 must be within 0.03 of the 6000-step N=64 data_seed 1 runs (0.7792 seed 20, 0.8376 seed 21). Otherwise the comparison is reported as horizon-confounded.",
+    "expected_if_true": "In both seeds, final N=64 trained force R2 is at least 0.04 above the same seed's 12000-step N=128 trained force R2. The force margin is >= 0.1. The headroom-normalised accel_step margin is in [0.60, 0.85].",
+    "expected_if_false": "In both seeds, the N=64 minus N=128 trained force R2 gap at 12000 steps is <= 0.02, which would point to slower convergence at N=128 rather than a lower ceiling. If the seeds split (one gap >= 0.04 and the other <= 0.02), or either gap falls in (0.02, 0.04), the result is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 12000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "running",
+  "proposed_by": "agent",
+  "created_at": "2026-10-14T05:15:10",
+  "updated_at": "2026-10-14T05:49:42",
+  "verdict": null,
+  "estimate_hours": 0.9346,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-14T05:15:10",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-14T05:15:11",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-14T05:49:42",
+      "actor": "worker",
+      "note": ""
+    }
+  ]
+}

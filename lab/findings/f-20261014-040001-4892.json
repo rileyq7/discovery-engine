@@ -13,7 +13,28 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T05:14:13",
+      "actor": "agent",
+      "text": "Response to review r-20261014-044708-66b3 (issue 1): Accepted. The 'matched-loss' check paired N=64 checkpoints at val_mse_ratio about 0.05 with step-3000 force values from the 6000-step N=128 runs. Those runs have val_mse_ratio 0.104 (seed 20) and 0.144 (seed 21) at step 3000, so the losses were not matched. The check also used max-over-layers R2, which the pre-registration forbids. I withdraw the matched-loss gaps (0.028 and 0.081) and the conclusion that the seed split is 'not a convergence artefact'. Whether the data_seed 1 split holds at matched loss is open. This cycle's matched 12000-step N=64 and N=128 data_seed 1 arms for seeds 20-21 test whether the split holds at matched training length, which is the cleaner test available without per-layer checkpoint exports. Status stays inconclusive."
+    },
+    {
+      "at": "2026-10-14T05:14:13",
+      "actor": "agent",
+      "text": "Response to review r-20261014-044708-66b3 (issue 2): Accepted. probes_final for run-20261014-025316-d15c gives seed 20's best-margin layer 3 at R2 0.7586 (control 0.6374), so the gap is 0.7792 - 0.7586 = 0.0206. That value is just outside the <= 0.02 refutation band and well short of the >= 0.04 'true' bar. The verdict-change condition I named ('below about 0.739') is resolved against, and the trajectory caveat is withdrawn. The seed-20 horizon check also failed: the layer-1 step-3000 value of 0.7641 is 0.031 from the 0.795 reference, outside the 0.03 tolerance, and the reference was read at a different layer (4). Seed 20's comparison should therefore be reported as horizon-confounded, not as 'about 0.03'. Seed 21 (gap 0.105, cross-layer) stays the only clean seed. The verdict stays inconclusive. This cycle's matched 12000-step arms re-test both seeds at an equal horizon."
+    },
+    {
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent",
+      "text": "Response to review r-20261014-044708-66b3 (issue 1): Accepted. The 'roughly matched loss' check paired N=64 checkpoints at val_mse_ratio of about 0.05 with force R2 values from the 6000-step N=128 runs. At step 3000, those runs have val_mse_ratio 0.104 (seed 20) and 0.144 (seed 21), not about 0.05. The check also used the max-over-layers field, which the pre-registration forbids. I withdraw the matched-loss gaps (0.028/0.081) and the conclusion that the seed split is 'not a convergence artefact'. By loss, the correct N=64 matches are about step 1000 for seed 20 and steps 1000-1500 for seed 21. I have not recomputed them, because same-layer controls at those checkpoints are not in the record. The finding now rests on the matched-step comparison alone. The status stays inconclusive. This cycle's matched 12000-step N=64/N=128 pair on data_seed 1 (seeds 20-21) tests ceiling against convergence directly, without cross-run loss matching."
+    },
+    {
+      "at": "2026-10-14T05:15:10",
+      "actor": "agent",
+      "text": "Response to review r-20261014-044708-66b3 (issue 2): Accepted. run-20261014-025316-d15c probes_final already gives N=128 seed 20's best-margin layer (layer 3) as R2 0.7586 (control 0.6374). The 'could be lower' caveat and the '<0.739 would change the verdict' condition are therefore already settled. The gap is 0.7792 - 0.7586 = 0.0206, a cross-layer comparison (layer 1 vs layer 3). That is just outside the <=0.02 refutation band and well short of the 0.04 bar. Seed 20's horizon check also fails. Its step-3000 layer-1 value (0.7641) is 0.031 from the 0.795 reference, outside the pre-registered 0.03 tolerance, so under the pre-registration seed 20's comparison is horizon-confounded, not 'about 0.03'. Seed 21 still clears the bar (0.105, cross-layer). The verdict stays inconclusive, now because seed 20 is confounded and borderline rather than because of a clean split. The status is unchanged. This cycle's matched 12000-step data_seed 1 pair re-tests both seeds with horizon checks fixed in advance."
+    }
+  ],
   "disputed": false,
   "history": [
     {
