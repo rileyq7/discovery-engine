@@ -2,6 +2,8 @@
   "id": "q-20261014-040037-c232",
   "text": "With m2 fixed on data_seed 0 at 6000 steps, per-seed N=64 minus N=128 force gaps are 0.011 (seed 20), 0.072 (seed 23), 0.107 (seed 21) and 0.143 (seed 22). Does each seed's gap track whether its N=128 force best layer is layer 1 or a later layer? Is a large gap the signature of an N=128 run that never develops the layer-1 force read that every N=64 seed here uses?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261014-050044-cd2f"
+  ],
   "created_at": "2026-10-14T04:00:37"
 }

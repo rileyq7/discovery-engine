@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-050044-cd2f",
+  "claim": "With m2 fixed at 0.5 on data_seed 0 and training at N=128 for 12000 steps, final trained force R2 is 0.6894 for seed 22 (layer 3; control 0.5955, margin 0.094, so it does not beat its control) and 0.7197 for seed 23 (layer 1; control 0.5506, margin 0.169). Both stay below the 0.727 and 0.730 bars. They sit 0.078 and 0.050 below the same seeds' N=64 3000-step values, 0.767 and 0.770. Force gained only about 0.008 (seed 22) and 0.029 (seed 23) from step 6000 to 12000, while val_mse_ratio fell about 6-10x, from 0.088-0.090 to 0.008-0.014. accel_step leveled off at layer 4 with R2 0.935-0.944 against controls of 0.715-0.736, giving normalised margins of 0.773 and 0.787. Its raw margin is 0.207-0.220, above force's 0.094-0.169.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-035310-a947",
+    "run-20261014-035310-270b"
+  ],
+  "confidence_note": "Both seeds completed all 12000 planned steps, so neither was stopped early. Both pass the horizon check: step-6000 force R2 is about 0.681 (seed 22) and about 0.691 (seed 23, control plus margin at layer 1), against the 6000-step N=128 references of 0.681 and 0.696. The pre-registered conditions hold in both seeds, but there are four limits. (1) Seed 23's gain from step 6000 to 12000 is 0.029-0.030, right at the 0.03 bar, and its force margin is still rising by about 0.002 per 1000 steps. At that rate it would reach 0.727 within roughly 4000 more steps, so for seed 23 'lower ceiling' is a slow approach rather than a demonstrated plateau. Seed 22 has clearly leveled off, gaining under 0.002 per 1000 steps since step 4000. (2) The N=64 reference is a 3000-step run, while the N=64 6000-step runs of the same seeds reach 0.824 (seed 22) and 0.768 (seed 23). The gap against matched-length N=64 training is therefore larger (0.135 and 0.048), but the experiment does not measure a 12000-step N=64 arm. (3) Seed 22's comparison is cross-layer: N=128 is at layer 3, after drifting 3 to 4 to 3, while N=64 is at layer 1. Its final force margin of 0.094 also falls below the 0.1 bar, where the layer-3 control is high (0.595, spread 0.048). (4) The step-6000 value for seed 22 comes from the trajectory field, which may be max-over-layers, so that gain is approximate. Two things would change the verdict to refuted or inconclusive: a 16000-24000-step continuation of seed 23 reaching 0.75 or more, or a same-layer (layer 1) comparison showing seed 22's N=128 layer-1 force R2 within 0.04 of N=64.",
+  "created_at": "2026-10-14T05:00:44",
+  "experiment_id": "exp-20261014-031344-0296",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T05:00:44",
+      "actor": "agent"
+    }
+  ]
+}

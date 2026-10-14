@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-050044-189c",
+  "text": "At step 12000, N=128 m2-fixed seeds 22-23 reach val_mse_ratio 0.014 and 0.008, which is probably below what the N=64 runs of the same seeds reach at step 3000. Read the N=64 6000-step runs (run-20261014-031344-3f3d and run-20261014-031344-6b2c) at their checkpoint with matching val_mse_ratio. Is N=64 trained force R2 still at least 0.05 above N=128's 0.689 and 0.720? A yes would show the N=128 force deficit is present at matched loss and not just at matched step.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T05:00:44"
+}
