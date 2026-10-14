@@ -1,0 +1,98 @@
+{
+  "id": "exp-20261014-021334-500d",
+  "family": "E5",
+  "hypothesis": "On data_seed 1 with m2 fixed at 0.5, the N=64 to N=128 trained force R2 drop (about 0.065 / 0.088 at 3000 steps) persists at 6000 steps. N=128 seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) stay at least 0.04 below the same seed's N=64 layer-4 probes_final trained force R2 (0.795 seed 20, 0.790 seed 21). Values come from probes_final at the best-margin layer, unrounded, and the layer is reported; a cross-layer comparison is flagged. Horizon check: step-3000 trained force R2 must be within 0.03 of the 3000-step N=128 data_seed 1 runs (0.730 / 0.715).",
+  "expected_if_true": "In both seeds, final trained force R2 is <= 0.755 (seed 20) and <= 0.750 (seed 21). accel_step headroom-normalised margin is in [0.60, 0.80].",
+  "expected_if_false": "In both seeds, final trained force R2 is >= 0.775 (seed 20) and >= 0.770 (seed 21), i.e. within 0.02 of N=64. A split between seeds counts as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "On data_seed 1 with m2 fixed at 0.5, the N=64 to N=128 trained force R2 drop (about 0.065 / 0.088 at 3000 steps) persists at 6000 steps. N=128 seeds 20-21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) stay at least 0.04 below the same seed's N=64 layer-4 probes_final trained force R2 (0.795 seed 20, 0.790 seed 21). Values come from probes_final at the best-margin layer, unrounded, and the layer is reported; a cross-layer comparison is flagged. Horizon check: step-3000 trained force R2 must be within 0.03 of the 3000-step N=128 data_seed 1 runs (0.730 / 0.715).",
+    "expected_if_true": "In both seeds, final trained force R2 is <= 0.755 (seed 20) and <= 0.750 (seed 21). accel_step headroom-normalised margin is in [0.60, 0.80].",
+    "expected_if_false": "In both seeds, final trained force R2 is >= 0.775 (seed 20) and >= 0.770 (seed 21), i.e. within 0.02 of N=64. A split between seeds counts as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.55
+    }
+  },
+  "state": "running",
+  "proposed_by": "agent",
+  "created_at": "2026-10-14T02:13:34",
+  "updated_at": "2026-10-14T02:53:16",
+  "verdict": null,
+  "estimate_hours": 0.4858,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-14T02:13:34",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-14T02:13:34",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-14T02:13:35",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-14T02:53:16",
+      "actor": "worker",
+      "note": ""
+    }
+  ]
+}

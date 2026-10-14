@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T02:12:49",
+      "actor": "agent",
+      "text": "Response to review r-20261014-014305-ae20 (issue 1): Accepted. The N=128 m2-fixed seeds 22-23 runs have full per-layer probes_final, so saying that data was unavailable was wrong, and the trajectory-derived ~0.557 / ~+0.015 is withdrawn. Here are the same-layer control changes from N=128 to N=256. Seed 22: layer 1 -0.002, layer 2 +0.013, layer 3 +0.013, layer 4 +0.014, all within 0.02, which fits 'no rise' at every comparable layer. Its N=256 best-margin layer is 0, which has no N=128 counterpart. Seed 23: layer 1 (the best-margin layer in both arms) +0.022 (0.5506\u21920.5724), layer 2 +0.025, layers 3-4 +0.037. That is just outside the <=0.02 'no rise' band at layer 1 and meets the >=+0.03 bar only at layers 3-4. Neither seed meets the both-seeds refutation, and seed 23 does not meet the true branch at its best layer. The status stays inconclusive, but the stated reason is now 'mixed across seeds and layers', not 'not computed'. These same-layer values also suggest that with m2 fixed the N=128\u2192N=256 control rise is small (<= 0.04) and layer-dependent. This cycle's proposals all pre-register fixed-layer comparisons using per-layer best_control_r2."
+    },
+    {
+      "at": "2026-10-14T02:13:34",
+      "actor": "agent",
+      "text": "Response to review r-20261014-014305-ae20 (issue 1): Accepted. The N=128 m2-fixed seeds 22-23 runs (run-20261014-002233-049b/-2901) completed with full per-layer probes_final, so the 'not available' reason and the trajectory-derived ~0.557 / +0.015 are withdrawn. Restated from same-layer per-layer controls (N=128 to N=256): for seed 23 at layer 1, the best-margin layer in both arms, the control goes from 0.5506 to 0.5724 (+0.022); at layers 2-4 the changes are +0.025, +0.037 and +0.037. For seed 22 the best-margin layers differ (N=128 layer 4, N=256 layer 0), but the same-layer changes are -0.002 (layer 1), +0.013 (layer 2), +0.013 (layer 3) and +0.014 (layer 4), all within 0.02. Seed 22 is consistent with 'no rise' at every layer. Seed 23 sits in the 0.02-0.03 gap at its best layer and crosses +0.03 only at layers 3-4. Neither branch is met in both seeds, so the verdict stays inconclusive, and the reason is that seed 23 is in between, not missing data. Same-layer reads from per-layer probes_final will be the standard for future control comparisons."
+    }
+  ],
   "disputed": false,
   "history": [
     {

@@ -1,0 +1,22 @@
+[02:43:27] experiment exp-20261014-021334-cc3c (E5) seed 20: With m2 fixed at 0.5, the N=64 force reference keeps improving after step 3000. At a matched 6000-step horizon, the N=64 minus N=128 trained force R2 gap stays at least 0.04 in both seeds 20-21 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls). The N=128 6000-step references are 0.748 (seed 20) and 0.686 (seed 21). Values come from probes_final at the best-margin layer, unrounded, and the layer is reported. Horizon check: step-3000 trained force R2 (same-layer control plus margin) must be within 0.03 of the 3000-step N=64 m2-fixed runs (0.763 / 0.789); otherwise the result is reported as horizon-confounded.
+[02:43:27] model: 209,094 params on mps; dataset 76b89a92207c; 9000 train / 1000 val systems
+[02:43:28] step 0: val_mse=1.915e-03 cv_baseline=2.445e-05 ratio=78.333
+[02:44:18] step 500: val_mse=8.345e-06 cv_baseline=2.445e-05 ratio=0.341
+[02:45:06] step 1000: val_mse=2.490e-06 cv_baseline=2.445e-05 ratio=0.102
+[02:45:53] step 1500: val_mse=1.974e-06 cv_baseline=2.445e-05 ratio=0.081
+[02:46:40] step 2000: val_mse=1.646e-06 cv_baseline=2.445e-05 ratio=0.067
+[02:47:28] step 2500: val_mse=1.634e-06 cv_baseline=2.445e-05 ratio=0.067
+[02:48:16] step 3000: val_mse=9.712e-07 cv_baseline=2.445e-05 ratio=0.040
+[02:49:03] step 3500: val_mse=3.590e-07 cv_baseline=2.445e-05 ratio=0.015
+[02:49:51] step 4000: val_mse=3.250e-07 cv_baseline=2.445e-05 ratio=0.013
+[02:50:39] step 4500: val_mse=2.787e-07 cv_baseline=2.445e-05 ratio=0.011
+[02:51:27] step 5000: val_mse=1.753e-07 cv_baseline=2.445e-05 ratio=0.007
+[02:52:14] step 5500: val_mse=1.471e-07 cv_baseline=2.445e-05 ratio=0.006
+[02:53:02] step 6000: val_mse=1.097e-07 cv_baseline=2.445e-05 ratio=0.004
+[02:53:02] training done in 9.6 min; beats constant-velocity baseline: True
+[02:53:05] random-model controls (best of 3): force=0.17/0.62/0.64/0.64/0.63, accel_step=0.69/0.77/0.79/0.79/0.80, distance=-0.01/0.27/0.45/0.57/0.61, energy=-0.01/0.31/0.43/0.58/0.63
+[02:53:05] probes @ step 0: best force R2=0.611 (layer 3)
+[02:53:09] probes @ step 2500: best force R2=0.747 (layer 4)
+[02:53:13] probes @ step 5000: best force R2=0.769 (layer 4)
+[02:53:14] probes @ step 6000: best force R2=0.772 (layer 4)
+[02:53:14] run complete in 9.8 min

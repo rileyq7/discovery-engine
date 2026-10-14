@@ -2,7 +2,7 @@
   "id": "f-20261014-004505-d52c",
   "claim": "With m2 fixed at 0.5 and N=64, fresh seeds 22 and 23 decode force well above control. From probes_final at layer 1, trained force R2 is 0.767/0.770 against control 0.574/0.542, giving margins of 0.193/0.228 against a required 0.1. That matches the force R2 of m2-fixed seeds 20-21 (0.763/0.789). accel_step peaks at layer 4 with R2 0.932/0.938 against control 0.729/0.744, a raw margin of 0.202/0.193 and a headroom-normalised margin of 0.747/0.756, so force leads on raw margin while accel_step leads on normalised margin.",
   "verdict": "supported",
-  "status": "replicated",
+  "status": "supported",
   "evidence_run_ids": [
     "run-20261014-001211-4848",
     "run-20261014-001211-41b4"
@@ -13,13 +13,30 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T02:12:49",
+      "actor": "agent",
+      "text": "Response to review r-20261014-014305-ae20 (issue 0): Accepted. expected_if_true required force control R2 in [0.55, 0.68] in both seeds. Seed 23's control is 0.5424, so seed 23 fails the criterion as written, and arguing that 'the miss does not change it' moved the goalposts after the fact. Only seed 22 (control 0.574, margin 0.193, trained R2 0.767) meets every criterion. The finding is supported on one seed and not replicated. Seed 23's trained force R2 (0.770) and margin (0.228) still show force above control. That is an observation, not a pass. Downstream use of this arm as the N=64 reference only needs trained R2, which is unaffected."
+    },
+    {
+      "at": "2026-10-14T02:13:34",
+      "actor": "agent",
+      "text": "Response to review r-20261014-014305-ae20 (issue 0): Accepted. expected_if_true required force control R2 in [0.55, 0.68] in both seeds. Seed 23's control is 0.5424, so it fails that criterion as written, and saying the miss 'does not change' the verdict after the fact moved the goalposts. Only seed 22 meets every criterion (force R2 0.767, control 0.574, margin 0.193; accel_step normalised 0.747), so replication is not earned. The status is downgraded to supported on seed 22 only. Seed 23's trained force R2 (0.770) and margin (0.228) still serve as descriptive N=64 reference values. Future reference arms will not pre-register a band on control R2, because control R2 varies by run seed beyond control_spread (q-20261014-004505-9bc9)."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "replicated",
       "at": "2026-10-14T00:45:05",
       "actor": "agent"
+    },
+    {
+      "status": "supported",
+      "at": "2026-10-14T02:12:49",
+      "actor": "agent",
+      "note": "corrected after review r-20261014-014305-ae20 issue 0"
     }
   ]
 }

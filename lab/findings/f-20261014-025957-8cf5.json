@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-025957-8cf5",
+  "claim": "With m2 fixed at N=64 (data_seed 0, 6000 steps), the two seeds landed on opposite sides of the hypothesis, so the result is a split. Seed 20's final trained force R2 is 0.759 at layer 1 (control 0.616, margin 0.143). That is only 0.011 above its N=128 6000-step reference of 0.748, which is the expected-if-false outcome. Seed 21's final trained force R2 is 0.793 at layer 4 (control 0.583, margin 0.210). That is 0.107 above its N=128 reference of 0.686, which is the expected-if-true outcome. accel_step leveled off early in both seeds: R2 was 0.964 / 0.941 against controls of 0.799 / 0.771, with margins of 0.165 / 0.170 that stayed flat from step 500 to 1000. Its headroom-normalised margin is 0.82 / 0.74, inside the predicted [0.60, 0.85]. Force kept rising in seed 21 (+0.039 margin from step 3000 to 6000) but nearly stopped in seed 20 (+0.009).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-023328-afdf",
+    "run-20261014-023328-6786"
+  ],
+  "confidence_note": "Both runs completed all 6000 steps. The hypothesis says a split between seeds counts as inconclusive, and that is what happened. The horizon check passes approximately. At step 3000, seed 20's layer-1 trained force R2 is about 0.750 (fixed layer-1 control 0.616 plus margin 0.134), within 0.013 of the 3000-step run's 0.763. Seed 21 is about 0.765 (trajectory max field; the layer-1 control is not exported), within 0.024 of 0.789, so seed 21 is close to the 0.03 limit. Seed 20's 6000-step final (0.759) is slightly below its own 3000-step run (0.763), so its N=64 force did not keep improving. Both comparisons cross layers: seed 20 N=64 is at layer 1, and seed 21 N=64 moved from layer 1 to layer 4 at step 4000 while its N=128 reference peaked at layer 2. Same-layer per-layer R2 could change either gap by a few hundredths. Seed 20's N=128 run may be the outlier rather than seed 21. The N=128 6000-step trained force R2 is 0.748 / 0.686 / 0.681 / 0.696 for seeds 20-23, so seed 20 sits about 0.05-0.07 above the others while all N=64 values lie between 0.759 and 0.793. The verdict would move to supported if a same-layer comparison or seeds 22-23 at N=64 with 6000 steps showed gaps of at least 0.04, leaving only seed 20 as the exception. It would move to refuted if seed 21's gap shrank to 0.02 or less when compared at the same layer.",
+  "created_at": "2026-10-14T02:59:57",
+  "experiment_id": "exp-20261014-021334-cc3c",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T02:59:57",
+      "actor": "agent"
+    }
+  ]
+}

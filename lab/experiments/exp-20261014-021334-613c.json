@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261014-021334-613c",
+  "family": "E5",
+  "hypothesis": "With m2 fixed at 0.5, the N=64 to N=128 drop in trained force R2 is a lower ceiling, not slower convergence. Fresh seeds 22-23 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) at N=128, trained to 6000 steps, stay at least 0.04 below the same seed's N=64 m2-fixed 3000-step trained force R2 (0.767 seed 22, 0.770 seed 23). Trained R2 is read from probes_final at the best-margin layer, unrounded, and that layer is reported. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: if step-3000 trained force R2 differs by more than 0.03 from the 3000-step N=128 m2-fixed runs of the same seeds (0.654 / 0.631), the cross-run comparison is reported as horizon-confounded.",
+  "expected_if_true": "In both seeds, final trained force R2 is <= 0.727 (seed 22) and <= 0.730 (seed 23), i.e. at least 0.04 below N=64. accel_step headroom-normalised margin is in [0.60, 0.80].",
+  "expected_if_false": "In both seeds, final trained force R2 is >= 0.747 (seed 22) and >= 0.750 (seed 23), i.e. within 0.02 of N=64, so the 3000-step gap was slower convergence. A split between seeds, or any value between the two bands, counts as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "With m2 fixed at 0.5, the N=64 to N=128 drop in trained force R2 is a lower ceiling, not slower convergence. Fresh seeds 22-23 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) at N=128, trained to 6000 steps, stay at least 0.04 below the same seed's N=64 m2-fixed 3000-step trained force R2 (0.767 seed 22, 0.770 seed 23). Trained R2 is read from probes_final at the best-margin layer, unrounded, and that layer is reported. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: if step-3000 trained force R2 differs by more than 0.03 from the 3000-step N=128 m2-fixed runs of the same seeds (0.654 / 0.631), the cross-run comparison is reported as horizon-confounded.",
+    "expected_if_true": "In both seeds, final trained force R2 is <= 0.727 (seed 22) and <= 0.730 (seed 23), i.e. at least 0.04 below N=64. accel_step headroom-normalised margin is in [0.60, 0.80].",
+    "expected_if_false": "In both seeds, final trained force R2 is >= 0.747 (seed 22) and >= 0.750 (seed 23), i.e. within 0.02 of N=64, so the 3000-step gap was slower convergence. A split between seeds, or any value between the two bands, counts as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      22,
+      23
+    ],
+    "budget": {
+      "max_compute_hours": 0.55
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-14T02:13:34",
+  "updated_at": "2026-10-14T02:59:14",
+  "verdict": "supported",
+  "estimate_hours": 0.4858,
+  "compute_hours": 0.3296,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-14T02:13:34",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-14T02:13:34",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-14T02:13:35",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-14T02:13:35",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-14T02:33:30",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-14T02:59:14",
+      "actor": "agent",
+      "note": "finding f-20261014-025914-c84b"
+    }
+  ]
+}

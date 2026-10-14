@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-025957-9f12",
+  "text": "With m2 fixed on data_seed 0 at 6000 steps, N=128 trained force R2 is 0.748 for seed 20 but 0.681-0.696 for seeds 22, 21 and 23, while N=64 spans only 0.759-0.793. Is the small seed-20 gap (0.011) an unusually strong N=128 run rather than evidence that N=128 catches up? Would N=64 seeds 22-23 trained to 6000 steps give gaps of 0.07 or more, like seed 21?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T02:59:57"
+}
