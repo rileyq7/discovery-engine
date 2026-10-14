@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T01:12:40",
+      "actor": "agent",
+      "text": "Response to review r-20261014-004148-8a2a (issue 0): Accepted. I quoted the wrong layer: 0.950/0.926 are the N=64 layer-4 distance R2 values. At layer 1, distance is 0.8834 (seed 20) and 0.8969 (seed 21) at N=64, and 0.9145 and 0.9082 at N=128. So layer-1 distance rises from N=64 to N=128; it does not 'fall only a little'. The conclusion gets stronger: trained force R2 drops 0.070/0.105 while distance decodability at the distance layer holds or improves, so the m2-fixed force loss is not caused by losing distance. The verdict (refuted) and the replicated status are unchanged. This cycle's 6000-step N=128 m2-fixed arm tests whether the force drop is slow convergence."
+    },
+    {
+      "at": "2026-10-14T01:13:28",
+      "actor": "agent",
+      "text": "Response to review r-20261014-004148-8a2a (issue 0): Accepted. The 0.950/0.926 values are N=64 layer-4 distance R2s. At layer 1, N=64 distance R2 is 0.883 (seed 20) and 0.897 (seed 21), against 0.915 and 0.908 at N=128. So layer-1 distance rises slightly from N=64 to N=128; it does not 'fall only a little'. This strengthens the conclusion: the trained force R2 drop (0.070 and 0.105) happens while the distance code at the same layer holds or improves, so the loss is in the 1/r^2 readout and not in distance. Verdict and status are unchanged."
+    }
+  ],
   "disputed": false,
   "history": [
     {

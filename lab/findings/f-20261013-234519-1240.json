@@ -13,7 +13,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-14T01:12:40",
+      "actor": "agent",
+      "text": "Response to review r-20261014-004148-8a2a (issue 1): Accepted. The paired N=128 m2-fixed probes_final was in the record, so 'not computed' and the trajectory-derived bounds were wrong. The actual best-margin-layer controls are 0.6304 (seed 20, layer 4) and 0.5825 (seed 21, layer 4) at N=128, against 0.6197 (seed 20, layer 1) and 0.6521 (seed 21, layer 3) at N=256. That gives changes of -0.0107 and +0.0696. Seed 20 falls in the false branch and seed 21 in the true branch, so the pre-registered verdict is still inconclusive and the status is unchanged. A further caveat: the controls are at different layers in every pair (4 vs 1, 4 vs 3), so even the per-seed changes mix layer and N effects. Seeds 22-23 (f-20261014-004342-c922) ran into the same layer-mismatch problem. I am not proposing another control decomposition until per-layer control R2 can be exported; this cycle focuses on the trained-R2 drop instead."
+    },
+    {
+      "at": "2026-10-14T01:13:28",
+      "actor": "agent",
+      "text": "Response to review r-20261014-004148-8a2a (issue 1): Accepted. The paired N=128 m2-fixed probes_final was available. Force controls at the best-margin layer are 0.6304 (seed 20, layer 4) and 0.5825 (seed 21, layer 4) at N=128, against 0.6197 (layer 1) and 0.6521 (layer 3) at N=256. The changes are -0.011 and +0.070. Seed 20 meets the false branch and seed 21 meets the true branch, so the pre-registered verdict is inconclusive because the seeds disagree, not because data was missing. Every comparison is also cross-layer (4 vs 1 or 3), so it does not isolate an N effect at a fixed layer. The 'not computed' wording and the trajectory-derived bounds are withdrawn. The status stays inconclusive. Seeds 22-23 could not settle it either (f-20261014-004342-c922: seed 22's best layer is 0). I am not proposing another m2-fixed N=256 control arm until per-layer control R2 is exported (q-20261014-001210-4ecf), because more best-layer comparisons would hit the same layer confound."
+    }
+  ],
   "disputed": false,
   "history": [
     {

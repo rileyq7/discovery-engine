@@ -1,0 +1,110 @@
+{
+  "id": "exp-20261014-011328-58e5",
+  "family": "E5",
+  "hypothesis": "With m2 fixed at 0.5, the N=64 to N=128 trained force R2 drop also appears on data_seed 1. Setup: N=128 seeds 20-21, otherwise identical to the paired data_seed 1 N=64 m2-fixed arm proposed this cycle. Trained force R2 falls by >= 0.05 against the same seed's N=64 value, while the force control R2 changes by <= 0.03. Both values are read from probes_final at the best-margin layer, unrounded, paired per seed, with the layer reported. If the best-margin layers differ between arms, the control comparison is flagged as cross-layer. If the paired arm is unavailable, the comparison is reported as not computed.",
+  "expected_if_true": "In both seeds, trained force R2 drops by >= 0.05 from N=64, |control change| <= 0.03, and the accel_step headroom-normalised margin stays in [0.60, 0.85].",
+  "expected_if_false": "In at least one seed, trained force R2 changes by <= 0.02 from N=64. That would make the m2-fixed decodability loss specific to data_seed 0. Seeds that disagree, or drops between 0.02 and 0.05, are inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "With m2 fixed at 0.5, the N=64 to N=128 trained force R2 drop also appears on data_seed 1. Setup: N=128 seeds 20-21, otherwise identical to the paired data_seed 1 N=64 m2-fixed arm proposed this cycle. Trained force R2 falls by >= 0.05 against the same seed's N=64 value, while the force control R2 changes by <= 0.03. Both values are read from probes_final at the best-margin layer, unrounded, paired per seed, with the layer reported. If the best-margin layers differ between arms, the control comparison is flagged as cross-layer. If the paired arm is unavailable, the comparison is reported as not computed.",
+    "expected_if_true": "In both seeds, trained force R2 drops by >= 0.05 from N=64, |control change| <= 0.03, and the accel_step headroom-normalised margin stays in [0.60, 0.85].",
+    "expected_if_false": "In at least one seed, trained force R2 changes by <= 0.02 from N=64. That would make the m2-fixed decodability loss specific to data_seed 0. Seeds that disagree, or drops between 0.02 and 0.05, are inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      20,
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 0.35
+    }
+  },
+  "state": "complete",
+  "proposed_by": "agent",
+  "created_at": "2026-10-14T01:13:28",
+  "updated_at": "2026-10-14T01:56:07",
+  "verdict": "supported",
+  "estimate_hours": 0.2614,
+  "compute_hours": 0.1721,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-14T01:13:28",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-14T01:13:28",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-14T01:13:30",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-14T01:44:20",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-14T01:54:46",
+      "actor": "worker",
+      "note": "2/2 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-14T01:56:07",
+      "actor": "agent",
+      "note": "finding f-20261014-015607-930a"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-015644-a80b",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, both N=64 seeds decode force at layer 4 well above control, and every expected-if-true criterion is met. Seed 20: force R2 0.795 vs control 0.644, margin 0.150. Seed 21: force R2 0.790 vs control 0.615, margin 0.175. These match the data_seed 0 range (trained force R2 0.763-0.789, margin 0.133-0.228). accel_step, also best at layer 4, has a similar raw margin (0.165 and 0.157; R2 0.951 and 0.943 vs controls of about 0.785), but a much larger headroom-normalised margin than force: 0.77 and 0.73 vs 0.42 and 0.45. val_mse_ratio is 0.010 and 0.012.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-013337-aa9d",
+    "run-20261014-013337-b80e"
+  ],
+  "confidence_note": "Two seeds on one new dataset, both finished 3000/3000 steps, and both clear every threshold comfortably: margins are 0.03-0.05 above the 0.12 bar, and force R2 sits in the middle of [0.70, 0.85]. The force controls (0.615-0.644) fall inside the data_seed 0 range, and their spreads (0.007-0.029) are small. So the m2-fixed N=64 force level does not look dataset-specific. Limits: (1) Force is still rising at step 3000 (+0.003 to +0.011 margin per 500 steps) while accel_step has been flat since step 500. The 3000-step level is therefore not a ceiling, and comparisons with other arms depend on training length. (2) Only two data_seeds have been tested. (3) For the paired N=128 data_seed 1 arm (exp-20261014-011328-58e5, step 3000, layer 4), this context only has trajectory values: max-over-layers R2 0.730/0.718 with margins 0.092/0.100. Those imply N=128 controls of about 0.638/0.618, within 0.01 of the N=64 controls, and a trained force R2 drop of about 0.06-0.08. But the trajectory R2 field is max-over-layers, not best-margin-layer: seed 21 here reads 0.803 in the trajectory vs 0.790 in probes_final. The decomposition needs probes_final from that arm. At the N=64 checkpoints that bracket the N=128 step-3000 loss (steps 1500-2000, val_mse_ratio 0.024-0.12), the trajectory force R2 is already 0.76-0.78. That suggests a matched-loss gap of about 0.04-0.06, but only roughly. The verdict would change if a rerun or a third seed on data_seed 1 gave a force margin below 0.10, or if the per-layer probes_final control turned out to differ from the trajectory-derived one by more than 0.03.",
+  "created_at": "2026-10-14T01:56:44",
+  "experiment_id": "exp-20261014-011328-5992",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T01:56:44",
+      "actor": "agent"
+    }
+  ]
+}

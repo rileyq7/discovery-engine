@@ -1,0 +1,22 @@
+[01:23:44] experiment exp-20261014-011328-10e9 (E5) seed 20: With m2 fixed at 0.5, the N=64 to N=128 drop in trained force R2 (seeds 20-21: 0.763/0.789 at N=64 vs 0.693/0.684 at N=128, both at 3000 steps) is a lower ceiling, not slower convergence. Training N=128 seeds 20-21 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) to 6000 steps leaves the final trained force R2 at least 0.04 below the same seed's N=64 3000-step value. Trained R2 is read from probes_final at the best-margin layer, unrounded. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: if the step-3000 trained force R2 in this run differs by more than 0.03 from the 3000-step N=128 m2-fixed run of the same seed (0.693 / 0.684), cross-run comparisons are reported as horizon-confounded.
+[01:23:44] model: 209,094 params on mps; dataset 4d4d982c4792; 9000 train / 1000 val systems
+[01:23:45] step 0: val_mse=4.937e-04 cv_baseline=1.534e-06 ratio=321.858
+[01:24:34] step 500: val_mse=2.589e-06 cv_baseline=1.534e-06 ratio=1.687
+[01:25:23] step 1000: val_mse=1.014e-06 cv_baseline=1.534e-06 ratio=0.661
+[01:26:11] step 1500: val_mse=8.584e-07 cv_baseline=1.534e-06 ratio=0.560
+[01:26:58] step 2000: val_mse=5.335e-07 cv_baseline=1.534e-06 ratio=0.348
+[01:27:47] step 2500: val_mse=4.249e-07 cv_baseline=1.534e-06 ratio=0.277
+[01:28:35] step 3000: val_mse=2.389e-07 cv_baseline=1.534e-06 ratio=0.156
+[01:29:24] step 3500: val_mse=1.841e-07 cv_baseline=1.534e-06 ratio=0.120
+[01:30:11] step 4000: val_mse=1.241e-07 cv_baseline=1.534e-06 ratio=0.081
+[01:30:59] step 4500: val_mse=9.688e-08 cv_baseline=1.534e-06 ratio=0.063
+[01:31:47] step 5000: val_mse=5.162e-08 cv_baseline=1.534e-06 ratio=0.034
+[01:32:34] step 5500: val_mse=4.871e-08 cv_baseline=1.534e-06 ratio=0.032
+[01:33:23] step 6000: val_mse=3.973e-08 cv_baseline=1.534e-06 ratio=0.026
+[01:33:23] training done in 9.6 min; beats constant-velocity baseline: True
+[01:33:26] random-model controls (best of 3): force=0.17/0.62/0.63/0.63/0.63, accel_step=0.69/0.75/0.78/0.79/0.79, distance=-0.02/0.27/0.45/0.58/0.61, energy=-0.01/0.29/0.43/0.60/0.65
+[01:33:26] probes @ step 0: best force R2=0.608 (layer 2)
+[01:33:30] probes @ step 2500: best force R2=0.707 (layer 3)
+[01:33:34] probes @ step 5000: best force R2=0.741 (layer 4)
+[01:33:36] probes @ step 6000: best force R2=0.748 (layer 4)
+[01:33:36] run complete in 9.9 min

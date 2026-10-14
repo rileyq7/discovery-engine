@@ -1,0 +1,73 @@
+{
+  "id": "run-20261014-013337-b80e",
+  "experiment_id": "exp-20261014-011328-5992",
+  "seed": 21,
+  "status": "completed",
+  "started_at": "2026-10-14T01:39:07",
+  "ended_at": "2026-10-14T01:44:18",
+  "compute_hours": 0.0864,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261014-013337-b80e",
+  "git_commit": "945b436",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 3.0128182623330063e-07,
+    "baseline_cv_mse": 2.4491599225622464e-05,
+    "val_mse_ratio": 0.012301435421093595,
+    "beats_baseline": true,
+    "train_hours": 0.08415049718485938,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "810a0af8f62a",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 4,
+          "r2": 0.79009,
+          "control_r2": 0.61537,
+          "control_spread": 0.00689,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.9425,
+          "control_r2": 0.78576,
+          "control_spread": 0.00574,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.89763,
+          "control_r2": 0.36435,
+          "control_spread": 0.15084,
+          "required_margin": 0.1508,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.90712,
+          "control_r2": 0.39449,
+          "control_spread": 0.19882,
+          "required_margin": 0.1988,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 6517,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "810a0af8f62a"
+}

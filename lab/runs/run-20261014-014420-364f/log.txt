@@ -1,0 +1,16 @@
+[01:44:22] experiment exp-20261014-011328-58e5 (E5) seed 20: With m2 fixed at 0.5, the N=64 to N=128 trained force R2 drop also appears on data_seed 1. Setup: N=128 seeds 20-21, otherwise identical to the paired data_seed 1 N=64 m2-fixed arm proposed this cycle. Trained force R2 falls by >= 0.05 against the same seed's N=64 value, while the force control R2 changes by <= 0.03. Both values are read from probes_final at the best-margin layer, unrounded, paired per seed, with the layer reported. If the best-margin layers differ between arms, the control comparison is flagged as cross-layer. If the paired arm is unavailable, the comparison is reported as not computed.
+[01:44:45] generated dataset 207d7a485db8: 10000 systems x 129 steps in 22.51s
+[01:44:45] model: 209,094 params on mps; dataset 207d7a485db8; 9000 train / 1000 val systems
+[01:44:46] step 0: val_mse=5.039e-04 cv_baseline=1.536e-06 ratio=327.987
+[01:45:35] step 500: val_mse=2.186e-06 cv_baseline=1.536e-06 ratio=1.422
+[01:46:25] step 1000: val_mse=1.115e-06 cv_baseline=1.536e-06 ratio=0.726
+[01:47:12] step 1500: val_mse=7.475e-07 cv_baseline=1.536e-06 ratio=0.487
+[01:48:00] step 2000: val_mse=1.922e-07 cv_baseline=1.536e-06 ratio=0.125
+[01:48:48] step 2500: val_mse=1.086e-07 cv_baseline=1.536e-06 ratio=0.071
+[01:49:36] step 3000: val_mse=8.363e-08 cv_baseline=1.536e-06 ratio=0.054
+[01:49:36] training done in 5.2 min; beats constant-velocity baseline: True
+[01:49:39] random-model controls (best of 3): force=0.20/0.63/0.64/0.64/0.64, accel_step=0.67/0.73/0.77/0.77/0.78, distance=-0.01/0.25/0.43/0.57/0.61, energy=-0.01/0.28/0.44/0.62/0.65
+[01:49:39] probes @ step 0: best force R2=0.615 (layer 2)
+[01:49:43] probes @ step 2500: best force R2=0.724 (layer 4)
+[01:49:44] probes @ step 3000: best force R2=0.730 (layer 4)
+[01:49:44] run complete in 5.4 min

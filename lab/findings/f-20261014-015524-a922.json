@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-015524-a922",
+  "claim": "With m2 fixed at 0.5, the two seeds split. Seed 20 at N=128 reaches trained force R2 0.748 at step 6000 (layer 4; control 0.630, margin 0.118), 0.015 below its N=64 3000-step value of 0.763, which meets the expected-if-false bar of >= 0.743. Seed 21 reaches only 0.686 (layer 2; control 0.585, margin 0.100), 0.103 below its N=64 value of 0.789, which meets the expected-if-true bar of <= 0.749. In both seeds force gained about 0.02-0.03 from step 3000 to 6000 and was still rising about 0.003-0.004 per 500 steps at the end. accel_step stayed far ahead on both measures: R2 0.945 / 0.937 vs controls 0.793 / 0.760, headroom-normalised margin 0.736 / 0.739, inside the predicted [0.60, 0.80], and level since step 1000.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-011330-8c2e",
+    "run-20261014-011330-3d67"
+  ],
+  "confidence_note": "The hypothesis itself says split seeds are inconclusive. Seed 20 supports slower convergence and seed 21 supports a lower ceiling. Both runs finished all 6000 steps. The horizon check passes, but only just. Read as same-layer control plus margin, step-3000 force R2 is about 0.717 for seed 20 (vs 0.693 in the 3000-step run, +0.024). For seed 21 it is about 0.662 from the trajectory field, vs 0.684, a difference of -0.022. The seed-21 step-3000 value comes from layer 1, whose control is not exported, so it is approximate. Neither seed has levelled off, so a ceiling cannot be confirmed in either one. Seed 21 might still close the gap with more training, and seed 20 might overshoot. The comparisons are also cross-layer. Seed 21's N=64 reference peaks at layer 1, the distance layer, but its N=128 force peaks at layer 2. Seed 20 is at layer 4 in both arms. So seed 21's large gap may be a layer-1 1/r^2 read that N=128 lacks, not a lower overall ceiling. Seed-to-seed spread in force control R2 (0.585 vs 0.630) is about as large as the effect being tested. Two things would settle it: training both seeds to 12000 steps, and adding seeds 22-23 at 6000 steps with same-layer per-layer controls. Several seeds closing to within 0.02 would favour slower convergence. Several staying more than 0.04 below N=64 after levelling off would favour a ceiling.",
+  "created_at": "2026-10-14T01:55:24",
+  "experiment_id": "exp-20261014-011328-10e9",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T01:55:24",
+      "actor": "agent"
+    }
+  ]
+}

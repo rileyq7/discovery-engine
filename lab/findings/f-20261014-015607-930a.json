@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-015607-930a",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, N=128 trained force R2 at layer 4 is 0.730 (seed 20) and 0.715 (seed 21), against controls of 0.638 and 0.615. Neither clears the bar: margins are 0.092 and 0.0999. The paired N=64 arm, read from its step-3000 trajectory at the same layer 4, has trained force R2 of about 0.795 and 0.803 with implied controls of about 0.645 and 0.628. So trained force R2 drops by about 0.065 and 0.088 while the force control moves by only -0.007 and -0.013. accel_step stays strong: R2 0.943/0.942 vs controls 0.777/0.770, a headroom-normalised margin of 0.745/0.746 in both seeds, against force margins below 0.1.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261014-014420-364f",
+    "run-20261014-014420-ef76"
+  ],
+  "confidence_note": "Both seeds meet all three expected-if-true criteria at the same best-margin layer (4) in both arms, so the control comparison is same-layer and not cross-layer. But the N=64 values are not unrounded probes_final. They come from the paired arm's step-3000 trajectory, rounded to 3 decimals: R2 is the 4th field and the control is that field minus the margin. If that field is the max over layers rather than layer 4's R2 (see q-20261013-075749-57bb), the N=64 layer-4 R2 could be lower. Seed 20's drop, at 0.065, is only 0.015 above the 0.05 bar, so a probes_final readout of the N=64 arm could push it into the inconclusive 0.02-0.05 band. This is a matched-step comparison, not a matched-loss one. N=128 ends at val_mse_ratio 0.054/0.049 and is still improving. On data_seed 0, seed 20's m2-fixed N=128 gap shrank to 0.015 by step 6000 (f-20261014-015524-a922), so this drop may be slower convergence rather than a lower ceiling. Two things would change the verdict: probes_final for the N=64 data_seed 1 arm showing a drop below 0.05 in either seed, or a matched-loss or 6000-step comparison that removes the gap. The drop is similar in size to data_seed 0 (about 0.07-0.10), so it does not look specific to one dataset.",
+  "created_at": "2026-10-14T01:56:07",
+  "experiment_id": "exp-20261014-011328-58e5",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-14T01:56:07",
+      "actor": "agent"
+    }
+  ]
+}

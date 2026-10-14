@@ -1,0 +1,22 @@
+run-20261014-011330-3d67: [01:13:33] experiment exp-20261014-011328-10e9 (E5) seed 21: With m2 fixed at 0.5, the N=64 to N=128 drop in trained force R2 (seeds 20-21: 0.763/0.789 at N=64 vs 0.693/0.684 at N=128, both at 3000 steps) is a lower ceiling, not slower convergence. Training N=128 seeds 20-21 (data_seed 0, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) to 6000 steps leaves the final trained force R2 at least 0.04 below the same seed's N=64 3000-step value. Trained R2 is read from probes_final at the best-margin layer, unrounded. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: if the step-3000 trained force R2 in this run differs by more than 0.03 from the 3000-step N=128 m2-fixed run of the same seed (0.693 / 0.684), cross-run comparisons are reported as horizon-confounded.
+run-20261014-011330-3d67: [01:13:33] model: 209,094 params on mps; dataset 4d4d982c4792; 9000 train / 1000 val systems
+run-20261014-011330-3d67: [01:13:34] step 0: val_mse=4.856e-04 cv_baseline=1.534e-06 ratio=316.550
+run-20261014-011330-3d67: [01:14:15] step 500: val_mse=2.910e-06 cv_baseline=1.534e-06 ratio=1.897
+run-20261014-011330-3d67: [01:14:56] step 1000: val_mse=1.377e-06 cv_baseline=1.534e-06 ratio=0.897
+run-20261014-011330-3d67: [01:16:02] step 1500: val_mse=9.779e-07 cv_baseline=1.534e-06 ratio=0.638
+run-20261014-011330-3d67: [01:17:01] step 2000: val_mse=4.249e-07 cv_baseline=1.534e-06 ratio=0.277
+run-20261014-011330-3d67: [01:17:47] step 2500: val_mse=3.018e-07 cv_baseline=1.534e-06 ratio=0.197
+run-20261014-011330-3d67: [01:18:36] step 3000: val_mse=2.276e-07 cv_baseline=1.534e-06 ratio=0.148
+run-20261014-011330-3d67: [01:19:25] step 3500: val_mse=1.189e-07 cv_baseline=1.534e-06 ratio=0.078
+run-20261014-011330-3d67: [01:20:14] step 4000: val_mse=8.336e-08 cv_baseline=1.534e-06 ratio=0.054
+run-20261014-011330-3d67: [01:21:01] step 4500: val_mse=6.788e-08 cv_baseline=1.534e-06 ratio=0.044
+run-20261014-011330-3d67: [01:21:49] step 5000: val_mse=5.168e-08 cv_baseline=1.534e-06 ratio=0.034
+run-20261014-011330-3d67: [01:22:38] step 5500: val_mse=3.608e-08 cv_baseline=1.534e-06 ratio=0.024
+run-20261014-011330-3d67: [01:23:26] step 6000: val_mse=3.461e-08 cv_baseline=1.534e-06 ratio=0.023
+run-20261014-011330-3d67: [01:23:26] training done in 9.9 min; beats constant-velocity baseline: True
+run-20261014-011330-3d67: [01:23:29] random-model controls (best of 3): force=0.18/0.59/0.59/0.58/0.58, accel_step=0.66/0.72/0.75/0.75/0.76, distance=0.00/0.38/0.47/0.53/0.54, energy=-0.00/0.39/0.51/0.52/0.60
+run-20261014-011330-3d67: [01:23:30] probes @ step 0: best force R2=0.580 (layer 2)
+run-20261014-011330-3d67: [01:23:34] probes @ step 2500: best force R2=0.657 (layer 1)
+run-20261014-011330-3d67: [01:23:38] probes @ step 5000: best force R2=0.681 (layer 1)
+run-20261014-011330-3d67: [01:23:39] probes @ step 6000: best force R2=0.686 (layer 2)
+run-20261014-011330-3d67: [01:23:39] run complete in 10.1 min

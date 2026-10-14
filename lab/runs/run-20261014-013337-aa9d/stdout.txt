@@ -1,0 +1,16 @@
+run-20261014-013337-aa9d: [01:33:40] experiment exp-20261014-011328-5992 (E5) seed 20: This is the reference arm for checking the m2-fixed N=64 to N=128 decomposition on a second dataset. With m2 fixed at 0.5 and data_seed 1, N=64 models (seeds 20-21, 4 layers, d_model=64, e in [0, 0.5], 3000 steps, best-of-3 controls) decode force above control at about the level seen on data_seed 0 (trained force R2 0.763-0.789, force margin 0.133-0.228). All values come from probes_final at the best-margin layer, unrounded.
+run-20261014-013337-aa9d: [01:34:02] generated dataset 810a0af8f62a: 10000 systems x 129 steps in 22.54s
+run-20261014-013337-aa9d: [01:34:02] model: 209,094 params on mps; dataset 810a0af8f62a; 9000 train / 1000 val systems
+run-20261014-013337-aa9d: [01:34:04] step 0: val_mse=1.955e-03 cv_baseline=2.449e-05 ratio=79.814
+run-20261014-013337-aa9d: [01:34:54] step 500: val_mse=7.844e-06 cv_baseline=2.449e-05 ratio=0.320
+run-20261014-013337-aa9d: [01:35:42] step 1000: val_mse=3.063e-06 cv_baseline=2.449e-05 ratio=0.125
+run-20261014-013337-aa9d: [01:36:29] step 1500: val_mse=2.937e-06 cv_baseline=2.449e-05 ratio=0.120
+run-20261014-013337-aa9d: [01:37:17] step 2000: val_mse=6.029e-07 cv_baseline=2.449e-05 ratio=0.025
+run-20261014-013337-aa9d: [01:38:06] step 2500: val_mse=3.760e-07 cv_baseline=2.449e-05 ratio=0.015
+run-20261014-013337-aa9d: [01:38:54] step 3000: val_mse=2.526e-07 cv_baseline=2.449e-05 ratio=0.010
+run-20261014-013337-aa9d: [01:38:54] training done in 5.2 min; beats constant-velocity baseline: True
+run-20261014-013337-aa9d: [01:38:57] random-model controls (best of 3): force=0.20/0.63/0.65/0.64/0.64, accel_step=0.67/0.75/0.78/0.78/0.79, distance=-0.01/0.26/0.45/0.55/0.60, energy=-0.01/0.28/0.43/0.60/0.65
+run-20261014-013337-aa9d: [01:38:58] probes @ step 0: best force R2=0.614 (layer 1)
+run-20261014-013337-aa9d: [01:39:02] probes @ step 2500: best force R2=0.791 (layer 4)
+run-20261014-013337-aa9d: [01:39:03] probes @ step 3000: best force R2=0.795 (layer 4)
+run-20261014-013337-aa9d: [01:39:03] run complete in 5.4 min

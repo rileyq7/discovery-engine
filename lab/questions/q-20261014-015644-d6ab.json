@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-015644-d6ab",
+  "text": "In seed 21 (m2 fixed, N=64, data_seed 1), the trajectory max-over-layers force R2 at step 3000 is 0.803, but the best-margin layer (layer 4) has R2 0.790. Which layer reaches 0.803, and is its control high enough that its margin falls below layer 4's? Is the 'best layer' for force in m2-fixed runs decided by per-layer control differences rather than by trained R2?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T01:56:44"
+}
