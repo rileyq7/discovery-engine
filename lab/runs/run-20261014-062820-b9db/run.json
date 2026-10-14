@@ -1,0 +1,73 @@
+{
+  "id": "run-20261014-062820-b9db",
+  "experiment_id": "exp-20261014-051510-52f4",
+  "seed": 21,
+  "status": "completed",
+  "started_at": "2026-10-14T06:28:22",
+  "ended_at": "2026-10-14T06:47:38",
+  "compute_hours": 0.3211,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261014-062820-b9db",
+  "git_commit": "2ceaac9",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.2724733669457474e-08,
+    "baseline_cv_mse": 1.536471930545146e-06,
+    "val_mse_ratio": 0.008281787266326883,
+    "beats_baseline": true,
+    "train_hours": 0.31476047754287717,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "207d7a485db8",
+    "stopped": false,
+    "steps_completed": 12000,
+    "steps_planned": 12000,
+    "probes": {
+      "final_checkpoint": 12000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.7662,
+          "control_r2": 0.62758,
+          "control_spread": 0.03795,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 6000
+        },
+        "distance": {
+          "best_layer": 2,
+          "r2": 0.94327,
+          "control_r2": 0.43816,
+          "control_spread": 0.08445,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 2,
+          "r2": 0.93135,
+          "control_r2": 0.47606,
+          "control_spread": 0.09114,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.94674,
+          "control_r2": 0.77012,
+          "control_spread": 0.0046,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 79753,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "207d7a485db8"
+}

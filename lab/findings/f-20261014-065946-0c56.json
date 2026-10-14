@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-065946-0c56",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, both N=64 seeds keep force above control at 12000 steps. Seed 21's trained force R2 is 0.8303 at layer 2 (control 0.6248, margin 0.2055) and seed 20's is 0.7945 at layer 1 (control 0.6290, margin 0.1656). accel_step is much stronger: R2 0.9564 and 0.9597 at layer 4, against controls of 0.786 and 0.785, giving headroom-normalised margins of 0.797 and 0.812. The paired N=64 minus N=128 gap can only be estimated for seed 21, at about +0.064. That estimate is cross-layer (layer 2 vs layer 1) and uses the N=128 trajectory value of 0.766, because no N=128 probes_final was available. For seed 20 the gap is not computed because its N=128 run is still running.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-054942-67f0",
+    "run-20261014-054942-eeee"
+  ],
+  "confidence_note": "The within-run predictions held in both seeds: force margin >= 0.1, and normalised accel_step margin in [0.60, 0.85]. The main test, a gap of >= 0.04 in both seeds, cannot be scored. The N=128 seed 20 arm (run-20261014-062820-bb67) has not finished. Seed 21's N=128 run is complete, but only its trajectory was available, so the +0.064 gap rests on the max-over-layers R2 field (0.766), which the hypothesis excludes, and it compares different layers (N=64 layer 2 vs N=128 layer 1). The N=128 force margin was also still rising at step 12000 (+0.002 per 500 steps). The horizon check also fails narrowly for seed 21. At step 6000, control plus margin gives about 0.807 against 0.8376 in the 6000-step run, a 0.031 difference that exceeds the 0.03 tolerance, so that comparison counts as horizon-confounded. Seed 20 passes (about 0.774 vs 0.7792). Two things would change the verdict: seed 20's N=128 probes_final, and seed 21's N=128 probes_final read at layer 2 (or N=64 read at layer 1). If both same-layer gaps are >= 0.04 the hypothesis is supported, and if both are <= 0.02 it is refuted. N=64 force was still rising at step 12000 in both seeds (+0.001 to +0.002 margin per 500 steps).",
+  "created_at": "2026-10-14T06:59:46",
+  "experiment_id": "exp-20261014-051510-2e58",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T06:59:46",
+      "actor": "agent"
+    }
+  ]
+}

@@ -60,10 +60,10 @@
       "max_compute_hours": 1.0
     }
   },
-  "state": "queued",
+  "state": "running",
   "proposed_by": "agent",
   "created_at": "2026-10-14T05:15:10",
-  "updated_at": "2026-10-14T05:15:11",
+  "updated_at": "2026-10-14T06:28:20",
   "verdict": null,
   "estimate_hours": 0.9346,
   "compute_hours": 0.0,
@@ -87,6 +87,12 @@
       "at": "2026-10-14T05:15:11",
       "actor": "worker",
       "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-14T06:28:20",
+      "actor": "worker",
+      "note": ""
     }
   ]
 }
