@@ -1,0 +1,46 @@
+{
+  "id": "r-20261014-085125-5f07",
+  "created_at": "2026-10-14T08:51:25",
+  "since": "2026-10-14T07:50:23",
+  "verdict": "OK",
+  "summary": "I recomputed every number in f-20261014-080108-12be from the run-20261014-070746-d284 records: force R2, control and margin at layer 1, the gap to 0.7935, the step-12000 trajectory value, the horizon check, the val_mse_ratio values, the accel_step normalised margin (0.2068/0.2637 = 0.784) and the late slope. All match within rounding, and all three pre-registered expected_if_true criteria are met at the same layer. Force and accel_step margins clear max(control_margin, control_spread) and the random-init noise floors. Step-0 margins sit below the floors, so I see no pipeline anomaly. The last five experiments are E5 replications that serve open questions.",
+  "issues": [
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Step-12000 force is quoted as \u22480.699, but raw is 0.6982 (control 0.5506 + margin 0.1476). 0.699 is the step-11000 value rounded (0.6987). The gain to step 24000 is therefore 0.0147 rather than 0.014, and the horizon gap is 0.0215. No criterion changes.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-080108-12be"
+    },
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "'Lower ceiling' is supported only under the pre-registered \u22640.03 gain bar. Force is still rising monotonically (0.7084 \u2192 0.7129 over steps 20000-24000, about +0.0011 per 1000 steps), and the confidence note already concedes this. The claim should not be cited as a hard ceiling until the seed-22 and seed-21 24000-step replications are in.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-080108-12be"
+    },
+    {
+      "severity": "info",
+      "category": "drift",
+      "message": "Both queued experiments have built-in layer mismatches. In exp-20261014-081441-76a8, the N=64 reference is at layer 2 while the N=128 horizon reference is at layer 1, so the main comparison is likely to be cross-layer by construction. In exp-20261014-081441-e6d8, the horizon reference (0.6894) is at layer 3 while the gap comparison uses layer 1. Same-layer readings should be reported alongside the best-layer results.",
+      "source": "reviewer"
+    }
+  ],
+  "status": "ok",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261014-080108-12be"
+    ],
+    "runs": [
+      "run-20261014-074634-81be",
+      "run-20261014-074634-b5ab",
+      "run-20261014-082647-8e78"
+    ],
+    "experiments": [
+      "exp-20261014-081441-76a8",
+      "exp-20261014-081441-e6d8"
+    ]
+  }
+}

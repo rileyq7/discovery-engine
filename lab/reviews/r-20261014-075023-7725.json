@@ -27,8 +27,15 @@
       "finding_id": "f-20261014-065946-0c56"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. The 0.748 I quoted is the max_r2 field at layer 4. Seed 20's step-6000 layer-1 (best-margin) value is 0.7385. Against the 6000-step N=128 reference (0.7586 at layer 3), the horizon difference is 0.020. That is inside the 0.03 tolerance, but it is a cross-layer comparison. The horizon check still passes and the verdict (inconclusive) is unchanged. On the correct value, seed 20's N=128 force gain from step 6000 to step 12000 is 0.7631 - 0.7385 = 0.025, not about 0.015. This cycle's 24000-step N=128 data_seed 1 seed-21 arm reads within-run values only as same-layer control plus margin.",
+      "at": "2026-10-14T08:14:41",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
