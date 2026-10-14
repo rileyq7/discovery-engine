@@ -1,0 +1,7 @@
+{
+  "id": "q-20261014-090020-b9d1",
+  "text": "For m2-fixed seed 22 on data_seed 1, both arms gain about 0.002 force R\u00b2 per 500 steps from step 6000 to step 12000, and the layer-1 N=64 minus N=128 gap holds at about 0.086-0.089. If both arms are plotted against log(val_mse_ratio) rather than training step, are the force curves parallel with a constant offset of at least 0.04 (a ceiling difference), or do they converge (a convergence lag)?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-14T09:00:20"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "exp-20261014-081441-76a8",
+  "family": "E5",
+  "hypothesis": "With m2 fixed at 0.5 on data_seed 1, seed 21's N=128 force deficit is a lower ceiling, not slow convergence. N=128 seed 21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) is trained to 24000 steps. Its final trained force R2 stays at least 0.04 below the same seed's 12000-step N=64 value of 0.8303 (layer 2), and it gains no more than 0.03 between steps 12000 and 24000. Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Because the N=64 reference is at layer 2, a best layer other than 2 is flagged as cross-layer. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: step-12000 trained force R2 must be within 0.03 of the 12000-step N=128 seed-21 run (0.7662, layer 1); otherwise the result is reported as horizon-confounded.",
+  "expected_if_true": "Final trained force R2 <= 0.790 and step-12000 to step-24000 gain <= 0.03. accel_step headroom-normalised margin in [0.60, 0.85].",
+  "expected_if_false": "Final trained force R2 >= 0.810 (gap to N=64 <= 0.02), or step-12000 to step-24000 gain >= 0.04. Any outcome between these bands is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "With m2 fixed at 0.5 on data_seed 1, seed 21's N=128 force deficit is a lower ceiling, not slow convergence. N=128 seed 21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) is trained to 24000 steps. Its final trained force R2 stays at least 0.04 below the same seed's 12000-step N=64 value of 0.8303 (layer 2), and it gains no more than 0.03 between steps 12000 and 24000. Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Because the N=64 reference is at layer 2, a best layer other than 2 is flagged as cross-layer. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: step-12000 trained force R2 must be within 0.03 of the 12000-step N=128 seed-21 run (0.7662, layer 1); otherwise the result is reported as horizon-confounded.",
+    "expected_if_true": "Final trained force R2 <= 0.790 and step-12000 to step-24000 gain <= 0.03. accel_step headroom-normalised margin in [0.60, 0.85].",
+    "expected_if_false": "Final trained force R2 >= 0.810 (gap to N=64 <= 0.02), or step-12000 to step-24000 gain >= 0.04. Any outcome between these bands is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 24000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 1000
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-14T08:14:41",
+  "updated_at": "2026-10-14T08:14:43",
+  "verdict": null,
+  "estimate_hours": 0.9216,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-14T08:14:41",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-14T08:14:41",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-14T08:14:43",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "f-20261014-090019-eb46",
+  "claim": "With m2 fixed at 0.5 on data_seed 1, both N=64 seeds keep force well above control at step 12000, with force best at layer 1 in both. Seed 22 has R\u00b2 0.8686 against a control of 0.6200 (margin 0.249, normalised 0.65), and seed 23 has R\u00b2 0.8467 against 0.6322 (margin 0.215, normalised 0.58). Accel_step has smaller raw margins but larger normalised ones: seed 22 R\u00b2 0.957 against control 0.773 (margin 0.184, normalised 0.81), seed 23 R\u00b2 0.945 against 0.769 at layer 3 (margin 0.176, normalised 0.76). Only seed 22 has a completed N=128 partner. Comparing layer 1 in both arms, its N=64 minus N=128 force gap is about 0.086 (0.8686 vs about 0.783, the N=128 value taken from the trajectory). The seed 23 N=128 run is still going, so its gap is not computed.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-074634-81be",
+    "run-20261014-074634-b5ab"
+  ],
+  "confidence_note": "Both N=64 runs completed all 12000 steps and pass every N=64-side condition. Force margin is at least 0.1 in both. Normalised accel_step is 0.81 and 0.76, both inside [0.60, 0.85]. The horizon check passes: step-6000 force R\u00b2 was 0.848 for seed 22 and 0.836 for seed 23, compared with 0.8663 and 0.8465 from the 6000-step runs. Those differences, 0.018 and 0.010, are within 0.03, but they come from the max-over-layers trajectory field because there is no per-checkpoint probes_final. The verdict is inconclusive because the hypothesis needs both seeds, and the N=128 seed 23 run (run-20261014-082647-eac3) has not finished. For seed 22, the N=128 value of about 0.783 at layer 1 comes from the trajectory's max-over-layers field, and its probes_final was not in the context. Same-layer control plus margin would give about 0.637 + 0.146, which agrees, but that is not the required probes_final read. Seed 22's gap was about 0.089 at step 6000 and about 0.086 at step 12000, with both arms still gaining about 0.002 force R\u00b2 per 500 steps. That supports a constant offset rather than N=128 catching up. The verdict would become supported if N=128 seed 23 finishes with layer-1 force R\u00b2 of 0.807 or less, a gap of at least 0.04, and seed 22's probes_final confirms about 0.783. It would become inconclusive in the other direction, or move toward refuted, if seed 23's gap falls to 0.02 or below.",
+  "created_at": "2026-10-14T09:00:19",
+  "experiment_id": "exp-20261014-061412-7439",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-14T09:00:19",
+      "actor": "agent"
+    }
+  ]
+}
