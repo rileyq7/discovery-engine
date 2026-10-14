@@ -1,0 +1,57 @@
+{
+  "id": "r-20261014-044708-66b3",
+  "created_at": "2026-10-14T04:47:08",
+  "since": "2026-10-14T03:45:28",
+  "verdict": "FLAG",
+  "summary": "I recomputed every R\u00b2, control, margin, layer, normalised margin, gap and horizon value for the four findings against probes_final, probe_by_step and val_mse_ratio_by_step. f-c84b (now correctly downgraded to supported) and f-f9bb (replicated) check out: both seeds in each meet expected_if_true, and their margins clear max(0.1, control_spread) wherever the criterion depends on them. f-83b7 misstates one formation step. f-4892's matched-loss argument pairs checkpoints whose val_mse_ratio does not actually match. f-4892 also treats as unknown an N=128 best-margin value that is already in the raw records. No pipeline-bug patterns were found: step-0 probes sit at their controls, and the seeds' trajectories differ despite near-identical final val_mse_ratio.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim says seed 21's N=128 force 'formed at step 5500'. The raw best-margin trajectory is 0.0992 at step 4500, then 0.1012 (step 5000), 0.1042 (5500) and 0.1084 (6000). Force therefore stays at or above the 0.1 bar from step 5000 on, so it forms at step 5000, not 5500. This does not change the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-035918-83b7"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The 'roughly matched loss' check compares N=64 seed 20 at step 2000 (ratio 0.056) and seed 21 at step 2500 (ratio 0.051) with 'N=128 step-3000' force R2 of 0.736/0.713. Those R2 values come from the 6000-step N=128 runs, whose val_mse_ratio at step 3000 is 0.104 (seed 20) and 0.144 (seed 21), not about 0.05. The 0.05 ratios appear to belong to the separate 3000-step N=128 runs. The closest N=64 checkpoints by loss are about step 1000 for seed 20 (0.123) and steps 1000-1500 for seed 21 (0.262/0.059). The comparison also uses max-over-layers R2, which the pre-registration forbids. The conclusion that the seed split is 'not a convergence artefact' is unsupported until it is recomputed.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-040001-4892"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim and confidence note say the N=128 seed 20 value (0.759) comes from the trajectory max-over-layers, so 'the true best-margin-layer value could be lower'. They name 'falling below about 0.739' as a condition that would change the verdict. But run-20261014-025316-d15c probes_final already gives best-margin layer 3 R2 = 0.7586 (control 0.6374); max-over-layers is layer 4 at 0.7591. The gap is therefore 0.7792 - 0.7586 = 0.0206 from probes_final, and that verdict-change condition is already resolved against. Separately, the seed-20 horizon check at the best-margin layer (layer 1, 0.7641 at step 3000) is 0.031 from the 0.795 reference. That is outside the pre-registered 0.03 tolerance, not 'about 0.03'.",
+      "source": "reviewer",
+      "finding_id": "f-20261014-040001-4892"
+    },
+    {
+      "severity": "info",
+      "category": "drift",
+      "message": "exp-20261014-041454-2aea is framed as a reference arm whose hypothesis is only that force is 'comparable' to seeds 20-21, with 'no band'. That is not a falsifiable criterion. It does serve q-20261014-040002-0012 when paired with exp-...-3072, so give the per-seed gap criterion in the paired arm explicitly. The last five experiments all extend the same N=64 vs N=128 m2-fixed force-gap comparison to more seeds and longer horizons. They still map to open questions, but the series is getting close to repetition.",
+      "source": "reviewer"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261014-025914-c84b",
+      "f-20261014-035918-83b7",
+      "f-20261014-040001-4892",
+      "f-20261014-040037-f9bb"
+    ],
+    "runs": [
+      "run-20261014-033324-68c8",
+      "run-20261014-035310-270b",
+      "run-20261014-035310-a947"
+    ],
+    "experiments": [
+      "exp-20261014-041454-2aea",
+      "exp-20261014-041454-3072",
+      "exp-20261014-041454-7997"
+    ]
+  }
+}

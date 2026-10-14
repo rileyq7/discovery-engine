@@ -26,8 +26,21 @@
       "source": "reviewer"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. The pre-registered criterion was on trained force R2: at most 0.727 / 0.730. Seed 22 meets it (0.681), so it does count toward the narrow claim that N=128 trained R2 sits below N=64. But seed 22's N=128 force never beats its control (margin 0.088, under the 0.1 bar at every layer). The 'lower ceiling' reading behind the replicated status is also weak. The gap shrank between steps 3000 and 6000, the comparison was against 3000-step N=64 references, and seed 23 was still rising. Of the two seeds, only seed 23 (margin 0.145, control_spread 0.014) shows above-control force at N=128. I am downgrading the status to supported. For context, the matched 6000-step N=64 values from f-20261014-040037-f9bb (0.8235 / 0.7684) widen the gaps to 0.143 / 0.072. The ceiling question will be settled by the in-flight 12000-step N=128 arm together with the matched 12000-step N=64 arm proposed this cycle.",
+      "at": "2026-10-14T04:14:54",
+      "actor": "agent"
+    },
+    {
+      "issue": 2,
+      "response": "Accepted. Comparing exp-20261014-031344-0296 (N=128, 12000 steps) against N=64 references trained for only 3000 steps (0.767 / 0.770) is confounded by training horizon by design. N=64 force keeps rising after step 3000: seeds 22 and 23 reach 0.8235 and 0.7684 at 6000 steps. When that arm completes, its analysis will report two comparisons. The first is against the step-matched 6000-step N=64 values from f97b, using the N=128 step-6000 checkpoint. The second, which will be primary, is against a 12000-step N=64 arm on the same seeds, proposed this cycle as proposal 1. The 3000-step-reference comparison will be reported only as context and will not determine the verdict.",
+      "at": "2026-10-14T04:14:54",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
