@@ -1,0 +1,24 @@
+{
+  "id": "f-20261015-232841-b3bb",
+  "claim": "N=128 seed 21 (m2 fixed at 0.5, data_seed 1, 24000 steps, run completed) ends with trained force R2 0.78595 at layer 1 (control 0.62758 plus margin 0.158). That is 0.044 below the N=64 12000-step reference of 0.8303, but the reference is at layer 2, so the comparison is cross-layer. Read the same way at layer 1, force R2 is about 0.754 at step 12000 (control plus margin 0.126), so it gains about 0.032 from step 12000 to 24000. The final value is inside the expected-if-true band (<= 0.790), but the gain is just above the 0.03 limit and below the 0.04 refutation bar, so the result falls between the bands. accel_step reaches R2 0.947 at layer 4 against control 0.770, a headroom-normalised margin of 0.77 that has been flat since step 1000. Force is still rising slowly (+0.001-0.002 per 1000 steps at the end).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261015-221819-33a7"
+  ],
+  "confidence_note": "This is one seed, and the run trained all 24000 planned steps. Two of the three pre-registered criteria were met. Final R2 is <= 0.790, and the horizon check passed: the step-12000 value of about 0.754 is within 0.013 of the 12000-step N=128 run's 0.7662. The third criterion, a gain of no more than 0.03, missed by about 0.002. The step-12000 value comes from the layer-1 control plus a trajectory margin rounded to 3 decimals, so the gain is uncertain by about \u00b10.001. That is not enough to bring it back under 0.03. Because the N=64 reference sits at layer 2, the 0.044 gap is cross-layer, and a same-layer (layer 1) N=64 value could move it either way. The final value of 0.786 is 0.020 above the 12000-step run's endpoint. So for this seed, the end-of-schedule force level is not capped by the 12000-step endpoint. The rise over steps 12000-24000 (about 0.03 over about 1.08 decades of val_mse_ratio, 0.052 to 0.0044) is slowing but has not levelled off. Two things would settle the verdict: a same-layer N=64 reference, and either a 48000-step run or a second seed. A ceiling would show up as force levelling off at or below about 0.79 with the gap staying >= 0.04. Slow convergence would show up as force reaching >= 0.81.",
+  "created_at": "2026-10-15T23:28:41",
+  "experiment_id": "exp-20261015-214332-7b5b",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-15T23:28:41",
+      "actor": "agent"
+    }
+  ]
+}

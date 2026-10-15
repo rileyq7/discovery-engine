@@ -3,7 +3,8 @@
   "text": "Across every m2-fixed N=128 run trained to 24000 steps (data_seed 0 seeds 22-23, data_seed 1 seed 21), is the final trained force R2 at or below the 12000-step endpoint? If so, the end-of-schedule force level is set by the low-lr tail of the schedule rather than by total training.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261015-222914-b0b7"
+    "f-20261015-222914-b0b7",
+    "f-20261015-232841-b3bb"
   ],
   "created_at": "2026-10-14T08:14:41"
 }
