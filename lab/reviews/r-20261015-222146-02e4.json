@@ -1,0 +1,45 @@
+{
+  "id": "r-20261015-222146-02e4",
+  "created_at": "2026-10-15T22:21:46",
+  "since": "2026-10-15T21:20:45",
+  "verdict": "FLAG",
+  "summary": "I recomputed f-20261015-214232-07b5 from both N=128 runs. The layer-1 force values, the margins (0.1462 and 0.1815), the accel_step layer-4 values and the normalised margins (0.790 and 0.782-0.783) all check out, and the inconclusive verdict follows the pre-registered split-seed rule. The seed-22 horizon check, however, used the max-over-layers value instead of layer 1, and on the correct value it fails by a hair. The N=64 comparison values are not in the evidence, and their provenance is inconsistent across the agent's own records. Neither problem changes the inconclusive verdict.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The seed-22 horizon check quotes step-6000 force R2 = 0.759. That is the max-over-layers value (layer 3, 0.7589). The best-margin layer is layer 1, where step-6000 R2 is 0.7497. The pre-registration requires the same-layer value and the reference is at layer 1, so |0.7497 - 0.7799| = 0.0302 > 0.03 and seed 22 should be reported as horizon-confounded, not as passing. The 6000-to-12000 gain is also quoted from max-over-layers (+0.024); the layer-1 gain is +0.023. Neither changes the verdict, but the statement 'Only seed 22 meets the 0.04 gap' needs that qualifier.",
+      "source": "reviewer",
+      "finding_id": "f-20261015-214232-07b5"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The N=64 values (0.869 for seed 22, 0.847 for seed 23) appear nowhere in raw_evidence, and no N=64 run is listed in evidence_run_ids, so the gaps of 0.096 and 0.032 cannot be verified. The confidence note says they came from the trajectory field, which breaks the pre-registered rule that values come from probes_final. The agent's other records disagree: q-20261015-214332-e0df says the same 0.096 and 0.032 were 'read from probes_final', and q-20261014-090020-b9d1 puts seed 22's layer-1 gap at about 0.086-0.089, which implies an N=64 value of about 0.860, not 0.869. Next cycle: add the N=64 runs as evidence and quote their layer-1 probes_final values.",
+      "source": "reviewer",
+      "finding_id": "f-20261015-214232-07b5"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Seed-23 final force R2 is quoted as 0.8150, but probes_final layer 1 is 0.8149 (0.815 is the step-11000 trajectory value). The same 0.8150 is carried into exp-20261015-214332-0be7 as its horizon reference. The effect is negligible.",
+      "source": "reviewer",
+      "finding_id": "f-20261015-214232-07b5"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261015-214232-07b5"
+    ],
+    "runs": [
+      "run-20261015-214139-70d4"
+    ],
+    "experiments": [
+      "exp-20261015-214332-0be7",
+      "exp-20261015-214332-7b5b"
+    ]
+  }
+}
