@@ -1,0 +1,38 @@
+{
+  "id": "r-20261015-232243-b09a",
+  "created_at": "2026-10-15T23:22:43",
+  "since": "2026-10-15T22:21:46",
+  "verdict": "FLAG",
+  "summary": "I recomputed every number in f-20261015-222914-b0b7 from run-20261015-214139-70d4. Layer 3 is the best-margin force layer (0.7046 \u2212 0.5955 = 0.1091, above max(0.1, 0.048)), and force forms persistently at step 18000. The gap to N=64 (0.135), the 12k\u219224k gain (0.019), the horizon check (0.0037), the normalised accel_step margin (0.2182/0.285 = 0.766) and the per-decade slope all check out, so the 'supported' verdict meets expected_if_true as written. One caveat in the confidence note is factually wrong: it says the layer-1 force R2 is missing from probes_final, but that value is present.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "Caveat (2) says 'The layer-1 force R2 for this run is not in probes_final, so a same-layer gap of at least 0.04 is not shown.' probes_final does list layer 1: force r2 0.6903, control 0.5861, spread 0.0344. Against the N=64 layer-1 reference of 0.8398, the same-layer gap is 0.1495, well above 0.04. The verdict is unchanged; the gap is larger than the cross-layer 0.135. However, the stated falsifier ('if the same-layer N=128 force R2 came within 0.04 of 0.8398') can already be evaluated, and it is not met. Add a note correcting the caveat and recording the same-layer gap.",
+      "source": "reviewer",
+      "finding_id": "f-20261015-222914-b0b7"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The step-12000 layer-3 force value is quoted as 0.6855 ('control plus margin'). The raw value is 0.5955 + 0.0902 = 0.6857, which also matches its_r2. The difference is 0.0002 and does not affect the gain (0.019) or the horizon check (|0.6894 \u2212 0.6857| = 0.0037 < 0.03).",
+      "source": "reviewer",
+      "finding_id": "f-20261015-222914-b0b7"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261015-222914-b0b7"
+    ],
+    "runs": [
+      "run-20261015-221819-33a7"
+    ],
+    "experiments": [
+      "exp-20261015-224303-2e34",
+      "exp-20261015-224303-7f82"
+    ]
+  }
+}
