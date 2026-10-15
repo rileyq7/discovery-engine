@@ -1,0 +1,7 @@
+{
+  "id": "q-20261015-214232-f63a",
+  "text": "On data_seed 1 with m2 fixed, the 12000-step N=64 vs N=128 force gap is large in seeds 21-22 and small in seeds 20 and 23. If every N=64 value is read from probes_final at layer 1 (control plus margin) instead of the trajectory field, do the seeds still fall into two clusters? Or is the gap a continuous per-seed quantity that shrinks with training wherever N=64 has levelled off?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-15T21:42:32"
+}

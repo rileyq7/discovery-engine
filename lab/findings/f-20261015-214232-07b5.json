@@ -1,0 +1,25 @@
+{
+  "id": "f-20261015-214232-07b5",
+  "claim": "Seeds split, so the verdict is inconclusive. With m2 fixed at 0.5 on data_seed 1, the 12000-step N=128 trained force R2 at layer 1 (probes_final) is 0.7729 for seed 22 and 0.8150 for seed 23. The paired N=64 runs reach 0.869 and 0.847, also at layer 1, but those values are from the trajectory. The gap is about 0.096 in seed 22, which clears the 0.04 bar, and about 0.032 in seed 23, which falls in the 0.02-0.04 inconclusive band. Accel_step meanwhile sits at layer 4 with R2 0.949 vs control 0.759-0.767 in both seeds (normalised margin 0.790 and 0.783), far above force's margin of 0.146-0.182.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261014-082647-8e78",
+    "run-20261014-082647-eac3"
+  ],
+  "confidence_note": "Both N=128 runs completed all 12000 steps. They pass the horizon check: step-6000 force R2 is 0.759 vs 0.7799 for seed 22 and 0.800 vs 0.7937 for seed 23. Both meet the other expected-if-true conditions: force gains +0.024 and +0.015 between steps 6000 and 12000, and the normalised accel_step margin falls in [0.60, 0.85]. Only seed 22 meets the 0.04 gap. Seed 23's gap shrank from about 0.053 (6000-step runs) to about 0.032, because its N=64 force levels off near 0.835-0.847 while N=128 keeps rising. Both arms use layer 1, so this is a same-layer comparison. However, the N=64 values come from the trajectory's 4th field and not from probes_final control plus margin. For seed 22 at N=128 that field (0.783) runs 0.010 above probes_final (0.7729), so the N=64 values may be max-over-layers and slightly inflated. That error would shrink both gaps and could push seed 23 below 0.02. Reading the N=64 probes_final at layer 1 would settle seed 23. A clear ceiling verdict would need more seeds, or a comparison at matched val_mse_ratio. Seed 22 is still gaining about +0.002 per 500 steps, so even its gap is not yet shown to be a hard ceiling.",
+  "created_at": "2026-10-15T21:42:32",
+  "experiment_id": "exp-20261014-061412-b4b4",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-15T21:42:32",
+      "actor": "agent"
+    }
+  ]
+}

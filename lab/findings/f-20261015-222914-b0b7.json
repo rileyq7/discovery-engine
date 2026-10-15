@@ -1,0 +1,24 @@
+{
+  "id": "f-20261015-222914-b0b7",
+  "claim": "With m2 fixed at 0.5 on data_seed 0, N=128 seed 22 trained to 24000 steps reaches a final trained force R2 of 0.7046 at layer 3. That is the best-margin layer: control 0.5955, margin 0.109, beating the 0.1 bar, persistently formed only at step 18000. It sits 0.135 below the same seed's 12000-step N=64 value of 0.8398. This is a cross-layer comparison, because the N=64 reference is at layer 1. Between step 12000 and step 24000, force R2 gains only about 0.019 (0.6855 to 0.7046, read as the layer-3 control plus margin). The step-12000 value matches the 12000-step N=128 seed-22 run (0.6894, layer 3) within 0.004, so the horizon check passes. accel_step is far more decodable than force: R2 0.933 at layer 4 vs control 0.715, a headroom-normalised margin of 0.77, level since step 3000.",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261015-214139-70d4"
+  ],
+  "confidence_note": "Every pre-registered criterion is met: final force R2 <= 0.7998, gain <= 0.03, horizon check within 0.03, and normalised accel_step margin inside [0.60, 0.85]. There are four caveats. (1) This is one run with one seed. It agrees with the seed-23 24000-step result on the same data_seed (f-20261014-080108-12be), but that is a separate experiment, so seeds_agree is false. The paired data_seed 1 seed-21 arm (run-20261014-090820-51eb) failed when the disk filled and gives no evidence. (2) The comparison is cross-layer: force peaks at layer 3 here and at layer 1 at N=64. The layer-1 force R2 for this run is not in probes_final, so a same-layer gap of at least 0.04 is not shown. (3) Force has not levelled off. It is still rising about +0.001-0.002 per 1000 steps and about +0.025 per decade of val_mse_ratio decline (0.0304 to 0.0051), so 'ceiling' means 'very slow approach'. At that rate, closing the gap would take about 5 more decades of loss reduction. (4) The comparison is at matched step, not matched loss: N=128 ends at val_mse_ratio 0.0051, and the N=64 reference's loss at step 12000 is not given here. Unlike seed 23, the 24000-step endpoint (0.7046) is 0.015 above the 12000-step-schedule endpoint (0.6894). The verdict would change if the same-layer (layer 1) N=128 force R2 came within 0.04 of 0.8398, or if N=64 seed 22 read at val_mse_ratio about 0.005 fell to about 0.74 or below.",
+  "created_at": "2026-10-15T22:29:14",
+  "experiment_id": "exp-20261014-081441-e6d8",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-15T22:29:14",
+      "actor": "agent"
+    }
+  ]
+}

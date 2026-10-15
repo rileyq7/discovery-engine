@@ -1,0 +1,32 @@
+[09:08:25] experiment exp-20261014-081441-76a8 (E5) seed 21: With m2 fixed at 0.5 on data_seed 1, seed 21's N=128 force deficit is a lower ceiling, not slow convergence. N=128 seed 21 (4 layers, d_model=64, e in [0, 0.5], best-of-3 controls) is trained to 24000 steps. Its final trained force R2 stays at least 0.04 below the same seed's 12000-step N=64 value of 0.8303 (layer 2), and it gains no more than 0.03 between steps 12000 and 24000. Values are read from probes_final at the best-margin layer, unrounded, and the layer is reported. Because the N=64 reference is at layer 2, a best layer other than 2 is flagged as cross-layer. Within-run values are read as that layer's control plus margin, never from the max-over-layers trajectory field. Horizon check: step-12000 trained force R2 must be within 0.03 of the 12000-step N=128 seed-21 run (0.7662, layer 1); otherwise the result is reported as horizon-confounded.
+[09:08:25] model: 209,094 params on mps; dataset 207d7a485db8; 9000 train / 1000 val systems
+[09:08:29] step 0: val_mse=4.956e-04 cv_baseline=1.536e-06 ratio=322.554
+[09:10:07] step 1000: val_mse=1.075e-06 cv_baseline=1.536e-06 ratio=0.700
+[09:11:38] step 2000: val_mse=7.047e-07 cv_baseline=1.536e-06 ratio=0.459
+[09:13:15] step 3000: val_mse=3.656e-07 cv_baseline=1.536e-06 ratio=0.238
+[09:14:50] step 4000: val_mse=3.164e-07 cv_baseline=1.536e-06 ratio=0.206
+[09:16:25] step 5000: val_mse=1.626e-07 cv_baseline=1.536e-06 ratio=0.106
+[09:18:18] step 6000: val_mse=2.075e-07 cv_baseline=1.536e-06 ratio=0.135
+[09:20:09] step 7000: val_mse=3.293e-07 cv_baseline=1.536e-06 ratio=0.214
+[09:22:38] step 8000: val_mse=1.141e-07 cv_baseline=1.536e-06 ratio=0.074
+[09:24:44] step 9000: val_mse=8.336e-08 cv_baseline=1.536e-06 ratio=0.054
+[09:26:38] step 10000: val_mse=8.562e-08 cv_baseline=1.536e-06 ratio=0.056
+[09:28:36] step 11000: val_mse=8.863e-08 cv_baseline=1.536e-06 ratio=0.058
+[09:30:25] FAILED: Traceback (most recent call last):
+  File "/Users/rileycoleman/discovery/backend/engine/run_job.py", line 51, in execute_run
+    summary = train(cfg, run["seed"], art, log=log, on_metrics=lambda rows: store.append_metrics(run_id, rows),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rileycoleman/discovery/backend/engine/train.py", line 153, in train
+    do_checkpoint(step)
+  File "/Users/rileycoleman/discovery/backend/engine/train.py", line 127, in do_checkpoint
+    torch.save(model.state_dict(), ck_dir / f"step_{step:07d}.pt")
+  File "/Users/rileycoleman/discovery/backend/.venv/lib/python3.12/site-packages/torch/serialization.py", line 1002, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rileycoleman/discovery/backend/.venv/lib/python3.12/site-packages/torch/serialization.py", line 864, in _open_zipfile_writer
+    return container(name_or_buffer)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rileycoleman/discovery/backend/.venv/lib/python3.12/site-packages/torch/serialization.py", line 828, in __init__
+    torch._C.PyTorchFileWriter(
+RuntimeError: [enforce fail at inline_container.cc:747] . open file failed with strerror: No space left on device
+

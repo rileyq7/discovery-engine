@@ -561,3 +561,27 @@
 {"uid": "87741f6ad9d9e7ec", "timestamp": "2026-10-14T09:00:20", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-090020-b9d1"}}
 {"uid": "d09555e222cf22f1", "timestamp": "2026-10-14T09:00:20", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261014-090020-6160"}}
 {"uid": "88ae7bda403b7269", "timestamp": "2026-10-14T09:00:20", "actor": "agent", "type": "cycle.finished", "payload": {"summary": ["proposed ['exp-20261014-081441-76a8:approved', 'exp-20261014-081441-e6d8:approved']", "analyzed exp-20261014-061412-7439 -> {'id': 'f-20261014-090019-eb46', 'status': 'inconclusive'}"]}}
+{"uid": "2d17abec822aaed0", "timestamp": "2026-10-14T09:07:07", "actor": "human", "type": "paper.updated", "payload": {"id": "p-20261011-201533-42c5"}}
+{"uid": "221c01cb24c191e9", "timestamp": "2026-10-14T09:07:09", "actor": "human", "type": "paper.updated", "payload": {"id": "p-20261011-201533-42c5"}}
+{"uid": "1c83511cb858fdd5", "timestamp": "2026-10-14T09:08:19", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-082647-eac3", "experiment_id": "exp-20261014-061412-b4b4", "status": "completed"}}
+{"uid": "1000cbafcd4ee921", "timestamp": "2026-10-14T09:08:20", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-061412-b4b4", "state": "analyzing", "note": "2/2 runs completed"}}
+{"uid": "7c7f2f9af9135ceb", "timestamp": "2026-10-14T09:08:20", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261014-090820-51eb", "experiment_id": "exp-20261014-081441-76a8", "seed": 21}}
+{"uid": "92b146008d2be730", "timestamp": "2026-10-14T09:08:20", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-081441-76a8", "state": "running", "note": ""}}
+{"uid": "335bc2a2ec7ba5e0", "timestamp": "2026-10-14T09:08:20", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-090820-51eb", "experiment_id": "exp-20261014-081441-76a8", "status": "running"}}
+{"uid": "1da2b35187c235ac", "timestamp": "2026-10-14T09:08:53", "actor": "human", "type": "loop.paused", "payload": {"reason": "pause after current run finishes"}}
+{"uid": "581cc23413006c79", "timestamp": "2026-10-14T09:30:54", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261014-090820-51eb", "experiment_id": "exp-20261014-081441-76a8", "status": "failed"}}
+{"uid": "1b23a236a0d64185", "timestamp": "2026-10-14T09:30:54", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261014-081441-76a8", "state": "failed", "note": "0/1 runs completed"}}
+{"uid": "15cac6d967904b8a", "timestamp": "2026-10-14T09:52:15", "actor": "reviewer", "type": "review.flag", "payload": {"id": "r-20261014-095215-5624", "issues": 4}}
+{"uid": "1c9786d99382aad4", "timestamp": "2026-10-14T10:52:34", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-105234-c124", "issues": 0}}
+{"uid": "0c7752fcd297c07b", "timestamp": "2026-10-14T11:52:51", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-115251-4c6a", "issues": 0}}
+{"uid": "70d9a3ca2d9def0b", "timestamp": "2026-10-14T12:53:09", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-125309-58d7", "issues": 0}}
+{"uid": "539bbc1919a7cca6", "timestamp": "2026-10-14T13:53:25", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-135325-091e", "issues": 0}}
+{"uid": "5db8fb6bd4327984", "timestamp": "2026-10-14T14:53:42", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-145342-55cf", "issues": 0}}
+{"uid": "a5670696e70bb5d2", "timestamp": "2026-10-14T15:53:59", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-155359-dc4a", "issues": 0}}
+{"uid": "08f7a6d807493c01", "timestamp": "2026-10-14T16:54:15", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-165415-cb6b", "issues": 0}}
+{"uid": "566739866cb5e21d", "timestamp": "2026-10-14T17:54:32", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-175432-7c26", "issues": 0}}
+{"uid": "b47960e3e88c7fbf", "timestamp": "2026-10-14T18:55:04", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-185504-5700", "issues": 0}}
+{"uid": "cec75f6aaf532d5f", "timestamp": "2026-10-14T19:55:20", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-195520-1897", "issues": 0}}
+{"uid": "c919fb0f41fa04fb", "timestamp": "2026-10-14T20:55:37", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-205537-4b29", "issues": 0}}
+{"uid": "43ea98b52f622a68", "timestamp": "2026-10-14T21:55:52", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-215552-651c", "issues": 0}}
+{"uid": "d1c5d8db6cba2836", "timestamp": "2026-10-14T22:56:08", "actor": "reviewer", "type": "review.ok", "payload": {"id": "r-20261014-225608-53e6", "issues": 0}}

@@ -1,0 +1,7 @@
+{
+  "id": "q-20261015-214332-de69",
+  "text": "Every run saves all of its checkpoints, and run-20261014-090820-51eb failed when the disk filled. Should the pipeline keep only the checkpoints it probes, or delete .pt files once probing is done, so long 24000-step runs cannot fail this way?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-15T21:43:32"
+}
