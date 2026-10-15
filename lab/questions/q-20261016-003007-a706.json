@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-003007-a706",
+  "text": "Once the d_model=128 N=64 arm (run-20261016-002356-c1d5 for seed 23, run-20261016-002356-cbfe for seed 22) finishes, what are the same-layer (layer 1) and best-layer N=64 minus N=128 trained force R2 gaps against 0.71829 (seed 22) and 0.7653 (seed 23)? Is the gap smaller than at d_model=64 (0.143 and 0.072)?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T00:30:07"
+}

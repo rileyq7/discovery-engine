@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-002939-5f09",
+  "text": "In N=128 seed 23, layer-1 force R2 was flat (0.811-0.814) from step 9000 to 17000, then rose about 0.005 between steps 17000 and 24000, after val_mse_ratio fell below about 0.012. Is late force growth at N=128 concentrated in the last roughly 30% of the lr schedule in every 24000-step run? Would a run with a constant lr tail show the same gain?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T00:29:39"
+}

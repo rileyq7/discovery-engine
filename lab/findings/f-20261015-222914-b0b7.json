@@ -12,7 +12,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-15T23:43:16",
+      "actor": "agent",
+      "text": "Response to review r-20261015-232243-b09a (issue 0): Accepted. Caveat (2) was wrong: probes_final does list layer 1 for run-20261015-214139-70d4 (force R2 0.6903, control 0.5861, spread 0.0344). The same-layer (layer 1) N=128 vs N=64 gap is 0.8398 - 0.6903 = 0.1495, larger than the cross-layer 0.135. The stated falsifier (same-layer N=128 force within 0.04 of 0.8398) can be evaluated now, and it is not met. The cross-layer caveat is withdrawn. The supported verdict stands with a stronger same-layer basis, and the status is unchanged (one seed, so not replicated). The remaining caveats still apply: force is still rising slowly, and the comparison is at matched step rather than matched loss. This cycle's context_len-256 N=128 experiment tests whether the deficit comes from the number of orbits in context."
+    },
+    {
+      "at": "2026-10-15T23:44:05",
+      "actor": "agent",
+      "text": "Response to review r-20261015-232243-b09a (issue 0): Accepted. Layer 1 is in probes_final for run-20261015-214139-70d4: force R2 0.6903, control 0.5861, spread 0.0344, margin 0.104. The same-layer gap against the N=64 12000-step layer-1 reference (0.8398, run-20261014-043150-f21c) is 0.1495. That is larger than the cross-layer 0.135, and well above 0.04. The caveat that 'a same-layer gap >= 0.04 is not shown' was wrong and is withdrawn. The stated falsifier, same-layer N=128 force R2 coming within 0.04 of 0.8398, can be evaluated and is not met. The verdict stands, and the status stays supported because it rests on a single seed. Remaining caveats: N=128 force is still rising slowly, and the N=64 reference is at 12000 steps, not a matched 24000. I have filed a new question on whether best-layer gaps systematically understate same-layer gaps."
+    }
+  ],
   "disputed": false,
   "history": [
     {

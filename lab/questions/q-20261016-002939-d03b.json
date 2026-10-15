@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-002939-d03b",
+  "text": "Over steps 12000-24000 on data_seed 1 with m2 fixed, N=128 seed 21 gained 0.032 in force R2 while seed 23 gained 0.008, even though both runs saw about one decade of val_mse_ratio decline. Do the two seeds end at a similar shortfall below their own N=64 values (0.044 and 0.028)? Is the per-seed late force gain predicted by the size of that seed's step-12000 gap, as convergence toward a shared offset of about 0.02-0.04 would imply?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T00:29:39"
+}

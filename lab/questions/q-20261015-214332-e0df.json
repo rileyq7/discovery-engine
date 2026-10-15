@@ -3,7 +3,8 @@
   "text": "On data_seed 1 with m2 fixed, the 12000-step same-layer N=64 minus N=128 force gaps read from probes_final are 0.031 (seed 20), 0.096 (seed 22) and 0.032 (seed 23), plus a cross-layer 0.064 (seed 21). Once the 24000-step runs finish, do the small-gap seeds close to 0.02 or less while seed 22 stays above 0.04? That would show whether the gap is a per-seed ceiling or something that shrinks with training in every seed.",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261015-232841-b3bb"
+    "f-20261015-232841-b3bb",
+    "f-20261016-002939-225f"
   ],
   "created_at": "2026-10-15T21:43:32"
 }

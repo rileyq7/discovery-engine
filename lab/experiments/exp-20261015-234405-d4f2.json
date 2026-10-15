@@ -1,0 +1,91 @@
+{
+  "id": "exp-20261015-234405-d4f2",
+  "family": "E5",
+  "hypothesis": "Matched-horizon reference for the seed-21 ceiling test. Setup: m2 fixed at 0.5, data_seed 1, N=64, seed 21, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls, trained to 24000 steps. Prediction: the final trained force R2 at layer 1 (read from probes_final, unrounded) stays at least 0.04 above the same-layer 24000-step N=128 seed-21 value of 0.78595 (run-20261015-221819-33a7). If so, the N=128 force deficit is a lower ceiling and not slow convergence, on a comparison matched in both layer and horizon. The N=64 best-margin layer is also reported, and if it is not layer 1 the best-layer gap is flagged as cross-layer. Intermediate values are read only as same-layer control plus margin, never from the max-over-layers trajectory field. Horizon check: step-12000 layer-1 trained force R2 here must be within 0.03 of the layer-1 value in probes_final of the 12000-step N=64 seed-21 run (run-20261014-054942-67f0); otherwise the result is reported as horizon-confounded. That run's ID is cited as evidence.",
+  "expected_if_true": "Final layer-1 trained force R2 >= 0.826 (gap >= 0.04 vs 0.78595), force beats control (margin >= 0.1), horizon check passes, and headroom-normalised accel_step margin in [0.60, 0.85].",
+  "expected_if_false": "Final layer-1 trained force R2 <= 0.806 (same-layer gap <= 0.02), which would mean N=128 seed 21 converged toward N=64 and the deficit is slow convergence. A gap in (0.02, 0.04) is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "Matched-horizon reference for the seed-21 ceiling test. Setup: m2 fixed at 0.5, data_seed 1, N=64, seed 21, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls, trained to 24000 steps. Prediction: the final trained force R2 at layer 1 (read from probes_final, unrounded) stays at least 0.04 above the same-layer 24000-step N=128 seed-21 value of 0.78595 (run-20261015-221819-33a7). If so, the N=128 force deficit is a lower ceiling and not slow convergence, on a comparison matched in both layer and horizon. The N=64 best-margin layer is also reported, and if it is not layer 1 the best-layer gap is flagged as cross-layer. Intermediate values are read only as same-layer control plus margin, never from the max-over-layers trajectory field. Horizon check: step-12000 layer-1 trained force R2 here must be within 0.03 of the layer-1 value in probes_final of the 12000-step N=64 seed-21 run (run-20261014-054942-67f0); otherwise the result is reported as horizon-confounded. That run's ID is cited as evidence.",
+    "expected_if_true": "Final layer-1 trained force R2 >= 0.826 (gap >= 0.04 vs 0.78595), force beats control (margin >= 0.1), horizon check passes, and headroom-normalised accel_step margin in [0.60, 0.85].",
+    "expected_if_false": "Final layer-1 trained force R2 <= 0.806 (same-layer gap <= 0.02), which would mean N=128 seed 21 converged toward N=64 and the deficit is slow convergence. A gap in (0.02, 0.04) is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 24000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 1000
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      21
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-15T23:44:05",
+  "updated_at": "2026-10-15T23:44:05",
+  "verdict": null,
+  "estimate_hours": 0.9216,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-15T23:44:05",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-15T23:44:05",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-15T23:44:05",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

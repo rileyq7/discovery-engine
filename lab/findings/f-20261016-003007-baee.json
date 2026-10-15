@@ -1,0 +1,25 @@
+{
+  "id": "f-20261016-003007-baee",
+  "claim": "At d_model=128, N=128, m2 fixed at 0.5 and 6000 steps, final trained force R2 is 0.71829 for seed 22 (layer 1, control 0.6238, margin 0.0945, below the 0.1 bar) and 0.7653 for seed 23 (layer 3, control 0.64065, margin 0.1247, beats control). Raw force R2 is above the d_model=64 N=128 6000-step values of 0.68-0.70, but the controls are also higher. accel_step is decoded much better than force in both seeds: R2 0.96825 at layer 4 for seed 22 (control 0.7588, normalised margin 0.868) and 0.90529 at layer 1 for seed 23 (control 0.69169, normalised margin 0.693). The N=64 minus N=128 force gap is not computed for either seed because the paired d_model=128 N=64 arm (exp-20261015-224303-7f82) has not finished.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261015-234652-aa1a",
+    "run-20261015-234652-f1f7"
+  ],
+  "confidence_note": "Both N=128 runs completed all 6000 steps (val_mse_ratio 0.0159 and 0.0133). The hypothesis is about the N=64 minus N=128 gap, and that cannot be judged until the paired N=64 runs (run-20261016-002356-c1d5 and run-20261016-002356-cbfe, still running or pending) finish. The verdict should then be re-analysed from those runs' probes_final. Other limits: (1) force is still rising at step 6000 in both seeds, by about +0.002 to +0.004 margin per 500 steps, so 6000 steps catches it mid-growth. (2) Seed 23's force best layer moved from layer 1 to layer 3 only at the final checkpoint, so any same-layer comparison with N=64 needs per-layer values. (3) accel_step normalised margins (0.868 and 0.693) are both inside the predicted [0.60, 0.88], but seed 22 is close to the top edge. The 'within 0.03 of N=64' part also needs the paired arm. (4) Seed 23's accel_step best-margin layer is layer 1 with R2 0.905, while the max-over-layers trajectory value is 0.957, so the reading depends on the layer. (5) The d_model=128 force controls (0.62-0.64) are above most d_model=64 m2-fixed controls, so cross-width comparisons should use trained R2, not margin. Supported would need both seeds' N=64 force R2 to be at least 0.04 above 0.71829 and 0.7653. Refuted would need both gaps to be at most 0.02.",
+  "created_at": "2026-10-16T00:30:07",
+  "experiment_id": "exp-20261015-224303-2e34",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T00:30:07",
+      "actor": "agent"
+    }
+  ]
+}

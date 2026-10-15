@@ -89,3 +89,21 @@
 {"uid": "869c62379c4477c3", "timestamp": "2026-10-15T23:28:42", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261015-232842-0302"}}
 {"uid": "53dbcfeff7795584", "timestamp": "2026-10-15T23:28:42", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261015-232842-47ed"}}
 {"uid": "a39d014f83deb6fd", "timestamp": "2026-10-15T23:28:42", "actor": "agent", "type": "cycle.finished", "payload": {"summary": ["proposed ['exp-20261015-224303-7f82:approved', 'exp-20261015-224303-2e34:approved']", "analyzed exp-20261015-214332-7b5b -> {'id': 'f-20261015-232841-b3bb', 'status': 'inconclusive'}"]}}
+{"uid": "4c242a976650b495", "timestamp": "2026-10-15T23:42:22", "actor": "agent", "type": "cycle.started", "payload": {"cycle_today": 3}}
+{"uid": "cef70e15859136b4", "timestamp": "2026-10-15T23:43:16", "actor": "agent", "type": "finding.annotated", "payload": {"id": "f-20261015-222914-b0b7", "disputed": false}}
+{"uid": "7e1c4d89b96076e4", "timestamp": "2026-10-15T23:43:16", "actor": "agent", "type": "review.responded", "payload": {"id": "r-20261015-232243-b09a", "status": "addressed"}}
+{"uid": "310ec55cb649b558", "timestamp": "2026-10-15T23:44:05", "actor": "agent", "type": "finding.annotated", "payload": {"id": "f-20261015-222914-b0b7", "disputed": false}}
+{"uid": "a1d938e752f790c6", "timestamp": "2026-10-15T23:44:05", "actor": "agent", "type": "review.responded", "payload": {"id": "r-20261015-232243-b09a", "status": "addressed"}}
+{"uid": "7c0dbb695a951c36", "timestamp": "2026-10-15T23:44:05", "actor": "agent", "type": "experiment.proposed", "payload": {"id": "exp-20261015-234405-d4f2", "family": "E5"}}
+{"uid": "c381aa7a63a23c55", "timestamp": "2026-10-15T23:44:05", "actor": "auto-approve", "type": "experiment.state", "payload": {"id": "exp-20261015-234405-d4f2", "state": "approved", "note": "under cap and in an allowed family"}}
+{"uid": "71a87e4af0e32a46", "timestamp": "2026-10-15T23:44:05", "actor": "agent", "type": "experiment.proposed", "payload": {"id": "exp-20261015-234405-5c3d", "family": "E5"}}
+{"uid": "2c5326790981270b", "timestamp": "2026-10-15T23:44:05", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261015-234405-d4f2", "state": "queued", "note": "admitted within daily budget"}}
+{"uid": "ce8c963920168a20", "timestamp": "2026-10-15T23:44:05", "actor": "auto-approve", "type": "experiment.state", "payload": {"id": "exp-20261015-234405-5c3d", "state": "approved", "note": "under cap and in an allowed family"}}
+{"uid": "186ba383bb062b4a", "timestamp": "2026-10-15T23:44:05", "actor": "agent", "type": "question.created", "payload": {"id": "q-20261015-234405-48c5"}}
+{"uid": "d89fe3ac8a9e585f", "timestamp": "2026-10-15T23:44:07", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261015-234405-5c3d", "state": "queued", "note": "admitted within daily budget"}}
+{"uid": "3898589129df7657", "timestamp": "2026-10-15T23:46:52", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261015-225826-a2d5", "experiment_id": "exp-20261015-214332-0be7", "status": "completed"}}
+{"uid": "f2c3d674a2b14cb7", "timestamp": "2026-10-15T23:46:52", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261015-214332-0be7", "state": "analyzing", "note": "1/1 runs completed"}}
+{"uid": "55bf4acc7e01d81e", "timestamp": "2026-10-15T23:46:52", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261015-234652-aa1a", "experiment_id": "exp-20261015-224303-2e34", "seed": 22}}
+{"uid": "5f230fae19674480", "timestamp": "2026-10-15T23:46:53", "actor": "worker", "type": "run.created", "payload": {"id": "run-20261015-234652-f1f7", "experiment_id": "exp-20261015-224303-2e34", "seed": 23}}
+{"uid": "58a48fc771517c49", "timestamp": "2026-10-15T23:46:53", "actor": "worker", "type": "experiment.state", "payload": {"id": "exp-20261015-224303-2e34", "state": "running", "note": ""}}
+{"uid": "e03b350007d55483", "timestamp": "2026-10-15T23:46:53", "actor": "worker", "type": "run.state", "payload": {"id": "run-20261015-234652-aa1a", "experiment_id": "exp-20261015-224303-2e34", "status": "running"}}

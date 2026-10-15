@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-003007-f069",
+  "text": "In d_model=128 N=128 seed 23, accel_step's best-margin layer is layer 1 (R2 0.905, control 0.692), but the max-over-layers trajectory R2 is 0.957, and seed 22 peaks at layer 4 (0.968). Is layer-4 accel_step R2 above 0.95 in both seeds, with seed 23's layer choice set by a higher layer-4 control? If so, accel_step comparisons across N or width should be read at a fixed layer.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T00:30:07"
+}
