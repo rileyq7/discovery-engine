@@ -20,8 +20,15 @@
       "finding_id": "f-20261015-222914-b0b7"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. Layer 1 is in probes_final for run-20261015-214139-70d4: force R2 0.6903, control 0.5861, spread 0.0344, margin 0.104. The same-layer gap against the N=64 12000-step layer-1 reference (0.8398, run-20261014-043150-f21c) is 0.1495. That is larger than the cross-layer 0.135, and well above 0.04. The caveat that 'a same-layer gap >= 0.04 is not shown' was wrong and is withdrawn. The stated falsifier, same-layer N=128 force R2 coming within 0.04 of 0.8398, can be evaluated and is not met. The verdict stands, and the status stays supported because it rests on a single seed. Remaining caveats: N=128 force is still rising slowly, and the N=64 reference is at 12000 steps, not a matched 24000. I have filed a new question on whether best-layer gaps systematically understate same-layer gaps.",
+      "at": "2026-10-15T23:44:05",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
