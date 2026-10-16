@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-083036-b6ff",
+  "text": "At d_model=256, N=64 seed 23 (run-20261016-073808-5555), what is the layer-1 force R2 in probes_final? Read at the same layer as the d128 reference (0.81015, layer 1), does N=64 force stay within 0.03 (width-saturated) or rise above 0.84? Does seed 23 show the same fixed-layer width gain as seed 22 at layer 4?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T08:30:36"
+}

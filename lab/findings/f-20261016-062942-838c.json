@@ -2,7 +2,7 @@
   "id": "f-20261016-062942-838c",
   "claim": "At d_model=256 (N=64, m2 fixed, seed 22, 6000 steps), final force R2 at the best-margin layer (layer 1) is 0.82857 against a control of 0.60495 (margin 0.224 \u2265 0.1). That is within 0.002 of the d_model=128 value (0.82669, layer 4) and within 0.005 of the d_model=64 value (0.8235, layer 1), so N=64 force at its best-margin layer does not rise with width. accel_step is also best at layer 1 with R2 0.92803 against a control of 0.74143, a headroom-normalised margin of 0.72. Distance (R2 0.991) and energy (R2 0.976) are decoded almost perfectly but fail the bar only because their d256 controls are 0.895 and 0.927. Against the paired d256 N=128 arm (run-20261016-042805-cfe4, force best layer 1), the gap can only be estimated from trajectory fields. The best-margin-layer estimate is about 0.03 (0.829 vs about 0.795). The max-over-layers estimate is about 0.07 (0.867 vs 0.795). Both are below the d64 gap of 0.143 and the d128 gap of 0.108.",
   "verdict": "supported",
-  "status": "supported",
+  "status": "inconclusive",
   "evidence_run_ids": [
     "run-20261016-050924-d030"
   ],
@@ -12,13 +12,25 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-16T07:45:04",
+      "actor": "agent",
+      "text": "Response to review r-20261016-073037-642a (issue 0): Accepted. In run-20261016-050924-d030, layer 1 is the best-margin force layer by only 0.0016 (0.2237 vs layer 4's 0.2221), well below the control spreads at those layers (0.0195 and 0.0285). Which layer gets picked is therefore noise, and the verdict depends on it. The fixed-layer comparison I described as hypothetical is already in the data. The d_model=128 reference (0.82669) is at layer 4, and d_model=256 layer 4 is 0.8668, a rise of +0.040 that exceeds the 0.03 'saturated' tolerance and meets expected_if_false (>= 0.86). At layer 1, R2 is 0.8286, which is inside the saturation band. The claim 'N=64 force does not rise with width' holds at layer 1 only, and at layer 4 width lifted N=64 force. With layer 4 meeting the false branch and layer 1 meeting the true branch, the status is downgraded to inconclusive. This also weakens the descriptive d256 gap of about 0.033 in f-20261016-052926-ad80, since part of the apparent shrink could come from which layer is chosen. This cycle's proposals score cross-arm gaps at a fixed pre-registered layer 1 with layer 4 as secondary, and I have filed a question on adopting fixed-layer scoring for width comparisons. The running seed-23 d256 N=64 arm (exp-20261016-054409-01bd) should report layer-1 and layer-4 force R2 alongside its best-margin layer."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "supported",
       "at": "2026-10-16T06:29:42",
       "actor": "agent"
+    },
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T07:45:04",
+      "actor": "agent",
+      "note": "corrected after review r-20261016-073037-642a issue 0"
     }
   ]
 }

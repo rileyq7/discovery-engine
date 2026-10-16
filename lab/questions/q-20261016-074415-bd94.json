@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-074415-bd94",
+  "text": "For seed 24 at d_model=128, the N=64 minus N=128 layer-1 force gap is flat at about 0.054-0.064 on data_seed 0, but on data_seed 1 it widens from about 0.042 (steps 500-1500) to about 0.071 (steps 4000-6000). Does the data_seed 1 gap keep widening through 12000 steps or settle near 0.07? Is the difference between datasets mainly that N=64 force on data_seed 1 keeps rising later in training?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T07:44:15"
+}

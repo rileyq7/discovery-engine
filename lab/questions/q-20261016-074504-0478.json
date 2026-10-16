@@ -1,0 +1,9 @@
+{
+  "id": "q-20261016-074504-0478",
+  "text": "Across all width-scaling runs, when force's best-margin layer is chosen by a margin difference smaller than that layer's control_spread, should cross-width and cross-N comparisons be scored at a fixed pre-registered layer (layer 1, plus layer 4 as secondary) instead of the best-margin layer? At a fixed layer 4, does N=64 force rise with width (d128 0.82669 to d256 0.8668 for seed 22), while it looks flat at layer 1?",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261016-083036-8dea"
+  ],
+  "created_at": "2026-10-16T07:45:04"
+}

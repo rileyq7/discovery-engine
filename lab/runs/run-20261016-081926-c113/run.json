@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-081926-c113",
+  "experiment_id": "exp-20261016-054409-8a30",
+  "seed": 72,
+  "status": "completed",
+  "started_at": "2026-10-16T08:24:49",
+  "ended_at": "2026-10-16T08:29:50",
+  "compute_hours": 0.0836,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-081926-c113",
+  "git_commit": "f9858e3",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.5061360996539199e-06,
+    "baseline_cv_mse": 8.79025909844346e-05,
+    "val_mse_ratio": 0.01713414909374651,
+    "beats_baseline": true,
+    "train_hours": 0.08009382552570767,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "367d26200315",
+    "stopped": false,
+    "steps_completed": 3000,
+    "steps_planned": 3000,
+    "probes": {
+      "final_checkpoint": 3000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.45416,
+          "control_r2": 0.22992,
+          "control_spread": 0.01696,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 250
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.85008,
+          "control_r2": 0.31147,
+          "control_spread": 0.12657,
+          "required_margin": 0.1266,
+          "beats_control": true,
+          "formed_at_step": 250
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.60708,
+          "control_r2": 0.14246,
+          "control_spread": 0.10213,
+          "required_margin": 0.1021,
+          "beats_control": true,
+          "formed_at_step": 250
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.39821,
+          "control_r2": 0.18005,
+          "control_spread": 0.01183,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 250
+        }
+      }
+    }
+  },
+  "pid": 32562,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "367d26200315"
+}

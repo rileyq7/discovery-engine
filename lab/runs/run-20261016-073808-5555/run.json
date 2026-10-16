@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-073808-5555",
+  "experiment_id": "exp-20261016-054409-01bd",
+  "seed": 23,
+  "status": "completed",
+  "started_at": "2026-10-16T07:38:10",
+  "ended_at": "2026-10-16T08:19:26",
+  "compute_hours": 0.6877,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-073808-5555",
+  "git_commit": "f9858e3",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 4.11386044299978e-08,
+    "baseline_cv_mse": 2.444578155757874e-05,
+    "val_mse_ratio": 0.00168285085641878,
+    "beats_baseline": true,
+    "train_hours": 0.6726511599620183,
+    "n_params": 3195654,
+    "device": "mps",
+    "dataset_id": "76b89a92207c",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 3,
+          "r2": 0.84348,
+          "control_r2": 0.61403,
+          "control_spread": 0.01713,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.99254,
+          "control_r2": 0.89978,
+          "control_spread": 0.01396,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.97999,
+          "control_r2": 0.91285,
+          "control_spread": 0.00153,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 1,
+          "r2": 0.93314,
+          "control_r2": 0.75381,
+          "control_spread": 0.00988,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 25970,
+  "device": "mps",
+  "progress": null,
+  "n_params": 3195654,
+  "dataset_id": "76b89a92207c"
+}

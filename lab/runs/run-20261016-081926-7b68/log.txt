@@ -1,0 +1,23 @@
+[08:19:29] experiment exp-20261016-054409-8a30 (E5) seed 70: The e<=0.9 lower ceiling on linear accel_step decodability holds on a second dataset. Setup: data_seed 1, N=64, 4 layers, d_model=64, m2 in [0.1, 1], best-of-5 controls, seeds 70-72, 3000 steps, otherwise matching exp-20261016-014337-2921. Prediction: final raw layer-4 accel_step R2 stays at or below 0.50 in every seed, which is the data_seed 0 range (0.421-0.457) plus a 0.04 tolerance. The headroom-normalised accel_step margin stays below 0.40, and accel_step still beats its control. All values come from probes_final, unrounded. The layer-4 value is reported separately if layer 4 is not the best-margin layer. Growth is described as same-layer control plus margin between step 1000 and step 3000, and the prediction is that it is <= 0.03, i.e. a plateau.
+[08:19:48] generated dataset 367d26200315: 10000 systems x 129 steps in 19.64s
+[08:19:48] model: 209,094 params on mps; dataset 367d26200315; 9000 train / 1000 val systems
+[08:19:50] step 0: val_mse=1.982e-03 cv_baseline=8.790e-05 ratio=22.551
+[08:20:13] step 250: val_mse=5.736e-05 cv_baseline=8.790e-05 ratio=0.653
+[08:20:35] step 500: val_mse=2.324e-05 cv_baseline=8.790e-05 ratio=0.264
+[08:20:58] step 750: val_mse=1.426e-05 cv_baseline=8.790e-05 ratio=0.162
+[08:21:22] step 1000: val_mse=8.532e-06 cv_baseline=8.790e-05 ratio=0.097
+[08:21:48] step 1250: val_mse=7.119e-06 cv_baseline=8.790e-05 ratio=0.081
+[08:22:12] step 1500: val_mse=5.786e-06 cv_baseline=8.790e-05 ratio=0.066
+[08:22:36] step 1750: val_mse=3.999e-06 cv_baseline=8.790e-05 ratio=0.045
+[08:22:59] step 2000: val_mse=2.949e-06 cv_baseline=8.790e-05 ratio=0.034
+[08:23:23] step 2250: val_mse=2.516e-06 cv_baseline=8.790e-05 ratio=0.029
+[08:23:46] step 2500: val_mse=2.029e-06 cv_baseline=8.790e-05 ratio=0.023
+[08:24:10] step 2750: val_mse=1.702e-06 cv_baseline=8.790e-05 ratio=0.019
+[08:24:34] step 3000: val_mse=1.609e-06 cv_baseline=8.790e-05 ratio=0.018
+[08:24:34] training done in 5.1 min; beats constant-velocity baseline: True
+[08:24:38] random-model controls (best of 5): force=0.09/0.31/0.31/0.32/0.32, distance=-0.02/0.29/0.52/0.58/0.61, energy=-0.01/0.25/0.39/0.48/0.54, accel_step=0.05/0.11/0.11/0.11/0.11
+[08:24:39] probes @ step 0: best force R2=0.294 (layer 2)
+[08:24:42] probes @ step 1250: best force R2=0.510 (layer 1)
+[08:24:45] probes @ step 2500: best force R2=0.523 (layer 1)
+[08:24:47] probes @ step 3000: best force R2=0.526 (layer 1)
+[08:24:47] run complete in 5.3 min

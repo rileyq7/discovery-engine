@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-074415-dd1c",
+  "claim": "At d_model=128 on data_seed 1 (seed 24, m2 fixed, 6000 steps), N=128 force R2 is 0.76291 at layer 1 (control 0.60417, margin 0.159). The paired N=64 arm also peaks at layer 1, at about 0.834 (control \u22480.610, margin 0.224). That is a same-layer gap of about 0.071, above the 0.04 bar, and almost all of it sits in trained R2 because the two controls agree within about 0.006. In contrast, accel_step decodes about equally well in both arms at layer 4. Its headroom-normalised margin is 0.864 at N=128 (R2 0.96971 vs control 0.77752) against about 0.867 at N=64 (R2 0.972, margin 0.182), so the N=128 deficit is specific to force.",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261016-072048-0756"
+  ],
+  "confidence_note": "Single seed in this experiment, but it is the third d_model=128 seed on data_seed 1 to show a gap of at least 0.04: 0.071 here vs 0.065 for seed 22 and 0.051 for seed 23. Both arms are at layer 1, so this is not a cross-layer pair. The N=64 values come from the paired arm's trajectory: margin 0.224 at layer 1 and R2 \u22480.834, consistent with the 0.8339 reported for that run. They are not unrounded probes_final, so the gap carries about \u00b10.001 of rounding error. Matched loss was not checked because the N=64 val_mse_ratio trajectory is not in this context. N=128 ends at 0.0126, and the gap at matched loss could be smaller. The gap is not a fixed offset across training: it holds at about 0.042-0.044 from step 500 to 1500, widens to about 0.07 by step 4000, and stays at 0.070-0.073 to step 6000. N=128 force is still rising at about +0.003-0.004 per 500 steps. Two results would change the verdict: a matched-loss reading at layer 1 that puts the gap below 0.04, or 12000-step runs in which the gap shrinks below 0.04. The accel_step comparison uses rounded trajectory values at layer 4, so it is approximate.",
+  "created_at": "2026-10-16T07:44:15",
+  "experiment_id": "exp-20261016-044353-c678",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-16T07:44:15",
+      "actor": "agent"
+    }
+  ]
+}
