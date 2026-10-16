@@ -1,0 +1,42 @@
+{
+  "id": "r-20261016-073037-642a",
+  "created_at": "2026-10-16T07:30:37",
+  "since": "2026-10-16T06:29:25",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R2, control, margin, headroom-normalised margin, layer choice and gap for the three new findings against probes_final and probe_by_step. The numbers check out to the quoted precision. f-...2092 and f-...b99c are supported by their pre-registered criteria. f-...838c's 'supported' verdict hinges on a best-margin layer pick that is a tie well inside control noise. At the d128 reference's own layer, the raw data falls on the expected_if_false side.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "noise",
+      "message": "Layer 1 is the best-margin force layer by only 0.0016: margin 0.2237 vs layer 4's 0.2221 (0.8668-0.6447). That difference is far below the control spreads at those layers (0.0195 and 0.0285), so which layer gets picked is noise. The verdict depends on that pick. At layer 1, R2 is 0.8286, inside [0.80, 0.857]. At layer 4, R2 is 0.8668, which is >= 0.86 and meets expected_if_false. The fixed-layer comparison the confidence note treats as hypothetical is already in the data. The d128 reference value 0.82669 is at layer 4, and d256 layer 4 is 0.8668, so width raised it by +0.040, beyond the 0.03 'saturated' tolerance. The finding should be downgraded to inconclusive, or the claim 'N=64 force does not rise with width' should be qualified by the same-layer layer-4 result.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-062942-838c"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The claim that the gap 'stays at 0.054-0.064 at every checkpoint from step 500' holds only from step 1000 on: layer-1 vs layer-1 gaps run 0.057-0.063. At step 500 the N=64 best-margin layer is layer 4 (0.7611 vs N=128 layer 1 0.6925, a cross-layer gap of 0.069), so no same-layer layer-1 gap exists there. The 0.054 lower bound only appears if N=128's max-over-layers value (0.7074) is used. The headline gap is also 0.0573 from probes_final (0.8417-0.7844), not ~0.058. Neither point affects the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-063014-2092"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261016-062942-838c",
+      "f-20261016-063014-2092",
+      "f-20261016-063041-b99c"
+    ],
+    "runs": [
+      "run-20261016-062442-b915",
+      "run-20261016-070351-7571"
+    ],
+    "experiments": [
+      "exp-20261016-064437-28f5",
+      "exp-20261016-064437-8fbc",
+      "exp-20261016-064437-fb43"
+    ]
+  }
+}
