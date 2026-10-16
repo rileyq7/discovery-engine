@@ -1,0 +1,48 @@
+{
+  "id": "r-20261016-022538-63ec",
+  "created_at": "2026-10-16T02:25:38",
+  "since": "2026-10-16T01:24:25",
+  "verdict": "OK",
+  "summary": "I recomputed every quoted R2, control, margin, normalised margin, layer and formation step for f-20261016-012922-fd3b and f-20261016-012952-f2b5 from probes_final and the trajectories. All of them match within rounding. Both verdicts meet their pre-registered expected_if_true as written, in every seed, and every margin clears max(0.1, control_spread). The last 5 experiments serve open questions (matched-horizon ceiling, 3000-step e<=0.9 convergence, data_seed-1 width replication), so there is no drift. The issues below are informational only.",
+  "issues": [
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The N=128 reference values (0.71829 for seed 22, 0.7653 for seed 23) and the claim that accel_step is 'unchanged across N' cannot be checked here, because no N=128 run is in evidence_run_ids. The gaps recompute correctly from the quoted references: 0.8267-0.71829=0.108 and 0.81015-0.7653=0.045. The 'unchanged across N' statement and the conclusion that the effect is 'specific to physical force' were not part of the pre-registered criteria. The accel_step band only tests N=64 (0.730 and 0.733 recompute correctly). Per q-20261016-003007-f069, N=128 seed 23 accel_step at layer 1 is about 0.905 against 0.9274 here, so it is close but not identical. The verdict does not depend on this sentence.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-012922-fd3b"
+    },
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "Seed 23's gap of 0.045 is 0.005 above the bar and comes from a cross-layer pair (N=64 layer 1 vs N=128 layer 3). This was flagged as pre-registered, so 'replicated' is valid as written. The result still rests on one borderline seed until the same-layer read requested in q-20261016-012923-70bd is done.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-012922-fd3b"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says the accel_step margin is 'still rising by about 0.002-0.005 per 50 steps'. The raw last-interval changes are -0.0012 (seed 70, 0.2416 to 0.2404), +0.0021 (seed 71) and +0.0029 (seed 72), and the 500 to 550 changes are 0.0017-0.0021. Seed 70 has already levelled off or slightly declined. This leans toward the ceiling reading and does not affect the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-012952-f2b5"
+    }
+  ],
+  "status": "ok",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261016-012922-fd3b",
+      "f-20261016-012952-f2b5"
+    ],
+    "runs": [
+      "run-20261016-010321-fa98",
+      "run-20261016-014343-6dac"
+    ],
+    "experiments": [
+      "exp-20261016-014337-2921",
+      "exp-20261016-014337-942a",
+      "exp-20261016-014337-d1a6"
+    ]
+  }
+}
