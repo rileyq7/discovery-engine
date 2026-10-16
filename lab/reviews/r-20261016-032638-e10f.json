@@ -1,0 +1,49 @@
+{
+  "id": "r-20261016-032638-e10f",
+  "created_at": "2026-10-16T03:26:38",
+  "since": "2026-10-16T02:25:38",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted number in both findings from their raw records. Almost all of them check out: the R2, control, margin and gap values, the best-margin layers, the headroom-normalised accel_step and force values, and the step-12000 same-layer readings. Finding f-20261016-022923-3654 is marked supported even though one pre-registered condition, the horizon check, has not been verified, and its reference run is not cited. Finding f-20261016-022956-1714 quotes one within-run gain that comes from the forbidden max-over-layers field. Its inconclusive verdict is correct. The last 5 experiments serve open questions, and no pipeline anomalies are visible.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "verdict_mismatch",
+      "message": "expected_if_true requires 'horizon check passes': step-12000 layer-1 force within 0.03 of the layer-1 value in probes_final of run-20261014-054942-67f0. The agent states that value is not in the records and that the same-layer check is 'still pending'. Instead it compared 0.819 against the 12000-step run's layer-2 best value (about 0.830), which is a cross-layer substitute. The pre-registration also says the reference run ID is cited, but evidence_run_ids lists only run-20261016-010321-fa98. The other criteria are met: layer-1 R2 0.8401 >= 0.826, margin 0.2093, accel_step headroom-normalised 0.828. Until the same-layer horizon check is done, the verdict should be pending or 'supported, horizon unverified', not supported.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-022923-3654"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The matched-loss reading is given as 'val_mse_ratio near 0.004 (steps 14000-16000)'. The raw ratios at those steps are 0.00747, 0.00264 and 0.00382, so only step 16000 (R2 0.8275, gap 0.0416) is actually near the N=128 value of 0.0044. The 0.038-0.042 range is computed correctly, but its low end comes from steps whose loss is not matched.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-022923-3654"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says layer-1 force 'gained about 0.013 only in the second half'. The raw layer-1 values (control plus margin) are 0.8353 at step 12000 and 0.8445 at step 24000, a gain of 0.009. The 0.013 figure matches the max-over-layers field instead (layer 2: 0.8479 - 0.8353 = 0.0126), which the hypothesis forbids for intermediate values. New question q-20261016-022956-8e3d repeats the 0.013 figure. The verdict is not affected, since the final gap of 0.0254 is correct and inconclusive.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-022956-1714"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261016-022923-3654",
+      "f-20261016-022956-1714"
+    ],
+    "runs": [
+      "run-20261016-022408-42ac",
+      "run-20261016-030349-2b68",
+      "run-20261016-030349-5755",
+      "run-20261016-030349-a5e9"
+    ],
+    "experiments": [
+      "exp-20261016-024355-0dd6",
+      "exp-20261016-024355-430f"
+    ]
+  }
+}
