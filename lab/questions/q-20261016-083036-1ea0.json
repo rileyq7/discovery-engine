@@ -2,6 +2,8 @@
   "id": "q-20261016-083036-1ea0",
   "text": "Once the d_model=256 N=128 seed-23 arm completes, is the same-layer (layer 1) N=64 minus N=128 force gap below seed 23's d128 gap (0.045)? Given that N=64 itself may have gained about 0.03 with width, does the gap change come from the N=128 side, the N=64 side, or both?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261016-093104-b0af"
+  ],
   "created_at": "2026-10-16T08:30:36"
 }

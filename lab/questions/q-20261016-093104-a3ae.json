@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-093104-a3ae",
+  "text": "For seed 23 at d_model=256, what are the exact layer-1 and layer-3 force R2 values in probes_final for both the N=64 run (run-20261016-073808-5555) and the N=128 run (run-20261016-083515-124f)? Is the same-layer gap below 0.025 at layer 1 but at least 0.04 at layer 3? That would mean the N=128 deficit persists only in the later-layer force code that width builds at N=64.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T09:31:04"
+}

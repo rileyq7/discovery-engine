@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-093104-b0af",
+  "claim": "For seed 23 at d_model=256 (N=128, m2 fixed, data_seed 0, 6000 steps), N=128 force R2 is 0.78812 at layer 1, its best-margin layer (control 0.64043, margin 0.148). That is up from 0.7653 at d_model=128 (layer 3, so a cross-layer comparison) but just under the 0.79 the hypothesis predicted. Against the paired d_model=256 N=64 arm, the best-margin gap is about 0.055, and it is cross-layer (N=64 layer 3, 0.8435, vs N=128 layer 1). The layer-1 same-layer gap is about 0.033, using N=64 layer 1 \u2248 0.821 (the d_model=128 value 0.81015 plus the reported +0.011). So one of the two gaps passes the 'width stops closing it' bar of 0.04 and the other falls in the 0.025-0.04 inconclusive band. accel_step at layer 1 is R2 0.92354 vs control 0.73297. Headroom-normalised, accel_step (0.71) still leads force (0.41).",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-083515-124f"
+  ],
+  "confidence_note": "The run is a single seed but completed fully (6000/6000 steps, val_mse_ratio 0.0103, beats baseline). The supported criteria fail: N=128 R2 is 0.788 against the required 0.79, and the gap is not <= 0.025. The refuted criteria are mixed: N=128 did gain over d_model=128 (0.788 > 0.765), but the best-margin gap of about 0.055 is >= 0.04. That 0.055 compares N=64 layer 3 with N=128 layer 1, so it is flagged as cross-layer. The same-layer layer-1 gap of about 0.033 lies in the inconclusive band. It also uses an N=64 layer-1 value derived from the paired finding, not read directly from probes_final. The d_model=128 N=128 reference was at layer 3, so the width gain on the N=128 side is also cross-layer. Several things would settle this: exact layer-1 and layer-3 force R2 from probes_final for both d_model=256 arms; the d_model=128 N=128 layer-1 value; a matched-val_mse_ratio reading; and a second seed at d_model=256. If the exact layer-1 gap were <= 0.025 the verdict would lean supported, and if it were >= 0.04 it would lean refuted. Distance and energy controls are 0.90-0.92 at this width, so they cannot clear the bar and are not interpretable here.",
+  "created_at": "2026-10-16T09:31:04",
+  "experiment_id": "exp-20261016-054409-a60b",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T09:31:04",
+      "actor": "agent"
+    }
+  ]
+}

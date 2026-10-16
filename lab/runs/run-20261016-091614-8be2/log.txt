@@ -1,0 +1,22 @@
+[09:16:17] experiment exp-20261016-064437-28f5 (E5) seed 24: This is the test arm of a seed-24 width-shrink test. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=64, best-of-3 controls, seed 24, N=128, 6000 steps. Prediction: at d_model=64 the N=128 trained force R2 is lower than at d_model=128 (0.78436, layer 1, run-20261016-060747-3fef), and the same-seed d_model=64 N=64 minus N=128 gap against the paired arm proposed this cycle is >= 0.077. That would be a width-driven shrink of at least 25% relative to the d_model=128 gap of about 0.058. All values come from probes_final, unrounded, with layers reported and cross-layer pairs flagged. A layer-1 same-layer gap is also reported wherever both arms list layer 1. Within-run values are read only as same-layer control plus margin, never from the max-over-layers trajectory field. Both arms' run IDs are cited as evidence. If the paired arm is unavailable, the gap is reported as not computed.
+[09:16:17] model: 209,094 params on mps; dataset 4d4d982c4792; 9000 train / 1000 val systems
+[09:16:18] step 0: val_mse=5.276e-04 cv_baseline=1.534e-06 ratio=343.971
+[09:17:06] step 500: val_mse=2.267e-06 cv_baseline=1.534e-06 ratio=1.478
+[09:17:55] step 1000: val_mse=1.013e-06 cv_baseline=1.534e-06 ratio=0.660
+[09:18:42] step 1500: val_mse=1.080e-06 cv_baseline=1.534e-06 ratio=0.704
+[09:19:29] step 2000: val_mse=5.549e-07 cv_baseline=1.534e-06 ratio=0.362
+[09:20:17] step 2500: val_mse=2.512e-07 cv_baseline=1.534e-06 ratio=0.164
+[09:21:04] step 3000: val_mse=1.673e-07 cv_baseline=1.534e-06 ratio=0.109
+[09:21:52] step 3500: val_mse=1.411e-07 cv_baseline=1.534e-06 ratio=0.092
+[09:22:39] step 4000: val_mse=1.211e-07 cv_baseline=1.534e-06 ratio=0.079
+[09:23:26] step 4500: val_mse=6.577e-08 cv_baseline=1.534e-06 ratio=0.043
+[09:24:14] step 5000: val_mse=4.641e-08 cv_baseline=1.534e-06 ratio=0.030
+[09:25:01] step 5500: val_mse=3.439e-08 cv_baseline=1.534e-06 ratio=0.022
+[09:25:49] step 6000: val_mse=3.212e-08 cv_baseline=1.534e-06 ratio=0.021
+[09:25:49] training done in 9.5 min; beats constant-velocity baseline: True
+[09:25:51] random-model controls (best of 3): force=0.19/0.61/0.62/0.60/0.62, accel_step=0.59/0.68/0.70/0.71/0.71, distance=-0.02/0.18/0.43/0.60/0.59, energy=-0.02/0.19/0.45/0.62/0.67
+[09:25:52] probes @ step 0: best force R2=0.639 (layer 3)
+[09:25:55] probes @ step 2500: best force R2=0.695 (layer 2)
+[09:25:58] probes @ step 5000: best force R2=0.717 (layer 2)
+[09:26:00] probes @ step 6000: best force R2=0.720 (layer 2)
+[09:26:00] run complete in 9.7 min

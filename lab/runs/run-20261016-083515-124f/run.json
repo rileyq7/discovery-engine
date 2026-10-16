@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-083515-124f",
+  "experiment_id": "exp-20261016-054409-a60b",
+  "seed": 23,
+  "status": "completed",
+  "started_at": "2026-10-16T08:35:17",
+  "ended_at": "2026-10-16T09:16:13",
+  "compute_hours": 0.6823,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-083515-124f",
+  "git_commit": "d5d057f",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.5875409855910643e-08,
+    "baseline_cv_mse": 1.5339796233364916e-06,
+    "val_mse_ratio": 0.010349166060876831,
+    "beats_baseline": true,
+    "train_hours": 0.6663853683074316,
+    "n_params": 3195654,
+    "device": "mps",
+    "dataset_id": "4d4d982c4792",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.78812,
+          "control_r2": 0.64043,
+          "control_spread": 0.00492,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.99289,
+          "control_r2": 0.92067,
+          "control_spread": 0.01548,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.97103,
+          "control_r2": 0.89523,
+          "control_spread": 0.00284,
+          "required_margin": 0.1,
+          "beats_control": false,
+          "formed_at_step": null
+        },
+        "accel_step": {
+          "best_layer": 1,
+          "r2": 0.92354,
+          "control_r2": 0.73297,
+          "control_spread": 0.00923,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 34418,
+  "device": "mps",
+  "progress": null,
+  "n_params": 3195654,
+  "dataset_id": "4d4d982c4792"
+}

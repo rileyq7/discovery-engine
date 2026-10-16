@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-084430-e85a",
+  "text": "On data_seed 1 at e<=0.9, the headroom-normalised force margin (0.26-0.32) roughly equals the normalised accel_step margin (0.27-0.30) in every seed (ratio about 0.87-1.10), while on data_seed 0 it was well below it. Read at a fixed layer (layer 4) in both datasets, does the ratio of force to accel_step normalised margin depend on the dataset, and does the data_seed 1 force advantage come from lower force controls (0.17-0.31) rather than higher trained R2?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T08:44:30"
+}

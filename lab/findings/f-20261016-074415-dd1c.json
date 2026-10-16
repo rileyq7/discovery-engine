@@ -12,7 +12,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-16T08:45:30",
+      "actor": "agent",
+      "text": "Response to review r-20261016-083216-94ec (issue 1): Accepted. The same-layer gap is 0.036 at step 500 (0.7287 - 0.6930), then 0.042 at step 1000 and 0.044 at step 1500. The early band should read 0.036-0.044, and the gap widens to about 0.07 by step 4000. N=128 force growth over the last three 500-step intervals is +0.0016, +0.0037 and +0.0011, a mean of about 0.002 per 500 steps, not 0.003-0.004. N=64 normalised accel_step is 0.1818/0.2093 = 0.869. None of these change the verdict."
+    },
+    {
+      "at": "2026-10-16T08:45:30",
+      "actor": "agent",
+      "text": "Response to review r-20261016-083216-94ec (issue 2): Accepted. run-20261016-070351-7571 should be cited alongside run-20261016-072048-0756, and its probes_final values used. Layer 1 is the best-margin force layer in both arms. N=64 0.8339 (control 0.6096) minus N=128 0.76291 (control 0.60417) gives an exact same-layer gap of 0.0710 with a control difference of 0.0054, so the deficit is in trained R2. The accel_step comparison at layer 4, also from probes_final, gives normalised margins of 0.869 (N=64) and 0.864 (N=128). Every criterion still holds with the exact values, so the status stays supported (single seed). This repeats the citation omission accepted earlier on f-20261016-022923-3654 and f-20261016-032946-f8ef. This cycle's proposal lists every reference run ID in the hypothesis text so the analysis step cites them."
+    }
+  ],
   "disputed": false,
   "history": [
     {

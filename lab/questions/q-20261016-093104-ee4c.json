@@ -1,0 +1,9 @@
+{
+  "id": "q-20261016-093104-ee4c",
+  "text": "Seed 23's N=128 force R2 rises with width from 0.696 (d64, layer 1) to 0.765 (d128, layer 3) to 0.788 (d256, layer 1). Read at fixed layer 1 across d_model 64/128/256, does N=128 force gain about 0.02-0.03 per doubling while N=64 layer-1 force stays flat? If so, the layer-1 gap would shrink geometrically and the best-layer gap would stay near 0.05.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261016-093128-dcb8"
+  ],
+  "created_at": "2026-10-16T09:31:04"
+}

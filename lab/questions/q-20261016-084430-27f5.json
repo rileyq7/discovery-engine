@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-084430-27f5",
+  "text": "At e<=0.9, seed 70 is the only seed whose layer-4 accel_step R2 keeps rising after step 1000, and it does so on both data_seed 0 (+0.045) and data_seed 1 (+0.044). Is late accel_step growth a stable property of the model seed (init), and does a 6000-step seed-70 run level off below 0.45 on both datasets?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T08:44:30"
+}

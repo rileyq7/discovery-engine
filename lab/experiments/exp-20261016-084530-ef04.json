@@ -1,0 +1,92 @@
+{
+  "id": "exp-20261016-084530-ef04",
+  "family": "E5",
+  "hypothesis": "The N=128 force deficit (m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=64) exists partly because context_len=128 covers only one orbit at N=128 but two orbits at N=64. If N=128 is given context_len=256, so that it also sees two orbits, its 6000-step trained force R2 at layer 1 rises at least 0.04 above the context_len-128 N=128 reference for the same seed, and closes to within 0.04 of the same seed's N=64 6000-step value. References for seed 23: N=128 0.69583 at layer 1 (run-20261014-021335-eb64) and N=64 0.7684 at layer 1 (run-20261014-031344-6b2c). References for seed 22: N=128 0.68077 at layer 4, so its layer-1 comparison is cross-layer and flagged (run-20261014-021335-4030), and N=64 0.8235 at layer 1 (run-20261014-031344-3f3d). Scoring is at fixed layer 1 from probes_final, unrounded. The best-margin layer and layer 4 are reported as secondary. Trained R2 is compared, not margin. All reference run IDs are cited. accel_step is described only, not scored.",
+  "expected_if_true": "In both seeds, layer-1 trained force R2 is >= 0.736 (seed 23) and >= 0.721 (seed 22, cross-layer reference), and is within 0.04 of the same seed's N=64 value (>= 0.728 for seed 23, >= 0.783 for seed 22). Force beats its control. accel_step still beats its control.",
+  "expected_if_false": "In both seeds, layer-1 trained force R2 is within 0.02 of the context_len-128 N=128 reference (<= 0.716 for seed 23, <= 0.701 for seed 22), so context length does not explain the deficit. A split between seeds, or values that fall between these bands, is inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The N=128 force deficit (m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=64) exists partly because context_len=128 covers only one orbit at N=128 but two orbits at N=64. If N=128 is given context_len=256, so that it also sees two orbits, its 6000-step trained force R2 at layer 1 rises at least 0.04 above the context_len-128 N=128 reference for the same seed, and closes to within 0.04 of the same seed's N=64 6000-step value. References for seed 23: N=128 0.69583 at layer 1 (run-20261014-021335-eb64) and N=64 0.7684 at layer 1 (run-20261014-031344-6b2c). References for seed 22: N=128 0.68077 at layer 4, so its layer-1 comparison is cross-layer and flagged (run-20261014-021335-4030), and N=64 0.8235 at layer 1 (run-20261014-031344-3f3d). Scoring is at fixed layer 1 from probes_final, unrounded. The best-margin layer and layer 4 are reported as secondary. Trained R2 is compared, not margin. All reference run IDs are cited. accel_step is described only, not scored.",
+    "expected_if_true": "In both seeds, layer-1 trained force R2 is >= 0.736 (seed 23) and >= 0.721 (seed 22, cross-layer reference), and is within 0.04 of the same seed's N=64 value (>= 0.728 for seed 23, >= 0.783 for seed 22). Force beats its control. accel_step still beats its control.",
+    "expected_if_false": "In both seeds, layer-1 trained force R2 is within 0.02 of the context_len-128 N=128 reference (<= 0.716 for seed 23, <= 0.701 for seed 22), so context length does not explain the deficit. A split between seeds, or values that fall between these bands, is inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 128,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 256
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      22,
+      23
+    ],
+    "budget": {
+      "max_compute_hours": 0.8
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T08:45:30",
+  "updated_at": "2026-10-16T08:45:30",
+  "verdict": null,
+  "estimate_hours": 0.541,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T08:45:30",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T08:45:30",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T08:45:30",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

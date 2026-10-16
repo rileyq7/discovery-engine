@@ -1,0 +1,26 @@
+{
+  "id": "f-20261016-084430-c375",
+  "claim": "On data_seed 1 at e<=0.9 (N=64, d_model=64, 3000 steps), final layer-4 accel_step R2 is 0.36862 / 0.41131 / 0.39821 for seeds 70/71/72. The controls are 0.11166 / 0.15598 / 0.18005, giving margins of 0.257 / 0.255 / 0.218 and headroom-normalised margins of 0.289 / 0.303 / 0.266. All three seeds are below the 0.50 ceiling, below the 0.40 normalised bound, and above the 0.1 bar, and all sit under data_seed 0's 0.421-0.457, so the lower ceiling replicates. The plateau prediction (gain of 0.03 or less from step 1000 to 3000, measured as same-layer control plus margin) holds in seed 72 (+0.003) and seed 71 (+0.028) but fails in seed 70 (+0.044, 0.324 to 0.369; it levels off only after step 2250). Force: best-layer R2 0.526 / 0.392 / 0.454 against controls 0.306 / 0.175 / 0.230. That is margins of 0.220 / 0.217 / 0.224 and normalised margins of 0.317 / 0.263 / 0.291, which roughly matches accel_step's normalised margin in every seed.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-081926-7b68",
+    "run-20261016-081926-e120",
+    "run-20261016-081926-c113"
+  ],
+  "confidence_note": "The ceiling part of the hypothesis is clearly replicated. All 3 completed, unstopped seeds are 0.09-0.13 under the 0.50 bound and 0.10-0.13 under the 0.40 normalised bound, and nothing comes close to the expected-if-false bands (R2 of 0.55 or more, or normalised margin of 0.45 or more). The verdict is inconclusive only because the pre-registered plateau criterion failed in one seed. Seed 70 gained 0.044 between steps 1000 and 3000, almost all of it before step 2250, and the same seed also gained about 0.045 over that window on data_seed 0. So seed 70 converges late, but its endpoint is still well inside the ceiling. Growth comes from trajectory values rounded to 3 decimals, and the 4th trajectory field is max-over-layers R2, which here matches layer 4 because accel_step's best layer is 4 at every checkpoint. Linear decodability stays flat while val_mse_ratio falls 6-7x over the same window (for example seed 72: 0.106 to 0.017). What would change the verdict: if 6000-step runs showed seed 70 (or any seed) still rising past 0.45, the ceiling would look like slow convergence rather than a hard limit. Probes of log(accel_step) or a small MLP probe would show whether the missing variance is nonlinear pericentre structure. The force/accel_step normalised-margin comparison is computed at each target's own best layer (force is at layer 1 in seeds 70/72 and layer 4 in seed 71), so it is not a same-layer comparison.",
+  "created_at": "2026-10-16T08:44:30",
+  "experiment_id": "exp-20261016-054409-8a30",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T08:44:30",
+      "actor": "agent"
+    }
+  ]
+}

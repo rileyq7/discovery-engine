@@ -1,0 +1,92 @@
+{
+  "id": "exp-20261016-084530-41bf",
+  "family": "E5",
+  "hypothesis": "The e<=0.9 ceiling on linear accel_step decodability (layer-4 R2 about 0.37-0.41 on data_seed 1 at 3000 steps) is a real ceiling and not slow convergence. Setup is identical to exp-20261016-054409-8a30 (N=64, 4 layers, d_model=64, m2 in [0.1, 1], e in [0, 0.9], data_seed 1, best-of-5 controls) except training runs 6000 steps. Seed 70 is included because it was the one seed still rising after step 1000. The final layer-4 accel_step R2 from probes_final, unrounded, rises by no more than 0.03 over the same seed's 3000-step endpoint (seed 70: 0.36862, run-20261016-081926-7b68; seed 71: 0.41131, run-20261016-081926-e120). Endpoints are compared because the lr schedule depends on run length. Within-run growth between steps 3000 and 6000, read as layer-4 control plus margin, is reported for description only. Both reference run IDs are cited.",
+  "expected_if_true": "Final layer-4 accel_step R2 is <= 0.399 (seed 70) and <= 0.441 (seed 71). Both are still below 0.50 and still beat their controls.",
+  "expected_if_false": "Final layer-4 accel_step R2 is >= 0.429 (seed 70) or >= 0.471 (seed 71) in at least one seed, which would mean the e<=0.9 ceiling partly reflects undertraining. Values that fall between these bands are inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "The e<=0.9 ceiling on linear accel_step decodability (layer-4 R2 about 0.37-0.41 on data_seed 1 at 3000 steps) is a real ceiling and not slow convergence. Setup is identical to exp-20261016-054409-8a30 (N=64, 4 layers, d_model=64, m2 in [0.1, 1], e in [0, 0.9], data_seed 1, best-of-5 controls) except training runs 6000 steps. Seed 70 is included because it was the one seed still rising after step 1000. The final layer-4 accel_step R2 from probes_final, unrounded, rises by no more than 0.03 over the same seed's 3000-step endpoint (seed 70: 0.36862, run-20261016-081926-7b68; seed 71: 0.41131, run-20261016-081926-e120). Endpoints are compared because the lr schedule depends on run length. Within-run growth between steps 3000 and 6000, read as layer-4 control plus margin, is reported for description only. Both reference run IDs are cited.",
+    "expected_if_true": "Final layer-4 accel_step R2 is <= 0.399 (seed 70) and <= 0.441 (seed 71). Both are still below 0.50 and still beat their controls.",
+    "expected_if_false": "Final layer-4 accel_step R2 is >= 0.429 (seed 70) or >= 0.471 (seed 71) in at least one seed, which would mean the e<=0.9 ceiling partly reflects undertraining. Values that fall between these bands are inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.9
+      ],
+      "data_seed": 1
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      70,
+      71
+    ],
+    "budget": {
+      "max_compute_hours": 0.5
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T08:45:30",
+  "updated_at": "2026-10-16T08:45:30",
+  "verdict": null,
+  "estimate_hours": 0.4858,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T08:45:30",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T08:45:30",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T08:45:30",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

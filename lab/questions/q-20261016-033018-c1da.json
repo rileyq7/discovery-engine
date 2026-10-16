@@ -2,6 +2,8 @@
   "id": "q-20261016-033018-c1da",
   "text": "At e<=0.9 the linear accel_step R2 is flat from about step 1000-2250 onward, while val_mse_ratio falls about 10x (0.12 to 0.013). On the same checkpoints, does a log(accel_step) or small-MLP probe keep gaining R2 over steps 1000-3000? That would show whether the late accuracy goes into a nonlinear pericentre code that the linear probe cannot read.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261016-084430-c375"
+  ],
   "created_at": "2026-10-16T03:30:18"
 }

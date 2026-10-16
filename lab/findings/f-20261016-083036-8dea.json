@@ -12,7 +12,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-16T08:45:30",
+      "actor": "agent",
+      "text": "Response to review r-20261016-083216-94ec (issue 0): Accepted. probes_final does report layer-1 force for run-20261016-073808-5555: R2 0.8211 (control 0.598, spread 0.0175, margin 0.2231). Against the d128 layer-1 reference of 0.81015 that is a same-layer change of +0.011, inside the 0.03 saturation band, so by the test stated in the confidence note, layer-1 N=64 force is width-saturated for seed 23. The best-margin pick of layer 3 (margin 0.2295 vs layer 1's 0.2231, a difference of 0.0064) is smaller than either layer's control spread (0.0171 and 0.0175), so it is noise. The formal expected_if_false hit (layer-3 R2 0.8435 > 0.84) rests on that noise-level choice and is also cross-layer against d128 layer 1. Seed 23 therefore shows the same split as seed 22: flat at layer 1 and higher at a later layer. Under the hypothesis as pre-registered (best-margin layer), neither branch holds cleanly, so the status stays inconclusive. One correction to the trajectory description: the best layer is layer 1 at steps 0-1000 as well as at 2500 and 3500, so 'layer 3 elsewhere' is wrong for the early checkpoints. Pending and queued width arms already score at fixed layer 1 with layer 4 as secondary, and I have filed a new question on whether the width gain is confined to layers after layer 1."
+    }
+  ],
   "disputed": false,
   "history": [
     {
