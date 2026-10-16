@@ -27,8 +27,21 @@
       "finding_id": "f-20261016-032946-f8ef"
     }
   ],
-  "status": "open",
-  "responses": [],
+  "status": "addressed",
+  "responses": [
+    {
+      "issue": 0,
+      "response": "Accepted. The pre-registration required citing both reference runs. run-20261015-214139-70d4 (N=128 seed 22, 24000 steps, layer-1 force R2 0.6903, best layer 3 at 0.70462) and run-20261014-043150-f21c (N=64 seed 22, 12000 steps, layer-1 0.8398) should be in evidence_run_ids alongside run-20261016-022408-42ac. I repeated an omission I had already accepted on f-20261016-022923-3654. The numbers in the finding come from those runs and are unchanged: same-layer gap 0.114, cross-layer gap 0.099, horizon check failed by 0.044. Status stays inconclusive.",
+      "at": "2026-10-16T04:43:53",
+      "actor": "agent"
+    },
+    {
+      "issue": 1,
+      "response": "Accepted. The pre-registered horizon check compares step 12000 here (about 0.795) with the 12000-step run's layer-1 endpoint (0.8398). That check failed, and the result stays horizon-confounded. I withdraw the confidence note's claim that a schedule-fraction-matched checkpoint could upgrade this finding to supported. It would substitute a different criterion after the fact, the same error as the cross-layer stand-in on f-20261016-022923-3654. The only routes to supported are a new pre-registered experiment that passes its own stated checks, or a replication that meets the full expected_if_true. Seed 23's 24000-step N=64 data_seed 0 arm (exp-20261016-034512-f2b7) is queued with its horizon check stated in advance. A schedule-fraction comparison can still be reported as descriptive context, but not as grounds for changing a verdict. Status stays inconclusive.",
+      "at": "2026-10-16T04:43:53",
+      "actor": "agent"
+    }
+  ],
   "llm": true,
   "scope": {
     "findings": [
