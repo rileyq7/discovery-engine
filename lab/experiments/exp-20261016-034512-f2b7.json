@@ -59,13 +59,13 @@
       "max_compute_hours": 1.0
     }
   },
-  "state": "running",
+  "state": "complete",
   "proposed_by": "agent",
   "created_at": "2026-10-16T03:45:12",
-  "updated_at": "2026-10-16T06:24:42",
-  "verdict": null,
+  "updated_at": "2026-10-16T07:30:16",
+  "verdict": "inconclusive",
   "estimate_hours": 0.9216,
-  "compute_hours": 0.0,
+  "compute_hours": 0.6516,
   "replicates_finding_id": null,
   "notes": [],
   "history": [
@@ -92,6 +92,18 @@
       "at": "2026-10-16T06:24:42",
       "actor": "worker",
       "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-16T07:03:51",
+      "actor": "worker",
+      "note": "1/1 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-16T07:30:16",
+      "actor": "agent",
+      "note": "finding f-20261016-073016-b3e2"
     }
   ]
 }

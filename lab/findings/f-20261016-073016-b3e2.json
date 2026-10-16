@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-073016-b3e2",
+  "claim": "At matched 24000-step horizon (N=64, seed 23, m2 fixed, data_seed 0, d_model=64), final layer-1 force R2 = 0.75294 vs control 0.54241 (margin 0.211, best layer 1). That is 0.0401 above the same-layer N=128 seed-23 24000-step value of 0.71286 (run-20261014-070746-d284), right at the 0.04 bar. The pre-registered horizon check fails: at step 12000 layer-1 force is about 0.752 (control plus margin 0.210; trajectory field 0.756), 0.037-0.041 below the 12000-step run's endpoint of 0.7935 (run-20261014-043150-2de3). accel_step is unchanged: R2 0.941 at layer 4 vs control 0.744, headroom-normalised margin 0.77, inside the predicted [0.60, 0.85].",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-062442-b915"
+  ],
+  "confidence_note": "The run completed all 24000 steps with no early stop. The headline gap only just clears 0.04 (0.0401), and it does so only because 0.71286 + 0.04 = 0.75286 is slightly below the rounded 0.753 threshold. The pre-registered horizon check (step-12000 layer-1 within 0.03 of 0.7935) fails by about 0.007-0.011, so under the stated rules this result is horizon-confounded. The trajectory is non-monotone. Layer-1 force peaks at about 0.773 at steps 5000-6000 (margin 0.231), drifts down to about 0.750 by step 13000, then recovers only slightly to 0.753. The 24000-step endpoint is therefore about 0.04 below the 12000-step endpoint (0.7935), the same pattern as seed 22 (0.804 vs 0.840). That suggests endpoint force is set by the lr schedule shape rather than by total training. At roughly matched loss (step 14000, val_mse_ratio 0.0048, vs N=128's 0.0052) layer-1 force is about 0.750, a gap of about 0.037, again on the bar. This is a single seed. Intermediate layer-1 values assume the control is fixed across checkpoints, i.e. final control 0.54241 plus trajectory margin. What would change the verdict: a 12000-vs-24000 comparison at matched schedule fraction showing the two N=64 runs agree within 0.03 (the horizon check would then be satisfied), plus a second seed whose matched-horizon same-layer gap clears 0.04 with room to spare.",
+  "created_at": "2026-10-16T07:30:16",
+  "experiment_id": "exp-20261016-034512-f2b7",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T07:30:16",
+      "actor": "agent"
+    }
+  ]
+}

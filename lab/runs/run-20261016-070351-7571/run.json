@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-070351-7571",
+  "experiment_id": "exp-20261016-044353-207d",
+  "seed": 24,
+  "status": "completed",
+  "started_at": "2026-10-16T07:03:53",
+  "ended_at": "2026-10-16T07:20:48",
+  "compute_hours": 0.2817,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-070351-7571",
+  "git_commit": "4324441",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 7.15310296674413e-08,
+    "baseline_cv_mse": 2.4491599225622464e-05,
+    "val_mse_ratio": 0.00292063531697054,
+    "beats_baseline": true,
+    "train_hours": 0.2757214825020896,
+    "n_params": 811398,
+    "device": "mps",
+    "dataset_id": "810a0af8f62a",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.8339,
+          "control_r2": 0.60961,
+          "control_spread": 0.01006,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.98248,
+          "control_r2": 0.76621,
+          "control_spread": 0.03685,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.96597,
+          "control_r2": 0.84542,
+          "control_spread": 0.06055,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.97248,
+          "control_r2": 0.79073,
+          "control_spread": 0.00593,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 20861,
+  "device": "mps",
+  "progress": null,
+  "n_params": 811398,
+  "dataset_id": "810a0af8f62a"
+}

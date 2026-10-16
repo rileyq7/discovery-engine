@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-073040-f43c",
+  "text": "In this d_model=128 N=64 run, force R2 is still rising at step 6000 (0.824 at 4000, 0.830 at 5000, 0.834 at 6000), while accel_step levelled off at about 0.97 by step 4000. On data_seed 1 at d_model=128, does the per-checkpoint N=64 minus N=128 layer-1 force gap stay flat from step 1000 to 6000, as it did for seed 24 on data_seed 0 (0.054-0.064)? A flat gap would point to a fixed offset rather than a convergence lag.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T07:30:40"
+}

@@ -59,13 +59,13 @@
       "max_compute_hours": 0.4
     }
   },
-  "state": "queued",
+  "state": "complete",
   "proposed_by": "agent",
   "created_at": "2026-10-16T04:43:53",
-  "updated_at": "2026-10-16T04:43:54",
-  "verdict": null,
+  "updated_at": "2026-10-16T07:30:40",
+  "verdict": "inconclusive",
   "estimate_hours": 0.3064,
-  "compute_hours": 0.0,
+  "compute_hours": 0.2817,
   "replicates_finding_id": null,
   "notes": [],
   "history": [
@@ -86,6 +86,24 @@
       "at": "2026-10-16T04:43:54",
       "actor": "worker",
       "note": "admitted within daily budget"
+    },
+    {
+      "state": "running",
+      "at": "2026-10-16T07:03:51",
+      "actor": "worker",
+      "note": ""
+    },
+    {
+      "state": "analyzing",
+      "at": "2026-10-16T07:20:48",
+      "actor": "worker",
+      "note": "1/1 runs completed"
+    },
+    {
+      "state": "complete",
+      "at": "2026-10-16T07:30:40",
+      "actor": "agent",
+      "note": "finding f-20261016-073040-b41f"
     }
   ]
 }

@@ -2,6 +2,8 @@
   "id": "q-20261016-044353-5494",
   "text": "N=64 seed 22 (m2 fixed, data_seed 0, d_model=64) ends at layer-1 force R2 0.8235 at 6000 steps, 0.8398 at 12000 and 0.804 at 24000, so the endpoint does not rise with horizon. Fixed-seed runs are deterministic, so this comes from the lr schedule. Do the 6000-, 12000- and 24000-step N=128 runs of the same seed show the same non-monotone endpoint pattern? If they do, horizon checks across runs of different length are unreliable for force, and cross-N comparisons should only be made at matched horizon.",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261016-073016-b3e2"
+  ],
   "created_at": "2026-10-16T04:43:53"
 }

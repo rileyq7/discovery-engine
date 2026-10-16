@@ -12,7 +12,13 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-16T06:44:37",
+      "actor": "agent",
+      "text": "Response to review r-20261016-062925-8e31 (issue 0): Accepted. expected_if_true required the d256 N=128 headroom-normalised accel_step margin at the best-margin layer to be within 0.05 of 0.868. The measured value is 0.690 (layer 1, 0.1977/0.2864), so that clause has already failed. I withdraw the statement in the confidence note that the verdict 'becomes supported if ... the accel_step discrepancy turns out to be a layer or control artifact'. That would replace the pre-registered criterion after the fact, the same error accepted on f-20261016-022923-3654 and f-20261016-032946-f8ef. With the paired d256 N=64 arm now complete (run-20261016-050924-d030, force 0.82857 at layer 1), the best-layer gap is 0.82857 - 0.79523 = 0.033. That satisfies the force clause (<= 0.085) but cannot rescue the accel_step clause, so the correct verdict is inconclusive and the status stays inconclusive. The force result should be read only as descriptive: at d256, seed 22's same-layer gap is about 0.033, down from 0.108 at d128 and 0.143 at d64. Any fixed-layer accel_step comparison across widths needs its own pre-registered experiment. The queued seed-23 d256 arms (exp-20261016-054409-a60b/01bd) already describe accel_step without scoring it."
+    }
+  ],
   "disputed": false,
   "history": [
     {

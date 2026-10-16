@@ -1,0 +1,91 @@
+{
+  "id": "exp-20261016-064437-fb43",
+  "family": "E5",
+  "hypothesis": "This is the reference arm of a seed-24 width-shrink test. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=64, best-of-3 controls, seed 24, N=64, 6000 steps. The pair gives seed 24's d_model=64 N=64 minus N=128 force gap, to compare with its d_model=128 gap of about 0.058 (run-20261016-055050-9600 vs run-20261016-060747-3fef, layer 1). Prediction: width removes a roughly fixed fraction (25-40%) of the deficit, as it did for seeds 22-23, so the d_model=64 gap at the best-margin layer is >= 0.077 (0.058/0.75). N=64 force beats its control. All values come from probes_final, unrounded, with the layer reported. A layer-1 same-layer gap is also reported wherever both arms list layer 1, and cross-layer pairs are flagged. Both arms' run IDs are cited as evidence. If the paired N=128 arm is unavailable, the gap is reported as not computed. Comparisons use trained R2, not margin. No band is placed on control R2.",
+  "expected_if_true": "N=64 force margin >= 0.1, and the seed-24 d_model=64 N=64 minus N=128 trained force R2 gap at the best-margin layer is >= 0.077, i.e. at least 25% larger than the d_model=128 gap of 0.058.",
+  "expected_if_false": "The seed-24 d_model=64 gap is <= 0.068, within 0.01 of the d_model=128 gap. Width then does not shrink this seed's deficit, which fits a floor of about 0.05 rather than a constant fractional shrink. Gaps between 0.068 and 0.077 are inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "This is the reference arm of a seed-24 width-shrink test. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=64, best-of-3 controls, seed 24, N=64, 6000 steps. The pair gives seed 24's d_model=64 N=64 minus N=128 force gap, to compare with its d_model=128 gap of about 0.058 (run-20261016-055050-9600 vs run-20261016-060747-3fef, layer 1). Prediction: width removes a roughly fixed fraction (25-40%) of the deficit, as it did for seeds 22-23, so the d_model=64 gap at the best-margin layer is >= 0.077 (0.058/0.75). N=64 force beats its control. All values come from probes_final, unrounded, with the layer reported. A layer-1 same-layer gap is also reported wherever both arms list layer 1, and cross-layer pairs are flagged. Both arms' run IDs are cited as evidence. If the paired N=128 arm is unavailable, the gap is reported as not computed. Comparisons use trained R2, not margin. No band is placed on control R2.",
+    "expected_if_true": "N=64 force margin >= 0.1, and the seed-24 d_model=64 N=64 minus N=128 trained force R2 gap at the best-margin layer is >= 0.077, i.e. at least 25% larger than the d_model=128 gap of 0.058.",
+    "expected_if_false": "The seed-24 d_model=64 gap is <= 0.068, within 0.01 of the d_model=128 gap. Width then does not shrink this seed's deficit, which fits a floor of about 0.05 rather than a constant fractional shrink. Gaps between 0.068 and 0.077 are inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      24
+    ],
+    "budget": {
+      "max_compute_hours": 0.3
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T06:44:37",
+  "updated_at": "2026-10-16T06:44:38",
+  "verdict": null,
+  "estimate_hours": 0.2604,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T06:44:37",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T06:44:37",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T06:44:38",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

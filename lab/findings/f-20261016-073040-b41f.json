@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-073040-b41f",
+  "claim": "The N=64 reference arm (d_model=128, m2 fixed at 0.5, data_seed 1, seed 24, 6000 steps) beats its force control: force R2 = 0.8339 at layer 1 vs control 0.60961 (margin 0.224, headroom-normalised 0.57). accel_step is decoded better: R2 = 0.97248 at layer 4 vs control 0.79073 (margin 0.182, normalised 0.87). The predicted N=64 minus N=128 force gap could not be computed, because the paired N=128 run (run-20261016-072048-0756) is still running.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-070351-7571"
+  ],
+  "confidence_note": "This rests on one completed run at full completion (6000/6000 steps, val_mse_ratio 0.0029). It satisfies only the first condition of expected_if_true (N=64 force margin >= 0.1). The primary test, a force gap >= 0.04 at the best-margin layer and at layer 1, is not computed until the N=128 seed-24 arm finishes, so the hypothesis can be neither supported nor refuted yet. The accel_step sub-clause cannot be scored either: N=64 accel_step peaks at layer 4, not layer 1, and there are no N=128 values. Force was still rising at step 6000 (about +0.002 R2 per 500 steps from step 4500), while accel_step had levelled off. The endpoint therefore depends on the 6000-step schedule, and the paired arm must be read at the same horizon and at layer 1. If the N=128 final layer-1 force R2 is <= 0.7939, the verdict becomes supported. If it is >= 0.8139, it becomes refuted. Anything in between is inconclusive. Even then, this is a single seed on data_seed 1.",
+  "created_at": "2026-10-16T07:30:40",
+  "experiment_id": "exp-20261016-044353-207d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T07:30:40",
+      "actor": "agent"
+    }
+  ]
+}
