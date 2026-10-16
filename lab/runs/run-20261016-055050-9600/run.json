@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-055050-9600",
+  "experiment_id": "exp-20261016-034512-611f",
+  "seed": 24,
+  "status": "completed",
+  "started_at": "2026-10-16T05:50:53",
+  "ended_at": "2026-10-16T06:07:46",
+  "compute_hours": 0.2816,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-055050-9600",
+  "git_commit": "feb0255",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 8.453383645790769e-08,
+    "baseline_cv_mse": 2.444578155757874e-05,
+    "val_mse_ratio": 0.003458013246939953,
+    "beats_baseline": true,
+    "train_hours": 0.27551421887344785,
+    "n_params": 811398,
+    "device": "mps",
+    "dataset_id": "76b89a92207c",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.84173,
+          "control_r2": 0.63702,
+          "control_spread": 0.00696,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.98289,
+          "control_r2": 0.77313,
+          "control_spread": 0.04972,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.95989,
+          "control_r2": 0.8407,
+          "control_spread": 0.07496,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.96638,
+          "control_r2": 0.75813,
+          "control_spread": 0.00467,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 10431,
+  "device": "mps",
+  "progress": null,
+  "n_params": 811398,
+  "dataset_id": "76b89a92207c"
+}

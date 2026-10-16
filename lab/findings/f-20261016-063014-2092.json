@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-063014-2092",
+  "claim": "At d_model=128 (m2=0.5, data_seed 0, e<=0.5, 6000 steps, seed 24), N=64 force beats its control at layer 1: R2 0.84173 vs control 0.63702, margin 0.205. The paired N=128 arm (run-20261016-060747-3fef) also has force best at layer 1, with step-6000 trajectory R2 0.784 (margin 0.151), so the same-layer layer-1 N=64 minus N=128 trained force R2 gap is about 0.058, above the 0.04 bar. The gap stays at 0.054-0.064 at every checkpoint from step 500 to 6000. accel_step is the same in both arms (layer 4, R2 0.96638 vs about 0.962). This arm's accel_step headroom-normalised margin is 0.861 (control 0.75813), inside the predicted [0.60, 0.88], and its accel_step margin (0.208) is about the same as its force margin (0.205).",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261016-055050-9600"
+  ],
+  "confidence_note": "There is one seed on one dataset, and this experiment has only one run. The N=128 value comes from the paired arm's rounded trajectory field (its 4th field may be max-over-layers R2 rather than the best-margin-layer R2, see q-20261013-075749-57bb), not from its unrounded probes_final, so the gap of about 0.058 is approximate to about \u00b10.005. That uncertainty cannot push it below 0.04. The comparison is at matched step and horizon, not matched val_mse_ratio. N=64 reaches val_mse_ratio 0.0035, and the N=128 loss trajectory is not shown here. Both arms are still gaining force at step 6000 (N=128 about +0.003-0.004 per 500 steps, N=64 about +0.002), so the gap may narrow slowly with longer training. Seed 24's d128 gap (0.058) sits between seeds 22 (0.108) and 23 (0.045), so all three d128 seeds now clear 0.04. No d64 run of seed 24 exists, so this run says nothing about how much width shrinks the gap for this seed. The verdict would change if the N=128 probes_final layer-1 R2 came out at 0.80 or above, if a matched-loss read put the gap below 0.04, or if more seeds on data_seed 1 at d128 fell below 0.02.",
+  "created_at": "2026-10-16T06:30:14",
+  "experiment_id": "exp-20261016-034512-611f",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-16T06:30:14",
+      "actor": "agent"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-063041-97c4",
+  "text": "Across the three d_model=128 seeds (22: 0.108, 23: 0.045, 24: about 0.058), is the per-seed N=64 minus N=128 force gap at d128 a fixed fraction of the same seed's d64 gap? Seed 24's d64 gap is still unmeasured, so a seed-24 d64 N=64/N=128 pair would test whether width removes a constant share of the deficit.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T06:30:41"
+}

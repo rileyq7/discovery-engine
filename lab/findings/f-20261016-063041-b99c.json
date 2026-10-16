@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-063041-b99c",
+  "claim": "At d_model=128 with m2 fixed (seed 24, data_seed 0, 6000 steps), N=128 force peaks at layer 1 with trained R2 0.78436 against a control of 0.63366 (margin 0.151). The paired N=64 arm also peaks at layer 1 and ends at about 0.842 (trajectory value, margin 0.205), so the same-layer N=64 minus N=128 gap is about 0.058. That clears the 0.04 bar, and nearly all of it is in trained R2: the controls are about 0.637 vs 0.634. accel_step is essentially unchanged across the two arms: here layer-4 R2 is 0.96197 vs control 0.75519, a headroom-normalised margin of 0.845, which falls inside [0.60, 0.88]. The N=64 arm reads about 0.966 on its trajectory.",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261016-060747-3fef"
+  ],
+  "confidence_note": "This is one seed, and the N=64 reference (run-20261016-055050-9600, paired arm exp-20261016-034512-611f) is only available as rounded trajectory values. Its trajectory R2 field may be the max over layers rather than the layer-1 value, so the gap of about 0.058 could be off by about 0.01. The gap is only measured at matched step, not matched loss. Across checkpoints it stays at about 0.058-0.064 from step 1000 to step 6000, and both arms' force margins are still rising by about 0.002-0.004 per 500 steps. The seed-24 gap of about 0.058 falls between seed 22 (0.108) and seed 23 (0.045) at d128, so it is consistent with a persistent deficit at d128 and adds a third seed in that direction. The verdict would change in either of two cases: the unrounded N=64 layer-1 probes_final R2 comes out below 0.8244, or a reading at matched val_mse_ratio (N=128 ends at 0.015) puts the gap below 0.04. A seed-24 d64 pair is still needed before this seed can say anything about width-driven shrinkage.",
+  "created_at": "2026-10-16T06:30:41",
+  "experiment_id": "exp-20261016-034512-880c",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-16T06:30:41",
+      "actor": "agent"
+    }
+  ]
+}

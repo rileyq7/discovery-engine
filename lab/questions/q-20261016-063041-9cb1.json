@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-063041-9cb1",
+  "text": "For seed 24 at d_model=128 (m2 fixed, data_seed 0), the layer-1 N=64 minus N=128 force gap stays at about 0.058-0.064 from step 1000 to step 6000, and the force controls match within 0.004. If both arms are trained to 12000 steps, does the gap stay at or above 0.04 (a fixed offset), or shrink as both arms keep gaining about 0.003 per 500 steps?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T06:30:41"
+}

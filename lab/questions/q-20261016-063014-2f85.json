@@ -1,0 +1,9 @@
+{
+  "id": "q-20261016-063014-2f85",
+  "text": "At d_model=128 seed 24, if the N=64 run (run-20261016-055050-9600) is read at the checkpoint whose val_mse_ratio matches the N=128 step-6000 value, using layer-1 control plus margin, is the gap still >= 0.04? The matched-step gap stayed flat at 0.054-0.064 from step 500 to 6000, while N=64 val_mse_ratio fell from 0.29 to 0.0035.",
+  "status": "open",
+  "linked_finding_ids": [
+    "f-20261016-063041-b99c"
+  ],
+  "created_at": "2026-10-16T06:30:14"
+}
