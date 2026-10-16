@@ -1,0 +1,20 @@
+[01:03:24] experiment exp-20261015-234405-d4f2 (E5) seed 21: Matched-horizon reference for the seed-21 ceiling test. Setup: m2 fixed at 0.5, data_seed 1, N=64, seed 21, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls, trained to 24000 steps. Prediction: the final trained force R2 at layer 1 (read from probes_final, unrounded) stays at least 0.04 above the same-layer 24000-step N=128 seed-21 value of 0.78595 (run-20261015-221819-33a7). If so, the N=128 force deficit is a lower ceiling and not slow convergence, on a comparison matched in both layer and horizon. The N=64 best-margin layer is also reported, and if it is not layer 1 the best-layer gap is flagged as cross-layer. Intermediate values are read only as same-layer control plus margin, never from the max-over-layers trajectory field. Horizon check: step-12000 layer-1 trained force R2 here must be within 0.03 of the layer-1 value in probes_final of the 12000-step N=64 seed-21 run (run-20261014-054942-67f0); otherwise the result is reported as horizon-confounded. That run's ID is cited as evidence.
+[01:03:24] model: 209,094 params on mps; dataset 810a0af8f62a; 9000 train / 1000 val systems
+[01:03:25] step 0: val_mse=1.934e-03 cv_baseline=2.449e-05 ratio=78.974
+[01:05:03] step 1000: val_mse=3.925e-06 cv_baseline=2.449e-05 ratio=0.160
+[01:06:40] step 2000: val_mse=1.288e-06 cv_baseline=2.449e-05 ratio=0.053
+[01:08:18] step 3000: val_mse=1.921e-06 cv_baseline=2.449e-05 ratio=0.078
+[01:09:57] step 4000: val_mse=7.180e-07 cv_baseline=2.449e-05 ratio=0.029
+[01:11:34] step 5000: val_mse=7.316e-07 cv_baseline=2.449e-05 ratio=0.030
+[01:13:12] step 6000: val_mse=4.452e-07 cv_baseline=2.449e-05 ratio=0.018
+[01:14:49] step 7000: val_mse=5.234e-07 cv_baseline=2.449e-05 ratio=0.021
+[01:16:27] step 8000: val_mse=3.968e-07 cv_baseline=2.449e-05 ratio=0.016
+[01:18:04] step 9000: val_mse=3.446e-07 cv_baseline=2.449e-05 ratio=0.014
+[01:19:42] step 10000: val_mse=2.724e-07 cv_baseline=2.449e-05 ratio=0.011
+[01:21:19] step 11000: val_mse=3.014e-07 cv_baseline=2.449e-05 ratio=0.012
+[01:22:56] step 12000: val_mse=2.878e-07 cv_baseline=2.449e-05 ratio=0.012
+[01:24:42] step 13000: val_mse=1.270e-07 cv_baseline=2.449e-05 ratio=0.005
+[01:26:20] step 14000: val_mse=1.829e-07 cv_baseline=2.449e-05 ratio=0.007
+[01:27:59] step 15000: val_mse=6.462e-08 cv_baseline=2.449e-05 ratio=0.003
+[01:29:41] step 16000: val_mse=9.356e-08 cv_baseline=2.449e-05 ratio=0.004
+[01:31:22] step 17000: val_mse=6.022e-08 cv_baseline=2.449e-05 ratio=0.002

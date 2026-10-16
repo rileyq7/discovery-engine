@@ -3,7 +3,8 @@
   "text": "With seeds 70-72 at e ceilings of 0.5, 0.6, 0.7, 0.75, 0.8, 0.85 and 0.9, does the normalised layer-4 accel_step margin follow a smooth curve that gets steeper above 0.8 (about 0.09 lost per 0.1 of e from 0.7 to 0.8, versus about 0.07 per 0.05 from 0.8 to 0.85)? Is the steepening explained by the fraction of validation snapshots with r/a < 0.2, which only becomes common above e = 0.8?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261013-005923-526c"
+    "f-20261013-005923-526c",
+    "f-20261016-012952-f2b5"
   ],
   "created_at": "2026-10-13T00:03:59"
 }

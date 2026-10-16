@@ -1,0 +1,26 @@
+{
+  "id": "f-20261016-012952-f2b5",
+  "claim": "At e<=0.9 (N=64, 4 layers, d_model=64, m2 in [0.1, 1], 600 steps, best-of-5 controls), linear decodability of accel_step kept falling in all 3 seeds. Raw layer-4 accel_step R2 was 0.3927/0.3960/0.4361 (seeds 70/71/72), down from 0.557/0.541/0.570 at e<=0.85, and the headroom-normalised margin was 0.284/0.290/0.320. Margins over control stayed well above the bar (0.240/0.246/0.266; controls 0.150-0.170, spread <= 0.014), and accel_step formed at step 100 in every seed. Force was much weaker: margins of 0.103 (layer 2), 0.084 (layer 2, below the 0.1 bar) and 0.144 (layer 1), headroom-normalised 0.12/0.09/0.17. accel_step beat force in every seed, on both raw and normalised margin.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261016-005901-b03a",
+    "run-20261016-005901-0ffb",
+    "run-20261016-005901-cee4"
+  ],
+  "confidence_note": "All three predicted conditions held in all 3 seeds by a wide margin (raw R2 is at least 0.08 below the 0.52 cut-off, and normalised margin at least 0.04 below 0.36), so the verdict does not depend on borderline values. Limits: (1) these are 600-step runs and are not converged. val_mse_ratio is still falling (0.14 to 0.12 over steps 500-600) and accel_step margin is still rising by about 0.002-0.005 per 50 steps, so part of the drop from e<=0.85 could be slower convergence on harder data rather than a lower ceiling. (2) Only one data_seed (0) was used. (3) Checkpoints are 50 steps apart, so the step-100 formation step is coarse. (4) The e<=0.85 comparison values come from a separate experiment run under the same config. Over 0.05 of eccentricity, raw R2 fell about 0.13-0.16, steeper than the roughly 0.19 drop seen over 0.10 from e<=0.75 to e<=0.85, which fits a steepening curve. The verdict would change if 3000-step e<=0.9 runs lifted raw R2 back to 0.55 or more, or if a second data_seed gave normalised margins of 0.38 or more.",
+  "created_at": "2026-10-16T01:29:52",
+  "experiment_id": "exp-20261015-234405-5c3d",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-16T01:29:52",
+      "actor": "agent"
+    }
+  ]
+}

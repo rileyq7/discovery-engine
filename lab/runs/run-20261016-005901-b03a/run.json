@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-005901-b03a",
+  "experiment_id": "exp-20261015-234405-5c3d",
+  "seed": 70,
+  "status": "completed",
+  "started_at": "2026-10-16T01:00:42",
+  "ended_at": "2026-10-16T01:01:59",
+  "compute_hours": 0.0213,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-005901-b03a",
+  "git_commit": "e912604",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.1540732984467755e-05,
+    "baseline_cv_mse": 9.50844757200226e-05,
+    "val_mse_ratio": 0.12137347234736387,
+    "beats_baseline": true,
+    "train_hours": 0.01793409526348114,
+    "n_params": 209094,
+    "device": "mps",
+    "dataset_id": "9e847b89cbfe",
+    "stopped": false,
+    "steps_completed": 600,
+    "steps_planned": 600,
+    "probes": {
+      "final_checkpoint": 600,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 2,
+          "r2": 0.27451,
+          "control_r2": 0.17197,
+          "control_spread": 0.01935,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.81802,
+          "control_r2": 0.35677,
+          "control_spread": 0.227,
+          "required_margin": 0.227,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.35523,
+          "control_r2": 0.04366,
+          "control_spread": 0.14787,
+          "required_margin": 0.1479,
+          "beats_control": true,
+          "formed_at_step": 50
+        },
+        "accel_step": {
+          "best_layer": 4,
+          "r2": 0.39274,
+          "control_r2": 0.15236,
+          "control_spread": 0.01229,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 100
+        }
+      }
+    }
+  },
+  "pid": 68048,
+  "device": "mps",
+  "progress": null,
+  "n_params": 209094,
+  "dataset_id": "9e847b89cbfe"
+}

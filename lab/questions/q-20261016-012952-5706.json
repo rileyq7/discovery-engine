@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-012952-5706",
+  "text": "At e<=0.9, accel_step raw R2 is only 0.39-0.44 at step 600, while margin and val_mse_ratio are both still improving. If seeds 70-72 are trained to 3000 steps at both e<=0.85 and e<=0.9, does the raw R2 gap between the two ceilings (about 0.13-0.16 at 600 steps) persist, which would point to a lower decodability ceiling? Or does it shrink, which would point to slower convergence on high-e data?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T01:29:52"
+}

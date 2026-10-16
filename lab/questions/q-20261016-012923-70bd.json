@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-012923-70bd",
+  "text": "At d_model=128 with m2 fixed, is the same-layer (layer 1) N=64 minus N=128 force R2 gap at step 6000 still >= 0.04 for seed 23? Here N=64 is 0.81015 at layer 1 and the cross-layer gap is only 0.045, while N=128's best layer moved to layer 3 at step 6000.",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T01:29:23"
+}

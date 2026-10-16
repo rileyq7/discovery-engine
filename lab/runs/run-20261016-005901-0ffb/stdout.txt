@@ -1,0 +1,23 @@
+run-20261016-005901-0ffb: [00:59:03] experiment exp-20261015-234405-5c3d (E5) seed 71: Seeds 70-72 at e<=0.9 complete the matched eccentricity sweep (N=64, 4 layers, d_model=64, m2 in [0.1, 1], data_seed 0, 600 steps, best-of-5 controls). Prediction: linear decodability of accel_step keeps falling above e<=0.85. Raw layer-4 accel_step R2 drops below the same seeds' e<=0.85 values (0.557/0.541/0.570), and the headroom-normalised margin drops below 0.38. accel_step still beats its control. All values come from probes_final at the best-margin layer, unrounded, and formation steps come from trajectories with a strict >= bar.
+run-20261016-005901-0ffb: [00:59:22] generated dataset 9e847b89cbfe: 10000 systems x 129 steps in 18.97s
+run-20261016-005901-0ffb: [00:59:23] model: 209,094 params on mps; dataset 9e847b89cbfe; 9000 train / 1000 val systems
+run-20261016-005901-0ffb: [00:59:24] step 0: val_mse=1.849e-03 cv_baseline=9.508e-05 ratio=19.450
+run-20261016-005901-0ffb: [00:59:28] step 50: val_mse=2.430e-04 cv_baseline=9.508e-05 ratio=2.555
+run-20261016-005901-0ffb: [00:59:34] step 100: val_mse=1.013e-04 cv_baseline=9.508e-05 ratio=1.065
+run-20261016-005901-0ffb: [00:59:39] step 150: val_mse=6.487e-05 cv_baseline=9.508e-05 ratio=0.682
+run-20261016-005901-0ffb: [00:59:44] step 200: val_mse=4.332e-05 cv_baseline=9.508e-05 ratio=0.456
+run-20261016-005901-0ffb: [00:59:49] step 250: val_mse=3.154e-05 cv_baseline=9.508e-05 ratio=0.332
+run-20261016-005901-0ffb: [00:59:54] step 300: val_mse=2.535e-05 cv_baseline=9.508e-05 ratio=0.267
+run-20261016-005901-0ffb: [01:00:00] step 350: val_mse=2.038e-05 cv_baseline=9.508e-05 ratio=0.214
+run-20261016-005901-0ffb: [01:00:05] step 400: val_mse=1.789e-05 cv_baseline=9.508e-05 ratio=0.188
+run-20261016-005901-0ffb: [01:00:10] step 450: val_mse=1.446e-05 cv_baseline=9.508e-05 ratio=0.152
+run-20261016-005901-0ffb: [01:00:15] step 500: val_mse=1.335e-05 cv_baseline=9.508e-05 ratio=0.140
+run-20261016-005901-0ffb: [01:00:21] step 550: val_mse=1.204e-05 cv_baseline=9.508e-05 ratio=0.127
+run-20261016-005901-0ffb: [01:00:26] step 600: val_mse=1.125e-05 cv_baseline=9.508e-05 ratio=0.118
+run-20261016-005901-0ffb: [01:00:26] training done in 1.4 min; beats constant-velocity baseline: True
+run-20261016-005901-0ffb: [01:00:30] random-model controls (best of 5): force=0.02/0.07/0.07/0.07/0.07, distance=-0.01/0.25/0.41/0.48/0.49, energy=-0.00/0.22/0.35/0.37/0.42, accel_step=0.08/0.14/0.14/0.15/0.15
+run-20261016-005901-0ffb: [01:00:30] probes @ step 0: best force R2=0.064 (layer 1)
+run-20261016-005901-0ffb: [01:00:34] probes @ step 250: best force R2=0.130 (layer 2)
+run-20261016-005901-0ffb: [01:00:37] probes @ step 500: best force R2=0.153 (layer 2)
+run-20261016-005901-0ffb: [01:00:39] probes @ step 600: best force R2=0.155 (layer 2)
+run-20261016-005901-0ffb: [01:00:39] run complete in 1.6 min

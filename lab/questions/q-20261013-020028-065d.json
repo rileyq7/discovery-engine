@@ -3,7 +3,8 @@
   "text": "At d_model=128 the random controls are much higher than at d_model=64 (distance 0.76-0.78 vs 0.45-0.54; force 0.61-0.62 vs 0.45-0.51), while trained distance R2 is similar (0.97-0.98 vs 0.90-0.91). That shrinks the d128 distance margin to 0.19-0.21, against 0.56-0.70 at d64. Should comparisons across d_model use headroom-normalised margins? And does the force-vs-accel_step ordering across model sizes change once that is done?",
   "status": "open",
   "linked_finding_ids": [
-    "f-20261016-003007-baee"
+    "f-20261016-003007-baee",
+    "f-20261016-012922-fd3b"
   ],
   "created_at": "2026-10-13T02:00:28"
 }

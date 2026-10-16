@@ -1,0 +1,25 @@
+{
+  "id": "f-20261016-012922-fd3b",
+  "claim": "At d_model=128 (m2 = 0.5, data_seed 0, e <= 0.5, 6000 steps), both N=64 seeds decode force well above control. Seed 22 has R2 0.82669 at layer 4 (control 0.62264, margin 0.204) and seed 23 has 0.81015 at layer 1 (control 0.60228, margin 0.208). Both stay above the same seed's d128 N=128 value at step 6000: seed 22 is 0.108 higher (vs 0.71829) and seed 23 is 0.045 higher (vs 0.7653). Both pairs compare different layers. The gaps are smaller than the d_model=64 gaps (0.143 and 0.072) but have not closed. accel_step does not show the same N=64 advantage: R2 is 0.924-0.927 at layer 1, with normalised margins 0.730 (seed 22) and 0.733 (seed 23), inside the predicted [0.60, 0.88]. Since force stays below accel_step while accel_step is unchanged across N, the steps_per_orbit effect is specific to physical force and not to per-snapshot acceleration.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261016-002356-cbfe",
+    "run-20261016-002356-c1d5"
+  ],
+  "confidence_note": "Both seeds meet the expected-if-true criteria: force margin >= 0.1, gap >= 0.04, and normalised accel_step margin inside the band. Both runs completed 6000/6000 steps. Several things limit confidence. (1) Both pairs compare different layers. Seed 22 is N=64 layer 4 vs N=128 layer 1. Seed 23 is N=64 layer 1 vs N=128 layer 3 (from the trajectory's best layer at step 6000). (2) Seed 23's gap of 0.045 is only 0.005 above the 0.04 bar. A same-layer read could push it into the inconclusive (0.02, 0.04) range: at step 5500 the N=128 seed-23 run was at about 0.761 at layer 1. (3) The N=128 references (0.71829 and 0.7653) are the probes_final values quoted in f-20261016-003007-baee, not values re-read here. (4) Seed 23 is compared at matched step, not matched loss. N=64 ends at val_mse_ratio 0.0027-0.0033, and the N=64 force R2 was still rising about 0.002-0.004 per 500 steps at the end. (5) Only two seeds, on one data_seed. The verdict would move to inconclusive if the same-layer layer-1 reads put seed 23's gap below 0.04. It would also move if a matched-val_mse_ratio comparison shrank either gap to 0.02 or less, which would make the deficit a matter of convergence speed rather than a width-independent ceiling.",
+  "created_at": "2026-10-16T01:29:22",
+  "experiment_id": "exp-20261015-224303-7f82",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-16T01:29:22",
+      "actor": "agent"
+    }
+  ]
+}
