@@ -1,0 +1,93 @@
+{
+  "id": "exp-20261016-014337-2921",
+  "family": "E5",
+  "hypothesis": "At e<=0.9, the loss of linear accel_step decodability is a lower ceiling, not slower convergence. Setup: N=64, 4 layers, d_model=64, m2 in [0.1, 1], data_seed 0, best-of-5 controls, seeds 70-72, 3000 steps. Prediction: final raw layer-4 accel_step R2 stays at least 0.08 below the same seeds' 3000-step e<=0.85 values (0.573/0.558/0.588, f-20261013-001616-659c), that is at most 0.493/0.478/0.508. The headroom-normalised margin also stays below 0.40, while accel_step still beats its control. Values come from probes_final at the best-margin layer, unrounded. The layer-4 value is reported separately if layer 4 is not the best-margin layer. The 600-step e<=0.9 values (0.393/0.396/0.436) are the within-seed starting point for growth.",
+  "expected_if_true": "In all 3 seeds, raw accel_step R2 at step 3000 is at least 0.08 below the matched e<=0.85 3000-step value, the accel_step margin is at least 0.1, and the normalised margin is below 0.40. Over steps 600-3000, raw R2 gains no more than 0.10 in each seed.",
+  "expected_if_false": "In at least 2 of 3 seeds, raw accel_step R2 at step 3000 comes within 0.04 of the matched e<=0.85 value, i.e. at least 0.533/0.518/0.548. That would mean the 600-step gap of 0.13-0.16 was mostly slower convergence on high-e data. Gaps in (0.04, 0.08), or a split between seeds, count as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "At e<=0.9, the loss of linear accel_step decodability is a lower ceiling, not slower convergence. Setup: N=64, 4 layers, d_model=64, m2 in [0.1, 1], data_seed 0, best-of-5 controls, seeds 70-72, 3000 steps. Prediction: final raw layer-4 accel_step R2 stays at least 0.08 below the same seeds' 3000-step e<=0.85 values (0.573/0.558/0.588, f-20261013-001616-659c), that is at most 0.493/0.478/0.508. The headroom-normalised margin also stays below 0.40, while accel_step still beats its control. Values come from probes_final at the best-margin layer, unrounded. The layer-4 value is reported separately if layer 4 is not the best-margin layer. The 600-step e<=0.9 values (0.393/0.396/0.436) are the within-seed starting point for growth.",
+    "expected_if_true": "In all 3 seeds, raw accel_step R2 at step 3000 is at least 0.08 below the matched e<=0.85 3000-step value, the accel_step margin is at least 0.1, and the normalised margin is below 0.40. Over steps 600-3000, raw R2 gains no more than 0.10 in each seed.",
+    "expected_if_false": "In at least 2 of 3 seeds, raw accel_step R2 at step 3000 comes within 0.04 of the matched e<=0.85 value, i.e. at least 0.533/0.518/0.548. That would mean the 600-step gap of 0.13-0.16 was mostly slower convergence on high-e data. Gaps in (0.04, 0.08), or a split between seeds, count as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.1,
+        1.0
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.9
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 250
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 5,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      70,
+      71,
+      72
+    ],
+    "budget": {
+      "max_compute_hours": 0.6
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T01:43:37",
+  "updated_at": "2026-10-16T01:43:39",
+  "verdict": null,
+  "estimate_hours": 0.3836,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T01:43:37",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T01:43:37",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T01:43:39",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

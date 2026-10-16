@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-022956-61be",
+  "text": "N=64 seed-23 force (m2 fixed, data_seed 1) ends at about 0.845 at layer 1 under both the 12000-step and 24000-step schedules, while N=128 seed 23 is still gaining about 0.008 per doubling of horizon. If N=128 seed 23 is trained to 48000 steps, does it come within 0.02 of 0.845, so that every small-gap seed counts as slow convergence rather than a ceiling?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T02:29:56"
+}

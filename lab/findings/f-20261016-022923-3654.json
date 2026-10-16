@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-022923-3654",
+  "claim": "With m2 fixed at 0.5, N=64 seed 21 trained to 24000 steps has layer-1 force R2 0.8401 (control 0.6308, margin 0.209). That is 0.054 above the same-layer, same-horizon N=128 seed-21 value of 0.78595, and layer 1 is also N=64's best-margin layer, so the gap is not cross-layer. accel_step reaches R2 0.963 at layer 4 against a 0.786 control (margin 0.177, headroom-normalised 0.83), so force's margin is the larger one (0.209 vs 0.177), while accel_step has the higher raw and headroom-normalised score.",
+  "verdict": "supported",
+  "status": "supported",
+  "evidence_run_ids": [
+    "run-20261016-010321-fa98"
+  ],
+  "confidence_note": "Single seed on one dataset. The N=128 reference (run-20261015-221819-33a7) is a separate run. The comparison is matched in layer and horizon but not in loss. N=64 ends at val_mse_ratio 0.0011, against about 0.0044 for N=128 seed 21. Reading this run as layer-1 control plus margin near val_mse_ratio 0.004 (steps 14000-16000, R2 0.824-0.828) gives a gap of about 0.038-0.042, which sits right at the 0.04 bar. So the ceiling claim holds at matched horizon but is borderline at matched loss. The horizon check can only be partly verified here. At step 12000 this run's layer-1 force R2 is 0.819, within about 0.011 of the roughly 0.830 best-layer (layer 2) value reported for the 12000-step N=64 run (run-20261014-054942-67f0, not cited because it is outside this experiment). That run's layer-1 value is not in these records, so a strict same-layer horizon check is still pending. N=64 layer-1 force is still rising slowly (about +0.001 per 1000 steps at the end). Over steps 12000-24000 the two arms gained similar amounts (N=64 +0.021 within this run, N=128 +0.020 between endpoints), so the gap looks stable with training rather than closing. The verdict would change if the matched-loss same-layer gap falls clearly below 0.04, or if the other 24000-step references (seed 23 on data_seed 1, seed 22 on data_seed 0) show gaps of 0.02 or less.",
+  "created_at": "2026-10-16T02:29:23",
+  "experiment_id": "exp-20261015-234405-d4f2",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "supported",
+      "at": "2026-10-16T02:29:23",
+      "actor": "agent"
+    }
+  ]
+}

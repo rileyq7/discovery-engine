@@ -1,0 +1,36 @@
+run-20261016-014343-6dac: [01:43:46] experiment exp-20261016-004348-8adb (E5) seed 23: Matched-horizon reference for the seed-23 data_seed 1 ceiling test. Setup: m2 fixed at 0.5, N=64, seed 23, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls, 24000 steps. Prediction: the final layer-1 trained force R2 (probes_final, unrounded) stays at least 0.04 above the same-layer 24000-step N=128 seed-23 value of 0.81915 (run-20261015-225826-a2d5). If so, the small N=128 deficit is a real lower ceiling at matched layer and horizon. The N=64 best-margin layer is reported, and a best layer other than 1 is flagged as cross-layer. Intermediate values are read only as same-layer control plus margin, never from the max-over-layers trajectory field. Horizon check: the step-12000 layer-1 value must be within 0.03 of the 12000-step N=64 seed-23 run's layer-1 value of 0.8467 (run-20261014-074634-b5ab). If it is not, the result is reported as horizon-confounded. Both reference run IDs are cited as evidence.
+run-20261016-014343-6dac: [01:43:46] model: 209,094 params on mps; dataset 810a0af8f62a; 9000 train / 1000 val systems
+run-20261016-014343-6dac: [01:43:47] step 0: val_mse=1.982e-03 cv_baseline=2.449e-05 ratio=80.918
+run-20261016-014343-6dac: [01:45:29] step 1000: val_mse=4.230e-06 cv_baseline=2.449e-05 ratio=0.173
+run-20261016-014343-6dac: [01:47:09] step 2000: val_mse=2.744e-06 cv_baseline=2.449e-05 ratio=0.112
+run-20261016-014343-6dac: [01:48:48] step 3000: val_mse=9.472e-07 cv_baseline=2.449e-05 ratio=0.039
+run-20261016-014343-6dac: [01:50:27] step 4000: val_mse=7.520e-07 cv_baseline=2.449e-05 ratio=0.031
+run-20261016-014343-6dac: [01:52:07] step 5000: val_mse=6.124e-07 cv_baseline=2.449e-05 ratio=0.025
+run-20261016-014343-6dac: [01:53:47] step 6000: val_mse=4.825e-07 cv_baseline=2.449e-05 ratio=0.020
+run-20261016-014343-6dac: [01:55:26] step 7000: val_mse=2.073e-07 cv_baseline=2.449e-05 ratio=0.008
+run-20261016-014343-6dac: [01:57:07] step 8000: val_mse=2.910e-07 cv_baseline=2.449e-05 ratio=0.012
+run-20261016-014343-6dac: [01:58:47] step 9000: val_mse=3.294e-07 cv_baseline=2.449e-05 ratio=0.013
+run-20261016-014343-6dac: [02:00:28] step 10000: val_mse=2.774e-07 cv_baseline=2.449e-05 ratio=0.011
+run-20261016-014343-6dac: [02:02:07] step 11000: val_mse=2.663e-07 cv_baseline=2.449e-05 ratio=0.011
+run-20261016-014343-6dac: [02:03:48] step 12000: val_mse=1.703e-07 cv_baseline=2.449e-05 ratio=0.007
+run-20261016-014343-6dac: [02:05:28] step 13000: val_mse=1.543e-07 cv_baseline=2.449e-05 ratio=0.006
+run-20261016-014343-6dac: [02:07:09] step 14000: val_mse=2.911e-07 cv_baseline=2.449e-05 ratio=0.012
+run-20261016-014343-6dac: [02:08:49] step 15000: val_mse=7.629e-08 cv_baseline=2.449e-05 ratio=0.003
+run-20261016-014343-6dac: [02:10:29] step 16000: val_mse=9.485e-08 cv_baseline=2.449e-05 ratio=0.004
+run-20261016-014343-6dac: [02:12:09] step 17000: val_mse=7.591e-08 cv_baseline=2.449e-05 ratio=0.003
+run-20261016-014343-6dac: [02:13:49] step 18000: val_mse=7.231e-08 cv_baseline=2.449e-05 ratio=0.003
+run-20261016-014343-6dac: [02:15:28] step 19000: val_mse=5.909e-08 cv_baseline=2.449e-05 ratio=0.002
+run-20261016-014343-6dac: [02:17:09] step 20000: val_mse=4.248e-08 cv_baseline=2.449e-05 ratio=0.002
+run-20261016-014343-6dac: [02:18:49] step 21000: val_mse=4.177e-08 cv_baseline=2.449e-05 ratio=0.002
+run-20261016-014343-6dac: [02:20:28] step 22000: val_mse=2.900e-08 cv_baseline=2.449e-05 ratio=0.001
+run-20261016-014343-6dac: [02:22:08] step 23000: val_mse=2.536e-08 cv_baseline=2.449e-05 ratio=0.001
+run-20261016-014343-6dac: [02:23:48] step 24000: val_mse=2.246e-08 cv_baseline=2.449e-05 ratio=0.001
+run-20261016-014343-6dac: [02:23:48] training done in 40.0 min; beats constant-velocity baseline: True
+run-20261016-014343-6dac: [02:23:50] random-model controls (best of 3): force=0.20/0.63/0.64/0.65/0.65, accel_step=0.66/0.75/0.77/0.77/0.78, distance=-0.03/0.24/0.45/0.62/0.62, energy=-0.03/0.24/0.48/0.58/0.69
+run-20261016-014343-6dac: [02:23:51] probes @ step 0: best force R2=0.671 (layer 3)
+run-20261016-014343-6dac: [02:23:55] probes @ step 5000: best force R2=0.832 (layer 1)
+run-20261016-014343-6dac: [02:23:58] probes @ step 10000: best force R2=0.834 (layer 2)
+run-20261016-014343-6dac: [02:24:01] probes @ step 15000: best force R2=0.841 (layer 2)
+run-20261016-014343-6dac: [02:24:05] probes @ step 20000: best force R2=0.845 (layer 2)
+run-20261016-014343-6dac: [02:24:08] probes @ step 24000: best force R2=0.848 (layer 2)
+run-20261016-014343-6dac: [02:24:08] run complete in 40.4 min

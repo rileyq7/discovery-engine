@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-022923-73e2",
+  "text": "For seed 21 (m2 fixed, data_seed 1), the N=64 minus N=128 layer-1 force gap is 0.054 at matched horizon (24000 steps) but only about 0.038-0.042 at matched val_mse_ratio (about 0.004, N=64 steps 14000-16000). If the N=128 seed-21 24000-step trajectory and this run are both plotted as layer-1 control plus margin against log(val_mse_ratio), is there a constant offset of at least 0.04, or are the curves converging?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T02:29:23"
+}
