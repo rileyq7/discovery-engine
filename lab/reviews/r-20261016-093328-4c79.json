@@ -1,0 +1,63 @@
+{
+  "id": "r-20261016-093328-4c79",
+  "created_at": "2026-10-16T09:33:28",
+  "since": "2026-10-16T08:32:16",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R\u00b2, control, margin, normalised margin, growth value and formation step for the three findings against probes_final and the trajectories. f-\u2026c375 checks out, and its inconclusive verdict follows from seed 70 failing the pre-registered plateau criterion (+0.0442). f-\u2026b0af's N=128 numbers are correct, but its N=64 comparison values are not in the raw evidence, and the pre-registered refutation criterion appears to be met. f-\u2026dcb8 wrongly says probes_final has no layer-1 force value. The last 5 experiments serve open questions, so there is no drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The gap rests on N=64 values that appear nowhere in raw_evidence. These are layer-3 R\u00b2 0.8435 and a layer-1 value of '\u22480.821', which was derived as the d128 value 0.81015 + 0.011 rather than read from probes_final. The pre-registration required both arms' run IDs to be cited and all values to come from probes_final unrounded, but evidence_run_ids lists only run-20261016-083515-124f. Cite the paired d256 N=64 run (run-20261016-073808-5555) and recompute both gaps from its probes_final. The N=128 side is correct: layer 1 0.7881 / control 0.6404 / margin 0.1477, which is the best-margin layer.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-093104-b0af"
+    },
+    {
+      "severity": "flag",
+      "category": "verdict_mismatch",
+      "message": "expected_if_false is 'paired best-margin-layer gap \u2265 0.04 OR N=128 R\u00b2 \u2264 0.765'. The finding's own best-margin-layer gap is 0.8435 \u2212 0.7881 = 0.055, which is \u2265 0.04. The layer-1 same-layer requirement was pre-registered only as an extra condition for 'supported', not as a way out of 'refuted'. Using the ~0.033 layer-1 gap to land in the inconclusive band adds a criterion after the fact. If the N=64 value is confirmed from probes_final, the verdict should be refuted. If not, the verdict should say explicitly that the gap is unverified.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-093104-b0af"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The confidence note says 'probes_final gives no layer-1 force value for this run, so a same-layer gap cannot be computed.' That is false: probes_final lists layer-1 force R\u00b2 0.7107 (control 0.6085, spread 0.0144). The same-layer d64\u2192d128 comparison is 0.7107 vs 0.78436, a difference of 0.074, so N=128 force is still below the 0.765 cutoff and the conclusion stands. Correct the note. This value also answers q-20261016-093128-98d2.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-093128-dcb8"
+    },
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "The force margins at layers 1, 2 and 3 are 0.1022, 0.1013 and 0.1053. They differ by less than the layer-1 and layer-2 control_spread (0.0144, 0.0268), so the choice of layer 3 as best-margin layer is noise. Every one of layers 1-3 only just clears the 0.1 bar.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-093128-dcb8"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "Two small wording slips. First, val_mse_ratio falls 5.3x in seed 70 between steps 1000 and 3000 (0.0971\u21920.0183), not '6-7x'. Second, seed 70's layer-4 accel_step levels off after step 2000 (0.3639 at 2000, 0.3644 at 2250), not 'only after step 2250'. All quoted R\u00b2, control, margin, normalised and growth values match the raw records.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-084430-c375"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261016-084430-c375",
+      "f-20261016-093104-b0af",
+      "f-20261016-093128-dcb8"
+    ],
+    "runs": [
+      "run-20261016-081926-e120",
+      "run-20261016-083515-124f",
+      "run-20261016-091614-8be2"
+    ],
+    "experiments": [
+      "exp-20261016-084530-41bf",
+      "exp-20261016-084530-ef04"
+    ]
+  }
+}
