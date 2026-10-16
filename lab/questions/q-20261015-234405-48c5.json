@@ -2,6 +2,8 @@
   "id": "q-20261015-234405-48c5",
   "text": "Across every m2-fixed N=128 run with a layer-1 entry in probes_final, how does the same-layer (layer 1) N=64 minus N=128 force gap compare with the best-layer gap? Does using the best layer understate the deficit wherever N=128 force moves away from layer 1 (for example seed 22 on data_seed 0: 0.135 best-layer vs 0.1495 same-layer)?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261016-032946-f8ef"
+  ],
   "created_at": "2026-10-15T23:44:05"
 }

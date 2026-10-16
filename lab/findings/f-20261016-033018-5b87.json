@@ -1,0 +1,26 @@
+{
+  "id": "f-20261016-033018-5b87",
+  "claim": "At e<=0.9, the 3000-step layer-4 accel_step R2 settles well below the matched e<=0.85 values in all 3 seeds. Seed 70: 0.457 vs 0.573, gap 0.116. Seed 71: 0.421 vs 0.558, gap 0.137. Seed 72: 0.447 vs 0.588, gap 0.141. accel_step still beats its control (margins 0.305/0.271/0.277, controls 0.15-0.17), and the headroom-normalised margin is 0.360/0.319/0.334, all below 0.40. R2 rose only 0.011-0.064 from the 600-step values (0.393/0.396/0.436) and was flat within about 0.01 from step 1000-2250 onward, while val_mse_ratio kept falling about 10x (about 0.12 to 0.013-0.015). Force also beats its control but is much weaker and less stable than accel_step. Force R2 is 0.310/0.200/0.373, with margins 0.140/0.131/0.212 and normalised margins 0.17/0.14/0.25. Its best layer is 4/1/2 depending on seed, while accel_step peaks at layer 4 in every seed.",
+  "verdict": "supported",
+  "status": "replicated",
+  "evidence_run_ids": [
+    "run-20261016-030349-a5e9",
+    "run-20261016-030349-5755",
+    "run-20261016-030349-2b68"
+  ],
+  "confidence_note": "All 3 seeds completed the full 3000 steps (none stopped early). All gaps clear the 0.08 bar by at least 0.036, and the margins and normalised margins pass with room to spare, so the verdict does not depend on borderline numbers. Limits: (1) The e<=0.85 reference values come from a different experiment (f-20261013-001616-659c). The comparison assumes the same data_seed, pipeline version and best-of-5 control draw, and if the reference R2 had been read at a different layer or under an older control scheme the gaps could shift by a few hundredths. (2) Only one data_seed and one architecture (d_model=64, 4 layers) were tested, so the 'lower ceiling' is a ceiling for this model and a linear probe. A nonlinear or log(accel_step) probe, or a wider model, could still decode much more. (3) Seed 71 was still gaining about 0.005 per 250 steps at the end, so a longer run might narrow its gap somewhat, though not by the 0.10 needed to reach the 'false' band. The verdict would change if a 6000+ step run brought any seed within 0.04 of its e<=0.85 value, or if matched-layer, same-pipeline e<=0.85 reruns turned out much closer to these values.",
+  "created_at": "2026-10-16T03:30:18",
+  "experiment_id": "exp-20261016-014337-2921",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "replicated",
+      "at": "2026-10-16T03:30:18",
+      "actor": "agent"
+    }
+  ]
+}

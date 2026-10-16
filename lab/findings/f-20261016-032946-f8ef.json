@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-032946-f8ef",
+  "claim": "At matched 24000-step horizon (m2 = 0.5, data_seed 0, seed 22), N=64 final layer-1 force R2 = 0.80399 (control 0.57407, margin 0.230, best layer 1). That is 0.114 above the same-layer N=128 value of 0.6903 (run-20261015-214139-70d4) and 0.099 above N=128's best layer (layer 3, 0.70462; cross-layer comparison). accel_step R2 = 0.95241 at layer 4 (control 0.72946, headroom-normalised margin 0.82). The pre-registered horizon check failed: layer-1 force at step 12000 of this run is about 0.794-0.796 (control plus margin), which is 0.044 below the 12000-step run's endpoint of 0.8398 (run-20261014-043150-f21c), above the 0.03 tolerance. This run's 24000-step endpoint (0.804) is also 0.036 below that 12000-step endpoint.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-022408-42ac"
+  ],
+  "confidence_note": "Every gap criterion passes by a wide margin. Same-layer gap 0.114 and cross-layer gap 0.099, against the 0.04 bar and the 0.02 refutation line. Force margin 0.230 >= 0.1. accel_step normalised margin 0.82 is inside [0.60, 0.85]. The run completed all 24000 steps. The verdict is inconclusive for one reason: the pre-registered horizon check failed by 0.044, and the hypothesis said that outcome must be reported as horizon-confounded. That failure does not weaken the matched-horizon N=64 vs N=128 comparison, since both runs are 24000 steps. It does show that seed-22 N=64 force depends on the lr schedule. Force peaks at about 0.806 at step 6000, dips to about 0.795 at step 11000, and recovers only to 0.812 (trajectory max) by step 24000, even though val_mse_ratio falls about 8x to 0.00095. Comparisons between the 12000-step and 24000-step runs are therefore not like-for-like. A matched-loss reading points the same way. At steps 12000-13000 (val_mse_ratio 0.008-0.004), N=64 layer-1 force is about 0.796, roughly 0.09 or more above N=128's 0.69-0.70 at a similar loss. Limits: this is one seed on one dataset, intermediate values come from 3-decimal trajectory fields, and the step-12000 value assumes the step-12000 control equals the final layer-1 control (0.57407, the same as the reference run's control). Two things would change the verdict to supported: rerunning the horizon check against a schedule-fraction-matched checkpoint (step 6000 of the 12000-step run versus step 12000 here), or a second seed showing a same-layer gap >= 0.04 at 24000 steps on data_seed 0. A same-layer gap below 0.04 in such a replication would weaken the ceiling interpretation.",
+  "created_at": "2026-10-16T03:29:46",
+  "experiment_id": "exp-20261016-004348-f687",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T03:29:46",
+      "actor": "agent"
+    }
+  ]
+}

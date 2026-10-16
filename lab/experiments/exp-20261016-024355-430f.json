@@ -1,0 +1,96 @@
+{
+  "id": "exp-20261016-024355-430f",
+  "family": "E5",
+  "hypothesis": "This is the reference arm of the width-scaling test. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=256, best-of-3 controls, seed 22, 6000 steps. Prediction: N=64 force is saturated in width. Final trained force R2 at the best-margin layer (probes_final, unrounded, layer reported) stays within 0.03 of the same seed's d_model=128 N=64 value of 0.82669 (layer 4, run-20261016-002356-cbfe) and of the d_model=64 value of 0.8235 (layer 1, run-20261014-031344-3f3d). If so, any change in the N=64 minus N=128 gap with width comes from the N=128 side. Layer-1 force R2 is also reported. The headline gap against the paired d_model=256 N=128 arm uses best-margin layers, and cross-layer pairs are flagged. A layer-1 same-layer gap is reported wherever both arms list layer 1 in probes_final. Both arms' run IDs are cited. If the paired arm is unavailable, the gap is reported as not computed. Width comparisons use trained R2, not margin, because random controls rise with d_model. No band is placed on control R2.",
+  "expected_if_true": "Final best-margin-layer force R2 lies in [0.80, 0.857] and beats its control (margin >= required_margin). accel_step headroom-normalised margin lies in [0.60, 0.90]. The paired N=128 d256 arm then decides the gap.",
+  "expected_if_false": "Final best-margin-layer force R2 is >= 0.86, so width still lifts N=64 force and the gap trend has to be read from both sides, or <= 0.79, a width-driven loss. Either outcome means N=64 force is not saturated by d_model=128.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "This is the reference arm of the width-scaling test. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=256, best-of-3 controls, seed 22, 6000 steps. Prediction: N=64 force is saturated in width. Final trained force R2 at the best-margin layer (probes_final, unrounded, layer reported) stays within 0.03 of the same seed's d_model=128 N=64 value of 0.82669 (layer 4, run-20261016-002356-cbfe) and of the d_model=64 value of 0.8235 (layer 1, run-20261014-031344-3f3d). If so, any change in the N=64 minus N=128 gap with width comes from the N=128 side. Layer-1 force R2 is also reported. The headline gap against the paired d_model=256 N=128 arm uses best-margin layers, and cross-layer pairs are flagged. A layer-1 same-layer gap is reported wherever both arms list layer 1 in probes_final. Both arms' run IDs are cited. If the paired arm is unavailable, the gap is reported as not computed. Width comparisons use trained R2, not margin, because random controls rise with d_model. No band is placed on control R2.",
+    "expected_if_true": "Final best-margin-layer force R2 lies in [0.80, 0.857] and beats its control (margin >= required_margin). accel_step headroom-normalised margin lies in [0.60, 0.90]. The paired N=128 d256 arm then decides the gap.",
+    "expected_if_false": "Final best-margin-layer force R2 is >= 0.86, so width still lifts N=64 force and the gap trend has to be read from both sides, or <= 0.79, a width-driven loss. Either outcome means N=64 force is not saturated by d_model=128.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 256,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "accel_step",
+        "distance",
+        "energy"
+      ],
+      "layers": "all",
+      "checkpoints": [
+        1500,
+        3000,
+        4500,
+        6000
+      ],
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      22
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T02:43:55",
+  "updated_at": "2026-10-16T02:43:56",
+  "verdict": null,
+  "estimate_hours": 0.4813,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T02:43:55",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T02:43:55",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T02:43:56",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

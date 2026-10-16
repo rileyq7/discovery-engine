@@ -1,0 +1,22 @@
+run-20261016-030349-2b68: [03:03:52] experiment exp-20261016-014337-2921 (E5) seed 72: At e<=0.9, the loss of linear accel_step decodability is a lower ceiling, not slower convergence. Setup: N=64, 4 layers, d_model=64, m2 in [0.1, 1], data_seed 0, best-of-5 controls, seeds 70-72, 3000 steps. Prediction: final raw layer-4 accel_step R2 stays at least 0.08 below the same seeds' 3000-step e<=0.85 values (0.573/0.558/0.588, f-20261013-001616-659c), that is at most 0.493/0.478/0.508. The headroom-normalised margin also stays below 0.40, while accel_step still beats its control. Values come from probes_final at the best-margin layer, unrounded. The layer-4 value is reported separately if layer 4 is not the best-margin layer. The 600-step e<=0.9 values (0.393/0.396/0.436) are the within-seed starting point for growth.
+run-20261016-030349-2b68: [03:03:52] model: 209,094 params on mps; dataset 9e847b89cbfe; 9000 train / 1000 val systems
+run-20261016-030349-2b68: [03:03:53] step 0: val_mse=1.780e-03 cv_baseline=9.508e-05 ratio=18.718
+run-20261016-030349-2b68: [03:04:17] step 250: val_mse=6.222e-05 cv_baseline=9.508e-05 ratio=0.654
+run-20261016-030349-2b68: [03:04:42] step 500: val_mse=2.479e-05 cv_baseline=9.508e-05 ratio=0.261
+run-20261016-030349-2b68: [03:05:07] step 750: val_mse=9.513e-06 cv_baseline=9.508e-05 ratio=0.100
+run-20261016-030349-2b68: [03:05:32] step 1000: val_mse=1.193e-05 cv_baseline=9.508e-05 ratio=0.125
+run-20261016-030349-2b68: [03:05:56] step 1250: val_mse=5.286e-06 cv_baseline=9.508e-05 ratio=0.056
+run-20261016-030349-2b68: [03:06:20] step 1500: val_mse=5.981e-06 cv_baseline=9.508e-05 ratio=0.063
+run-20261016-030349-2b68: [03:06:44] step 1750: val_mse=3.406e-06 cv_baseline=9.508e-05 ratio=0.036
+run-20261016-030349-2b68: [03:07:09] step 2000: val_mse=3.344e-06 cv_baseline=9.508e-05 ratio=0.035
+run-20261016-030349-2b68: [03:07:33] step 2250: val_mse=1.745e-06 cv_baseline=9.508e-05 ratio=0.018
+run-20261016-030349-2b68: [03:07:58] step 2500: val_mse=1.576e-06 cv_baseline=9.508e-05 ratio=0.017
+run-20261016-030349-2b68: [03:08:23] step 2750: val_mse=1.347e-06 cv_baseline=9.508e-05 ratio=0.014
+run-20261016-030349-2b68: [03:08:47] step 3000: val_mse=1.242e-06 cv_baseline=9.508e-05 ratio=0.013
+run-20261016-030349-2b68: [03:08:47] training done in 4.9 min; beats constant-velocity baseline: True
+run-20261016-030349-2b68: [03:08:51] random-model controls (best of 5): force=0.04/0.15/0.16/0.16/0.16, distance=0.06/0.31/0.41/0.46/0.57, energy=-0.00/0.14/0.32/0.39/0.46, accel_step=0.09/0.17/0.17/0.17/0.17
+run-20261016-030349-2b68: [03:08:52] probes @ step 0: best force R2=0.172 (layer 3)
+run-20261016-030349-2b68: [03:08:55] probes @ step 1250: best force R2=0.370 (layer 2)
+run-20261016-030349-2b68: [03:08:58] probes @ step 2500: best force R2=0.381 (layer 2)
+run-20261016-030349-2b68: [03:09:00] probes @ step 3000: best force R2=0.373 (layer 2)
+run-20261016-030349-2b68: [03:09:00] run complete in 5.1 min

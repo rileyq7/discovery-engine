@@ -2,6 +2,8 @@
   "id": "q-20261013-054603-b235",
   "text": "Since reruns at a fixed seed are deterministic, the step-3000 force differences between the 3000-, 6000- and 12000-step N=256 runs must come from the lr schedule. Does aligning those runs by fraction of the schedule (for example, comparing at 50% of each run) bring their force and accel_step margins to within 0.01?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261016-032946-f8ef"
+  ],
   "created_at": "2026-10-13T05:46:03"
 }

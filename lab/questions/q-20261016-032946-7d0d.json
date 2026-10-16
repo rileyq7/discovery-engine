@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-032946-7d0d",
+  "text": "For N=64 seed 22 (m2 fixed, data_seed 0), final layer-1 force R2 is 0.840 in the 12000-step run and 0.804 in the 24000-step run, even though the longer run reaches about 8x lower val_mse_ratio (0.00095). Is the endpoint force level set by the low-lr tail of the schedule rather than by total training or loss? Comparing step 6000 of the 12000-step run with step 12000 of the 24000-step run (both at 50% of the schedule) would test this. Does any other N=64 seed also end lower under a longer schedule?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T03:29:46"
+}
