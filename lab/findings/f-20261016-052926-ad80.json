@@ -1,0 +1,24 @@
+{
+  "id": "f-20261016-052926-ad80",
+  "claim": "At d_model=256 (seed 22, m2 fixed at 0.5, data_seed 0, N=128, 6000 steps), N=128 trained force R2 at the best-margin layer is 0.79523 at layer 1 (control 0.65467, margin 0.141, headroom-normalised 0.41). That clears the >= 0.74 prediction and is 0.077 above the d128 value (0.718). However, the gap to the paired d256 N=64 arm could not be computed because run-20261016-050924-d030 is still running. accel_step R2 is 0.91127 at layer 1 (control 0.71358, margin 0.198). Its headroom-normalised margin is 0.69: inside [0.60, 0.90] but 0.18 below the d128 seed-22 value of 0.868, so the 'accel_step stays flat' condition fails.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-042805-cfe4"
+  ],
+  "confidence_note": "The force part of expected_if_true happened, and by a wide margin. The deciding criterion did not get tested: the best-layer gap (<= 0.085) and the layer-1 same-layer gap (<= 0.10) both need the paired d256 N=64 arm, which has not finished. If that arm lands near the d64/d128 N=64 values (0.8235 at layer 1, 0.82669 at layer 4), the gap would be about 0.03. That would support a capacity bottleneck, but this is an estimate, not a measurement. The accel_step criterion also fails. The normalised margin fell from 0.868 to 0.69, but the trajectory's max-over-layers accel_step R2 is 0.97 while layer 1 reads 0.911, so the drop may come from higher d256 controls (0.714) or from a different best layer rather than a real loss of decodability. The d128 reference's layer would need checking. Controls rise steeply with width: distance control is 0.916 and energy control 0.912, so both fail the 0.1 bar even though trained R2 is 0.97-0.99. The force control (0.655) is also above the d64 values, which is why the hypothesis compares on trained R2. This is a single seed and a single arm. val_mse_ratio is not monotone (0.28 at step 1500, 0.57 at step 2000), but it ends at 0.0127. The verdict becomes supported if the paired arm gives a best-layer gap <= 0.085 and the accel_step discrepancy turns out to be a layer or control artifact. It becomes refuted only if the paired N=64 arm comes in at >= 0.895, which is implausible given its d64 and d128 values.",
+  "created_at": "2026-10-16T05:29:26",
+  "experiment_id": "exp-20261016-024355-0dd6",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T05:29:26",
+      "actor": "agent"
+    }
+  ]
+}

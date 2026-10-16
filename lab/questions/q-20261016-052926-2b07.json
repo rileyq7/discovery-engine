@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-052926-2b07",
+  "text": "Once run-20261016-050924-d030 (d256 N=64, seed 22) finishes, is the same-layer (layer 1) N=64 minus N=128 trained force R2 gap <= 0.085? Across d_model=64/128/256, does the N=128 deficit shrink faster than geometrically (0.143, 0.108, then about 0.03 if N=64 stays near 0.82), or does N=64 force also rise at d256 and keep the gap near 0.10?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T05:29:26"
+}

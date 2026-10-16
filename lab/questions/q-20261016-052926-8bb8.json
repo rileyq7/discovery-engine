@@ -1,0 +1,7 @@
+{
+  "id": "q-20261016-052926-8bb8",
+  "text": "At d_model=256 the random controls reach 0.91-0.92 for distance and energy and 0.71 for accel_step, so distance and energy can no longer clear the 0.1 bar, and accel_step's headroom-normalised margin fell from 0.868 (d128) to 0.69 while its max-over-layers R2 is 0.97. Is the accel_step drop a control or best-layer artifact? Should width-scaling comparisons use trained R2 at a fixed layer for every target?",
+  "status": "open",
+  "linked_finding_ids": [],
+  "created_at": "2026-10-16T05:29:26"
+}
