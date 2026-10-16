@@ -1,0 +1,25 @@
+{
+  "id": "f-20261016-043140-93eb",
+  "claim": "At d_model=128 on data_seed 1 (m2 fixed at 0.5, 6000 steps), N=64 force beats its control in both seeds and stays well above the paired N=128 arm. Seed 22: R2 0.86504 vs control 0.6763 (margin 0.189). Seed 23: R2 0.88223 vs control 0.69995 (margin 0.182). Both are at layer 1. Against the N=128 layer-1 values (0.79972 and 0.83083, from f-20261016-043058-4504), the same-layer gaps are +0.065 for seed 22 and +0.051 for seed 23. Those gaps are smaller than the d_model=64 data_seed 1 gaps (about 0.086 and 0.053). At N=64, accel_step (layer 1) is decoded much better than force: R2 0.935 and 0.929 vs controls 0.752 and 0.759, giving headroom-normalised margins of 0.738 and 0.704. But the pre-registered rule that accel_step matches across arms holds only in seed 23 (difference 0.029). In seed 22 the difference is 0.084 against the N=128 value of 0.654.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-035349-7d2f",
+    "run-20261016-035349-bdfa"
+  ],
+  "confidence_note": "The force part of expected_if_true was met in both seeds. Both N=64 force margins are at least 0.1, and both N=64 minus N=128 gaps are at least 0.04 at the best-margin layer. Both arms peak at layer 1, so the best-layer gap and the same-layer gap are the same comparison, with no cross-layer pairing. The verdict is inconclusive, not supported, because one pre-registered condition failed: in seed 22 the headroom-normalised accel_step margin differs between arms by 0.084, more than the 0.05 allowed. That difference is also in the opposite direction to a pure force-specific deficit, because N=64 also decodes accel_step better at layer 1. So part of the N=128 shortfall at layer 1 may be a general layer-1 decodability gap, not something specific to force. I could not open the N=128 run files directly. The N=128 values (0.79972, 0.83083, 0.654, 0.675) are taken from f-20261016-043058-4504 and the related open question, not read from those runs' probes_final here. Both runs completed 6000 of 6000 steps. Seed 23's gap (0.051) is close to the 0.04 bar, and there are only two seeds. Things that would change this verdict: (1) N=128 layer-1 values read from the files that differ from the quoted ones; (2) comparing at matched val_mse_ratio, which differs here (N=64 0.0051/0.0029); (3) a third seed, which would show whether the accel_step mismatch in seed 22 is noise. If the accel_step condition is dropped as a secondary control, both seeds support the claim that the force deficit is not a width bottleneck on data_seed 1.",
+  "created_at": "2026-10-16T04:31:40",
+  "experiment_id": "exp-20261016-014337-d1a6",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T04:31:40",
+      "actor": "agent"
+    }
+  ]
+}

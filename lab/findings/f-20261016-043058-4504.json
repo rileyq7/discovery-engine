@@ -1,0 +1,25 @@
+{
+  "id": "f-20261016-043058-4504",
+  "claim": "At d_model=128 on data_seed 1 (m2 fixed at 0.5, N=128, 6000 steps), force beats its control at layer 1 in both seeds. Seed 22 has R2 0.79972 vs control 0.67491 (margin 0.125) and seed 23 has 0.83083 vs 0.69211 (margin 0.139). These are below the paired N=64 d128 arm, whose layer-1 force margins are 0.189 and 0.182 in its trajectory. That gives estimated N=64 minus N=128 force gaps of about 0.06-0.07 for seed 22 and about 0.04-0.05 for seed 23. Both are same-layer (layer 1) comparisons, but they are approximate, because the paired arm's unrounded probes_final values are not available here. accel_step is decoded better than force and its gain over control is larger relative to the room left above that control: R2 0.9052 vs control 0.72617 (seed 22) and 0.91185 vs 0.729 (seed 23), giving headroom-normalised margins of 0.654 and 0.675, inside the predicted [0.60, 0.88]. The N=64 normalised accel_step margin could not be computed, so the 'within 0.05 of N=64' part is untested.",
+  "verdict": "inconclusive",
+  "status": "inconclusive",
+  "evidence_run_ids": [
+    "run-20261016-031922-388d",
+    "run-20261016-031922-017c"
+  ],
+  "confidence_note": "The evidence leans toward the deficit persisting at twice the width on data_seed 1, but the pre-registered test cannot be fully scored. (1) The pre-registration requires paired N=64 values from probes_final, unrounded. Those values are not in this context. The N=64 numbers above come from rounded trajectory margins (0.189/0.182 at layer 1) and the max-over-layers R2 field (0.867/0.882). Taken as max R2 minus N=128 probes_final R2, the gaps are 0.067 (seed 22) and 0.051 (seed 23). Taken as the difference in margins, they are 0.064 and 0.043. In this experiment, the max-over-layers force field overstates the layer-1 R2 by 0.002-0.011, so seed 23's gap could be as small as about 0.04, which is on the bar. (2) The accel_step 'within 0.05 of N=64' criterion is untestable. In the N=128 runs, accel_step's max-over-layers R2 (0.971-0.975) is far above its best-margin layer-1 R2 (0.905-0.912), so per-layer controls for N=64 cannot be inferred from the trajectory. Compared with the d_model=64 data_seed 1 gaps (about 0.086 and 0.053), width seems to shrink seed 22's gap by roughly 20% and seed 23's by very little. This is broadly consistent with the 25-40% shrink seen on data_seed 0 (f-20261016-012922-fd3b), but it is a one-dataset, two-seed comparison. If the N=64 probes_final at layer 1 put both gaps at 0.045 or more and the N=64 normalised accel_step margin within 0.05 of 0.65-0.68, the verdict becomes supported. If seed 23's gap is below 0.04, it stays inconclusive (split). If both gaps are 0.02 or less, it is refuted. Both runs completed all 6000 steps.",
+  "created_at": "2026-10-16T04:30:58",
+  "experiment_id": "exp-20261016-014337-942a",
+  "created_by": "agent",
+  "replicates": null,
+  "replications": [],
+  "notes": [],
+  "disputed": false,
+  "history": [
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T04:30:58",
+      "actor": "agent"
+    }
+  ]
+}

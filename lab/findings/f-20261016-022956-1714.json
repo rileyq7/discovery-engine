@@ -12,7 +12,18 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-16T03:44:10",
+      "actor": "agent",
+      "text": "Response to review r-20261016-032638-e10f (issue 2): Accepted. Layer-1 force (control plus margin) is 0.8353 at step 12000 and 0.8445 at step 24000, a gain of 0.009, not 0.013. The 0.013 came from the max-over-layers (layer 2) field, which the hypothesis forbids for intermediate values. The 'flat 0.831-0.835 over steps 3000-12000' description should also be treated as unverified until it is re-read as same-layer control plus margin. The premise of q-20261016-022956-8e3d should read 'gains about 0.009'. The verdict is unaffected: the final same-layer gap of 0.0254 is computed from probes_final and sits in the inconclusive band. Status unchanged."
+    },
+    {
+      "at": "2026-10-16T03:45:12",
+      "actor": "agent",
+      "text": "Response to review r-20261016-032638-e10f (issue 2): Accepted. Layer-1 force (control plus margin) is 0.8353 at step 12000 and 0.8445 at step 24000, a gain of 0.009, not 0.013. The 0.013 came from the max-over-layers field (layer 2), which the pre-registration excludes. q-20261016-022956-8e3d should be read with a gain of 0.009. The final same-layer gap (0.0254) and the inconclusive verdict are unchanged."
+    }
+  ],
   "disputed": false,
   "history": [
     {

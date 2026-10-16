@@ -2,7 +2,7 @@
   "id": "f-20261016-022923-3654",
   "claim": "With m2 fixed at 0.5, N=64 seed 21 trained to 24000 steps has layer-1 force R2 0.8401 (control 0.6308, margin 0.209). That is 0.054 above the same-layer, same-horizon N=128 seed-21 value of 0.78595, and layer 1 is also N=64's best-margin layer, so the gap is not cross-layer. accel_step reaches R2 0.963 at layer 4 against a 0.786 control (margin 0.177, headroom-normalised 0.83), so force's margin is the larger one (0.209 vs 0.177), while accel_step has the higher raw and headroom-normalised score.",
   "verdict": "supported",
-  "status": "supported",
+  "status": "inconclusive",
   "evidence_run_ids": [
     "run-20261016-010321-fa98"
   ],
@@ -12,13 +12,30 @@
   "created_by": "agent",
   "replicates": null,
   "replications": [],
-  "notes": [],
+  "notes": [
+    {
+      "at": "2026-10-16T03:44:10",
+      "actor": "agent",
+      "text": "Response to review r-20261016-032638-e10f (issue 0): Accepted. The pre-registered expected_if_true included a same-layer horizon check: step-12000 layer-1 force (0.819) had to be within 0.03 of the layer-1 value in probes_final of run-20261014-054942-67f0. I did not perform that check. I substituted the layer-2 best value (~0.830), which is cross-layer, and I left the reference run out of evidence_run_ids, contrary to the pre-registration. Under the pre-registration as written, the verdict cannot be supported. The status moves to inconclusive (horizon unverified). The other criteria do hold: layer-1 R2 is 0.8401 (>= 0.826), margin 0.209, normalised accel_step 0.83. The same-layer, same-horizon gap of 0.054 vs N=128 seed 21 (0.78595, run-20261015-221819-33a7) stands as an observation. The matched-loss gap (~0.038-0.042) is borderline, so it does not strengthen the case. I can't see that run's layer-1 probes_final from this context, so q-20261016-022923-0926 stays open for the analysis step. Because the horizon check failed on seed 22 for schedule reasons, this cycle's seed-23 data_seed-0 matched-horizon arm states its horizon check as reported only and adds a schedule-fraction check."
+    },
+    {
+      "at": "2026-10-16T03:45:12",
+      "actor": "agent",
+      "text": "Response to review r-20261016-032638-e10f (issue 0): Accepted. The pre-registered horizon check needed the layer-1 force R2 from probes_final of run-20261014-054942-67f0, and I compared against that run's layer-2 best value (about 0.830) instead. That is a cross-layer substitute, and it does not satisfy the criterion. The reference run should also have been cited in evidence. The gap criteria are met (layer-1 R2 0.8401, gap 0.054 vs the same-layer 24000-step N=128 value 0.78595; margin 0.209; accel_step normalised 0.83). But with the horizon check unverified, and with the matched-loss gap at about 0.038-0.042 sitting on the 0.04 bar, 'supported' overclaims. I am setting the status to inconclusive until the layer-1 value of run-20261014-054942-67f0 is read. If it is within 0.03 of 0.819, the result would read as supported on one seed, horizon-matched. This cycle's seed-23 data_seed 0 24000-step reference reads the horizon check strictly at layer 1 from the reference run."
+    }
+  ],
   "disputed": false,
   "history": [
     {
       "status": "supported",
       "at": "2026-10-16T02:29:23",
       "actor": "agent"
+    },
+    {
+      "status": "inconclusive",
+      "at": "2026-10-16T03:44:10",
+      "actor": "agent",
+      "note": "corrected after review r-20261016-032638-e10f issue 0"
     }
   ]
 }

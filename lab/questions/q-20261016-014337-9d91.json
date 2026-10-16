@@ -2,6 +2,9 @@
   "id": "q-20261016-014337-9d91",
   "text": "Across data_seeds 0 and 1, is the fraction by which doubling d_model shrinks the N=64 vs N=128 force gap the same (about 25-40% on data_seed 0)? If so, would a d_model=256 arm be predicted to close the gap below 0.04, which would separate a capacity bottleneck from a fixed steps_per_orbit offset?",
   "status": "open",
-  "linked_finding_ids": [],
+  "linked_finding_ids": [
+    "f-20261016-043058-4504",
+    "f-20261016-043140-93eb"
+  ],
   "created_at": "2026-10-16T01:43:37"
 }

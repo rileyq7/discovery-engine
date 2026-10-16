@@ -1,0 +1,91 @@
+{
+  "id": "exp-20261016-034512-611f",
+  "family": "E5",
+  "hypothesis": "This is the reference arm of a third-seed width replication. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=128, best-of-3 controls, seed 24, 6000 steps, N=64. Prediction: N=64 force beats its control, and its final trained force R2 stays at least 0.04 above the same seed's 6000-step d_model=128 N=128 value from the paired arm proposed this cycle. That would replicate the d_model=128 gaps of seeds 22-23 (0.108 and 0.045). Values come from probes_final, unrounded. The headline gap uses best-margin layers, with layers reported and cross-layer pairs flagged. A layer-1 same-layer gap is also reported wherever both arms list layer 1. Both arms' run IDs are cited. If the paired run is unavailable, the gap is reported as not computed. Comparisons use trained R2, not margin. No band is placed on control R2.",
+  "expected_if_true": "N=64 force margin >= 0.1. Best-layer trained force R2 at least 0.04 above the paired d_model=128 N=128 seed-24 value. Headroom-normalised accel_step margin in [0.60, 0.88].",
+  "expected_if_false": "N=64 minus N=128 trained force R2 <= 0.02 at the best-margin layer, or N=64 force fails to beat its control. A gap between 0.02 and 0.04 is reported as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "This is the reference arm of a third-seed width replication. Setup: m2 fixed at 0.5, data_seed 0, e in [0, 0.5], 4 layers, d_model=128, best-of-3 controls, seed 24, 6000 steps, N=64. Prediction: N=64 force beats its control, and its final trained force R2 stays at least 0.04 above the same seed's 6000-step d_model=128 N=128 value from the paired arm proposed this cycle. That would replicate the d_model=128 gaps of seeds 22-23 (0.108 and 0.045). Values come from probes_final, unrounded. The headline gap uses best-margin layers, with layers reported and cross-layer pairs flagged. A layer-1 same-layer gap is also reported wherever both arms list layer 1. Both arms' run IDs are cited. If the paired run is unavailable, the gap is reported as not computed. Comparisons use trained R2, not margin. No band is placed on control R2.",
+    "expected_if_true": "N=64 force margin >= 0.1. Best-layer trained force R2 at least 0.04 above the paired d_model=128 N=128 seed-24 value. Headroom-normalised accel_step margin in [0.60, 0.88].",
+    "expected_if_false": "N=64 minus N=128 trained force R2 <= 0.02 at the best-margin layer, or N=64 force fails to beat its control. A gap between 0.02 and 0.04 is reported as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 128,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 6000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 500
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      24
+    ],
+    "budget": {
+      "max_compute_hours": 0.6
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T03:45:12",
+  "updated_at": "2026-10-16T03:45:13",
+  "verdict": null,
+  "estimate_hours": 0.3064,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T03:45:12",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T03:45:12",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T03:45:13",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}

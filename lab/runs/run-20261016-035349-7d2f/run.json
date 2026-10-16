@@ -1,0 +1,73 @@
+{
+  "id": "run-20261016-035349-7d2f",
+  "experiment_id": "exp-20261016-014337-d1a6",
+  "seed": 22,
+  "status": "completed",
+  "started_at": "2026-10-16T03:53:51",
+  "ended_at": "2026-10-16T04:10:55",
+  "compute_hours": 0.2843,
+  "artifact_dir": "/Users/rileycoleman/discovery/runs/run-20261016-035349-7d2f",
+  "git_commit": "e2eb4d4",
+  "bad": false,
+  "notes": [],
+  "summary": {
+    "final_val_mse": 1.2504059352039353e-07,
+    "baseline_cv_mse": 2.4491599225622464e-05,
+    "val_mse_ratio": 0.0051054482954947,
+    "beats_baseline": true,
+    "train_hours": 0.27820813000202177,
+    "n_params": 811398,
+    "device": "mps",
+    "dataset_id": "810a0af8f62a",
+    "stopped": false,
+    "steps_completed": 6000,
+    "steps_planned": 6000,
+    "probes": {
+      "final_checkpoint": 6000,
+      "control_margin": 0.1,
+      "targets": {
+        "force": {
+          "best_layer": 1,
+          "r2": 0.86504,
+          "control_r2": 0.6763,
+          "control_spread": 0.01944,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 1000
+        },
+        "distance": {
+          "best_layer": 1,
+          "r2": 0.98982,
+          "control_r2": 0.79521,
+          "control_spread": 0.03362,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "energy": {
+          "best_layer": 1,
+          "r2": 0.96681,
+          "control_r2": 0.81279,
+          "control_spread": 0.02476,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        },
+        "accel_step": {
+          "best_layer": 1,
+          "r2": 0.93508,
+          "control_r2": 0.75186,
+          "control_spread": 0.00271,
+          "required_margin": 0.1,
+          "beats_control": true,
+          "formed_at_step": 500
+        }
+      }
+    }
+  },
+  "pid": 93182,
+  "device": "mps",
+  "progress": null,
+  "n_params": 811398,
+  "dataset_id": "810a0af8f62a"
+}

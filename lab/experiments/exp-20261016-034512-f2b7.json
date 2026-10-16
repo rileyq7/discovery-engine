@@ -1,0 +1,91 @@
+{
+  "id": "exp-20261016-034512-f2b7",
+  "family": "E5",
+  "hypothesis": "This is the matched-horizon reference for the seed-23 data_seed 0 ceiling test. Setup: m2 fixed at 0.5, N=64, seed 23, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls, 24000 steps. Prediction: the final layer-1 trained force R2 (probes_final, unrounded) stays at least 0.04 above the same-layer 24000-step N=128 seed-23 value of 0.71286 (run-20261014-070746-d284, layer 1). If so, the N=128 deficit is a lower ceiling at matched layer and horizon. The N=64 best-margin layer is reported, and a best layer other than 1 is flagged as cross-layer. Intermediate values are read only as same-layer (layer 1) control plus margin, never from the max-over-layers trajectory field. Horizon check: the step-12000 layer-1 value must be within 0.03 of the 12000-step N=64 seed-23 run's layer-1 value of 0.7935 (run-20261014-043150-2de3). If it is not, the result is reported as horizon-confounded. Both reference run IDs are cited as evidence. Secondary, descriptive only: whether this run's 24000-step endpoint is below the 12000-step endpoint (0.7935), as happened for seed 22 (0.804 vs 0.840).",
+  "expected_if_true": "Final layer-1 force R2 >= 0.753 (gap >= 0.04 vs 0.71286). Force beats its control (margin >= 0.1). Step-12000 layer-1 value within 0.03 of 0.7935. Headroom-normalised accel_step margin in [0.60, 0.85].",
+  "expected_if_false": "Final layer-1 force R2 <= 0.733 (gap <= 0.02 vs 0.71286), meaning the N=128 deficit closes at matched horizon. A gap between 0.02 and 0.04, or a failed horizon check, is reported as inconclusive.",
+  "config": {
+    "family": "E5",
+    "hypothesis": "This is the matched-horizon reference for the seed-23 data_seed 0 ceiling test. Setup: m2 fixed at 0.5, N=64, seed 23, 4 layers, d_model=64, e in [0, 0.5], best-of-3 controls, 24000 steps. Prediction: the final layer-1 trained force R2 (probes_final, unrounded) stays at least 0.04 above the same-layer 24000-step N=128 seed-23 value of 0.71286 (run-20261014-070746-d284, layer 1). If so, the N=128 deficit is a lower ceiling at matched layer and horizon. The N=64 best-margin layer is reported, and a best layer other than 1 is flagged as cross-layer. Intermediate values are read only as same-layer (layer 1) control plus margin, never from the max-over-layers trajectory field. Horizon check: the step-12000 layer-1 value must be within 0.03 of the 12000-step N=64 seed-23 run's layer-1 value of 0.7935 (run-20261014-043150-2de3). If it is not, the result is reported as horizon-confounded. Both reference run IDs are cited as evidence. Secondary, descriptive only: whether this run's 24000-step endpoint is below the 12000-step endpoint (0.7935), as happened for seed 22 (0.804 vs 0.840).",
+    "expected_if_true": "Final layer-1 force R2 >= 0.753 (gap >= 0.04 vs 0.71286). Force beats its control (margin >= 0.1). Step-12000 layer-1 value within 0.03 of 0.7935. Headroom-normalised accel_step margin in [0.60, 0.85].",
+    "expected_if_false": "Final layer-1 force R2 <= 0.733 (gap <= 0.02 vs 0.71286), meaning the N=128 deficit closes at matched horizon. A gap between 0.02 and 0.04, or a failed horizon check, is reported as inconclusive.",
+    "data": {
+      "source": "rebound",
+      "n_bodies": 2,
+      "n_systems": 10000,
+      "steps_per_orbit": 64,
+      "mass_ratio_range": [
+        0.5,
+        0.5
+      ],
+      "eccentricity_range": [
+        0.0,
+        0.5
+      ],
+      "data_seed": 0
+    },
+    "model": {
+      "n_layers": 4,
+      "d_model": 64,
+      "n_heads": 4,
+      "context_len": 128
+    },
+    "training": {
+      "steps": 24000,
+      "batch_size": 128,
+      "lr": 0.001,
+      "checkpoint_every": 1000
+    },
+    "probes": {
+      "targets": [
+        "force",
+        "distance",
+        "energy",
+        "accel_step"
+      ],
+      "layers": "all",
+      "checkpoints": "all",
+      "random_control": true,
+      "n_controls": 3,
+      "control_margin": 0.1,
+      "patching": false,
+      "symbolic": false
+    },
+    "eval_sets": [],
+    "seeds": [
+      23
+    ],
+    "budget": {
+      "max_compute_hours": 1.0
+    }
+  },
+  "state": "queued",
+  "proposed_by": "agent",
+  "created_at": "2026-10-16T03:45:12",
+  "updated_at": "2026-10-16T03:45:13",
+  "verdict": null,
+  "estimate_hours": 0.9216,
+  "compute_hours": 0.0,
+  "replicates_finding_id": null,
+  "notes": [],
+  "history": [
+    {
+      "state": "proposed",
+      "at": "2026-10-16T03:45:12",
+      "actor": "agent",
+      "note": ""
+    },
+    {
+      "state": "approved",
+      "at": "2026-10-16T03:45:12",
+      "actor": "auto-approve",
+      "note": "under cap and in an allowed family"
+    },
+    {
+      "state": "queued",
+      "at": "2026-10-16T03:45:13",
+      "actor": "worker",
+      "note": "admitted within daily budget"
+    }
+  ]
+}
