@@ -1,0 +1,44 @@
+{
+  "id": "r-20261016-012425-9f05",
+  "created_at": "2026-10-16T01:24:25",
+  "since": "2026-10-16T00:23:30",
+  "verdict": "OK",
+  "summary": "I recomputed every quoted number for f-20261016-002939-225f and f-20261016-003007-baee from raw_evidence, checked layer choices against the per-layer probes_final margins, and checked verdicts against the pre-registered bands; all match within rounding. Both `inconclusive` verdicts are correct. Seed 23's 0.0078 gain and 0.0275 gap fall between the true and false bands, and the d128 gap cannot be computed until the paired N=64 arm finishes. All cited margins clear max(control_margin, control_spread), and the recent experiments stay on the N=64 vs N=128 force-gap question.",
+  "issues": [
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "The confidence note says gaps of 0.005-0.01 are 'about the size of within-run checkpoint noise'. In this run, layer-1 force moves by at most about 0.001-0.002 between adjacent checkpoints after step 9000 (e.g. 0.8125\u21920.8114 at 11000\u219212000), so checkpoint noise is smaller than stated. The 0.0078 gain and the 0.0056 late-tail rise sit well above it. This does not change the verdict, which depends on the pre-registered bands.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-002939-225f"
+    },
+    {
+      "severity": "info",
+      "category": "noise",
+      "message": "Seed 23's force best-margin layer is effectively a tie. Layer 3 has margin 0.1246 (0.7653 vs 0.6407) and layer 1 has 0.1236 (0.7390 vs 0.6154). The two differ by 0.001, far less than the control_spread at either layer (0.0085 / 0.0148). The cross-layer flag for the future N=64 comparison should therefore report both the layer-1 and the layer-3 gaps. Seed 22's force (margin 0.0945) is below the 0.1 bar, as the finding already says, so any seed-22 gap compares against a value that does not beat its control.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-003007-baee"
+    }
+  ],
+  "status": "ok",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261016-002939-225f",
+      "f-20261016-003007-baee"
+    ],
+    "runs": [
+      "run-20261015-234652-f1f7",
+      "run-20261016-002356-c1d5",
+      "run-20261016-002356-cbfe",
+      "run-20261016-005901-0ffb",
+      "run-20261016-005901-b03a",
+      "run-20261016-005901-cee4"
+    ],
+    "experiments": [
+      "exp-20261016-004348-8adb",
+      "exp-20261016-004348-f687"
+    ]
+  }
+}
