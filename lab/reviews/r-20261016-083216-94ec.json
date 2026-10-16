@@ -1,0 +1,58 @@
+{
+  "id": "r-20261016-083216-94ec",
+  "created_at": "2026-10-16T08:32:16",
+  "since": "2026-10-16T07:30:37",
+  "verdict": "FLAG",
+  "summary": "I recomputed every quoted R2, control, margin, normalised margin, layer pick, val_mse_ratio and trajectory figure for the four findings against raw_evidence. Most values check out. f-838c's earlier review issue was answered and the downgrade to inconclusive was applied. The main problem is in f-8dea: it says probes_final has no layer-1 force R2, but it does (0.8211). f-dd1c has small trajectory misquotes and leaves out the N=64 run it relies on. The last 5 experiments stay on the width-scaling questions, and the new seed-24 d64 arms pre-register a fixed layer 1 in response to the earlier review, so there is no drift.",
+  "issues": [
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "The claim says 'probes_final does not give layer-1 force R2'. It does: force layer 1 = 0.8211 (control 0.598, spread 0.0175, margin 0.2231). That is +0.011 over the d128 layer-1 reference of 0.81015, so on the confidence note's own stated test ('a layer-1 value within 0.03 of 0.81015 would support it') the data already exists. The best-margin pick is noise: layer 3 margin 0.2295 vs layer 1 margin 0.2231, a difference of 0.0064, below the control spreads of 0.0171 and 0.0175. So the formal expected_if_false hit (layer 3, 0.8435 > 0.84) and the layer-1 saturation reading rest on a noise-level layer choice. Correct the record and state the layer-1 result explicitly. Minor: 'layer 3 elsewhere' is wrong for steps 0-1000, where the best layer is layer 1.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-083036-8dea"
+    },
+    {
+      "severity": "flag",
+      "category": "evidence_mismatch",
+      "message": "Gap trajectory: step 500 is 0.7287 - 0.6930 = 0.036, not within the quoted 0.042-0.044 band for steps 500-1500 (steps 1000 and 1500 give 0.042 and 0.044). The note says N=128 force is 'still rising about +0.003-0.004 per 500 steps', but the last three intervals are +0.0016, +0.0037 and +0.0011, a mean of about 0.002. N=64 normalised accel_step is quoted as about 0.867; the raw value is 0.1818/0.2093 = 0.869. None of these change the verdict.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-074415-dd1c"
+    },
+    {
+      "severity": "flag",
+      "category": "verdict_mismatch",
+      "message": "The pre-registration requires both arms' run IDs to be cited as evidence and all values to come from unrounded probes_final. evidence_run_ids lists only run-20261016-072048-0756, and the N=64 values are taken from 'trajectory, about 0.834'. The paired run-20261016-070351-7571 is complete. Its probes_final layer-1 force is 0.8339 (control 0.6096), which gives an exact same-layer gap of 0.0710. Add that run and use its probes_final values.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-074415-dd1c"
+    },
+    {
+      "severity": "info",
+      "category": "evidence_mismatch",
+      "message": "The matched-loss check the note calls impossible can be done from the data here. N=64 val_mse_ratio reaches 0.01325 at step 3500, close to N=128's 0.01258 at step 6000. N=64 layer-1 force at step 3500 is 0.8168, a gap of 0.054, which is still at least 0.04. Caveat: baseline_cv_mse differs about 16x between N=64 and N=128, so ratio matching across N is approximate.",
+      "source": "reviewer",
+      "finding_id": "f-20261016-074415-dd1c"
+    }
+  ],
+  "status": "open",
+  "responses": [],
+  "llm": true,
+  "scope": {
+    "findings": [
+      "f-20261016-062942-838c",
+      "f-20261016-073040-b41f",
+      "f-20261016-074415-dd1c",
+      "f-20261016-083036-8dea"
+    ],
+    "runs": [
+      "run-20261016-072048-0756",
+      "run-20261016-073808-5555",
+      "run-20261016-081926-7b68",
+      "run-20261016-081926-c113"
+    ],
+    "experiments": [
+      "exp-20261016-074504-4ab3",
+      "exp-20261016-074504-55da"
+    ]
+  }
+}
